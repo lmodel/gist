@@ -136,17 +136,17 @@ gist_linkml:BuildingShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:Building .
 
 gist_linkml:BundledCatalogItemShape a sh:NodeShape ;
@@ -298,17 +298,17 @@ gist_linkml:ContentExpressionShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:ContentExpression .
 
 gist_linkml:ContentShape a sh:NodeShape ;
@@ -316,17 +316,17 @@ gist_linkml:ContentShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:Content .
 
 gist_linkml:ContingentEventShape a sh:NodeShape ;
@@ -370,17 +370,17 @@ gist_linkml:ContractShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Contract .
 
 gist_linkml:ContractTermShape a sh:NodeShape ;
@@ -406,17 +406,17 @@ gist_linkml:ControlledVocabularyShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:ControlledVocabulary .
 
 gist_linkml:CountryGeoRegionShape a sh:NodeShape ;
@@ -460,17 +460,17 @@ gist_linkml:DegreeOfCommitmentShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:DegreeOfCommitment .
 
 gist_linkml:DeterminationShape a sh:NodeShape ;
@@ -496,17 +496,17 @@ gist_linkml:DisciplineShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Discipline .
 
 gist_linkml:ElectronicAddressShape a sh:NodeShape ;
@@ -586,17 +586,17 @@ gist_linkml:EventShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Event .
 
 gist_linkml:EventSpecificationShape a sh:NodeShape ;
@@ -622,17 +622,17 @@ gist_linkml:FormattedContentShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:FormattedContent .
 
 gist_linkml:FunctionShape a sh:NodeShape ;
@@ -640,6 +640,24 @@ gist_linkml:FunctionShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
+    sh:targetClass gist:Function .
+
+gist_linkml:GeneralMediaTypeShape a sh:NodeShape ;
+    rdfs:comment "The real-world media type for content." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -651,10 +669,10 @@ gist_linkml:FunctionShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
-    sh:targetClass gist:Function .
+    sh:targetClass gist:GeneralMediaType .
 
-gist_linkml:GeneralMediaTypeShape a sh:NodeShape ;
-    rdfs:comment "The real-world media type for content." ;
+gist_linkml:GeoLocationShape a sh:NodeShape ;
+    rdfs:comment "A physical location, with the earth as a frame of reference." ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
@@ -669,24 +687,6 @@ gist_linkml:GeneralMediaTypeShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path gist:description ] ;
-    sh:targetClass gist:GeneralMediaType .
-
-gist_linkml:GeoLocationShape a sh:NodeShape ;
-    rdfs:comment "A physical location, with the earth as a frame of reference." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ] ;
     sh:targetClass gist:GeoLocation .
 
 gist_linkml:GeoPointShape a sh:NodeShape ;
@@ -694,17 +694,17 @@ gist_linkml:GeoPointShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:GeoPoint .
 
 gist_linkml:GeoRegionShape a sh:NodeShape ;
@@ -784,24 +784,6 @@ gist_linkml:GovernedGeoRegionShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ] ;
-    sh:targetClass gist:GovernedGeoRegion .
-
-gist_linkml:GovernmentOrganizationShape a sh:NodeShape ;
-    rdfs:comment "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -813,6 +795,24 @@ gist_linkml:GovernmentOrganizationShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
+    sh:targetClass gist:GovernedGeoRegion .
+
+gist_linkml:GovernmentOrganizationShape a sh:NodeShape ;
+    rdfs:comment "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:GovernmentOrganization .
 
 gist_linkml:HistoricalEventShape a sh:NodeShape ;
@@ -838,17 +838,17 @@ gist_linkml:IDShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:ID .
 
 gist_linkml:IntellectualPropertyShape a sh:NodeShape ;
@@ -856,17 +856,17 @@ gist_linkml:IntellectualPropertyShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:IntellectualProperty .
 
 gist_linkml:IntentionShape a sh:NodeShape ;
@@ -946,24 +946,6 @@ gist_linkml:LanguageShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ] ;
-    sh:targetClass gist:Language .
-
-gist_linkml:LivingThingShape a sh:NodeShape ;
-    rdfs:comment "Something that is currently, or at some point in time was, alive." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -975,6 +957,24 @@ gist_linkml:LivingThingShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
+    sh:targetClass gist:Language .
+
+gist_linkml:LivingThingShape a sh:NodeShape ;
+    rdfs:comment "Something that is currently, or at some point in time was, alive." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:LivingThing .
 
 gist_linkml:MagnitudeShape a sh:NodeShape ;
@@ -1018,17 +1018,17 @@ gist_linkml:MediumShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Medium .
 
 gist_linkml:MessageShape a sh:NodeShape ;
@@ -1036,6 +1036,24 @@ gist_linkml:MessageShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
+    sh:targetClass gist:Message .
+
+gist_linkml:NetworkLinkShape a sh:NodeShape ;
+    rdfs:comment "An abstract representation of the connection between two or more nodes in a network." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1047,10 +1065,10 @@ gist_linkml:MessageShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path gist:description ] ;
-    sh:targetClass gist:Message .
+    sh:targetClass gist:NetworkLink .
 
-gist_linkml:NetworkLinkShape a sh:NodeShape ;
-    rdfs:comment "An abstract representation of the connection between two or more nodes in a network." ;
+gist_linkml:NetworkNodeShape a sh:NodeShape ;
+    rdfs:comment "A node in a network." ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
@@ -1065,24 +1083,6 @@ gist_linkml:NetworkLinkShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
-    sh:targetClass gist:NetworkLink .
-
-gist_linkml:NetworkNodeShape a sh:NodeShape ;
-    rdfs:comment "A node in a network." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ] ;
     sh:targetClass gist:NetworkNode .
 
 gist_linkml:NetworkShape a sh:NodeShape ;
@@ -1090,17 +1090,17 @@ gist_linkml:NetworkShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:Network .
 
 gist_linkml:OfferShape a sh:NodeShape ;
@@ -1126,17 +1126,17 @@ gist_linkml:OrderedCollectionShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:OrderedCollection .
 
 gist_linkml:OrderedMemberShape a sh:NodeShape ;
@@ -1162,17 +1162,17 @@ gist_linkml:OrganizationShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:Organization .
 
 gist_linkml:PermissionShape a sh:NodeShape ;
@@ -1198,17 +1198,17 @@ gist_linkml:PersonShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Person .
 
 gist_linkml:PhysicalActionTypeShape a sh:NodeShape ;
@@ -1234,17 +1234,17 @@ gist_linkml:PhysicalAddressShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:PhysicalAddress .
 
 gist_linkml:PhysicalAddressTypeShape a sh:NodeShape ;
@@ -1252,17 +1252,17 @@ gist_linkml:PhysicalAddressTypeShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:PhysicalAddressType .
 
 gist_linkml:PhysicalEventShape a sh:NodeShape ;
@@ -1306,6 +1306,24 @@ gist_linkml:PhysicalSubstanceShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
+    sh:targetClass gist:PhysicalSubstance .
+
+gist_linkml:ProductCategoryShape a sh:NodeShape ;
+    rdfs:comment "Any of many ways of categorizing products." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1317,10 +1335,10 @@ gist_linkml:PhysicalSubstanceShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
-    sh:targetClass gist:PhysicalSubstance .
+    sh:targetClass gist:ProductCategory .
 
-gist_linkml:ProductCategoryShape a sh:NodeShape ;
-    rdfs:comment "Any of many ways of categorizing products." ;
+gist_linkml:ProductSpecificationShape a sh:NodeShape ;
+    rdfs:comment "A description of something that could be physically warehoused or digitally stored and physically or digitally delivered." ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
@@ -1335,24 +1353,6 @@ gist_linkml:ProductCategoryShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path gist:description ] ;
-    sh:targetClass gist:ProductCategory .
-
-gist_linkml:ProductSpecificationShape a sh:NodeShape ;
-    rdfs:comment "A description of something that could be physically warehoused or digitally stored and physically or digitally delivered." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ] ;
     sh:targetClass gist:ProductSpecification .
 
 gist_linkml:ProjectShape a sh:NodeShape ;
@@ -1360,17 +1360,17 @@ gist_linkml:ProjectShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Project .
 
 gist_linkml:ReferenceValueShape a sh:NodeShape ;
@@ -1396,17 +1396,17 @@ gist_linkml:RenderedContentShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:RenderedContent .
 
 gist_linkml:RequirementShape a sh:NodeShape ;
@@ -1486,17 +1486,17 @@ gist_linkml:SchemaMetaDataShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:SchemaMetaData .
 
 gist_linkml:ServiceSpecificationShape a sh:NodeShape ;
@@ -1504,17 +1504,17 @@ gist_linkml:ServiceSpecificationShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:ServiceSpecification .
 
 gist_linkml:SpecificationShape a sh:NodeShape ;
@@ -1540,17 +1540,17 @@ gist_linkml:SubCountryGovernmentShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:SubCountryGovernment .
 
 gist_linkml:SystemShape a sh:NodeShape ;
@@ -1576,17 +1576,17 @@ gist_linkml:TagShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Tag .
 
 gist_linkml:TaskShape a sh:NodeShape ;
@@ -1630,17 +1630,17 @@ gist_linkml:TemplateShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ],
-        [ sh:datatype xsd:string ;
             sh:description "Relates an individual to (one of) its name(s)." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path gist:name ] ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
     sh:targetClass gist:Template .
 
 gist_linkml:TemporalRelationShape a sh:NodeShape ;
@@ -1648,6 +1648,24 @@ gist_linkml:TemporalRelationShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "A statement about someone or something's attributes or characteristics." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path gist:description ] ;
+    sh:targetClass gist:TemporalRelation .
+
+gist_linkml:TextShape a sh:NodeShape ;
+    rdfs:comment "Content expressed as a written sequence of characters." ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -1659,24 +1677,6 @@ gist_linkml:TemporalRelationShape a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path gist:name ] ;
-    sh:targetClass gist:TemporalRelation .
-
-gist_linkml:TextShape a sh:NodeShape ;
-    rdfs:comment "Content expressed as a written sequence of characters." ;
-    sh:closed true ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A statement about someone or something's attributes or characteristics." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path gist:description ] ;
     sh:targetClass gist:Text .
 
 gist_linkml:TimeIntervalShape a sh:NodeShape ;
@@ -1684,17 +1684,17 @@ gist_linkml:TimeIntervalShape a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Relates an individual to (one of) its name(s)." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path gist:name ],
-        [ sh:datatype xsd:string ;
             sh:description "A statement about someone or something's attributes or characteristics." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path gist:description ] ;
+            sh:path gist:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "Relates an individual to (one of) its name(s)." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path gist:name ] ;
     sh:targetClass gist:TimeInterval .
 
 gist_linkml:TransactionShape a sh:NodeShape ;

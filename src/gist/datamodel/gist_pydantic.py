@@ -582,10 +582,10 @@ class Address(Content):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Address'],
          'class_uri': 'gist:Address',
-         'close_mappings': ['common_domain_model:Address'],
          'examples': [{'value': 'A PO Box, a URL to a PDF file.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
-         'in_subset': ['gist_core']})
+         'in_subset': ['gist_core'],
+         'narrow_mappings': ['common_domain_model:Address']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -768,12 +768,12 @@ class ElectronicAddress(Address):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Electronic Address', 'Virtual Address'],
          'class_uri': 'gist:ElectronicAddress',
-         'close_mappings': ['common_domain_model:ContactInformation'],
          'disjoint_with': ['PhysicalAddress'],
          'examples': [{'value': 'A file system path, website URL, IP address, email '
                                 'address, mobile or landline telephone number.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
-         'in_subset': ['gist_core']})
+         'in_subset': ['gist_core'],
+         'related_mappings': ['common_domain_model:ContactInformation']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -870,7 +870,6 @@ class Event(GistThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Event'],
          'class_uri': 'gist:Event',
-         'close_mappings': ['common_domain_model:BusinessEvent', 'iso22989:Action'],
          'comments': ['An event does not necessarily have either planned or actual '
                       'start or end datetimes. For example, a conference can be in the '
                       'planning phase without any dates selected, but is nevertheless '
@@ -885,7 +884,10 @@ class Event(GistThing):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
-         'narrow_mappings': ['iso22989:AILifecycleProcess', 'iso22989:DataProcess']})
+         'narrow_mappings': ['common_domain_model:BusinessEvent',
+                             'iso22989:AILifecycleProcess',
+                             'iso22989:DataProcess',
+                             'iso22989:Action']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1105,11 +1107,11 @@ class GeoLocation(GistThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Geographic Location'],
          'class_uri': 'gist:GeoLocation',
-         'close_mappings': ['dpvs:StorageLocation'],
          'comments': ['A geographic location may be a point, region, or volume.'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'mixins': ['GistThing']})
+         'mixins': ['GistThing'],
+         'narrow_mappings': ['dpv:StorageLocation']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1151,8 +1153,7 @@ class GeoPoint(GeoLocation):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & '
-                   '∃latitude.<http://www.w3.org/2001/XMLSchema#double> & '
-                   '∃longitude.<http://www.w3.org/2001/XMLSchema#double>)']})
+                   '∃latitude.xsd:double & ∃longitude.xsd:double)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1182,7 +1183,6 @@ class GeoRegion(GeoLocation):
     A bounded region (or set of regions) on the surface of the Earth.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Geographic Region'],
-         'broad_mappings': ['dpvs:PersonalSpace'],
          'class_uri': 'gist:GeoRegion',
          'comments': ['A geographic region could be non-contiguous; e.g., the region '
                       'governed by the US federal government is the contiguous area of '
@@ -1347,10 +1347,9 @@ class HistoricalEvent(Event):
          'class_uri': 'gist:HistoricalEvent',
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃actualStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>',
+         'notes': ['OWL subClassOf restrictions: ∃actualStartDateTime.xsd:dateTime',
                    'OWL equivalentClass: (gist:Event & '
-                   '∃actualEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)']})
+                   '∃actualEndDateTime.xsd:dateTime)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1382,19 +1381,18 @@ class ID(Content):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['ID'],
          'class_uri': 'gist:ID',
          'close_mappings': ['common_domain_model:Identifier',
-                            'common_domain_model:PartyIdentifier',
-                            'common_domain_model:PersonIdentifier',
-                            'common_domain_model:EntityIdentifier',
                             'common_domain_model:AssignedIdentifier'],
          'comments': ['Used in conjunction with gist:isIdentifiedBy.'],
          'examples': [{'value': 'SSN for a person; serial number for a product; '
                                 'employee ID for a person.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
+         'narrow_mappings': ['common_domain_model:PartyIdentifier',
+                             'common_domain_model:PersonIdentifier',
+                             'common_domain_model:EntityIdentifier'],
          'notes': ['OWL equivalentClass: (gist:Content & '
                    '∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | '
-                   'gist:Person) & '
-                   '∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>)']})
+                   'gist:Person) & ∃uniqueText.xsd:string)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1424,7 +1422,6 @@ class IntellectualProperty(GistThing):
     An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Intellectual Property'],
-         'broad_mappings': ['dpvs:IntellectualPropertyData'],
          'class_uri': 'gist:IntellectualProperty',
          'comments': ["For literature this could be called the 'Work,' except that "
                       "'work' is a highly overloaded term (expenditure of energy, "
@@ -1445,7 +1442,8 @@ class IntellectualProperty(GistThing):
                                 'brand Coca Cola.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'mixins': ['GistThing']})
+         'mixins': ['GistThing'],
+         'related_mappings': ['dpv:IntellectualPropertyData']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1515,18 +1513,18 @@ class Agreement(Intention):
     A mutually understood arrangement in which two or more parties make commitments to one another.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Agreement'],
-         'broad_mappings': ['common_domain_model:MasterAgreement',
-                            'dpvs:DataProcessingAgreement'],
          'class_uri': 'gist:Agreement',
+         'close_mappings': ['common_domain_model:Agreement'],
          'comments': ['While an agreement has two or more parties, and contains '
                       'commitments which bind those parties, it will not always be '
                       'necessary to instantiate each individual commitment.'],
-         'exact_mappings': ['common_domain_model:Agreement'],
          'examples': [{'value': 'A gym membership is an agreement in which the member '
                                 'commits to paying the gym a certain price and the gym '
                                 'commits to allowing access to their facilities.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
+         'narrow_mappings': ['common_domain_model:MasterAgreement',
+                             'dpv:DataProcessingAgreement'],
          'notes': ['OWL equivalentClass: (gist:Intention & '
                    '∃hasParty.(gist:Organization | gist:Person) & '
                    '≥2^isDirectPartOf.gist:Commitment)']})
@@ -1649,8 +1647,8 @@ class ContingentObligation(Commitment):
     An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Contingent Obligation'],
+         'broad_mappings': ['dpv:Obligation'],
          'class_uri': 'gist:ContingentObligation',
-         'close_mappings': ['dpvs:Obligation'],
          'comments': ['A contingent obligation might have a getter counterparty (as in '
                       'the case of insurance); but it might not (as in the case of an '
                       'offer).'],
@@ -1689,11 +1687,11 @@ class Contract(Agreement):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Contract'],
          'class_uri': 'gist:Contract',
-         'exact_mappings': ['dpvs:DpvContract'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Agreement & '
-                   '∃isUnderJurisdictionOf.gist:GovernmentOrganization)']})
+                   '∃isUnderJurisdictionOf.gist:GovernmentOrganization)'],
+         'related_mappings': ['dpv:Contract']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1871,9 +1869,7 @@ class Magnitude(GistThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Magnitude'],
          'class_uri': 'gist:Magnitude',
-         'close_mappings': ['common_domain_model:Money',
-                            'common_domain_model:Cash',
-                            'common_domain_model:Quantity',
+         'close_mappings': ['common_domain_model:Quantity',
                             'common_domain_model:Measure'],
          'comments': ['An accuracy can be assigned to a magnitude using the property '
                       'has accuracy.'],
@@ -1888,10 +1884,12 @@ class Magnitude(GistThing):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
+         'narrow_mappings': ['common_domain_model:Money'],
          'notes': ['OWL equivalentClass: (∃hasAspect.gist:Aspect & '
                    '∃hasUnitOfMeasure.gist:UnitOfMeasure & '
-                   '∃numericValue.<http://www.w3.org/2000/01/rdf-schema#Literal>)'],
-         'related_mappings': ['common_domain_model:Price']})
+                   '∃numericValue.rdfs:Literal)'],
+         'related_mappings': ['common_domain_model:Price'],
+         'see_also': ['gist:hasAccuracy']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1929,8 +1927,8 @@ class MediaType(Category):
          'examples': [{'value': 'application/sparql-results+xml'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>']})
+         'notes': ['OWL subClassOf restrictions: ∃uniqueText.xsd:string'],
+         'see_also': ['https://www.iana.org/assignments/media-types/media-types.xhtml']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2159,8 +2157,8 @@ class Offer(ContingentObligation):
          'notes': ['OWL equivalentClass: (gist:ContingentObligation & '
                    '∃hasGiver.(gist:Organization | gist:Person) & '
                    '∃offersToProvide.owl:Thing & ∃offersToReceive.owl:Thing & '
-                   '∃plannedEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime> & '
-                   '∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)']})
+                   '∃plannedEndDateTime.xsd:dateTime & '
+                   '∃plannedStartDateTime.xsd:dateTime)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2277,8 +2275,7 @@ class OrderedMember(Component):
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Component & '
                    '(∃precedesDirectly.gist:OrderedMember | '
-                   '∃^precedesDirectly.gist:OrderedMember | '
-                   '∃sequence.<http://www.w3.org/2001/XMLSchema#integer>) & '
+                   '∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & '
                    '∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & '
                    '=1isMemberOf)']})
 
@@ -2310,12 +2307,9 @@ class Organization(GistThing):
     A structured entity formed to achieve specific goals, typically involving members with defined roles.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Organization'],
-         'broad_mappings': ['dpvs:OrganisationalUnit', 'dpvs:ThirdParty'],
+         'broad_mappings': ['common_domain_model:Party', 'dpv:LegalEntity'],
          'class_uri': 'gist:Organization',
-         'close_mappings': ['common_domain_model:Party',
-                            'common_domain_model:LegalEntity',
-                            'common_domain_model:BusinessUnit',
-                            'dpvs:LegalEntity'],
+         'close_mappings': ['common_domain_model:LegalEntity'],
          'comments': ['Not all organizations have members, e.g. shell companies.',
                       'While typically the members of organizations are people, in '
                       'some cases they are other organizations; e.g., the members of '
@@ -2324,12 +2318,15 @@ class Organization(GistThing):
                            'PhysicalSubstance',
                            'SchemaMetaData',
                            'UnitOfMeasure'],
-         'exact_mappings': ['iso22989:Organization'],
          'examples': [{'value': 'Legal entities like companies; non-legal entities '
                                 'like clubs, committees, or departments.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'mixins': ['GistThing']})
+         'mixins': ['GistThing'],
+         'narrow_mappings': ['common_domain_model:BusinessUnit',
+                             'dpv:OrganisationalUnit',
+                             'iso22989:Organization'],
+         'related_mappings': ['dpv:ThirdParty']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2408,7 +2405,8 @@ class CountryGovernment(GovernmentOrganization):
          'disjoint_with': ['SubCountryGovernment'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: _bnode_; '
+         'notes': ['OWL subClassOf restrictions: '
+                   '=1^isGovernedBy.gist:CountryGeoRegion; '
                    '≤0isGovernedBy.gist:GovernmentOrganization',
                    'OWL equivalentClass: (gist:GovernmentOrganization & '
                    '∃^isGovernedBy.gist:CountryGeoRegion)']})
@@ -2478,7 +2476,7 @@ class Permission(Intention):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Permission'],
          'class_uri': 'gist:Permission',
-         'exact_mappings': ['dpvs:Permission'],
+         'exact_mappings': ['dpv:Permission'],
          'examples': [{'value': 'Permission could be broad, such as free speech, but '
                                 'more often is very specific, such as the right to '
                                 'enter a particular property.'}],
@@ -2549,13 +2547,13 @@ class PhysicalAddress(Address):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Physical Address'],
          'class_uri': 'gist:PhysicalAddress',
+         'close_mappings': ['common_domain_model:Address'],
          'examples': [{'value': '1600 Pennsylvania Avenue NW, Washington, DC 20500; PO '
                                 'Box 7704, San Francisco, CA 94120-7704; Room 317 in '
                                 'the Louvre Museum.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL equivalentClass: (gist:Address & ∃refersTo.gist:GeoLocation)'],
-         'related_mappings': ['common_domain_model:Address']})
+         'notes': ['OWL equivalentClass: (gist:Address & ∃refersTo.gist:GeoLocation)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2856,19 +2854,18 @@ class Person(LivingThing):
     A human being who was or is alive.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Person'],
-         'broad_mappings': ['dpvs:DataSubject'],
+         'broad_mappings': ['common_domain_model:Party'],
          'class_uri': 'gist:Person',
-         'close_mappings': ['common_domain_model:NaturalPerson',
-                            'iso22989:AIUser',
-                            'iso22989:DataSubject'],
-         'exact_mappings': ['dpvs:NaturalPerson'],
+         'close_mappings': ['common_domain_model:NaturalPerson'],
+         'exact_mappings': ['dpv:NaturalPerson'],
          'examples': [{'value': 'Negative example: fictional characters.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
+         'narrow_mappings': ['dpv:DataSubject'],
          'notes': ['OWL subClassOf restrictions: ∀hasBiologicalParent.gist:Person',
                    'OWL equivalentClass: (gist:LivingThing & '
                    '∃hasBiologicalParent.gist:Person)'],
-         'related_mappings': ['common_domain_model:Party']})
+         'related_mappings': ['iso22989:AIUser', 'iso22989:DataSubject']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3134,7 +3131,7 @@ class ScheduledEvent(Event):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Event & '
-                   '∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)'],
+                   '∃plannedStartDateTime.xsd:dateTime)'],
          'related_mappings': ['common_domain_model:Schedule']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
@@ -3364,7 +3361,7 @@ class ContractTerm(Specification):
          'class_uri': 'gist:ContractTerm',
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'related_mappings': ['common_domain_model:CollateralProvisions']})
+         'narrow_mappings': ['common_domain_model:CollateralProvisions']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3434,11 +3431,11 @@ class ProductSpecification(CatalogItem):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Product Specification'],
          'class_uri': 'gist:ProductSpecification',
-         'close_mappings': ['common_domain_model:TradableProduct'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:CatalogItem & '
-                   '∃isCategorizedBy.gist:ProductCategory)']})
+                   '∃isCategorizedBy.gist:ProductCategory)'],
+         'related_mappings': ['common_domain_model:TradableProduct']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3591,8 +3588,7 @@ class Tag(Category):
                       'of the former, the restriction remains valid either way.'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃containedText.<http://www.w3.org/2001/XMLSchema#string>']})
+         'notes': ['OWL subClassOf restrictions: ∃containedText.xsd:string']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3623,7 +3619,6 @@ class Task(Event):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Task'],
          'class_uri': 'gist:Task',
-         'close_mappings': ['iso22989:Task'],
          'comments': ['Something that could potentially be executed, which is merely '
                       'described but not proposed in any specific way, such as a '
                       'business process for onboarding a new employee, or the steps in '
@@ -3642,7 +3637,7 @@ class Task(Event):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)'],
-         'related_mappings': ['common_domain_model:Workflow']})
+         'related_mappings': ['common_domain_model:Workflow', 'iso22989:Task']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3834,9 +3829,7 @@ class Assignment(TemporalRelation):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Assignment'],
          'class_uri': 'gist:Assignment',
-         'close_mappings': ['common_domain_model:RelatedParty',
-                            'common_domain_model:Counterparty',
-                            'common_domain_model:NaturalPersonRole'],
+         'close_mappings': ['common_domain_model:NaturalPersonRole'],
          'comments': ['Based on the Open World Assumption, the assigner may not be '
                       'asserted or known.',
                       'For some assignments, such as the assignment of a person to a '
@@ -3851,7 +3844,9 @@ class Assignment(TemporalRelation):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:TemporalRelation & ∃hasGiver.owl:Thing '
-                   '& ∃isAssignmentOf.owl:Thing & ∃isAssignmentTo.owl:Thing)']})
+                   '& ∃isAssignmentOf.owl:Thing & ∃isAssignmentTo.owl:Thing)'],
+         'related_mappings': ['common_domain_model:RelatedParty',
+                              'common_domain_model:Counterparty']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3890,8 +3885,7 @@ class Text(ContentExpression):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:ContentExpression & '
-                   '∃isExpressedIn.gist:Language & '
-                   '∃containedText.<http://www.w3.org/2001/XMLSchema#string>)']})
+                   '∃isExpressedIn.gist:Language & ∃containedText.xsd:string)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3922,7 +3916,6 @@ class TimeInterval(GistThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Time Interval'],
          'class_uri': 'gist:TimeInterval',
-         'close_mappings': ['common_domain_model:Period'],
          'comments': ['An ongoing state of affairs with an unknown end time in the '
                       'future cannot be a time interval; e.g. the lifespan of a living '
                       'person cannot be a time interval, as the end time is unknown.',
@@ -3935,8 +3928,9 @@ class TimeInterval(GistThing):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
-         'notes': ['OWL subClassOf restrictions: =1startDateTime; _bnode_; '
-                   '=1endDateTime']})
+         'notes': ['OWL subClassOf restrictions: =1startDateTime; '
+                   '=1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime'],
+         'related_mappings': ['common_domain_model:Period']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3967,13 +3961,13 @@ class Transaction(Event):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Transaction'],
          'class_uri': 'gist:Transaction',
-         'close_mappings': ['common_domain_model:Trade'],
          'comments': ['Different sorts of transactions can have different datetime '
                       'precisions. For example, an electronic transaction would have a '
                       'gist:actualEndMicrosecond.'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'related_mappings': ['common_domain_model:TradeState']})
+         'related_mappings': ['common_domain_model:Trade',
+                              'common_domain_model:TradeState']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],

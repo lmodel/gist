@@ -20,13 +20,6 @@ exclude = [
   # retry while serving 200 elsewhere; not a dead link. Drop this exclusion
   # if CI reaches it again.
   '^https://www\.conventionalcommits\.org/',
-  # The lmodel renderings of the FINOS CDM and DPVs, cited by the mapping sets
-  # and the bundle: their w3id.org redirects land on lmodel.github.io pages
-  # that are not published yet. Drop each once its site is up.
-  '^https://w3id\.org/lmodel/common_domain_model',
-  '^https://w3id\.org/lmodel/dpvs',
-  '^https://lmodel\.github\.io/common_domain_model',
-  '^https://lmodel\.github\.io/dpvs',
 ]
 
 # knowledge_bundle is a symlink to .lokf/knowledge (the Obsidian vault entry

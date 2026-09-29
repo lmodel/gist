@@ -387,20 +387,44 @@ class TestExtractSlots:
         slots = M.extract_slots(g)
         assert "multivalued" not in slots["numeric_value"]
 
-    def test_functional_property_goes_to_notes(self):
+    def test_functional_object_property_is_single_valued(self):
         g = Graph()
         g.add((GIST.hasMagnitude, RDF.type, OWL.ObjectProperty))
         g.add((GIST.hasMagnitude, RDF.type, OWL.FunctionalProperty))
         slots = M.extract_slots(g)
-        notes = slots["has_magnitude"].get("notes", [])
-        assert any("FunctionalProperty" in n for n in notes)
+        assert slots["has_magnitude"]["multivalued"] is False
+        assert "notes" not in slots["has_magnitude"]
 
-    def test_functional_property_no_multivalued_false(self):
+    def test_functional_datatype_property_is_single_valued(self):
         g = Graph()
-        g.add((GIST.hasMagnitude, RDF.type, OWL.ObjectProperty))
-        g.add((GIST.hasMagnitude, RDF.type, OWL.FunctionalProperty))
+        g.add((GIST.uniqueText, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.uniqueText, RDF.type, OWL.FunctionalProperty))
         slots = M.extract_slots(g)
-        assert slots["has_magnitude"].get("multivalued") is not False
+        assert slots["unique_text"]["multivalued"] is False
+
+    def test_datatype_union_range_becomes_any_of(self):
+        g = Graph()
+        g.add((GIST.numericValue, RDF.type, OWL.DatatypeProperty))
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, [XSD.byte, XSD.long, XSD.decimal, OWL.real])
+        g.add((bn, OWL.unionOf, col.uri))
+        g.add((GIST.numericValue, RDFS.range, bn))
+        slots = M.extract_slots(g)
+        entry = slots["numeric_value"]
+        assert [a["range"] for a in entry["any_of"]] == ["integer", "decimal"]
+        assert "range" not in entry
+        assert entry["notes"] == ["OWL range: (xsd:byte | xsd:long | xsd:decimal | owl:real)"]
+
+    def test_datatype_union_of_one_type_becomes_range(self):
+        g = Graph()
+        g.add((GIST.itemCount, RDF.type, OWL.DatatypeProperty))
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, [XSD.int, XSD.integer])
+        g.add((bn, OWL.unionOf, col.uri))
+        g.add((GIST.itemCount, RDFS.range, bn))
+        slots = M.extract_slots(g)
+        assert slots["item_count"]["range"] == "integer"
+        assert "any_of" not in slots["item_count"]
 
     def test_transitive_property(self):
         g = Graph()
@@ -431,7 +455,7 @@ class TestExtractSlots:
         slots = M.extract_slots(g)
         assert slots["has_role"]["domain"] == "Actor"
 
-    def test_domain_union_becomes_domain_and_any_of(self):
+    def test_domain_union_is_noted_not_a_range(self):
         g = Graph()
         g.add((GIST.owns, RDF.type, OWL.ObjectProperty))
         bn = BNode()
@@ -440,9 +464,112 @@ class TestExtractSlots:
         g.add((bn, OWL.unionOf, col.uri))
         g.add((GIST.owns, RDFS.domain, bn))
         slots = M.extract_slots(g)
-        assert slots["owns"]["domain"] == "Organization"
-        any_of_ranges = {entry["range"] for entry in slots["owns"].get("any_of", [])}
-        assert {"Organization", "Person"}.issubset(any_of_ranges)
+        assert "domain" not in slots["owns"]
+        assert "any_of" not in slots["owns"]
+        assert slots["owns"]["notes"] == ["OWL domain: (gist:Organization | gist:Person)"]
+
+    def test_domain_includes_kept_as_annotation(self):
+        g = Graph()
+        g.add((GIST.containedText, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.containedText, GIST.domainIncludes, GIST.Text))
+        g.add((GIST.containedText, GIST.domainIncludes, GIST.Tag))
+        slots = M.extract_slots(g)
+        entry = slots["contained_text"]
+        assert entry["annotations"]["domain_includes"] == "gist:Tag, gist:Text"
+        assert "domain" not in entry  # two hints do not pick one hard domain
+
+    def test_single_domain_includes_fills_absent_domain(self):
+        g = Graph()
+        g.add((GIST.sequence, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.sequence, GIST.domainIncludes, GIST.OrderedMember))
+        slots = M.extract_slots(g)
+        assert slots["sequence"]["domain"] == "OrderedMember"
+
+    def test_domain_includes_does_not_override_hard_domain(self):
+        g = Graph()
+        g.add((GIST.hasRole, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.hasRole, RDFS.domain, GIST.Actor))
+        g.add((GIST.hasRole, GIST.domainIncludes, GIST.Person))
+        slots = M.extract_slots(g)
+        assert slots["has_role"]["domain"] == "Actor"
+        assert slots["has_role"]["annotations"]["domain_includes"] == "gist:Person"
+
+    def test_range_includes_kept_as_annotation_and_range(self):
+        g = Graph()
+        g.add((GIST.isMemberOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.isMemberOf, GIST.rangeIncludes, GIST.Collection))
+        g.add((GIST.isMemberOf, GIST.rangeIncludes, GIST.Organization))
+        slots = M.extract_slots(g)
+        entry = slots["is_member_of"]
+        assert entry["annotations"]["range_includes"] == "gist:Collection, gist:Organization"
+        assert [a["range"] for a in entry["any_of"]] == ["Collection", "Organization"]
+
+    def test_see_also_on_slot(self):
+        g = Graph()
+        g.add((GIST.conversionFactor, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.conversionFactor, RDFS.seeAlso, GIST.conversionOffset))
+        g.add((GIST.conversionFactor, RDFS.seeAlso, URIRef("https://example.org/units")))
+        slots = M.extract_slots(g)
+        assert slots["conversion_factor"]["see_also"] == [
+            "gist:conversionOffset", "https://example.org/units",
+        ]
+
+    def test_slot_reads_rdfs_label_and_prefixed_comments(self):
+        g = Graph()
+        g.add((GIST.hasParty, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.hasParty, RDFS.label, Literal("has party")))
+        g.add((GIST.hasParty, RDFS.comment, Literal("DEFINITION: Links to a party.")))
+        g.add((GIST.hasParty, RDFS.comment, Literal("EXAMPLE: A buyer.")))
+        g.add((GIST.hasParty, RDFS.comment, Literal("NOTE: Not the counterparty.")))
+        slots = M.extract_slots(g)
+        entry = slots["has_party"]
+        assert entry["aliases"] == ["has party"]
+        assert entry["description"] == "Links to a party."
+        assert entry["examples"] == [{"value": "A buyer."}]
+        assert entry["comments"] == ["Not the counterparty."]
+
+    def test_alt_comment_becomes_alias_without_duplicating_skos(self):
+        g = Graph()
+        g.add((GIST.ElectronicAddress, RDF.type, OWL.Class))
+        g.add((GIST.ElectronicAddress, SKOS.prefLabel, Literal("Electronic Address")))
+        g.add((GIST.ElectronicAddress, SKOS.altLabel, Literal("Virtual Address")))
+        g.add((GIST.ElectronicAddress, RDFS.label, Literal("Electronic Address")))
+        g.add((GIST.ElectronicAddress, RDFS.comment, Literal("ALT: Virtual Address")))
+        classes = M.extract_classes(g)
+        assert classes["ElectronicAddress"]["aliases"] == ["Electronic Address", "Virtual Address"]
+
+    def test_unknown_comment_prefix_kept_verbatim(self):
+        g = Graph()
+        g.add((GIST.Foo, RDF.type, OWL.Class))
+        g.add((GIST.Foo, SKOS.definition, Literal("A foo.")))
+        g.add((GIST.Foo, RDFS.comment, Literal("WARNING: Handle with care.")))
+        classes = M.extract_classes(g)
+        assert classes["Foo"]["comments"] == ["WARNING: Handle with care."]
+
+    def test_qualified_cardinality_rendered(self):
+        g = Graph()
+        g.add((GIST.Duration, RDF.type, OWL.Class))
+        r = BNode()
+        g.add((r, RDF.type, OWL.Restriction))
+        g.add((r, OWL.onProperty, GIST.hasMagnitude))
+        g.add((r, OWL.onClass, GIST.Magnitude))
+        g.add((r, OWL.qualifiedCardinality, Literal(1, datatype=XSD.nonNegativeInteger)))
+        g.add((GIST.Duration, RDFS.subClassOf, r))
+        classes = M.extract_classes(g)
+        assert classes["Duration"]["notes"] == [
+            "OWL subClassOf restrictions: =1hasMagnitude.gist:Magnitude"
+        ]
+
+    def test_non_gist_terms_in_axioms_use_curies(self):
+        g = Graph()
+        g.add((GIST.Text, RDF.type, OWL.Class))
+        r = BNode()
+        g.add((r, RDF.type, OWL.Restriction))
+        g.add((r, OWL.onProperty, GIST.containedText))
+        g.add((r, OWL.someValuesFrom, XSD.string))
+        g.add((GIST.Text, RDFS.subClassOf, r))
+        classes = M.extract_classes(g)
+        assert classes["Text"]["notes"] == ["OWL subClassOf restrictions: ∃containedText.xsd:string"]
 
     def test_property_disjoint_with_becomes_disjoint_with_key(self):
         g = Graph()
@@ -450,7 +577,7 @@ class TestExtractSlots:
         g.add((GIST.hasRecipient, RDF.type, OWL.ObjectProperty))
         g.add((GIST.hasGiver, OWL.propertyDisjointWith, GIST.hasRecipient))
         slots = M.extract_slots(g)
-        assert slots["has_giver"]["disjoint_with"] == "has_recipient"
+        assert slots["has_giver"]["disjoint_with"] == ["has_recipient"]
 
     def test_inverse_functional_property_annotated(self):
         g = Graph()
@@ -476,7 +603,7 @@ class TestExtractSlots:
         g.add((GIST.Event, RDF.type, OWL.Class))
         g.add((GIST.Aspect, OWL.disjointWith, GIST.Event))
         classes = M.extract_classes(g)
-        assert classes["Aspect"]["disjoint_with"] == "Event"
+        assert classes["Aspect"]["disjoint_with"] == ["Event"]
 
     def test_deprecated_slot(self):
         g = Graph()
@@ -569,6 +696,26 @@ class TestExtractEnums:
         pv = enums["AspectInstance"]["permissible_values"]
         assert pv["ASPECT_MASS"]["description"] == "The mass aspect."
 
+    def test_enum_value_keeps_editorial_note_and_label_once(self):
+        g = Graph()
+        ind = GISTD["_Aspect_mass"]
+        g.add((ind, RDF.type, GIST.Aspect))
+        g.add((ind, SKOS.prefLabel, Literal("mass")))
+        g.add((ind, RDFS.label, Literal("mass")))
+        g.add((ind, SKOS.editorialNote, Literal("Duplicated from reference data.")))
+        pv = M.extract_enums(g)["AspectInstance"]["permissible_values"]["ASPECT_MASS"]
+        assert pv["title"] == "mass"
+        assert "aliases" not in pv
+        assert pv["notes"] == ["Duplicated from reference data."]
+
+    def test_media_type_literal_becomes_annotation(self):
+        g = Graph()
+        ind = URIRef("https://www.iana.org/assignments/media-types/application/json")
+        g.add((ind, RDF.type, GIST.MediaType))
+        g.add((ind, GIST.uniqueText, Literal("application/json")))
+        pv = M.extract_enums(g)["MediaTypeInstance"]["permissible_values"]["JSON"]
+        assert pv["annotations"] == {"unique_text": "application/json"}
+
 
 # ===========================================================================
 # 6. extract_rdfs_annotations
@@ -617,6 +764,31 @@ class TestExtractRdfsAnnotations:
         g.add((GIST.Obscure, RDFS.label, Literal("Obscure")))
         classes, slots = M.extract_rdfs_annotations(g, ctx=None)
         assert "Obscure" in classes
+
+
+class TestExtractRdfsAnnotationEnums:
+    def test_individuals_grouped_by_context_type(self):
+        g = Graph()
+        aspect = GISTD["_Aspect_mass"]
+        media = URIRef("https://www.iana.org/assignments/media-types/text/csv")
+        g.add((aspect, RDFS.label, Literal("mass")))
+        g.add((aspect, RDFS.comment, Literal("DEFINITION: The aspect mass.")))
+        g.add((media, RDFS.label, Literal("CSV")))
+        g.add((GIST.Category, RDFS.label, Literal("Category")))  # a class, not an individual
+        ctx = Graph()
+        ctx.add((aspect, RDF.type, GIST.Aspect))
+        ctx.add((media, RDF.type, GIST.MediaType))
+        enums = M.extract_rdfs_annotation_enums(g, ctx=ctx)
+        assert set(enums) == {"AspectInstance", "MediaTypeInstance"}
+        assert enums["AspectInstance"]["permissible_values"]["ASPECT_MASS"] == {
+            "title": "mass", "description": "The aspect mass.", "meaning": "gistd:_Aspect_mass",
+        }
+        assert enums["MediaTypeInstance"]["permissible_values"]["CSV"]["meaning"] == "media_txt:csv"
+
+    def test_untyped_individual_left_out(self):
+        g = Graph()
+        g.add((GISTD["_Aspect_mass"], RDFS.label, Literal("mass")))
+        assert M.extract_rdfs_annotation_enums(g, ctx=Graph()) == {}
 
 
 # ===========================================================================
@@ -863,6 +1035,22 @@ class TestBuildSchema:
         s = self._make_schema()
         assert s["license"] == "CC-BY-4.0"
 
+    def test_header_fills_description_license_notes_and_see_also(self):
+        header = {
+            "description": "gist is a minimalist upper ontology created by Semantic Arts.",
+            "license": "https://creativecommons.org/licenses/by/4.0/",
+            "notes": ["History: gist 14.1.0 released 2026-Apr-17."],
+            "see_also": ["https://w3id.org/semanticarts/ontology/gistCore14.1.0"],
+        }
+        s = M.build_schema({}, {}, {}, header=header)
+        assert s["description"].startswith("gist is a minimalist upper ontology")
+        assert s["description"].endswith("generated from gistCore 14.1.0.")
+        assert s["license"] == "https://creativecommons.org/licenses/by/4.0/"
+        assert s["notes"] == ["History: gist 14.1.0 released 2026-Apr-17."]
+        assert s["see_also"][-1] == "https://w3id.org/semanticarts/ontology/gistCore14.1.0"
+        keys = list(s)
+        assert keys.index("description") < keys.index("notes") < keys.index("license")
+
     def test_source_included_when_given(self):
         s = self._make_schema(source="https://example.org/onto")
         assert s["source"] == "https://example.org/onto"
@@ -1031,6 +1219,48 @@ class TestGetOntologyIRI:
     def test_returns_none_when_absent(self):
         g = Graph()
         assert M.get_ontology_iri(g) is None
+
+
+# ===========================================================================
+# 12b. ontology_header
+# ===========================================================================
+
+
+class TestOntologyHeader:
+    def _graph(self) -> Graph:
+        g = Graph()
+        onto = URIRef("https://w3id.org/semanticarts/ontology/gistCore")
+        g.add((onto, RDF.type, OWL.Ontology))
+        g.add((onto, SKOS.prefLabel, Literal("gist")))
+        g.add((onto, SKOS.definition, Literal("gist is a minimalist upper ontology.")))
+        g.add((onto, SKOS.historyNote, Literal("\r\n\t\tgist 14.1.0 released 2026-Apr-17.\r\n\t\tgist 14.0.0 released 2025-Oct-31.\r\n\t")))
+        g.add((onto, GIST.license, Literal("https://creativecommons.org/licenses/by/4.0/")))
+        g.add((onto, OWL.versionIRI, URIRef("https://w3id.org/semanticarts/ontology/gistCore14.1.0")))
+        return g
+
+    def test_reads_skos_license_and_version_iri(self):
+        h = M.ontology_header(self._graph())
+        assert h["description"] == "gist is a minimalist upper ontology."
+        assert h["license"] == "https://creativecommons.org/licenses/by/4.0/"
+        assert h["notes"] == [
+            "History: gist 14.1.0 released 2026-Apr-17.",
+            "History: gist 14.0.0 released 2025-Oct-31.",
+        ]
+        assert h["see_also"] == ["https://w3id.org/semanticarts/ontology/gistCore14.1.0"]
+        assert "aliases" not in h
+
+    def test_annotations_module_read_without_duplicating(self):
+        ann = Graph()
+        onto = URIRef("https://w3id.org/semanticarts/ontology/gistCore")
+        ann.add((onto, RDFS.label, Literal("gist")))
+        ann.add((onto, RDFS.comment, Literal("DEFINITION: gist is a minimalist upper ontology.")))
+        ann.add((onto, RDFS.comment, Literal("NOTE: Import it whole.")))
+        h = M.ontology_header(self._graph(), ann)
+        assert h["description"] == "gist is a minimalist upper ontology."
+        assert h["comments"] == ["Import it whole."]
+
+    def test_empty_without_ontology(self):
+        assert M.ontology_header(Graph()) == {}
 
 
 # ===========================================================================

@@ -6,6 +6,18 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 
 ## [Unreleased]
 
+### Added
+
+- **CI also fails on stale artefacts and schema errors.** `just verify-generated` compares `project/` and the datamodel with a fresh `gen-project` by content, and `linkml-lint` fails the run on errors.
+- **`upstream-watch.yaml` checks weekly what the build depends on but cannot control**: whether Semantic Arts has released a newer gist, whether `upstream/` still matches its release byte for byte, and whether every mapped target term still exists on its schema's default branch. A failure opens or updates an issue.
+- **`just verify-mapping-targets` checks that every mapped term exists** in its target schema, fetched at a pinned commit, and runs in CI.
+
+### Fixed
+
+- **The converter no longer loses or bends what gist says.** A union domain was written as an `any_of` range and functional properties were marked multivalued; both are corrected. It now carries `gist:domainIncludes` and `rangeIncludes` as slot annotations, union datatype ranges as `any_of`, `owl:qualifiedCardinality`, `rdfs:seeAlso`, the editorial notes on reference individuals, the `gist:uniqueText` of each media type, and each module's ontology header (definition, license, release history, version IRI).
+- **`disjoint_with` is always a list**, as the LinkML metamodel requires, so `linkml-lint` reports no errors on the schema.
+- **The SSSOM mappings name real terms.** The CDM and DPV sets bound their prefixes to namespaces that do not exist, and one DPV target was misspelt; each mapping set's file is now named after its set. Reversed broad and narrow matches and overstated close and exact matches are corrected, two unsupported mappings are dropped, and the files pass the SSSOM validator except for `semapv:LLMBasedMatching`, which SEMAPV defines but the SSSOM schema does not yet list.
+
 ## [0.2.0] - 2026-09-29
 
 ### Added

@@ -20,8 +20,8 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 
 * [gist 14.1.0 upstream Turtle release](datasets/gist-upstream-turtle.md) - the five Semantic Arts Turtle modules the build starts from.
 * [gist LinkML schema](datasets/gist-linkml-schema.md) - the six generated LinkML modules under `src/gist/schema/`.
-* [gist to Common Domain Model mappings](datasets/gist-cdm-mappings.md) - 35 manually curated SSSOM rows.
-* [gist to DPVs mappings](datasets/gist-dpvs-mappings.md) - 12 LLM-matched SSSOM rows.
+* [gist to Common Domain Model mappings](datasets/gist-cdm-mappings.md) - 34 manually curated SSSOM rows.
+* [gist to DPV mappings](datasets/gist-dpvs-mappings.md) - 11 LLM-matched SSSOM rows.
 * [gist to ISO/IEC 22989 mappings](datasets/gist-iso22989-mappings.md) - 9 LLM-matched SSSOM rows.
 * [gist generated schema artefacts](datasets/generated-artefacts.md) - OWL, SHACL, JSON Schema and the other LinkML generator outputs.
 * [gist example and test data](datasets/test-data.md) - valid, invalid and known-problem instances.
@@ -38,7 +38,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 
 * [gist upper ontology (Semantic Arts)](references/gist-ontology.md) - the upstream authority, release 14.1.0.
 * [Common Domain Model LinkML schema (lmodel)](references/common-domain-model.md) - object side of the CDM mappings.
-* [DPVs LinkML schema (lmodel)](references/dpvs.md) - object side of the DPVs mappings.
+* [DPV LinkML schema (lmodel)](references/dpvs.md) - object side of the DPV mappings.
 * [ISO/IEC 22989:2022 LinkML schema (lmodel)](references/iso22989.md) - object side of the ISO/IEC 22989 mappings.
 
 # Policies

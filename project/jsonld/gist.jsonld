@@ -396,49 +396,73 @@
           "text": "ASPECT_ALTITUDE",
           "description": "The aspect altitude.",
           "meaning": "gistd:_Aspect_altitude",
-          "title": "altitude"
+          "title": "altitude",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_AREA",
           "description": "The aspect area.",
           "meaning": "gistd:_Aspect_area",
-          "title": "area"
+          "title": "area",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_DURATION",
           "description": "The aspect duration.",
           "meaning": "gistd:_Aspect_duration",
-          "title": "duration"
+          "title": "duration",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_FINANCIAL_BALANCE",
           "description": "The aspect financial balance.",
           "meaning": "gistd:_Aspect_financial_balance",
-          "title": "balance"
+          "title": "balance",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_MASS",
           "description": "The aspect mass.",
           "meaning": "gistd:_Aspect_mass",
-          "title": "mass"
+          "title": "mass",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_MONETARY_VALUE",
           "description": "The aspect monetary value.",
           "meaning": "gistd:_Aspect_monetary_value",
-          "title": "monetary value"
+          "title": "monetary value",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_PROBABILITY",
           "description": "The aspect probability.",
           "meaning": "gistd:_Aspect_probability",
-          "title": "probability"
+          "title": "probability",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         },
         {
           "text": "ASPECT_VOLUME",
           "description": "The aspect volume.",
           "meaning": "gistd:_Aspect_volume",
-          "title": "volume"
+          "title": "volume",
+          "notes": [
+            "This instance has been duplicated from reference data so it can be used in property restrictions."
+          ]
         }
       ]
     },
@@ -454,71 +478,155 @@
         {
           "text": "JSON",
           "meaning": "media_app:json",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/json"
+            }
+          ],
           "title": "JSON"
         },
         {
           "text": "LD_PLUS_JSON",
           "meaning": "media_app:ld+json",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/ld+json"
+            }
+          ],
           "title": "JSON-LD"
         },
         {
           "text": "N_QUADS",
           "meaning": "media_app:n-quads",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/n-quads"
+            }
+          ],
           "title": "N-Quads"
         },
         {
           "text": "N_TRIPLES",
           "meaning": "media_app:n-triples",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/n-triples"
+            }
+          ],
           "title": "N-Triples"
         },
         {
           "text": "RDF_PLUS_XML",
           "meaning": "media_app:rdf+xml",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/rdf+xml"
+            }
+          ],
           "title": "RDF/XML"
         },
         {
           "text": "SPARQL_RESULTS_PLUS_JSON",
           "meaning": "media_app:sparql-results+json",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/sparql-results+json"
+            }
+          ],
           "title": "SPARQL 1.1 Query Results JSON"
         },
         {
           "text": "SPARQL_RESULTS_PLUS_XML",
           "meaning": "media_app:sparql-results+xml",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/sparql-results+xml"
+            }
+          ],
           "title": "SPARQL 1.1 Query Results XML"
         },
         {
           "text": "TRIG",
           "meaning": "media_app:trig",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "application/trig"
+            }
+          ],
           "title": "TriG"
         },
         {
           "text": "JPG",
           "meaning": "media_img:jpg",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "image/jpg"
+            }
+          ],
           "title": "JPG"
         },
         {
           "text": "PNG",
           "meaning": "media_img:png",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "image/png"
+            }
+          ],
           "title": "PNG"
         },
         {
           "text": "CSV",
           "meaning": "media_txt:csv",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "text/csv"
+            }
+          ],
           "title": "CSV"
         },
         {
           "text": "HTML",
           "meaning": "media_txt:html",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "text/html"
+            }
+          ],
           "title": "HTML"
         },
         {
           "text": "PLAIN",
           "meaning": "media_txt:plain",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "text/plain"
+            }
+          ],
           "title": "Plain Text"
         },
         {
           "text": "TURTLE",
           "meaning": "media_txt:turtle",
+          "annotations": [
+            {
+              "tag": "unique_text",
+              "value": "text/turtle"
+            }
+          ],
           "title": "Turtle"
         }
       ]
@@ -681,6 +789,13 @@
     {
       "name": "conforms_to",
       "definition_uri": "https://w3id.org/lmodel/gist/conforms_to",
+      "annotations": [
+        {
+          "tag": "range_includes",
+          "value": "gist:Intention",
+          "@type": "Annotation"
+        }
+      ],
       "description": "The subject is consistent with or satisfies the requirements, rules, or expectations established by the object.",
       "examples": [
         {
@@ -802,10 +917,14 @@
     {
       "name": "has_accuracy",
       "definition_uri": "https://w3id.org/lmodel/gist/has_accuracy",
-      "description": "Relates a magnitude to another magnitude that describes its accuracy.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Magnitude",
+          "@type": "Annotation"
+        }
       ],
+      "description": "Relates a magnitude to another magnitude that describes its accuracy.",
       "comments": [
         "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\r\n\r\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance)."
       ],
@@ -825,9 +944,10 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy"
       ],
+      "domain": "Magnitude",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
+      "owner": "has_accuracy",
       "range": "Magnitude",
-      "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -891,9 +1011,6 @@
       "name": "has_aspect",
       "definition_uri": "https://w3id.org/lmodel/gist/has_aspect",
       "description": "Relates a magnitude to its aspect (measurable characteristic).",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "in_subset": [
         "gist_core"
       ],
@@ -906,7 +1023,6 @@
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect",
       "range": "Aspect",
-      "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -1324,9 +1440,6 @@
       "name": "has_unique_broader",
       "definition_uri": "https://w3id.org/lmodel/gist/has_unique_broader",
       "description": "Relates a thing to a unique other thing with a broader meaning.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "in_subset": [
         "gist_core"
       ],
@@ -1340,16 +1453,12 @@
       "is_a": "has_broader",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
       "range": "string",
-      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "has_unique_navigational_parent",
       "definition_uri": "https://w3id.org/lmodel/gist/has_unique_navigational_parent",
       "description": "Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "in_subset": [
         "gist_core"
       ],
@@ -1363,7 +1472,6 @@
       "is_a": "has_navigational_parent",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
       "range": "string",
-      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1467,6 +1575,13 @@
     {
       "name": "is_allocated_by",
       "definition_uri": "https://w3id.org/lmodel/gist/is_allocated_by",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Category, gist:ID",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates something to whomever or whatever assigns or distributes it.",
       "comments": [
         "The allocator may be a person, organization, or automated process."
@@ -1509,6 +1624,18 @@
     {
       "name": "is_assignment_of",
       "definition_uri": "https://w3id.org/lmodel/gist/is_assignment_of",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Assignment",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "range_includes",
+          "value": "gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates an assignment to the resource it assigns.",
       "comments": [
         "People, organizations, monetary amounts, equipment can all be assigned.",
@@ -1530,7 +1657,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf"
       ],
+      "domain": "Assignment",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
+      "owner": "is_assignment_of",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1556,6 +1685,13 @@
     {
       "name": "is_assignment_to",
       "definition_uri": "https://w3id.org/lmodel/gist/is_assignment_to",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Assignment",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate.",
       "comments": [
         "While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified."
@@ -1570,7 +1706,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo"
       ],
+      "domain": "Assignment",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
+      "owner": "is_assignment_to",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1603,6 +1741,13 @@
     {
       "name": "is_categorized_by",
       "definition_uri": "https://w3id.org/lmodel/gist/is_categorized_by",
+      "annotations": [
+        {
+          "tag": "range_includes",
+          "value": "gist:Category",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates something to a taxonomy term or other less formally defined classification.",
       "in_subset": [
         "gist_core"
@@ -1668,6 +1813,18 @@
     {
       "name": "is_expressed_in",
       "definition_uri": "https://w3id.org/lmodel/gist/is_expressed_in",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Text",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "range_includes",
+          "value": "gist:Language",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates something to the language it is expressed in.",
       "in_subset": [
         "gist_core"
@@ -1679,7 +1836,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn"
       ],
+      "domain": "Text",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
+      "owner": "is_expressed_in",
       "range": "Language",
       "multivalued": true,
       "inlined": true,
@@ -1690,9 +1849,6 @@
       "name": "is_first_member_of",
       "definition_uri": "https://w3id.org/lmodel/gist/is_first_member_of",
       "description": "Relates the first member of an ordered collection to the collection.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "comments": [
         "Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member."
       ],
@@ -1711,7 +1867,6 @@
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
       "owner": "is_first_member_of",
       "range": "OrderedCollection",
-      "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -1826,6 +1981,13 @@
     {
       "name": "is_member_of",
       "definition_uri": "https://w3id.org/lmodel/gist/is_member_of",
+      "annotations": [
+        {
+          "tag": "range_includes",
+          "value": "gist:Collection, gist:Organization",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates a member individual to the thing, such as a collection or organization, that it is a member of.",
       "in_subset": [
         "gist_core"
@@ -2000,6 +2162,13 @@
     {
       "name": "is_under_jurisdiction_of",
       "definition_uri": "https://w3id.org/lmodel/gist/is_under_jurisdiction_of",
+      "annotations": [
+        {
+          "tag": "range_includes",
+          "value": "gist:GovernmentOrganization",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.",
       "in_subset": [
         "gist_core"
@@ -2021,6 +2190,18 @@
     {
       "name": "links",
       "definition_uri": "https://w3id.org/lmodel/gist/links",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:NetworkLink",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "range_includes",
+          "value": "gist:NetworkNode",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.",
       "in_subset": [
         "gist_core"
@@ -2032,7 +2213,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/links"
       ],
+      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/links",
+      "owner": "links",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2042,6 +2225,18 @@
     {
       "name": "links_from",
       "definition_uri": "https://w3id.org/lmodel/gist/links_from",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:NetworkLink",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "range_includes",
+          "value": "gist:NetworkNode",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.",
       "in_subset": [
         "gist_core"
@@ -2054,7 +2249,9 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom"
       ],
       "is_a": "links",
+      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
+      "owner": "links_from",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2064,6 +2261,18 @@
     {
       "name": "links_to",
       "definition_uri": "https://w3id.org/lmodel/gist/links_to",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:NetworkLink",
+          "@type": "Annotation"
+        },
+        {
+          "tag": "range_includes",
+          "value": "gist:NetworkNode",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.",
       "in_subset": [
         "gist_core"
@@ -2076,7 +2285,9 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/linksTo"
       ],
       "is_a": "links",
+      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
+      "owner": "links_to",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2105,6 +2316,13 @@
     {
       "name": "offers_to_provide",
       "definition_uri": "https://w3id.org/lmodel/gist/offers_to_provide",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Offer",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates an offer to the thing being made available for exchange.",
       "comments": [
         "This will most often be a good or service, but could be an amount of money, e.g., for currency exchange."
@@ -2125,7 +2343,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide"
       ],
+      "domain": "Offer",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
+      "owner": "offers_to_provide",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2133,6 +2353,13 @@
     {
       "name": "offers_to_receive",
       "definition_uri": "https://w3id.org/lmodel/gist/offers_to_receive",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Offer",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates an offer to the thing expected in return for the offered item.",
       "comments": [
         "This will most often be an amount of money, but could be anything of value, as in swaps."
@@ -2153,7 +2380,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive"
       ],
+      "domain": "Offer",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
+      "owner": "offers_to_receive",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2162,6 +2391,9 @@
       "name": "owns",
       "definition_uri": "https://w3id.org/lmodel/gist/owns",
       "description": "Relates a party to something that it possesses and controls.",
+      "notes": [
+        "OWL domain: (gist:Organization | gist:Person)"
+      ],
       "comments": [
         "The ultimate form of ownership is the right to destroy.",
         "There is a long list of potential range classes."
@@ -2176,21 +2408,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/owns"
       ],
-      "domain": "Organization",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/owns",
-      "owner": "owns",
       "range": "string",
       "multivalued": true,
-      "any_of": [
-        {
-          "range": "Organization",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "Person",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
@@ -2320,9 +2540,6 @@
       "name": "provides_order_for",
       "definition_uri": "https://w3id.org/lmodel/gist/provides_order_for",
       "description": "Links a member of an ordered collection to the real-world item it represents in that collection.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "in_subset": [
         "gist_core"
       ],
@@ -2337,7 +2554,6 @@
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
       "owner": "provides_order_for",
       "range": "string",
-      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2715,6 +2931,13 @@
     {
       "name": "contained_text",
       "definition_uri": "https://w3id.org/lmodel/gist/contained_text",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:Content, gist:ContentExpression, gist:Tag, gist:Text",
+          "@type": "Annotation"
+        }
+      ],
       "description": "Relates an entity containing textual information to the string constituting that textual information.",
       "comments": [
         "If there are multiple strings associated with an entity, it is an implementation decision whether to combine them into a single contained text value or to use multiple contained text assertions."
@@ -2744,7 +2967,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/conversion_factor",
       "description": "A value that relates a unit of measure to units of the International System of Units.",
       "notes": [
-        "OWL FunctionalProperty (at most one value)"
+        "OWL range: (xsd:decimal | xsd:double)"
       ],
       "comments": [
         "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\r\n\r\n\tFor example, to convert 27 feet to yards:\r\n\r\n\t\tthe conversion factor of foot is 0.3048\r\n\t\tthe conversion factor of yard is 0.9144\r\n\r\n\t\tso\r\n\r\n\t\t27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
@@ -2759,6 +2982,9 @@
         "gist_core"
       ],
       "from_schema": "https://w3id.org/lmodel/gist/core",
+      "see_also": [
+        "gist:conversionOffset"
+      ],
       "aliases": [
         "conversion factor"
       ],
@@ -2769,15 +2995,22 @@
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
       "owner": "conversion_factor",
       "range": "string",
+      "any_of": [
+        {
+          "range": "decimal",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "float",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "conversion_offset",
       "definition_uri": "https://w3id.org/lmodel/gist/conversion_offset",
       "description": "\r\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\r\n\r\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\r\n\r\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\r\n\r\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
-      ],
       "in_subset": [
         "gist_core"
       ],
@@ -2903,6 +3136,9 @@
       "name": "exponent_of_ampere",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_ampere",
       "description": "The exponent of ampere in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 milliampere = 0.001 x ampere'\r\n\r\n\t\tthe conversionFactor for milliampere is 0.001\r\n\t\tthe exponent of ampere is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere.",
@@ -2919,26 +3155,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
-      "owner": "exponent_of_ampere",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_bit",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_bit",
       "description": "The exponent of bit in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 megabit per second = 1000000 x bit per second'\r\n\r\n\t\tthe conversion factor for megabit per second is 1000000\r\n\t\tthe exponent of bit is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second.",
@@ -2955,26 +3182,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
-      "owner": "exponent_of_bit",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_candela",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_candela",
       "description": "The exponent of candela in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 candlepower = 1 x candela'\r\n\r\n\t\tthe conversion factor for candlepower is 1\r\n\t\tthe exponent of candela is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela.",
@@ -2991,26 +3209,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
-      "owner": "exponent_of_candela",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_kelvin",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_kelvin",
       "description": "The exponent of Kelvin in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\r\n\r\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\r\n\t\tthe conversion factor for degree Fahrenheit is 5/9\r\n\t\tthe exponent of Kelvin is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).",
@@ -3027,26 +3236,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
-      "owner": "exponent_of_kelvin",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_kilogram",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_kilogram",
       "description": "The exponent of kilogram in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 millimole per gram = 1 x mole per kilogram'\r\n\r\n\t\tthe conversion factor for millimole per gram is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of kilogram is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram.",
@@ -3063,26 +3263,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
-      "owner": "exponent_of_kilogram",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_meter",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_meter",
       "description": "The exponent of meter in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\r\n\r\n\t\tthe conversion factor for microgram per milliliter is 0.001\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is -3\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.",
@@ -3099,26 +3290,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
-      "owner": "exponent_of_meter",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_mole",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_mole",
       "description": "The exponent of mole in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 katal = 1 x mole per second'\r\n\r\n\t\tthe conversion factor for katal is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second.",
@@ -3135,26 +3317,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
-      "owner": "exponent_of_mole",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_number",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_number",
       "description": "The exponent of number in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "comments": [
         "Use when the unit of measure involves a count or other number."
       ],
@@ -3174,26 +3347,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
-      "owner": "exponent_of_number",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_other",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_other",
       "description": "Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples).",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "comments": [
         "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\r\n\r\n\t\tOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale."
       ],
@@ -3213,26 +3377,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
-      "owner": "exponent_of_other",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_radian",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_radian",
       "description": "The exponent of radian in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 revolution = 6.283 x radian'\r\n\r\n\t\tthe conversion factor for revolution is 6.283\r\n\t\tthe exponent of radian is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing revolution must be a multiple of radian.",
@@ -3249,26 +3404,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
-      "owner": "exponent_of_radian",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_second",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_second",
       "description": "The exponent of second in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "examples": [
         {
           "value": "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\r\n\r\n\t\tthe conversion factor for watt-hour is 3600\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is 2\r\n\t\tthe exponent of second is -2\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.",
@@ -3285,26 +3431,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
-      "owner": "exponent_of_second",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_steradian",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_steradian",
       "description": "The exponent of steradian in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "comments": [
         "Steradian is a measure of solid angle."
       ],
@@ -3324,26 +3461,17 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
-      "owner": "exponent_of_steradian",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
       "name": "exponent_of_us_dollar",
       "definition_uri": "https://w3id.org/lmodel/gist/exponent_of_us_dollar",
       "description": "The exponent of US Dollar in a product of powers of base units.",
+      "notes": [
+        "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
+      ],
       "comments": [
         "The factors for converting from one currency to another change constantly."
       ],
@@ -3363,20 +3491,8 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar"
       ],
-      "domain": "UnitGroup",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
-      "owner": "exponent_of_us_dollar",
       "range": "decimal",
-      "any_of": [
-        {
-          "range": "UnitGroup",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "UnitOfMeasure",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
       "@type": "SlotDefinition"
     },
     {
@@ -3502,6 +3618,9 @@
       "name": "numeric_value",
       "definition_uri": "https://w3id.org/lmodel/gist/numeric_value",
       "description": "The actual value of a magnitude.",
+      "notes": [
+        "OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)"
+      ],
       "in_subset": [
         "gist_core"
       ],
@@ -3514,6 +3633,20 @@
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
       "range": "string",
+      "any_of": [
+        {
+          "range": "integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "decimal",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "float",
+          "@type": "AnonymousSlotExpression"
+        }
+      ],
       "@type": "SlotDefinition"
     },
     {
@@ -3741,6 +3874,13 @@
     {
       "name": "sequence",
       "definition_uri": "https://w3id.org/lmodel/gist/sequence",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:OrderedMember",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A number that specifies the position of an element within a series.",
       "in_subset": [
         "gist_core"
@@ -3752,7 +3892,9 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/sequence"
       ],
+      "domain": "OrderedMember",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
+      "owner": "sequence",
       "range": "integer",
       "@type": "SlotDefinition"
     },
@@ -3782,6 +3924,13 @@
     {
       "name": "symbol",
       "definition_uri": "https://w3id.org/lmodel/gist/symbol",
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:UnitOfMeasure",
+          "@type": "Annotation"
+        }
+      ],
       "description": "A symbol for something using only ASCII characters.",
       "examples": [
         {
@@ -3799,17 +3948,23 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/symbol"
       ],
+      "domain": "UnitOfMeasure",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
+      "owner": "symbol",
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
       "name": "unique_text",
       "definition_uri": "https://w3id.org/lmodel/gist/unique_text",
-      "description": "The unique string value of some content object, to be used when there is no possibility of having more than one value.",
-      "notes": [
-        "OWL FunctionalProperty (at most one value)"
+      "annotations": [
+        {
+          "tag": "domain_includes",
+          "value": "gist:ID, gist:MediaType, gist:Tag, gist:Text",
+          "@type": "Annotation"
+        }
       ],
+      "description": "The unique string value of some content object, to be used when there is no possibility of having more than one value.",
       "comments": [
         "Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID."
       ],
@@ -4004,7 +4159,7 @@
       "mappings": [
         "gist:Address"
       ],
-      "close_mappings": [
+      "narrow_mappings": [
         "common_domain_model:Address"
       ],
       "is_a": "Content",
@@ -4074,12 +4229,12 @@
       "mappings": [
         "gist:Agreement"
       ],
-      "exact_mappings": [
+      "close_mappings": [
         "common_domain_model:Agreement"
       ],
-      "broad_mappings": [
+      "narrow_mappings": [
         "common_domain_model:MasterAgreement",
-        "dpvs:DataProcessingAgreement"
+        "dpv:DataProcessingAgreement"
       ],
       "is_a": "Intention",
       "slots": [
@@ -4156,9 +4311,11 @@
         "gist:Assignment"
       ],
       "close_mappings": [
-        "common_domain_model:RelatedParty",
-        "common_domain_model:Counterparty",
         "common_domain_model:NaturalPersonRole"
+      ],
+      "related_mappings": [
+        "common_domain_model:RelatedParty",
+        "common_domain_model:Counterparty"
       ],
       "is_a": "TemporalRelation",
       "slots": [
@@ -4637,8 +4794,8 @@
       "mappings": [
         "gist:ContingentObligation"
       ],
-      "close_mappings": [
-        "dpvs:Obligation"
+      "broad_mappings": [
+        "dpv:Obligation"
       ],
       "is_a": "Commitment",
       "slots": [
@@ -4666,8 +4823,8 @@
       "mappings": [
         "gist:Contract"
       ],
-      "exact_mappings": [
-        "dpvs:DpvContract"
+      "related_mappings": [
+        "dpv:Contract"
       ],
       "is_a": "Agreement",
       "slots": [
@@ -4692,7 +4849,7 @@
       "mappings": [
         "gist:ContractTerm"
       ],
-      "related_mappings": [
+      "narrow_mappings": [
         "common_domain_model:CollateralProvisions"
       ],
       "is_a": "Specification",
@@ -4765,7 +4922,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/CountryGovernment",
       "description": "A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.",
       "notes": [
-        "OWL subClassOf restrictions: _bnode_; \u22640isGovernedBy.gist:GovernmentOrganization",
+        "OWL subClassOf restrictions: =1^isGovernedBy.gist:CountryGeoRegion; \u22640isGovernedBy.gist:GovernmentOrganization",
         "OWL equivalentClass: (gist:GovernmentOrganization & \u2203^isGovernedBy.gist:CountryGeoRegion)"
       ],
       "comments": [
@@ -4904,7 +5061,7 @@
       "mappings": [
         "gist:ElectronicAddress"
       ],
-      "close_mappings": [
+      "related_mappings": [
         "common_domain_model:ContactInformation"
       ],
       "is_a": "Address",
@@ -5027,13 +5184,11 @@
       "mappings": [
         "gist:Event"
       ],
-      "close_mappings": [
-        "common_domain_model:BusinessEvent",
-        "iso22989:Action"
-      ],
       "narrow_mappings": [
+        "common_domain_model:BusinessEvent",
         "iso22989:AILifecycleProcess",
-        "iso22989:DataProcess"
+        "iso22989:DataProcess",
+        "iso22989:Action"
       ],
       "mixins": [
         "GistThing"
@@ -5194,8 +5349,8 @@
       "mappings": [
         "gist:GeoLocation"
       ],
-      "close_mappings": [
-        "dpvs:StorageLocation"
+      "narrow_mappings": [
+        "dpv:StorageLocation"
       ],
       "mixins": [
         "GistThing"
@@ -5213,7 +5368,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/GeoPoint",
       "description": "An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.",
       "notes": [
-        "OWL equivalentClass: (\u2203hasMagnitude.\u2203hasAspect=_Aspect_altitude & \u2203latitude.<http://www.w3.org/2001/XMLSchema#double> & \u2203longitude.<http://www.w3.org/2001/XMLSchema#double>)"
+        "OWL equivalentClass: (\u2203hasMagnitude.\u2203hasAspect=_Aspect_altitude & \u2203latitude.xsd:double & \u2203longitude.xsd:double)"
       ],
       "in_subset": [
         "gist_core"
@@ -5269,9 +5424,6 @@
       ],
       "mappings": [
         "gist:GeoRegion"
-      ],
-      "broad_mappings": [
-        "dpvs:PersonalSpace"
       ],
       "is_a": "GeoLocation",
       "slots": [
@@ -5430,8 +5582,8 @@
       "definition_uri": "https://w3id.org/lmodel/gist/HistoricalEvent",
       "description": "An event which occurred in time, with an actual end earlier than the present moment.",
       "notes": [
-        "OWL subClassOf restrictions: \u2203actualStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>",
-        "OWL equivalentClass: (gist:Event & \u2203actualEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+        "OWL subClassOf restrictions: \u2203actualStartDateTime.xsd:dateTime",
+        "OWL equivalentClass: (gist:Event & \u2203actualEndDateTime.xsd:dateTime)"
       ],
       "in_subset": [
         "gist_core"
@@ -5457,7 +5609,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/ID",
       "description": "Content that is used to uniquely identify something or someone.",
       "notes": [
-        "OWL equivalentClass: (gist:Content & \u2203isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & \u2203uniqueText.<http://www.w3.org/2001/XMLSchema#string>)"
+        "OWL equivalentClass: (gist:Content & \u2203isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & \u2203uniqueText.xsd:string)"
       ],
       "comments": [
         "Used in conjunction with gist:isIdentifiedBy."
@@ -5480,10 +5632,12 @@
       ],
       "close_mappings": [
         "common_domain_model:Identifier",
+        "common_domain_model:AssignedIdentifier"
+      ],
+      "narrow_mappings": [
         "common_domain_model:PartyIdentifier",
         "common_domain_model:PersonIdentifier",
-        "common_domain_model:EntityIdentifier",
-        "common_domain_model:AssignedIdentifier"
+        "common_domain_model:EntityIdentifier"
       ],
       "is_a": "Content",
       "slots": [
@@ -5518,8 +5672,8 @@
       "mappings": [
         "gist:IntellectualProperty"
       ],
-      "broad_mappings": [
-        "dpvs:IntellectualPropertyData"
+      "related_mappings": [
+        "dpv:IntellectualPropertyData"
       ],
       "mixins": [
         "GistThing"
@@ -5752,7 +5906,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/Magnitude",
       "description": "The amount of a measurable characteristic (aspect).",
       "notes": [
-        "OWL equivalentClass: (\u2203hasAspect.gist:Aspect & \u2203hasUnitOfMeasure.gist:UnitOfMeasure & \u2203numericValue.<http://www.w3.org/2000/01/rdf-schema#Literal>)"
+        "OWL equivalentClass: (\u2203hasAspect.gist:Aspect & \u2203hasUnitOfMeasure.gist:UnitOfMeasure & \u2203numericValue.rdfs:Literal)"
       ],
       "comments": [
         "An accuracy can be assigned to a magnitude using the property has accuracy."
@@ -5767,6 +5921,9 @@
         "gist_core"
       ],
       "from_schema": "https://w3id.org/lmodel/gist/core",
+      "see_also": [
+        "gist:hasAccuracy"
+      ],
       "aliases": [
         "Magnitude"
       ],
@@ -5774,13 +5931,14 @@
         "gist:Magnitude"
       ],
       "close_mappings": [
-        "common_domain_model:Money",
-        "common_domain_model:Cash",
         "common_domain_model:Quantity",
         "common_domain_model:Measure"
       ],
       "related_mappings": [
         "common_domain_model:Price"
+      ],
+      "narrow_mappings": [
+        "common_domain_model:Money"
       ],
       "mixins": [
         "GistThing"
@@ -5804,7 +5962,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/MediaType",
       "description": "A digitized type that computer applications can recognize.",
       "notes": [
-        "OWL subClassOf restrictions: \u2203uniqueText.<http://www.w3.org/2001/XMLSchema#string>"
+        "OWL subClassOf restrictions: \u2203uniqueText.xsd:string"
       ],
       "comments": [
         "The unique text for an IANA media type is the concatenation of the 'Type name', a slash '/', and the 'Subtype name' as provided on the page displayed when you resolve the URI of the media type."
@@ -5819,6 +5977,9 @@
         "gist_core"
       ],
       "from_schema": "https://w3id.org/lmodel/gist/core",
+      "see_also": [
+        "https://www.iana.org/assignments/media-types/media-types.xhtml"
+      ],
       "aliases": [
         "Media Type"
       ],
@@ -6000,7 +6161,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/Offer",
       "description": "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).",
       "notes": [
-        "OWL equivalentClass: (gist:ContingentObligation & \u2203hasGiver.(gist:Organization | gist:Person) & \u2203offersToProvide.owl:Thing & \u2203offersToReceive.owl:Thing & \u2203plannedEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime> & \u2203plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+        "OWL equivalentClass: (gist:ContingentObligation & \u2203hasGiver.(gist:Organization | gist:Person) & \u2203offersToProvide.owl:Thing & \u2203offersToReceive.owl:Thing & \u2203plannedEndDateTime.xsd:dateTime & \u2203plannedStartDateTime.xsd:dateTime)"
       ],
       "comments": [
         "Dates on an offer represent the time period the offer is valid for, as in '25% off through October 25, 2025.'"
@@ -6064,7 +6225,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/OrderedMember",
       "description": "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.",
       "notes": [
-        "OWL equivalentClass: (gist:Component & (\u2203precedesDirectly.gist:OrderedMember | \u2203^precedesDirectly.gist:OrderedMember | \u2203sequence.<http://www.w3.org/2001/XMLSchema#integer>) & \u2203providesOrderFor.owl:Thing & \u2200isMemberOf.gist:OrderedCollection & =1isMemberOf)"
+        "OWL equivalentClass: (gist:Component & (\u2203precedesDirectly.gist:OrderedMember | \u2203^precedesDirectly.gist:OrderedMember | \u2203sequence.xsd:integer) & \u2203providesOrderFor.owl:Thing & \u2200isMemberOf.gist:OrderedCollection & =1isMemberOf)"
       ],
       "comments": [
         "An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member."
@@ -6118,18 +6279,20 @@
       "mappings": [
         "gist:Organization"
       ],
-      "exact_mappings": [
+      "close_mappings": [
+        "common_domain_model:LegalEntity"
+      ],
+      "related_mappings": [
+        "dpv:ThirdParty"
+      ],
+      "narrow_mappings": [
+        "common_domain_model:BusinessUnit",
+        "dpv:OrganisationalUnit",
         "iso22989:Organization"
       ],
-      "close_mappings": [
-        "common_domain_model:Party",
-        "common_domain_model:LegalEntity",
-        "common_domain_model:BusinessUnit",
-        "dpvs:LegalEntity"
-      ],
       "broad_mappings": [
-        "dpvs:OrganisationalUnit",
-        "dpvs:ThirdParty"
+        "common_domain_model:Party",
+        "dpv:LegalEntity"
       ],
       "mixins": [
         "GistThing"
@@ -6172,7 +6335,7 @@
         "gist:Permission"
       ],
       "exact_mappings": [
-        "dpvs:Permission"
+        "dpv:Permission"
       ],
       "is_a": "Intention",
       "slots": [
@@ -6208,18 +6371,20 @@
         "gist:Person"
       ],
       "exact_mappings": [
-        "dpvs:NaturalPerson"
+        "dpv:NaturalPerson"
       ],
       "close_mappings": [
-        "common_domain_model:NaturalPerson",
+        "common_domain_model:NaturalPerson"
+      ],
+      "related_mappings": [
         "iso22989:AIUser",
         "iso22989:DataSubject"
       ],
-      "related_mappings": [
-        "common_domain_model:Party"
+      "narrow_mappings": [
+        "dpv:DataSubject"
       ],
       "broad_mappings": [
-        "dpvs:DataSubject"
+        "common_domain_model:Party"
       ],
       "is_a": "LivingThing",
       "slots": [
@@ -6282,7 +6447,7 @@
       "mappings": [
         "gist:PhysicalAddress"
       ],
-      "related_mappings": [
+      "close_mappings": [
         "common_domain_model:Address"
       ],
       "is_a": "Address",
@@ -6491,7 +6656,7 @@
       "mappings": [
         "gist:ProductSpecification"
       ],
-      "close_mappings": [
+      "related_mappings": [
         "common_domain_model:TradableProduct"
       ],
       "is_a": "CatalogItem",
@@ -6665,7 +6830,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/ScheduledEvent",
       "description": "An event with a planned start datetime.",
       "notes": [
-        "OWL equivalentClass: (gist:Event & \u2203plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+        "OWL equivalentClass: (gist:Event & \u2203plannedStartDateTime.xsd:dateTime)"
       ],
       "comments": [
         "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event."
@@ -6892,7 +7057,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/Tag",
       "description": "A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.",
       "notes": [
-        "OWL subClassOf restrictions: \u2203containedText.<http://www.w3.org/2001/XMLSchema#string>"
+        "OWL subClassOf restrictions: \u2203containedText.xsd:string"
       ],
       "comments": [
         "Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way."
@@ -6938,11 +7103,9 @@
       "mappings": [
         "gist:Task"
       ],
-      "close_mappings": [
-        "iso22989:Task"
-      ],
       "related_mappings": [
-        "common_domain_model:Workflow"
+        "common_domain_model:Workflow",
+        "iso22989:Task"
       ],
       "is_a": "Event",
       "slots": [
@@ -7068,7 +7231,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/Text",
       "description": "Content expressed as a written sequence of characters.",
       "notes": [
-        "OWL equivalentClass: (gist:ContentExpression & \u2203isExpressedIn.gist:Language & \u2203containedText.<http://www.w3.org/2001/XMLSchema#string>)"
+        "OWL equivalentClass: (gist:ContentExpression & \u2203isExpressedIn.gist:Language & \u2203containedText.xsd:string)"
       ],
       "comments": [
         "Text is expressed in a language (human or computer) and may but need not specify an encoding."
@@ -7103,7 +7266,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/TimeInterval",
       "description": "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.",
       "notes": [
-        "OWL subClassOf restrictions: =1startDateTime; _bnode_; =1endDateTime"
+        "OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.\u2203hasAspect=_Aspect_duration; =1endDateTime"
       ],
       "comments": [
         "An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown.",
@@ -7125,7 +7288,7 @@
       "mappings": [
         "gist:TimeInterval"
       ],
-      "close_mappings": [
+      "related_mappings": [
         "common_domain_model:Period"
       ],
       "mixins": [
@@ -7156,10 +7319,8 @@
       "mappings": [
         "gist:Transaction"
       ],
-      "close_mappings": [
-        "common_domain_model:Trade"
-      ],
       "related_mappings": [
+        "common_domain_model:Trade",
         "common_domain_model:TradeState"
       ],
       "is_a": "Event",
@@ -7263,9 +7424,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "gist.yaml",
-  "source_file_date": "2026-09-29T12:15:02",
+  "source_file_date": "2026-09-29T20:28:48",
   "source_file_size": 1290,
-  "generation_date": "2026-09-29T12:15:04",
+  "generation_date": "2026-09-29T20:28:50",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/gist.context.jsonld",

@@ -1,8 +1,8 @@
 {
    "@context": {
       "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "common_domain_model": "https://w3id.org/lmodel/common_domain_model/",
-      "dpvs": "https://w3id.org/lmodel/dpvs/",
+      "common_domain_model": "https://w3id.org/lmodel/common-domain-model/",
+      "dpv": "https://w3id.org/lmodel/dpv/",
       "gist": "https://w3id.org/semanticarts/ns/ontology/gist/",
       "gist_linkml": "https://w3id.org/lmodel/gist/",
       "gistd": "https://w3id.org/semanticarts/ns/data/gist/",
@@ -107,55 +107,55 @@
          "@id": "gist:endDateTime"
       },
       "exponent_of_ampere": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfAmpere"
       },
       "exponent_of_bit": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfBit"
       },
       "exponent_of_candela": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfCandela"
       },
       "exponent_of_kelvin": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfKelvin"
       },
       "exponent_of_kilogram": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfKilogram"
       },
       "exponent_of_meter": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfMeter"
       },
       "exponent_of_mole": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfMole"
       },
       "exponent_of_number": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfNumber"
       },
       "exponent_of_other": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfOther"
       },
       "exponent_of_radian": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfRadian"
       },
       "exponent_of_second": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfSecond"
       },
       "exponent_of_steradian": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfSteradian"
       },
       "exponent_of_us_dollar": {
-         "@type": "@id",
+         "@type": "xsd:decimal",
          "@id": "gist:exponentOfUSDollar"
       },
       "goes_to_agent": {
@@ -370,7 +370,6 @@
          "@id": "gist:offersToReceive"
       },
       "owns": {
-         "@type": "@id",
          "@id": "gist:owns"
       },
       "planned_end_date": {

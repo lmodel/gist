@@ -20,9 +20,14 @@ Usage
   - Every owl:AnnotationProperty (gist: ns)      -> LinkML slot
   - Named individuals (gistd:*, media-*)         -> enum permissible values
   - SHACL PrefixDeclarations                    -> PrefixDeclarationInstance enum
-  - All SKOS/RDFS annotations preserved
+  - All SKOS/RDFS annotations preserved, on classes, slots, individuals
+    and the ontology headers alike
     (definition, prefLabel, altLabel, example, scopeNote, editorialNote,
-     rdfs:label, rdfs:comment DEFINITION:/EXAMPLE:/NOTE: prefixes)
+     historyNote, rdfs:label, rdfs:seeAlso, rdfs:comment with the
+     DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes)
+  - gist:domainIncludes / gist:rangeIncludes     -> slot annotations
+  - owl:FunctionalProperty                       -> multivalued: false
+  - Union datatype ranges                        -> any_of
   - OWL axioms without direct LinkML equivalents  -> notes/comments
 """
 
@@ -84,10 +89,20 @@ _CURIE_PREFIXES: list[tuple[str, str]] = [
     ("http://purl.obolibrary.org/obo/RO_", "RO"),
 ]
 
-# Prefixes used in gistRdfsAnnotations rdfs:comment values
-_DEFINITION_RE = re.compile(r"^DEFINITION:\s*")
-_EXAMPLE_RE = re.compile(r"^EXAMPLE:\s*")
-_NOTE_RE = re.compile(r"^NOTE:\s*")
+# gistRdfsAnnotations rdfs:comment values start with DEFINITION:, EXAMPLE:,
+# NOTE: or ALT:
+_PREFIXED_COMMENT_RE = re.compile(r"^([A-Z]+):\s*")
+
+# Namespaces rendered as CURIEs inside the OWL axiom notes
+_NOTE_NS: list[tuple[str, str]] = [
+    (GIST_SA_NS, "gist"),
+    (GISTD_NS, "gistd"),
+    (str(XSD), "xsd"),
+    (str(OWL), "owl"),
+    (str(RDFS), "rdfs"),
+    (str(RDF), "rdf"),
+    (str(SKOS), "skos"),
+]
 
 # ---------------------------------------------------------------------------
 # XSD  -> LinkML type mapping
@@ -123,6 +138,8 @@ XSD_TO_LINKML: dict[str, str] = {
     str(XSD.anyURI): "uri",
     str(XSD.base64Binary): "string",
     str(XSD.hexBinary): "string",
+    str(OWL.real): "decimal",
+    str(OWL.rational): "decimal",
 }
 
 
@@ -220,16 +237,21 @@ def union_members(g: Graph, node) -> list[URIRef] | None:
     ]
 
 
+def term_str(uri: URIRef) -> str:
+    """Render a named term as a CURIE for the axiom notes, or as <uri>."""
+    s = str(uri)
+    for ns, prefix in _NOTE_NS:
+        if s.startswith(ns):
+            return f"{prefix}:{s[len(ns):]}"
+    return f"<{s}>"
+
+
 def owl_expr_str(g: Graph, node, depth: int = 0) -> str:
     """Render an OWL class expression as a compact human-readable string."""
     if depth > 6:
         return "..."
     if isinstance(node, URIRef):
-        gl = gist_local(node)
-        if gl:
-            return f"gist:{gl}"
-        ln = local_name(node)
-        return f"owl:{ln}" if str(node).startswith(str(OWL)) else f"<{node}>"
+        return term_str(node)
     if not isinstance(node, BNode):
         return str(node)
 
@@ -264,8 +286,13 @@ def owl_expr_str(g: Graph, node, depth: int = 0) -> str:
         has_v = list(g.objects(node, OWL.hasValue))
         if has_v:
             val = has_v[0]
-            val_s = gistd_local(val) or (gist_local(val) if isinstance(val, URIRef) else str(val))
+            val_s = gistd_local(val) or (term_str(val) if isinstance(val, URIRef) else str(val))
             return f"∃{p_str}={val_s}"
+        exact_qc = list(g.objects(node, OWL.qualifiedCardinality))
+        if exact_qc:
+            on_cls = list(g.objects(node, OWL.onClass))
+            cls_s = owl_expr_str(g, on_cls[0], depth + 1) if on_cls else "owl:Thing"
+            return f"={exact_qc[0]}{p_str}.{cls_s}"
         min_qc = list(g.objects(node, OWL.minQualifiedCardinality))
         if min_qc:
             on_cls = list(g.objects(node, OWL.onClass))
@@ -292,6 +319,86 @@ def owl_expr_str(g: Graph, node, depth: int = 0) -> str:
         return f"¬{owl_expr_str(g, comp[0], depth + 1)}"
 
     return "_bnode_"
+
+
+def _dedupe(items) -> list:
+    return list(dict.fromkeys(items))
+
+
+def see_also_uris(g: Graph, subj) -> list[str]:
+    """rdfs:seeAlso targets as CURIEs where a prefix is known, else full URIs."""
+    return sorted(uri_to_curie(o) or str(o) for o in named_objects(g, subj, RDFS.seeAlso))
+
+
+def _doc_fields(g: Graph, subj) -> dict[str, Any]:
+    """Documentation shared by classes, slots, individuals and ontology headers.
+
+    SKOS is read first. The rdfs:label / rdfs:comment pairs of the
+    RdfsAnnotations module come second: a comment carries a DEFINITION:,
+    EXAMPLE:, NOTE: or ALT: prefix, and a value already present from SKOS is
+    not repeated. A bare comment is the description when there is none, and
+    a comment with an unknown prefix is kept verbatim as a comment.
+    Returns only the keys that have a value: description, aliases, examples,
+    comments, notes, see_also.
+    """
+    defn = first_literal(g, subj, SKOS.definition)
+    aliases: list[str] = []
+    pref = first_literal(g, subj, SKOS.prefLabel)
+    if pref:
+        aliases.append(pref)
+    aliases += get_literals(g, subj, SKOS.altLabel)
+    examples = get_literals(g, subj, SKOS.example)
+    comments = get_literals(g, subj, SKOS.scopeNote)
+    notes = get_literals(g, subj, SKOS.editorialNote)
+    for h in get_literals(g, subj, SKOS.historyNote):
+        # The ontology header's historyNote is one literal with a release per line.
+        notes += [f"History: {line.strip()}" for line in h.splitlines() if line.strip()]
+
+    aliases += get_literals(g, subj, RDFS.label)
+    for c in get_literals(g, subj, RDFS.comment):
+        m = _PREFIXED_COMMENT_RE.match(c)
+        kind = m.group(1) if m else None
+        body = c[m.end():] if m else c
+        if kind == "DEFINITION":
+            if defn is None:
+                defn = body
+            elif body.strip() != defn.strip():
+                comments.append(body)
+        elif kind == "EXAMPLE":
+            examples.append(body)
+        elif kind == "NOTE":
+            comments.append(body)
+        elif kind == "ALT":
+            aliases.append(body)
+        elif kind is None and defn is None:
+            defn = c
+        else:
+            comments.append(c)
+
+    out: dict[str, Any] = {}
+    if defn:
+        out["description"] = defn
+    if aliases:
+        out["aliases"] = _dedupe(aliases)
+    if examples:
+        out["examples"] = [{"value": ex} for ex in _dedupe(examples)]
+    if comments:
+        out["comments"] = _dedupe(comments)
+    if notes:
+        out["notes"] = _dedupe(notes)
+    see_also = see_also_uris(g, subj)
+    if see_also:
+        out["see_also"] = see_also
+    return out
+
+
+def _merge_doc(entry: dict, doc: dict) -> None:
+    """Add the documentation fields to an element entry, after its own notes."""
+    for key, value in doc.items():
+        if key == "notes":
+            entry["notes"] = entry.get("notes", []) + value
+        else:
+            entry[key] = value
 
 
 # ---------------------------------------------------------------------------
@@ -335,17 +442,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
             continue
 
         entry: dict[str, Any] = {}
-
-        # --- description ---
-        defn = first_literal(g, cls, SKOS.definition)
-        if not defn:
-            # Fall back to rdfs:comment DEFINITION: prefix (from gistRdfsAnnotations)
-            for c in get_literals(g, cls, RDFS.comment):
-                if _DEFINITION_RE.match(c):
-                    defn = _DEFINITION_RE.sub("", c)
-                    break
-        if defn:
-            entry["description"] = defn
+        doc = _doc_fields(g, cls)
 
         # --- deprecated ---
         depr = first_literal(g, cls, OWL.deprecated)
@@ -403,53 +500,11 @@ def extract_classes(g: Graph) -> dict[str, dict]:
                 f"OWL equivalentClass: " + "; ".join(axioms)
             ]
 
-        # --- aliases (prefLabel, altLabel, rdfs:label) ---
-        pref = first_literal(g, cls, SKOS.prefLabel)
-        alts = get_literals(g, cls, SKOS.altLabel)
-        rdfs_labels = get_literals(g, cls, RDFS.label)
-        aliases: list[str] = []
-        if pref:
-            aliases.append(pref)
-        aliases.extend(alts)
-        # Add rdfs:label if not already present via SKOS
-        for lbl in rdfs_labels:
-            if lbl not in aliases:
-                aliases.append(lbl)
-        if aliases:
-            entry["aliases"] = aliases
-
-        # --- examples from SKOS and rdfs:comment EXAMPLE: prefix ---
-        examples = get_literals(g, cls, SKOS.example)
-        rdfs_examples = [
-            _EXAMPLE_RE.sub("", c)
-            for c in get_literals(g, cls, RDFS.comment)
-            if _EXAMPLE_RE.match(c)
-        ]
-        all_examples = examples + [e for e in rdfs_examples if e not in examples]
-        if all_examples:
-            entry["examples"] = [{"value": ex} for ex in all_examples]
-
-        # --- comments from scopeNote and rdfs:comment NOTE: prefix ---
-        scope = get_literals(g, cls, SKOS.scopeNote)
-        rdfs_notes = [
-            _NOTE_RE.sub("", c)
-            for c in get_literals(g, cls, RDFS.comment)
-            if _NOTE_RE.match(c)
-        ]
-        all_comments = scope + [n for n in rdfs_notes if n not in scope]
-        if all_comments:
-            entry["comments"] = all_comments
-
-        # --- notes from editorialNote ---
-        ed_notes = get_literals(g, cls, SKOS.editorialNote)
-        if ed_notes:
-            entry["notes"] = entry.get("notes", []) + ed_notes
-
         # --- disjointWith  -> LinkML disjoint_with (class level) ---
         disjoints = [gist_local(o) for o in named_objects(g, cls, OWL.disjointWith)
                      if gist_local(o)]
         if disjoints:
-            entry["disjoint_with"] = disjoints if len(disjoints) > 1 else disjoints[0]
+            entry["disjoint_with"] = disjoints  # multivalued in the LinkML metamodel
 
         # --- InverseFunctionalProperty  -> unique_keys ---
         # An IFP whose rdfs:domain (named or unionOf) includes this class becomes
@@ -462,10 +517,8 @@ def extract_classes(g: Graph) -> dict[str, dict]:
                 for slot in dict.fromkeys(ifp_slots)  # dedupe, preserve order
             }
 
-        # --- historyNote ---
-        hist = get_literals(g, cls, SKOS.historyNote)
-        if hist:
-            entry["notes"] = entry.get("notes", []) + [f"History: {h}" for h in hist]
+        # --- description, aliases, examples, comments, notes, see_also ---
+        _merge_doc(entry, doc)
 
         classes[cls_local] = entry
 
@@ -495,13 +548,8 @@ def extract_slots(g: Graph) -> dict[str, dict]:
 
             # slot_uri maps to the upstream predicate URI
             entry["slot_uri"] = f"gist:{prop_local}"
-
-            # --- description ---
-            defn = first_literal(g, prop, SKOS.definition)
-            if not defn:
-                defn = first_literal(g, prop, RDFS.comment)
-            if defn:
-                entry["description"] = defn
+            doc = _doc_fields(g, prop)
+            ann: dict[str, Any] = {}
 
             # --- is_a: subPropertyOf (gist: only) ---
             sub_of = [
@@ -523,45 +571,68 @@ def extract_slots(g: Graph) -> dict[str, dict]:
             if cross_sub:
                 entry["related_mappings"] = [str(o) for o in cross_sub]
 
-            # --- domain (rdfs:domain  -> LinkML domain; unionOf  -> domain + any_of) ---
+            # --- domain (rdfs:domain  -> LinkML domain) ---
             gist_domains = [
                 gist_local(o) for o in g.objects(prop, RDFS.domain)
                 if isinstance(o, URIRef) and gist_local(o)
             ]
             anon_domains = [o for o in g.objects(prop, RDFS.domain) if isinstance(o, BNode)]
 
-            union_domain_members: list[str] = []
-            for ad in anon_domains:
-                members = union_members(g, ad)
-                if members:
-                    union_domain_members.extend(
-                        gist_local(m) for m in members if gist_local(m)
-                    )
-                else:
+            if gist_domains:
+                entry["domain"] = gist_domains[0]
+                if len(gist_domains) > 1:
                     entry["notes"] = entry.get("notes", []) + [
-                        "OWL domain restriction: " + owl_expr_str(g, ad)
+                        "OWL additional rdfs:domain: " + ", ".join(gist_domains[1:])
                     ]
+            # A union domain has no LinkML form: one ``domain`` would over-restrict
+            # the subject, and ``any_of`` describes the range, so it stays a note.
+            for ad in anon_domains:
+                entry["notes"] = entry.get("notes", []) + [
+                    "OWL domain: " + owl_expr_str(g, ad)
+                ]
 
-            all_domains = list(gist_domains) + union_domain_members
-            # Deduplicate while preserving order
-            seen = set()
-            all_domains = [d for d in all_domains if not (d in seen or seen.add(d))]
-
-            if all_domains:
-                entry["domain"] = all_domains[0]
-                if len(all_domains) > 1:
-                    entry["any_of"] = (entry.get("any_of") or []) + [
-                        {"range": d} for d in all_domains
-                    ]
+            # gist:domainIncludes / gist:rangeIncludes are soft hints (they are
+            # subproperties of skos:scopeNote), kept whole as annotations. A single
+            # hint also fills an absent hard domain or range, as the range case
+            # always did.
+            domain_includes = sorted(
+                gist_local(o) for o in g.objects(prop, GIST.domainIncludes)
+                if isinstance(o, URIRef) and gist_local(o)
+            )
+            if domain_includes:
+                ann["domain_includes"] = ", ".join(f"gist:{d}" for d in domain_includes)
+                if "domain" not in entry and not anon_domains and len(domain_includes) == 1:
+                    entry["domain"] = domain_includes[0]
+            range_includes = sorted(
+                gist_local(o) for o in g.objects(prop, GIST.rangeIncludes)
+                if isinstance(o, URIRef) and gist_local(o)
+            )
+            if range_includes:
+                ann["range_includes"] = ", ".join(f"gist:{r}" for r in range_includes)
 
             # --- range ---
             range_uris = [o for o in g.objects(prop, RDFS.range) if isinstance(o, URIRef)]
             range_bnodes = [o for o in g.objects(prop, RDFS.range) if isinstance(o, BNode)]
 
             if kind == "datatype":
-                if range_uris:
-                    linkml_type = XSD_TO_LINKML.get(str(range_uris[0]), "string")
-                    entry["range"] = linkml_type
+                # A union of datatypes maps each member; distinct results become any_of.
+                dt_uris = list(range_uris)
+                for rb in range_bnodes:
+                    members = union_members(g, rb)
+                    if members:
+                        dt_uris += members
+                        entry["notes"] = entry.get("notes", []) + [
+                            "OWL range: " + owl_expr_str(g, rb)
+                        ]
+                    else:
+                        entry["notes"] = entry.get("notes", []) + [
+                            "OWL range restriction: " + owl_expr_str(g, rb)
+                        ]
+                dt_types = _dedupe(XSD_TO_LINKML.get(str(u), "string") for u in dt_uris)
+                if len(dt_types) == 1:
+                    entry["range"] = dt_types[0]
+                elif dt_types:
+                    entry["any_of"] = [{"range": t} for t in dt_types]
                 # multivalued defaults to false; no need to state explicitly
             else:
                 gist_ranges = [gist_local(o) for o in range_uris if gist_local(o)]
@@ -583,10 +654,6 @@ def extract_slots(g: Graph) -> dict[str, dict]:
 
                 # gist:rangeIncludes (soft range hints) — use when no hard rdfs:range
                 if "range" not in entry and "any_of" not in entry:
-                    range_includes = [
-                        gist_local(o) for o in g.objects(prop, GIST.rangeIncludes)
-                        if isinstance(o, URIRef) and gist_local(o)
-                    ]
                     if len(range_includes) == 1:
                         entry["range"] = range_includes[0]
                     elif len(range_includes) > 1:
@@ -622,11 +689,12 @@ def extract_slots(g: Graph) -> dict[str, dict]:
             if OWL.ReflexiveProperty in all_types:
                 entry["reflexive"] = True
             if OWL.FunctionalProperty in all_types:
-                entry["notes"] = entry.get("notes", []) + ["OWL FunctionalProperty (at most one value)"]
+                # At most one value: LinkML says it with multivalued, so this
+                # overrides the object-property default set above.
+                entry["multivalued"] = False
             if OWL.InverseFunctionalProperty in all_types:
                 # OWL InverseFunctionalProperty  -> LinkML unique_keys (added at class
                 # level by extract_classes); also annotate the slot for visibility
-                ann = entry.setdefault("annotations", {})
                 ann["owl_inverse_functional"] = True
 
             # --- deprecated ---
@@ -640,31 +708,6 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 if superseded:
                     entry["deprecated_element_has_exact_replacement"] = camel_to_snake(superseded[0])
 
-            # --- aliases (prefLabel, altLabel) ---
-            pref = first_literal(g, prop, SKOS.prefLabel)
-            alts = get_literals(g, prop, SKOS.altLabel)
-            aliases: list[str] = []
-            if pref:
-                aliases.append(pref)
-            aliases.extend(alts)
-            if aliases:
-                entry["aliases"] = aliases
-
-            # --- examples ---
-            examples = get_literals(g, prop, SKOS.example)
-            if examples:
-                entry["examples"] = [{"value": ex} for ex in examples]
-
-            # --- comments from scopeNote ---
-            scope = get_literals(g, prop, SKOS.scopeNote)
-            if scope:
-                entry["comments"] = scope
-
-            # --- notes from editorialNote ---
-            ed_notes = get_literals(g, prop, SKOS.editorialNote)
-            if ed_notes:
-                entry["notes"] = entry.get("notes", []) + ed_notes
-
             # --- propertyDisjointWith  -> LinkML disjoint_with ---
             disj = [
                 camel_to_snake(gist_local(o))
@@ -672,7 +715,12 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 if gist_local(o)
             ]
             if disj:
-                entry["disjoint_with"] = disj if len(disj) > 1 else disj[0]
+                entry["disjoint_with"] = disj  # multivalued in the LinkML metamodel
+
+            # --- description, aliases, examples, comments, notes, see_also ---
+            _merge_doc(entry, doc)
+            if ann:
+                entry["annotations"] = ann
 
             slots[sname] = entry
 
@@ -699,9 +747,6 @@ def extract_enums(g: Graph) -> dict[str, dict]:
     """
     enums: dict[str, dict] = {}
 
-    schema_types = {OWL.Class, OWL.ObjectProperty, OWL.DatatypeProperty,
-                    OWL.AnnotationProperty, OWL.Ontology}
-
     groups: dict[str, list[URIRef]] = defaultdict(list)
 
     for subj in g.subjects(RDF.type, None):
@@ -714,59 +759,68 @@ def extract_enums(g: Graph) -> dict[str, dict]:
         if not (is_gistd or is_media):
             continue
 
-        gist_types = [
-            gist_local(t) for t in g.objects(subj, RDF.type)
-            if isinstance(t, URIRef) and gist_local(t)
-            and t not in schema_types
-        ]
-        for t in gist_types:
-            groups[t].append(subj)
+        for t in g.objects(subj, RDF.type):
+            if isinstance(t, URIRef) and gist_local(t):
+                groups[gist_local(t)].append(subj)
 
     for gist_type, individuals in sorted(groups.items()):
-        enum_name = f"{gist_type}Instance"
-        pv: dict[str, dict] = {}
-        seen_keys: dict[str, str] = {}
-
-        for ind in sorted(individuals, key=str):
-            s = str(ind)
-
-            if s.startswith(GISTD_NS):
-                raw_local = s[len(GISTD_NS):]
-                meaning = f"gistd:{raw_local}"
-            else:
-                curie = media_curie(ind)
-                raw_local = curie.split(":", 1)[-1] if curie else local_name(ind)
-                meaning = curie if curie else str(ind)
-
-            val_key = _enum_val_key(raw_local)
-            if val_key in seen_keys:
-                val_key = val_key + "_2"
-            seen_keys[val_key] = raw_local
-
-            pv_entry: dict = {}
-
-            defn = first_literal(g, ind, SKOS.definition)
-            if not defn:
-                defn = first_literal(g, ind, RDFS.comment)
-            if defn:
-                defn = _DEFINITION_RE.sub("", defn)
-                pv_entry["description"] = defn
-
-            pref = first_literal(g, ind, SKOS.prefLabel)
-            if not pref:
-                pref = first_literal(g, ind, RDFS.label)
-            if pref:
-                pv_entry["title"] = pref
-
-            pv_entry["meaning"] = meaning
-            pv[val_key] = pv_entry
-
-        enums[enum_name] = {
+        enums[f"{gist_type}Instance"] = {
             "description": f"Named instances of gist:{gist_type} from gist reference data.",
-            "permissible_values": pv,
+            "permissible_values": _permissible_values(g, individuals),
         }
 
     return enums
+
+
+def _permissible_values(g: Graph, individuals: list[URIRef]) -> dict[str, dict]:
+    """Build the permissible values for one enum from named individuals.
+
+    Each value keeps its label as ``title``, its SKOS and RDFS documentation
+    (see ``_doc_fields``), and every literal a gist property gives it, such as
+    ``gist:uniqueText`` on a media type, as an annotation named after the
+    property.
+    """
+    pv: dict[str, dict] = {}
+    seen_keys: dict[str, str] = {}
+
+    for ind in sorted(individuals, key=str):
+        s = str(ind)
+
+        if s.startswith(GISTD_NS):
+            raw_local = s[len(GISTD_NS):]
+            meaning = f"gistd:{raw_local}"
+        else:
+            curie = media_curie(ind)
+            raw_local = curie.split(":", 1)[-1] if curie else local_name(ind)
+            meaning = curie if curie else str(ind)
+
+        val_key = _enum_val_key(raw_local)
+        if val_key in seen_keys:
+            val_key = val_key + "_2"
+        seen_keys[val_key] = raw_local
+
+        pv_entry: dict = {}
+        doc = _doc_fields(g, ind)
+        title = first_literal(g, ind, SKOS.prefLabel) or first_literal(g, ind, RDFS.label)
+        if title:
+            pv_entry["title"] = title
+            doc["aliases"] = [a for a in doc.get("aliases", []) if a != title]
+            if not doc["aliases"]:
+                del doc["aliases"]
+        _merge_doc(pv_entry, doc)
+
+        ann = {
+            camel_to_snake(gist_local(p)): str(o)
+            for p, o in g.predicate_objects(ind)
+            if isinstance(p, URIRef) and gist_local(p) and isinstance(o, Literal)
+        }
+        if ann:
+            pv_entry["annotations"] = ann
+
+        pv_entry["meaning"] = meaning
+        pv[val_key] = pv_entry
+
+    return pv
 
 
 # ---------------------------------------------------------------------------
@@ -807,32 +861,7 @@ def extract_rdfs_annotations(
             entity_types = set(ctx.objects(subj, RDF.type))
             is_slot = bool(entity_types & prop_types)
 
-        entry: dict[str, Any] = {}
-
-        labels = get_literals(g, subj, RDFS.label)
-        if labels:
-            entry["aliases"] = labels
-
-        description: str | None = None
-        examples: list[dict] = []
-        notes: list[str] = []
-
-        for c in get_literals(g, subj, RDFS.comment):
-            if _DEFINITION_RE.match(c):
-                description = _DEFINITION_RE.sub("", c)
-            elif _EXAMPLE_RE.match(c):
-                examples.append({"value": _EXAMPLE_RE.sub("", c)})
-            elif _NOTE_RE.match(c):
-                notes.append(_NOTE_RE.sub("", c))
-            elif description is None:
-                description = c  # bare comment without prefix
-
-        if description:
-            entry["description"] = description
-        if examples:
-            entry["examples"] = examples
-        if notes:
-            entry["comments"] = notes
+        entry: dict[str, Any] = _doc_fields(g, subj)
 
         if is_slot:
             entry["slot_uri"] = f"gist:{gist_name}"
@@ -842,6 +871,33 @@ def extract_rdfs_annotations(
             classes[gist_name] = entry
 
     return classes, slots
+
+
+def extract_rdfs_annotation_enums(g: Graph, ctx: Graph) -> dict[str, dict]:
+    """
+    Extract rdfs:label and rdfs:comment for the named individuals (gistd: and
+    IANA media types) as enum permissible values, grouped by the gist: type
+    the context graph gives each individual. Individuals the context does
+    not type are left out, as no enum can hold them.
+    """
+    groups: dict[str, list[URIRef]] = defaultdict(list)
+    for pred in (RDFS.label, RDFS.comment):
+        for s in g.subjects(pred, None):
+            if not isinstance(s, URIRef):
+                continue
+            if not (gistd_local(s) or media_curie(s)):
+                continue
+            for t in ctx.objects(s, RDF.type):
+                if isinstance(t, URIRef) and gist_local(t) and s not in groups[gist_local(t)]:
+                    groups[gist_local(t)].append(s)
+
+    return {
+        f"{gist_type}Instance": {
+            "description": f"RDFS annotations of the named instances of gist:{gist_type}.",
+            "permissible_values": _permissible_values(g, individuals),
+        }
+        for gist_type, individuals in sorted(groups.items())
+    }
 
 
 def extract_sub_class_assertions(g: Graph) -> dict[str, dict]:
@@ -916,7 +972,7 @@ def extract_prefix_declarations(g: Graph) -> dict[str, dict]:
 
 # Top-level schema header fields in canonical order (mirrors skill template)
 _SCHEMA_KEY_ORDER = [
-    "id", "name", "title", "description", "license", "see_also",
+    "id", "name", "title", "description", "comments", "notes", "license", "see_also",
     "source", "version", "annotations",
     "prefixes", "default_prefix", "default_range", "imports",
     "subsets", "types", "enums", "slots", "classes",
@@ -1066,6 +1122,51 @@ def get_ontology_iri(g: Graph) -> str | None:
     return None
 
 
+def ontology_header(g: Graph, ann: Graph | None = None) -> dict[str, Any]:
+    """Schema-level fields from the owl:Ontology header of ``g``.
+
+    Reads the SKOS documentation (definition, scopeNote, editorialNote, the
+    release historyNote), gist:license, owl:versionIRI and rdfs:seeAlso, and
+    the rdfs:label / rdfs:comment the RdfsAnnotations module ``ann`` gives
+    the same IRI. Returns {} when ``g`` declares no ontology.
+    """
+    iri = get_ontology_iri(g)
+    if not iri:
+        return {}
+    subj = URIRef(iri)
+    merged = Graph()
+    for src in (g, ann):
+        if src is not None:
+            for t in src.triples((subj, None, None)):
+                merged.add(t)
+    merged = canonical_graph(merged)
+
+    header = _doc_fields(merged, subj)
+    header.pop("aliases", None)  # the label; each schema states its own title
+    lic = first_literal(merged, subj, GIST.license)
+    if lic:
+        header["license"] = lic
+    version_iris = [str(o) for o in named_objects(merged, subj, OWL.versionIRI)]
+    if version_iris:
+        header["see_also"] = header.get("see_also", []) + version_iris
+    return header
+
+
+def _apply_header(schema: dict[str, Any], header: dict[str, Any] | None) -> None:
+    """Merge the ontology header into a schema's own description and links."""
+    if not header:
+        return
+    if header.get("description"):
+        schema["description"] = header["description"] + " " + schema["description"]
+    for key in ("comments", "notes"):
+        if header.get(key):
+            schema[key] = header[key]
+    if header.get("license"):
+        schema["license"] = header["license"]
+    if header.get("see_also"):
+        schema["see_also"] = _dedupe(schema.get("see_also", []) + header["see_also"])
+
+
 def _base_prefixes() -> dict[str, str]:
     return {
         "gist": GIST_SA_NS,
@@ -1090,6 +1191,7 @@ def build_schema(
     schema_id: str = f"{LMODEL_BASE}/core",
     schema_name: str = "gist_core",
     source: str | None = None,
+    header: dict[str, Any] | None = None,
 ) -> dict:
     subset_name = "gist_core"
     prefixes = _base_prefixes()
@@ -1102,10 +1204,7 @@ def build_schema(
         "id": schema_id,
         "name": schema_name,
         "title": "gist Core",
-        "description": (
-            "gist, a upper ontology for the Enterprise."
-            "This LinkML schema is generated from gistCore " + version + "."
-        ),
+        "description": f"This LinkML schema is generated from gistCore {version}.",
         "license": "CC-BY-4.0",
         "see_also": [
             "https://lmodel.github.io/gist",
@@ -1113,6 +1212,7 @@ def build_schema(
         ],
         "version": version,
     }
+    _apply_header(schema, header)
     if source:
         schema["source"] = source
 
@@ -1155,6 +1255,7 @@ def build_media_types_schema(
     enums: dict,
     version: str = "14.1.0",
     source: str | None = None,
+    header: dict[str, Any] | None = None,
 ) -> dict:
     subset_name = "gist_media_types"
     prefixes = _base_prefixes()
@@ -1175,6 +1276,7 @@ def build_media_types_schema(
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
     }
+    _apply_header(schema, header)
     if source:
         schema["source"] = source
     schema.update({
@@ -1196,6 +1298,7 @@ def build_prefix_declarations_schema(
     pv: dict,
     version: str = "14.1.0",
     source: str | None = None,
+    header: dict[str, Any] | None = None,
 ) -> dict:
     subset_name = "gist_prefix_declarations"
     prefixes = _base_prefixes()
@@ -1212,6 +1315,7 @@ def build_prefix_declarations_schema(
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
     }
+    _apply_header(schema, header)
     if source:
         schema["source"] = source
     schema.update({
@@ -1240,25 +1344,37 @@ def build_rdfs_annotations_schema(
     slots: dict,
     version: str = "14.1.0",
     source: str | None = None,
+    enums: dict | None = None,
+    header: dict[str, Any] | None = None,
 ) -> dict:
     subset_name = "gist_rdfs_annotations"
+    prefixes = _base_prefixes()
+    if enums:
+        prefixes.update({
+            "media_app": "https://www.iana.org/assignments/media-types/application/",
+            "media_img": "https://www.iana.org/assignments/media-types/image/",
+            "media_txt": "https://www.iana.org/assignments/media-types/text/",
+        })
     schema: dict[str, Any] = {
         "id": f"{LMODEL_BASE}/rdfs-annotations",
         "name": "gist_rdfs_annotations",
         "title": "gist RDFS Annotations",
         "description": (
-            f"RDFS label and comment annotations for gist classes and properties ({version}). "
+            f"RDFS label and comment annotations for gist classes, properties and "
+            f"named individuals ({version}). "
             "Documentation-layer schema: rdfs:label  -> aliases; "
-            "rdfs:comment DEFINITION:/EXAMPLE:/NOTE: prefixes  -> description/examples/comments."
+            "rdfs:comment DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes  -> "
+            "description/examples/comments/aliases."
         ),
         "license": "CC-BY-4.0",
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
     }
+    _apply_header(schema, header)
     if source:
         schema["source"] = source
     schema.update({
-        "prefixes": _base_prefixes(),
+        "prefixes": prefixes,
         "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types"],
@@ -1270,6 +1386,8 @@ def build_rdfs_annotations_schema(
         "classes": _order_elements(classes, subset_name),
         "slots": _order_elements(slots, subset_name),
     })
+    if enums:
+        schema["enums"] = _tag_enums(enums, subset_name)
     return _order_keys(schema, _SCHEMA_KEY_ORDER)
 
 
@@ -1277,6 +1395,7 @@ def build_sub_class_assertions_schema(
     classes: dict,
     version: str = "14.1.0",
     source: str | None = None,
+    header: dict[str, Any] | None = None,
 ) -> dict:
     subset_name = "gist_sub_class_assertions"
     schema: dict[str, Any] = {
@@ -1292,6 +1411,7 @@ def build_sub_class_assertions_schema(
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
     }
+    _apply_header(schema, header)
     if source:
         schema["source"] = source
     schema.update({
@@ -1416,12 +1536,7 @@ def _file_type(path: Path) -> str:
     return "core"  # default
 
 
-def _write_schema_file(
-    schema: dict,
-    path: Path,
-    report: bool = False,
-    g: Graph | None = None,
-) -> None:
+def _write_schema_file(schema: dict, path: Path) -> None:
     yaml_text = dump_yaml(schema)
     path.write_text(yaml_text, encoding="utf-8")
     n_cls = len(schema.get("classes", {}))
@@ -1436,11 +1551,6 @@ def _write_schema_file(
         f"(classes={n_cls}, slots={n_slt}, enums={n_enm}, enum_values={n_pv})",
         file=sys.stderr,
     )
-    if report and g is not None:
-        print(
-            coverage_report(g, schema.get("classes", {}), schema.get("slots", {}), schema.get("enums", {})),
-            file=sys.stderr,
-        )
 
 
 def generate_per_file_schemas(
@@ -1475,6 +1585,10 @@ def generate_per_file_schemas(
         graphs[ftype] = canonical_graph(g)
         print(f"    {len(g)} triples", file=sys.stderr)
 
+    # The RdfsAnnotations module also labels the ontology IRIs, so every
+    # schema header reads it alongside its own module.
+    g_annot = graphs.get("rdfs_annotations")
+
     # ---- 1. gist_core.yaml ----
     # Enrich with rdfs annotations + subclass assertions for 100% coverage
     print("\nBuilding gist_core.yaml ...", file=sys.stderr)
@@ -1493,8 +1607,10 @@ def generate_per_file_schemas(
         schema_id=f"{LMODEL_BASE}/core",
         schema_name="gist_core",
         source=get_ontology_iri(graphs.get("core", Graph())),
+        header=ontology_header(graphs.get("core", Graph()), g_annot),
     )
-    _write_schema_file(core_schema, output_dir / "gist_core.yaml", report, g_core_enriched)
+    _write_schema_file(core_schema, output_dir / "gist_core.yaml")
+    all_enums = dict(enums)
 
     # ---- 2. gist_media_types.yaml ----
     if "media_types" in graphs:
@@ -1502,9 +1618,11 @@ def generate_per_file_schemas(
         g_media = graphs["media_types"]
         media_enums = extract_enums(g_media)
         media_schema = build_media_types_schema(
-            media_enums, version, source=get_ontology_iri(g_media)
+            media_enums, version, source=get_ontology_iri(g_media),
+            header=ontology_header(g_media, g_annot),
         )
-        _write_schema_file(media_schema, output_dir / "gist_media_types.yaml", report, g_media)
+        _write_schema_file(media_schema, output_dir / "gist_media_types.yaml")
+        all_enums.update(media_enums)
 
     # ---- 3. gist_prefix_declarations.yaml ----
     if "prefix_declarations" in graphs:
@@ -1512,21 +1630,26 @@ def generate_per_file_schemas(
         g_prefix = graphs["prefix_declarations"]
         pv = extract_prefix_declarations(g_prefix)
         prefix_schema = build_prefix_declarations_schema(
-            pv, version, source=get_ontology_iri(g_prefix)
+            pv, version, source=get_ontology_iri(g_prefix),
+            header=ontology_header(g_prefix, g_annot),
         )
-        _write_schema_file(prefix_schema, output_dir / "gist_prefix_declarations.yaml", report, g_prefix)
+        _write_schema_file(prefix_schema, output_dir / "gist_prefix_declarations.yaml")
 
     # ---- 4. gist_rdfs_annotations.yaml ----
-    if "rdfs_annotations" in graphs:
+    if g_annot is not None:
         print("Building gist_rdfs_annotations.yaml ...", file=sys.stderr)
-        g_annot = graphs["rdfs_annotations"]
-        # Use core as context for class-vs-slot classification
-        g_ctx = graphs.get("core", Graph())
+        # Core types the classes and slots; core and media types the individuals
+        g_ctx = Graph()
+        for ftype in ("core", "media_types"):
+            if ftype in graphs:
+                g_ctx += graphs[ftype]
         annot_classes, annot_slots = extract_rdfs_annotations(g_annot, ctx=g_ctx)
+        annot_enums = extract_rdfs_annotation_enums(g_annot, ctx=g_ctx)
         annot_schema = build_rdfs_annotations_schema(
-            annot_classes, annot_slots, version, source=get_ontology_iri(g_annot)
+            annot_classes, annot_slots, version,
+            source=get_ontology_iri(g_annot), enums=annot_enums,
         )
-        _write_schema_file(annot_schema, output_dir / "gist_rdfs_annotations.yaml", report, g_annot)
+        _write_schema_file(annot_schema, output_dir / "gist_rdfs_annotations.yaml")
 
     # ---- 5. gist_sub_class_assertions.yaml ----
     if "sub_class_assertions" in graphs:
@@ -1534,14 +1657,23 @@ def generate_per_file_schemas(
         g_sub = graphs["sub_class_assertions"]
         sub_classes = extract_sub_class_assertions(g_sub)
         sub_schema = build_sub_class_assertions_schema(
-            sub_classes, version, source=get_ontology_iri(g_sub)
+            sub_classes, version, source=get_ontology_iri(g_sub),
+            header=ontology_header(g_sub, g_annot),
         )
-        _write_schema_file(sub_schema, output_dir / "gist_sub_class_assertions.yaml", report, g_sub)
+        _write_schema_file(sub_schema, output_dir / "gist_sub_class_assertions.yaml")
 
     # ---- 6. gist.yaml (main entry-point, imports core + media_types + prefix_declarations) ----
     print("Building gist.yaml ...", file=sys.stderr)
     gist_schema = build_gist_schema(version=version)
     _write_schema_file(gist_schema, output_dir / "gist.yaml")
+
+    if report:
+        # One report over every module: the counts of a single module alone
+        # (a media file has no owl:Class) would read as gaps.
+        g_all = Graph()
+        for g in graphs.values():
+            g_all += g
+        print("\n" + coverage_report(g_all, classes, slots, all_enums), file=sys.stderr)
 
     print(f"\nPer-file generation complete  -> {output_dir}", file=sys.stderr)
 

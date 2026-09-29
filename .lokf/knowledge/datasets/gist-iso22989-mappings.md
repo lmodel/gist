@@ -11,8 +11,8 @@ fields:
     description: gist CURIE being mapped (subject side is always gist).
   - name: subject_label
     description: Label of the gist term.
-  - name: subject_category
-    description: Kind of subject element, e.g. owl:Class.
+  - name: subject_type
+    description: SSSOM entity type of the subject, here owl class.
   - name: predicate_id
     description: SKOS mapping predicate (exactMatch, closeMatch, broadMatch, narrowMatch, relatedMatch).
   - name: predicate_label
@@ -21,8 +21,8 @@ fields:
     description: CURIE of the term in the other vocabulary.
   - name: object_label
     description: Label of the other term.
-  - name: object_category
-    description: Kind of object element, e.g. owl:Class.
+  - name: object_type
+    description: SSSOM entity type of the object, here owl class.
   - name: mapping_justification
     description: semapv justification for the row.
   - name: comment
@@ -44,4 +44,4 @@ status: draft
 
 # gist to ISO/IEC 22989 mappings
 
-`src/gist/mappings/gist-iso22989.sssom.tsv` declares the mapping set `https://w3id.org/lmodel/gist/mappings/gist-iso22989`, version 0.1.0, dated 2026-06-01 and licensed CC BY 4.0. It holds 9 rows: 5 `skos:closeMatch`, 2 `skos:narrowMatch`, 1 `skos:exactMatch` and 1 `skos:relatedMatch`, anchoring terms of the [ISO/IEC 22989 schema](../references/iso22989.md) such as Organization, AIUser and Task to gist's Organization, Person, Event, Task, Determination and KnowledgeConcept. Every row is justified `semapv:LLMBasedMatching`. The [SSSOM overlay](../services/apply-sssom-overlay.md) merges them into the [gist LinkML schema](gist-linkml-schema.md).
+`src/gist/mappings/gist-iso22989.sssom.tsv` declares the mapping set `https://w3id.org/lmodel/gist/mappings/gist-iso22989`, version 0.2.0, dated 2026-09-29 and licensed CC BY 4.0. It holds 9 rows: 4 `skos:narrowMatch`, 4 `skos:relatedMatch` and 1 `skos:closeMatch`, relating gist's Organization, Person, Event, Task, Determination and KnowledgeConcept to terms of the [ISO/IEC 22989 schema](../references/iso22989.md) such as Organization, AIUser and Task. Every row is justified `semapv:LLMBasedMatching`. The [SSSOM overlay](../services/apply-sssom-overlay.md) merges them into the [gist LinkML schema](gist-linkml-schema.md).

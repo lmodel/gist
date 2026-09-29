@@ -2,7 +2,7 @@ id: https://w3id.org/lmodel/gist/rdfs-annotations
 name: gist_rdfs_annotations
 title: gist RDFS Annotations
 description: |-
-  RDFS label and comment annotations for gist classes and properties (14.1.0). Documentation-layer schema: rdfs:label  -> aliases; rdfs:comment DEFINITION:/EXAMPLE:/NOTE: prefixes  -> description/examples/comments.
+  RDFS label and comment annotations for gist classes, properties and named individuals (14.1.0). Documentation-layer schema: rdfs:label  -> aliases; rdfs:comment DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes  -> description/examples/comments/aliases.
 license: CC-BY-4.0
 see_also:
   - https://www.semanticarts.com/gist/
@@ -20,9 +20,12 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
   owl: http://www.w3.org/2002/07/owl#
+  media_app: https://www.iana.org/assignments/media-types/application/
+  media_img: https://www.iana.org/assignments/media-types/image/
+  media_txt: https://www.iana.org/assignments/media-types/text/
 
-  common_domain_model: https://w3id.org/lmodel/common_domain_model/
-  dpvs: https://w3id.org/lmodel/dpvs/
+  common_domain_model: https://w3id.org/lmodel/common-domain-model/
+  dpv: https://w3id.org/lmodel/dpv/
   iso22989: https://w3id.org/lmodel/iso22989/
 default_prefix: gist_linkml
 default_range: string
@@ -34,6 +37,94 @@ subsets:
 
   gist_rdfs_annotations:
     description: Classes and slots annotated from the gist RDFS Annotations module.
+
+enums:
+
+  AspectInstance:
+    description: RDFS annotations of the named instances of gist:Aspect.
+    permissible_values:
+      ASPECT_ALTITUDE:
+        title: altitude
+        description: The aspect altitude.
+        meaning: gistd:_Aspect_altitude
+      ASPECT_AREA:
+        title: area
+        description: The aspect area.
+        meaning: gistd:_Aspect_area
+      ASPECT_DURATION:
+        title: duration
+        description: The aspect duration.
+        meaning: gistd:_Aspect_duration
+      ASPECT_FINANCIAL_BALANCE:
+        title: balance
+        description: The aspect financial balance.
+        meaning: gistd:_Aspect_financial_balance
+      ASPECT_MASS:
+        title: mass
+        description: The aspect mass.
+        meaning: gistd:_Aspect_mass
+      ASPECT_MONETARY_VALUE:
+        title: monetary value
+        description: The aspect monetary value.
+        meaning: gistd:_Aspect_monetary_value
+      ASPECT_PROBABILITY:
+        title: probability
+        description: The aspect probability.
+        meaning: gistd:_Aspect_probability
+      ASPECT_VOLUME:
+        title: volume
+        description: The aspect volume.
+        meaning: gistd:_Aspect_volume
+    in_subset:
+      - gist_rdfs_annotations
+
+  MediaTypeInstance:
+    description: RDFS annotations of the named instances of gist:MediaType.
+    permissible_values:
+      JSON:
+        title: JSON
+        meaning: media_app:json
+      LD_PLUS_JSON:
+        title: JSON-LD
+        meaning: media_app:ld+json
+      N_QUADS:
+        title: N-Quads
+        meaning: media_app:n-quads
+      N_TRIPLES:
+        title: N-Triples
+        meaning: media_app:n-triples
+      RDF_PLUS_XML:
+        title: RDF/XML
+        meaning: media_app:rdf+xml
+      SPARQL_RESULTS_PLUS_JSON:
+        title: SPARQL 1.1 Query Results JSON
+        meaning: media_app:sparql-results+json
+      SPARQL_RESULTS_PLUS_XML:
+        title: SPARQL 1.1 Query Results XML
+        meaning: media_app:sparql-results+xml
+      TRIG:
+        title: TriG
+        meaning: media_app:trig
+      JPG:
+        title: JPG
+        meaning: media_img:jpg
+      PNG:
+        title: PNG
+        meaning: media_img:png
+      CSV:
+        title: CSV
+        meaning: media_txt:csv
+      HTML:
+        title: HTML
+        meaning: media_txt:html
+      PLAIN:
+        title: Plain Text
+        meaning: media_txt:plain
+      TURTLE:
+        title: Turtle
+        meaning: media_txt:turtle
+    in_subset:
+      - gist_rdfs_annotations
 
 slots:
 
@@ -1459,7 +1550,7 @@ classes:
     class_uri: gist:Address
     description: |-
       A reference to a place (real or virtual) that can be located by some routing algorithm and where messages or things can be sent or received.
-    close_mappings:
+    narrow_mappings:
       - common_domain_model:Address
     aliases:
       - Address
@@ -1485,11 +1576,11 @@ classes:
     class_uri: gist:Agreement
     description: |-
       A mutually understood arrangement in which two or more parties make commitments to one another.
-    exact_mappings:
+    close_mappings:
       - common_domain_model:Agreement
-    broad_mappings:
+    narrow_mappings:
       - common_domain_model:MasterAgreement
-      - dpvs:DataProcessingAgreement
+      - dpv:DataProcessingAgreement
     aliases:
       - Agreement
     comments:
@@ -1521,9 +1612,10 @@ classes:
     description: |-
       A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment.
     close_mappings:
+      - common_domain_model:NaturalPersonRole
+    related_mappings:
       - common_domain_model:RelatedParty
       - common_domain_model:Counterparty
-      - common_domain_model:NaturalPersonRole
     aliases:
       - Assignment
     comments:
@@ -1727,8 +1819,8 @@ classes:
     class_uri: gist:ContingentObligation
     description: |-
       An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.
-    close_mappings:
-      - dpvs:Obligation
+    broad_mappings:
+      - dpv:Obligation
     aliases:
       - Contingent Obligation
     comments:
@@ -1740,8 +1832,8 @@ classes:
   Contract:
     class_uri: gist:Contract
     description: An agreement which can be enforced by law.
-    exact_mappings:
-      - dpvs:DpvContract
+    related_mappings:
+      - dpv:Contract
     aliases:
       - Contract
     in_subset:
@@ -1750,7 +1842,7 @@ classes:
   ContractTerm:
     class_uri: gist:ContractTerm
     description: A specification of some aspect of a contract.
-    related_mappings:
+    narrow_mappings:
       - common_domain_model:CollateralProvisions
     aliases:
       - Contract Term
@@ -1827,10 +1919,11 @@ classes:
     class_uri: gist:ElectronicAddress
     description: |-
       An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.
-    close_mappings:
+    related_mappings:
       - common_domain_model:ContactInformation
     aliases:
       - Electronic Address
+      - Virtual Address
     examples:
       - value: |-
           A file system path, website URL, IP address, email address, mobile or landline telephone number.
@@ -1871,12 +1964,11 @@ classes:
     class_uri: gist:Event
     description: |-
       Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.
-    close_mappings:
-      - common_domain_model:BusinessEvent
-      - iso22989:Action
     narrow_mappings:
+      - common_domain_model:BusinessEvent
       - iso22989:AILifecycleProcess
       - iso22989:DataProcess
+      - iso22989:Action
     aliases:
       - Event
     comments:
@@ -1939,8 +2031,8 @@ classes:
   GeoLocation:
     class_uri: gist:GeoLocation
     description: A physical location, with the earth as a frame of reference.
-    close_mappings:
-      - dpvs:StorageLocation
+    narrow_mappings:
+      - dpv:StorageLocation
     aliases:
       - Geographic Location
     comments:
@@ -1960,8 +2052,6 @@ classes:
   GeoRegion:
     class_uri: gist:GeoRegion
     description: A bounded region (or set of regions) on the surface of the Earth.
-    broad_mappings:
-      - dpvs:PersonalSpace
     aliases:
       - Geographic Region
     comments:
@@ -2038,10 +2128,11 @@ classes:
     description: Content that is used to uniquely identify something or someone.
     close_mappings:
       - common_domain_model:Identifier
+      - common_domain_model:AssignedIdentifier
+    narrow_mappings:
       - common_domain_model:PartyIdentifier
       - common_domain_model:PersonIdentifier
       - common_domain_model:EntityIdentifier
-      - common_domain_model:AssignedIdentifier
     aliases:
       - ID
     comments:
@@ -2055,8 +2146,8 @@ classes:
     class_uri: gist:IntellectualProperty
     description: |-
       An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
-    broad_mappings:
-      - dpvs:IntellectualPropertyData
+    related_mappings:
+      - dpv:IntellectualPropertyData
     aliases:
       - Intellectual Property
     comments:
@@ -2144,10 +2235,10 @@ classes:
     class_uri: gist:Magnitude
     description: The amount of a measurable characteristic (aspect).
     close_mappings:
-      - common_domain_model:Money
-      - common_domain_model:Cash
       - common_domain_model:Quantity
       - common_domain_model:Measure
+    narrow_mappings:
+      - common_domain_model:Money
     related_mappings:
       - common_domain_model:Price
     aliases:
@@ -2277,16 +2368,17 @@ classes:
     class_uri: gist:Organization
     description: |-
       A structured entity formed to achieve specific goals, typically involving members with defined roles.
-    exact_mappings:
-      - iso22989:Organization
     close_mappings:
-      - common_domain_model:Party
       - common_domain_model:LegalEntity
-      - common_domain_model:BusinessUnit
-      - dpvs:LegalEntity
     broad_mappings:
-      - dpvs:OrganisationalUnit
-      - dpvs:ThirdParty
+      - common_domain_model:Party
+      - dpv:LegalEntity
+    narrow_mappings:
+      - common_domain_model:BusinessUnit
+      - dpv:OrganisationalUnit
+      - iso22989:Organization
+    related_mappings:
+      - dpv:ThirdParty
     aliases:
       - Organization
     comments:
@@ -2303,7 +2395,7 @@ classes:
     class_uri: gist:Permission
     description: A description of things one is permitted to do.
     exact_mappings:
-      - dpvs:Permission
+      - dpv:Permission
     aliases:
       - Permission
     examples:
@@ -2316,15 +2408,16 @@ classes:
     class_uri: gist:Person
     description: A human being who was or is alive.
     exact_mappings:
-      - dpvs:NaturalPerson
+      - dpv:NaturalPerson
     close_mappings:
       - common_domain_model:NaturalPerson
+    broad_mappings:
+      - common_domain_model:Party
+    narrow_mappings:
+      - dpv:DataSubject
+    related_mappings:
       - iso22989:AIUser
       - iso22989:DataSubject
-    broad_mappings:
-      - dpvs:DataSubject
-    related_mappings:
-      - common_domain_model:Party
     aliases:
       - Person
     examples:
@@ -2346,7 +2439,7 @@ classes:
   PhysicalAddress:
     class_uri: gist:PhysicalAddress
     description: An address that refers to a locatable place within the physical universe.
-    related_mappings:
+    close_mappings:
       - common_domain_model:Address
     aliases:
       - Physical Address
@@ -2424,7 +2517,7 @@ classes:
     class_uri: gist:ProductSpecification
     description: |-
       A description of something that could be physically warehoused or digitally stored and physically or digitally delivered.
-    close_mappings:
+    related_mappings:
       - common_domain_model:TradableProduct
     aliases:
       - Product Specification
@@ -2595,10 +2688,9 @@ classes:
     class_uri: gist:Task
     description: |-
       An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.
-    close_mappings:
-      - iso22989:Task
     related_mappings:
       - common_domain_model:Workflow
+      - iso22989:Task
     aliases:
       - Task
     comments:
@@ -2671,7 +2763,7 @@ classes:
     class_uri: gist:TimeInterval
     description: |-
       A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.
-    close_mappings:
+    related_mappings:
       - common_domain_model:Period
     aliases:
       - Time Interval
@@ -2689,9 +2781,8 @@ classes:
   Transaction:
     class_uri: gist:Transaction
     description: An exchange or transfer of goods, services, or funds.
-    close_mappings:
-      - common_domain_model:Trade
     related_mappings:
+      - common_domain_model:Trade
       - common_domain_model:TradeState
     aliases:
       - Transaction

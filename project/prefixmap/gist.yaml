@@ -1,6 +1,6 @@
 {
-   "common_domain_model": "https://w3id.org/lmodel/common_domain_model/",
-   "dpvs": "https://w3id.org/lmodel/dpvs/",
+   "common_domain_model": "https://w3id.org/lmodel/common-domain-model/",
+   "dpv": "https://w3id.org/lmodel/dpv/",
    "gist": "https://w3id.org/semanticarts/ns/ontology/gist/",
    "gist_linkml": "https://w3id.org/lmodel/gist/",
    "gistd": "https://w3id.org/semanticarts/ns/data/gist/",

@@ -42,12 +42,12 @@ SSSOM mappings
 
 The mapping sets under src/gist/mappings/ are this project's work, licensed
 under CC BY 4.0 as each file's header states. They relate gist terms to the
-LinkML renderings of the FINOS Common Domain Model, DPVs and ISO/IEC
-22989:2022 published under https://w3id.org/lmodel/. Those vocabularies
-remain the work of their own authors under their own terms; the mappings
-cite their terms by identifier and reproduce none of their text. They are
-this project's interpretation, not an official alignment by any of those
-bodies or by Semantic Arts.
+LinkML renderings of the FINOS Common Domain Model, the Data Privacy
+Vocabulary (DPV) and ISO/IEC 22989:2022 published under
+https://w3id.org/lmodel/. Those vocabularies remain the work of their own
+authors under their own terms; the mappings cite their terms by identifier
+and reproduce none of their text. They are this project's interpretation,
+not an official alignment by any of those bodies or by Semantic Arts.
 
 linkml-project-copier
 ---------------------

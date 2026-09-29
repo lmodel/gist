@@ -42,11 +42,11 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Change the converter, not its output.** Edit `scripts/` or `src/gist/mappings/`, then run `just gen-project` and commit the regenerated files with it. `main.yaml` fails a hand edit to `src/gist/schema/`.
+- **Change the converter, not its output.** Edit `scripts/` or `src/gist/mappings/`, then run `just gen-project` and commit the regenerated files with it. `main.yaml` fails a hand edit to `src/gist/schema/` and stale artefacts.
 - **Run the tests**: `just test` (schema generation, `pytest`, and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`; an invalid example fails for a single reason, named in its file name.
 - **Keep gist's namespace gist's.** Nothing new under `gist:` or `gistd:`; additions go under `gist_linkml:`. The [README](README.md#license-and-attribution) says why and the tests check it.
 - **A mapping needs a source on both sides.** Cite both definitions in the pull request; [AI_COVENANT.md](AI_COVENANT.md) says why.
-- **Follow LinkML conventions**: UpperCamelCase classes and enums, snake_case slots, plural names for multivalued slots, a description on every element. `just lint` runs `linkml-lint`; the [LinkML docs](https://linkml.io/linkml/) cover the rest.
+- **Follow LinkML conventions**: UpperCamelCase classes and enums, snake_case slots, plural names for multivalued slots, a description on every element. `just lint` runs `linkml-lint`, and CI fails on its errors; the [LinkML docs](https://linkml.io/linkml/) cover the rest.
 - **Run the pre-commit hooks** on what you staged (`uvx pre-commit run`): ruff, yamllint, codespell, typos and the `uv.lock` check.
 - **Lock files are part of the change.** CI installs with `uv sync --locked`; a dependency edit that does not update `uv.lock` (or `.lokf/uv.lock`) fails the run.
 - **Knowledge-bundle changes**: `cd .lokf && just lokf-validate` must pass, and `knowledge-registrar.yaml` runs on any `.lokf/**` change.

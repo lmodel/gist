@@ -25,3 +25,24 @@ apply-sssom-overlay: gen-linkml
 [group('model development')]
 verify-mappings: apply-sssom-overlay
   uv run python scripts/verify_mappings.py
+
+# Fetches each target's schema folder at the commit pinned in
+# scripts/verify_mapping_targets.py; needs git and network. `just --list`
+# shows a recipe's last comment line, so the summary comes last.
+# Check every SSSOM object term exists in its target schema
+[group('model development')]
+verify-mapping-targets:
+  uv run python scripts/verify_mapping_targets.py
+
+# Compares by content, ignoring generation dates and Turtle triple order,
+# and puts the committed files back afterwards.
+# Check the committed project/ and datamodel artefacts match a fresh gen-project
+[group('model development')]
+verify-generated:
+  uv run python scripts/check_generated_current.py
+
+# Needs network.
+# Check upstream/ is Semantic Arts' latest gist release, byte for byte
+[group('model development')]
+check-upstream:
+  uv run python scripts/check_upstream_release.py
