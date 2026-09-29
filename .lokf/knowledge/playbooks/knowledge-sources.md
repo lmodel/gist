@@ -7,7 +7,7 @@ description: "The librarian's scrape map: every repository location and external
 resource: https://github.com/lmodel/gist
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T10:32:37Z"
+  at: "2026-09-29T11:22:44Z"
 status: draft
 ---
 
@@ -27,8 +27,9 @@ Bootstrap discovery ran 2026-09-29. Steady-state refresh runs re-verify these so
 | `tests/data/`, `tests/test_*.py` | `datasets/test-data`, test counts in the concepts | re-list `tests/data/`; `uv run pytest --collect-only -q` per file |
 | `tests/vendor/semanticarts/` | `datasets/semantic-arts-shapes` | re-list; compare `LICENSE.txt` with the upstream copy |
 | `mkdocs.yml`, `.github/workflows/deploy-docs.yaml`, `https://lmodel.github.io/gist` | `services/documentation-site` | confirm the trigger and the `gen-doc` plus `gh-deploy` steps; fetch the site and the w3id redirect |
-| `.github/workflows/pypi-publish.yaml`, `https://pypi.org/pypi/gist/json` | `playbooks/release` | re-read triggers and environment; check who owns the PyPI name |
+| `.github/workflows/pypi-publish.yaml`, `pyproject.toml`, `https://pypi.org/pypi/lmodel-gist/json` | `playbooks/release` | re-read triggers, environment URL and the distribution name; check who owns the PyPI name |
+| `README.md` (License and attribution), `https://github.com/semanticarts/gist/blob/v14.1.0/README.md`, `config.yaml`, `config.public.mk`, `TestGistNamespace` and `TestGistIrisInArtifacts` | `policies/gist-namespace-policy` | re-read Semantic Arts' license paragraph at the release tag in use; grep `LINKML_GENERATORS_OWL_ARGS` and the `owl`/`shacl` generator args; run the two test classes |
 | `.github/workflows/main.yaml` | CI facts in `services/verify-mappings` and `playbooks/regenerate-schema` | confirm it still runs only `just test` |
 | `https://www.semanticarts.com/gist/`, `https://w3id.org/lmodel/{common_domain_model,dpvs,iso22989}` | the `references/` concepts | external authorities: cite on change |
 
-Not knowledge sources (consciously excluded): `docs/elements/` and `examples/output/` (git-ignored build output), `docs/templates-linkml/` and `docs/js/` (site theming), `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` (copier-template process text), `uv.lock`, `.pre-commit-config.yaml`, `.yamllint.yaml`, `.editorconfig`, `config.public.mk` (tooling), `.github/dependabot.yml`, and the `.lokf/` sidecar itself including `.github/workflows/knowledge-*.yaml`.
+Not knowledge sources (consciously excluded): `docs/elements/` and `examples/output/` (git-ignored build output), `docs/templates-linkml/` and `docs/js/` (site theming), `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` (copier-template process text), `uv.lock`, `.pre-commit-config.yaml`, `.yamllint.yaml`, `.editorconfig` (tooling), `.github/dependabot.yml`, and the `.lokf/` sidecar itself including `.github/workflows/knowledge-*.yaml`.

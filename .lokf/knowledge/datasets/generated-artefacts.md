@@ -49,10 +49,10 @@ derivedFrom:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T10:32:37Z"
+  at: "2026-09-29T11:22:44Z"
 status: draft
 ---
 
 # Generated artefacts
 
-`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `config.yaml` (every generator except markdown, most with `mergeimports: true`), writes the results under `project/`, moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. All of these are committed. None is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). `tests/test_generated_artifacts.py` (14 tests) checks the JSON Schema, OWL and related outputs.
+`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `config.yaml` (every generator except markdown, most with `mergeimports: true`), writes the results under `project/`, moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. It then rewrites `project/owl/gist.owl.ttl` with a separate `gen-owl` call whose flags come from `LINKML_GENERATORS_OWL_ARGS` in `config.public.mk`, so those flags, not `config.yaml`, shape the published OWL. Both keep gist's own IRIs for gist's terms; SHACL shapes are this project's and live in `gist_linkml:` (`gist_linkml:PersonShape` targets `gist:Person`). All of these are committed. None is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). `tests/test_generated_artifacts.py` (18 tests) checks the JSON Schema, OWL and related outputs; four of them check the committed OWL and SHACL against the [gist namespace policy](../policies/gist-namespace-policy.md).

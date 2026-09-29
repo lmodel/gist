@@ -41,6 +41,10 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [DPVs LinkML schema (lmodel)](references/dpvs.md) - object side of the DPVs mappings.
 * [ISO/IEC 22989:2022 LinkML schema (lmodel)](references/iso22989.md) - object side of the ISO/IEC 22989 mappings.
 
+# Policies
+
+* [gist namespace policy](policies/gist-namespace-policy.md) - gist's terms keep Semantic Arts' IRIs; this project's additions live under `gist_linkml`.
+
 # Playbooks
 
 * [Regenerate the schema and its artefacts](playbooks/regenerate-schema.md) - the `just gen-project` pipeline and checks.

@@ -13,7 +13,7 @@ references:
   - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T10:32:37Z"
+  at: "2026-09-29T11:22:44Z"
 status: draft
 ---
 
@@ -22,7 +22,7 @@ status: draft
 1. Run `just install` once (`uv sync --group dev`).
 2. Change the input, never the output: edit a mapping TSV under `src/gist/mappings/`, the [transform script](../services/gist-to-linkml.md), or replace the Turtle files under `upstream/` with a newer gist release.
 3. Run `just gen-project`. It runs, in order, `gen-linkml` (Turtle to LinkML), `apply-sssom-overlay` ([overlay](../services/apply-sssom-overlay.md)), `verify-mappings` ([verifier](../services/verify-mappings.md)), then LinkML's `gen-project` and `gen-pydantic` ([generated artefacts](../datasets/generated-artefacts.md)).
-4. Run `just test`: it re-runs the generators into `tmp/`, regenerates the Python model, runs pytest (233 tests), and converts the test data.
+4. Run `just test`: it re-runs the generators into `tmp/`, regenerates the Python model, runs pytest (256 tests), and converts the test data.
 5. Run `just testdoc` to preview the documentation site, then commit the regenerated `src/gist/schema/`, `src/gist/datamodel/` and `project/` together with the change that caused them.
 
 Step 3 is the only place the mapping check runs, since CI runs only `just test`, so do not skip it.
