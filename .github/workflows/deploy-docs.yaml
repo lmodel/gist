@@ -22,9 +22,17 @@ jobs:
       id-token: write  # allow to generate an OpenID Connect (OIDC) token
 
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
       # https://github.com/actions/checkout
+      # Keeps the checkout credential: `mkdocs gh-deploy` pushes to gh-pages
+      # with it. Nothing untrusted runs here, only this repository's reviewed
+      # code on `main` and the dependencies uv.lock pins.
       - name: Checkout
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
@@ -37,7 +45,7 @@ jobs:
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
           python-version: ${{ matrix.pyversion }}
           enable-cache: true
@@ -45,7 +53,7 @@ jobs:
 
       # https://github.com/actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.pyversion }}
 
@@ -54,7 +62,7 @@ jobs:
           uv tool install rust-just
 
       - name: Install dependencies
-        run: uv sync --group dev --no-progress
+        run: uv sync --locked --group dev --no-progress
 
       - name: Generate schema documentation
         run: |

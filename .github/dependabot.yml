@@ -3,11 +3,41 @@
 
 version: 2
 updates:
+  # This repository's own workflows. Every action is pinned to a commit SHA
+  # with its version in a trailing comment; Dependabot bumps both together.
+  # A SHA pin goes stale silently: actionlint catches syntax drift, not age.
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: monthly
+    commit-message:
+      prefix: "chore(actions)"
     groups:
       github-actions:
         patterns:
           - "*"
+
+  # The package's own tree (pyproject.toml + uv.lock): linkml-runtime at
+  # runtime, the LinkML toolchain and mkdocs for development. main.yaml is
+  # the gate that has to stay green.
+  - package-ecosystem: uv
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      python:
+        patterns:
+          - "*"
+
+  # The .lokf/ sidecar's toolchain (the `lokf` package), kept apart from the
+  # package tree: it maintains the knowledge bundle and has nothing to do
+  # with the schema. A major bump can require concept frontmatter changes,
+  # so these want a human read, not a rubber stamp.
+  - package-ecosystem: uv
+    directory: "/.lokf"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(lokf)"
