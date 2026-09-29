@@ -13,26 +13,36 @@ env:
 
 permissions: {}
 
+concurrency:
+  group: build-and-test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         python-version: ["3.10", "3.12", "3.14"]
       fail-fast: false
 
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
 
       # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
@@ -40,7 +50,7 @@ jobs:
 
       # https://github.com/actions/setup-python
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -49,7 +59,23 @@ jobs:
           uv tool install rust-just
 
       - name: Install project
-        run: uv sync --group dev
+        run: uv sync --locked --group dev
+
+      # src/gist/schema/ is generated from upstream/ and the mappings, and the
+      # converter is deterministic, so regenerating must change nothing. A
+      # hand edit to the schema fails here. project/ and the Python datamodel
+      # embed their generation date, so they cannot be compared this way.
+      # One Python version is enough for a byte comparison.
+      - name: Check the schema matches its converter
+        if: matrix.python-version == '3.14'
+        run: |
+          just verify-mappings
+          if [ -n "$(git status --porcelain -- src/gist/schema)" ]; then
+            git status --short -- src/gist/schema
+            git diff --stat -- src/gist/schema
+            echo "::error::src/gist/schema/ differs from what scripts/ generate. Change the converter or the mappings and run 'just gen-project', not the schema by hand."
+            exit 1
+          fi
 
       - name: Run test suite
         run: just test

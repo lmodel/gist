@@ -52,7 +52,8 @@ annotations and subclass assertions are folded into the schema, and SSSOM
 mappings to other vocabularies are added from [src/gist/mappings/](src/gist/mappings).
 The release is kept unmodified in [upstream/](upstream/gist14.1.0_webDownload)
 with its [LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code
-in this repository is Apache-2.0 ([LICENSE](LICENSE)).
+in this repository is Apache-2.0 ([LICENSE](LICENSE)); [NOTICE](NOTICE) lists
+every third-party work it carries or derives from, and ships in the package.
 
 Semantic Arts also asks that terms used from gist stay in the gist namespace
 and that nobody else defines terms there. The schema and every generated
@@ -69,6 +70,13 @@ artefact hold to both:
 * Tests in [tests/test_schema_validation.py](tests/test_schema_validation.py)
   and [tests/test_generated_artifacts.py](tests/test_generated_artifacts.py)
   check both rules against the vendored release.
+
+## Contributing and security
+
+[CONTRIBUTING.md](CONTRIBUTING.md) is the checklist for a pull request and
+for releasing; [AI_COVENANT.md](AI_COVENANT.md) sets the rules for AI-assisted
+work; [SECURITY.md](SECURITY.md) says how to report a vulnerability. Changes
+are recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 

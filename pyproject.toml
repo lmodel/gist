@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 # The PyPI name "gist" belongs to an unrelated tool; the import package stays gist.
-name = "lmodel-gist"
+name = "gist-linkml"
 description = "GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema"
 authors = [
   {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
 ]
 license = "Apache-2.0"
-license-files = ["LICENSE"]
+license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
 requires-python = ">=3.10"
 dynamic = ["version"]

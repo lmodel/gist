@@ -7,6 +7,11 @@ on:  # yamllint disable-line rule:truthy
 
 permissions: {}
 
+# gh-deploy --force rewrites gh-pages; two at once would race.
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: false
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
@@ -15,16 +20,26 @@ jobs:
       matrix:
         pyversion: ["3.14"]
 
-    # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
+    # A manual run can name any branch; only main's docs are published.
+    if: github.ref == 'refs/heads/main'
+
+    # Pages serves the gh-pages branch, so pushing that branch is the whole
+    # deployment: no `pages` or `id-token` scope is needed.
     permissions:
-      contents: write  # to let mkdocs write the new docs
-      pages: write     # to deploy to Pages
-      id-token: write  # allow to generate an OpenID Connect (OIDC) token
+      contents: write  # to let mkdocs push the new docs to gh-pages
 
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
       # https://github.com/actions/checkout
+      # Keeps the checkout credential: `mkdocs gh-deploy` pushes to gh-pages
+      # with it. The dev dependencies uv.lock pins (mkdocs, its plugins,
+      # jupyter) run while it is on disk; the job runs only from main.
       - name: Checkout
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
@@ -37,7 +52,7 @@ jobs:
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
           python-version: ${{ matrix.pyversion }}
           enable-cache: true
@@ -45,7 +60,7 @@ jobs:
 
       # https://github.com/actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.pyversion }}
 
@@ -54,7 +69,7 @@ jobs:
           uv tool install rust-just
 
       - name: Install dependencies
-        run: uv sync --group dev --no-progress
+        run: uv sync --locked --group dev --no-progress
 
       - name: Generate schema documentation
         run: |

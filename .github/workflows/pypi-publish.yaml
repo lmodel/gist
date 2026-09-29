@@ -2,9 +2,19 @@
 name: Publish Python Package
 
 # Publishes with trusted publishing to
-# - PyPI on releases created in GitHub UI if status is published.
-#   For draft status, nothing happens.
-# - TestPyPI on new tags "v1.2.3" or "v1.2.3.something" on main branch
+# - PyPI when semantic-release.yml dispatches this workflow on the tag it has
+#   just released, or on a release published by hand in the GitHub UI. A
+#   release made by semantic-release does not fire the `release` trigger
+#   (GitHub starts no workflow from an event GITHUB_TOKEN causes), which is
+#   why it dispatches instead; the two never both run for one release.
+# - TestPyPI on a tag "v1.2.3" or "v1.2.3.something" pushed by a person.
+#
+# uv-dynamic-versioning reads the version from the checked-out tag, so a
+# dispatch from anything but a `v*` tag fails rather than uploading a dev
+# version to PyPI.
+#
+# Off until the PYPI_RELEASE_ENABLED repository variable is `true`: every
+# trigger then skips the build, so nothing reaches TestPyPI or PyPI.
 #
 # More on trusted publishing: https://docs.pypi.org/trusted-publishers/
 
@@ -15,50 +25,65 @@ on:  # yamllint disable-line rule:truthy
       # pep 440 version definition [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
       - 'v[0-9]+.[0-9]+.[0-9]+.?*'
       - 'v[0-9]+.[0-9]+.[0-9]+rc[0-9]'
+      # The baseline semantic-release counts from; it is not a release.
+      - '!v0.1.0'
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions: {}
 
 jobs:
   build:
     name: Build Python 🐍 distributions 📦 for publishing
+    if: vars.PYPI_RELEASE_ENABLED == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     strategy:
       matrix:
         pyversion: ["3.14"]
 
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
+      - name: Refuse a dispatch from anything but a version tag
+        if: github.event_name == 'workflow_dispatch' && !startsWith(github.ref, 'refs/tags/v')
+        env:
+          REF: ${{ github.ref }}
+        run: |
+          echo "::error::Run this workflow on a v* tag, not $REF: the version is read from the tag."
+          exit 1
+
       # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@fac544c07dec837d0ccb6301d7b5580bf5edae39 # v8.2.0
         with:
           python-version: ${{ matrix.pyversion }}
           enable-cache: true
 
       # https://github.com/actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: ${{ matrix.pyversion }}
-
-      - name: Install just
-        run: |
-          uv tool install rust-just
 
       - name: Build source and wheel archives
         run: uv build
 
       # https://github.com/actions/upload-artifact
       - name: Store built distribution
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: distribution-files
           path: dist/
@@ -69,13 +94,18 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi-release
-      url: https://pypi.org/p/lmodel-gist
+      url: https://pypi.org/p/gist-linkml
     permissions:
       id-token: write  # this permission is mandatory for trusted publishing
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
       # https://github.com/actions/download-artifact
       - name: Download built distribution
-        uses: actions/download-artifact@v8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: distribution-files
           path: dist
@@ -83,13 +113,13 @@ jobs:
       # https://github.com/pypa/gh-action-pypi-publish
       - name: Publish package 📦 to Test PyPI
         if: github.event_name == 'push'
-        uses: pypa/gh-action-pypi-publish@v1.14.0
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
         with:
           repository-url: https://test.pypi.org/legacy/
           verbose: true
 
       - name: Publish package 📦 to PyPI
-        if: github.event_name == 'release'
-        uses: pypa/gh-action-pypi-publish@v1.14.0
+        if: github.event_name != 'push'
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
         with:
           verbose: true
