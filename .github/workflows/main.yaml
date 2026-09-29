@@ -77,5 +77,31 @@ jobs:
             exit 1
           fi
 
+      # verify-mappings only checks that each mapping reached the gist schema;
+      # this checks that every mapped target term exists in the target schema,
+      # fetched at the commit the script pins.
+      - name: Check the mapped target terms exist
+        if: matrix.python-version == '3.14'
+        run: just verify-mapping-targets
+
+      # project/ and the datamodel embed generation dates, and their OWL and
+      # SHACL come out in a new triple order each run, so the script compares
+      # them by content: Turtle as graphs, JSON and text without the dates.
+      - name: Check the generated artefacts are current
+        if: matrix.python-version == '3.14'
+        run: just verify-generated
+
+      # Errors only; the justfile says why the warnings are by design.
+      - name: Lint the schema
+        if: matrix.python-version == '3.14'
+        run: just lint
+
       - name: Run test suite
+        if: matrix.python-version != '3.14'
         run: just test
+
+      # verify-generated has just run every generator on this leg, so the
+      # suite's own generation pass (_test-schema) would only repeat it.
+      - name: Run test suite (generators already run)
+        if: matrix.python-version == '3.14'
+        run: just _test-python _test-examples

@@ -115,10 +115,14 @@ deploy: site
 [group('model development')]
 test: _test-schema _test-python _test-examples
 
-# Run linting
+# The warnings are by design: the subclass-assertions module's class stubs
+# leave descriptions to gist_core, enum values keep their IANA and prefix
+# names, and gist: stays bound to Semantic Arts' current namespace, not the
+# linter's older one.
+# Run linting, errors only (CI runs the same command)
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+  uv run linkml-lint --ignore-warnings {{source_schema_dir}}
 
 # Generate md documentation for the schema and add artifacts
 [group('model development')]
