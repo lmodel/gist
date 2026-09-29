@@ -6,6 +6,8 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-29
+
 ### Added
 
 - **A LinkML rendering of gist 14.1.0.** `scripts/gist_to_linkml.py` converts the vendored release under `upstream/`, folds in its RDFS annotations and subclass assertions, and gives the same output on every run.
