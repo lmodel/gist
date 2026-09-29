@@ -1,0 +1,95 @@
+gist LinkML Schema (lmodel-gist)
+Copyright 2026 Noel McLoughlin
+
+The code in this repository is licensed under the Apache License,
+Version 2.0 (see LICENSE). Some of the content it carries and generates is
+third-party work under its own terms, listed below.
+
+gist, by Semantic Arts
+----------------------
+
+This product includes and is derived from gist 14.1.0, the upper ontology
+for the enterprise created and published by Semantic Arts:
+https://www.semanticarts.com/gist/ and https://github.com/semanticarts/gist
+
+gist is licensed under the Creative Commons Attribution 4.0 International
+license (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
+
+- upstream/gist14.1.0_webDownload/ holds the release unmodified, with its
+  LICENSE.txt.
+- tests/vendor/semanticarts/ holds ontologyShapes.ttl and
+  property_type_construct.rq, copied unmodified from the validation/
+  folder of semanticarts/gist, with its LICENSE.txt.
+- src/gist/schema/, src/gist/datamodel/, project/ and the published
+  lmodel-gist package are adapted material. Changes made: the OWL modules
+  are converted to LinkML by scripts/gist_to_linkml.py, their RDFS
+  annotations and subclass assertions are folded into the schema, SSSOM
+  mappings to other vocabularies are merged in, and the LinkML toolchain
+  generates the other artefacts from the result.
+
+Every gist class, property and individual keeps its Semantic Arts IRI under
+https://w3id.org/semanticarts/ns/ontology/gist/ (gist:) and
+https://w3id.org/semanticarts/ns/data/gist/ (gistd:). This project defines
+no terms in those namespaces; what it adds lives under
+https://w3id.org/lmodel/gist/ (gist_linkml:).
+
+This is not an official Semantic Arts release, and its use does not imply
+endorsement by Semantic Arts. For reasoning over gist itself, use Semantic
+Arts' own OWL release.
+
+SSSOM mappings
+--------------
+
+The mapping sets under src/gist/mappings/ are this project's work, licensed
+under CC BY 4.0 as each file's header states. They relate gist terms to the
+LinkML renderings of the FINOS Common Domain Model, DPVs and ISO/IEC
+22989:2022 published under https://w3id.org/lmodel/. Those vocabularies
+remain the work of their own authors under their own terms; the mappings
+cite their terms by identifier and reproduce none of their text. They are
+this project's interpretation, not an official alignment by any of those
+bodies or by Semantic Arts.
+
+linkml-project-copier
+---------------------
+
+This project was generated from linkml-project-copier
+(https://github.com/linkml/linkml-project-copier), and its justfile,
+configuration and documentation scaffolding derive from that template:
+
+  The MIT License (MIT)
+  Copyright (c) 2025 David Linke
+
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to permit
+  persons to whom the Software is furnished to do so, subject to the
+  following conditions:
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+  USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Knowledge bundle
+----------------
+
+This product maintains its documentation as a Linked Open Knowledge Format
+(LOKF) bundle under .lokf/: https://lokf.nolan-nichols.com/specification/
+
+LOKF is a semantic profile of the Open Knowledge Format (OKF) specification
+by Google Cloud Platform:
+https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
+
+The scripts under .lokf/scripts/ and .lokf/m365/ and the three
+knowledge-*.yaml workflows under .github/workflows/ are copies of the
+ktl-sidecar templates in knowledge-trust-ladder
+(https://github.com/noelmcloughlin/knowledge-trust-ladder), licensed under
+the Apache License, Version 2.0.
