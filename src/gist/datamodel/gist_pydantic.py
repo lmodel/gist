@@ -1151,8 +1151,7 @@ class GeoPoint(GeoLocation):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & '
-                   '∃latitude.<http://www.w3.org/2001/XMLSchema#double> & '
-                   '∃longitude.<http://www.w3.org/2001/XMLSchema#double>)']})
+                   '∃latitude.xsd:double & ∃longitude.xsd:double)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1347,10 +1346,9 @@ class HistoricalEvent(Event):
          'class_uri': 'gist:HistoricalEvent',
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃actualStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>',
+         'notes': ['OWL subClassOf restrictions: ∃actualStartDateTime.xsd:dateTime',
                    'OWL equivalentClass: (gist:Event & '
-                   '∃actualEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)']})
+                   '∃actualEndDateTime.xsd:dateTime)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1393,8 +1391,7 @@ class ID(Content):
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Content & '
                    '∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | '
-                   'gist:Person) & '
-                   '∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>)']})
+                   'gist:Person) & ∃uniqueText.xsd:string)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1890,8 +1887,9 @@ class Magnitude(GistThing):
          'mixins': ['GistThing'],
          'notes': ['OWL equivalentClass: (∃hasAspect.gist:Aspect & '
                    '∃hasUnitOfMeasure.gist:UnitOfMeasure & '
-                   '∃numericValue.<http://www.w3.org/2000/01/rdf-schema#Literal>)'],
-         'related_mappings': ['common_domain_model:Price']})
+                   '∃numericValue.rdfs:Literal)'],
+         'related_mappings': ['common_domain_model:Price'],
+         'see_also': ['gist:hasAccuracy']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -1929,8 +1927,8 @@ class MediaType(Category):
          'examples': [{'value': 'application/sparql-results+xml'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>']})
+         'notes': ['OWL subClassOf restrictions: ∃uniqueText.xsd:string'],
+         'see_also': ['https://www.iana.org/assignments/media-types/media-types.xhtml']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2159,8 +2157,8 @@ class Offer(ContingentObligation):
          'notes': ['OWL equivalentClass: (gist:ContingentObligation & '
                    '∃hasGiver.(gist:Organization | gist:Person) & '
                    '∃offersToProvide.owl:Thing & ∃offersToReceive.owl:Thing & '
-                   '∃plannedEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime> & '
-                   '∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)']})
+                   '∃plannedEndDateTime.xsd:dateTime & '
+                   '∃plannedStartDateTime.xsd:dateTime)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -2277,8 +2275,7 @@ class OrderedMember(Component):
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Component & '
                    '(∃precedesDirectly.gist:OrderedMember | '
-                   '∃^precedesDirectly.gist:OrderedMember | '
-                   '∃sequence.<http://www.w3.org/2001/XMLSchema#integer>) & '
+                   '∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & '
                    '∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & '
                    '=1isMemberOf)']})
 
@@ -2408,7 +2405,8 @@ class CountryGovernment(GovernmentOrganization):
          'disjoint_with': ['SubCountryGovernment'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: _bnode_; '
+         'notes': ['OWL subClassOf restrictions: '
+                   '=1^isGovernedBy.gist:CountryGeoRegion; '
                    '≤0isGovernedBy.gist:GovernmentOrganization',
                    'OWL equivalentClass: (gist:GovernmentOrganization & '
                    '∃^isGovernedBy.gist:CountryGeoRegion)']})
@@ -3134,7 +3132,7 @@ class ScheduledEvent(Event):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Event & '
-                   '∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)'],
+                   '∃plannedStartDateTime.xsd:dateTime)'],
          'related_mappings': ['common_domain_model:Schedule']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
@@ -3591,8 +3589,7 @@ class Tag(Category):
                       'of the former, the restriction remains valid either way.'],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'notes': ['OWL subClassOf restrictions: '
-                   '∃containedText.<http://www.w3.org/2001/XMLSchema#string>']})
+         'notes': ['OWL subClassOf restrictions: ∃containedText.xsd:string']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3890,8 +3887,7 @@ class Text(ContentExpression):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:ContentExpression & '
-                   '∃isExpressedIn.gist:Language & '
-                   '∃containedText.<http://www.w3.org/2001/XMLSchema#string>)']})
+                   '∃isExpressedIn.gist:Language & ∃containedText.xsd:string)']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],
@@ -3935,8 +3931,8 @@ class TimeInterval(GistThing):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
-         'notes': ['OWL subClassOf restrictions: =1startDateTime; _bnode_; '
-                   '=1endDateTime']})
+         'notes': ['OWL subClassOf restrictions: =1startDateTime; '
+                   '=1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime']})
 
     name: Optional[str] = Field(default=None, description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'aliases': ['name'],
          'domain_of': ['GistThing'],

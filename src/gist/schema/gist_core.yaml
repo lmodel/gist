@@ -2,11 +2,21 @@ id: https://w3id.org/lmodel/gist/core
 name: gist_core
 title: gist Core
 description: |-
-  gist, a upper ontology for the Enterprise.This LinkML schema is generated from gistCore 14.1.0.
-license: CC-BY-4.0
+  gist is a minimalist upper ontology created by Semantic Arts. This LinkML schema is generated from gistCore 14.1.0.
+notes:
+  - 'History: gist 14.1.0 released 2026-Apr-17.'
+  - 'History: gist 14.0.0 released 2025-Oct-31.'
+  - 'History: gist 13.0.0 released 2024-Jul-24.'
+  - 'History: gist 12.1.0 released 2024-Feb-27.'
+  - 'History: gist 12.0.1 released 2023-Jul-28.'
+  - 'History: gist 12.0.0 released 2023-Jul-05.'
+  - 'History: gist 11.1.0 released 2022-Oct-10.'
+  - 'History: gist 11.0.0 released 2022-Apr-11.'
+license: https://creativecommons.org/licenses/by/4.0/
 see_also:
   - https://lmodel.github.io/gist
   - https://www.semanticarts.com/gist/
+  - https://w3id.org/semanticarts/ontology/gistCore14.1.0
 source: https://w3id.org/semanticarts/ontology/gistCore
 version: 14.1.0
 
@@ -46,36 +56,60 @@ enums:
     description: Named instances of gist:Aspect from gist reference data.
     permissible_values:
       ASPECT_ALTITUDE:
-        description: The aspect altitude.
         title: altitude
+        description: The aspect altitude.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_altitude
       ASPECT_AREA:
-        description: The aspect area.
         title: area
+        description: The aspect area.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_area
       ASPECT_DURATION:
-        description: The aspect duration.
         title: duration
+        description: The aspect duration.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_duration
       ASPECT_FINANCIAL_BALANCE:
-        description: The aspect financial balance.
         title: balance
+        description: The aspect financial balance.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_financial_balance
       ASPECT_MASS:
-        description: The aspect mass.
         title: mass
+        description: The aspect mass.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_mass
       ASPECT_MONETARY_VALUE:
-        description: The aspect monetary value.
         title: monetary value
+        description: The aspect monetary value.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_monetary_value
       ASPECT_PROBABILITY:
-        description: The aspect probability.
         title: probability
+        description: The aspect probability.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_probability
       ASPECT_VOLUME:
-        description: The aspect volume.
         title: volume
+        description: The aspect volume.
+        notes:
+          - |-
+            This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_volume
     in_subset:
       - gist_core
@@ -143,6 +177,8 @@ slots:
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      range_includes: gist:Intention
 
   contributes_to:
     slot_uri: gist:contributesTo
@@ -198,12 +234,13 @@ slots:
     examples:
       - value: |-
           Temperature accurate to tenth of a degree C; length accurate to the nearest centimeter.
-    notes:
-      - OWL FunctionalProperty (at most one value)
+    domain: Magnitude
     range: Magnitude
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Magnitude
 
   has_addend:
     slot_uri: gist:hasAddend
@@ -237,10 +274,8 @@ slots:
     description: Relates a magnitude to its aspect (measurable characteristic).
     aliases:
       - has aspect
-    notes:
-      - OWL FunctionalProperty (at most one value)
     range: Aspect
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -310,7 +345,8 @@ slots:
       - value: |-
           An offer is made by a giver; an obligation has a giver who is obligated to another person; a gift is presented by the giver.
     multivalued: true
-    disjoint_with: has_recipient
+    disjoint_with:
+      - has_recipient
     in_subset:
       - gist_core
 
@@ -467,9 +503,7 @@ slots:
     description: Relates a thing to a unique other thing with a broader meaning.
     aliases:
       - has unique broader
-    notes:
-      - OWL FunctionalProperty (at most one value)
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -480,9 +514,7 @@ slots:
       Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.
     aliases:
       - has unique navigational parent
-    notes:
-      - OWL FunctionalProperty (at most one value)
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -550,6 +582,8 @@ slots:
       - range: Person
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Category, gist:ID
 
   is_assignment_of:
     slot_uri: gist:isAssignmentOf
@@ -562,6 +596,7 @@ slots:
         While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified.
     examples:
       - value: Assignment of a person to a project.
+    domain: Assignment
     multivalued: true
     any_of:
       - range: Equipment
@@ -570,6 +605,9 @@ slots:
       - range: Person
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Assignment
+      range_includes: gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person
 
   is_assignment_to:
     slot_uri: gist:isAssignmentTo
@@ -580,9 +618,12 @@ slots:
     comments:
       - |-
         While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified.
+    domain: Assignment
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Assignment
 
   is_based_on:
     slot_uri: gist:isBasedOn
@@ -607,6 +648,8 @@ slots:
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      range_includes: gist:Category
 
   is_connected_to:
     slot_uri: gist:isConnectedTo
@@ -638,10 +681,14 @@ slots:
     description: Relates something to the language it is expressed in.
     aliases:
       - is expressed in
+    domain: Text
     range: Language
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Text
+      range_includes: gist:Language
 
   is_first_member_of:
     is_a: is_member_of
@@ -652,11 +699,9 @@ slots:
     comments:
       - |-
         Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member.
-    notes:
-      - OWL FunctionalProperty (at most one value)
     domain: OrderedMember
     range: OrderedCollection
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -724,6 +769,8 @@ slots:
       - range: Organization
     in_subset:
       - gist_core
+    annotations:
+      range_includes: gist:Collection, gist:Organization
 
   is_part_of:
     slot_uri: gist:isPartOf
@@ -806,6 +853,8 @@ slots:
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      range_includes: gist:GovernmentOrganization
 
   links:
     slot_uri: gist:links
@@ -813,10 +862,14 @@ slots:
       Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.
     aliases:
       - links
+    domain: NetworkLink
     range: NetworkNode
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:NetworkLink
+      range_includes: gist:NetworkNode
 
   links_from:
     is_a: links
@@ -825,10 +878,14 @@ slots:
       Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.
     aliases:
       - links from
+    domain: NetworkLink
     range: NetworkNode
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:NetworkLink
+      range_includes: gist:NetworkNode
 
   links_to:
     is_a: links
@@ -837,10 +894,14 @@ slots:
       Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.
     aliases:
       - links to
+    domain: NetworkLink
     range: NetworkNode
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:NetworkLink
+      range_includes: gist:NetworkNode
 
   occurs_in:
     slot_uri: gist:occursIn
@@ -863,9 +924,12 @@ slots:
     examples:
       - value: |-
           An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.
+    domain: Offer
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Offer
 
   offers_to_receive:
     slot_uri: gist:offersToReceive
@@ -878,9 +942,12 @@ slots:
     examples:
       - value: |-
           A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.
+    domain: Offer
     multivalued: true
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Offer
 
   owns:
     slot_uri: gist:owns
@@ -890,11 +957,9 @@ slots:
     comments:
       - The ultimate form of ownership is the right to destroy.
       - There is a long list of potential range classes.
-    domain: Organization
+    notes:
+      - 'OWL domain: (gist:Organization | gist:Person)'
     multivalued: true
-    any_of:
-      - range: Organization
-      - range: Person
     in_subset:
       - gist_core
 
@@ -975,10 +1040,8 @@ slots:
       Links a member of an ordered collection to the real-world item it represents in that collection.
     aliases:
       - provides order for
-    notes:
-      - OWL FunctionalProperty (at most one value)
     domain: OrderedMember
-    multivalued: true
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -1195,6 +1258,8 @@ slots:
       - value: The string associated with a tag or with text content.
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:Content, gist:ContentExpression, gist:Tag, gist:Text
 
   conversion_factor:
     slot_uri: gist:conversionFactor
@@ -1208,20 +1273,25 @@ slots:
       - value: |-
           In the equation 1 inch = 0.0254 meters, the value 0.0254 is the conversion factor of inch.
     notes:
-      - OWL FunctionalProperty (at most one value)
+      - 'OWL range: (xsd:decimal | xsd:double)'
     domain: UnitOfMeasure
+    multivalued: false
+    any_of:
+      - range: decimal
+      - range: float
     in_subset:
       - gist_core
+    see_also:
+      - gist:conversionOffset
 
   conversion_offset:
     slot_uri: gist:conversionOffset
     description: "\r\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\r\n\r\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\r\n\r\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\r\n\r\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset."
     aliases:
       - conversion offset
-    notes:
-      - OWL FunctionalProperty (at most one value)
     domain: UnitOfMeasure
     range: decimal
+    multivalued: false
     in_subset:
       - gist_core
 
@@ -1289,11 +1359,9 @@ slots:
       - exponent of ampere
     examples:
       - value: "In the equation '1 milliampere = 0.001 x ampere'\r\n\r\n\t\tthe conversionFactor for milliampere is 0.001\r\n\t\tthe exponent of ampere is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1304,11 +1372,9 @@ slots:
       - exponent of bit
     examples:
       - value: "In the equation '1 megabit per second = 1000000 x bit per second'\r\n\r\n\t\tthe conversion factor for megabit per second is 1000000\r\n\t\tthe exponent of bit is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1319,11 +1385,9 @@ slots:
       - exponent of candela
     examples:
       - value: "In the equation '1 candlepower = 1 x candela'\r\n\r\n\t\tthe conversion factor for candlepower is 1\r\n\t\tthe exponent of candela is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1334,11 +1398,9 @@ slots:
       - exponent of Kelvin
     examples:
       - value: "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\r\n\r\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\r\n\t\tthe conversion factor for degree Fahrenheit is 5/9\r\n\t\tthe exponent of Kelvin is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both)."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1349,11 +1411,9 @@ slots:
       - exponent of kilogram
     examples:
       - value: "In the equation '1 millimole per gram = 1 x mole per kilogram'\r\n\r\n\t\tthe conversion factor for millimole per gram is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of kilogram is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1364,11 +1424,9 @@ slots:
       - exponent of meter
     examples:
       - value: "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\r\n\r\n\t\tthe conversion factor for microgram per milliliter is 0.001\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is -3\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1379,11 +1437,9 @@ slots:
       - exponent of mole
     examples:
       - value: "In the equation '1 katal = 1 x mole per second'\r\n\r\n\t\tthe conversion factor for katal is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1396,11 +1452,9 @@ slots:
       - Use when the unit of measure involves a count or other number.
     examples:
       - value: "In the equation '1 beat per minute = 0.016667 x number per second'\r\n\r\n\t\tthe conversion factor for beat per minute is 0.016667\r\n\t\tthe exponent of number is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing beat per minute must be a multiple of number per second."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1415,11 +1469,9 @@ slots:
     examples:
       - value: |-
           Decibel, pH, and octave are units of measure that are logarithmic. Their unit groups have exponent of other = 1.
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1430,11 +1482,9 @@ slots:
       - exponent of radian
     examples:
       - value: "In the equation '1 revolution = 6.283 x radian'\r\n\r\n\t\tthe conversion factor for revolution is 6.283\r\n\t\tthe exponent of radian is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing revolution must be a multiple of radian."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1445,11 +1495,9 @@ slots:
       - exponent of second
     examples:
       - value: "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\r\n\r\n\t\tthe conversion factor for watt-hour is 3600\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is 2\r\n\t\tthe exponent of second is -2\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1462,11 +1510,9 @@ slots:
       - Steradian is a measure of solid angle.
     examples:
       - value: "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\r\n\r\n\t\tthe conversion factor for watt per square meter steradian is 1\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of second is -3\r\n\t\tthe exponent of steradian is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1479,11 +1525,9 @@ slots:
       - The factors for converting from one currency to another change constantly.
     examples:
       - value: "In the equation '1 million dollars per week = 1.65344 x dollar per second'\r\n\r\n\t\tthe conversion factor for million dollars per week is 1.65344\r\n\t\tthe exponent of US Dollar is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing million dollars per week must be a multiple of dollar per second."
-    domain: UnitGroup
+    notes:
+      - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
-    any_of:
-      - range: UnitGroup
-      - range: UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -1552,6 +1596,13 @@ slots:
     description: The actual value of a magnitude.
     aliases:
       - numeric value
+    notes:
+      - |-
+        OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)
+    any_of:
+      - range: integer
+      - range: decimal
+      - range: float
     in_subset:
       - gist_core
 
@@ -1687,9 +1738,12 @@ slots:
     description: A number that specifies the position of an element within a series.
     aliases:
       - sequence
+    domain: OrderedMember
     range: integer
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:OrderedMember
 
   start_date_time:
     is_a: at_date_time
@@ -1713,8 +1767,11 @@ slots:
       - symbol
     examples:
       - value: The ASCII symbol for square meter is m^2.
+    domain: UnitOfMeasure
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:UnitOfMeasure
 
   unique_text:
     is_a: contained_text
@@ -1728,10 +1785,11 @@ slots:
         Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID.
     examples:
       - value: The unique string for a vehicle identification number.
-    notes:
-      - OWL FunctionalProperty (at most one value)
+    multivalued: false
     in_subset:
       - gist_core
+    annotations:
+      domain_includes: gist:ID, gist:MediaType, gist:Tag, gist:Text
 
   domain_includes:
     slot_uri: gist:domainIncludes
@@ -1874,7 +1932,8 @@ classes:
         Rule of thumb: use the least specific aspect that serves the intended purpose, increasing specificity only when required (e.g., to distinguish between two magnitudes attached to the same object).
     examples:
       - value: Length, weight, cost, cycle time, defect rate, wheelbase, billing rate.
-    disjoint_with: Event
+    disjoint_with:
+      - Event
     in_subset:
       - gist_core
 
@@ -1973,7 +2032,8 @@ classes:
     notes:
       - |-
         OWL subClassOf restrictions: ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person)
-    disjoint_with: Event
+    disjoint_with:
+      - Event
     in_subset:
       - gist_core
 
@@ -2036,7 +2096,8 @@ classes:
         This class is not disjoint with gist:Composite, because a component may itself break down into smaller components.
       - |-
         This is an abstract class that is not directly instantiated. Users will define subclasses that are meaningful to their domain of interest.
-    disjoint_with: PhysicalSubstance
+    disjoint_with:
+      - PhysicalSubstance
     in_subset:
       - gist_core
 
@@ -2213,10 +2274,12 @@ classes:
       - |-
         While a country government may enter into treaties with other country governments, there are no governing relationships among the treaty members.
     notes:
-      - 'OWL subClassOf restrictions: _bnode_; ≤0isGovernedBy.gist:GovernmentOrganization'
+      - |-
+        OWL subClassOf restrictions: =1^isGovernedBy.gist:CountryGeoRegion; ≤0isGovernedBy.gist:GovernmentOrganization
       - |-
         OWL equivalentClass: (gist:GovernmentOrganization & ∃^isGovernedBy.gist:CountryGeoRegion)
-    disjoint_with: SubCountryGovernment
+    disjoint_with:
+      - SubCountryGovernment
     in_subset:
       - gist_core
 
@@ -2271,7 +2334,8 @@ classes:
     examples:
       - value: |-
           A file system path, website URL, IP address, email address, mobile or landline telephone number.
-    disjoint_with: PhysicalAddress
+    disjoint_with:
+      - PhysicalAddress
     in_subset:
       - gist_core
 
@@ -2416,7 +2480,7 @@ classes:
       - Geographic Point
     notes:
       - |-
-        OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & ∃latitude.<http://www.w3.org/2001/XMLSchema#double> & ∃longitude.<http://www.w3.org/2001/XMLSchema#double>)
+        OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & ∃latitude.xsd:double & ∃longitude.xsd:double)
     disjoint_with:
       - IntellectualProperty
       - Intention
@@ -2519,7 +2583,8 @@ classes:
       - value: 'Negative example: A corporation, which is owned and therefore not independent.'
       - value: |-
           The State of Washington Office of Financial Management; the Food and Drug Administration; the Scottish Parliament.
-    disjoint_with: IntergovernmentalOrganization
+    disjoint_with:
+      - IntergovernmentalOrganization
     in_subset:
       - gist_core
 
@@ -2531,10 +2596,8 @@ classes:
     aliases:
       - Historical Event
     notes:
-      - |-
-        OWL subClassOf restrictions: ∃actualStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>
-      - |-
-        OWL equivalentClass: (gist:Event & ∃actualEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)
+      - 'OWL subClassOf restrictions: ∃actualStartDateTime.xsd:dateTime'
+      - 'OWL equivalentClass: (gist:Event & ∃actualEndDateTime.xsd:dateTime)'
     in_subset:
       - gist_core
 
@@ -2556,7 +2619,7 @@ classes:
       - value: SSN for a person; serial number for a product; employee ID for a person.
     notes:
       - |-
-        OWL equivalentClass: (gist:Content & ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & ∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>)
+        OWL equivalentClass: (gist:Content & ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & ∃uniqueText.xsd:string)
     in_subset:
       - gist_core
 
@@ -2711,7 +2774,7 @@ classes:
           A model of car could have a wheelbase of 113.2 inches. In this example, the aspect is wheelbase, the unit of measure is inch, and the numeric value is 113.2.
     notes:
       - |-
-        OWL equivalentClass: (∃hasAspect.gist:Aspect & ∃hasUnitOfMeasure.gist:UnitOfMeasure & ∃numericValue.<http://www.w3.org/2000/01/rdf-schema#Literal>)
+        OWL equivalentClass: (∃hasAspect.gist:Aspect & ∃hasUnitOfMeasure.gist:UnitOfMeasure & ∃numericValue.rdfs:Literal)
     disjoint_with:
       - Organization
       - PhysicalIdentifiableItem
@@ -2719,6 +2782,8 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    see_also:
+      - gist:hasAccuracy
 
   MediaType:
     is_a: Category
@@ -2732,10 +2797,11 @@ classes:
     examples:
       - value: application/sparql-results+xml
     notes:
-      - |-
-        OWL subClassOf restrictions: ∃uniqueText.<http://www.w3.org/2001/XMLSchema#string>
+      - 'OWL subClassOf restrictions: ∃uniqueText.xsd:string'
     in_subset:
       - gist_core
+    see_also:
+      - https://www.iana.org/assignments/media-types/media-types.xhtml
 
   Medium:
     is_a: Category
@@ -2828,7 +2894,7 @@ classes:
           An offer to sell a book for a given price; an offer to purchase real estate for a particular price; an offer to swap a sea kayak for a mountain bike; currency exchange. A donation may be modeled as an offer to receive money typically in exchange for $0.00, but sometimes for items of value such as coffee mugs or T-shirts.
     notes:
       - |-
-        OWL equivalentClass: (gist:ContingentObligation & ∃hasGiver.(gist:Organization | gist:Person) & ∃offersToProvide.owl:Thing & ∃offersToReceive.owl:Thing & ∃plannedEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime> & ∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)
+        OWL equivalentClass: (gist:ContingentObligation & ∃hasGiver.(gist:Organization | gist:Person) & ∃offersToProvide.owl:Thing & ∃offersToReceive.owl:Thing & ∃plannedEndDateTime.xsd:dateTime & ∃plannedStartDateTime.xsd:dateTime)
     in_subset:
       - gist_core
 
@@ -2862,7 +2928,7 @@ classes:
           A person may rank 12th in the Boston Marathon but 29th in the New York City Marathon.
     notes:
       - |-
-        OWL equivalentClass: (gist:Component & (∃precedesDirectly.gist:OrderedMember | ∃^precedesDirectly.gist:OrderedMember | ∃sequence.<http://www.w3.org/2001/XMLSchema#integer>) & ∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & =1isMemberOf)
+        OWL equivalentClass: (gist:Component & (∃precedesDirectly.gist:OrderedMember | ∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & ∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & =1isMemberOf)
     in_subset:
       - gist_core
 
@@ -3035,7 +3101,8 @@ classes:
     notes:
       - |-
         OWL subClassOf restrictions: ∃hasMagnitude.∃hasAspect=_Aspect_volume; ∃hasMagnitude.∃hasAspect=_Aspect_mass
-    disjoint_with: UnitOfMeasure
+    disjoint_with:
+      - UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -3143,8 +3210,7 @@ classes:
       - |-
         If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event.
     notes:
-      - |-
-        OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)
+      - 'OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.xsd:dateTime)'
     in_subset:
       - gist_core
 
@@ -3175,7 +3241,8 @@ classes:
     examples:
       - value: |-
           Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.
-    disjoint_with: UnitOfMeasure
+    disjoint_with:
+      - UnitOfMeasure
     deprecated: 'true'
     in_subset:
       - gist_core
@@ -3257,8 +3324,7 @@ classes:
       - |-
         Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way.
     notes:
-      - |-
-        OWL subClassOf restrictions: ∃containedText.<http://www.w3.org/2001/XMLSchema#string>
+      - 'OWL subClassOf restrictions: ∃containedText.xsd:string'
     in_subset:
       - gist_core
 
@@ -3315,7 +3381,8 @@ classes:
     examples:
       - value: |-
           A die in manufacturing is used to make stamped parts; a form provides a structure and fields to be filled in; a cookie cutter is a template for cookies.
-    disjoint_with: UnitOfMeasure
+    disjoint_with:
+      - UnitOfMeasure
     in_subset:
       - gist_core
 
@@ -3351,7 +3418,7 @@ classes:
           Negative example: photographs or scans of text are not text. These instead depict a subject, which happens to be text.
     notes:
       - |-
-        OWL equivalentClass: (gist:ContentExpression & ∃isExpressedIn.gist:Language & ∃containedText.<http://www.w3.org/2001/XMLSchema#string>)
+        OWL equivalentClass: (gist:ContentExpression & ∃isExpressedIn.gist:Language & ∃containedText.xsd:string)
     in_subset:
       - gist_core
 
@@ -3374,7 +3441,8 @@ classes:
       - value: |-
           7pm to 9pm on Jan 1, 2001; fiscal year 2023 (according to some particular definition of fiscal year); the week starting at midnight of January 12, 2023 and lasting exactly 168 hours.
     notes:
-      - 'OWL subClassOf restrictions: =1startDateTime; _bnode_; =1endDateTime'
+      - |-
+        OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime
     in_subset:
       - gist_core
 
@@ -3409,7 +3477,8 @@ classes:
           The units of measure bit, byte, kilobit, kilobyte, etc. are all in the same unit group because they can all be used to measure an amount of data.
     notes:
       - 'OWL subClassOf restrictions: ∃^isMemberOf.gist:UnitOfMeasure'
-    disjoint_with: UnitOfMeasure
+    disjoint_with:
+      - UnitOfMeasure
     in_subset:
       - gist_core
 

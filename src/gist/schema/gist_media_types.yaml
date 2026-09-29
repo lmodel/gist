@@ -2,10 +2,11 @@ id: https://w3id.org/lmodel/gist/media-types
 name: gist_media_types
 title: gist Media Types
 description: |-
-  IANA Media Type named individuals from gist 14.1.0. Imports gist_core for class definitions.
-license: CC-BY-4.0
+  Definitions of IANA Media Types. IANA Media Type named individuals from gist 14.1.0. Imports gist_core for class definitions.
+license: https://creativecommons.org/licenses/by/4.0/
 see_also:
 - https://www.semanticarts.com/gist/
+- https://w3id.org/semanticarts/ontology/gistMediaTypes14.1.0
 source: https://w3id.org/semanticarts/ontology/gistMediaTypes
 version: 14.1.0
 
@@ -44,45 +45,73 @@ enums:
     permissible_values:
       JSON:
         title: JSON
+        annotations:
+          unique_text: application/json
         meaning: media_app:json
       LD_PLUS_JSON:
         title: JSON-LD
+        annotations:
+          unique_text: application/ld+json
         meaning: media_app:ld+json
       N_QUADS:
         title: N-Quads
+        annotations:
+          unique_text: application/n-quads
         meaning: media_app:n-quads
       N_TRIPLES:
         title: N-Triples
+        annotations:
+          unique_text: application/n-triples
         meaning: media_app:n-triples
       RDF_PLUS_XML:
         title: RDF/XML
+        annotations:
+          unique_text: application/rdf+xml
         meaning: media_app:rdf+xml
       SPARQL_RESULTS_PLUS_JSON:
         title: SPARQL 1.1 Query Results JSON
+        annotations:
+          unique_text: application/sparql-results+json
         meaning: media_app:sparql-results+json
       SPARQL_RESULTS_PLUS_XML:
         title: SPARQL 1.1 Query Results XML
+        annotations:
+          unique_text: application/sparql-results+xml
         meaning: media_app:sparql-results+xml
       TRIG:
         title: TriG
+        annotations:
+          unique_text: application/trig
         meaning: media_app:trig
       JPG:
         title: JPG
+        annotations:
+          unique_text: image/jpg
         meaning: media_img:jpg
       PNG:
         title: PNG
+        annotations:
+          unique_text: image/png
         meaning: media_img:png
       CSV:
         title: CSV
+        annotations:
+          unique_text: text/csv
         meaning: media_txt:csv
       HTML:
         title: HTML
+        annotations:
+          unique_text: text/html
         meaning: media_txt:html
       PLAIN:
         title: Plain Text
+        annotations:
+          unique_text: text/plain
         meaning: media_txt:plain
       TURTLE:
         title: Turtle
+        annotations:
+          unique_text: text/turtle
         meaning: media_txt:turtle
     in_subset:
     - gist_media_types

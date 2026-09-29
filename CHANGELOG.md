@@ -20,6 +20,11 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 - **CI fails when `src/gist/schema/` differs from what the converter generates**, so a hand edit to the schema cannot land.
 - **No release before the `v0.1.0` baseline tag exists**, which would otherwise make the first release 1.0.0.
 
+### Fixed
+
+- **The converter no longer loses or bends what gist says.** A union domain was written as an `any_of` range and functional properties were marked multivalued; both are corrected. It now carries `gist:domainIncludes` and `rangeIncludes` as slot annotations, union datatype ranges as `any_of`, `owl:qualifiedCardinality`, `rdfs:seeAlso`, the editorial notes on reference individuals, the `gist:uniqueText` of each media type, and each module's ontology header (definition, license, release history, version IRI).
+- **`disjoint_with` is always a list**, as the LinkML metamodel requires, so `linkml-lint` reports no errors on the schema.
+
 ### Security
 
 - **Every workflow pins its actions to commit SHAs and runs harden-runner in audit mode.** Dependabot now also watches the Python trees at `/` and `/.lokf`, and CI installs with `uv sync --locked`.

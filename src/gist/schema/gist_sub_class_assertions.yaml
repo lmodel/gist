@@ -2,10 +2,14 @@ id: https://w3id.org/lmodel/gist/sub-class-assertions
 name: gist_sub_class_assertions
 title: gist Subclass Assertions
 description: |-
-  Explicit rdfs:subClassOf assertions for gist classes (14.1.0). Supplement for RL reasoners that do not infer subclass relationships from OWL equivalentClass axioms.
-license: CC-BY-4.0
+  Supplementary subclass assertions for gistCore. Explicit rdfs:subClassOf assertions for gist classes (14.1.0). Supplement for RL reasoners that do not infer subclass relationships from OWL equivalentClass axioms.
+comments:
+  - |-
+    This ontology contains supplementary subclass assertions to aid some automated reasoners. For example, while an OWL DL reasoner infers from the class equivalence that gist:Commitment is a subclass of gist:Intention, an RL reasoner does not. More precisely, the ontology contains (1) direct subclass assertions derived using an OWL DL reasoner and (2) the subclass assertions that are already explicit in gistCore.
+license: https://creativecommons.org/licenses/by/4.0/
 see_also:
   - https://www.semanticarts.com/gist/
+  - https://w3id.org/semanticarts/ontology/gistSubClassAssertions14.1.0
 source: https://w3id.org/semanticarts/ontology/gistSubClassAssertions
 version: 14.1.0
 

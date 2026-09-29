@@ -1,5 +1,5 @@
 # vendored releases
-/src/semantic-arts/
+/src/semantic-arts
 
 # generated part of documentation
 /docs/elements/*.md
