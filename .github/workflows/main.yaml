@@ -13,6 +13,10 @@ env:
 
 permissions: {}
 
+concurrency:
+  group: build-and-test-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
 
@@ -32,7 +36,7 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -56,6 +60,22 @@ jobs:
 
       - name: Install project
         run: uv sync --locked --group dev
+
+      # src/gist/schema/ is generated from upstream/ and the mappings, and the
+      # converter is deterministic, so regenerating must change nothing. A
+      # hand edit to the schema fails here. project/ and the Python datamodel
+      # embed their generation date, so they cannot be compared this way.
+      # One Python version is enough for a byte comparison.
+      - name: Check the schema matches its converter
+        if: matrix.python-version == '3.14'
+        run: |
+          just verify-mappings
+          if [ -n "$(git status --porcelain -- src/gist/schema)" ]; then
+            git status --short -- src/gist/schema
+            git diff --stat -- src/gist/schema
+            echo "::error::src/gist/schema/ differs from what scripts/ generate. Change the converter or the mappings and run 'just gen-project', not the schema by hand."
+            exit 1
+          fi
 
       - name: Run test suite
         run: just test
