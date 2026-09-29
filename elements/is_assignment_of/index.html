@@ -521,7 +521,7 @@
 <h1 id="slot-is_assignment_of">Slot: is_assignment_of</h1>
 <p><em>Relates an assignment to the resource it assigns.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/isAssignmentOf">gist:isAssignmentOf</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf">gist:isAssignmentOf</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="properties">Properties</h2>
 <h3 id="type-and-range">Type and Range</h3>
@@ -535,11 +535,11 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../Person/">Person</a>&nbsp;or&nbsp;<br /><a href="../Equipment/">Equipment</a>&nbsp;or&nbsp;<br /><a href="../IntellectualProperty/">IntellectualProperty</a>&nbsp;or&nbsp;<br /><a href="../Organization/">Organization</a></td>
+<td><a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../Equipment/">Equipment</a>&nbsp;or&nbsp;<br /><a href="../IntellectualProperty/">IntellectualProperty</a>&nbsp;or&nbsp;<br /><a href="../Organization/">Organization</a>&nbsp;or&nbsp;<br /><a href="../Person/">Person</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
-<td><a href="https://w3id.org/lmodel/gist/isAssignmentOf">gist:isAssignmentOf</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf">gist:isAssignmentOf</a></td>
 </tr>
 </tbody>
 </table>
@@ -563,10 +563,10 @@
 #### Any Of
 
 Value must satisfy at least one of:
-- AnonymousSlotExpression({'range': 'Person'})
 - AnonymousSlotExpression({'range': 'Equipment'})
 - AnonymousSlotExpression({'range': 'IntellectualProperty'})
 - AnonymousSlotExpression({'range': 'Organization'})
+- AnonymousSlotExpression({'range': 'Person'})
 
 </details>
 <h2 id="in-subsets">In Subsets</h2>
@@ -615,7 +615,7 @@ Value must satisfy at least one of:
 </tr>
 <tr>
 <td>native</td>
-<td>gist:is_assignment_of</td>
+<td>gist_linkml:is_assignment_of</td>
 </tr>
 </tbody>
 </table>
@@ -639,10 +639,10 @@ Value must satisfy at least one of:
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">any_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Person</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equipment</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntellectualProperty</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organization</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Person</span>
 </code></pre></div>
 </details>
 </div>

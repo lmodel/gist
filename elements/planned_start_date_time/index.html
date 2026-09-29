@@ -521,15 +521,15 @@
 <h1 id="slot-planned_start_date_time">Slot: planned_start_date_time</h1>
 <p><em>The date and time that something is or was planned to start, with no implied precision.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/plannedStartDateTime">gist:plannedStartDateTime</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime">gist:plannedStartDateTime</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../at_date_time/">at_date_time</a><ul>
 <li><a href="../start_date_time/">start_date_time</a><ul>
 <li><strong>planned_start_date_time</strong><ul>
-<li><a href="../planned_start_year/">planned_start_year</a></li>
-<li><a href="../planned_start_minute/">planned_start_minute</a></li>
 <li><a href="../planned_start_date/">planned_start_date</a></li>
+<li><a href="../planned_start_minute/">planned_start_minute</a></li>
+<li><a href="../planned_start_year/">planned_start_year</a></li>
 </ul>
 </li>
 </ul>
@@ -553,7 +553,7 @@
 </tr>
 <tr>
 <td>Slot URI</td>
-<td><a href="https://w3id.org/lmodel/gist/plannedStartDateTime">gist:plannedStartDateTime</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime">gist:plannedStartDateTime</a></td>
 </tr>
 </tbody>
 </table>
@@ -582,8 +582,8 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>This property, unlike gist:actualStartDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.</li>
 <li>This is an abstraction over the various precisions of planned start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.</li>
+<li>This property, unlike gist:actualStartDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -605,7 +605,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>gist:planned_start_date_time</td>
+<td>gist_linkml:planned_start_date_time</td>
 </tr>
 </tbody>
 </table>
@@ -615,13 +615,13 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The date and time that something is or was planned to start, with no</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">implied precision.</span>
 <span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is an abstraction over the various precisions of planned start time, and is</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">not expected to be asserted directly. Values of predicates with different precisions</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">can be compared since they are all formally xsd:datetimes.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This property, unlike gist:actualStartDateTime, does not have a subproperty for</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">microsecond precision, because planned times typically are not expressed at that</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">level of granularity. Typically a planned date is in the future when first captured,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">but when tasks run late, we leave the plan where it was and compare it to the actual.</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is an abstraction over the various precisions of planned start time, and is</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">not expected to be asserted directly. Values of predicates with different precisions</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">can be compared since they are all formally xsd:datetimes.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>

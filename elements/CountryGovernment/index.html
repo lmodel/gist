@@ -324,7 +324,7 @@
 <h1 id="class-countrygovernment">Class: CountryGovernment</h1>
 <p><em>A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/CountryGovernment">gist:CountryGovernment</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment">gist:CountryGovernment</a></p>
 <pre class="mermaid"><code> classDiagram
     class CountryGovernment
     click CountryGovernment href "../CountryGovernment/"
@@ -357,7 +357,7 @@
 <tbody>
 <tr>
 <td>Class URI</td>
-<td><a href="https://w3id.org/lmodel/gist/CountryGovernment">gist:CountryGovernment</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment">gist:CountryGovernment</a></td>
 </tr>
 <tr>
 <td>Disjoint With</td>
@@ -404,7 +404,7 @@
 </ul>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>OWL subClassOf restrictions: ≤0isGovernedBy.gist:GovernmentOrganization; <em>bnode</em></li>
+<li>OWL subClassOf restrictions: <em>bnode</em>; ≤0isGovernedBy.gist:GovernmentOrganization</li>
 <li>OWL equivalentClass: (gist:GovernmentOrganization &amp; ∃^isGovernedBy.gist:CountryGeoRegion)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -427,7 +427,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>gist:CountryGovernment</td>
+<td>gist_linkml:CountryGovernment</td>
 </tr>
 </tbody>
 </table>
@@ -440,7 +440,7 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">not governed by some other government organization) and governance over an entity</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">generally recognized as a country.</span>
 <span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">≤0isGovernedBy.gist:GovernmentOrganization;</span><span class="nv"> </span><span class="s">_bnode_'</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">_bnode_;</span><span class="nv"> </span><span class="s">≤0isGovernedBy.gist:GovernmentOrganization'</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:GovernmentOrganization</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃^isGovernedBy.gist:CountryGeoRegion)'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">While a country government may enter into treaties with other country governments,</span>
@@ -463,7 +463,7 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">not governed by some other government organization) and governance over an entity</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">generally recognized as a country.</span>
 <span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">≤0isGovernedBy.gist:GovernmentOrganization;</span><span class="nv"> </span><span class="s">_bnode_'</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">_bnode_;</span><span class="nv"> </span><span class="s">≤0isGovernedBy.gist:GovernmentOrganization'</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:GovernmentOrganization</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃^isGovernedBy.gist:CountryGeoRegion)'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">While a country government may enter into treaties with other country governments,</span>
@@ -498,12 +498,12 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">for a statement of the meaning of a thing and gist:description to describe a</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">thing's attributes, characteristics, or features.</span>
 <span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">The</span><span class="nv"> </span><span class="s">Empire</span><span class="nv"> </span><span class="s">State</span><span class="nv"> </span><span class="s">Building</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">102-story</span><span class="nv"> </span><span class="s">Art</span><span class="nv"> </span><span class="s">Deco</span><span class="nv"> </span><span class="s">skyscraper</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">midtown</span>
 <span class="w">        </span><span class="s">Manhattan</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">York</span><span class="nv"> </span><span class="s">City.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Shreve,</span><span class="nv"> </span><span class="s">Lamb</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Harmon</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">built</span>
 <span class="w">        </span><span class="s">from</span><span class="nv"> </span><span class="s">1930</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1931.</span><span class="se">''</span><span class="s">'</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>

@@ -333,7 +333,7 @@
 <h1 id="class-tasktemplate">Class: TaskTemplate</h1>
 <p><em>An outline of a task of a particular type, which is the basis for executing such tasks.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/TaskTemplate">gist:TaskTemplate</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate">gist:TaskTemplate</a></p>
 <pre class="mermaid"><code> classDiagram
     class TaskTemplate
     click TaskTemplate href "../TaskTemplate/"
@@ -363,7 +363,7 @@
 <tbody>
 <tr>
 <td>Class URI</td>
-<td><a href="https://w3id.org/lmodel/gist/TaskTemplate">gist:TaskTemplate</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate">gist:TaskTemplate</a></td>
 </tr>
 </tbody>
 </table>
@@ -415,8 +415,8 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Use the property isBasedOn to link the Task back to the TaskTemplate.</li>
 <li>A task template may define a single activity or a series of activities; the level of granularity can be varied according to use case. For example, in a new employee onboarding process, signing up for benefits might be one activity, or it might be broken down into signing up for health insurance, signing up for dental insurance, etc.</li>
+<li>Use the property isBasedOn to link the Task back to the TaskTemplate.</li>
 </ul>
 <h2 id="notes">Notes</h2>
 <ul>
@@ -442,7 +442,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>gist:TaskTemplate</td>
+<td>gist_linkml:TaskTemplate</td>
 </tr>
 </tbody>
 </table>
@@ -456,12 +456,12 @@
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:Template</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasGoal.gist:Intention)'</span>
 <span class="nt">comments</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property isBasedOn to link the Task back to the TaskTemplate.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A task template may define a single activity or a series of activities; the level</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">of granularity can be varied according to use case. For example, in a new employee</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">onboarding process, signing up for benefits might be one activity, or it might be</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">broken down into signing up for health insurance, signing up for dental insurance,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">etc.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property isBasedOn to link the Task back to the TaskTemplate.</span>
 <span class="nt">examples</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A business process for onboarding new employees.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
@@ -481,12 +481,12 @@
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:Template</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasGoal.gist:Intention)'</span>
 <span class="nt">comments</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property isBasedOn to link the Task back to the TaskTemplate.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A task template may define a single activity or a series of activities; the level</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">of granularity can be varied according to use case. For example, in a new employee</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">onboarding process, signing up for benefits might be one activity, or it might be</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">broken down into signing up for health insurance, signing up for dental insurance,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">etc.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property isBasedOn to link the Task back to the TaskTemplate.</span>
 <span class="nt">examples</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A business process for onboarding new employees.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
@@ -519,12 +519,12 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">for a statement of the meaning of a thing and gist:description to describe a</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">thing's attributes, characteristics, or features.</span>
 <span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">The</span><span class="nv"> </span><span class="s">Empire</span><span class="nv"> </span><span class="s">State</span><span class="nv"> </span><span class="s">Building</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">102-story</span><span class="nv"> </span><span class="s">Art</span><span class="nv"> </span><span class="s">Deco</span><span class="nv"> </span><span class="s">skyscraper</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">midtown</span>
 <span class="w">        </span><span class="s">Manhattan</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">York</span><span class="nv"> </span><span class="s">City.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Shreve,</span><span class="nv"> </span><span class="s">Lamb</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Harmon</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">built</span>
 <span class="w">        </span><span class="s">from</span><span class="nv"> </span><span class="s">1930</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1931.</span><span class="se">''</span><span class="s">'</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>

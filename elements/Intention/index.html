@@ -315,7 +315,7 @@
 <h1 id="class-intention">Class: Intention</h1>
 <p><em>A goal, desire, or aspiration.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/Intention">gist:Intention</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/Intention">gist:Intention</a></p>
 <pre class="mermaid"><code> classDiagram
     class Intention
     click Intention href "../Intention/"
@@ -323,20 +323,20 @@
         click GistThing href "../GistThing/"
 
 
-      Intention &lt;|-- Specification
-        click Specification href "../Specification/"
-      Intention &lt;|-- Function
-        click Function href "../Function/"
       Intention &lt;|-- Agreement
         click Agreement href "../Agreement/"
       Intention &lt;|-- Commitment
         click Commitment href "../Commitment/"
+      Intention &lt;|-- Function
+        click Function href "../Function/"
       Intention &lt;|-- Permission
         click Permission href "../Permission/"
       Intention &lt;|-- Requirement
         click Requirement href "../Requirement/"
       Intention &lt;|-- Restriction
         click Restriction href "../Restriction/"
+      Intention &lt;|-- Specification
+        click Specification href "../Specification/"
 
 
       Intention : description
@@ -347,13 +347,13 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Intention</strong> [ <a href="../GistThing/">GistThing</a>]<ul>
-<li><a href="../Specification/">Specification</a></li>
-<li><a href="../Function/">Function</a></li>
 <li><a href="../Agreement/">Agreement</a></li>
 <li><a href="../Commitment/">Commitment</a></li>
+<li><a href="../Function/">Function</a></li>
 <li><a href="../Permission/">Permission</a></li>
 <li><a href="../Requirement/">Requirement</a></li>
 <li><a href="../Restriction/">Restriction</a></li>
+<li><a href="../Specification/">Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -368,11 +368,11 @@
 <tbody>
 <tr>
 <td>Class URI</td>
-<td><a href="https://w3id.org/lmodel/gist/Intention">gist:Intention</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/Intention">gist:Intention</a></td>
 </tr>
 <tr>
 <td>Disjoint With</td>
-<td><a href="../Magnitude/">Magnitude</a>, <a href="../PhysicalSubstance/">PhysicalSubstance</a>, <a href="../Organization/">Organization</a>, <a href="../PhysicalIdentifiableItem/">PhysicalIdentifiableItem</a>, <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
+<td><a href="../Magnitude/">Magnitude</a>, <a href="../Organization/">Organization</a>, <a href="../PhysicalIdentifiableItem/">PhysicalIdentifiableItem</a>, <a href="../PhysicalSubstance/">PhysicalSubstance</a>, <a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
 </tr>
 </tbody>
 </table>
@@ -433,7 +433,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>gist:Intention</td>
+<td>gist_linkml:Intention</td>
 </tr>
 </tbody>
 </table>
@@ -455,9 +455,9 @@
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Intention</span>
 <span class="nt">disjoint_with</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalSubstance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organization</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalIdentifiableItem</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalSubstance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitOfMeasure</span>
 </code></pre></div>
 </details>
@@ -498,12 +498,12 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">for a statement of the meaning of a thing and gist:description to describe a</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">thing's attributes, characteristics, or features.</span>
 <span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">The</span><span class="nv"> </span><span class="s">Empire</span><span class="nv"> </span><span class="s">State</span><span class="nv"> </span><span class="s">Building</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">102-story</span><span class="nv"> </span><span class="s">Art</span><span class="nv"> </span><span class="s">Deco</span><span class="nv"> </span><span class="s">skyscraper</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">midtown</span>
 <span class="w">        </span><span class="s">Manhattan</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">York</span><span class="nv"> </span><span class="s">City.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Shreve,</span><span class="nv"> </span><span class="s">Lamb</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Harmon</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">built</span>
 <span class="w">        </span><span class="s">from</span><span class="nv"> </span><span class="s">1930</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1931.</span><span class="se">''</span><span class="s">'</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
@@ -518,9 +518,9 @@
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Intention</span>
 <span class="nt">disjoint_with</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalSubstance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organization</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalIdentifiableItem</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalSubstance</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitOfMeasure</span>
 </code></pre></div>
 </details>

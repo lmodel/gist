@@ -532,7 +532,7 @@
 <h1 id="slot-goes_to_agent">Slot: goes_to_agent</h1>
 <p><em>Relates something to the agent that receives it.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/goesToAgent">gist:goesToAgent</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent">gist:goesToAgent</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../has_participant/">has_participant</a><ul>
@@ -556,7 +556,7 @@
 </tr>
 <tr>
 <td>Slot URI</td>
-<td><a href="https://w3id.org/lmodel/gist/goesToAgent">gist:goesToAgent</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent">gist:goesToAgent</a></td>
 </tr>
 </tbody>
 </table>
@@ -607,8 +607,8 @@ Value must satisfy at least one of:
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the receiving of a gift.</li>
 <li>This is not the inverse of gist:comesFromAgent, as both properties have the message or shipment as the subject.</li>
+<li>This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the receiving of a gift.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -630,7 +630,7 @@ Value must satisfy at least one of:
 </tr>
 <tr>
 <td>native</td>
-<td>gist:goes_to_agent</td>
+<td>gist_linkml:goes_to_agent</td>
 </tr>
 </tbody>
 </table>
@@ -639,13 +639,13 @@ Value must satisfy at least one of:
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">goes_to_agent</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relates something to the agent that receives it.</span>
 <span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is not the inverse of gist:comesFromAgent, as both properties have the message</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or shipment as the subject.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This property is intended to describe the physical or electronic transfer of something,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">such as a package or email, from one agent to another, whereas gist:hasRecipient</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is typically used in more abstract contexts such as agreements, obligations, contracts,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">etc. However, there are contexts in which either may be appropriate, such as the</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">receiving of a gift.</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is not the inverse of gist:comesFromAgent, as both properties have the message</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or shipment as the subject.</span>
 <span class="nt">examples</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A package is sent to a person; a purchase order email is received by a vendor.</span>
 <span class="nt">in_subset</span><span class="p">:</span>

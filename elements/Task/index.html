@@ -324,7 +324,7 @@
 <h1 id="class-task">Class: Task</h1>
 <p><em>An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/lmodel/gist/Task">gist:Task</a></p>
+<p>URI: <a href="https://w3id.org/semanticarts/ns/ontology/gist/Task">gist:Task</a></p>
 <pre class="mermaid"><code> classDiagram
     class Task
     click Task href "../Task/"
@@ -332,8 +332,6 @@
         click Event href "../Event/"
 
 
-      Task &lt;|-- ScheduledTask
-        click ScheduledTask href "../ScheduledTask/"
       Task &lt;|-- Project
         click Project href "../Project/"
 
@@ -347,7 +345,6 @@
 <ul>
 <li><a href="../Event/">Event</a> [ <a href="../GistThing/">GistThing</a>]<ul>
 <li><strong>Task</strong><ul>
-<li><a href="../ScheduledTask/">ScheduledTask</a></li>
 <li><a href="../Project/">Project</a></li>
 </ul>
 </li>
@@ -365,7 +362,7 @@
 <tbody>
 <tr>
 <td>Class URI</td>
-<td><a href="https://w3id.org/lmodel/gist/Task">gist:Task</a></td>
+<td><a href="https://w3id.org/semanticarts/ns/ontology/gist/Task">gist:Task</a></td>
 </tr>
 </tbody>
 </table>
@@ -404,9 +401,9 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
+<li>Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.</li>
 <li>This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task.</li>
 <li>Use the property gist:isBasedOn to link a task back to the task template.</li>
-<li>Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.</li>
 </ul>
 <h2 id="notes">Notes</h2>
 <ul>
@@ -432,7 +429,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>gist:Task</td>
+<td>gist_linkml:Task</td>
 </tr>
 <tr>
 <td>related</td>
@@ -454,6 +451,10 @@
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:Event</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasGoal.gist:Intention)'</span>
 <span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Something that could potentially be executed, which is merely described but not</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">proposed in any specific way, such as a business process for onboarding a new employee,</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or the steps in a recipe for making polyethylene from ethylene, is not a task but</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">rather a task template.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This term is broader than the English word 'task,' which implies assignment, responsibility,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or duty. In ordinary English going to a concert has a goal but is (generally) done</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">for pleasure rather than out of obligation, and would not be considered a task,</span>
@@ -461,10 +462,6 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">deliberate, so that anything that has a goal and can be specified by a task template</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is a task.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property gist:isBasedOn to link a task back to the task template.</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Something that could potentially be executed, which is merely described but not</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">proposed in any specific way, such as a business process for onboarding a new employee,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or the steps in a recipe for making polyethylene from ethylene, is not a task but</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">rather a task template.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
@@ -486,6 +483,10 @@
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(gist:Event</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasGoal.gist:Intention)'</span>
 <span class="nt">comments</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Something that could potentially be executed, which is merely described but not</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">proposed in any specific way, such as a business process for onboarding a new employee,</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or the steps in a recipe for making polyethylene from ethylene, is not a task but</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">rather a task template.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This term is broader than the English word 'task,' which implies assignment, responsibility,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or duty. In ordinary English going to a concert has a goal but is (generally) done</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">for pleasure rather than out of obligation, and would not be considered a task,</span>
@@ -493,10 +494,6 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">deliberate, so that anything that has a goal and can be specified by a task template</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is a task.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use the property gist:isBasedOn to link a task back to the task template.</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Something that could potentially be executed, which is merely described but not</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">proposed in any specific way, such as a business process for onboarding a new employee,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or the steps in a recipe for making polyethylene from ethylene, is not a task but</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">rather a task template.</span>
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
@@ -531,12 +528,12 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">for a statement of the meaning of a thing and gist:description to describe a</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">thing's attributes, characteristics, or features.</span>
 <span class="w">    </span><span class="nt">examples</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">'</span><span class="se">''</span><span class="s">The</span><span class="nv"> </span><span class="s">Empire</span><span class="nv"> </span><span class="s">State</span><span class="nv"> </span><span class="s">Building</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">102-story</span><span class="nv"> </span><span class="s">Art</span><span class="nv"> </span><span class="s">Deco</span><span class="nv"> </span><span class="s">skyscraper</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">midtown</span>
 <span class="w">        </span><span class="s">Manhattan</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">New</span><span class="nv"> </span><span class="s">York</span><span class="nv"> </span><span class="s">City.</span><span class="nv"> </span><span class="s">It</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">designed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Shreve,</span><span class="nv"> </span><span class="s">Lamb</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Harmon</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">built</span>
 <span class="w">        </span><span class="s">from</span><span class="nv"> </span><span class="s">1930</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">1931.</span><span class="se">''</span><span class="s">'</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A person does not have a definition, but might be described as being</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">six feet tall with brown hair and blue eyes; an ontology class or taxonomy</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">term has a definition.</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>

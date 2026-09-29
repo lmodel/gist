@@ -329,6 +329,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -345,6 +363,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-and-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License and attribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -370,6 +429,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#license-and-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License and attribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -390,10 +479,48 @@
 
 
 <h1 id="about-gist">About gist</h1>
-<p>GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema</p>
+<p>A LinkML rendering of <a href="https://www.semanticarts.com/gist/">gist</a>, Semantic
+Arts' minimalist upper ontology for the enterprise, from release 14.1.0.</p>
+<h2 id="license-and-attribution">License and attribution</h2>
+<p>gist is published by Semantic Arts under
+<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. This schema is
+derived from the 14.1.0 release: its OWL modules are converted to LinkML, its
+annotations folded in, and SSSOM mappings to other vocabularies added. Semantic
+Arts asks that terms used from gist stay in the gist namespace and that nobody
+else defines terms there; this schema does both.</p>
+<h2 id="namespaces">Namespaces</h2>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Namespace</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gist</code></td>
+<td><code>https://w3id.org/semanticarts/ns/ontology/gist/</code></td>
+<td>gist's classes and properties (Semantic Arts)</td>
+</tr>
+<tr>
+<td><code>gistd</code></td>
+<td><code>https://w3id.org/semanticarts/ns/data/gist/</code></td>
+<td>gist's named individuals (Semantic Arts)</td>
+</tr>
+<tr>
+<td><code>gist_linkml</code></td>
+<td><code>https://w3id.org/lmodel/gist/</code></td>
+<td>what this rendering adds: schema documents, the <code>GistThing</code> mixin, enums, subsets, SHACL shapes, LinkML element definitions</td>
+</tr>
+</tbody>
+</table>
+<p>For reasoning over gist itself, use Semantic Arts' own OWL release; the OWL
+generated here is a projection of the LinkML schema.</p>
 <h1 id="references">References</h1>
 <ul>
-<li><a href="https://www.semanticarts.com/gist/">Gist</a></li>
+<li><a href="https://www.semanticarts.com/gist/">gist</a></li>
+<li><a href="https://github.com/semanticarts/gist">gist on GitHub</a></li>
 </ul>
 
 
