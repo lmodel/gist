@@ -1,0 +1,51 @@
+# mapping_set_id: https://w3id.org/lmodel/gist/mappings/gist-cdm
+# mapping_set_version: "1.0"
+# mapping_set_title: gist to FINOS Common Domain Model mappings
+# mapping_set_description: Manually curated SSSOM mappings from the gist upper ontology (Semantic Arts) to classes of the FINOS Common Domain Model (CDM), as rendered in LinkML by lmodel/common-domain-model.
+# license: https://creativecommons.org/licenses/by/4.0/
+# subject_source: semanticarts:gistCore
+# subject_source_version: "14.1.0"
+# object_source: lmodel:common-domain-model
+# mapping_date: 2026-09-29
+# curie_map:
+#   common_domain_model: https://w3id.org/lmodel/common-domain-model/
+#   gist: https://w3id.org/semanticarts/ns/ontology/gist/
+#   lmodel: https://w3id.org/lmodel/
+#   semanticarts: https://w3id.org/semanticarts/ontology/
+#   semapv: https://w3id.org/semapv/vocab/
+#   skos: http://www.w3.org/2004/02/skos/core#
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	comment
+gist:Organization	Organization	skos:broadMatch	common_domain_model:Party	Party	semapv:ManualMappingCuration	CDM Party covers both legal entities and natural persons, so it is broader than gist Organization
+gist:Person	Person	skos:broadMatch	common_domain_model:Party	Party	semapv:ManualMappingCuration	CDM Party covers both natural persons and legal entities, so it is broader than gist Person
+gist:Organization	Organization	skos:closeMatch	common_domain_model:LegalEntity	LegalEntity	semapv:ManualMappingCuration	CDM LegalEntity is an organisation recognised in law, named and optionally identified by an LEI
+gist:GovernmentOrganization	Government Organization	skos:broadMatch	common_domain_model:LegalEntity	LegalEntity	semapv:ManualMappingCuration	gist GovernmentOrganization is a narrower kind of LegalEntity
+gist:Person	Person	skos:closeMatch	common_domain_model:NaturalPerson	NaturalPerson	semapv:ManualMappingCuration	Both represent a human individual
+gist:Account	Account	skos:closeMatch	common_domain_model:Account	Account	semapv:ManualMappingCuration	Both model a financial or custodial account
+gist:Address	Address	skos:narrowMatch	common_domain_model:Address	Address	semapv:ManualMappingCuration	CDM Address is a postal or street address only, while gist Address also covers electronic addresses
+gist:PhysicalAddress	Physical Address	skos:closeMatch	common_domain_model:Address	Address	semapv:ManualMappingCuration	CDM Address is a postal or street address, a physical address
+gist:ElectronicAddress	Electronic Address	skos:relatedMatch	common_domain_model:ContactInformation	ContactInformation	semapv:ManualMappingCuration	CDM ContactInformation bundles a party's telephone, postal address, email and web page; it holds electronic addresses but is not one
+gist:Organization	Organization	skos:narrowMatch	common_domain_model:BusinessUnit	BusinessUnit	semapv:ManualMappingCuration	CDM BusinessUnit is an organisational unit, a narrower kind of organization
+gist:ID	ID	skos:closeMatch	common_domain_model:Identifier	Identifier	semapv:ManualMappingCuration	Both represent an identifier, which CDM can associate with its issuer
+gist:ID	ID	skos:narrowMatch	common_domain_model:PartyIdentifier	PartyIdentifier	semapv:ManualMappingCuration	An identifier issued for a party
+gist:ID	ID	skos:narrowMatch	common_domain_model:PersonIdentifier	PersonIdentifier	semapv:ManualMappingCuration	An identifier issued for a natural person
+gist:ID	ID	skos:narrowMatch	common_domain_model:EntityIdentifier	EntityIdentifier	semapv:ManualMappingCuration	An identifier issued for a legal entity, such as an LEI
+gist:ID	ID	skos:closeMatch	common_domain_model:AssignedIdentifier	AssignedIdentifier	semapv:ManualMappingCuration	An identifier value together with its version
+gist:Magnitude	Magnitude	skos:narrowMatch	common_domain_model:Money	Money	semapv:ManualMappingCuration	CDM Money is a quantity in a currency, one kind of magnitude
+gist:Magnitude	Magnitude	skos:relatedMatch	common_domain_model:Price	Price	semapv:ManualMappingCuration	CDM Price is a typed magnitude in market terms
+gist:Magnitude	Magnitude	skos:closeMatch	common_domain_model:Quantity	Quantity	semapv:ManualMappingCuration	A value with a unit of measure
+gist:Magnitude	Magnitude	skos:closeMatch	common_domain_model:Measure	Measure	semapv:ManualMappingCuration	A measured value with an optional unit
+gist:UnitOfMeasure	Unit of Measure	skos:closeMatch	common_domain_model:UnitType	UnitType	semapv:ManualMappingCuration	CDM UnitType selects the unit of measure, including a currency, for a price or quantity
+gist:TimeInterval	Time Interval	skos:relatedMatch	common_domain_model:Period	Period	semapv:ManualMappingCuration	CDM Period is a recurring period or time offset such as 3M, a duration with no start or end
+gist:ScheduledEvent	Scheduled Event	skos:relatedMatch	common_domain_model:Schedule	Schedule	semapv:ManualMappingCuration	CDM Schedule is a series of step dates carrying rate or amount values; gist ScheduledEvent is one planned occurrence
+gist:Transaction	Transaction	skos:relatedMatch	common_domain_model:Trade	Trade	semapv:ManualMappingCuration	CDM Trade is the output of a financial transaction, the resulting position rather than the exchange itself
+gist:Transaction	Transaction	skos:relatedMatch	common_domain_model:TradeState	TradeState	semapv:ManualMappingCuration	TradeState wraps a Trade with its life-cycle state
+gist:Agreement	Agreement	skos:closeMatch	common_domain_model:Agreement	Agreement	semapv:ManualMappingCuration	CDM Agreement specifies the standard terms of a legal agreement rather than the agreement itself
+gist:Agreement	Agreement	skos:narrowMatch	common_domain_model:MasterAgreement	MasterAgreement	semapv:ManualMappingCuration	CDM MasterAgreement holds the elections of an ISDA Master Agreement, a specific kind of agreement
+gist:Event	Event	skos:narrowMatch	common_domain_model:BusinessEvent	BusinessEvent	semapv:ManualMappingCuration	CDM BusinessEvent is a trade life-cycle event, a narrower kind of event
+gist:Task	Task	skos:relatedMatch	common_domain_model:Workflow	Workflow	semapv:ManualMappingCuration	Workflow groups tasks; gist Task models a unit of work
+gist:Assignment	Assignment	skos:relatedMatch	common_domain_model:RelatedParty	RelatedParty	semapv:ManualMappingCuration	CDM RelatedParty pairs a party with a role; gist Assignment also records the assigner and the time span
+gist:Assignment	Assignment	skos:relatedMatch	common_domain_model:Counterparty	Counterparty	semapv:ManualMappingCuration	CDM Counterparty binds a party reference to the Party1 or Party2 role
+gist:Assignment	Assignment	skos:closeMatch	common_domain_model:NaturalPersonRole	NaturalPersonRole	semapv:ManualMappingCuration	Role assignment for a natural person
+gist:Specification	Specification	skos:relatedMatch	common_domain_model:EligibleCollateralCriteria	EligibleCollateralCriteria	semapv:ManualMappingCuration	Specification of acceptable collateral
+gist:ContractTerm	Contract Term	skos:narrowMatch	common_domain_model:CollateralProvisions	CollateralProvisions	semapv:ManualMappingCuration	Collateral provisions are one kind of contract term
+gist:ProductSpecification	Product Specification	skos:relatedMatch	common_domain_model:TradableProduct	TradableProduct	semapv:ManualMappingCuration	CDM TradableProduct is a product together with its price, quantity and counterparties, ready to trade

@@ -26,8 +26,8 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   owl: http://www.w3.org/2002/07/owl#
 
-  common_domain_model: https://w3id.org/lmodel/common_domain_model/
-  dpvs: https://w3id.org/lmodel/dpvs/
+  common_domain_model: https://w3id.org/lmodel/common-domain-model/
+  dpv: https://w3id.org/lmodel/dpv/
   iso22989: https://w3id.org/lmodel/iso22989/
 default_prefix: gist_linkml
 default_range: string
@@ -53,7 +53,7 @@ classes:
   Address:
     is_a: Content
     class_uri: gist:Address
-    close_mappings:
+    narrow_mappings:
       - common_domain_model:Address
     in_subset:
       - gist_sub_class_assertions
@@ -67,11 +67,11 @@ classes:
   Agreement:
     is_a: Intention
     class_uri: gist:Agreement
-    exact_mappings:
+    close_mappings:
       - common_domain_model:Agreement
-    broad_mappings:
+    narrow_mappings:
       - common_domain_model:MasterAgreement
-      - dpvs:DataProcessingAgreement
+      - dpv:DataProcessingAgreement
     in_subset:
       - gist_sub_class_assertions
 
@@ -79,9 +79,10 @@ classes:
     is_a: TemporalRelation
     class_uri: gist:Assignment
     close_mappings:
+      - common_domain_model:NaturalPersonRole
+    related_mappings:
       - common_domain_model:RelatedParty
       - common_domain_model:Counterparty
-      - common_domain_model:NaturalPersonRole
     in_subset:
       - gist_sub_class_assertions
 
@@ -142,23 +143,23 @@ classes:
   ContingentObligation:
     is_a: Commitment
     class_uri: gist:ContingentObligation
-    close_mappings:
-      - dpvs:Obligation
+    broad_mappings:
+      - dpv:Obligation
     in_subset:
       - gist_sub_class_assertions
 
   Contract:
     is_a: Agreement
     class_uri: gist:Contract
-    exact_mappings:
-      - dpvs:DpvContract
+    related_mappings:
+      - dpv:Contract
     in_subset:
       - gist_sub_class_assertions
 
   ContractTerm:
     is_a: Specification
     class_uri: gist:ContractTerm
-    related_mappings:
+    narrow_mappings:
       - common_domain_model:CollateralProvisions
     in_subset:
       - gist_sub_class_assertions
@@ -204,7 +205,7 @@ classes:
   ElectronicAddress:
     is_a: Address
     class_uri: gist:ElectronicAddress
-    close_mappings:
+    related_mappings:
       - common_domain_model:ContactInformation
     in_subset:
       - gist_sub_class_assertions
@@ -260,8 +261,6 @@ classes:
   GeoRegion:
     is_a: GeoLocation
     class_uri: gist:GeoRegion
-    broad_mappings:
-      - dpvs:PersonalSpace
     in_subset:
       - gist_sub_class_assertions
 
@@ -302,10 +301,11 @@ classes:
     class_uri: gist:ID
     close_mappings:
       - common_domain_model:Identifier
+      - common_domain_model:AssignedIdentifier
+    narrow_mappings:
       - common_domain_model:PartyIdentifier
       - common_domain_model:PersonIdentifier
       - common_domain_model:EntityIdentifier
-      - common_domain_model:AssignedIdentifier
     in_subset:
       - gist_sub_class_assertions
 
@@ -393,7 +393,7 @@ classes:
     is_a: Intention
     class_uri: gist:Permission
     exact_mappings:
-      - dpvs:Permission
+      - dpv:Permission
     in_subset:
       - gist_sub_class_assertions
 
@@ -401,15 +401,16 @@ classes:
     is_a: LivingThing
     class_uri: gist:Person
     exact_mappings:
-      - dpvs:NaturalPerson
+      - dpv:NaturalPerson
     close_mappings:
       - common_domain_model:NaturalPerson
+    broad_mappings:
+      - common_domain_model:Party
+    narrow_mappings:
+      - dpv:DataSubject
+    related_mappings:
       - iso22989:AIUser
       - iso22989:DataSubject
-    broad_mappings:
-      - dpvs:DataSubject
-    related_mappings:
-      - common_domain_model:Party
     in_subset:
       - gist_sub_class_assertions
 
@@ -422,7 +423,7 @@ classes:
   PhysicalAddress:
     is_a: Address
     class_uri: gist:PhysicalAddress
-    related_mappings:
+    close_mappings:
       - common_domain_model:Address
     in_subset:
       - gist_sub_class_assertions
@@ -448,7 +449,7 @@ classes:
   ProductSpecification:
     is_a: CatalogItem
     class_uri: gist:ProductSpecification
-    close_mappings:
+    related_mappings:
       - common_domain_model:TradableProduct
     in_subset:
       - gist_sub_class_assertions
@@ -534,10 +535,9 @@ classes:
   Task:
     is_a: Event
     class_uri: gist:Task
-    close_mappings:
-      - iso22989:Task
     related_mappings:
       - common_domain_model:Workflow
+      - iso22989:Task
     in_subset:
       - gist_sub_class_assertions
 
@@ -556,9 +556,8 @@ classes:
   Transaction:
     is_a: Event
     class_uri: gist:Transaction
-    close_mappings:
-      - common_domain_model:Trade
     related_mappings:
+      - common_domain_model:Trade
       - common_domain_model:TradeState
     in_subset:
       - gist_sub_class_assertions
@@ -591,26 +590,25 @@ classes:
 
   Event:
     class_uri: gist:Event
-    close_mappings:
-      - common_domain_model:BusinessEvent
-      - iso22989:Action
     narrow_mappings:
+      - common_domain_model:BusinessEvent
       - iso22989:AILifecycleProcess
       - iso22989:DataProcess
+      - iso22989:Action
     in_subset:
       - gist_sub_class_assertions
 
   GeoLocation:
     class_uri: gist:GeoLocation
-    close_mappings:
-      - dpvs:StorageLocation
+    narrow_mappings:
+      - dpv:StorageLocation
     in_subset:
       - gist_sub_class_assertions
 
   IntellectualProperty:
     class_uri: gist:IntellectualProperty
-    broad_mappings:
-      - dpvs:IntellectualPropertyData
+    related_mappings:
+      - dpv:IntellectualPropertyData
     in_subset:
       - gist_sub_class_assertions
 
@@ -622,10 +620,10 @@ classes:
   Magnitude:
     class_uri: gist:Magnitude
     close_mappings:
-      - common_domain_model:Money
-      - common_domain_model:Cash
       - common_domain_model:Quantity
       - common_domain_model:Measure
+    narrow_mappings:
+      - common_domain_model:Money
     related_mappings:
       - common_domain_model:Price
     in_subset:
@@ -633,16 +631,17 @@ classes:
 
   Organization:
     class_uri: gist:Organization
-    exact_mappings:
-      - iso22989:Organization
     close_mappings:
-      - common_domain_model:Party
       - common_domain_model:LegalEntity
-      - common_domain_model:BusinessUnit
-      - dpvs:LegalEntity
     broad_mappings:
-      - dpvs:OrganisationalUnit
-      - dpvs:ThirdParty
+      - common_domain_model:Party
+      - dpv:LegalEntity
+    narrow_mappings:
+      - common_domain_model:BusinessUnit
+      - dpv:OrganisationalUnit
+      - iso22989:Organization
+    related_mappings:
+      - dpv:ThirdParty
     in_subset:
       - gist_sub_class_assertions
 

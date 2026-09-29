@@ -1,0 +1,29 @@
+# mapping_set_id: https://w3id.org/lmodel/gist/mappings/gist-dpv
+# mapping_set_version: "1.1"
+# mapping_set_title: gist to DPV mappings
+# mapping_set_description: Alignments from the gist upper ontology (Semantic Arts) to the Data Privacy Vocabulary (DPV) as rendered in LinkML by lmodel/dpv, grounding DPV entities, agreements, contracts, rules, intellectual property and locations in gist.
+# license: https://creativecommons.org/licenses/by/4.0/
+# subject_source: semanticarts:gistCore
+# subject_source_version: "14.1.0"
+# object_source: lmodel:dpv
+# object_source_version: "2.3"
+# mapping_date: 2026-09-29
+# curie_map:
+#   dpv: https://w3id.org/lmodel/dpv/
+#   gist: https://w3id.org/semanticarts/ns/ontology/gist/
+#   lmodel: https://w3id.org/lmodel/
+#   semanticarts: https://w3id.org/semanticarts/ontology/
+#   semapv: https://w3id.org/semapv/vocab/
+#   skos: http://www.w3.org/2004/02/skos/core#
+subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	comment
+gist:Agreement	Agreement	skos:narrowMatch	dpv:DataProcessingAgreement	Data Processing Agreement	semapv:LLMBasedMatching	A data processing agreement is one kind of agreement
+gist:Person	Person	skos:narrowMatch	dpv:DataSubject	Data Subject	semapv:LLMBasedMatching	A data subject is a person whose personal data is processed
+gist:Contract	Contract	skos:relatedMatch	dpv:Contract	Contract	semapv:LLMBasedMatching	DPV Contract is the legal basis of performing a contract, not the contract itself
+gist:IntellectualProperty	Intellectual Property	skos:relatedMatch	dpv:IntellectualPropertyData	Intellectual Property Data	semapv:LLMBasedMatching	DPV IntellectualPropertyData is data protected by intellectual property rights
+gist:Organization	Organization	skos:broadMatch	dpv:LegalEntity	Legal Entity	semapv:LLMBasedMatching	DPV LegalEntity is any human or non-human entity recognised in law, so it is broader than gist Organization
+gist:Person	Person	skos:exactMatch	dpv:NaturalPerson	Natural Person	semapv:LLMBasedMatching	DPV defines a natural person as a human
+gist:ContingentObligation	Contingent Obligation	skos:broadMatch	dpv:Obligation	Obligation	semapv:LLMBasedMatching	DPV Obligation is any obligation to perform an activity; a contingent obligation is a narrower kind
+gist:Organization	Organization	skos:narrowMatch	dpv:OrganisationalUnit	Organisational Unit	semapv:LLMBasedMatching	DPV OrganisationalUnit is a unit within an organisation that is not a separate legal entity
+gist:Permission	Permission	skos:exactMatch	dpv:Permission	Permission	semapv:LLMBasedMatching	Both describe what one is permitted to do
+gist:GeoLocation	Geographic Location	skos:narrowMatch	dpv:StorageLocation	Storage Location	semapv:LLMBasedMatching	DPV StorageLocation is a location in the role of storing data
+gist:Organization	Organization	skos:relatedMatch	dpv:ThirdParty	Third Party	semapv:LLMBasedMatching	DPV ThirdParty is a natural or legal person in the role of a third party
