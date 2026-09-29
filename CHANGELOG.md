@@ -6,6 +6,8 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-09-29
+
 ### Added
 
 - **CI also fails on stale artefacts and schema errors.** `just verify-generated` compares `project/` and the datamodel with a fresh `gen-project` by content, and `linkml-lint` fails the run on errors.
