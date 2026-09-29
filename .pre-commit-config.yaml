@@ -1,5 +1,8 @@
 ---
 # https://pre-commit.com/
+# The LOKF sidecar's scripts and workflows are byte-identical copies of the
+# knowledge-trust-ladder templates, and knowledge_bundle links to .lokf/knowledge.
+exclude: ^(\.lokf/(scripts|m365)/|\.lokf/uv\.lock$|\.github/workflows/knowledge-|knowledge_bundle)
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
