@@ -10,8 +10,8 @@ name: Publish Python Package
 # - TestPyPI on a tag "v1.2.3" or "v1.2.3.something" pushed by a person.
 #
 # uv-dynamic-versioning reads the version from the checked-out tag, so a
-# dispatch from anything but a `v*` tag is refused rather than uploading a
-# dev version to PyPI.
+# dispatch from anything but a `v*` tag fails rather than uploading a dev
+# version to PyPI.
 #
 # More on trusted publishing: https://docs.pypi.org/trusted-publishers/
 
@@ -22,6 +22,8 @@ on:  # yamllint disable-line rule:truthy
       # pep 440 version definition [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
       - 'v[0-9]+.[0-9]+.[0-9]+.?*'
       - 'v[0-9]+.[0-9]+.[0-9]+rc[0-9]'
+      # The baseline semantic-release counts from; it is not a release.
+      - '!v0.1.0'
   release:
     types: [published]
   workflow_dispatch:
@@ -31,7 +33,6 @@ permissions: {}
 jobs:
   build:
     name: Build Python 🐍 distributions 📦 for publishing
-    if: github.event_name != 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -46,9 +47,17 @@ jobs:
         with:
           egress-policy: audit
 
+      - name: Refuse a dispatch from anything but a version tag
+        if: github.event_name == 'workflow_dispatch' && !startsWith(github.ref, 'refs/tags/v')
+        env:
+          REF: ${{ github.ref }}
+        run: |
+          echo "::error::Run this workflow on a v* tag, not $REF: the version is read from the tag."
+          exit 1
+
       # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
