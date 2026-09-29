@@ -32,7 +32,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [gist-to-LinkML transform](services/gist-to-linkml.md) - `just gen-linkml`, Turtle to LinkML.
 * [SSSOM overlay](services/apply-sssom-overlay.md) - `just apply-sssom-overlay`, mappings into the schema.
 * [Mapping verifier](services/verify-mappings.md) - `just verify-mappings`, read-only check of the overlay.
-* [gist documentation site](services/documentation-site.md) - https://lmodel.github.io/gist, deployed from `main`.
+* [gist documentation site](services/documentation-site.md) - <https://lmodel.github.io/gist>, deployed from `main`.
 
 # References
 
