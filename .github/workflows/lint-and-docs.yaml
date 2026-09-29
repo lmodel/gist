@@ -3,11 +3,12 @@ name: Lint & docs
 # Static checks for the shell, workflows, and prose this repo ships. These never
 # touch the schema or the Python test suite (see main.yaml) or the LOKF
 # bundle's own semantics (see knowledge-registrar.yaml).
+# A push to a pull request's branch is covered by `pull_request`; `push` is
+# for main alone, so each change is checked once.
 on:
   push:
-    branches: ['**']
+    branches: [main]
   pull_request:
-    branches: ['**']
   schedule:
     - cron: "0 6 * * 1" # Mondays at 06:00 UTC, to catch link rot without a PR.
   workflow_dispatch:
@@ -103,16 +104,22 @@ jobs:
         with:
           globs: '**/*.md'
           config: .markdownlint-cli2.jsonc
+      # The remap checks this repository's own links on `main` (the bundle and
+      # the issue templates use them) against this checkout, so a pull request
+      # that moves a linked file fails here rather than after merge. The
+      # action evals its args, so the remap is single-quoted to keep its `$1`.
       - name: Check links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          args: --no-progress "**/*.md"
+          args: >-
+            --no-progress
+            --remap 'https://github.com/lmodel/gist/(?:blob|tree)/main/(.*) file://${{ github.workspace }}/$1'
+            "**/*.md"
           fail: true
+      # Not codespell-project/actions-codespell: it hands its path to
+      # codespell unquoted under /bin/sh, where `**/*.md` means `*/*.md` and
+      # skips every file at the root and in dot-folders. git ls-files lists
+      # tracked files only, so the knowledge_bundle link is not read twice;
+      # [tool.codespell] in pyproject.toml supplies the ignore list.
       - name: codespell
-        uses: codespell-project/actions-codespell@e3258cca84ce02b0bb36a3d41f2c18f719a0cc1a # v2.4.3
-        with:
-          path: '**/*.md'
-          # knowledge_bundle is a symlink to .lokf/knowledge (Obsidian vault
-          # entry point, see ktl-sidecar Step 2), already checked at
-          # its real path.
-          skip: knowledge_bundle
+        run: git ls-files -z '*.md' | xargs -0 pipx run --spec codespell==2.4.2 codespell

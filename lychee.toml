@@ -1,3 +1,7 @@
+# Hidden folders hold the issue and pull-request templates and the .lokf/
+# knowledge bundle, whose links are as much this repository's as the README's.
+hidden = true
+
 exclude = [
   # LOKF's published JSON-LD context; upstream's identifier, not this repo's,
   # currently 404s. Drop once the w3id.org redirect is registered.
@@ -16,15 +20,24 @@ exclude = [
   # retry while serving 200 elsewhere; not a dead link. Drop this exclusion
   # if CI reaches it again.
   '^https://www\.conventionalcommits\.org/',
+  # The lmodel renderings of the FINOS CDM and DPVs, cited by the mapping sets
+  # and the bundle: their w3id.org redirects land on lmodel.github.io pages
+  # that are not published yet. Drop each once its site is up.
+  '^https://w3id\.org/lmodel/common_domain_model',
+  '^https://w3id\.org/lmodel/dpvs',
+  '^https://lmodel\.github\.io/common_domain_model',
+  '^https://lmodel\.github\.io/dpvs',
 ]
 
 # knowledge_bundle is a symlink to .lokf/knowledge (the Obsidian vault entry
 # point, see ktl-sidecar Step 2) - exclude it so lychee doesn't walk the
-# same files twice, once at each path. docs/templates-linkml/ holds the
+# same files twice, once at each path. A local .venv/ holds installed
+# packages' prose, not this repository's. docs/templates-linkml/ holds the
 # copier template's placeholders, not links, and src/semantic-arts/ is an
 # ignored local copy of the full upstream release.
 exclude_path = [
   "(^|/)knowledge_bundle/",
+  "(^|/)\\.venv/",
   "(^|/)docs/templates-linkml/",
   "(^|/)src/semantic-arts/",
 ]
