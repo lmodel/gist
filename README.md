@@ -29,6 +29,34 @@ There are several pre-defined command-recipes available.
 They are written for the command runner [just](https://github.com/casey/just/).
 To list all pre-defined commands, run `just` or `just --list`.
 
+## License and attribution
+
+gist is Semantic Arts' upper ontology, published under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This schema is
+derived from the gist 14.1.0 release: the OWL modules are converted to LinkML
+by [scripts/gist_to_linkml.py](scripts/gist_to_linkml.py), their RDFS
+annotations and subclass assertions are folded into the schema, and SSSOM
+mappings to other vocabularies are added from [src/gist/mappings/](src/gist/mappings).
+The release is kept unmodified in [upstream/](upstream/gist14.1.0_webDownload)
+with its [LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code
+in this repository is Apache-2.0 ([LICENSE](LICENSE)).
+
+Semantic Arts also asks that terms used from gist stay in the gist namespace
+and that nobody else defines terms there. The schema and every generated
+artefact hold to both:
+
+* **`gist:`** (`https://w3id.org/semanticarts/ns/ontology/gist/`) and
+  **`gistd:`** are Semantic Arts' namespaces. Every gist class, property and
+  individual keeps its gist IRI.
+* **`gist_linkml:`** (`https://w3id.org/lmodel/gist/`) is this project's
+  namespace. It holds only what the LinkML rendering adds: the schema
+  documents, the `GistThing` mixin, the enums, the subsets, the SHACL shapes,
+  and the LinkML element definitions the OWL links to the gist terms they
+  render.
+* Tests in [tests/test_schema_validation.py](tests/test_schema_validation.py)
+  and [tests/test_generated_artifacts.py](tests/test_generated_artifacts.py)
+  check both rules against the vendored release.
+
 ## Credits
 
 This project uses the template [linkml-project-copier](https://github.com/linkml/linkml-project-copier).
