@@ -14,9 +14,11 @@ mapping is in the TSV but missing from the schema (or vice versa) the
 script prints a diff and exits non-zero.
 
 Schemas are auto-discovered: every ``*.yaml`` under ``--schema-dir``
-is loaded, and the subject prefix from each SSSOM row is matched
-against each schema's ``default_prefix``. An element name found in
-*any* matching schema satisfies the row.
+is loaded, and each SSSOM subject is expanded to an IRI and matched to
+the element with that IRI by the same rule as ``apply_sssom_overlay.py``
+(its ``class_uri`` / ``slot_uri`` / ``enum_uri`` or permissible-value
+``meaning``, else ``default_prefix:name``). Every element with that IRI,
+in any schema, must carry the row's mapping.
 
 Run via ``just verify-mappings`` (or directly:
 ``python scripts/verify_mappings.py``).
@@ -32,6 +34,14 @@ from collections import defaultdict
 from pathlib import Path
 
 import yaml
+
+from apply_sssom_overlay import (
+    _parse_sssom_metadata,
+    element_at,
+    element_iris,
+    expand_curie,
+    schema_prefixes,
+)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SCHEMA_DIR = REPO_ROOT / "src" / "gist" / "schema"
@@ -51,9 +61,6 @@ IGNORED_PREDICATES: frozenset[str] = frozenset(
     {"skos:broader", "skos:narrower", "rdf:type", "owl:equivalentClass"}
 )
 
-ELEMENT_SECTIONS = ("classes", "slots", "enums", "types")
-
-
 def parse_sssom_tsv(path: Path) -> list[dict[str, str]]:
     """Return the SSSOM data rows (header comment lines and blanks are skipped)."""
     text_lines = [
@@ -66,7 +73,7 @@ def parse_sssom_tsv(path: Path) -> list[dict[str, str]]:
 
 
 def expected_mappings(rows: list[dict[str, str]]) -> dict[str, dict[str, set[str]]]:
-    """``{local_name: {field: {object_curie, ...}}}`` derived from TSV."""
+    """``{subject_curie: {field: {object_curie, ...}}}`` derived from TSV."""
     expected: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
     for row in rows:
         predicate = row["predicate_id"]
@@ -78,37 +85,24 @@ def expected_mappings(rows: list[dict[str, str]]) -> dict[str, dict[str, set[str
                 file=sys.stderr,
             )
             continue
-        local = row["subject_id"].split(":", 1)[-1]
         field = PREDICATE_TO_FIELD[predicate]
-        expected[local][field].add(row["object_id"])
+        expected[row["subject_id"]][field].add(row["object_id"])
     return expected
 
 
-def find_element(schema: dict, name: str) -> tuple[str, dict] | None:
-    """Locate an element by local name.
+def element_mappings(element: dict, key: tuple[str, ...]) -> dict[str, set[str]]:
+    """Read mapping fields off a schema element.
 
-    Searches the top-level ``classes``/``slots``/``enums``/``types``
-    sections first, then inline ``attributes`` defined on a class
-    (which LinkML treats as locally-scoped slots). Returns
-    ``(location, element)`` or ``None`` if not found.
+    On a permissible value the overlay puts the first exact match in
+    ``meaning``, so it counts as an exact mapping there.
     """
-    for section in ELEMENT_SECTIONS:
-        element = (schema.get(section) or {}).get(name)
-        if element is not None:
-            return section, element
-    for class_name, cls in (schema.get("classes") or {}).items():
-        attrs = (cls or {}).get("attributes") or {}
-        if name in attrs:
-            return f"classes.{class_name}.attributes", attrs[name]
-    return None
-
-
-def element_mappings(element: dict) -> dict[str, set[str]]:
-    """Read mapping fields off a schema element."""
-    return {
+    fields = {
         field: set(element.get(field) or [])
         for field in PREDICATE_TO_FIELD.values()
     }
+    if len(key) == 3 and element.get("meaning"):
+        fields["exact_mappings"].add(element["meaning"])
+    return fields
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -140,11 +134,9 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     # Load every schema yaml under schema-dir (recursively so per-extension
-    # sub-schemas with their own default_prefix - e.g. ``extensions/loc.yaml``
-    # with default_prefix ``loc`` - are discoverable).
-    schemas_by_prefix: dict[str, list[tuple[Path, dict]]] = defaultdict(list)
-    schema_files: list[Path] = sorted(args.schema_dir.rglob("*.yaml"))
-    for path in schema_files:
+    # sub-schemas such as ``extensions/loc.yaml`` are included).
+    schemas: list[tuple[Path, dict, dict, dict]] = []
+    for path in sorted(args.schema_dir.rglob("*.yaml")):
         try:
             doc = yaml.safe_load(path.read_text())
         except yaml.YAMLError as exc:
@@ -152,18 +144,15 @@ def main(argv: list[str] | None = None) -> int:
             continue
         if not isinstance(doc, dict):
             continue
-        prefix = doc.get("default_prefix")
-        if not prefix:
-            continue
-        schemas_by_prefix[prefix].append((path, doc))
+        schemas.append((path, doc, element_iris(doc), schema_prefixes(doc)))
 
-    if not schemas_by_prefix:
-        print(f"ERROR: no schemas with default_prefix found under {args.schema_dir}", file=sys.stderr)
+    if not schemas:
+        print(f"ERROR: no schemas found under {args.schema_dir}", file=sys.stderr)
         return 2
 
     print(
-        f"Loaded {sum(len(v) for v in schemas_by_prefix.values())} schema(s) "
-        f"across prefixes: {sorted(schemas_by_prefix)}"
+        f"Loaded {len(schemas)} schema(s) naming "
+        f"{len(set().union(*(iris for _, _, iris, _ in schemas)))} element IRIs"
     )
 
     overall_missing: list[str] = []
@@ -175,62 +164,50 @@ def main(argv: list[str] | None = None) -> int:
         rows = parse_sssom_tsv(tsv)
         total_rows += len(rows)
         print(f"== {tsv.name} ({len(rows)} mappings) ==")
-
-        by_prefix: dict[str, list[dict[str, str]]] = defaultdict(list)
-        for row in rows:
-            prefix = row["subject_id"].split(":", 1)[0]
-            by_prefix[prefix].append(row)
+        curie_map = _parse_sssom_metadata(tsv).get("curie_map") or {}
+        tsv_prefixes = {str(k): str(v) for k, v in curie_map.items()}
 
         file_problems = 0
-        for prefix, prefix_rows in by_prefix.items():
-            candidate_schemas = schemas_by_prefix.get(prefix)
-            if not candidate_schemas:
-                msg = f"{tsv.name}: unknown subject prefix {prefix!r} (no schema has default_prefix: {prefix})"
+        for subject, fields in sorted(expected_mappings(rows).items()):
+            tsv_iri = expand_curie(subject, tsv_prefixes)
+            located: list[tuple[Path, str, dict]] = []
+            for schema_path, schema_doc, iris, prefixes in schemas:
+                iri = tsv_iri or expand_curie(subject, prefixes)
+                for key in iris.get(iri or "", ()):
+                    element = element_at(schema_doc, key)
+                    located.append((schema_path, key, element))
+            if not located:
+                msg = (
+                    f"{tsv.name}: subject {subject} "
+                    f"(<{tsv_iri or 'no IRI from curie_map'}>) names no element in any schema"
+                )
                 overall_unknown.append(msg)
-                print(f"  UNKNOWN-PREFIX: {msg}")
-                file_problems += len(prefix_rows)
+                print(f"  MISSING-ELEMENT: {msg}")
+                file_problems += 1
                 continue
-
-            expected = expected_mappings(prefix_rows)
-            for name, fields in sorted(expected.items()):
-                located: list[tuple[Path, str, dict]] = []
-                for schema_path, schema_doc in candidate_schemas:
-                    found = find_element(schema_doc, name)
-                    if found is not None:
-                        section, element = found
-                        located.append((schema_path, section, element))
-                if not located:
-                    schema_names = ", ".join(p.name for p, _ in candidate_schemas)
-                    msg = (
-                        f"{tsv.name}: element {prefix}:{name!r} not found in any "
-                        f"schema with default_prefix {prefix!r} ({schema_names})"
-                    )
-                    overall_unknown.append(msg)
-                    print(f"  MISSING-ELEMENT: {msg}")
-                    file_problems += 1
-                    continue
-                for schema_path, section, element in located:
-                    actual = element_mappings(element)
-                    for field, exp_set in fields.items():
-                        act_set = actual.get(field, set())
-                        missing = exp_set - act_set
-                        extra = act_set - exp_set
-                        if missing:
-                            msg = (
-                                f"{schema_path.name}: {section}.{name}.{field} "
-                                f"missing: {sorted(missing)}"
-                            )
-                            overall_missing.append(msg)
-                            print(f"  MISSING: {msg}")
-                            file_problems += 1
-                        if extra and args.strict:
-                            msg = (
-                                f"{schema_path.name}: {section}.{name}.{field} "
-                                f"extra (not in TSV): {sorted(extra)}"
-                            )
-                            overall_extra.append(msg)
-                            print(f"  EXTRA: {msg}")
-                            file_problems += 1
+            for schema_path, key, element in located:
+                where = ".".join(key)
+                actual = element_mappings(element, key)
+                for field, exp_set in fields.items():
+                    act_set = actual.get(field, set())
+                    missing = exp_set - act_set
+                    extra = act_set - exp_set
+                    if missing:
+                        msg = (
+                            f"{schema_path.name}: {where}.{field} "
+                            f"missing: {sorted(missing)}"
+                        )
+                        overall_missing.append(msg)
+                        print(f"  MISSING: {msg}")
+                        file_problems += 1
+                    if extra and args.strict:
+                        msg = (
+                            f"{schema_path.name}: {where}.{field} "
+                            f"extra (not in TSV): {sorted(extra)}"
+                        )
+                        overall_extra.append(msg)
+                        print(f"  EXTRA: {msg}")
+                        file_problems += 1
         if file_problems == 0:
             print(f"  OK")
 

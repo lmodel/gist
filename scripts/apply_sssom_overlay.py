@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Overlay SSSOM mappings onto LinkML schema YAML files.
 
-Schema-independent: subject-side CURIE prefixes are derived automatically
-from each schema's own ``name`` / ``default_prefix``, or may be supplied
-explicitly via ``--subject-prefix`` (repeatable).
+Schema-independent: each SSSOM subject is expanded to an IRI with its TSV's
+``curie_map`` (else the schema's ``prefixes``) and matched to the element
+that has that IRI, i.e. its ``class_uri`` / ``slot_uri`` / ``enum_uri`` or a
+permissible value's ``meaning``, else LinkML's default ``default_prefix:name``.
+Matching by IRI rather than by local name keeps mappings on the right
+element when a schema reuses another vocabulary's terms (gist slots are
+snake_case here, camelCase in the gist namespace).
 
-For every class / enum / type / slot whose unsuffixed local name appears as
+For every class / enum / type / slot / permissible value whose IRI appears as
 a subject in one of the SSSOM TSVs, the script merges predicate-mapped
 CURIEs into the matching mapping slot (``exact_mappings``,
 ``close_mappings``, ``broad_mappings``, ``narrow_mappings``,
@@ -23,11 +27,10 @@ Usage::
         --schema-dir src/<project>/schema \\
         --mappings-dir src/<project>/mappings
 
-    # Or target a single schema file with explicit subject prefixes:
+    # Or target a single schema file:
     python scripts/apply_sssom_overlay.py \\
         --schema src/iso27001/schema/iso27001.yaml \\
-        --mappings-dir src/iso27001/mappings \\
-        --subject-prefix iso27001
+        --mappings-dir src/iso27001/mappings
 
 The script is idempotent: running it twice on a clean tree is a no-op.
 """
@@ -177,41 +180,47 @@ def _parse_sssom_rows(path: Path) -> tuple[list[str], list[list[str]]]:
 # ---------------------------------------------------------------------------
 
 
+def expand_curie(curie: str, prefixes: dict[str, str]) -> str | None:
+    """Expand ``curie`` with ``prefixes``; full http(s) IRIs pass through."""
+    if curie.startswith(("http://", "https://")):
+        return curie
+    prefix, sep, local = curie.partition(":")
+    if sep and prefix in prefixes:
+        return f"{prefixes[prefix]}{local}"
+    return None
+
+
 class MappingIndex:
-    """Holds all raw SSSOM rows plus a per-schema, prefix-filtered view."""
+    """Holds all raw SSSOM rows plus a per-schema view keyed by element."""
 
     def __init__(self) -> None:
-        self.by_name: dict[str, dict[str, list[str]]] = {}
+        self.by_element: dict[tuple[str, ...], dict[str, list[str]]] = {}
         self.prefix_uris: dict[str, str] = {}
-        self.rows: list[tuple[str, str, str]] = []  # (subject, slot, object)
+        # (subject CURIE, subject IRI via the TSV's curie_map or None, slot, object)
+        self.rows: list[tuple[str, str | None, str, str]] = []
 
-    def add_row(self, subject: str, slot: str, obj: str) -> None:
-        self.rows.append((subject, slot, obj))
+    def add_row(self, subject: str, subject_iri: str | None, slot: str, obj: str) -> None:
+        self.rows.append((subject, subject_iri, slot, obj))
 
     def add_prefix(self, px: str, uri: str) -> None:
         self.prefix_uris.setdefault(px, uri)
 
-    def build_for_prefixes(self, prefixes: set[str]) -> None:
-        """Populate ``by_name`` keeping only rows whose subject uses one of
-        the given local prefixes."""
-        self.by_name.clear()
-        prefs_with_colon = tuple(f"{p}:" for p in prefixes)
-        for subject, slot, obj in self.rows:
-            local: str | None = None
-            for px in prefs_with_colon:
-                if subject.startswith(px):
-                    local = subject[len(px):]
-                    break
-            if local is None:
-                continue
-            slot_map = self.by_name.setdefault(local, {})
-            entries = slot_map.setdefault(slot, [])
-            if obj not in entries:
-                entries.append(obj)
+    def build_for_schema(self, data: CommentedMap) -> None:
+        """Populate ``by_element`` with the rows whose subject IRI names an
+        element of ``data`` (see ``element_iris``)."""
+        self.by_element.clear()
+        prefixes = schema_prefixes(data)
+        elements = element_iris(data)
+        for subject, subject_iri, slot, obj in self.rows:
+            iri = subject_iri or expand_curie(subject, prefixes)
+            for key in elements.get(iri or "", ()):
+                entries = self.by_element.setdefault(key, {}).setdefault(slot, [])
+                if obj not in entries:
+                    entries.append(obj)
 
-    def used_prefixes_for(self, name: str) -> set[str]:
+    def used_prefixes_for(self, key: tuple[str, ...]) -> set[str]:
         out: set[str] = set()
-        for curies in self.by_name.get(name, {}).values():
+        for curies in self.by_element.get(key, {}).values():
             for c in curies:
                 if ":" in c:
                     out.add(c.split(":", 1)[0])
@@ -224,8 +233,10 @@ def load_mappings(mappings_dir: Path) -> MappingIndex:
     for tsv in sorted(mappings_dir.glob("*.sssom.tsv")):
         meta = _parse_sssom_metadata(tsv)
         curie_map = meta.get("curie_map") or {}
+        tsv_prefixes: dict[str, str] = {}
         if isinstance(curie_map, dict):
             for px, uri in curie_map.items():
+                tsv_prefixes[str(px)] = str(uri)
                 if px in _BUILTIN_PREFIXES:
                     continue
                 idx.add_prefix(px, uri)
@@ -254,27 +265,79 @@ def load_mappings(mappings_dir: Path) -> MappingIndex:
             slot = SSSOM_PREDICATE_TO_LINKML_SLOT.get(predicate)
             if slot is None or not subject or not obj:
                 continue
-            idx.add_row(subject, slot, obj)
+            idx.add_row(subject, expand_curie(subject, tsv_prefixes), slot, obj)
     return idx
 
 
 # ---------------------------------------------------------------------------
-# Subject-prefix discovery
+# Element IRIs
 # ---------------------------------------------------------------------------
 
+# The slot holding each element kind's own IRI. A type's ``uri`` names the
+# datatype it maps to, not the type, so types fall back to the default.
+_ELEMENT_URI_SLOT = {
+    "classes": "class_uri",
+    "slots": "slot_uri",
+    "enums": "enum_uri",
+    "types": None,
+}
 
-def discover_subject_prefixes(data: CommentedMap) -> set[str]:
-    """Return the set of CURIE prefixes that identify the schema itself.
 
-    Includes ``default_prefix`` and ``name`` (the LinkML schema name is
-    commonly registered as a prefix in the schema's own ``prefixes`` block).
-    """
-    out: set[str] = set()
-    for key in ("default_prefix", "name"):
-        v = data.get(key)
-        if isinstance(v, str) and v:
-            out.add(v)
+def schema_prefixes(data: dict) -> dict[str, str]:
+    """``{prefix: namespace}`` from a schema's ``prefixes`` block (either form)."""
+    out: dict[str, str] = {}
+    for px, val in (data.get("prefixes") or {}).items():
+        if isinstance(val, dict):
+            val = val.get("prefix_reference")
+        if val:
+            out[str(px)] = str(val)
     return out
+
+
+def element_iris(data: dict) -> dict[str, list[tuple[str, ...]]]:
+    """Map each element IRI in ``data`` to the keys of the elements it names.
+
+    A class, slot or enum is named by its ``class_uri`` / ``slot_uri`` /
+    ``enum_uri`` when set, else ``default_prefix:name``. A permissible value
+    is named by both its ``meaning`` and ``default_prefix:name``, so a row
+    still matches after the overlay has filled in ``meaning``. Class
+    ``attributes`` are named by their ``slot_uri``, else ``default_prefix:name``.
+    Keys are ``(collection, name)``, ``("enums", enum, pv)`` or
+    ``("classes", cls, "attributes", attr)``.
+    """
+    prefixes = schema_prefixes(data)
+    default_prefix = data.get("default_prefix")
+    out: dict[str, list[tuple[str, ...]]] = {}
+
+    def add(curie: object, key: tuple[str, ...]) -> None:
+        iri = expand_curie(str(curie), prefixes) if curie else None
+        if iri and key not in out.setdefault(iri, []):
+            out[iri].append(key)
+
+    for collection, uri_slot in _ELEMENT_URI_SLOT.items():
+        for name, body in (data.get(collection) or {}).items():
+            body = body or {}
+            own = body.get(uri_slot) if uri_slot else None
+            add(own or f"{default_prefix}:{name}", (collection, str(name)))
+            if collection == "enums":
+                for pv_name, pv in (body.get("permissible_values") or {}).items():
+                    key = (collection, str(name), str(pv_name))
+                    add((pv or {}).get("meaning"), key)
+                    add(f"{default_prefix}:{pv_name}", key)
+            if collection == "classes":
+                for attr, attr_body in (body.get("attributes") or {}).items():
+                    own = (attr_body or {}).get("slot_uri")
+                    add(own or f"{default_prefix}:{attr}", (collection, str(name), "attributes", str(attr)))
+    return out
+
+
+def element_at(data: dict, key: tuple[str, ...]) -> dict:
+    """Return the element body that ``key`` (from ``element_iris``) names."""
+    if len(key) == 3:
+        return data["enums"][key[1]]["permissible_values"][key[2]] or {}
+    if len(key) == 4:
+        return data["classes"][key[1]]["attributes"][key[3]] or {}
+    return data[key[0]][key[1]] or {}
 
 
 # ---------------------------------------------------------------------------
@@ -419,7 +482,6 @@ def _ensure_prefixes(
     data: CommentedMap,
     needed: set[str],
     prefix_uris: dict[str, str],
-    own_prefixes: set[str],
 ) -> bool:
     """Add referenced prefixes to ``data['prefixes']``. Returns changed flag."""
     changed = False
@@ -428,7 +490,7 @@ def _ensure_prefixes(
         prefixes = CommentedMap()
         data["prefixes"] = prefixes
     for px in sorted(needed):
-        if px in _BUILTIN_PREFIXES or px in own_prefixes:
+        if px in _BUILTIN_PREFIXES:
             continue
         if px in prefixes:
             continue
@@ -461,7 +523,6 @@ def _make_yaml() -> YAML:
 def overlay_file(
     schema_path: Path,
     mappings: MappingIndex,
-    extra_subject_prefixes: set[str],
 ) -> tuple[int, int]:
     """Overlay mappings onto one schema YAML in place.
 
@@ -474,19 +535,10 @@ def overlay_file(
     if data is None:
         return 0, 0
 
-    subject_prefixes = discover_subject_prefixes(data) | extra_subject_prefixes
-    if not subject_prefixes:
-        print(
-            f"WARN: {schema_path.name} has no default_prefix/name and no "
-            "--subject-prefix was supplied; skipping.",
-            file=sys.stderr,
-        )
-        return 0, 0
-    mappings.build_for_prefixes(subject_prefixes)
-    if not mappings.by_name:
+    mappings.build_for_schema(data)
+    if not mappings.by_element:
         return 0, 0
 
-    own = subject_prefixes
     elements_updated = 0
     links_added = 0
     used_prefixes: set[str] = set()
@@ -498,13 +550,14 @@ def overlay_file(
         for name, body in collection.items():
             if not isinstance(body, CommentedMap):
                 continue
-            slot_map = mappings.by_name.get(name)
+            key = (collection_key, str(name))
+            slot_map = mappings.by_element.get(key)
             if slot_map:
                 touched, n_added = _merge_mappings(body, slot_map)
                 if touched:
                     elements_updated += 1
                     links_added += n_added
-                    used_prefixes |= mappings.used_prefixes_for(name)
+                    used_prefixes |= mappings.used_prefixes_for(key)
 
             # Recurse into permissible_values for enum bodies.
             if collection_key == "enums":
@@ -513,7 +566,8 @@ def overlay_file(
                     for pv_name, pv_body in pvs.items():
                         if not isinstance(pv_body, CommentedMap):
                             continue
-                        pv_slot_map = mappings.by_name.get(pv_name)
+                        pv_key = (collection_key, str(name), str(pv_name))
+                        pv_slot_map = mappings.by_element.get(pv_key)
                         if not pv_slot_map:
                             continue
                         touched, n_added = _merge_mappings(
@@ -522,11 +576,9 @@ def overlay_file(
                         if touched:
                             elements_updated += 1
                             links_added += n_added
-                            used_prefixes |= mappings.used_prefixes_for(pv_name)
+                            used_prefixes |= mappings.used_prefixes_for(pv_key)
 
-    prefixes_changed = _ensure_prefixes(
-        data, used_prefixes, mappings.prefix_uris, own
-    )
+    prefixes_changed = _ensure_prefixes(data, used_prefixes, mappings.prefix_uris)
 
     if elements_updated or prefixes_changed:
         with open(schema_path, "w", encoding="utf-8") as fh:
@@ -553,12 +605,6 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--mappings-dir", type=Path, required=True,
         help="directory containing *.sssom.tsv mapping files",
-    )
-    p.add_argument(
-        "--subject-prefix", action="append", default=[],
-        help="extra CURIE prefix (without colon) to treat as a subject-side "
-             "match in addition to those discovered from each schema "
-             "(repeatable)",
     )
     args = p.parse_args(argv)
 
@@ -599,13 +645,11 @@ def main(argv: list[str] | None = None) -> int:
               file=sys.stderr)
         return 0
 
-    extra_prefixes = {px.rstrip(":") for px in args.subject_prefix if px}
-
     files_changed = 0
     total_elements = 0
     total_links = 0
     for path in schemas:
-        elements, links = overlay_file(path, mappings, extra_prefixes)
+        elements, links = overlay_file(path, mappings)
         if elements:
             files_changed += 1
             total_elements += elements
