@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-29
+
 ### Added
 
 - **`gist_to_linkml.py --rename OLD=NEW` gives a gist class or slot another LinkML name and keeps its gist IRI**, for a schema that imports gist beside another vocabulary with the same names. LOKF's `Person`, `Organization`, `name`, `description` and `license` are the case in point. Default output is unchanged.
