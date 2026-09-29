@@ -2,6 +2,7 @@
 
 ## 2026-09-29
 
+* **Upstream and target checks**: Added `services/verify-mapping-targets` and `services/upstream-watch` for the target-term checker and the weekly upstream workflow; the source map now lists their scripts and `check_generated_current.py`.
 * **PyPI switch**: `playbooks/release` records that uploads to TestPyPI and PyPI wait for the `PYPI_RELEASE_ENABLED` repository variable, which is unset.
 * **Release and CI refresh**: `playbooks/release` now follows semantic-release, the baseline-tag guard and the dispatched PyPI upload; `services/verify-mappings` and `playbooks/regenerate-schema` record that CI now fails a schema that differs from its converter. The source map follows, and names the new governance files it leaves out.
 * **Namespace policy**: Added `policies/gist-namespace-policy.md`, recording Semantic Arts' two namespace conditions and the converter, generator flags and tests that hold them.
