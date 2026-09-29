@@ -91,6 +91,13 @@ jobs:
         if: matrix.python-version == '3.14'
         run: just verify-generated
 
+      # The copy lokf-copy-release.yaml attaches to each release. Checked here
+      # too, so a lokf bump that adds a name gist also has fails its pull
+      # request rather than a release that is already tagged.
+      - name: Check the LOKF copy shares no name with lokf.yaml
+        if: matrix.python-version == '3.14'
+        run: just gen-lokf-copy "$RUNNER_TEMP/lokf-copy"
+
       # Errors only; the justfile says why the warnings are by design.
       - name: Lint the schema
         if: matrix.python-version == '3.14'

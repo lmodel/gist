@@ -9,6 +9,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 ### Added
 
 - **`gist_to_linkml.py --rename OLD=NEW` gives a gist class or slot another LinkML name and keeps its gist IRI**, for a schema that imports gist beside another vocabulary with the same names. LOKF's `Person`, `Organization`, `name`, `description` and `license` are the case in point. Default output is unchanged.
+- **Each release carries `gist-linkml-lokf-<tag>.yaml`**, gist_core.yaml with those five renamed, so a LOKF domain schema can import it beside `lokf.yaml` in either order. `just gen-lokf-copy` builds it and fails on any name still shared with the `lokf.yaml` the sidecar locks; CI runs the same check on every pull request.
 
 ### Changed
 
