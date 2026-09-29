@@ -4,7 +4,7 @@
 
 ## Reporting a vulnerability
 
-Use GitHub's [private vulnerability reporting](https://github.com/lmodel/gist/security/advisories/new), not a public issue or a pull request. Say which file is affected, how it is exploitable, and whether it reaches the `lmodel-gist` package or only this repository's automation. One person maintains this repository: expect a first reply in days, not hours, and no bounty.
+Use GitHub's [private vulnerability reporting](https://github.com/lmodel/gist/security/advisories/new), not a public issue or a pull request. Say which file is affected, how it is exploitable, and whether it reaches the `gist-linkml` package or only this repository's automation. One person maintains this repository: expect a first reply in days, not hours, and no bounty.
 
 ## Supported versions
 
@@ -12,7 +12,7 @@ Use GitHub's [private vulnerability reporting](https://github.com/lmodel/gist/se
 
 ## What this repository ships
 
-The `lmodel-gist` package is a LinkML schema and the Python datamodel generated from it. It opens no sockets and runs nothing on import beyond defining its classes. The conversion scripts under `scripts/` read only the vendored release in `upstream/` and write only under `src/gist/`. A schema is data: loading one from an untrusted source with any LinkML tool is that tool's risk, not this package's.
+The `gist-linkml` package is a LinkML schema and the Python datamodel generated from it. It opens no sockets and runs nothing on import beyond defining its classes. The conversion scripts under `scripts/` read only the vendored release in `upstream/` and write only under `src/gist/`. A schema is data: loading one from an untrusted source with any LinkML tool is that tool's risk, not this package's.
 
 ## What executes here
 

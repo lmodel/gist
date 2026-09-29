@@ -1,4 +1,4 @@
-gist LinkML Schema (lmodel-gist)
+gist LinkML Schema (gist-linkml)
 Copyright 2026 Noel McLoughlin
 
 The code in this repository is licensed under the Apache License,
@@ -20,7 +20,7 @@ license (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
 - tests/vendor/semanticarts/ holds ontologyShapes.ttl and
   property_type_construct.rq, copied unmodified from the validation/
   folder of semanticarts/gist, with its LICENSE.txt.
-- src/gist/schema/, src/gist/datamodel/, project/ and the lmodel-gist
+- src/gist/schema/, src/gist/datamodel/, project/ and the gist-linkml
   package are adapted material. Changes made: the OWL modules
   are converted to LinkML by scripts/gist_to_linkml.py, their RDFS
   annotations and subclass assertions are folded into the schema, SSSOM

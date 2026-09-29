@@ -9,7 +9,7 @@ labels: bug
 A clear description of what went wrong.
 
 **Where?**
-The schema element, generated artefact (`project/...`), mapping, or `lmodel-gist` package API involved. A problem in gist itself belongs [upstream](https://github.com/semanticarts/gist/issues).
+The schema element, generated artefact (`project/...`), mapping, or `gist-linkml` package API involved. A problem in gist itself belongs [upstream](https://github.com/semanticarts/gist/issues).
 
 **To reproduce**
 Steps to reproduce the behavior, including the exact command and input data.
@@ -21,7 +21,7 @@ What you expected to happen.
 
 - OS:
 - Python version (`uv run python --version`):
-- `lmodel-gist` version, or the commit you built from:
+- `gist-linkml` version, or the commit you built from:
 - LinkML version (`uv run linkml --version`):
 
 **Additional context**

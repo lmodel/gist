@@ -11,7 +11,7 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 - **A LinkML rendering of gist 14.1.0.** `scripts/gist_to_linkml.py` converts the vendored release under `upstream/`, folds in its RDFS annotations and subclass assertions, and gives the same output on every run.
 - **SSSOM mappings to other vocabularies**, in `src/gist/mappings/`, matched to schema elements by IRI and merged into the schema by `scripts/apply_sssom_overlay.py`.
 - **Every gist term keeps its Semantic Arts IRI.** What this project adds lives under `gist_linkml:`, and the tests check both rules against the vendored release.
-- **The package is built for PyPI as `lmodel-gist`**; the import package stays `gist`. Nothing is uploaded until PyPI releases are switched on.
+- **The package is built for PyPI as `gist-linkml`**; the import package stays `gist`. Nothing is uploaded until PyPI releases are switched on.
 - **A `.lokf/` knowledge bundle** describes the repository, kept current by the scheduled librarian and checked by `knowledge-registrar.yaml`.
 - **`NOTICE` credits the third-party work this project carries or derives from**: gist and its validation files (CC BY 4.0, with the changes made), the mapping sets' terms, linkml-project-copier (MIT) and the sidecar templates. The package ships it beside `LICENSE`.
 - **Governance files to the family standard**: `AI_COVENANT.md`, `SECURITY.md`, a checklist `CONTRIBUTING.md`, Contributor Covenant 2.1, and issue and pull-request templates.

@@ -6,7 +6,7 @@ Thanks for your interest in improving this LinkML rendering of gist.
 
 ## What this project is
 
-A LinkML schema generated from Semantic Arts' gist 14.1.0 release, with SSSOM mappings to other vocabularies, published to PyPI as `lmodel-gist`.
+A LinkML schema generated from Semantic Arts' gist 14.1.0 release, with SSSOM mappings to other vocabularies, published to PyPI as `gist-linkml`.
 
 | Path | Holds |
 | --- | --- |
@@ -74,7 +74,7 @@ Use the [issue tracker](https://github.com/lmodel/gist/issues) for problems and 
 - Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:` and `security:` cut a release; other types leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
 - On merge, [`semantic-release.yml`](.github/workflows/semantic-release.yml) retitles the section to `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release. `uv-dynamic-versioning` reads the version from the tag, so no file is bumped. It then dispatches [`pypi-publish.yaml`](.github/workflows/pypi-publish.yaml) and [`knowledge-release.yaml`](.github/workflows/knowledge-release.yaml) for the tag, each once its repository variable, `PYPI_RELEASE_ENABLED` or `KNOWLEDGE_RELEASE_ENABLED`, is `true`.
 - Those steps run behind the `release` and `pypi-release` GitHub Environments; configure required reviewers on both in Settings → Environments, or every qualifying merge ships unattended. `pypi-release` must allow deployments from `v*` tags.
-- Before the first release, register a pending trusted publisher for `lmodel-gist` on PyPI: workflow `pypi-publish.yaml`, environment `pypi-release`.
+- Before the first release, register a pending trusted publisher for `gist-linkml` on PyPI: workflow `pypi-publish.yaml`, environment `pypi-release`.
 - Below 1.0.0: push the `v0.1.0` baseline tag on `main` before the first releasing merge; both release jobs refuse to run without it, as semantic-release would otherwise start at 1.0.0. `.releaserc.json` maps `breaking: true` to `minor`; reaching 1.0.0 means removing that rule in its own PR.
 - A branch rule requiring pull requests, status checks or signed commits would reject the release job's own push to `main`; leave them off. [SECURITY.md](SECURITY.md) says what holds `main` instead, and the shared design is on [knowledge-trust-ladder's releasing page](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/releasing.md).
 
