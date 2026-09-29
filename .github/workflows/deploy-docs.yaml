@@ -7,6 +7,11 @@ on:  # yamllint disable-line rule:truthy
 
 permissions: {}
 
+# gh-deploy --force rewrites gh-pages; two at once would race.
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: false
+
 jobs:
   build-docs:
     runs-on: ubuntu-latest
@@ -15,11 +20,13 @@ jobs:
       matrix:
         pyversion: ["3.14"]
 
-    # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
+    # A manual run can name any branch; only main's docs are published.
+    if: github.ref == 'refs/heads/main'
+
+    # Pages serves the gh-pages branch, so pushing that branch is the whole
+    # deployment: no `pages` or `id-token` scope is needed.
     permissions:
-      contents: write  # to let mkdocs write the new docs
-      pages: write     # to deploy to Pages
-      id-token: write  # allow to generate an OpenID Connect (OIDC) token
+      contents: write  # to let mkdocs push the new docs to gh-pages
 
     steps:
       - name: Harden the runner
@@ -29,10 +36,10 @@ jobs:
 
       # https://github.com/actions/checkout
       # Keeps the checkout credential: `mkdocs gh-deploy` pushes to gh-pages
-      # with it. Nothing untrusted runs here, only this repository's reviewed
-      # code on `main` and the dependencies uv.lock pins.
+      # with it. The dev dependencies uv.lock pins (mkdocs, its plugins,
+      # jupyter) run while it is on disk; the job runs only from main.
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
