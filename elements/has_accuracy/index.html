@@ -448,17 +448,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -469,6 +458,17 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -549,6 +549,10 @@
 <td><a href="../Magnitude/">Magnitude</a></td>
 </tr>
 <tr>
+<td>Domain</td>
+<td><a href="../Magnitude/">Magnitude</a></td>
+</tr>
+<tr>
 <td>Slot URI</td>
 <td><a href="https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy">gist:hasAccuracy</a></td>
 </tr>
@@ -564,8 +568,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Multivalued</td>
-<td>Yes</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -595,11 +599,22 @@
 <li>gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.</li>
 </ul>
 <p>Note that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance).</p>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>OWL FunctionalProperty (at most one value)</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain_includes</td>
+<td>gist:Magnitude</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/lmodel/gist">https://w3id.org/lmodel/gist</a></li>
@@ -626,9 +641,11 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_accuracy</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domain_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Magnitude</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relates a magnitude to another magnitude that describes its accuracy.</span>
-<span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OWL FunctionalProperty (at most one value)</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;gist</span><span class="nv"> </span><span class="s">uses</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">ISO-5725</span><span class="nv"> </span><span class="s">definition</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">accuracy,</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">combination</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">trueness\</span>
 <span class="w">  </span><span class="s">\ (a</span><span class="nv"> </span><span class="s">measure</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">systemic</span><span class="nv"> </span><span class="s">error)</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">precision</span><span class="nv"> </span><span class="s">(a</span><span class="nv"> </span><span class="s">measure</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">random</span><span class="nv"> </span><span class="s">error).</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">accuracy\</span>
@@ -648,9 +665,10 @@
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has accuracy</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:hasAccuracy</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
-<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>
 </div>

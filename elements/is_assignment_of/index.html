@@ -460,6 +460,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -538,6 +549,10 @@
 <td><a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../Equipment/">Equipment</a>&nbsp;or&nbsp;<br /><a href="../IntellectualProperty/">IntellectualProperty</a>&nbsp;or&nbsp;<br /><a href="../Organization/">Organization</a>&nbsp;or&nbsp;<br /><a href="../Person/">Person</a></td>
 </tr>
 <tr>
+<td>Domain</td>
+<td><a href="../Assignment/">Assignment</a></td>
+</tr>
+<tr>
 <td>Slot URI</td>
 <td><a href="https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf">gist:isAssignmentOf</a></td>
 </tr>
@@ -596,6 +611,25 @@ Value must satisfy at least one of:
 <li>While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain_includes</td>
+<td>gist:Assignment</td>
+</tr>
+<tr>
+<td>range_includes</td>
+<td>gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/lmodel/gist">https://w3id.org/lmodel/gist</a></li>
@@ -622,6 +656,13 @@ Value must satisfy at least one of:
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is_assignment_of</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domain_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Assignment</span>
+<span class="w">  </span><span class="nt">range_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">range_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relates an assignment to the resource it assigns.</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">People, organizations, monetary amounts, equipment can all be assigned.</span>
@@ -635,6 +676,7 @@ Value must satisfy at least one of:
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is assignment of</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Assignment</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:isAssignmentOf</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

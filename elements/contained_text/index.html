@@ -471,6 +471,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -602,6 +613,21 @@
 <li>If there are multiple strings associated with an entity, it is an implementation decision whether to combine them into a single contained text value or to use multiple contained text assertions.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain_includes</td>
+<td>gist:Content, gist:ContentExpression, gist:Tag, gist:Text</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/lmodel/gist">https://w3id.org/lmodel/gist</a></li>
@@ -628,6 +654,10 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contained_text</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domain_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Content, gist:ContentExpression, gist:Tag, gist:Text</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relates an entity containing textual information to the string constituting</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">that textual information.</span>
 <span class="nt">comments</span><span class="p">:</span>

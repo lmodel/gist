@@ -426,6 +426,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -513,7 +524,7 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../Integer/">Integer</a>&nbsp;or&nbsp;<br /><a href="../Decimal/">Decimal</a>&nbsp;or&nbsp;<br /><a href="../Float/">Float</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
@@ -536,6 +547,16 @@
 </tr>
 </tbody>
 </table>
+<details>
+<summary>Expressions &amp; Logic</summary>
+#### Any Of
+
+Value must satisfy at least one of:
+- AnonymousSlotExpression({'range': 'integer'})
+- AnonymousSlotExpression({'range': 'decimal'})
+- AnonymousSlotExpression({'range': 'float'})
+
+</details>
 <h2 id="in-subsets">In Subsets</h2>
 <ul>
 <li><a href="../GistCore/">GistCore</a></li>
@@ -543,6 +564,10 @@
 <h2 id="aliases">Aliases</h2>
 <ul>
 <li>numeric value</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -572,6 +597,11 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numeric_value</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The actual value of a magnitude.</span>
+<span class="nt">notes</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;OWL</span><span class="nv"> </span><span class="s">range:</span><span class="nv"> </span><span class="s">(xsd:byte</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:decimal</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:double</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:float</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:int</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:integer</span>
+<span class="w">  </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:long</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:negativeInteger</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:nonNegativeInteger</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:nonPositiveInteger</span>
+<span class="w">  </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:positiveInteger</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:short</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:unsignedByte</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:unsignedInt</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:unsignedLong</span>
+<span class="w">  </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:unsignedShort</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">owl:rational</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">owl:real)&#39;</span>
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
@@ -580,6 +610,10 @@
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:numericValue</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">any_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 </code></pre></div>
 </details>
 </div>

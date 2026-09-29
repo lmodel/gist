@@ -417,7 +417,7 @@
 </ul>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>OWL subClassOf restrictions: =1startDateTime; <em>bnode</em>; =1endDateTime</li>
+<li>OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -442,7 +442,7 @@
 <td>gist_linkml:TimeInterval</td>
 </tr>
 <tr>
-<td>close</td>
+<td>related</td>
 <td>common_domain_model:Period</td>
 </tr>
 </tbody>
@@ -455,7 +455,8 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A span of time with a known start time, end time, and duration. As long</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as two of the three are known, the third can be inferred.</span>
 <span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">=1startDateTime;</span><span class="nv"> </span><span class="s">_bnode_;</span><span class="nv"> </span><span class="s">=1endDateTime'</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">=1startDateTime;</span><span class="nv"> </span><span class="s">=1hasMagnitude.∃hasAspect=_Aspect_duration;</span>
+<span class="w">  </span><span class="s">=1endDateTime'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An ongoing state of affairs with an unknown end time in the future cannot be a time</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">interval; e.g. the lifespan of a living person cannot be a time interval, as the</span>
@@ -471,7 +472,7 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Time Interval</span>
-<span class="nt">close_mappings</span><span class="p">:</span>
+<span class="nt">related_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Period</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>
@@ -484,7 +485,8 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A span of time with a known start time, end time, and duration. As long</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">as two of the three are known, the third can be inferred.</span>
 <span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">=1startDateTime;</span><span class="nv"> </span><span class="s">_bnode_;</span><span class="nv"> </span><span class="s">=1endDateTime'</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">subClassOf</span><span class="nv"> </span><span class="s">restrictions:</span><span class="nv"> </span><span class="s">=1startDateTime;</span><span class="nv"> </span><span class="s">=1hasMagnitude.∃hasAspect=_Aspect_duration;</span>
+<span class="w">  </span><span class="s">=1endDateTime'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An ongoing state of affairs with an unknown end time in the future cannot be a time</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">interval; e.g. the lifespan of a living person cannot be a time interval, as the</span>
@@ -500,7 +502,7 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Time Interval</span>
-<span class="nt">close_mappings</span><span class="p">:</span>
+<span class="nt">related_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Period</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>

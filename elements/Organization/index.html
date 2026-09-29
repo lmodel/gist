@@ -444,16 +444,20 @@
 <td>gist_linkml:Organization</td>
 </tr>
 <tr>
-<td>exact</td>
-<td>iso22989:Organization</td>
+<td>narrow</td>
+<td>common_domain_model:BusinessUnit, dpv:OrganisationalUnit, iso22989:Organization</td>
 </tr>
 <tr>
 <td>broad</td>
-<td>dpvs:OrganisationalUnit, dpvs:ThirdParty</td>
+<td>common_domain_model:Party, dpv:LegalEntity</td>
+</tr>
+<tr>
+<td>related</td>
+<td>dpv:ThirdParty</td>
 </tr>
 <tr>
 <td>close</td>
-<td>common_domain_model:Party, common_domain_model:LegalEntity, common_domain_model:BusinessUnit, dpvs:LegalEntity</td>
+<td>common_domain_model:LegalEntity</td>
 </tr>
 </tbody>
 </table>
@@ -476,16 +480,17 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organization</span>
-<span class="nt">exact_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iso22989:Organization</span>
 <span class="nt">close_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Party</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:LegalEntity</span>
+<span class="nt">related_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:ThirdParty</span>
+<span class="nt">narrow_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:BusinessUnit</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:LegalEntity</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:OrganisationalUnit</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iso22989:Organization</span>
 <span class="nt">broad_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:OrganisationalUnit</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:ThirdParty</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Party</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:LegalEntity</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Organization</span>
@@ -513,16 +518,17 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organization</span>
-<span class="nt">exact_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iso22989:Organization</span>
 <span class="nt">close_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Party</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:LegalEntity</span>
+<span class="nt">related_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:ThirdParty</span>
+<span class="nt">narrow_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:BusinessUnit</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:LegalEntity</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:OrganisationalUnit</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iso22989:Organization</span>
 <span class="nt">broad_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:OrganisationalUnit</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpvs:ThirdParty</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Party</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpv:LegalEntity</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>
 <span class="nt">attributes</span><span class="p">:</span>

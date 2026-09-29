@@ -448,6 +448,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -546,7 +557,7 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../Decimal/">Decimal</a>&nbsp;or&nbsp;<br /><a href="../Float/">Float</a></td>
 </tr>
 <tr>
 <td>Domain</td>
@@ -573,6 +584,15 @@
 </tr>
 </tbody>
 </table>
+<details>
+<summary>Expressions &amp; Logic</summary>
+#### Any Of
+
+Value must satisfy at least one of:
+- AnonymousSlotExpression({'range': 'decimal'})
+- AnonymousSlotExpression({'range': 'float'})
+
+</details>
 <h2 id="in-subsets">In Subsets</h2>
 <ul>
 <li><a href="../GistCore/">GistCore</a></li>
@@ -608,9 +628,13 @@ so
 </code></pre>
 </li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset">gist:conversionOffset</a></li>
+</ul>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>OWL FunctionalProperty (at most one value)</li>
+<li>OWL range: (xsd:decimal | xsd:double)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -642,7 +666,7 @@ so
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A value that relates a unit of measure to units of the International</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">System of Units.</span>
 <span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OWL FunctionalProperty (at most one value)</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;OWL</span><span class="nv"> </span><span class="s">range:</span><span class="nv"> </span><span class="s">(xsd:decimal</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">xsd:double)&#39;</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;To</span><span class="nv"> </span><span class="s">convert</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">numeric</span><span class="nv"> </span><span class="s">value</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">measure</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">another,</span><span class="nv"> </span><span class="s">multiply</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the\</span>
 <span class="w">  </span><span class="s">\ conversion</span><span class="nv"> </span><span class="s">factor</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">unit</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">divide</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">conversion</span><span class="nv"> </span><span class="s">factor</span><span class="nv"> </span><span class="s">of\</span>
@@ -655,12 +679,18 @@ so
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
+<span class="nt">see_also</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:conversionOffset</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conversion factor</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitOfMeasure</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:conversionFactor</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">any_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 </code></pre></div>
 </details>
 </div>

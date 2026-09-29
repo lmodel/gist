@@ -460,6 +460,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -538,6 +549,10 @@
 <td><a href="../String/">String</a></td>
 </tr>
 <tr>
+<td>Domain</td>
+<td><a href="../Offer/">Offer</a></td>
+</tr>
+<tr>
 <td>Slot URI</td>
 <td><a href="https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide">gist:offersToProvide</a></td>
 </tr>
@@ -584,6 +599,21 @@
 <li>This will most often be a good or service, but could be an amount of money, e.g., for currency exchange.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain_includes</td>
+<td>gist:Offer</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/lmodel/gist">https://w3id.org/lmodel/gist</a></li>
@@ -610,6 +640,10 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">offers_to_provide</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domain_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Offer</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relates an offer to the thing being made available for exchange.</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This will most often be a good or service, but could be an amount of money, e.g.,</span>
@@ -623,6 +657,7 @@
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">offers to provide</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Offer</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:offersToProvide</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

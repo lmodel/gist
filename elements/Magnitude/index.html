@@ -253,6 +253,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#see-also">
+<span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#notes">
 <span class="md-ellipsis">
       
@@ -426,9 +435,13 @@
 <ul>
 <li>An accuracy can be assigned to a magnitude using the property has accuracy.</li>
 </ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy">gist:hasAccuracy</a></li>
+</ul>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>OWL equivalentClass: (∃hasAspect.gist:Aspect &amp; ∃hasUnitOfMeasure.gist:UnitOfMeasure &amp; ∃numericValue.<a href="http://www.w3.org/2000/01/rdf-schema#Literal">http://www.w3.org/2000/01/rdf-schema#Literal</a>)</li>
+<li>OWL equivalentClass: (∃hasAspect.gist:Aspect &amp; ∃hasUnitOfMeasure.gist:UnitOfMeasure &amp; ∃numericValue.rdfs:Literal)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -453,12 +466,16 @@
 <td>gist_linkml:Magnitude</td>
 </tr>
 <tr>
+<td>narrow</td>
+<td>common_domain_model:Money</td>
+</tr>
+<tr>
 <td>related</td>
 <td>common_domain_model:Price</td>
 </tr>
 <tr>
 <td>close</td>
-<td>common_domain_model:Money, common_domain_model:Cash, common_domain_model:Quantity, common_domain_model:Measure</td>
+<td>common_domain_model:Quantity, common_domain_model:Measure</td>
 </tr>
 </tbody>
 </table>
@@ -470,7 +487,7 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The amount of a measurable characteristic (aspect).</span>
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(∃hasAspect.gist:Aspect</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasUnitOfMeasure.gist:UnitOfMeasure</span>
-<span class="w">  </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃numericValue.&lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt;)'</span>
+<span class="w">  </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃numericValue.rdfs:Literal)'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An accuracy can be assigned to a magnitude using the property has accuracy.</span>
 <span class="nt">examples</span><span class="p">:</span>
@@ -479,15 +496,17 @@
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
+<span class="nt">see_also</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:hasAccuracy</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
 <span class="nt">close_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Money</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Cash</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Quantity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Measure</span>
 <span class="nt">related_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Price</span>
+<span class="nt">narrow_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Money</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:Magnitude</span>
@@ -504,7 +523,7 @@
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The amount of a measurable characteristic (aspect).</span>
 <span class="nt">notes</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'OWL</span><span class="nv"> </span><span class="s">equivalentClass:</span><span class="nv"> </span><span class="s">(∃hasAspect.gist:Aspect</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃hasUnitOfMeasure.gist:UnitOfMeasure</span>
-<span class="w">  </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃numericValue.&lt;http://www.w3.org/2000/01/rdf-schema#Literal&gt;)'</span>
+<span class="w">  </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">∃numericValue.rdfs:Literal)'</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An accuracy can be assigned to a magnitude using the property has accuracy.</span>
 <span class="nt">examples</span><span class="p">:</span>
@@ -513,15 +532,17 @@
 <span class="nt">in_subset</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist_core</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/lmodel/gist</span>
+<span class="nt">see_also</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:hasAccuracy</span>
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Magnitude</span>
 <span class="nt">close_mappings</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Money</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Cash</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Quantity</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Measure</span>
 <span class="nt">related_mappings</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Price</span>
+<span class="nt">narrow_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common_domain_model:Money</span>
 <span class="nt">mixins</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GistThing</span>
 <span class="nt">attributes</span><span class="p">:</span>

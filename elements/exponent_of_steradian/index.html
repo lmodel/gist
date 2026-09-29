@@ -448,6 +448,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -535,11 +546,7 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../Decimal/">Decimal</a>&nbsp;or&nbsp;<br /><a href="../UnitGroup/">UnitGroup</a>&nbsp;or&nbsp;<br /><a href="../UnitOfMeasure/">UnitOfMeasure</a></td>
-</tr>
-<tr>
-<td>Domain</td>
-<td><a href="../UnitGroup/">UnitGroup</a></td>
+<td><a href="../Decimal/">Decimal</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
@@ -562,15 +569,6 @@
 </tr>
 </tbody>
 </table>
-<details>
-<summary>Expressions &amp; Logic</summary>
-#### Any Of
-
-Value must satisfy at least one of:
-- AnonymousSlotExpression({'range': 'UnitGroup'})
-- AnonymousSlotExpression({'range': 'UnitOfMeasure'})
-
-</details>
 <h2 id="in-subsets">In Subsets</h2>
 <ul>
 <li><a href="../GistCore/">GistCore</a></li>
@@ -604,6 +602,10 @@ Value must satisfy at least one of:
 <ul>
 <li>Steradian is a measure of solid angle.</li>
 </ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -632,6 +634,8 @@ Value must satisfy at least one of:
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exponent_of_steradian</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The exponent of steradian in a product of powers of base units.</span>
+<span class="nt">notes</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;OWL</span><span class="nv"> </span><span class="s">domain:</span><span class="nv"> </span><span class="s">(gist:UnitGroup</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">gist:UnitOfMeasure)&#39;</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Steradian is a measure of solid angle.</span>
 <span class="nt">examples</span><span class="p">:</span>
@@ -647,12 +651,8 @@ Value must satisfy at least one of:
 <span class="nt">aliases</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exponent of steradian</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitGroup</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:exponentOfSteradian</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decimal</span>
-<span class="nt">any_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitGroup</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UnitOfMeasure</span>
 </code></pre></div>
 </details>
 </div>

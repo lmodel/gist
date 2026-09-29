@@ -343,41 +343,65 @@ enums:
         description: The aspect altitude.
         meaning: gistd:_Aspect_altitude
         title: altitude
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_AREA:
         text: ASPECT_AREA
         description: The aspect area.
         meaning: gistd:_Aspect_area
         title: area
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_DURATION:
         text: ASPECT_DURATION
         description: The aspect duration.
         meaning: gistd:_Aspect_duration
         title: duration
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_FINANCIAL_BALANCE:
         text: ASPECT_FINANCIAL_BALANCE
         description: The aspect financial balance.
         meaning: gistd:_Aspect_financial_balance
         title: balance
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_MASS:
         text: ASPECT_MASS
         description: The aspect mass.
         meaning: gistd:_Aspect_mass
         title: mass
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_MONETARY_VALUE:
         text: ASPECT_MONETARY_VALUE
         description: The aspect monetary value.
         meaning: gistd:_Aspect_monetary_value
         title: monetary value
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_PROBABILITY:
         text: ASPECT_PROBABILITY
         description: The aspect probability.
         meaning: gistd:_Aspect_probability
         title: probability
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
       ASPECT_VOLUME:
         text: ASPECT_VOLUME
         description: The aspect volume.
         meaning: gistd:_Aspect_volume
         title: volume
+        notes:
+        - This instance has been duplicated from reference data so it can be used
+          in property restrictions.
   MediaTypeInstance:
     name: MediaTypeInstance
     definition_uri: https://w3id.org/lmodel/gist/MediaTypeInstance
@@ -389,58 +413,114 @@ enums:
       JSON:
         text: JSON
         meaning: media_app:json
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/json
         title: JSON
       LD_PLUS_JSON:
         text: LD_PLUS_JSON
         meaning: media_app:ld+json
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/ld+json
         title: JSON-LD
       N_QUADS:
         text: N_QUADS
         meaning: media_app:n-quads
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/n-quads
         title: N-Quads
       N_TRIPLES:
         text: N_TRIPLES
         meaning: media_app:n-triples
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/n-triples
         title: N-Triples
       RDF_PLUS_XML:
         text: RDF_PLUS_XML
         meaning: media_app:rdf+xml
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/rdf+xml
         title: RDF/XML
       SPARQL_RESULTS_PLUS_JSON:
         text: SPARQL_RESULTS_PLUS_JSON
         meaning: media_app:sparql-results+json
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/sparql-results+json
         title: SPARQL 1.1 Query Results JSON
       SPARQL_RESULTS_PLUS_XML:
         text: SPARQL_RESULTS_PLUS_XML
         meaning: media_app:sparql-results+xml
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/sparql-results+xml
         title: SPARQL 1.1 Query Results XML
       TRIG:
         text: TRIG
         meaning: media_app:trig
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: application/trig
         title: TriG
       JPG:
         text: JPG
         meaning: media_img:jpg
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: image/jpg
         title: JPG
       PNG:
         text: PNG
         meaning: media_img:png
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: image/png
         title: PNG
       CSV:
         text: CSV
         meaning: media_txt:csv
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: text/csv
         title: CSV
       HTML:
         text: HTML
         meaning: media_txt:html
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: text/html
         title: HTML
       PLAIN:
         text: PLAIN
         meaning: media_txt:plain
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: text/plain
         title: Plain Text
       TURTLE:
         text: TURTLE
         meaning: media_txt:turtle
+        annotations:
+          unique_text:
+            tag: unique_text
+            value: text/turtle
         title: Turtle
   PrefixDeclarationInstance:
     name: PrefixDeclarationInstance
@@ -556,6 +636,10 @@ slots:
   conforms_to:
     name: conforms_to
     definition_uri: https://w3id.org/lmodel/gist/conforms_to
+    annotations:
+      range_includes:
+        tag: range_includes
+        value: gist:Intention
     description: The subject is consistent with or satisfies the requirements, rules,
       or expectations established by the object.
     examples:
@@ -641,9 +725,11 @@ slots:
   has_accuracy:
     name: has_accuracy
     definition_uri: https://w3id.org/lmodel/gist/has_accuracy
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Magnitude
     description: Relates a magnitude to another magnitude that describes its accuracy.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     comments:
     - "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness\
       \ (a measure of systemic error) and precision (a measure of random error). The\
@@ -665,9 +751,11 @@ slots:
     - has accuracy
     mappings:
     - gist:hasAccuracy
+    domain: Magnitude
     slot_uri: gist:hasAccuracy
+    owner: has_accuracy
     range: Magnitude
-    multivalued: true
+    multivalued: false
     inlined: true
     inlined_as_list: true
   has_addend:
@@ -713,8 +801,6 @@ slots:
     name: has_aspect
     definition_uri: https://w3id.org/lmodel/gist/has_aspect
     description: Relates a magnitude to its aspect (measurable characteristic).
-    notes:
-    - OWL FunctionalProperty (at most one value)
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -724,7 +810,7 @@ slots:
     - gist:hasAspect
     slot_uri: gist:hasAspect
     range: Aspect
-    multivalued: true
+    multivalued: false
     inlined: true
     inlined_as_list: true
   has_biological_parent:
@@ -1043,8 +1129,6 @@ slots:
     name: has_unique_broader
     definition_uri: https://w3id.org/lmodel/gist/has_unique_broader
     description: Relates a thing to a unique other thing with a broader meaning.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -1055,14 +1139,12 @@ slots:
     is_a: has_broader
     slot_uri: gist:hasUniqueBroader
     range: string
-    multivalued: true
+    multivalued: false
   has_unique_navigational_parent:
     name: has_unique_navigational_parent
     definition_uri: https://w3id.org/lmodel/gist/has_unique_navigational_parent
     description: Relates a subject category to a unique parent category in an informal
       (e.g., faceted) hierarchy.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -1073,7 +1155,7 @@ slots:
     is_a: has_navigational_parent
     slot_uri: gist:hasUniqueNavigationalParent
     range: string
-    multivalued: true
+    multivalued: false
   has_unit_group:
     name: has_unit_group
     definition_uri: https://w3id.org/lmodel/gist/has_unit_group
@@ -1149,6 +1231,10 @@ slots:
   is_allocated_by:
     name: is_allocated_by
     definition_uri: https://w3id.org/lmodel/gist/is_allocated_by
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Category, gist:ID
     description: Relates something to whomever or whatever assigns or distributes
       it.
     comments:
@@ -1174,6 +1260,13 @@ slots:
   is_assignment_of:
     name: is_assignment_of
     definition_uri: https://w3id.org/lmodel/gist/is_assignment_of
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Assignment
+      range_includes:
+        tag: range_includes
+        value: gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person
     description: Relates an assignment to the resource it assigns.
     comments:
     - People, organizations, monetary amounts, equipment can all be assigned.
@@ -1188,7 +1281,9 @@ slots:
     - is assignment of
     mappings:
     - gist:isAssignmentOf
+    domain: Assignment
     slot_uri: gist:isAssignmentOf
+    owner: is_assignment_of
     range: string
     multivalued: true
     any_of:
@@ -1199,6 +1294,10 @@ slots:
   is_assignment_to:
     name: is_assignment_to
     definition_uri: https://w3id.org/lmodel/gist/is_assignment_to
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Assignment
     description: Relates something (typically an assignment) to the thing the resource
       is assigned to, such as a project, position, organization, pay rate, or billing
       rate.
@@ -1212,7 +1311,9 @@ slots:
     - is assignment to
     mappings:
     - gist:isAssignmentTo
+    domain: Assignment
     slot_uri: gist:isAssignmentTo
+    owner: is_assignment_to
     range: string
     multivalued: true
   is_based_on:
@@ -1236,6 +1337,10 @@ slots:
   is_categorized_by:
     name: is_categorized_by
     definition_uri: https://w3id.org/lmodel/gist/is_categorized_by
+    annotations:
+      range_includes:
+        tag: range_includes
+        value: gist:Category
     description: Relates something to a taxonomy term or other less formally defined
       classification.
     in_subset:
@@ -1293,6 +1398,13 @@ slots:
   is_expressed_in:
     name: is_expressed_in
     definition_uri: https://w3id.org/lmodel/gist/is_expressed_in
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Text
+      range_includes:
+        tag: range_includes
+        value: gist:Language
     description: Relates something to the language it is expressed in.
     in_subset:
     - gist_core
@@ -1301,7 +1413,9 @@ slots:
     - is expressed in
     mappings:
     - gist:isExpressedIn
+    domain: Text
     slot_uri: gist:isExpressedIn
+    owner: is_expressed_in
     range: Language
     multivalued: true
     inlined: true
@@ -1310,8 +1424,6 @@ slots:
     name: is_first_member_of
     definition_uri: https://w3id.org/lmodel/gist/is_first_member_of
     description: Relates the first member of an ordered collection to the collection.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     comments:
     - Given the Open World Assumption, the absence of a predecessor does not entail
       that an ordered member is the first member of an ordered collection. This property
@@ -1329,7 +1441,7 @@ slots:
     slot_uri: gist:isFirstMemberOf
     owner: is_first_member_of
     range: OrderedCollection
-    multivalued: true
+    multivalued: false
     inlined: true
     inlined_as_list: true
   is_geo_contained_in:
@@ -1414,6 +1526,10 @@ slots:
   is_member_of:
     name: is_member_of
     definition_uri: https://w3id.org/lmodel/gist/is_member_of
+    annotations:
+      range_includes:
+        tag: range_includes
+        value: gist:Collection, gist:Organization
     description: Relates a member individual to the thing, such as a collection or
       organization, that it is a member of.
     in_subset:
@@ -1529,6 +1645,10 @@ slots:
   is_under_jurisdiction_of:
     name: is_under_jurisdiction_of
     definition_uri: https://w3id.org/lmodel/gist/is_under_jurisdiction_of
+    annotations:
+      range_includes:
+        tag: range_includes
+        value: gist:GovernmentOrganization
     description: Relates a law, contract, etc., to the system of law or government
       which has the power, right, or authority to interpret and apply it.
     in_subset:
@@ -1546,6 +1666,13 @@ slots:
   links:
     name: links
     definition_uri: https://w3id.org/lmodel/gist/links
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:NetworkLink
+      range_includes:
+        tag: range_includes
+        value: gist:NetworkNode
     description: Relates a network link to a network node that it connects to another
       node. Used when the connection is undirected or the direction is not known.
     in_subset:
@@ -1555,7 +1682,9 @@ slots:
     - links
     mappings:
     - gist:links
+    domain: NetworkLink
     slot_uri: gist:links
+    owner: links
     range: NetworkNode
     multivalued: true
     inlined: true
@@ -1563,6 +1692,13 @@ slots:
   links_from:
     name: links_from
     definition_uri: https://w3id.org/lmodel/gist/links_from
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:NetworkLink
+      range_includes:
+        tag: range_includes
+        value: gist:NetworkNode
     description: Relates a network link to its origin network node. Unlike the superproperty,
       this represents a directed connection.
     in_subset:
@@ -1573,7 +1709,9 @@ slots:
     mappings:
     - gist:linksFrom
     is_a: links
+    domain: NetworkLink
     slot_uri: gist:linksFrom
+    owner: links_from
     range: NetworkNode
     multivalued: true
     inlined: true
@@ -1581,6 +1719,13 @@ slots:
   links_to:
     name: links_to
     definition_uri: https://w3id.org/lmodel/gist/links_to
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:NetworkLink
+      range_includes:
+        tag: range_includes
+        value: gist:NetworkNode
     description: Relates a network link to its destination network node. Unlike the
       superproperty, this represents a directed connection.
     in_subset:
@@ -1591,7 +1736,9 @@ slots:
     mappings:
     - gist:linksTo
     is_a: links
+    domain: NetworkLink
     slot_uri: gist:linksTo
+    owner: links_to
     range: NetworkNode
     multivalued: true
     inlined: true
@@ -1614,6 +1761,10 @@ slots:
   offers_to_provide:
     name: offers_to_provide
     definition_uri: https://w3id.org/lmodel/gist/offers_to_provide
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Offer
     description: Relates an offer to the thing being made available for exchange.
     comments:
     - This will most often be a good or service, but could be an amount of money,
@@ -1628,12 +1779,18 @@ slots:
     - offers to provide
     mappings:
     - gist:offersToProvide
+    domain: Offer
     slot_uri: gist:offersToProvide
+    owner: offers_to_provide
     range: string
     multivalued: true
   offers_to_receive:
     name: offers_to_receive
     definition_uri: https://w3id.org/lmodel/gist/offers_to_receive
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Offer
     description: Relates an offer to the thing expected in return for the offered
       item.
     comments:
@@ -1650,13 +1807,17 @@ slots:
     - offers to receive
     mappings:
     - gist:offersToReceive
+    domain: Offer
     slot_uri: gist:offersToReceive
+    owner: offers_to_receive
     range: string
     multivalued: true
   owns:
     name: owns
     definition_uri: https://w3id.org/lmodel/gist/owns
     description: Relates a party to something that it possesses and controls.
+    notes:
+    - 'OWL domain: (gist:Organization | gist:Person)'
     comments:
     - The ultimate form of ownership is the right to destroy.
     - There is a long list of potential range classes.
@@ -1667,14 +1828,9 @@ slots:
     - owns
     mappings:
     - gist:owns
-    domain: Organization
     slot_uri: gist:owns
-    owner: owns
     range: string
     multivalued: true
-    any_of:
-    - range: Organization
-    - range: Person
   precedes:
     name: precedes
     definition_uri: https://w3id.org/lmodel/gist/precedes
@@ -1777,8 +1933,6 @@ slots:
     definition_uri: https://w3id.org/lmodel/gist/provides_order_for
     description: Links a member of an ordered collection to the real-world item it
       represents in that collection.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -1790,7 +1944,7 @@ slots:
     slot_uri: gist:providesOrderFor
     owner: provides_order_for
     range: string
-    multivalued: true
+    multivalued: false
   refers_to:
     name: refers_to
     definition_uri: https://w3id.org/lmodel/gist/refers_to
@@ -2103,6 +2257,10 @@ slots:
   contained_text:
     name: contained_text
     definition_uri: https://w3id.org/lmodel/gist/contained_text
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:Content, gist:ContentExpression, gist:Tag, gist:Text
     description: Relates an entity containing textual information to the string constituting
       that textual information.
     comments:
@@ -2126,7 +2284,7 @@ slots:
     description: A value that relates a unit of measure to units of the International
       System of Units.
     notes:
-    - OWL FunctionalProperty (at most one value)
+    - 'OWL range: (xsd:decimal | xsd:double)'
     comments:
     - "To convert a numeric value from one unit of measure to another, multiply by\
       \ the conversion factor of the first unit and then divide by the conversion\
@@ -2140,6 +2298,8 @@ slots:
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
+    see_also:
+    - gist:conversionOffset
     aliases:
     - conversion factor
     mappings:
@@ -2148,6 +2308,10 @@ slots:
     slot_uri: gist:conversionFactor
     owner: conversion_factor
     range: string
+    multivalued: false
+    any_of:
+    - range: decimal
+    - range: float
   conversion_offset:
     name: conversion_offset
     definition_uri: https://w3id.org/lmodel/gist/conversion_offset
@@ -2159,8 +2323,6 @@ slots:
       \ multiply by the conversion factor.\r\n\r\n\t\tTo convert from Kelvin to Fahrenheit,\
       \ reverse the steps: first divide by the conversion factor and then subtract\
       \ the offset."
-    notes:
-    - OWL FunctionalProperty (at most one value)
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -2172,6 +2334,7 @@ slots:
     slot_uri: gist:conversionOffset
     owner: conversion_offset
     range: decimal
+    multivalued: false
   death_date:
     name: death_date
     definition_uri: https://w3id.org/lmodel/gist/death_date
@@ -2260,6 +2423,8 @@ slots:
     name: exponent_of_ampere
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_ampere
     description: The exponent of ampere in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 milliampere = 0.001 x ampere'\r\n\r\n\t\tthe conversionFactor\
         \ for milliampere is 0.001\r\n\t\tthe exponent of ampere is 1\r\n\t\tall other\
@@ -2272,17 +2437,14 @@ slots:
     - exponent of ampere
     mappings:
     - gist:exponentOfAmpere
-    domain: UnitGroup
     slot_uri: gist:exponentOfAmpere
-    owner: exponent_of_ampere
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_bit:
     name: exponent_of_bit
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_bit
     description: The exponent of bit in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 megabit per second = 1000000 x bit per second'\r\n\
         \r\n\t\tthe conversion factor for megabit per second is 1000000\r\n\t\tthe\
@@ -2296,17 +2458,14 @@ slots:
     - exponent of bit
     mappings:
     - gist:exponentOfBit
-    domain: UnitGroup
     slot_uri: gist:exponentOfBit
-    owner: exponent_of_bit
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_candela:
     name: exponent_of_candela
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_candela
     description: The exponent of candela in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 candlepower = 1 x candela'\r\n\r\n\t\tthe conversion\
         \ factor for candlepower is 1\r\n\t\tthe exponent of candela is 1\r\n\t\t\
@@ -2319,17 +2478,14 @@ slots:
     - exponent of candela
     mappings:
     - gist:exponentOfCandela
-    domain: UnitGroup
     slot_uri: gist:exponentOfCandela
-    owner: exponent_of_candela
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_kelvin:
     name: exponent_of_kelvin
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_kelvin
     description: The exponent of Kelvin in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees\
         \ Kelvin'\r\n\r\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\r\
@@ -2344,17 +2500,14 @@ slots:
     - exponent of Kelvin
     mappings:
     - gist:exponentOfKelvin
-    domain: UnitGroup
     slot_uri: gist:exponentOfKelvin
-    owner: exponent_of_kelvin
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_kilogram:
     name: exponent_of_kilogram
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_kilogram
     description: The exponent of kilogram in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 millimole per gram = 1 x mole per kilogram'\r\n\r\
         \n\t\tthe conversion factor for millimole per gram is 1\r\n\t\tthe exponent\
@@ -2368,17 +2521,14 @@ slots:
     - exponent of kilogram
     mappings:
     - gist:exponentOfKilogram
-    domain: UnitGroup
     slot_uri: gist:exponentOfKilogram
-    owner: exponent_of_kilogram
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_meter:
     name: exponent_of_meter
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_meter
     description: The exponent of meter in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\r\
         \n\r\n\t\tthe conversion factor for microgram per milliliter is 0.001\r\n\t\
@@ -2392,17 +2542,14 @@ slots:
     - exponent of meter
     mappings:
     - gist:exponentOfMeter
-    domain: UnitGroup
     slot_uri: gist:exponentOfMeter
-    owner: exponent_of_meter
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_mole:
     name: exponent_of_mole
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_mole
     description: The exponent of mole in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 katal = 1 x mole per second'\r\n\r\n\t\tthe conversion\
         \ factor for katal is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent\
@@ -2415,17 +2562,14 @@ slots:
     - exponent of mole
     mappings:
     - gist:exponentOfMole
-    domain: UnitGroup
     slot_uri: gist:exponentOfMole
-    owner: exponent_of_mole
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_number:
     name: exponent_of_number
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_number
     description: The exponent of number in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     comments:
     - Use when the unit of measure involves a count or other number.
     examples:
@@ -2441,18 +2585,15 @@ slots:
     - exponent of number
     mappings:
     - gist:exponentOfNumber
-    domain: UnitGroup
     slot_uri: gist:exponentOfNumber
-    owner: exponent_of_number
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_other:
     name: exponent_of_other
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_other
     description: Indicates whether a unit of measure can be expressed in terms of
       the standard exponents (as shown in the examples).
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     comments:
     - "Set the value to 0 if the units of measure in the unit group can be expressed\
       \ using the standard set of exponents (as in the examples).\r\n\r\n\t\tOtherwise\
@@ -2468,17 +2609,14 @@ slots:
     - exponent of other
     mappings:
     - gist:exponentOfOther
-    domain: UnitGroup
     slot_uri: gist:exponentOfOther
-    owner: exponent_of_other
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_radian:
     name: exponent_of_radian
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_radian
     description: The exponent of radian in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 revolution = 6.283 x radian'\r\n\r\n\t\tthe conversion\
         \ factor for revolution is 6.283\r\n\t\tthe exponent of radian is 1\r\n\t\t\
@@ -2491,17 +2629,14 @@ slots:
     - exponent of radian
     mappings:
     - gist:exponentOfRadian
-    domain: UnitGroup
     slot_uri: gist:exponentOfRadian
-    owner: exponent_of_radian
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_second:
     name: exponent_of_second
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_second
     description: The exponent of second in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     examples:
     - value: "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\r\
         \n\r\n\t\tthe conversion factor for watt-hour is 3600\r\n\t\tthe exponent\
@@ -2516,17 +2651,14 @@ slots:
     - exponent of second
     mappings:
     - gist:exponentOfSecond
-    domain: UnitGroup
     slot_uri: gist:exponentOfSecond
-    owner: exponent_of_second
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_steradian:
     name: exponent_of_steradian
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_steradian
     description: The exponent of steradian in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     comments:
     - Steradian is a measure of solid angle.
     examples:
@@ -2543,17 +2675,14 @@ slots:
     - exponent of steradian
     mappings:
     - gist:exponentOfSteradian
-    domain: UnitGroup
     slot_uri: gist:exponentOfSteradian
-    owner: exponent_of_steradian
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   exponent_of_us_dollar:
     name: exponent_of_us_dollar
     definition_uri: https://w3id.org/lmodel/gist/exponent_of_us_dollar
     description: The exponent of US Dollar in a product of powers of base units.
+    notes:
+    - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     comments:
     - The factors for converting from one currency to another change constantly.
     examples:
@@ -2569,13 +2698,8 @@ slots:
     - exponent of US dollar
     mappings:
     - gist:exponentOfUSDollar
-    domain: UnitGroup
     slot_uri: gist:exponentOfUSDollar
-    owner: exponent_of_us_dollar
     range: decimal
-    any_of:
-    - range: UnitGroup
-    - range: UnitOfMeasure
   id_text:
     name: id_text
     definition_uri: https://w3id.org/lmodel/gist/id_text
@@ -2670,6 +2794,11 @@ slots:
     name: numeric_value
     definition_uri: https://w3id.org/lmodel/gist/numeric_value
     description: The actual value of a magnitude.
+    notes:
+    - 'OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer
+      | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger
+      | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong
+      | xsd:unsignedShort | owl:rational | owl:real)'
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -2679,6 +2808,10 @@ slots:
     - gist:numericValue
     slot_uri: gist:numericValue
     range: string
+    any_of:
+    - range: integer
+    - range: decimal
+    - range: float
   planned_end_date:
     name: planned_end_date
     definition_uri: https://w3id.org/lmodel/gist/planned_end_date
@@ -2874,6 +3007,10 @@ slots:
   sequence:
     name: sequence
     definition_uri: https://w3id.org/lmodel/gist/sequence
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:OrderedMember
     description: A number that specifies the position of an element within a series.
     in_subset:
     - gist_core
@@ -2882,7 +3019,9 @@ slots:
     - sequence
     mappings:
     - gist:sequence
+    domain: OrderedMember
     slot_uri: gist:sequence
+    owner: sequence
     range: integer
   start_date_time:
     name: start_date_time
@@ -2907,6 +3046,10 @@ slots:
   symbol:
     name: symbol
     definition_uri: https://w3id.org/lmodel/gist/symbol
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:UnitOfMeasure
     description: A symbol for something using only ASCII characters.
     examples:
     - value: The ASCII symbol for square meter is m^2.
@@ -2917,15 +3060,19 @@ slots:
     - symbol
     mappings:
     - gist:symbol
+    domain: UnitOfMeasure
     slot_uri: gist:symbol
+    owner: symbol
     range: string
   unique_text:
     name: unique_text
     definition_uri: https://w3id.org/lmodel/gist/unique_text
+    annotations:
+      domain_includes:
+        tag: domain_includes
+        value: gist:ID, gist:MediaType, gist:Tag, gist:Text
     description: The unique string value of some content object, to be used when there
       is no possibility of having more than one value.
-    notes:
-    - OWL FunctionalProperty (at most one value)
     comments:
     - 'Note that the uniqueness only goes in one direction: a product catalog number
       might also be an employee ID.'
@@ -2941,6 +3088,7 @@ slots:
     is_a: contained_text
     slot_uri: gist:uniqueText
     range: string
+    multivalued: false
   domain_includes:
     name: domain_includes
     definition_uri: https://w3id.org/lmodel/gist/domain_includes
@@ -3057,7 +3205,7 @@ classes:
     - Address
     mappings:
     - gist:Address
-    close_mappings:
+    narrow_mappings:
     - common_domain_model:Address
     is_a: Content
     slots:
@@ -3110,11 +3258,11 @@ classes:
     - Agreement
     mappings:
     - gist:Agreement
-    exact_mappings:
+    close_mappings:
     - common_domain_model:Agreement
-    broad_mappings:
+    narrow_mappings:
     - common_domain_model:MasterAgreement
-    - dpvs:DataProcessingAgreement
+    - dpv:DataProcessingAgreement
     is_a: Intention
     slots:
     - name
@@ -3176,9 +3324,10 @@ classes:
     mappings:
     - gist:Assignment
     close_mappings:
+    - common_domain_model:NaturalPersonRole
+    related_mappings:
     - common_domain_model:RelatedParty
     - common_domain_model:Counterparty
-    - common_domain_model:NaturalPersonRole
     is_a: TemporalRelation
     slots:
     - name
@@ -3544,8 +3693,8 @@ classes:
     - Contingent Obligation
     mappings:
     - gist:ContingentObligation
-    close_mappings:
-    - dpvs:Obligation
+    broad_mappings:
+    - dpv:Obligation
     is_a: Commitment
     slots:
     - name
@@ -3564,8 +3713,8 @@ classes:
     - Contract
     mappings:
     - gist:Contract
-    exact_mappings:
-    - dpvs:DpvContract
+    related_mappings:
+    - dpv:Contract
     is_a: Agreement
     slots:
     - name
@@ -3582,7 +3731,7 @@ classes:
     - Contract Term
     mappings:
     - gist:ContractTerm
-    related_mappings:
+    narrow_mappings:
     - common_domain_model:CollateralProvisions
     is_a: Specification
     slots:
@@ -3640,7 +3789,8 @@ classes:
       is not governed by some other government organization) and governance over an
       entity generally recognized as a country.
     notes:
-    - "OWL subClassOf restrictions: _bnode_; \u22640isGovernedBy.gist:GovernmentOrganization"
+    - "OWL subClassOf restrictions: =1^isGovernedBy.gist:CountryGeoRegion; \u2264\
+      0isGovernedBy.gist:GovernmentOrganization"
     - "OWL equivalentClass: (gist:GovernmentOrganization & \u2203^isGovernedBy.gist:CountryGeoRegion)"
     comments:
     - While a country government may enter into treaties with other country governments,
@@ -3736,7 +3886,7 @@ classes:
     - Virtual Address
     mappings:
     - gist:ElectronicAddress
-    close_mappings:
+    related_mappings:
     - common_domain_model:ContactInformation
     is_a: Address
     slots:
@@ -3822,12 +3972,11 @@ classes:
     - Event
     mappings:
     - gist:Event
-    close_mappings:
-    - common_domain_model:BusinessEvent
-    - iso22989:Action
     narrow_mappings:
+    - common_domain_model:BusinessEvent
     - iso22989:AILifecycleProcess
     - iso22989:DataProcess
+    - iso22989:Action
     mixins:
     - GistThing
     slots:
@@ -3936,8 +4085,8 @@ classes:
     - Geographic Location
     mappings:
     - gist:GeoLocation
-    close_mappings:
-    - dpvs:StorageLocation
+    narrow_mappings:
+    - dpv:StorageLocation
     mixins:
     - GistThing
     slots:
@@ -3953,7 +4102,7 @@ classes:
       These points are described using decimal latitude/longitude.
     notes:
     - "OWL equivalentClass: (\u2203hasMagnitude.\u2203hasAspect=_Aspect_altitude &\
-      \ \u2203latitude.<http://www.w3.org/2001/XMLSchema#double> & \u2203longitude.<http://www.w3.org/2001/XMLSchema#double>)"
+      \ \u2203latitude.xsd:double & \u2203longitude.xsd:double)"
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -3997,8 +4146,6 @@ classes:
     - Geographic Region
     mappings:
     - gist:GeoRegion
-    broad_mappings:
-    - dpvs:PersonalSpace
     is_a: GeoLocation
     slots:
     - name
@@ -4115,8 +4262,8 @@ classes:
     description: An event which occurred in time, with an actual end earlier than
       the present moment.
     notes:
-    - "OWL subClassOf restrictions: \u2203actualStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>"
-    - "OWL equivalentClass: (gist:Event & \u2203actualEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+    - "OWL subClassOf restrictions: \u2203actualStartDateTime.xsd:dateTime"
+    - "OWL equivalentClass: (gist:Event & \u2203actualEndDateTime.xsd:dateTime)"
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
@@ -4135,7 +4282,7 @@ classes:
     description: Content that is used to uniquely identify something or someone.
     notes:
     - "OWL equivalentClass: (gist:Content & \u2203isAllocatedBy.(gist:IntellectualProperty\
-      \ | gist:Organization | gist:Person) & \u2203uniqueText.<http://www.w3.org/2001/XMLSchema#string>)"
+      \ | gist:Organization | gist:Person) & \u2203uniqueText.xsd:string)"
     comments:
     - Used in conjunction with gist:isIdentifiedBy.
     examples:
@@ -4149,10 +4296,11 @@ classes:
     - gist:ID
     close_mappings:
     - common_domain_model:Identifier
+    - common_domain_model:AssignedIdentifier
+    narrow_mappings:
     - common_domain_model:PartyIdentifier
     - common_domain_model:PersonIdentifier
     - common_domain_model:EntityIdentifier
-    - common_domain_model:AssignedIdentifier
     is_a: Content
     slots:
     - name
@@ -4182,8 +4330,8 @@ classes:
     - Intellectual Property
     mappings:
     - gist:IntellectualProperty
-    broad_mappings:
-    - dpvs:IntellectualPropertyData
+    related_mappings:
+    - dpv:IntellectualPropertyData
     mixins:
     - GistThing
     slots:
@@ -4369,7 +4517,7 @@ classes:
     description: The amount of a measurable characteristic (aspect).
     notes:
     - "OWL equivalentClass: (\u2203hasAspect.gist:Aspect & \u2203hasUnitOfMeasure.gist:UnitOfMeasure\
-      \ & \u2203numericValue.<http://www.w3.org/2000/01/rdf-schema#Literal>)"
+      \ & \u2203numericValue.rdfs:Literal)"
     comments:
     - An accuracy can be assigned to a magnitude using the property has accuracy.
     examples:
@@ -4379,17 +4527,19 @@ classes:
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
+    see_also:
+    - gist:hasAccuracy
     aliases:
     - Magnitude
     mappings:
     - gist:Magnitude
     close_mappings:
-    - common_domain_model:Money
-    - common_domain_model:Cash
     - common_domain_model:Quantity
     - common_domain_model:Measure
     related_mappings:
     - common_domain_model:Price
+    narrow_mappings:
+    - common_domain_model:Money
     mixins:
     - GistThing
     slots:
@@ -4406,7 +4556,7 @@ classes:
     definition_uri: https://w3id.org/lmodel/gist/MediaType
     description: A digitized type that computer applications can recognize.
     notes:
-    - "OWL subClassOf restrictions: \u2203uniqueText.<http://www.w3.org/2001/XMLSchema#string>"
+    - "OWL subClassOf restrictions: \u2203uniqueText.xsd:string"
     comments:
     - The unique text for an IANA media type is the concatenation of the 'Type name',
       a slash '/', and the 'Subtype name' as provided on the page displayed when you
@@ -4416,6 +4566,8 @@ classes:
     in_subset:
     - gist_core
     from_schema: https://w3id.org/lmodel/gist/core
+    see_also:
+    - https://www.iana.org/assignments/media-types/media-types.xhtml
     aliases:
     - Media Type
     mappings:
@@ -4546,8 +4698,7 @@ classes:
     notes:
     - "OWL equivalentClass: (gist:ContingentObligation & \u2203hasGiver.(gist:Organization\
       \ | gist:Person) & \u2203offersToProvide.owl:Thing & \u2203offersToReceive.owl:Thing\
-      \ & \u2203plannedEndDateTime.<http://www.w3.org/2001/XMLSchema#dateTime> & \u2203\
-      plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+      \ & \u2203plannedEndDateTime.xsd:dateTime & \u2203plannedStartDateTime.xsd:dateTime)"
     comments:
     - Dates on an offer represent the time period the offer is valid for, as in '25%
       off through October 25, 2025.'
@@ -4600,7 +4751,7 @@ classes:
       member appears in exactly one ordered collection.
     notes:
     - "OWL equivalentClass: (gist:Component & (\u2203precedesDirectly.gist:OrderedMember\
-      \ | \u2203^precedesDirectly.gist:OrderedMember | \u2203sequence.<http://www.w3.org/2001/XMLSchema#integer>)\
+      \ | \u2203^precedesDirectly.gist:OrderedMember | \u2203sequence.xsd:integer)\
       \ & \u2203providesOrderFor.owl:Thing & \u2200isMemberOf.gist:OrderedCollection\
       \ & =1isMemberOf)"
     comments:
@@ -4642,16 +4793,17 @@ classes:
     - Organization
     mappings:
     - gist:Organization
-    exact_mappings:
-    - iso22989:Organization
     close_mappings:
-    - common_domain_model:Party
     - common_domain_model:LegalEntity
+    related_mappings:
+    - dpv:ThirdParty
+    narrow_mappings:
     - common_domain_model:BusinessUnit
-    - dpvs:LegalEntity
+    - dpv:OrganisationalUnit
+    - iso22989:Organization
     broad_mappings:
-    - dpvs:OrganisationalUnit
-    - dpvs:ThirdParty
+    - common_domain_model:Party
+    - dpv:LegalEntity
     mixins:
     - GistThing
     slots:
@@ -4680,7 +4832,7 @@ classes:
     mappings:
     - gist:Permission
     exact_mappings:
-    - dpvs:Permission
+    - dpv:Permission
     is_a: Intention
     slots:
     - name
@@ -4703,15 +4855,16 @@ classes:
     mappings:
     - gist:Person
     exact_mappings:
-    - dpvs:NaturalPerson
+    - dpv:NaturalPerson
     close_mappings:
     - common_domain_model:NaturalPerson
+    related_mappings:
     - iso22989:AIUser
     - iso22989:DataSubject
-    related_mappings:
-    - common_domain_model:Party
+    narrow_mappings:
+    - dpv:DataSubject
     broad_mappings:
-    - dpvs:DataSubject
+    - common_domain_model:Party
     is_a: LivingThing
     slots:
     - name
@@ -4752,7 +4905,7 @@ classes:
     - Physical Address
     mappings:
     - gist:PhysicalAddress
-    related_mappings:
+    close_mappings:
     - common_domain_model:Address
     is_a: Address
     slots:
@@ -4908,7 +5061,7 @@ classes:
     - Product Specification
     mappings:
     - gist:ProductSpecification
-    close_mappings:
+    related_mappings:
     - common_domain_model:TradableProduct
     is_a: CatalogItem
     slots:
@@ -5023,7 +5176,7 @@ classes:
     definition_uri: https://w3id.org/lmodel/gist/ScheduledEvent
     description: An event with a planned start datetime.
     notes:
-    - "OWL equivalentClass: (gist:Event & \u2203plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)"
+    - "OWL equivalentClass: (gist:Event & \u2203plannedStartDateTime.xsd:dateTime)"
     comments:
     - If the event already started, but has not yet ended, it is a contemporary event
       with an actual start datetime. If the event is over, it is a historical event
@@ -5206,7 +5359,7 @@ classes:
     description: A term in a folksonomy used to categorize things. Tags can be made
       up on the fly by users.
     notes:
-    - "OWL subClassOf restrictions: \u2203containedText.<http://www.w3.org/2001/XMLSchema#string>"
+    - "OWL subClassOf restrictions: \u2203containedText.xsd:string"
     comments:
     - Whether to use gist:containedText or gist:uniqueText on tags is an implementation
       decision. Since the latter is a subproperty of the former, the restriction remains
@@ -5249,10 +5402,9 @@ classes:
     - Task
     mappings:
     - gist:Task
-    close_mappings:
-    - iso22989:Task
     related_mappings:
     - common_domain_model:Workflow
+    - iso22989:Task
     is_a: Event
     slots:
     - name
@@ -5345,7 +5497,7 @@ classes:
     description: Content expressed as a written sequence of characters.
     notes:
     - "OWL equivalentClass: (gist:ContentExpression & \u2203isExpressedIn.gist:Language\
-      \ & \u2203containedText.<http://www.w3.org/2001/XMLSchema#string>)"
+      \ & \u2203containedText.xsd:string)"
     comments:
     - Text is expressed in a language (human or computer) and may but need not specify
       an encoding.
@@ -5370,7 +5522,8 @@ classes:
     description: A span of time with a known start time, end time, and duration. As
       long as two of the three are known, the third can be inferred.
     notes:
-    - 'OWL subClassOf restrictions: =1startDateTime; _bnode_; =1endDateTime'
+    - "OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.\u2203hasAspect=_Aspect_duration;\
+      \ =1endDateTime"
     comments:
     - An ongoing state of affairs with an unknown end time in the future cannot be
       a time interval; e.g. the lifespan of a living person cannot be a time interval,
@@ -5388,7 +5541,7 @@ classes:
     - Time Interval
     mappings:
     - gist:TimeInterval
-    close_mappings:
+    related_mappings:
     - common_domain_model:Period
     mixins:
     - GistThing
@@ -5410,9 +5563,8 @@ classes:
     - Transaction
     mappings:
     - gist:Transaction
-    close_mappings:
-    - common_domain_model:Trade
     related_mappings:
+    - common_domain_model:Trade
     - common_domain_model:TradeState
     is_a: Event
     slots:
@@ -5487,7 +5639,7 @@ classes:
     class_uri: gist_linkml:GistThing
 metamodel_version: 1.11.0
 source_file: gist.yaml
-source_file_date: '2026-09-29T15:45:09'
+source_file_date: '2026-09-29T21:09:09'
 source_file_size: 1290
-generation_date: '2026-09-29T15:45:18'
+generation_date: '2026-09-29T21:09:21'
 

@@ -459,17 +459,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -480,6 +469,17 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -611,11 +611,22 @@
 <ul>
 <li>Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID.</li>
 </ul>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>OWL FunctionalProperty (at most one value)</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain_includes</td>
+<td>gist:ID, gist:MediaType, gist:Tag, gist:Text</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/lmodel/gist">https://w3id.org/lmodel/gist</a></li>
@@ -642,10 +653,12 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_text</span>
+<span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">domain_includes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_includes</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:ID, gist:MediaType, gist:Tag, gist:Text</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The unique string value of some content object, to be used when there</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is no possibility of having more than one value.</span>
-<span class="nt">notes</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OWL FunctionalProperty (at most one value)</span>
 <span class="nt">comments</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;Note</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">uniqueness</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">goes</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">direction:</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">product</span><span class="nv"> </span><span class="s">catalog</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">might</span>
 <span class="w">  </span><span class="s">also</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">employee</span><span class="nv"> </span><span class="s">ID.&#39;</span>
@@ -660,6 +673,7 @@
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contained_text</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gist:uniqueText</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>
 </div>
