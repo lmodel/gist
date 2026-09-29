@@ -1,13 +1,13 @@
 # mapping_set_id: https://w3id.org/lmodel/gist/mappings/gist-dpvs
-# mapping_set_description: DPVs <-> gist (Semantic Arts upper ontology) term alignments. Hand-curated against the lmodel gist LinkML schema (https://w3id.org/lmodel/gist/). Provides upper-ontology grounding for DPVS entities, agreements, contracts, intellectual property, and addresses.
+# mapping_set_description: DPVs <-> gist (Semantic Arts upper ontology) term alignments. Hand-curated against gist's own terms (https://w3id.org/semanticarts/ns/ontology/gist/). Provides upper-ontology grounding for DPVS entities, agreements, contracts, intellectual property, and addresses.
 # mapping_set_version: 1.0
 # license: https://creativecommons.org/licenses/by/4.0/
-# subject_source: https://w3id.org/lmodel/gist
+# subject_source: https://w3id.org/semanticarts/ontology/gistCore
 # object_source: https://w3id.org/lmodel/dpvs
 # mapping_date: 2026-06-01
 # curie_map:
 #   dpvs: https://w3id.org/lmodel/dpvs/
-#   gist: https://w3id.org/lmodel/gist/
+#   gist: https://w3id.org/semanticarts/ns/ontology/gist/
 #   skos: http://www.w3.org/2004/02/skos/core#
 #   semapv: https://w3id.org/semapv/vocab/
 

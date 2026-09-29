@@ -1,13 +1,301 @@
 {
    "common_domain_model": "https://w3id.org/lmodel/common_domain_model/",
    "dpvs": "https://w3id.org/lmodel/dpvs/",
-   "gist": "https://w3id.org/lmodel/gist/",
-   "gist_semanticarts": "https://w3id.org/semanticarts/ns/ontology/gist/",
+   "gist": "https://w3id.org/semanticarts/ns/ontology/gist/",
+   "gist_linkml": "https://w3id.org/lmodel/gist/",
    "gistd": "https://w3id.org/semanticarts/ns/data/gist/",
    "iso22989": "https://w3id.org/lmodel/iso22989/",
    "linkml": "https://w3id.org/linkml/",
    "media_app": "https://www.iana.org/assignments/media-types/application/",
    "media_img": "https://www.iana.org/assignments/media-types/image/",
    "media_txt": "https://www.iana.org/assignments/media-types/text/",
-   "skos": "http://www.w3.org/2004/02/skos/core#"
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "Account": {
+      "@id": "gist:Account"
+   },
+   "Address": {
+      "@id": "gist:Address"
+   },
+   "AddressUsageType": {
+      "@id": "gist:AddressUsageType"
+   },
+   "Agreement": {
+      "@id": "gist:Agreement"
+   },
+   "Aspect": {
+      "@id": "gist:Aspect"
+   },
+   "Assignment": {
+      "@id": "gist:Assignment"
+   },
+   "Behavior": {
+      "@id": "gist:Behavior"
+   },
+   "Building": {
+      "@id": "gist:Building"
+   },
+   "BundledCatalogItem": {
+      "@id": "gist:BundledCatalogItem"
+   },
+   "CatalogItem": {
+      "@id": "gist:CatalogItem"
+   },
+   "Category": {
+      "@id": "gist:Category"
+   },
+   "Collection": {
+      "@id": "gist:Collection"
+   },
+   "Commitment": {
+      "@id": "gist:Commitment"
+   },
+   "Component": {
+      "@id": "gist:Component"
+   },
+   "Composite": {
+      "@id": "gist:Composite"
+   },
+   "ContemporaryEvent": {
+      "@id": "gist:ContemporaryEvent"
+   },
+   "Content": {
+      "@id": "gist:Content"
+   },
+   "ContentExpression": {
+      "@id": "gist:ContentExpression"
+   },
+   "ContingentEvent": {
+      "@id": "gist:ContingentEvent"
+   },
+   "ContingentObligation": {
+      "@id": "gist:ContingentObligation"
+   },
+   "Contract": {
+      "@id": "gist:Contract"
+   },
+   "ContractTerm": {
+      "@id": "gist:ContractTerm"
+   },
+   "ControlledVocabulary": {
+      "@id": "gist:ControlledVocabulary"
+   },
+   "CountryGeoRegion": {
+      "@id": "gist:CountryGeoRegion"
+   },
+   "CountryGovernment": {
+      "@id": "gist:CountryGovernment"
+   },
+   "DegreeOfCommitment": {
+      "@id": "gist:DegreeOfCommitment"
+   },
+   "Determination": {
+      "@id": "gist:Determination"
+   },
+   "Discipline": {
+      "@id": "gist:Discipline"
+   },
+   "ElectronicAddress": {
+      "@id": "gist:ElectronicAddress"
+   },
+   "ElectronicAddressType": {
+      "@id": "gist:ElectronicAddressType"
+   },
+   "Equipment": {
+      "@id": "gist:Equipment"
+   },
+   "EquipmentType": {
+      "@id": "gist:EquipmentType"
+   },
+   "Event": {
+      "@id": "gist:Event"
+   },
+   "EventSpecification": {
+      "@id": "gist:EventSpecification"
+   },
+   "FormattedContent": {
+      "@id": "gist:FormattedContent"
+   },
+   "Function": {
+      "@id": "gist:Function"
+   },
+   "GeneralMediaType": {
+      "@id": "gist:GeneralMediaType"
+   },
+   "GeoLocation": {
+      "@id": "gist:GeoLocation"
+   },
+   "GeoPoint": {
+      "@id": "gist:GeoPoint"
+   },
+   "GeoRegion": {
+      "@id": "gist:GeoRegion"
+   },
+   "GeoRoute": {
+      "@id": "gist:GeoRoute"
+   },
+   "GeoVolume": {
+      "@id": "gist:GeoVolume"
+   },
+   "GovernedGeoRegion": {
+      "@id": "gist:GovernedGeoRegion"
+   },
+   "GovernmentOrganization": {
+      "@id": "gist:GovernmentOrganization"
+   },
+   "HistoricalEvent": {
+      "@id": "gist:HistoricalEvent"
+   },
+   "ID": {
+      "@id": "gist:ID"
+   },
+   "IntellectualProperty": {
+      "@id": "gist:IntellectualProperty"
+   },
+   "Intention": {
+      "@id": "gist:Intention"
+   },
+   "IntergovernmentalOrganization": {
+      "@id": "gist:IntergovernmentalOrganization"
+   },
+   "KnowledgeConcept": {
+      "@id": "gist:KnowledgeConcept"
+   },
+   "Landmark": {
+      "@id": "gist:Landmark"
+   },
+   "Language": {
+      "@id": "gist:Language"
+   },
+   "LivingThing": {
+      "@id": "gist:LivingThing"
+   },
+   "Magnitude": {
+      "@id": "gist:Magnitude"
+   },
+   "MediaType": {
+      "@id": "gist:MediaType"
+   },
+   "Medium": {
+      "@id": "gist:Medium"
+   },
+   "Message": {
+      "@id": "gist:Message"
+   },
+   "Network": {
+      "@id": "gist:Network"
+   },
+   "NetworkLink": {
+      "@id": "gist:NetworkLink"
+   },
+   "NetworkNode": {
+      "@id": "gist:NetworkNode"
+   },
+   "Offer": {
+      "@id": "gist:Offer"
+   },
+   "OrderedCollection": {
+      "@id": "gist:OrderedCollection"
+   },
+   "OrderedMember": {
+      "@id": "gist:OrderedMember"
+   },
+   "Organization": {
+      "@id": "gist:Organization"
+   },
+   "Permission": {
+      "@id": "gist:Permission"
+   },
+   "Person": {
+      "@id": "gist:Person"
+   },
+   "PhysicalActionType": {
+      "@id": "gist:PhysicalActionType"
+   },
+   "PhysicalAddress": {
+      "@id": "gist:PhysicalAddress"
+   },
+   "PhysicalAddressType": {
+      "@id": "gist:PhysicalAddressType"
+   },
+   "PhysicalEvent": {
+      "@id": "gist:PhysicalEvent"
+   },
+   "PhysicalIdentifiableItem": {
+      "@id": "gist:PhysicalIdentifiableItem"
+   },
+   "PhysicalSubstance": {
+      "@id": "gist:PhysicalSubstance"
+   },
+   "ProductCategory": {
+      "@id": "gist:ProductCategory"
+   },
+   "ProductSpecification": {
+      "@id": "gist:ProductSpecification"
+   },
+   "Project": {
+      "@id": "gist:Project"
+   },
+   "ReferenceValue": {
+      "@id": "gist:ReferenceValue"
+   },
+   "RenderedContent": {
+      "@id": "gist:RenderedContent"
+   },
+   "Requirement": {
+      "@id": "gist:Requirement"
+   },
+   "Restriction": {
+      "@id": "gist:Restriction"
+   },
+   "ScheduledEvent": {
+      "@id": "gist:ScheduledEvent"
+   },
+   "ScheduledTask": {
+      "@id": "gist:ScheduledTask"
+   },
+   "SchemaMetaData": {
+      "@id": "gist:SchemaMetaData"
+   },
+   "ServiceSpecification": {
+      "@id": "gist:ServiceSpecification"
+   },
+   "Specification": {
+      "@id": "gist:Specification"
+   },
+   "SubCountryGovernment": {
+      "@id": "gist:SubCountryGovernment"
+   },
+   "System": {
+      "@id": "gist:System"
+   },
+   "Tag": {
+      "@id": "gist:Tag"
+   },
+   "Task": {
+      "@id": "gist:Task"
+   },
+   "TaskTemplate": {
+      "@id": "gist:TaskTemplate"
+   },
+   "Template": {
+      "@id": "gist:Template"
+   },
+   "TemporalRelation": {
+      "@id": "gist:TemporalRelation"
+   },
+   "Text": {
+      "@id": "gist:Text"
+   },
+   "TimeInterval": {
+      "@id": "gist:TimeInterval"
+   },
+   "Transaction": {
+      "@id": "gist:Transaction"
+   },
+   "UnitGroup": {
+      "@id": "gist:UnitGroup"
+   },
+   "UnitOfMeasure": {
+      "@id": "gist:UnitOfMeasure"
+   }
 }

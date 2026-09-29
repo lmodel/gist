@@ -155,3 +155,56 @@ class TestSchemaConsistency:
                     or range_val in types_section
                 )
                 # We allow some ranges that might be from imported modules
+
+
+class TestGistIrisInArtifacts:
+    """The published OWL and SHACL use gist's IRIs for gist's terms.
+
+    These read the committed files under project/: the OWL there is written by
+    the bare gen-owl call in the justfile (flags in config.public.mk), not by
+    gen-project's config.yaml, so only the files themselves are the truth.
+    """
+
+    PROJECT = Path(__file__).parent.parent / "project"
+
+    @pytest.fixture(scope="class")
+    def owl(self):
+        import rdflib
+        return rdflib.Graph().parse(self.PROJECT / "owl" / "gist.owl.ttl")
+
+    @pytest.fixture(scope="class")
+    def shacl(self):
+        import rdflib
+        return rdflib.Graph().parse(self.PROJECT / "shacl" / "gist.shacl.ttl")
+
+    def test_owl_declares_every_gist_class_under_its_own_iri(self, owl, upstream_gist):
+        from rdflib.namespace import OWL, RDF
+        declared = {str(c) for c in owl.subjects(RDF.type, OWL.Class)}
+        assert upstream_gist["classes"] - declared == set()
+
+    def test_owl_subjects(self, owl, upstream_gist):
+        import rdflib
+        gist_ns, gistd_ns, lmodel_ns = (upstream_gist[k] for k in ("gist_ns", "gistd_ns", "lmodel_ns"))
+        subjects = {str(s) for s in owl.subjects() if isinstance(s, rdflib.URIRef)}
+        invented = {s for s in subjects if s.startswith((gist_ns, gistd_ns))} - upstream_gist["iris"]
+        cloned = {s for s in subjects
+                  if s.startswith(lmodel_ns) and s[len(lmodel_ns):] in upstream_gist["local_names"]}
+        assert invented == set(), "OWL defines IRIs in Semantic Arts' namespace that gist does not"
+        assert cloned == set(), "OWL re-declares gist terms in lmodel's namespace"
+
+    def test_owl_keeps_gist_individuals_individuals(self, owl, upstream_gist):
+        from rdflib.namespace import OWL, RDF
+        retyped = [str(s) for s in owl.subjects(RDF.type, OWL.Class)
+                   if str(s).startswith(upstream_gist["gistd_ns"])]
+        assert retyped == []
+
+    def test_shacl_shapes_are_lmodels_and_target_gist_classes(self, shacl, upstream_gist):
+        import rdflib
+        from rdflib.namespace import RDF
+        SH = rdflib.Namespace("http://www.w3.org/ns/shacl#")
+        lmodel_ns = upstream_gist["lmodel_ns"]
+        shapes = {str(s) for s in shacl.subjects(RDF.type, SH.NodeShape)}
+        assert shapes and all(s.startswith(lmodel_ns) for s in shapes)
+        targets = {str(t) for t in shacl.objects(None, SH.targetClass)}
+        assert upstream_gist["classes"] <= targets
+        assert all(t in upstream_gist["classes"] or t.startswith(lmodel_ns) for t in targets)

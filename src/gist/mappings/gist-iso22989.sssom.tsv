@@ -3,12 +3,12 @@
 # mapping_set_title: ISO/IEC 22989:2022 to gist (Semantic Arts) Upper Ontology Schema Mappings
 # mapping_set_description: Schema-level mappings between the ISO/IEC 22989:2022 (Artificial intelligence concepts and terminology) LinkML schema and the gist minimal upper ontology (Semantic Arts). Mappings anchor ISO/IEC 22989 entities to gist upper-ontology classes for Organization, Person, Event, Task and related foundational concepts to support integration with gist-based knowledge graphs.
 # license: https://creativecommons.org/licenses/by/4.0/
-# subject_source: https://w3id.org/lmodel/gist
+# subject_source: https://w3id.org/semanticarts/ontology/gistCore
 # object_source: https://w3id.org/lmodel/iso22989
 # mapping_date: 2026-06-01
 # curie_map:
 #   iso22989: https://w3id.org/lmodel/iso22989/
-#   gist: https://w3id.org/lmodel/gist/
+#   gist: https://w3id.org/semanticarts/ns/ontology/gist/
 #   owl: http://www.w3.org/2002/07/owl#
 #   semapv: https://w3id.org/semapv/vocab/
 #   skos: http://www.w3.org/2004/02/skos/core#

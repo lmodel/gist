@@ -66,7 +66,7 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'gist',
+linkml_meta = LinkMLMeta({'default_prefix': 'gist_linkml',
      'default_range': 'string',
      'description': 'gist  is a minimalist upper ontology created by Semantic Arts '
                     'for enterprise knowledge graph applications. This LinkML '
@@ -84,9 +84,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'gist',
      'license': 'CC-BY-4.0',
      'name': 'gist',
      'prefixes': {'gist': {'prefix_prefix': 'gist',
-                           'prefix_reference': 'https://w3id.org/lmodel/gist/'},
-                  'gist_semanticarts': {'prefix_prefix': 'gist_semanticarts',
-                                        'prefix_reference': 'https://w3id.org/semanticarts/ns/ontology/gist/'},
+                           'prefix_reference': 'https://w3id.org/semanticarts/ns/ontology/gist/'},
+                  'gist_linkml': {'prefix_prefix': 'gist_linkml',
+                                  'prefix_reference': 'https://w3id.org/lmodel/gist/'},
                   'gistd': {'prefix_prefix': 'gistd',
                             'prefix_reference': 'https://w3id.org/semanticarts/ns/data/gist/'},
                   'linkml': {'prefix_prefix': 'linkml',
@@ -100,8 +100,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'gist',
      'see_also': ['https://www.semanticarts.com/gist/',
                   'https://w3id.org/semanticarts/ontology/gistCore',
                   'https://lmodel.github.io/gist'],
+     'source': 'https://w3id.org/semanticarts/ontology/gistCore',
      'source_file': 'src/gist/schema/gist.yaml',
-     'title': 'gist'} )
+     'title': 'gist (LinkML rendering)'} )
 
 class AspectInstance(str, Enum):
     """

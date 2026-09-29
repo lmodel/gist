@@ -17,12 +17,19 @@ excludes:
 generator_args:
   excel:
     mergeimports: true
+  # gist terms keep Semantic Arts' IRIs in every artefact (see the namespace
+  # note in scripts/gist_to_linkml.py). gen-owl otherwise declares each class
+  # and slot under default_prefix, i.e. a parallel copy of gist in lmodel's
+  # namespace, asserts linkml:ClassDefinition on gist's classes, and retypes
+  # gist's named individuals as classes.
   owl:
     mergeimports: true
     metaclasses: false
     type_objects: false
-    add_root_classes: true
+    add_root_classes: false
     mixins_as_expressions: true
+    use_native_uris: false
+    default_permissible_value_type: owl:NamedIndividual
   markdown:
     mergeimports: true
     directory: "docs/elements"
@@ -50,8 +57,12 @@ generator_args:
     mergeimports: true
   proto:
     mergeimports: true
+  # Shapes are this project's, so they live in lmodel's namespace
+  # (gist_linkml:PersonShape) and target gist's classes (sh:targetClass gist:Person).
   shacl:
     mergeimports: true
+    use_class_uri_names: false
+    suffix: Shape
   shex:
     mergeimports: true
   sqlddl:

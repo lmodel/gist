@@ -45,6 +45,11 @@ from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 # ---------------------------------------------------------------------------
 # Namespace constants
 # ---------------------------------------------------------------------------
+# gist terms keep Semantic Arts' IRIs, under the prefix ``gist``: Semantic Arts
+# asks that terms used from gist stay in the gist namespace and that nobody
+# else defines terms there. Only what this project adds (the schema documents,
+# the GistThing mixin, the enums and the subsets) is minted in lmodel's
+# namespace, as ``gist_linkml``, which is every schema's default_prefix.
 GIST_SA_NS = "https://w3id.org/semanticarts/ns/ontology/gist/"
 GISTD_NS = "https://w3id.org/semanticarts/ns/data/gist/"
 LMODEL_NS = "https://w3id.org/lmodel/gist/"
@@ -66,9 +71,9 @@ MEDIA_PREFIXES = {
 
 # Ordered prefix table used by uri_to_curie() — longest namespace first avoids prefix ambiguity
 _CURIE_PREFIXES: list[tuple[str, str]] = [
-    (GIST_SA_NS, "gist_semanticarts"),
+    (GIST_SA_NS, "gist"),
     (GISTD_NS, "gistd"),
-    (LMODEL_NS, "gist"),
+    (LMODEL_NS, "gist_linkml"),
     ("http://schema.org/", "schema"),
     ("https://schema.org/", "schema"),
     ("http://www.w3.org/2004/02/skos/core#", "skos"),
@@ -1063,8 +1068,8 @@ def get_ontology_iri(g: Graph) -> str | None:
 
 def _base_prefixes() -> dict[str, str]:
     return {
-        "gist": LMODEL_NS,
-        "gist_semanticarts": GIST_SA_NS,
+        "gist": GIST_SA_NS,
+        "gist_linkml": LMODEL_NS,
         "gistd": GISTD_NS,
         "linkml": "https://w3id.org/linkml/",
         "schema": "http://schema.org/",
@@ -1131,7 +1136,7 @@ def build_schema(
 
     schema.update({
         "prefixes": prefixes,
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types"],
         "subsets": {
@@ -1174,7 +1179,7 @@ def build_media_types_schema(
         schema["source"] = source
     schema.update({
         "prefixes": prefixes,
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types", "./gist_core"],
         "subsets": {
@@ -1211,7 +1216,7 @@ def build_prefix_declarations_schema(
         schema["source"] = source
     schema.update({
         "prefixes": prefixes,
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types"],
         "subsets": {
@@ -1254,7 +1259,7 @@ def build_rdfs_annotations_schema(
         schema["source"] = source
     schema.update({
         "prefixes": _base_prefixes(),
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types"],
         "subsets": {
@@ -1291,7 +1296,7 @@ def build_sub_class_assertions_schema(
         schema["source"] = source
     schema.update({
         "prefixes": _base_prefixes(),
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": ["linkml:types"],
         "subsets": {
@@ -1309,7 +1314,7 @@ def build_gist_schema(version: str = "14.1.0") -> dict:
     schema: dict[str, Any] = {
         "id": LMODEL_BASE,
         "name": "gist",
-        "title": "gist",
+        "title": "gist (LinkML rendering)",
         "description": (
             "gist  is a minimalist upper ontology "
             "created by Semantic Arts for enterprise knowledge graph applications. "
@@ -1326,17 +1331,18 @@ def build_gist_schema(version: str = "14.1.0") -> dict:
             "https://lmodel.github.io/gist",
 
         ],
+        "source": "https://w3id.org/semanticarts/ontology/gistCore",
         "version": version,
         "prefixes": {
-            "gist": LMODEL_NS,
-            "gist_semanticarts": GIST_SA_NS,
+            "gist": GIST_SA_NS,
+            "gist_linkml": LMODEL_NS,
             "gistd": GISTD_NS,
             "linkml": "https://w3id.org/linkml/",
             "media_app": "https://www.iana.org/assignments/media-types/application/",
             "media_img": "https://www.iana.org/assignments/media-types/image/",
             "media_txt": "https://www.iana.org/assignments/media-types/text/",
         },
-        "default_prefix": "gist",
+        "default_prefix": "gist_linkml",
         "default_range": "string",
         "imports": [
             "linkml:types",

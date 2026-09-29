@@ -1,7 +1,8 @@
 {
   "name": "gist",
   "description": "gist  is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.",
-  "title": "gist",
+  "title": "gist (LinkML rendering)",
+  "source": "https://w3id.org/semanticarts/ontology/gistCore",
   "see_also": [
     "https://www.semanticarts.com/gist/",
     "https://w3id.org/semanticarts/ontology/gistCore",
@@ -19,11 +20,11 @@
   "prefixes": [
     {
       "prefix_prefix": "gist",
-      "prefix_reference": "https://w3id.org/lmodel/gist/"
+      "prefix_reference": "https://w3id.org/semanticarts/ns/ontology/gist/"
     },
     {
-      "prefix_prefix": "gist_semanticarts",
-      "prefix_reference": "https://w3id.org/semanticarts/ns/ontology/gist/"
+      "prefix_prefix": "gist_linkml",
+      "prefix_reference": "https://w3id.org/lmodel/gist/"
     },
     {
       "prefix_prefix": "gistd",
@@ -46,7 +47,7 @@
       "prefix_reference": "https://www.iana.org/assignments/media-types/text/"
     }
   ],
-  "default_prefix": "gist",
+  "default_prefix": "gist_linkml",
   "default_range": "string",
   "subsets": [
     {
@@ -595,9 +596,9 @@
         "allows"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/allows"
+        "https://w3id.org/semanticarts/ns/ontology/gist/allows"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/allows",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/allows",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -624,10 +625,10 @@
         "comes from agent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/comesFromAgent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent"
       ],
       "is_a": "has_participant",
-      "slot_uri": "https://w3id.org/lmodel/gist/comesFromAgent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/comesFromAgent",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -660,9 +661,9 @@
         "comes from place"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/comesFromPlace"
+        "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/comesFromPlace",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -695,9 +696,9 @@
         "conforms to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/conformsTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/conformsTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
       "range": "Intention",
       "multivalued": true,
       "inlined": true,
@@ -716,9 +717,9 @@
         "contributes to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/contributesTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/contributesTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/contributesTo",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -745,10 +746,10 @@
         "goes to agent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/goesToAgent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent"
       ],
       "is_a": "has_participant",
-      "slot_uri": "https://w3id.org/lmodel/gist/goesToAgent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/goesToAgent",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -781,9 +782,9 @@
         "goes to place"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/goesToPlace"
+        "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/goesToPlace",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -822,9 +823,9 @@
         "has accuracy"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasAccuracy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasAccuracy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
       "range": "Magnitude",
       "multivalued": true,
       "inlined": true,
@@ -852,9 +853,9 @@
         "has addend"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasAddend"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasAddend",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAddend",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -877,9 +878,9 @@
         "has address"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasAddress"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasAddress",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAddress",
       "range": "Address",
       "multivalued": true,
       "inlined": true,
@@ -901,9 +902,9 @@
         "has aspect"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasAspect"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasAspect",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAspect",
       "range": "Aspect",
       "multivalued": true,
       "inlined": true,
@@ -922,10 +923,10 @@
         "has biological parent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasBiologicalParent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent"
       ],
       "domain": "LivingThing",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasBiologicalParent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasBiologicalParent",
       "owner": "has_biological_parent",
       "range": "LivingThing",
       "multivalued": true,
@@ -951,9 +952,9 @@
         "has broader"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasBroader"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasBroader",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasBroader",
       "transitive": true,
       "range": "string",
       "multivalued": true,
@@ -974,10 +975,10 @@
         "has direct broader"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasDirectBroader"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader"
       ],
       "is_a": "has_broader",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasDirectBroader",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasDirectBroader",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1003,9 +1004,9 @@
         "has divisor"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasDivisor"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasDivisor",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasDivisor",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1031,10 +1032,10 @@
         "has giver"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasGiver"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasGiver"
       ],
       "is_a": "has_participant",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasGiver",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasGiver",
       "disjoint_with": [
         "has_recipient"
       ],
@@ -1060,9 +1061,9 @@
         "has goal"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasGoal"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasGoal"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasGoal",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasGoal",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1082,9 +1083,9 @@
         "has incumbent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasIncumbent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasIncumbent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasIncumbent",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1107,9 +1108,9 @@
         "has magnitude"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasMagnitude"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasMagnitude",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasMagnitude",
       "range": "Magnitude",
       "multivalued": true,
       "inlined": true,
@@ -1137,9 +1138,9 @@
         "has multiplier"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasMultiplier"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasMultiplier",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasMultiplier",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1162,9 +1163,9 @@
         "has navigational parent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasNavigationalParent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasNavigationalParent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasNavigationalParent",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1191,9 +1192,9 @@
         "has participant"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasParticipant"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasParticipant",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasParticipant",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1219,10 +1220,10 @@
         "has party"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasParty"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasParty"
       ],
       "is_a": "has_participant",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasParty",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasParty",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1252,9 +1253,9 @@
         "has physical location"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasPhysicalLocation"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasPhysicalLocation",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasPhysicalLocation",
       "transitive": true,
       "range": "GeoLocation",
       "multivalued": true,
@@ -1283,10 +1284,10 @@
         "has recipient"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasRecipient"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient"
       ],
       "is_a": "has_participant",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasRecipient",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasRecipient",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1312,9 +1313,9 @@
         "has subtrahend"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasSubtrahend"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/hasSubtrahend",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasSubtrahend",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1334,10 +1335,10 @@
         "has unique broader"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasUniqueBroader"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader"
       ],
       "is_a": "has_broader",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasUniqueBroader",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueBroader",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1357,10 +1358,10 @@
         "has unique navigational parent"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasUniqueNavigationalParent"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent"
       ],
       "is_a": "has_navigational_parent",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasUniqueNavigationalParent",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUniqueNavigationalParent",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1383,10 +1384,10 @@
         "has unit group"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasUnitGroup"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup"
       ],
       "domain": "Aspect",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasUnitGroup",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitGroup",
       "owner": "has_unit_group",
       "range": "UnitGroup",
       "multivalued": true,
@@ -1412,10 +1413,10 @@
         "has unit of measure"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/hasUnitOfMeasure"
+        "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure"
       ],
       "domain": "Magnitude",
-      "slot_uri": "https://w3id.org/lmodel/gist/hasUnitOfMeasure",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasUnitOfMeasure",
       "owner": "has_unit_of_measure",
       "range": "UnitOfMeasure",
       "multivalued": true,
@@ -1435,10 +1436,10 @@
         "is about"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isAbout"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isAbout"
       ],
       "domain": "Content",
-      "slot_uri": "https://w3id.org/lmodel/gist/isAbout",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAbout",
       "owner": "is_about",
       "range": "string",
       "multivalued": true,
@@ -1456,9 +1457,9 @@
         "is affected by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isAffectedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isAffectedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAffectedBy",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1484,9 +1485,9 @@
         "is allocated by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isAllocatedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isAllocatedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1527,9 +1528,9 @@
         "is assignment of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isAssignmentOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isAssignmentOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1567,9 +1568,9 @@
         "is assignment to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isAssignmentTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isAssignmentTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1592,9 +1593,9 @@
         "is based on"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isBasedOn"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isBasedOn",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isBasedOn",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1611,9 +1612,9 @@
         "is categorized by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isCategorizedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isCategorizedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
       "range": "Category",
       "multivalued": true,
       "inlined": true,
@@ -1632,9 +1633,9 @@
         "is connected to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isConnectedTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isConnectedTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isConnectedTo",
       "symmetric": true,
       "range": "string",
       "multivalued": true,
@@ -1656,10 +1657,10 @@
         "is direct part of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isDirectPartOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf"
       ],
       "is_a": "is_part_of",
-      "slot_uri": "https://w3id.org/lmodel/gist/isDirectPartOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isDirectPartOf",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1676,9 +1677,9 @@
         "is expressed in"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isExpressedIn"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isExpressedIn",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
       "range": "Language",
       "multivalued": true,
       "inlined": true,
@@ -1703,11 +1704,11 @@
         "is first member of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isFirstMemberOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf"
       ],
       "is_a": "is_member_of",
       "domain": "OrderedMember",
-      "slot_uri": "https://w3id.org/lmodel/gist/isFirstMemberOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isFirstMemberOf",
       "owner": "is_first_member_of",
       "range": "OrderedCollection",
       "multivalued": true,
@@ -1727,10 +1728,10 @@
         "is geographically contained in"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isGeoContainedIn"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn"
       ],
       "domain": "GeoLocation",
-      "slot_uri": "https://w3id.org/lmodel/gist/isGeoContainedIn",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isGeoContainedIn",
       "owner": "is_geo_contained_in",
       "transitive": true,
       "range": "GeoLocation",
@@ -1757,9 +1758,9 @@
         "is governed by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isGovernedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isGovernedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isGovernedBy",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1786,9 +1787,9 @@
         "is identified by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isIdentifiedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isIdentifiedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isIdentifiedBy",
       "range": "ID",
       "multivalued": true,
       "inlined": true,
@@ -1813,9 +1814,9 @@
         "is made up of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isMadeUpOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isMadeUpOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isMadeUpOf",
       "range": "PhysicalSubstance",
       "multivalued": true,
       "inlined": true,
@@ -1834,9 +1835,9 @@
         "is member of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isMemberOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isMemberOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1867,9 +1868,9 @@
         "is part of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isPartOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isPartOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isPartOf",
       "transitive": true,
       "range": "string",
       "multivalued": true,
@@ -1901,9 +1902,9 @@
         "is produced by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isProducedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isProducedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isProducedBy",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1926,9 +1927,9 @@
         "is recognized by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isRecognizedBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isRecognizedBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
       "range": "string",
       "multivalued": true,
       "any_of": [
@@ -1961,9 +1962,9 @@
         "is rendered on"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isRenderedOn"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isRenderedOn",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isRenderedOn",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -1989,9 +1990,9 @@
         "is triggered by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isTriggeredBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isTriggeredBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isTriggeredBy",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2008,9 +2009,9 @@
         "is under jurisdiction of"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isUnderJurisdictionOf"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isUnderJurisdictionOf",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
       "range": "GovernmentOrganization",
       "multivalued": true,
       "inlined": true,
@@ -2029,9 +2030,9 @@
         "links"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/links"
+        "https://w3id.org/semanticarts/ns/ontology/gist/links"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/links",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/links",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2050,10 +2051,10 @@
         "links from"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/linksFrom"
+        "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom"
       ],
       "is_a": "links",
-      "slot_uri": "https://w3id.org/lmodel/gist/linksFrom",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2072,10 +2073,10 @@
         "links to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/linksTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/linksTo"
       ],
       "is_a": "links",
-      "slot_uri": "https://w3id.org/lmodel/gist/linksTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
       "range": "NetworkNode",
       "multivalued": true,
       "inlined": true,
@@ -2094,9 +2095,9 @@
         "occurs in"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/occursIn"
+        "https://w3id.org/semanticarts/ns/ontology/gist/occursIn"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/occursIn",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/occursIn",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2122,9 +2123,9 @@
         "offers to provide"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/offersToProvide"
+        "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/offersToProvide",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2150,9 +2151,9 @@
         "offers to receive"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/offersToReceive"
+        "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/offersToReceive",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2173,10 +2174,10 @@
         "owns"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/owns"
+        "https://w3id.org/semanticarts/ns/ontology/gist/owns"
       ],
       "domain": "Organization",
-      "slot_uri": "https://w3id.org/lmodel/gist/owns",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/owns",
       "owner": "owns",
       "range": "string",
       "multivalued": true,
@@ -2209,9 +2210,9 @@
         "precedes"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/precedes"
+        "https://w3id.org/semanticarts/ns/ontology/gist/precedes"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/precedes",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/precedes",
       "transitive": true,
       "range": "string",
       "multivalued": true,
@@ -2234,10 +2235,10 @@
         "precedes directly"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/precedesDirectly"
+        "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly"
       ],
       "is_a": "precedes",
-      "slot_uri": "https://w3id.org/lmodel/gist/precedesDirectly",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/precedesDirectly",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2265,13 +2266,13 @@
         "prevents"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/prevents"
+        "https://w3id.org/semanticarts/ns/ontology/gist/prevents"
       ],
       "exact_mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/prohibits"
       ],
       "domain": "Intention",
-      "slot_uri": "https://w3id.org/lmodel/gist/prevents",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/prevents",
       "owner": "prevents",
       "range": "Behavior",
       "multivalued": true,
@@ -2304,10 +2305,10 @@
         "prohibits"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/prohibits"
+        "https://w3id.org/semanticarts/ns/ontology/gist/prohibits"
       ],
       "domain": "Intention",
-      "slot_uri": "https://w3id.org/lmodel/gist/prohibits",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/prohibits",
       "owner": "prohibits",
       "range": "Behavior",
       "multivalued": true,
@@ -2330,10 +2331,10 @@
         "provides order for"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/providesOrderFor"
+        "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor"
       ],
       "domain": "OrderedMember",
-      "slot_uri": "https://w3id.org/lmodel/gist/providesOrderFor",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/providesOrderFor",
       "owner": "provides_order_for",
       "range": "string",
       "multivalued": true,
@@ -2351,9 +2352,9 @@
         "refers to"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/refersTo"
+        "https://w3id.org/semanticarts/ns/ontology/gist/refersTo"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/refersTo",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/refersTo",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2379,9 +2380,9 @@
         "requires"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/requires"
+        "https://w3id.org/semanticarts/ns/ontology/gist/requires"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/requires",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/requires",
       "range": "string",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -2407,10 +2408,10 @@
         "actual end date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualEndDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate"
       ],
       "is_a": "actual_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualEndDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2429,10 +2430,10 @@
         "actual end date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualEndDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime"
       ],
       "is_a": "end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualEndDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2457,10 +2458,10 @@
         "actual end microsecond"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualEndMicrosecond"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond"
       ],
       "is_a": "actual_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualEndMicrosecond",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMicrosecond",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2485,10 +2486,10 @@
         "actual end minute"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualEndMinute"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute"
       ],
       "is_a": "actual_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualEndMinute",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndMinute",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2517,10 +2518,10 @@
         "actual end year"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualEndYear"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear"
       ],
       "is_a": "actual_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualEndYear",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualEndYear",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2545,10 +2546,10 @@
         "actual start date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualStartDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate"
       ],
       "is_a": "actual_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualStartDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2567,10 +2568,10 @@
         "actual start date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualStartDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime"
       ],
       "is_a": "start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualStartDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2595,10 +2596,10 @@
         "actual start microsecond"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualStartMicrosecond"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond"
       ],
       "is_a": "actual_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualStartMicrosecond",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMicrosecond",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2623,10 +2624,10 @@
         "actual start minute"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualStartMinute"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute"
       ],
       "is_a": "actual_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualStartMinute",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartMinute",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2655,10 +2656,10 @@
         "actual start year"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/actualStartYear"
+        "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear"
       ],
       "is_a": "actual_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/actualStartYear",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/actualStartYear",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2677,9 +2678,9 @@
         "at date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/atDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/atDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/atDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2704,10 +2705,10 @@
         "birth date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/birthDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/birthDate"
       ],
       "is_a": "start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/birthDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/birthDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2732,9 +2733,9 @@
         "contained text"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/containedText"
+        "https://w3id.org/semanticarts/ns/ontology/gist/containedText"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/containedText",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/containedText",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -2762,10 +2763,10 @@
         "conversion factor"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/conversionFactor"
+        "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor"
       ],
       "domain": "UnitOfMeasure",
-      "slot_uri": "https://w3id.org/lmodel/gist/conversionFactor",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/conversionFactor",
       "owner": "conversion_factor",
       "range": "string",
       "@type": "SlotDefinition"
@@ -2785,10 +2786,10 @@
         "conversion offset"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/conversionOffset"
+        "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset"
       ],
       "domain": "UnitOfMeasure",
-      "slot_uri": "https://w3id.org/lmodel/gist/conversionOffset",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/conversionOffset",
       "owner": "conversion_offset",
       "range": "decimal",
       "@type": "SlotDefinition"
@@ -2814,10 +2815,10 @@
         "death date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/deathDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/deathDate"
       ],
       "is_a": "actual_end_date",
-      "slot_uri": "https://w3id.org/lmodel/gist/deathDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/deathDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2846,9 +2847,9 @@
         "description"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/description"
+        "https://w3id.org/semanticarts/ns/ontology/gist/description"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/description",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/description",
       "owner": "GistThing",
       "domain_of": [
         "GistThing"
@@ -2868,10 +2869,10 @@
         "encrypted text"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/encryptedText"
+        "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText"
       ],
       "is_a": "contained_text",
-      "slot_uri": "https://w3id.org/lmodel/gist/encryptedText",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/encryptedText",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -2891,10 +2892,10 @@
         "end date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/endDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime"
       ],
       "is_a": "at_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/endDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/endDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -2916,10 +2917,10 @@
         "exponent of ampere"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfAmpere"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfAmpere",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfAmpere",
       "owner": "exponent_of_ampere",
       "range": "decimal",
       "any_of": [
@@ -2952,10 +2953,10 @@
         "exponent of bit"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfBit"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfBit",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfBit",
       "owner": "exponent_of_bit",
       "range": "decimal",
       "any_of": [
@@ -2988,10 +2989,10 @@
         "exponent of candela"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfCandela"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfCandela",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfCandela",
       "owner": "exponent_of_candela",
       "range": "decimal",
       "any_of": [
@@ -3024,10 +3025,10 @@
         "exponent of Kelvin"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfKelvin"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfKelvin",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKelvin",
       "owner": "exponent_of_kelvin",
       "range": "decimal",
       "any_of": [
@@ -3060,10 +3061,10 @@
         "exponent of kilogram"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfKilogram"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfKilogram",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfKilogram",
       "owner": "exponent_of_kilogram",
       "range": "decimal",
       "any_of": [
@@ -3096,10 +3097,10 @@
         "exponent of meter"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfMeter"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfMeter",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMeter",
       "owner": "exponent_of_meter",
       "range": "decimal",
       "any_of": [
@@ -3132,10 +3133,10 @@
         "exponent of mole"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfMole"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfMole",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfMole",
       "owner": "exponent_of_mole",
       "range": "decimal",
       "any_of": [
@@ -3171,10 +3172,10 @@
         "exponent of number"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfNumber"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfNumber",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfNumber",
       "owner": "exponent_of_number",
       "range": "decimal",
       "any_of": [
@@ -3210,10 +3211,10 @@
         "exponent of other"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfOther"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfOther",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfOther",
       "owner": "exponent_of_other",
       "range": "decimal",
       "any_of": [
@@ -3246,10 +3247,10 @@
         "exponent of radian"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfRadian"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfRadian",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfRadian",
       "owner": "exponent_of_radian",
       "range": "decimal",
       "any_of": [
@@ -3282,10 +3283,10 @@
         "exponent of second"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfSecond"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfSecond",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSecond",
       "owner": "exponent_of_second",
       "range": "decimal",
       "any_of": [
@@ -3321,10 +3322,10 @@
         "exponent of steradian"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfSteradian"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfSteradian",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfSteradian",
       "owner": "exponent_of_steradian",
       "range": "decimal",
       "any_of": [
@@ -3360,10 +3361,10 @@
         "exponent of US dollar"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/exponentOfUSDollar"
+        "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar"
       ],
       "domain": "UnitGroup",
-      "slot_uri": "https://w3id.org/lmodel/gist/exponentOfUSDollar",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/exponentOfUSDollar",
       "owner": "exponent_of_us_dollar",
       "range": "decimal",
       "any_of": [
@@ -3401,9 +3402,9 @@
         "id text"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/idText"
+        "https://w3id.org/semanticarts/ns/ontology/gist/idText"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/idText",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/idText",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3428,10 +3429,10 @@
         "is recorded at"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isRecordedAt"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt"
       ],
       "is_a": "at_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/isRecordedAt",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isRecordedAt",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3447,10 +3448,10 @@
         "latitude"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/latitude"
+        "https://w3id.org/semanticarts/ns/ontology/gist/latitude"
       ],
       "domain": "GeoPoint",
-      "slot_uri": "https://w3id.org/lmodel/gist/latitude",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/latitude",
       "owner": "latitude",
       "range": "float",
       "@type": "SlotDefinition"
@@ -3467,10 +3468,10 @@
         "longitude"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/longitude"
+        "https://w3id.org/semanticarts/ns/ontology/gist/longitude"
       ],
       "domain": "GeoPoint",
-      "slot_uri": "https://w3id.org/lmodel/gist/longitude",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/longitude",
       "owner": "longitude",
       "range": "float",
       "@type": "SlotDefinition"
@@ -3487,9 +3488,9 @@
         "name"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/name"
+        "https://w3id.org/semanticarts/ns/ontology/gist/name"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/name",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/name",
       "owner": "GistThing",
       "domain_of": [
         "GistThing"
@@ -3509,9 +3510,9 @@
         "numeric value"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/numericValue"
+        "https://w3id.org/semanticarts/ns/ontology/gist/numericValue"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/numericValue",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/numericValue",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3536,10 +3537,10 @@
         "planned end date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedEndDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate"
       ],
       "is_a": "planned_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedEndDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3559,10 +3560,10 @@
         "planned end date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedEndDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime"
       ],
       "is_a": "end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedEndDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3587,10 +3588,10 @@
         "planned end minute"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedEndMinute"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndMinute"
       ],
       "is_a": "planned_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedEndMinute",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndMinute",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3619,10 +3620,10 @@
         "planned end year"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedEndYear"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndYear"
       ],
       "is_a": "planned_end_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedEndYear",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedEndYear",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3647,10 +3648,10 @@
         "planned start date"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedStartDate"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDate"
       ],
       "is_a": "planned_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedStartDate",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDate",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3670,10 +3671,10 @@
         "planned start date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedStartDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime"
       ],
       "is_a": "start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedStartDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3698,10 +3699,10 @@
         "planned start minute"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedStartMinute"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartMinute"
       ],
       "is_a": "planned_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedStartMinute",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartMinute",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3730,10 +3731,10 @@
         "planned start year"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/plannedStartYear"
+        "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartYear"
       ],
       "is_a": "planned_start_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/plannedStartYear",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/plannedStartYear",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3749,9 +3750,9 @@
         "sequence"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/sequence"
+        "https://w3id.org/semanticarts/ns/ontology/gist/sequence"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/sequence",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
       "range": "integer",
       "@type": "SlotDefinition"
     },
@@ -3771,10 +3772,10 @@
         "start date time"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/startDateTime"
+        "https://w3id.org/semanticarts/ns/ontology/gist/startDateTime"
       ],
       "is_a": "at_date_time",
-      "slot_uri": "https://w3id.org/lmodel/gist/startDateTime",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/startDateTime",
       "range": "datetime",
       "@type": "SlotDefinition"
     },
@@ -3796,9 +3797,9 @@
         "symbol"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/symbol"
+        "https://w3id.org/semanticarts/ns/ontology/gist/symbol"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/symbol",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3826,10 +3827,10 @@
         "unique text"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/uniqueText"
+        "https://w3id.org/semanticarts/ns/ontology/gist/uniqueText"
       ],
       "is_a": "contained_text",
-      "slot_uri": "https://w3id.org/lmodel/gist/uniqueText",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/uniqueText",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3855,12 +3856,12 @@
         "domain includes"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/domainIncludes"
+        "https://w3id.org/semanticarts/ns/ontology/gist/domainIncludes"
       ],
       "related_mappings": [
         "http://www.w3.org/2004/02/skos/core#scopeNote"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/domainIncludes",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/domainIncludes",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3882,9 +3883,9 @@
         "is superseded by"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/isSupersededBy"
+        "https://w3id.org/semanticarts/ns/ontology/gist/isSupersededBy"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/isSupersededBy",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isSupersededBy",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3909,9 +3910,9 @@
         "license"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/license"
+        "https://w3id.org/semanticarts/ns/ontology/gist/license"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/license",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/license",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -3937,12 +3938,12 @@
         "range includes"
       ],
       "mappings": [
-        "https://w3id.org/lmodel/gist/rangeIncludes"
+        "https://w3id.org/semanticarts/ns/ontology/gist/rangeIncludes"
       ],
       "related_mappings": [
         "http://www.w3.org/2004/02/skos/core#scopeNote"
       ],
-      "slot_uri": "https://w3id.org/lmodel/gist/rangeIncludes",
+      "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/rangeIncludes",
       "range": "string",
       "@type": "SlotDefinition"
     }
@@ -3980,7 +3981,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Account",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Account",
       "@type": "ClassDefinition"
     },
     {
@@ -4012,7 +4013,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Address",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Address",
       "@type": "ClassDefinition"
     },
     {
@@ -4044,7 +4045,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/AddressUsageType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/AddressUsageType",
       "@type": "ClassDefinition"
     },
     {
@@ -4086,7 +4087,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Agreement",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Agreement",
       "@type": "ClassDefinition"
     },
     {
@@ -4121,7 +4122,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Aspect",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Aspect",
       "disjoint_with": [
         "Event"
       ],
@@ -4165,7 +4166,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Assignment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Assignment",
       "@type": "ClassDefinition"
     },
     {
@@ -4194,7 +4195,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Behavior",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Behavior",
       "@type": "ClassDefinition"
     },
     {
@@ -4231,7 +4232,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Building",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Building",
       "@type": "ClassDefinition"
     },
     {
@@ -4263,7 +4264,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/BundledCatalogItem",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/BundledCatalogItem",
       "@type": "ClassDefinition"
     },
     {
@@ -4289,7 +4290,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/CatalogItem",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/CatalogItem",
       "@type": "ClassDefinition"
     },
     {
@@ -4326,7 +4327,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Category",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Category",
       "disjoint_with": [
         "Event"
       ],
@@ -4361,7 +4362,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Collection",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Collection",
       "@type": "ClassDefinition"
     },
     {
@@ -4402,7 +4403,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Commitment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Commitment",
       "@type": "ClassDefinition"
     },
     {
@@ -4434,7 +4435,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Component",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Component",
       "disjoint_with": [
         "PhysicalSubstance"
       ],
@@ -4473,7 +4474,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Composite",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Composite",
       "@type": "ClassDefinition"
     },
     {
@@ -4502,7 +4503,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ContemporaryEvent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ContemporaryEvent",
       "@type": "ClassDefinition"
     },
     {
@@ -4537,7 +4538,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Content",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Content",
       "disjoint_with": [
         "GeoPoint",
         "GeoRegion",
@@ -4581,7 +4582,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ContentExpression",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ContentExpression",
       "@type": "ClassDefinition"
     },
     {
@@ -4613,7 +4614,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ContingentEvent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentEvent",
       "@type": "ClassDefinition"
     },
     {
@@ -4645,7 +4646,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ContingentObligation",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ContingentObligation",
       "@type": "ClassDefinition"
     },
     {
@@ -4674,7 +4675,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Contract",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Contract",
       "@type": "ClassDefinition"
     },
     {
@@ -4700,7 +4701,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ContractTerm",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ContractTerm",
       "@type": "ClassDefinition"
     },
     {
@@ -4729,7 +4730,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ControlledVocabulary",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ControlledVocabulary",
       "@type": "ClassDefinition"
     },
     {
@@ -4756,7 +4757,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/CountryGeoRegion",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGeoRegion",
       "@type": "ClassDefinition"
     },
     {
@@ -4786,7 +4787,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/CountryGovernment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/CountryGovernment",
       "disjoint_with": [
         "SubCountryGovernment"
       ],
@@ -4818,7 +4819,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/DegreeOfCommitment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/DegreeOfCommitment",
       "@type": "ClassDefinition"
     },
     {
@@ -4850,7 +4851,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Determination",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Determination",
       "@type": "ClassDefinition"
     },
     {
@@ -4879,7 +4880,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Discipline",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Discipline",
       "@type": "ClassDefinition"
     },
     {
@@ -4912,7 +4913,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ElectronicAddress",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddress",
       "disjoint_with": [
         "PhysicalAddress"
       ],
@@ -4944,7 +4945,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ElectronicAddressType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ElectronicAddressType",
       "@type": "ClassDefinition"
     },
     {
@@ -4976,7 +4977,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Equipment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Equipment",
       "@type": "ClassDefinition"
     },
     {
@@ -4999,7 +5000,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/EquipmentType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/EquipmentType",
       "@type": "ClassDefinition"
     },
     {
@@ -5042,7 +5043,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Event",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Event",
       "disjoint_with": [
         "Language",
         "Magnitude",
@@ -5080,7 +5081,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/EventSpecification",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/EventSpecification",
       "@type": "ClassDefinition"
     },
     {
@@ -5115,7 +5116,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/FormattedContent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/FormattedContent",
       "@type": "ClassDefinition"
     },
     {
@@ -5144,7 +5145,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Function",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Function",
       "@type": "ClassDefinition"
     },
     {
@@ -5173,7 +5174,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeneralMediaType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeneralMediaType",
       "@type": "ClassDefinition"
     },
     {
@@ -5204,7 +5205,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeoLocation",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoLocation",
       "@type": "ClassDefinition"
     },
     {
@@ -5230,7 +5231,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeoPoint",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoPoint",
       "disjoint_with": [
         "IntellectualProperty",
         "Intention",
@@ -5278,7 +5279,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeoRegion",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRegion",
       "disjoint_with": [
         "IntellectualProperty",
         "Intention",
@@ -5318,7 +5319,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeoRoute",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoRoute",
       "@type": "ClassDefinition"
     },
     {
@@ -5350,7 +5351,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GeoVolume",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GeoVolume",
       "@type": "ClassDefinition"
     },
     {
@@ -5379,7 +5380,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GovernedGeoRegion",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernedGeoRegion",
       "@type": "ClassDefinition"
     },
     {
@@ -5418,7 +5419,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/GovernmentOrganization",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/GovernmentOrganization",
       "disjoint_with": [
         "IntergovernmentalOrganization"
       ],
@@ -5448,7 +5449,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/HistoricalEvent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/HistoricalEvent",
       "@type": "ClassDefinition"
     },
     {
@@ -5490,7 +5491,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ID",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ID",
       "@type": "ClassDefinition"
     },
     {
@@ -5528,7 +5529,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/IntellectualProperty",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/IntellectualProperty",
       "disjoint_with": [
         "Magnitude",
         "Organization",
@@ -5563,7 +5564,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Intention",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Intention",
       "disjoint_with": [
         "Magnitude",
         "Organization",
@@ -5602,7 +5603,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/IntergovernmentalOrganization",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/IntergovernmentalOrganization",
       "@type": "ClassDefinition"
     },
     {
@@ -5637,7 +5638,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/KnowledgeConcept",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept",
       "@type": "ClassDefinition"
     },
     {
@@ -5665,7 +5666,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Landmark",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Landmark",
       "@type": "ClassDefinition"
     },
     {
@@ -5697,7 +5698,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Language",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Language",
       "disjoint_with": [
         "Magnitude",
         "Organization",
@@ -5743,7 +5744,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/LivingThing",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/LivingThing",
       "@type": "ClassDefinition"
     },
     {
@@ -5789,7 +5790,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Magnitude",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Magnitude",
       "disjoint_with": [
         "Organization",
         "PhysicalIdentifiableItem",
@@ -5830,7 +5831,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/MediaType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/MediaType",
       "@type": "ClassDefinition"
     },
     {
@@ -5859,7 +5860,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Medium",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Medium",
       "@type": "ClassDefinition"
     },
     {
@@ -5891,7 +5892,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Message",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Message",
       "@type": "ClassDefinition"
     },
     {
@@ -5923,7 +5924,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Network",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Network",
       "@type": "ClassDefinition"
     },
     {
@@ -5959,7 +5960,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/NetworkLink",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink",
       "@type": "ClassDefinition"
     },
     {
@@ -5991,7 +5992,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/NetworkNode",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode",
       "@type": "ClassDefinition"
     },
     {
@@ -6026,7 +6027,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Offer",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Offer",
       "@type": "ClassDefinition"
     },
     {
@@ -6055,7 +6056,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/OrderedCollection",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection",
       "@type": "ClassDefinition"
     },
     {
@@ -6090,7 +6091,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/OrderedMember",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember",
       "@type": "ClassDefinition"
     },
     {
@@ -6138,7 +6139,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Organization",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Organization",
       "disjoint_with": [
         "PhysicalIdentifiableItem",
         "PhysicalSubstance",
@@ -6179,7 +6180,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Permission",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Permission",
       "@type": "ClassDefinition"
     },
     {
@@ -6226,7 +6227,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Person",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Person",
       "@type": "ClassDefinition"
     },
     {
@@ -6255,7 +6256,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalActionType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalActionType",
       "@type": "ClassDefinition"
     },
     {
@@ -6290,7 +6291,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalAddress",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddress",
       "@type": "ClassDefinition"
     },
     {
@@ -6319,7 +6320,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalAddressType",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalAddressType",
       "@type": "ClassDefinition"
     },
     {
@@ -6355,7 +6356,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalEvent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalEvent",
       "@type": "ClassDefinition"
     },
     {
@@ -6392,7 +6393,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalIdentifiableItem",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalIdentifiableItem",
       "disjoint_with": [
         "SchemaMetaData",
         "UnitOfMeasure"
@@ -6438,7 +6439,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/PhysicalSubstance",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/PhysicalSubstance",
       "disjoint_with": [
         "UnitOfMeasure"
       ],
@@ -6470,7 +6471,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ProductCategory",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductCategory",
       "@type": "ClassDefinition"
     },
     {
@@ -6499,7 +6500,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ProductSpecification",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ProductSpecification",
       "@type": "ClassDefinition"
     },
     {
@@ -6531,7 +6532,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Project",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Project",
       "@type": "ClassDefinition"
     },
     {
@@ -6560,7 +6561,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ReferenceValue",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ReferenceValue",
       "@type": "ClassDefinition"
     },
     {
@@ -6595,7 +6596,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/RenderedContent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/RenderedContent",
       "@type": "ClassDefinition"
     },
     {
@@ -6624,7 +6625,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Requirement",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Requirement",
       "@type": "ClassDefinition"
     },
     {
@@ -6656,7 +6657,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Restriction",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Restriction",
       "@type": "ClassDefinition"
     },
     {
@@ -6688,7 +6689,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ScheduledEvent",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledEvent",
       "@type": "ClassDefinition"
     },
     {
@@ -6718,7 +6719,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ScheduledTask",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ScheduledTask",
       "@type": "ClassDefinition"
     },
     {
@@ -6753,7 +6754,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/SchemaMetaData",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetaData",
       "disjoint_with": [
         "UnitOfMeasure"
       ],
@@ -6782,7 +6783,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/ServiceSpecification",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/ServiceSpecification",
       "@type": "ClassDefinition"
     },
     {
@@ -6817,7 +6818,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Specification",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Specification",
       "@type": "ClassDefinition"
     },
     {
@@ -6848,7 +6849,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/SubCountryGovernment",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/SubCountryGovernment",
       "@type": "ClassDefinition"
     },
     {
@@ -6883,7 +6884,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/System",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/System",
       "@type": "ClassDefinition"
     },
     {
@@ -6912,7 +6913,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Tag",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Tag",
       "@type": "ClassDefinition"
     },
     {
@@ -6949,7 +6950,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Task",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Task",
       "@type": "ClassDefinition"
     },
     {
@@ -6985,7 +6986,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/TaskTemplate",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/TaskTemplate",
       "@type": "ClassDefinition"
     },
     {
@@ -7019,7 +7020,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Template",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Template",
       "disjoint_with": [
         "UnitOfMeasure"
       ],
@@ -7059,7 +7060,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/TemporalRelation",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/TemporalRelation",
       "@type": "ClassDefinition"
     },
     {
@@ -7094,7 +7095,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Text",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Text",
       "@type": "ClassDefinition"
     },
     {
@@ -7135,7 +7136,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/TimeInterval",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/TimeInterval",
       "@type": "ClassDefinition"
     },
     {
@@ -7167,7 +7168,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/Transaction",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/Transaction",
       "@type": "ClassDefinition"
     },
     {
@@ -7202,7 +7203,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/UnitGroup",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup",
       "disjoint_with": [
         "UnitOfMeasure"
       ],
@@ -7239,7 +7240,7 @@
         "description"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/lmodel/gist/UnitOfMeasure",
+      "class_uri": "https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure",
       "@type": "ClassDefinition"
     },
     {
@@ -7262,9 +7263,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "gist.yaml",
-  "source_file_date": "2026-09-29T12:09:00",
-  "source_file_size": 1214,
-  "generation_date": "2026-09-29T12:09:03",
+  "source_file_date": "2026-09-29T12:15:02",
+  "source_file_size": 1290,
+  "generation_date": "2026-09-29T12:15:04",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/gist.context.jsonld",

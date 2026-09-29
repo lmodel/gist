@@ -3,6 +3,7 @@
 BASE <https://w3id.org/lmodel/gist/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
 PREFIX linkml: <https://w3id.org/linkml/>
 
 
@@ -46,36 +47,36 @@ linkml:Sparqlpath xsd:string
 
 <Account> CLOSED {
     (  $<Account_tes> (  &<Agreement_tes> ;
-          rdf:type [ <Agreement> ] ?
+          rdf:type [ gist:Agreement ] ?
        ) ;
-       rdf:type [ <Account> ] ?
+       rdf:type [ gist:Account ] ?
     )
 }
 
 <Address>  (
     CLOSED {
        (  $<Address_tes> (  &<Content_tes> ;
-             rdf:type [ <Content> ] ?
+             rdf:type [ gist:Content ] ?
           ) ;
-          rdf:type [ <Address> ] ?
+          rdf:type [ gist:Address ] ?
        )
     } OR @<ElectronicAddress> OR @<PhysicalAddress>
 )
 
 <AddressUsageType> CLOSED {
     (  $<AddressUsageType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <AddressUsageType> ] ?
+       rdf:type [ gist:AddressUsageType ] ?
     )
 }
 
 <Agreement>  (
     CLOSED {
        (  $<Agreement_tes> (  &<Intention_tes> ;
-             rdf:type [ <Intention> ] ?
+             rdf:type [ gist:Intention ] ?
           ) ;
-          rdf:type [ <Agreement> ] ?
+          rdf:type [ gist:Agreement ] ?
        )
     } OR @<Account> OR @<Contract>
 )
@@ -83,51 +84,51 @@ linkml:Sparqlpath xsd:string
 <Aspect> CLOSED {
     (  $<Aspect_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <Aspect> ] ?
+       rdf:type [ gist:Aspect ] ?
     )
 }
 
 <Assignment> CLOSED {
     (  $<Assignment_tes> (  &<TemporalRelation_tes> ;
-          rdf:type [ <TemporalRelation> ] ?
+          rdf:type [ gist:TemporalRelation ] ?
        ) ;
-       rdf:type [ <Assignment> ] ?
+       rdf:type [ gist:Assignment ] ?
     )
 }
 
 <Behavior> CLOSED {
     (  $<Behavior_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <Behavior> ] ?
+       rdf:type [ gist:Behavior ] ?
     )
 }
 
 <Building> CLOSED {
     (  $<Building_tes> (  &<Landmark_tes> ;
-          rdf:type [ <Landmark> ] ?
+          rdf:type [ gist:Landmark ] ?
        ) ;
-       rdf:type [ <Building> ] ?
+       rdf:type [ gist:Building ] ?
     )
 }
 
 <BundledCatalogItem> CLOSED {
     (  $<BundledCatalogItem_tes> (  &<CatalogItem_tes> ;
-          rdf:type [ <CatalogItem> ] ?
+          rdf:type [ gist:CatalogItem ] ?
        ) ;
-       rdf:type [ <BundledCatalogItem> ] ?
+       rdf:type [ gist:BundledCatalogItem ] ?
     )
 }
 
 <CatalogItem>  (
     CLOSED {
        (  $<CatalogItem_tes> (  &<Specification_tes> ;
-             rdf:type [ <Specification> ] ?
+             rdf:type [ gist:Specification ] ?
           ) ;
-          rdf:type [ <CatalogItem> ] ?
+          rdf:type [ gist:CatalogItem ] ?
        )
     } OR @<BundledCatalogItem> OR @<ProductSpecification> OR @<ServiceSpecification>
 )
@@ -136,10 +137,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Category_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        )
     } OR @<AddressUsageType> OR @<Behavior> OR @<DegreeOfCommitment> OR @<Discipline> OR @<ElectronicAddressType> OR
     @<EquipmentType> OR @<GeneralMediaType> OR @<MediaType> OR @<Medium> OR @<PhysicalActionType> OR @<PhysicalAddressType> OR
@@ -149,9 +150,9 @@ linkml:Sparqlpath xsd:string
 <Collection>  (
     CLOSED {
        (  $<Collection_tes> (  &<Composite_tes> ;
-             rdf:type [ <Composite> ] ?
+             rdf:type [ gist:Composite ] ?
           ) ;
-          rdf:type [ <Collection> ] ?
+          rdf:type [ gist:Collection ] ?
        )
     } OR @<ControlledVocabulary> OR @<OrderedCollection> OR @<UnitGroup>
 )
@@ -159,9 +160,9 @@ linkml:Sparqlpath xsd:string
 <Commitment>  (
     CLOSED {
        (  $<Commitment_tes> (  &<Intention_tes> ;
-             rdf:type [ <Intention> ] ?
+             rdf:type [ gist:Intention ] ?
           ) ;
-          rdf:type [ <Commitment> ] ?
+          rdf:type [ gist:Commitment ] ?
        )
     } OR @<ContingentObligation>
 )
@@ -170,10 +171,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Component_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Component> ] ?
+          rdf:type [ gist:Component ] ?
        )
     } OR @<NetworkLink> OR @<NetworkNode> OR @<OrderedMember>
 )
@@ -182,19 +183,19 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Composite_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Composite> ] ?
+          rdf:type [ gist:Composite ] ?
        )
     } OR @<Collection> OR @<Network> OR @<System>
 )
 
 <ContemporaryEvent> CLOSED {
     (  $<ContemporaryEvent_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <ContemporaryEvent> ] ?
+       rdf:type [ gist:ContemporaryEvent ] ?
     )
 }
 
@@ -202,10 +203,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Content_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Content> ] ?
+          rdf:type [ gist:Content ] ?
        )
     } OR @<Address> OR @<ContentExpression> OR @<ID>
 )
@@ -213,124 +214,124 @@ linkml:Sparqlpath xsd:string
 <ContentExpression>  (
     CLOSED {
        (  $<ContentExpression_tes> (  &<Content_tes> ;
-             rdf:type [ <Content> ] ?
+             rdf:type [ gist:Content ] ?
           ) ;
-          rdf:type [ <ContentExpression> ] ?
+          rdf:type [ gist:ContentExpression ] ?
        )
     } OR @<FormattedContent> OR @<Message> OR @<Text>
 )
 
 <ContingentEvent> CLOSED {
     (  $<ContingentEvent_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <ContingentEvent> ] ?
+       rdf:type [ gist:ContingentEvent ] ?
     )
 }
 
 <ContingentObligation>  (
     CLOSED {
        (  $<ContingentObligation_tes> (  &<Commitment_tes> ;
-             rdf:type [ <Commitment> ] ?
+             rdf:type [ gist:Commitment ] ?
           ) ;
-          rdf:type [ <ContingentObligation> ] ?
+          rdf:type [ gist:ContingentObligation ] ?
        )
     } OR @<Offer>
 )
 
 <Contract> CLOSED {
     (  $<Contract_tes> (  &<Agreement_tes> ;
-          rdf:type [ <Agreement> ] ?
+          rdf:type [ gist:Agreement ] ?
        ) ;
-       rdf:type [ <Contract> ] ?
+       rdf:type [ gist:Contract ] ?
     )
 }
 
 <ContractTerm> CLOSED {
     (  $<ContractTerm_tes> (  &<Specification_tes> ;
-          rdf:type [ <Specification> ] ?
+          rdf:type [ gist:Specification ] ?
        ) ;
-       rdf:type [ <ContractTerm> ] ?
+       rdf:type [ gist:ContractTerm ] ?
     )
 }
 
 <ControlledVocabulary> CLOSED {
     (  $<ControlledVocabulary_tes> (  &<Collection_tes> ;
-          rdf:type [ <Collection> ] ?
+          rdf:type [ gist:Collection ] ?
        ) ;
-       rdf:type [ <ControlledVocabulary> ] ?
+       rdf:type [ gist:ControlledVocabulary ] ?
     )
 }
 
 <CountryGeoRegion> CLOSED {
     (  $<CountryGeoRegion_tes> (  &<GovernedGeoRegion_tes> ;
-          rdf:type [ <GovernedGeoRegion> ] ?
+          rdf:type [ gist:GovernedGeoRegion ] ?
        ) ;
-       rdf:type [ <CountryGeoRegion> ] ?
+       rdf:type [ gist:CountryGeoRegion ] ?
     )
 }
 
 <CountryGovernment> CLOSED {
     (  $<CountryGovernment_tes> (  &<GovernmentOrganization_tes> ;
-          rdf:type [ <GovernmentOrganization> ] ?
+          rdf:type [ gist:GovernmentOrganization ] ?
        ) ;
-       rdf:type [ <CountryGovernment> ] ?
+       rdf:type [ gist:CountryGovernment ] ?
     )
 }
 
 <DegreeOfCommitment> CLOSED {
     (  $<DegreeOfCommitment_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <DegreeOfCommitment> ] ?
+       rdf:type [ gist:DegreeOfCommitment ] ?
     )
 }
 
 <Determination> CLOSED {
     (  $<Determination_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <Determination> ] ?
+       rdf:type [ gist:Determination ] ?
     )
 }
 
 <Discipline> CLOSED {
     (  $<Discipline_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <Discipline> ] ?
+       rdf:type [ gist:Discipline ] ?
     )
 }
 
 <ElectronicAddress> CLOSED {
     (  $<ElectronicAddress_tes> (  &<Address_tes> ;
-          rdf:type [ <Address> ] ?
+          rdf:type [ gist:Address ] ?
        ) ;
-       rdf:type [ <ElectronicAddress> ] ?
+       rdf:type [ gist:ElectronicAddress ] ?
     )
 }
 
 <ElectronicAddressType> CLOSED {
     (  $<ElectronicAddressType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <ElectronicAddressType> ] ?
+       rdf:type [ gist:ElectronicAddressType ] ?
     )
 }
 
 <Equipment> CLOSED {
     (  $<Equipment_tes> (  &<PhysicalIdentifiableItem_tes> ;
-          rdf:type [ <PhysicalIdentifiableItem> ] ?
+          rdf:type [ gist:PhysicalIdentifiableItem ] ?
        ) ;
-       rdf:type [ <Equipment> ] ?
+       rdf:type [ gist:Equipment ] ?
     )
 }
 
 <EquipmentType> CLOSED {
     (  $<EquipmentType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <EquipmentType> ] ?
+       rdf:type [ gist:EquipmentType ] ?
     )
 }
 
@@ -338,10 +339,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Event_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        )
     } OR @<ContemporaryEvent> OR @<ContingentEvent> OR @<Determination> OR @<HistoricalEvent> OR @<PhysicalEvent> OR
     @<ScheduledEvent> OR @<Task> OR @<Transaction>
@@ -349,35 +350,35 @@ linkml:Sparqlpath xsd:string
 
 <EventSpecification> CLOSED {
     (  $<EventSpecification_tes> (  &<Specification_tes> ;
-          rdf:type [ <Specification> ] ?
+          rdf:type [ gist:Specification ] ?
        ) ;
-       rdf:type [ <EventSpecification> ] ?
+       rdf:type [ gist:EventSpecification ] ?
     )
 }
 
 <FormattedContent>  (
     CLOSED {
        (  $<FormattedContent_tes> (  &<ContentExpression_tes> ;
-             rdf:type [ <ContentExpression> ] ?
+             rdf:type [ gist:ContentExpression ] ?
           ) ;
-          rdf:type [ <FormattedContent> ] ?
+          rdf:type [ gist:FormattedContent ] ?
        )
     } OR @<RenderedContent>
 )
 
 <Function> CLOSED {
     (  $<Function_tes> (  &<Intention_tes> ;
-          rdf:type [ <Intention> ] ?
+          rdf:type [ gist:Intention ] ?
        ) ;
-       rdf:type [ <Function> ] ?
+       rdf:type [ gist:Function ] ?
     )
 }
 
 <GeneralMediaType> CLOSED {
     (  $<GeneralMediaType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <GeneralMediaType> ] ?
+       rdf:type [ gist:GeneralMediaType ] ?
     )
 }
 
@@ -385,51 +386,51 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<GeoLocation_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <GeoLocation> ] ?
+          rdf:type [ gist:GeoLocation ] ?
        )
     } OR @<GeoPoint> OR @<GeoRegion> OR @<GeoVolume>
 )
 
 <GeoPoint> CLOSED {
     (  $<GeoPoint_tes> (  &<GeoLocation_tes> ;
-          rdf:type [ <GeoLocation> ] ?
+          rdf:type [ gist:GeoLocation ] ?
        ) ;
-       rdf:type [ <GeoPoint> ] ?
+       rdf:type [ gist:GeoPoint ] ?
     )
 }
 
 <GeoRegion>  (
     CLOSED {
        (  $<GeoRegion_tes> (  &<GeoLocation_tes> ;
-             rdf:type [ <GeoLocation> ] ?
+             rdf:type [ gist:GeoLocation ] ?
           ) ;
-          rdf:type [ <GeoRegion> ] ?
+          rdf:type [ gist:GeoRegion ] ?
        )
     } OR @<GovernedGeoRegion>
 )
 
 <GeoRoute> CLOSED {
     (  $<GeoRoute_tes> (  &<OrderedCollection_tes> ;
-          rdf:type [ <OrderedCollection> ] ?
+          rdf:type [ gist:OrderedCollection ] ?
        ) ;
-       rdf:type [ <GeoRoute> ] ?
+       rdf:type [ gist:GeoRoute ] ?
     )
 }
 
 <GeoVolume> CLOSED {
     (  $<GeoVolume_tes> (  &<GeoLocation_tes> ;
-          rdf:type [ <GeoLocation> ] ?
+          rdf:type [ gist:GeoLocation ] ?
        ) ;
-       rdf:type [ <GeoVolume> ] ?
+       rdf:type [ gist:GeoVolume ] ?
     )
 }
 
 <GistThing> {
-    (  $<GistThing_tes> (  <name> @linkml:String ? ;
-          <description> @linkml:String ?
+    (  $<GistThing_tes> (  gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
        rdf:type [ <GistThing> ] ?
     )
@@ -438,9 +439,9 @@ linkml:Sparqlpath xsd:string
 <GovernedGeoRegion>  (
     CLOSED {
        (  $<GovernedGeoRegion_tes> (  &<GeoRegion_tes> ;
-             rdf:type [ <GeoRegion> ] ?
+             rdf:type [ gist:GeoRegion ] ?
           ) ;
-          rdf:type [ <GovernedGeoRegion> ] ?
+          rdf:type [ gist:GovernedGeoRegion ] ?
        )
     } OR @<CountryGeoRegion>
 )
@@ -448,26 +449,26 @@ linkml:Sparqlpath xsd:string
 <GovernmentOrganization>  (
     CLOSED {
        (  $<GovernmentOrganization_tes> (  &<Organization_tes> ;
-             rdf:type [ <Organization> ] ?
+             rdf:type [ gist:Organization ] ?
           ) ;
-          rdf:type [ <GovernmentOrganization> ] ?
+          rdf:type [ gist:GovernmentOrganization ] ?
        )
     } OR @<CountryGovernment> OR @<SubCountryGovernment>
 )
 
 <HistoricalEvent> CLOSED {
     (  $<HistoricalEvent_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <HistoricalEvent> ] ?
+       rdf:type [ gist:HistoricalEvent ] ?
     )
 }
 
 <ID> CLOSED {
     (  $<ID_tes> (  &<Content_tes> ;
-          rdf:type [ <Content> ] ?
+          rdf:type [ gist:Content ] ?
        ) ;
-       rdf:type [ <ID> ] ?
+       rdf:type [ gist:ID ] ?
     )
 }
 
@@ -475,10 +476,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<IntellectualProperty_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <IntellectualProperty> ] ?
+          rdf:type [ gist:IntellectualProperty ] ?
        )
     } OR @<KnowledgeConcept>
 )
@@ -487,36 +488,36 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Intention_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Intention> ] ?
+          rdf:type [ gist:Intention ] ?
        )
     } OR @<Agreement> OR @<Commitment> OR @<Function> OR @<Permission> OR @<Requirement> OR @<Restriction> OR @<Specification>
 )
 
 <IntergovernmentalOrganization> CLOSED {
     (  $<IntergovernmentalOrganization_tes> (  &<Organization_tes> ;
-          rdf:type [ <Organization> ] ?
+          rdf:type [ gist:Organization ] ?
        ) ;
-       rdf:type [ <IntergovernmentalOrganization> ] ?
+       rdf:type [ gist:IntergovernmentalOrganization ] ?
     )
 }
 
 <KnowledgeConcept> CLOSED {
     (  $<KnowledgeConcept_tes> (  &<IntellectualProperty_tes> ;
-          rdf:type [ <IntellectualProperty> ] ?
+          rdf:type [ gist:IntellectualProperty ] ?
        ) ;
-       rdf:type [ <KnowledgeConcept> ] ?
+       rdf:type [ gist:KnowledgeConcept ] ?
     )
 }
 
 <Landmark>  (
     CLOSED {
        (  $<Landmark_tes> (  &<PhysicalIdentifiableItem_tes> ;
-             rdf:type [ <PhysicalIdentifiableItem> ] ?
+             rdf:type [ gist:PhysicalIdentifiableItem ] ?
           ) ;
-          rdf:type [ <Landmark> ] ?
+          rdf:type [ gist:Landmark ] ?
        )
     } OR @<Building>
 )
@@ -524,19 +525,19 @@ linkml:Sparqlpath xsd:string
 <Language> CLOSED {
     (  $<Language_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <Language> ] ?
+       rdf:type [ gist:Language ] ?
     )
 }
 
 <LivingThing>  (
     CLOSED {
        (  $<LivingThing_tes> (  &<PhysicalIdentifiableItem_tes> ;
-             rdf:type [ <PhysicalIdentifiableItem> ] ?
+             rdf:type [ gist:PhysicalIdentifiableItem ] ?
           ) ;
-          rdf:type [ <LivingThing> ] ?
+          rdf:type [ gist:LivingThing ] ?
        )
     } OR @<Person>
 )
@@ -545,85 +546,85 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Magnitude_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Magnitude> ] ?
+          rdf:type [ gist:Magnitude ] ?
        )
     } OR @<ReferenceValue>
 )
 
 <MediaType> CLOSED {
     (  $<MediaType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <MediaType> ] ?
+       rdf:type [ gist:MediaType ] ?
     )
 }
 
 <Medium> CLOSED {
     (  $<Medium_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <Medium> ] ?
+       rdf:type [ gist:Medium ] ?
     )
 }
 
 <Message> CLOSED {
     (  $<Message_tes> (  &<ContentExpression_tes> ;
-          rdf:type [ <ContentExpression> ] ?
+          rdf:type [ gist:ContentExpression ] ?
        ) ;
-       rdf:type [ <Message> ] ?
+       rdf:type [ gist:Message ] ?
     )
 }
 
 <Network> CLOSED {
     (  $<Network_tes> (  &<Composite_tes> ;
-          rdf:type [ <Composite> ] ?
+          rdf:type [ gist:Composite ] ?
        ) ;
-       rdf:type [ <Network> ] ?
+       rdf:type [ gist:Network ] ?
     )
 }
 
 <NetworkLink> CLOSED {
     (  $<NetworkLink_tes> (  &<Component_tes> ;
-          rdf:type [ <Component> ] ?
+          rdf:type [ gist:Component ] ?
        ) ;
-       rdf:type [ <NetworkLink> ] ?
+       rdf:type [ gist:NetworkLink ] ?
     )
 }
 
 <NetworkNode> CLOSED {
     (  $<NetworkNode_tes> (  &<Component_tes> ;
-          rdf:type [ <Component> ] ?
+          rdf:type [ gist:Component ] ?
        ) ;
-       rdf:type [ <NetworkNode> ] ?
+       rdf:type [ gist:NetworkNode ] ?
     )
 }
 
 <Offer> CLOSED {
     (  $<Offer_tes> (  &<ContingentObligation_tes> ;
-          rdf:type [ <ContingentObligation> ] ?
+          rdf:type [ gist:ContingentObligation ] ?
        ) ;
-       rdf:type [ <Offer> ] ?
+       rdf:type [ gist:Offer ] ?
     )
 }
 
 <OrderedCollection>  (
     CLOSED {
        (  $<OrderedCollection_tes> (  &<Collection_tes> ;
-             rdf:type [ <Collection> ] ?
+             rdf:type [ gist:Collection ] ?
           ) ;
-          rdf:type [ <OrderedCollection> ] ?
+          rdf:type [ gist:OrderedCollection ] ?
        )
     } OR @<GeoRoute>
 )
 
 <OrderedMember> CLOSED {
     (  $<OrderedMember_tes> (  &<Component_tes> ;
-          rdf:type [ <Component> ] ?
+          rdf:type [ gist:Component ] ?
        ) ;
-       rdf:type [ <OrderedMember> ] ?
+       rdf:type [ gist:OrderedMember ] ?
     )
 }
 
@@ -631,59 +632,59 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Organization_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Organization> ] ?
+          rdf:type [ gist:Organization ] ?
        )
     } OR @<GovernmentOrganization> OR @<IntergovernmentalOrganization>
 )
 
 <Permission> CLOSED {
     (  $<Permission_tes> (  &<Intention_tes> ;
-          rdf:type [ <Intention> ] ?
+          rdf:type [ gist:Intention ] ?
        ) ;
-       rdf:type [ <Permission> ] ?
+       rdf:type [ gist:Permission ] ?
     )
 }
 
 <Person> CLOSED {
     (  $<Person_tes> (  &<LivingThing_tes> ;
-          rdf:type [ <LivingThing> ] ?
+          rdf:type [ gist:LivingThing ] ?
        ) ;
-       rdf:type [ <Person> ] ?
+       rdf:type [ gist:Person ] ?
     )
 }
 
 <PhysicalActionType> CLOSED {
     (  $<PhysicalActionType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <PhysicalActionType> ] ?
+       rdf:type [ gist:PhysicalActionType ] ?
     )
 }
 
 <PhysicalAddress> CLOSED {
     (  $<PhysicalAddress_tes> (  &<Address_tes> ;
-          rdf:type [ <Address> ] ?
+          rdf:type [ gist:Address ] ?
        ) ;
-       rdf:type [ <PhysicalAddress> ] ?
+       rdf:type [ gist:PhysicalAddress ] ?
     )
 }
 
 <PhysicalAddressType> CLOSED {
     (  $<PhysicalAddressType_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <PhysicalAddressType> ] ?
+       rdf:type [ gist:PhysicalAddressType ] ?
     )
 }
 
 <PhysicalEvent> CLOSED {
     (  $<PhysicalEvent_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <PhysicalEvent> ] ?
+       rdf:type [ gist:PhysicalEvent ] ?
     )
 }
 
@@ -691,10 +692,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<PhysicalIdentifiableItem_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <PhysicalIdentifiableItem> ] ?
+          rdf:type [ gist:PhysicalIdentifiableItem ] ?
        )
     } OR @<Equipment> OR @<Landmark> OR @<LivingThing>
 )
@@ -702,154 +703,154 @@ linkml:Sparqlpath xsd:string
 <PhysicalSubstance> CLOSED {
     (  $<PhysicalSubstance_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <PhysicalSubstance> ] ?
+       rdf:type [ gist:PhysicalSubstance ] ?
     )
 }
 
 <ProductCategory> CLOSED {
     (  $<ProductCategory_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <ProductCategory> ] ?
+       rdf:type [ gist:ProductCategory ] ?
     )
 }
 
 <ProductSpecification> CLOSED {
     (  $<ProductSpecification_tes> (  &<CatalogItem_tes> ;
-          rdf:type [ <CatalogItem> ] ?
+          rdf:type [ gist:CatalogItem ] ?
        ) ;
-       rdf:type [ <ProductSpecification> ] ?
+       rdf:type [ gist:ProductSpecification ] ?
     )
 }
 
 <Project> CLOSED {
     (  $<Project_tes> (  &<Task_tes> ;
-          rdf:type [ <Task> ] ?
+          rdf:type [ gist:Task ] ?
        ) ;
-       rdf:type [ <Project> ] ?
+       rdf:type [ gist:Project ] ?
     )
 }
 
 <ReferenceValue> CLOSED {
     (  $<ReferenceValue_tes> (  &<Magnitude_tes> ;
-          rdf:type [ <Magnitude> ] ?
+          rdf:type [ gist:Magnitude ] ?
        ) ;
-       rdf:type [ <ReferenceValue> ] ?
+       rdf:type [ gist:ReferenceValue ] ?
     )
 }
 
 <RenderedContent> CLOSED {
     (  $<RenderedContent_tes> (  &<FormattedContent_tes> ;
-          rdf:type [ <FormattedContent> ] ?
+          rdf:type [ gist:FormattedContent ] ?
        ) ;
-       rdf:type [ <RenderedContent> ] ?
+       rdf:type [ gist:RenderedContent ] ?
     )
 }
 
 <Requirement> CLOSED {
     (  $<Requirement_tes> (  &<Intention_tes> ;
-          rdf:type [ <Intention> ] ?
+          rdf:type [ gist:Intention ] ?
        ) ;
-       rdf:type [ <Requirement> ] ?
+       rdf:type [ gist:Requirement ] ?
     )
 }
 
 <Restriction> CLOSED {
     (  $<Restriction_tes> (  &<Intention_tes> ;
-          rdf:type [ <Intention> ] ?
+          rdf:type [ gist:Intention ] ?
        ) ;
-       rdf:type [ <Restriction> ] ?
+       rdf:type [ gist:Restriction ] ?
     )
 }
 
 <ScheduledEvent>  (
     CLOSED {
        (  $<ScheduledEvent_tes> (  &<Event_tes> ;
-             rdf:type [ <Event> ] ?
+             rdf:type [ gist:Event ] ?
           ) ;
-          rdf:type [ <ScheduledEvent> ] ?
+          rdf:type [ gist:ScheduledEvent ] ?
        )
     } OR @<ScheduledTask>
 )
 
 <ScheduledTask> CLOSED {
     (  $<ScheduledTask_tes> (  &<ScheduledEvent_tes> ;
-          rdf:type [ <ScheduledEvent> ] ?
+          rdf:type [ gist:ScheduledEvent ] ?
        ) ;
-       rdf:type [ <ScheduledTask> ] ?
+       rdf:type [ gist:ScheduledTask ] ?
     )
 }
 
 <SchemaMetaData> CLOSED {
     (  $<SchemaMetaData_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <SchemaMetaData> ] ?
+       rdf:type [ gist:SchemaMetaData ] ?
     )
 }
 
 <ServiceSpecification> CLOSED {
     (  $<ServiceSpecification_tes> (  &<CatalogItem_tes> ;
-          rdf:type [ <CatalogItem> ] ?
+          rdf:type [ gist:CatalogItem ] ?
        ) ;
-       rdf:type [ <ServiceSpecification> ] ?
+       rdf:type [ gist:ServiceSpecification ] ?
     )
 }
 
 <Specification>  (
     CLOSED {
        (  $<Specification_tes> (  &<Intention_tes> ;
-             rdf:type [ <Intention> ] ?
+             rdf:type [ gist:Intention ] ?
           ) ;
-          rdf:type [ <Specification> ] ?
+          rdf:type [ gist:Specification ] ?
        )
     } OR @<CatalogItem> OR @<ContractTerm> OR @<EventSpecification>
 )
 
 <SubCountryGovernment> CLOSED {
     (  $<SubCountryGovernment_tes> (  &<GovernmentOrganization_tes> ;
-          rdf:type [ <GovernmentOrganization> ] ?
+          rdf:type [ gist:GovernmentOrganization ] ?
        ) ;
-       rdf:type [ <SubCountryGovernment> ] ?
+       rdf:type [ gist:SubCountryGovernment ] ?
     )
 }
 
 <System> CLOSED {
     (  $<System_tes> (  &<Composite_tes> ;
-          rdf:type [ <Composite> ] ?
+          rdf:type [ gist:Composite ] ?
        ) ;
-       rdf:type [ <System> ] ?
+       rdf:type [ gist:System ] ?
     )
 }
 
 <Tag> CLOSED {
     (  $<Tag_tes> (  &<Category_tes> ;
-          rdf:type [ <Category> ] ?
+          rdf:type [ gist:Category ] ?
        ) ;
-       rdf:type [ <Tag> ] ?
+       rdf:type [ gist:Tag ] ?
     )
 }
 
 <Task>  (
     CLOSED {
        (  $<Task_tes> (  &<Event_tes> ;
-             rdf:type [ <Event> ] ?
+             rdf:type [ gist:Event ] ?
           ) ;
-          rdf:type [ <Task> ] ?
+          rdf:type [ gist:Task ] ?
        )
     } OR @<Project>
 )
 
 <TaskTemplate> CLOSED {
     (  $<TaskTemplate_tes> (  &<Template_tes> ;
-          rdf:type [ <Template> ] ?
+          rdf:type [ gist:Template ] ?
        ) ;
-       rdf:type [ <TaskTemplate> ] ?
+       rdf:type [ gist:TaskTemplate ] ?
     )
 }
 
@@ -857,10 +858,10 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Template_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <Template> ] ?
+          rdf:type [ gist:Template ] ?
        )
     } OR @<TaskTemplate>
 )
@@ -869,54 +870,54 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<TemporalRelation_tes> (  &<GistThing_tes> ;
              rdf:type [ <GistThing> ] ? ;
-             <name> @linkml:String ? ;
-             <description> @linkml:String ?
+             gist:name @linkml:String ? ;
+             gist:description @linkml:String ?
           ) ;
-          rdf:type [ <TemporalRelation> ] ?
+          rdf:type [ gist:TemporalRelation ] ?
        )
     } OR @<Assignment>
 )
 
 <Text> CLOSED {
     (  $<Text_tes> (  &<ContentExpression_tes> ;
-          rdf:type [ <ContentExpression> ] ?
+          rdf:type [ gist:ContentExpression ] ?
        ) ;
-       rdf:type [ <Text> ] ?
+       rdf:type [ gist:Text ] ?
     )
 }
 
 <TimeInterval> CLOSED {
     (  $<TimeInterval_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <TimeInterval> ] ?
+       rdf:type [ gist:TimeInterval ] ?
     )
 }
 
 <Transaction> CLOSED {
     (  $<Transaction_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
+          rdf:type [ gist:Event ] ?
        ) ;
-       rdf:type [ <Transaction> ] ?
+       rdf:type [ gist:Transaction ] ?
     )
 }
 
 <UnitGroup> CLOSED {
     (  $<UnitGroup_tes> (  &<Collection_tes> ;
-          rdf:type [ <Collection> ] ?
+          rdf:type [ gist:Collection ] ?
        ) ;
-       rdf:type [ <UnitGroup> ] ?
+       rdf:type [ gist:UnitGroup ] ?
     )
 }
 
 <UnitOfMeasure> CLOSED {
     (  $<UnitOfMeasure_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;
-          <name> @linkml:String ? ;
-          <description> @linkml:String ?
+          gist:name @linkml:String ? ;
+          gist:description @linkml:String ?
        ) ;
-       rdf:type [ <UnitOfMeasure> ] ?
+       rdf:type [ gist:UnitOfMeasure ] ?
     )
 }

@@ -11,8 +11,8 @@ source: https://w3id.org/semanticarts/ontology/gistCore
 version: 14.1.0
 
 prefixes:
-  gist: https://w3id.org/lmodel/gist/
-  gist_semanticarts: https://w3id.org/semanticarts/ns/ontology/gist/
+  gist: https://w3id.org/semanticarts/ns/ontology/gist/
+  gist_linkml: https://w3id.org/lmodel/gist/
   gistd: https://w3id.org/semanticarts/ns/data/gist/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
@@ -29,7 +29,7 @@ prefixes:
   common_domain_model: https://w3id.org/lmodel/common_domain_model/
   dpvs: https://w3id.org/lmodel/dpvs/
   iso22989: https://w3id.org/lmodel/iso22989/
-default_prefix: gist
+default_prefix: gist_linkml
 default_range: string
 
 imports:
@@ -949,7 +949,7 @@ slots:
     in_subset:
       - gist_core
     exact_mappings:
-      - gist_semanticarts:prohibits
+      - gist:prohibits
 
   prohibits:
     slot_uri: gist:prohibits

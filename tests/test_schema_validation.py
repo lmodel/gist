@@ -245,3 +245,37 @@ class TestSchemaConsistency:
                     or range_val in types_section
                 )
                 # We allow some ranges that might be from imported modules
+
+
+class TestGistNamespace:
+    """gist's terms keep Semantic Arts' IRIs; only LinkML-only elements are lmodel's."""
+
+    @pytest.mark.parametrize("schema_file", SCHEMA_FILES, ids=lambda p: p.name)
+    def test_prefix_bindings(self, schema_file, upstream_gist):
+        schema = load_schema(schema_file)
+        prefixes = schema["prefixes"]
+        assert prefixes["gist"] == upstream_gist["gist_ns"]
+        assert prefixes["gist_linkml"] == upstream_gist["lmodel_ns"]
+        assert schema["default_prefix"] == "gist_linkml"
+        assert [p for p, ns in prefixes.items() if ns == upstream_gist["gist_ns"]] == ["gist"]
+
+    @pytest.mark.parametrize("schema_file", SCHEMA_FILES, ids=lambda p: p.name)
+    def test_element_iris(self, schema_file, upstream_gist):
+        from linkml_runtime.utils.schemaview import SchemaView
+
+        gist_ns, gistd_ns, lmodel_ns = (upstream_gist[k] for k in ("gist_ns", "gistd_ns", "lmodel_ns"))
+        sv = SchemaView(str(schema_file))
+        iris = [sv.get_uri(e, expand=True) for e in (
+            *sv.all_classes(imports=False).values(),
+            *sv.all_slots(imports=False).values(),
+            *sv.all_enums(imports=False).values(),
+        )]
+        iris += [
+            sv.expand_curie(pv.meaning)
+            for enum in sv.all_enums(imports=False).values()
+            for pv in enum.permissible_values.values() if pv.meaning
+        ]
+        invented = [i for i in iris if i.startswith((gist_ns, gistd_ns)) and i not in upstream_gist["iris"]]
+        assert invented == [], "IRIs in Semantic Arts' namespace that gist does not define"
+        cloned = [i for i in iris if i.startswith(lmodel_ns) and i[len(lmodel_ns):] in upstream_gist["local_names"]]
+        assert cloned == [], "gist terms re-minted in lmodel's namespace"
