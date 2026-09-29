@@ -3,7 +3,8 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "gist"
+# The PyPI name "gist" belongs to an unrelated tool; the import package stays gist.
+name = "lmodel-gist"
 description = "GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema"
 authors = [
   {name = "Noel McLoughlin", email = "noel.mcloughlin@gmail.com"},
@@ -28,6 +29,9 @@ dev = [
     "jupyter>=1.0.0",
     "mknotebooks>= 0.8.0",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gist"]
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
 # explicitly include files other than default into the build distributions.
