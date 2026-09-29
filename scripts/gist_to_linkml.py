@@ -13,6 +13,7 @@ Generates one schema per input TTL file into an output directory:
 Usage
 -----
     uv run python scripts/gist_to_linkml.py [TTL_FILE ...] [-d OUTPUT_DIR]
+        [--rename OLD=NEW ...]
 
 100% coverage goals:
   - Every owl:Class                              -> LinkML class
@@ -1475,6 +1476,124 @@ def build_gist_schema(version: str = "14.1.0") -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Renaming elements
+# ---------------------------------------------------------------------------
+# LinkML merges every imported element name into one namespace, and the last
+# import wins. A schema importing gist beside another vocabulary that also has
+# a Person class or a name slot (LOKF has Person, Organization, name,
+# description and license) silently loses one side's definition. A rename
+# gives the gist element another LinkML name. Its IRI stays the same: the
+# class_uri / slot_uri it carries is kept, or pinned to the gist_linkml:<old
+# name> it had by default, so the RDF and the SSSOM overlay, which matches by
+# IRI, are unchanged.
+
+_URI_KEYS = {"classes": "class_uri", "slots": "slot_uri"}
+
+# Element keys whose value names a class or slot, as a string or a list
+_NAME_REF_KEYS = (
+    "is_a", "mixins", "slots", "domain", "range", "inverse", "disjoint_with",
+    "union_of", "deprecated_element_has_exact_replacement",
+)
+
+# Element keys holding a list of anonymous expressions that can hold a range
+_EXPRESSION_KEYS = ("any_of", "all_of", "exactly_one_of", "none_of")
+
+_ELEMENT_NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def parse_renames(pairs: list[str]) -> dict[str, str]:
+    """Parse ``OLD=NEW`` pairs into a rename map, rejecting malformed,
+    repeated or chained entries."""
+    renames: dict[str, str] = {}
+    for pair in pairs:
+        old, sep, new = pair.partition("=")
+        old, new = old.strip(), new.strip()
+        if not sep or not _ELEMENT_NAME_RE.match(old) or not _ELEMENT_NAME_RE.match(new):
+            raise ValueError(f"--rename {pair!r}: expected OLD=NEW, two element names")
+        if old == new:
+            raise ValueError(f"--rename {pair!r}: the new name is the old one")
+        if old in renames:
+            raise ValueError(f"--rename {old}: given more than once")
+        renames[old] = new
+    chained = sorted(set(renames) & set(renames.values()))
+    if chained:
+        raise ValueError(f"--rename: {', '.join(chained)} is both renamed and a new name")
+    new_names = list(renames.values())
+    repeated = sorted({n for n in new_names if new_names.count(n) > 1})
+    if repeated:
+        raise ValueError(f"--rename: {', '.join(repeated)} is the new name of more than one element")
+    return renames
+
+
+def check_renames(schema: dict, renames: dict[str, str]) -> None:
+    """Fail unless every old name is a class or slot of *schema* and no new
+    name is already taken there. Run on gist_core, which defines them all."""
+    defined = set()
+    for collection in ("classes", "slots", "enums"):
+        defined |= set(schema.get(collection) or {})
+    renameable = set(schema.get("classes") or {}) | set(schema.get("slots") or {})
+    missing = sorted(set(renames) - renameable)
+    if missing:
+        raise ValueError(f"--rename: no gist class or slot named {', '.join(missing)}")
+    taken = sorted(set(renames.values()) & defined)
+    if taken:
+        raise ValueError(f"--rename: gist already has an element named {', '.join(taken)}")
+
+
+def _rename_refs(entry: dict, renames: dict[str, str]) -> None:
+    for key in _NAME_REF_KEYS:
+        value = entry.get(key)
+        if isinstance(value, str):
+            entry[key] = renames.get(value, value)
+        elif isinstance(value, list):
+            entry[key] = [renames.get(v, v) if isinstance(v, str) else v for v in value]
+    for key in _EXPRESSION_KEYS:
+        if key in entry:
+            exprs = [dict(e) if isinstance(e, dict) else e for e in entry[key]]
+            for expr in exprs:
+                if isinstance(expr, dict):
+                    _rename_refs(expr, renames)
+            entry[key] = exprs
+
+
+def rename_elements(schema: dict, renames: dict[str, str]) -> dict:
+    """Return *schema* with its classes and slots renamed per *renames* and
+    every reference to them rewritten. Element order is kept, the old name
+    joins the renamed element's aliases, and a note in the header lists the
+    renames that apply to this file."""
+    if not renames:
+        return schema
+    default_prefix = schema.get("default_prefix", "gist_linkml")
+    schema = dict(schema)
+    applied = [
+        old for old in renames
+        if old in (schema.get("classes") or {}) or old in (schema.get("slots") or {})
+    ]
+    if applied:
+        listed = ", ".join(f"{old} -> {renames[old]}" for old in applied)
+        schema["notes"] = list(schema.get("notes", [])) + [
+            f"LinkML names changed from gist's own, IRIs unchanged: {listed}."
+        ]
+    for collection in ("classes", "slots"):
+        if collection not in schema:
+            continue
+        uri_key = _URI_KEYS[collection]
+        renamed = {}
+        for name, elem in schema[collection].items():
+            entry = dict(elem)
+            _rename_refs(entry, renames)
+            if name in renames:
+                entry.setdefault(uri_key, f"{default_prefix}:{name}")
+                aliases = entry.get("aliases", [])
+                if name not in aliases:
+                    entry["aliases"] = aliases + [name]
+                entry = _order_keys(entry, _ELEMENT_KEY_ORDER)
+            renamed[renames.get(name, name)] = entry
+        schema[collection] = renamed
+    return schema
+
+
+# ---------------------------------------------------------------------------
 # Coverage report
 # ---------------------------------------------------------------------------
 
@@ -1558,8 +1677,11 @@ def generate_per_file_schemas(
     output_dir: Path,
     version: str = "14.1.0",
     report: bool = False,
+    renames: dict[str, str] | None = None,
 ) -> None:
-    """Generate one schema YAML per input TTL file into output_dir."""
+    """Generate one schema YAML per input TTL file into output_dir, with the
+    classes and slots in *renames* given their new names in every file."""
+    renames = renames or {}
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Classify input files by content type
@@ -1609,7 +1731,10 @@ def generate_per_file_schemas(
         source=get_ontology_iri(graphs.get("core", Graph())),
         header=ontology_header(graphs.get("core", Graph()), g_annot),
     )
-    _write_schema_file(core_schema, output_dir / "gist_core.yaml")
+    # Checked before the first file is written, so a bad rename leaves the
+    # output directory as it was
+    check_renames(core_schema, renames)
+    _write_schema_file(rename_elements(core_schema, renames), output_dir / "gist_core.yaml")
     all_enums = dict(enums)
 
     # ---- 2. gist_media_types.yaml ----
@@ -1649,7 +1774,9 @@ def generate_per_file_schemas(
             annot_classes, annot_slots, version,
             source=get_ontology_iri(g_annot), enums=annot_enums,
         )
-        _write_schema_file(annot_schema, output_dir / "gist_rdfs_annotations.yaml")
+        _write_schema_file(
+            rename_elements(annot_schema, renames), output_dir / "gist_rdfs_annotations.yaml"
+        )
 
     # ---- 5. gist_sub_class_assertions.yaml ----
     if "sub_class_assertions" in graphs:
@@ -1660,7 +1787,9 @@ def generate_per_file_schemas(
             sub_classes, version, source=get_ontology_iri(g_sub),
             header=ontology_header(g_sub, g_annot),
         )
-        _write_schema_file(sub_schema, output_dir / "gist_sub_class_assertions.yaml")
+        _write_schema_file(
+            rename_elements(sub_schema, renames), output_dir / "gist_sub_class_assertions.yaml"
+        )
 
     # ---- 6. gist.yaml (main entry-point, imports core + media_types + prefix_declarations) ----
     print("Building gist.yaml ...", file=sys.stderr)
@@ -1716,7 +1845,22 @@ def main() -> None:
         action="store_true",
         help="Print a coverage report to stderr",
     )
+    parser.add_argument(
+        "--rename",
+        action="append",
+        default=[],
+        metavar="OLD=NEW",
+        help=(
+            "Give a gist class or slot another LinkML name, keeping its gist IRI, "
+            "e.g. --rename Person=GistPerson for a schema that also imports one "
+            "with a Person class. Repeatable."
+        ),
+    )
     args = parser.parse_args()
+    try:
+        renames = parse_renames(args.rename)
+    except ValueError as exc:
+        parser.error(str(exc))
 
     if args.inputs:
         ttl_files = [Path(f) for f in args.inputs]
@@ -1726,12 +1870,16 @@ def main() -> None:
     if not ttl_files:
         parser.error(f"No TTL files found in {default_ttl_dir}")
 
-    generate_per_file_schemas(
-        ttl_files,
-        Path(args.output_dir),
-        version=args.version,
-        report=args.report,
-    )
+    try:
+        generate_per_file_schemas(
+            ttl_files,
+            Path(args.output_dir),
+            version=args.version,
+            report=args.report,
+            renames=renames,
+        )
+    except ValueError as exc:
+        parser.error(str(exc))
 
 
 if __name__ == "__main__":

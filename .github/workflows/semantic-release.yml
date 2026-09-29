@@ -142,7 +142,7 @@ jobs:
     environment: release
     permissions:
       contents: write
-      actions: write # dispatch pypi-publish.yaml and knowledge-release.yaml for the new tag
+      actions: write # dispatch pypi-publish.yaml, knowledge-release.yaml and lokf-copy-release.yaml for the new tag
     steps:
       - name: Harden the runner
         uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
@@ -219,3 +219,14 @@ jobs:
         run: |
           gh workflow run knowledge-release.yaml --ref "$TAG" -f tag="$TAG" \
             || { echo "::error::$TAG is released, but the bundle zip was not requested. Run the Knowledge Release workflow by hand with tag=$TAG."; exit 1; }
+
+      # And gist_core.yaml renamed for use beside LOKF's lokf.yaml, on every
+      # release: it needs no repository variable or outside service.
+      - name: Attach the LOKF copy
+        if: steps.release.outputs.released == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: v${{ steps.release.outputs.version }}
+        run: |
+          gh workflow run lokf-copy-release.yaml --ref "$TAG" -f tag="$TAG" \
+            || { echo "::error::$TAG is released, but the LOKF copy was not requested. Run the LOKF Copy Release workflow by hand with tag=$TAG."; exit 1; }

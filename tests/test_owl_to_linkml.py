@@ -1186,6 +1186,87 @@ class TestBuildGistSchema:
         assert keys.index("prefixes") > keys.index("version")
 
 
+class TestRenames:
+    @staticmethod
+    def _schema():
+        return {
+            "default_prefix": "gist_linkml",
+            "classes": {
+                "GistThing": {"mixin": True, "slots": ["name", "description"]},
+                "Person": {"is_a": "LivingThing", "class_uri": "gist:Person", "aliases": ["Person"]},
+                "LivingThing": {"class_uri": "gist:LivingThing", "disjoint_with": ["Organization"]},
+                "Organization": {"mixins": ["GistThing"], "class_uri": "gist:Organization"},
+            },
+            "slots": {
+                "name": {"slot_uri": "gist:name"},
+                "description": {},
+                "comes_from_agent": {"any_of": [{"range": "Organization"}, {"range": "Person"}]},
+                "has_member": {"domain": "Organization", "range": "Person"},
+            },
+            "enums": {"AspectInstance": {}},
+        }
+
+    def test_parse(self):
+        assert M.parse_renames(["Person=GistPerson", " name = gist_name "]) == {
+            "Person": "GistPerson", "name": "gist_name",
+        }
+
+    @pytest.mark.parametrize("pairs", [
+        ["Person"], ["Person="], ["=GistPerson"], ["Per son=GistPerson"],
+        ["Person=Person"], ["Person=A", "Person=B"], ["Person=Human", "Human=GistHuman"],
+        ["Person=Agent", "Organization=Agent"],
+    ])
+    def test_parse_rejects(self, pairs):
+        with pytest.raises(ValueError):
+            M.parse_renames(pairs)
+
+    def test_check_rejects_unknown_old_name(self):
+        with pytest.raises(ValueError, match="Persn"):
+            M.check_renames(self._schema(), {"Persn": "GistPerson"})
+
+    def test_check_rejects_taken_new_name(self):
+        with pytest.raises(ValueError, match="AspectInstance"):
+            M.check_renames(self._schema(), {"Person": "AspectInstance"})
+
+    def test_renames_keep_iri_and_order(self):
+        s = M.rename_elements(self._schema(), {"Person": "GistPerson", "description": "gist_description"})
+        assert list(s["classes"]) == ["GistThing", "GistPerson", "LivingThing", "Organization"]
+        assert s["classes"]["GistPerson"]["class_uri"] == "gist:Person"
+        assert list(s["slots"])[1] == "gist_description"
+        assert s["slots"]["gist_description"]["slot_uri"] == "gist_linkml:description"
+
+    def test_old_name_becomes_alias_once(self):
+        s = M.rename_elements(self._schema(), {"Person": "GistPerson", "name": "gist_name"})
+        assert s["classes"]["GistPerson"]["aliases"] == ["Person"]
+        assert s["slots"]["gist_name"]["aliases"] == ["name"]
+
+    def test_references_follow(self):
+        renames = {"Organization": "GistOrganization", "Person": "GistPerson", "name": "gist_name"}
+        s = M.rename_elements(self._schema(), renames)
+        assert s["classes"]["GistThing"]["slots"] == ["gist_name", "description"]
+        assert s["classes"]["LivingThing"]["disjoint_with"] == ["GistOrganization"]
+        assert s["slots"]["comes_from_agent"]["any_of"] == [
+            {"range": "GistOrganization"}, {"range": "GistPerson"},
+        ]
+        assert s["slots"]["has_member"]["domain"] == "GistOrganization"
+        assert s["slots"]["has_member"]["range"] == "GistPerson"
+
+    def test_header_notes_the_renames_that_apply(self):
+        s = M.rename_elements(self._schema(), {"Person": "GistPerson", "Tag": "GistTag"})
+        assert s["notes"] == ["LinkML names changed from gist's own, IRIs unchanged: Person -> GistPerson."]
+        assert "notes" not in M.rename_elements({"enums": {}}, {"Person": "GistPerson"})
+
+    def test_input_not_mutated(self):
+        schema = self._schema()
+        M.rename_elements(schema, {"Person": "GistPerson"})
+        assert "Person" in schema["classes"]
+        assert schema["slots"]["has_member"]["range"] == "Person"
+
+    def test_no_renames_is_identity(self):
+        schema = self._schema()
+        assert M.rename_elements(schema, {}) is schema
+
+
 # ===========================================================================
 # 11. File type classification
 # ===========================================================================

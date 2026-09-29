@@ -1,0 +1,135 @@
+name: LOKF Copy Release
+
+# Attaches `gist-linkml-lokf-<tag>.yaml` to a GitHub release: gist_core.yaml
+# with the classes and slots LOKF's lokf.yaml also defines renamed, so a LOKF
+# domain schema can import gist beside lokf.yaml in either order. The file
+# stands alone; save it as `gist_core.yaml` and import `gist_core`.
+# `just gen-lokf-copy` builds it and fails when a name is still shared with
+# the lokf.yaml the .lokf sidecar locks. It runs no LLM or agent, and it
+# never commits or pushes.
+#
+# Triggers:
+#   workflow_dispatch   semantic-release.yml dispatches it for each tag it
+#                       releases, because GitHub starts no workflow from a
+#                       release made with GITHUB_TOKEN. A person can run it
+#                       for an existing tag to repair its asset.
+#   release published   a release made by hand in the GitHub UI.
+#
+# `build` holds a read-only token. Only `attach`, which runs nothing from the
+# repository, can write, and it checks the file against its checksum first.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag of an existing release to attach the file to, e.g. v0.3.0"
+        required: true
+        type: string
+
+permissions: {} # deny by default; each job requests only the scopes it needs
+
+concurrency:
+  group: lokf-copy-release-${{ inputs.tag || github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and check the copy (read-only)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      TAG: ${{ inputs.tag || github.event.release.tag_name }}
+    steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
+      # The tag names the asset and a git ref, so hold it to a version tag.
+      - name: Refuse anything but a version tag
+        run: |
+          if ! printf '%s\n' "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::'$TAG' is not a vX.Y.Z tag."
+            exit 1
+          fi
+
+      # The converter and mappings as they stood at the tag.
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          python-version: "3.14"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install just
+        run: uv tool install rust-just
+
+      - name: Build and check the copy
+        run: just gen-lokf-copy "$RUNNER_TEMP/release"
+
+      - name: Name it for the release
+        working-directory: ${{ runner.temp }}/release
+        run: |
+          asset="gist-linkml-lokf-$TAG.yaml"
+          mv gist_core.yaml "$asset"
+          sha256sum "$asset" > "$asset.sha256"
+
+      - name: Upload the file
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lokf-copy-release
+          path: ${{ runner.temp }}/release/
+          retention-days: 1
+          if-no-files-found: error
+
+  attach:
+    name: Attach the file to the release (privileged)
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # upload release assets
+      id-token: write # sign the build-provenance attestation
+      attestations: write # store the attestation
+    env:
+      TAG: ${{ inputs.tag || github.event.release.tag_name }}
+    steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        with:
+          egress-policy: audit
+
+      - name: Download the file
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: lokf-copy-release
+          path: ${{ runner.temp }}/release
+
+      - name: Check it against its checksum
+        run: sha256sum -c -- *.sha256
+        working-directory: ${{ runner.temp }}/release
+
+      # Check one with `gh attestation verify <file> -R <owner>/<repo>`. A
+      # private repository needs GitHub Enterprise Cloud, so the step skips
+      # itself there.
+      - name: Attest build provenance
+        if: ${{ !github.event.repository.private }}
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: ${{ runner.temp }}/release/*.yaml
+
+      # `--clobber` replaces an earlier upload of the same name, so running the
+      # workflow again for one tag repairs its asset instead of failing.
+      - name: Upload to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release upload "$TAG" ./*.yaml ./*.sha256 --clobber
+        working-directory: ${{ runner.temp }}/release

@@ -41,6 +41,24 @@ verify-mapping-targets:
 verify-generated:
   uv run python scripts/check_generated_current.py
 
+# gist names that LOKF's lokf.yaml also defines. Renamed, the classes and
+# slots keep their gist IRIs.
+lokf_renames := "--rename Person=GistPerson --rename Organization=GistOrganization --rename name=gist_name --rename description=gist_description --rename license=gist_license"
+
+# Writes <out>/gist_core.yaml, one self-contained file with the SSSOM
+# mappings applied, then checks it shares no element name with the lokf.yaml
+# the .lokf sidecar locks. lokf-copy-release.yaml attaches it to each release.
+# Build gist_core.yaml renamed to import beside LOKF's lokf.yaml
+[group('model development')]
+gen-lokf-copy out="dist/lokf":
+  rm -rf tmp/lokf-copy
+  uv run python scripts/gist_to_linkml.py -d tmp/lokf-copy {{lokf_renames}}
+  uv run python scripts/apply_sssom_overlay.py --schema-dir tmp/lokf-copy --mappings-dir src/gist/mappings
+  mkdir -p "{{out}}"
+  cp tmp/lokf-copy/gist_core.yaml "{{out}}/gist_core.yaml"
+  uv run python scripts/check_lokf_names.py "{{out}}/gist_core.yaml" \
+    "$(uv run --project .lokf python -c "from importlib.resources import files; print(files('lokf') / 'data' / 'lokf.yaml')")"
+
 # Needs network.
 # Check upstream/ is Semantic Arts' latest gist release, byte for byte
 [group('model development')]
