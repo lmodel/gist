@@ -3,7 +3,8 @@ name: Semantic release
 # Computes the next version for this repository from Conventional Commits on
 # `main` and promotes CHANGELOG.md's "## [Unreleased]" section into a dated
 # heading via .github/scripts/changelog-release.mjs, then tags the commit and
-# publishes a GitHub Release built from that same text. No file carries the
+# publishes a GitHub Release built from that same text, then dispatches the
+# PyPI upload once PYPI_RELEASE_ENABLED is `true`. No file carries the
 # version: uv-dynamic-versioning reads it from the tag when the package is
 # built, so CHANGELOG.md is the only file this job commits.
 #
@@ -197,9 +198,10 @@ jobs:
       # The release above is made with GITHUB_TOKEN, and GitHub starts no
       # workflow from an event that token causes, so pypi-publish.yaml's
       # `release` trigger never fires here. A dispatch is the one exception,
-      # so this step asks for the upload directly, built from the tag.
+      # so this step asks for the upload directly, built from the tag. Off
+      # until the PYPI_RELEASE_ENABLED repository variable is `true`.
       - name: Publish to PyPI
-        if: steps.release.outputs.released == 'true'
+        if: steps.release.outputs.released == 'true' && vars.PYPI_RELEASE_ENABLED == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: v${{ steps.release.outputs.version }}

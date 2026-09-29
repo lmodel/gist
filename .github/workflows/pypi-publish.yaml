@@ -13,6 +13,9 @@ name: Publish Python Package
 # dispatch from anything but a `v*` tag fails rather than uploading a dev
 # version to PyPI.
 #
+# Off until the PYPI_RELEASE_ENABLED repository variable is `true`: every
+# trigger then skips the build, so nothing reaches TestPyPI or PyPI.
+#
 # More on trusted publishing: https://docs.pypi.org/trusted-publishers/
 
 on:  # yamllint disable-line rule:truthy
@@ -33,6 +36,7 @@ permissions: {}
 jobs:
   build:
     name: Build Python 🐍 distributions 📦 for publishing
+    if: vars.PYPI_RELEASE_ENABLED == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
