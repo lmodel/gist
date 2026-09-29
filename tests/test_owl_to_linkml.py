@@ -179,6 +179,24 @@ class TestNamedObjects:
         assert M.named_objects(g, GIST.A, RDFS.subClassOf) == []
 
 
+class TestCanonicalGraph:
+    def test_iteration_order_is_fixed(self):
+        g = Graph()
+        for local in ("C", "A", "B"):
+            g.add((GIST[local], RDF.type, OWL.Class))
+        found = list(M.canonical_graph(g).subjects(RDF.type, OWL.Class))
+        assert found == [GIST.A, GIST.B, GIST.C]
+
+    def test_blank_nodes_relabelled_the_same_way_each_time(self):
+        def build():
+            g = Graph()
+            bn = BNode()
+            g.add((GIST.A, RDFS.subClassOf, bn))
+            g.add((bn, OWL.onProperty, GIST.hasB))
+            return g
+        assert list(M.canonical_graph(build())) == list(M.canonical_graph(build()))
+
+
 class TestUnionMembers:
     def test_simple_union(self):
         g = Graph()

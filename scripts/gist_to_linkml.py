@@ -39,6 +39,7 @@ import rdflib
 import rdflib.collection
 import yaml
 from rdflib import BNode, Graph, Literal, URIRef
+from rdflib.compare import to_canonical_graph
 from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 
 # ---------------------------------------------------------------------------
@@ -166,6 +167,27 @@ def media_curie(uri: URIRef) -> str | None:
         if s.startswith(ns):
             return f"{prefix}:{s[len(ns):]}"
     return None
+
+
+class _SortedGraph(Graph):
+    """Graph whose ``triples()`` yields in a fixed order.
+
+    rdflib's memory store iterates Python sets, so without this the element
+    and list order of the generated YAML (and choices such as ``is_a``, taken
+    from the first superclass found) changes from run to run.
+    """
+
+    def triples(self, triple, *args, **kwargs):
+        found = super().triples(triple, *args, **kwargs)
+        yield from sorted(found, key=lambda t: tuple(term.n3() for term in t))
+
+
+def canonical_graph(g: Graph) -> Graph:
+    """Copy ``g`` with blank nodes relabelled canonically and sorted iteration."""
+    out = _SortedGraph()
+    for t in to_canonical_graph(g):
+        out.add(t)
+    return out
 
 
 def get_literals(g: Graph, subj, pred) -> list[str]:
@@ -1444,7 +1466,7 @@ def generate_per_file_schemas(
         g = Graph()
         print(f"  Loading {typed[ftype].name} ({ftype}) ...", file=sys.stderr)
         g.parse(str(typed[ftype]), format="turtle")
-        graphs[ftype] = g
+        graphs[ftype] = canonical_graph(g)
         print(f"    {len(g)} triples", file=sys.stderr)
 
     # ---- 1. gist_core.yaml ----
@@ -1454,6 +1476,7 @@ def generate_per_file_schemas(
     for ftype in ("core", "rdfs_annotations", "sub_class_assertions"):
         if ftype in graphs:
             g_core_enriched += graphs[ftype]
+    g_core_enriched = canonical_graph(g_core_enriched)
 
     classes = extract_classes(g_core_enriched)
     slots = extract_slots(g_core_enriched)

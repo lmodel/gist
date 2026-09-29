@@ -520,7 +520,7 @@ gist:is_allocated_by a owl:DatatypeProperty ;
 
 gist:is_assignment_of a owl:DatatypeProperty ;
     rdfs:label "is_assignment_of" ;
-    rdfs:range [ owl:unionOf ( gist:Person gist:Equipment gist:IntellectualProperty gist:Organization ) ] ;
+    rdfs:range [ owl:unionOf ( gist:Equipment gist:IntellectualProperty gist:Organization gist:Person ) ] ;
     skos:altLabel "is assignment of" ;
     skos:definition "Relates an assignment to the resource it assigns." ;
     skos:inScheme gist:core ;
@@ -990,7 +990,7 @@ gist:CountryGovernment a owl:Class ;
     skos:altLabel "Country Government" ;
     skos:definition "A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country." ;
     skos:editorialNote "OWL equivalentClass: (gist:GovernmentOrganization & ∃^isGovernedBy.gist:CountryGeoRegion)",
-        "OWL subClassOf restrictions: ≤0isGovernedBy.gist:GovernmentOrganization; _bnode_" ;
+        "OWL subClassOf restrictions: _bnode_; ≤0isGovernedBy.gist:GovernmentOrganization" ;
     skos:exactMatch gist:CountryGovernment ;
     skos:inScheme gist:core ;
     skos:note "While a country government may enter into treaties with other country governments, there are no governing relationships among the treaty members." .
@@ -1169,7 +1169,7 @@ gist:NetworkLink a owl:Class ;
     skos:altLabel "Network Link" ;
     skos:definition "An abstract representation of the connection between two or more nodes in a network." ;
     skos:editorialNote "OWL equivalentClass: (gist:Component & ∃isMemberOf.gist:Network & ∃links.gist:NetworkNode)",
-        "OWL subClassOf restrictions: =2links; ∀links.gist:NetworkNode" ;
+        "OWL subClassOf restrictions: ∀links.gist:NetworkNode; =2links" ;
     skos:exactMatch gist:NetworkLink ;
     skos:inScheme gist:core ;
     skos:note "Each network link is connected to a network node via the property gist:links or one of its subproperties." .
@@ -1291,23 +1291,12 @@ gist:Restriction a owl:Class ;
     skos:exactMatch gist:Restriction ;
     skos:inScheme gist:core .
 
-gist:ScheduledEvent a owl:Class ;
-    rdfs:label "ScheduledEvent" ;
-    rdfs:subClassOf gist:Event ;
-    skos:altLabel "Scheduled Event" ;
-    skos:definition "An event with a planned start datetime." ;
-    skos:editorialNote "OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)" ;
-    skos:exactMatch gist:ScheduledEvent ;
-    skos:inScheme gist:core ;
-    skos:note "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event." ;
-    skos:relatedMatch <https://w3id.org/lmodel/common_domain_model/Schedule> .
-
 gist:ScheduledTask a owl:Class ;
     rdfs:label "ScheduledTask" ;
-    rdfs:subClassOf gist:Task ;
+    rdfs:subClassOf gist:ScheduledEvent ;
     skos:altLabel "Scheduled Task" ;
     skos:definition "A task with a planned start datetime." ;
-    skos:editorialNote "Additional named superclasses (modelled as OWL multiple inheritance): ScheduledEvent",
+    skos:editorialNote "Additional named superclasses (modelled as OWL multiple inheritance): Task",
         "OWL equivalentClass: (gist:ScheduledEvent & gist:Task)" ;
     skos:exactMatch gist:ScheduledTask ;
     skos:inScheme gist:core ;
@@ -1390,7 +1379,7 @@ gist:TimeInterval a owl:Class ;
     skos:altLabel "Time Interval" ;
     skos:closeMatch <https://w3id.org/lmodel/common_domain_model/Period> ;
     skos:definition "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred." ;
-    skos:editorialNote "OWL subClassOf restrictions: _bnode_; =1endDateTime; =1startDateTime" ;
+    skos:editorialNote "OWL subClassOf restrictions: =1startDateTime; _bnode_; =1endDateTime" ;
     skos:exactMatch gist:TimeInterval ;
     skos:inScheme gist:core ;
     skos:note "An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown.",
@@ -1549,11 +1538,36 @@ gist:PhysicalSubstance a owl:Class ;
     rdfs:subClassOf gist:GistThing ;
     skos:altLabel "Physical Substance" ;
     skos:definition "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part." ;
-    skos:editorialNote "OWL subClassOf restrictions: ∃hasMagnitude.∃hasAspect=_Aspect_mass; ∃hasMagnitude.∃hasAspect=_Aspect_volume" ;
+    skos:editorialNote "OWL subClassOf restrictions: ∃hasMagnitude.∃hasAspect=_Aspect_volume; ∃hasMagnitude.∃hasAspect=_Aspect_mass" ;
     skos:exactMatch gist:PhysicalSubstance ;
     skos:inScheme gist:core ;
     skos:note "An instance of this class has weight and takes up space. We mean the physical gold in a ring, not the concept of gold that shows up in the periodic table. The latter would be an instance of gist:KnowledgeConcept.",
         "This concept generally corresponds to mass nouns in English. By contrast, instances of gist:PhysicalIdentifiableItem, such as a computer, book, or car, are count nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a ring is made of gold. If you divide a physical substance such as an amount of water into parts, you have different amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part will be distinguishable from the original whole." .
+
+gist:ScheduledEvent a owl:Class ;
+    rdfs:label "ScheduledEvent" ;
+    rdfs:subClassOf gist:Event ;
+    skos:altLabel "Scheduled Event" ;
+    skos:definition "An event with a planned start datetime." ;
+    skos:editorialNote "OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.<http://www.w3.org/2001/XMLSchema#dateTime>)" ;
+    skos:exactMatch gist:ScheduledEvent ;
+    skos:inScheme gist:core ;
+    skos:note "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event." ;
+    skos:relatedMatch <https://w3id.org/lmodel/common_domain_model/Schedule> .
+
+gist:Task a owl:Class ;
+    rdfs:label "Task" ;
+    rdfs:subClassOf gist:Event ;
+    skos:altLabel "Task" ;
+    skos:closeMatch <https://w3id.org/lmodel/iso22989/Task> ;
+    skos:definition "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed." ;
+    skos:editorialNote "OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)" ;
+    skos:exactMatch gist:Task ;
+    skos:inScheme gist:core ;
+    skos:note "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.",
+        "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task.",
+        "Use the property gist:isBasedOn to link a task back to the task template." ;
+    skos:relatedMatch <https://w3id.org/lmodel/common_domain_model/Workflow> .
 
 gist:Template a owl:Class ;
     rdfs:label "Template" ;
@@ -1825,20 +1839,6 @@ gist:OrderedMember a owl:Class ;
     skos:inScheme gist:core ;
     skos:note "An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member." .
 
-gist:Task a owl:Class ;
-    rdfs:label "Task" ;
-    rdfs:subClassOf gist:Event ;
-    skos:altLabel "Task" ;
-    skos:closeMatch <https://w3id.org/lmodel/iso22989/Task> ;
-    skos:definition "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed." ;
-    skos:editorialNote "OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)" ;
-    skos:exactMatch gist:Task ;
-    skos:inScheme gist:core ;
-    skos:note "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.",
-        "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task.",
-        "Use the property gist:isBasedOn to link a task back to the task template." ;
-    skos:relatedMatch <https://w3id.org/lmodel/common_domain_model/Workflow> .
-
 gist:at_date_time a owl:DatatypeProperty ;
     rdfs:label "at_date_time" ;
     rdfs:range xsd:dateTime ;
@@ -1997,7 +1997,7 @@ gist:PhysicalIdentifiableItem a owl:Class ;
     rdfs:subClassOf gist:GistThing ;
     skos:altLabel "Physical Identifiable Item" ;
     skos:definition "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts." ;
-    skos:editorialNote "OWL subClassOf restrictions: ∃isMadeUpOf.gist:PhysicalSubstance; ∃hasMagnitude.∃hasAspect=_Aspect_volume; ∃hasMagnitude.∃hasAspect=_Aspect_mass" ;
+    skos:editorialNote "OWL subClassOf restrictions: ∃isMadeUpOf.gist:PhysicalSubstance; ∃hasMagnitude.∃hasAspect=_Aspect_mass; ∃hasMagnitude.∃hasAspect=_Aspect_volume" ;
     skos:exactMatch gist:PhysicalIdentifiableItem ;
     skos:inScheme gist:core ;
     skos:note "This concept generally corresponds to count nouns in English. By contrast, physical substances, such as an amount of water, flour, or sand, are mass nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a statue is made of bronze. If you divide a physical substance such as an amount of water into parts, you have two amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part is different from the whole." .
@@ -2216,22 +2216,22 @@ gist:UnitOfMeasure a owl:Class ;
 gist:GistThing a owl:Class ;
     rdfs:label "GistThing" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty gist:name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty gist:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty gist:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty gist:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
             owl:onProperty gist:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty gist:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
             owl:onProperty gist:name ] ;
     skos:definition "Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world)." ;
     skos:inScheme gist:core .

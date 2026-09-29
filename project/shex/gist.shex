@@ -765,17 +765,19 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<ScheduledEvent> CLOSED {
-    (  $<ScheduledEvent_tes> (  &<Event_tes> ;
-          rdf:type [ <Event> ] ?
-       ) ;
-       rdf:type [ <ScheduledEvent> ] ?
-    )
-}
+<ScheduledEvent>  (
+    CLOSED {
+       (  $<ScheduledEvent_tes> (  &<Event_tes> ;
+             rdf:type [ <Event> ] ?
+          ) ;
+          rdf:type [ <ScheduledEvent> ] ?
+       )
+    } OR @<ScheduledTask>
+)
 
 <ScheduledTask> CLOSED {
-    (  $<ScheduledTask_tes> (  &<Task_tes> ;
-          rdf:type [ <Task> ] ?
+    (  $<ScheduledTask_tes> (  &<ScheduledEvent_tes> ;
+          rdf:type [ <ScheduledEvent> ] ?
        ) ;
        rdf:type [ <ScheduledTask> ] ?
     )
@@ -840,7 +842,7 @@ linkml:Sparqlpath xsd:string
           ) ;
           rdf:type [ <Task> ] ?
        )
-    } OR @<Project> OR @<ScheduledTask>
+    } OR @<Project>
 )
 
 <TaskTemplate> CLOSED {

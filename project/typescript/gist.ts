@@ -63,51 +63,9 @@ export enum PrefixDeclarationInstance {
 
 
 /**
- * An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.
+ * An agreement having a balance.
  */
-export interface GeoPoint extends GeoLocation {
-}
-
-
-/**
- * The set of characteristics and constraints on their values that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.
- */
-export interface Specification extends Intention {
-}
-
-
-/**
- * Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.
- */
-export interface Event extends GistThing {
-}
-
-
-/**
- * An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.
- */
-export interface ElectronicAddress extends Address {
-}
-
-
-/**
- * A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.
- */
-export interface Tag extends Category {
-}
-
-
-/**
- * A relationship existing for a period of time.
- */
-export interface TemporalRelation extends GistThing {
-}
-
-
-/**
- * Something permanently attached to the Earth.
- */
-export interface Landmark extends PhysicalIdentifiableItem {
+export interface Account extends Agreement {
 }
 
 
@@ -119,51 +77,9 @@ export interface Address extends Content {
 
 
 /**
- * A magnitude that was neither measured nor estimated but set by fiat.
+ * A category indicating the context or manner in which an address may be used.
  */
-export interface ReferenceValue extends Magnitude {
-}
-
-
-/**
- * The activity that a human-made item is intended to perform.
- */
-export interface Function extends Intention {
-}
-
-
-/**
- * An event that has started but has not yet ended.
- */
-export interface ContemporaryEvent extends Event {
-}
-
-
-/**
- * A human being who was or is alive.
- */
-export interface Person extends LivingThing {
-}
-
-
-/**
- * An address that refers to a locatable place within the physical universe.
- */
-export interface PhysicalAddress extends Address {
-}
-
-
-/**
- * A standard amount used to measure or specify things.
- */
-export interface UnitOfMeasure extends GistThing {
-}
-
-
-/**
- * A bounded region (or set of regions) on the surface of the Earth.
- */
-export interface GeoRegion extends GeoLocation {
+export interface AddressUsageType extends Category {
 }
 
 
@@ -175,121 +91,9 @@ export interface Agreement extends Intention {
 
 
 /**
- * Something which is made up of various parts or elements that are independently identifiable.
+ * A measurable characteristic.
  */
-export interface Composite extends GistThing {
-}
-
-
-/**
- * Content reduced to text, audio, etc.
- */
-export interface ContentExpression extends Content {
-}
-
-
-/**
- * A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.
- */
-export interface OrderedMember extends Component {
-}
-
-
-/**
- * A promise made by a single party to one or more parties to do or not do something or act in a particular way.
- */
-export interface Commitment extends Intention {
-}
-
-
-/**
- * Content expressed as a written sequence of characters.
- */
-export interface Text extends ContentExpression {
-}
-
-
-/**
- * A digitized type that computer applications can recognize.
- */
-export interface MediaType extends Category {
-}
-
-
-/**
- * An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.
- */
-export interface IntergovernmentalOrganization extends Organization {
-}
-
-
-/**
- * An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.
- */
-export interface Task extends Event {
-}
-
-
-/**
- * Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.
- */
-export interface Component extends GistThing {
-}
-
-
-/**
- * An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.
- */
-export interface ContingentObligation extends Commitment {
-}
-
-
-/**
- * A recognized, organized set of symbols and grammar.
- */
-export interface Language extends GistThing {
-}
-
-
-/**
- * A category indicating the type of an action based on its effect in the physical world.
- */
-export interface PhysicalActionType extends Category {
-}
-
-
-/**
- * A specific instance of content sent from a sender to at least one other recipient.
- */
-export interface Message extends ContentExpression {
-}
-
-
-/**
- * A category indicating local customary characterizations of physical addresses.
- */
-export interface PhysicalAddressType extends Category {
-}
-
-
-/**
- * Human-made, tangible property other than land or buildings used to perform a task or activity.
- */
-export interface Equipment extends PhysicalIdentifiableItem {
-}
-
-
-/**
- * An exchange or transfer of goods, services, or funds.
- */
-export interface Transaction extends Event {
-}
-
-
-/**
- * A composite consisting of nodes connected by links.
- */
-export interface Network extends Composite {
+export interface Aspect extends GistThing {
 }
 
 
@@ -301,79 +105,9 @@ export interface Assignment extends TemporalRelation {
 
 
 /**
- * An event which occurred in time, with an actual end earlier than the present moment.
- */
-export interface HistoricalEvent extends Event {
-}
-
-
-/**
- * The difficulty of reversing a commitment.
- */
-export interface DegreeOfCommitment extends Category {
-}
-
-
-/**
- * A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.
- */
-export interface TimeInterval extends GistThing {
-}
-
-
-/**
- * The amount of a measurable characteristic (aspect).
- */
-export interface Magnitude extends GistThing {
-}
-
-
-/**
- * A collection of terms approved and managed by some organization or person.
- */
-export interface ControlledVocabulary extends Collection {
-}
-
-
-/**
- * Something that is currently, or at some point in time was, alive.
- */
-export interface LivingThing extends PhysicalIdentifiableItem {
-}
-
-
-/**
- * A collection of units of measure that can all be used to measure the same aspects.
- */
-export interface UnitGroup extends Collection {
-}
-
-
-/**
- * A composite made up of interacting or interdependent components that together operate as a whole.
- */
-export interface System extends Composite {
-}
-
-
-/**
  * A category indicating the nature of an activity.
  */
 export interface Behavior extends Category {
-}
-
-
-/**
- * Content that is used to uniquely identify something or someone.
- */
-export interface ID extends Content {
-}
-
-
-/**
- * An event with a planned start datetime.
- */
-export interface ScheduledEvent extends Event {
 }
 
 
@@ -385,72 +119,9 @@ export interface Building extends Landmark {
 
 
 /**
- * A task with a planned start datetime.
+ * Any combination of descriptions of things offered together.
  */
-export interface ScheduledTask extends Task {
-}
-
-
-/**
- * A description of things one is permitted to do.
- */
-export interface Permission extends Intention {
-}
-
-
-/**
- * A description of something that can be done for a person or organization (which produces some form of an act).
- */
-export interface ServiceSpecification extends CatalogItem {
-}
-
-
-/**
- * A node in a network.
- */
-export interface NetworkNode extends Component {
-}
-
-
-/**
- * A structured entity formed to achieve specific goals, typically involving members with defined roles.
- */
-export interface Organization extends GistThing {
-}
-
-
-/**
- * A specification of some aspect of a contract.
- */
-export interface ContractTerm extends Specification {
-}
-
-
-/**
- * A collection whose members are ordered in some way.
- */
-export interface OrderedCollection extends Collection {
-}
-
-
-/**
- * The government of a governed geographic region other than a country which is under the direct or indirect control of a country government.
- */
-export interface SubCountryGovernment extends GovernmentOrganization {
-}
-
-
-/**
- * A category indicating the context or manner in which an address may be used.
- */
-export interface AddressUsageType extends Category {
-}
-
-
-/**
- * An outline of a task of a particular type, which is the basis for executing such tasks.
- */
-export interface TaskTemplate extends Template {
+export interface BundledCatalogItem extends CatalogItem {
 }
 
 
@@ -462,16 +133,9 @@ export interface CatalogItem extends Specification {
 
 
 /**
- * An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.
+ * A concept or label used to categorize other instances without specifying any formal semantics.
  */
-export interface PhysicalSubstance extends GistThing {
-}
-
-
-/**
- * Content expressed via some physical medium.
- */
-export interface RenderedContent extends FormattedContent {
+export interface Category extends GistThing {
 }
 
 
@@ -483,100 +147,58 @@ export interface Collection extends Composite {
 
 
 /**
- * A category of equipment.
+ * A promise made by a single party to one or more parties to do or not do something or act in a particular way.
  */
-export interface EquipmentType extends Category {
+export interface Commitment extends Intention {
 }
 
 
 /**
- * A characterization of an event that might happen.
+ * Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.
  */
-export interface EventSpecification extends Specification {
+export interface Component extends GistThing {
 }
 
 
 /**
- * An agreement having a balance.
+ * Something which is made up of various parts or elements that are independently identifiable.
  */
-export interface Account extends Agreement {
+export interface Composite extends GistThing {
 }
 
 
 /**
- * A measurable characteristic.
+ * An event that has started but has not yet ended.
  */
-export interface Aspect extends GistThing {
+export interface ContemporaryEvent extends Event {
 }
 
 
 /**
- * The obligation of a person or organization to behave in a certain way.
+ * Information available in some medium.
  */
-export interface Requirement extends Intention {
+export interface Content extends GistThing {
 }
 
 
 /**
- * An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.
+ * Content reduced to text, audio, etc.
  */
-export interface KnowledgeConcept extends IntellectualProperty {
+export interface ContentExpression extends Content {
 }
 
 
 /**
- * An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
+ * An event with a probability of happening in the future, and usually dependent upon some other event or condition.
  */
-export interface IntellectualProperty extends GistThing {
+export interface ContingentEvent extends Event {
 }
 
 
 /**
- * An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.
+ * An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.
  */
-export interface Determination extends Event {
-}
-
-
-/**
- * A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent.
- */
-export interface ElectronicAddressType extends Category {
-}
-
-
-/**
- * A physical material on which a work can be rendered, represented, or implemented.
- */
-export interface Medium extends Category {
-}
-
-
-/**
- * An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.
- */
-export interface GovernmentOrganization extends Organization {
-}
-
-
-/**
- * The real-world media type for content.
- */
-export interface GeneralMediaType extends Category {
-}
-
-
-/**
- * A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.
- */
-export interface PhysicalIdentifiableItem extends GistThing {
-}
-
-
-/**
- * A three-dimensional space on or near the surface of the Earth.
- */
-export interface GeoVolume extends GeoLocation {
+export interface ContingentObligation extends Commitment {
 }
 
 
@@ -588,16 +210,93 @@ export interface Contract extends Agreement {
 
 
 /**
- * A concept or label used to categorize other instances without specifying any formal semantics.
+ * A specification of some aspect of a contract.
  */
-export interface Category extends GistThing {
+export interface ContractTerm extends Specification {
 }
 
 
 /**
- * A description of things one is prevented from doing.
+ * A collection of terms approved and managed by some organization or person.
  */
-export interface Restriction extends Intention {
+export interface ControlledVocabulary extends Collection {
+}
+
+
+/**
+ * A geographic region governed by exactly one country government.
+ */
+export interface CountryGeoRegion extends GovernedGeoRegion {
+}
+
+
+/**
+ * A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.
+ */
+export interface CountryGovernment extends GovernmentOrganization {
+}
+
+
+/**
+ * The difficulty of reversing a commitment.
+ */
+export interface DegreeOfCommitment extends Category {
+}
+
+
+/**
+ * An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.
+ */
+export interface Determination extends Event {
+}
+
+
+/**
+ * An area of study or practice.
+ */
+export interface Discipline extends Category {
+}
+
+
+/**
+ * An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.
+ */
+export interface ElectronicAddress extends Address {
+}
+
+
+/**
+ * A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent.
+ */
+export interface ElectronicAddressType extends Category {
+}
+
+
+/**
+ * Human-made, tangible property other than land or buildings used to perform a task or activity.
+ */
+export interface Equipment extends PhysicalIdentifiableItem {
+}
+
+
+/**
+ * A category of equipment.
+ */
+export interface EquipmentType extends Category {
+}
+
+
+/**
+ * Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.
+ */
+export interface Event extends GistThing {
+}
+
+
+/**
+ * A characterization of an event that might happen.
+ */
+export interface EventSpecification extends Specification {
 }
 
 
@@ -609,6 +308,90 @@ export interface FormattedContent extends ContentExpression {
 
 
 /**
+ * The activity that a human-made item is intended to perform.
+ */
+export interface Function extends Intention {
+}
+
+
+/**
+ * The real-world media type for content.
+ */
+export interface GeneralMediaType extends Category {
+}
+
+
+/**
+ * A physical location, with the earth as a frame of reference.
+ */
+export interface GeoLocation extends GistThing {
+}
+
+
+/**
+ * An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.
+ */
+export interface GeoPoint extends GeoLocation {
+}
+
+
+/**
+ * A bounded region (or set of regions) on the surface of the Earth.
+ */
+export interface GeoRegion extends GeoLocation {
+}
+
+
+/**
+ * An ordered set of geographic points that defines a path from a starting point to an ending point.
+ */
+export interface GeoRoute extends OrderedCollection {
+}
+
+
+/**
+ * A three-dimensional space on or near the surface of the Earth.
+ */
+export interface GeoVolume extends GeoLocation {
+}
+
+
+/**
+ * A geographic region governed by at least one government organization.
+ */
+export interface GovernedGeoRegion extends GeoRegion {
+}
+
+
+/**
+ * An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.
+ */
+export interface GovernmentOrganization extends Organization {
+}
+
+
+/**
+ * An event which occurred in time, with an actual end earlier than the present moment.
+ */
+export interface HistoricalEvent extends Event {
+}
+
+
+/**
+ * Content that is used to uniquely identify something or someone.
+ */
+export interface ID extends Content {
+}
+
+
+/**
+ * An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
+ */
+export interface IntellectualProperty extends GistThing {
+}
+
+
+/**
  * A goal, desire, or aspiration.
  */
 export interface Intention extends GistThing {
@@ -616,16 +399,170 @@ export interface Intention extends GistThing {
 
 
 /**
- * A task, usually of longer duration, made up of other tasks.
+ * An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.
  */
-export interface Project extends Task {
+export interface IntergovernmentalOrganization extends Organization {
 }
 
 
 /**
- * Information available in some medium.
+ * An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.
  */
-export interface Content extends GistThing {
+export interface KnowledgeConcept extends IntellectualProperty {
+}
+
+
+/**
+ * Something permanently attached to the Earth.
+ */
+export interface Landmark extends PhysicalIdentifiableItem {
+}
+
+
+/**
+ * A recognized, organized set of symbols and grammar.
+ */
+export interface Language extends GistThing {
+}
+
+
+/**
+ * Something that is currently, or at some point in time was, alive.
+ */
+export interface LivingThing extends PhysicalIdentifiableItem {
+}
+
+
+/**
+ * The amount of a measurable characteristic (aspect).
+ */
+export interface Magnitude extends GistThing {
+}
+
+
+/**
+ * A digitized type that computer applications can recognize.
+ */
+export interface MediaType extends Category {
+}
+
+
+/**
+ * A physical material on which a work can be rendered, represented, or implemented.
+ */
+export interface Medium extends Category {
+}
+
+
+/**
+ * A specific instance of content sent from a sender to at least one other recipient.
+ */
+export interface Message extends ContentExpression {
+}
+
+
+/**
+ * A composite consisting of nodes connected by links.
+ */
+export interface Network extends Composite {
+}
+
+
+/**
+ * An abstract representation of the connection between two or more nodes in a network.
+ */
+export interface NetworkLink extends Component {
+}
+
+
+/**
+ * A node in a network.
+ */
+export interface NetworkNode extends Component {
+}
+
+
+/**
+ * A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).
+ */
+export interface Offer extends ContingentObligation {
+}
+
+
+/**
+ * A collection whose members are ordered in some way.
+ */
+export interface OrderedCollection extends Collection {
+}
+
+
+/**
+ * A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.
+ */
+export interface OrderedMember extends Component {
+}
+
+
+/**
+ * A structured entity formed to achieve specific goals, typically involving members with defined roles.
+ */
+export interface Organization extends GistThing {
+}
+
+
+/**
+ * A description of things one is permitted to do.
+ */
+export interface Permission extends Intention {
+}
+
+
+/**
+ * A human being who was or is alive.
+ */
+export interface Person extends LivingThing {
+}
+
+
+/**
+ * A category indicating the type of an action based on its effect in the physical world.
+ */
+export interface PhysicalActionType extends Category {
+}
+
+
+/**
+ * An address that refers to a locatable place within the physical universe.
+ */
+export interface PhysicalAddress extends Address {
+}
+
+
+/**
+ * A category indicating local customary characterizations of physical addresses.
+ */
+export interface PhysicalAddressType extends Category {
+}
+
+
+/**
+ * An event that can be said to have occurred at some place in space.
+ */
+export interface PhysicalEvent extends Event {
+}
+
+
+/**
+ * A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.
+ */
+export interface PhysicalIdentifiableItem extends GistThing {
+}
+
+
+/**
+ * An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.
+ */
+export interface PhysicalSubstance extends GistThing {
 }
 
 
@@ -644,37 +581,107 @@ export interface ProductSpecification extends CatalogItem {
 
 
 /**
- * A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.
+ * A task, usually of longer duration, made up of other tasks.
  */
-export interface CountryGovernment extends GovernmentOrganization {
+export interface Project extends Task {
 }
 
 
 /**
- * Any combination of descriptions of things offered together.
+ * A magnitude that was neither measured nor estimated but set by fiat.
  */
-export interface BundledCatalogItem extends CatalogItem {
+export interface ReferenceValue extends Magnitude {
 }
 
 
 /**
- * A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).
+ * Content expressed via some physical medium.
  */
-export interface Offer extends ContingentObligation {
+export interface RenderedContent extends FormattedContent {
 }
 
 
 /**
- * An abstract representation of the connection between two or more nodes in a network.
+ * The obligation of a person or organization to behave in a certain way.
  */
-export interface NetworkLink extends Component {
+export interface Requirement extends Intention {
 }
 
 
 /**
- * An area of study or practice.
+ * A description of things one is prevented from doing.
  */
-export interface Discipline extends Category {
+export interface Restriction extends Intention {
+}
+
+
+/**
+ * An event with a planned start datetime.
+ */
+export interface ScheduledEvent extends Event {
+}
+
+
+/**
+ * A task with a planned start datetime.
+ */
+export interface ScheduledTask extends ScheduledEvent {
+}
+
+
+/**
+ * Superclass for all types of metadata.
+ */
+export interface SchemaMetaData extends GistThing {
+}
+
+
+/**
+ * A description of something that can be done for a person or organization (which produces some form of an act).
+ */
+export interface ServiceSpecification extends CatalogItem {
+}
+
+
+/**
+ * The set of characteristics and constraints on their values that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.
+ */
+export interface Specification extends Intention {
+}
+
+
+/**
+ * The government of a governed geographic region other than a country which is under the direct or indirect control of a country government.
+ */
+export interface SubCountryGovernment extends GovernmentOrganization {
+}
+
+
+/**
+ * A composite made up of interacting or interdependent components that together operate as a whole.
+ */
+export interface System extends Composite {
+}
+
+
+/**
+ * A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.
+ */
+export interface Tag extends Category {
+}
+
+
+/**
+ * An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.
+ */
+export interface Task extends Event {
+}
+
+
+/**
+ * An outline of a task of a particular type, which is the basis for executing such tasks.
+ */
+export interface TaskTemplate extends Template {
 }
 
 
@@ -686,51 +693,44 @@ export interface Template extends GistThing {
 
 
 /**
- * An event that can be said to have occurred at some place in space.
+ * A relationship existing for a period of time.
  */
-export interface PhysicalEvent extends Event {
+export interface TemporalRelation extends GistThing {
 }
 
 
 /**
- * A geographic region governed by at least one government organization.
+ * Content expressed as a written sequence of characters.
  */
-export interface GovernedGeoRegion extends GeoRegion {
+export interface Text extends ContentExpression {
 }
 
 
 /**
- * A physical location, with the earth as a frame of reference.
+ * A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.
  */
-export interface GeoLocation extends GistThing {
+export interface TimeInterval extends GistThing {
 }
 
 
 /**
- * An ordered set of geographic points that defines a path from a starting point to an ending point.
+ * An exchange or transfer of goods, services, or funds.
  */
-export interface GeoRoute extends OrderedCollection {
+export interface Transaction extends Event {
 }
 
 
 /**
- * A geographic region governed by exactly one country government.
+ * A collection of units of measure that can all be used to measure the same aspects.
  */
-export interface CountryGeoRegion extends GovernedGeoRegion {
+export interface UnitGroup extends Collection {
 }
 
 
 /**
- * An event with a probability of happening in the future, and usually dependent upon some other event or condition.
+ * A standard amount used to measure or specify things.
  */
-export interface ContingentEvent extends Event {
-}
-
-
-/**
- * Superclass for all types of metadata.
- */
-export interface SchemaMetaData extends GistThing {
+export interface UnitOfMeasure extends GistThing {
 }
 
 
