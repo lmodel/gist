@@ -14,7 +14,7 @@ references:
   - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T12:29:55Z"
+  at: "2026-09-29T13:32:36Z"
 status: draft
 ---
 
@@ -25,8 +25,8 @@ The package version comes from the git tag through `uv-dynamic-versioning`; `pyp
 1. Once, before the first release, push the `v0.1.0` baseline tag on `main`. Both jobs of `.github/workflows/semantic-release.yml` refuse to release without a `v*` tag, because semantic-release would otherwise make the first release 1.0.0. The baseline is not uploaded anywhere.
 2. Write the change under `## [Unreleased]` in `CHANGELOG.md`, and type the commit and the pull-request title `feat:`, `fix:` or `security:`; other types release nothing. The `plan` job refuses a releasing pull request whose changelog section is empty or whose title carries no releasing type.
 3. Merge to `main`. The `release` job, in the `release` Environment, retitles the section `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release from that text. While below 1.0.0, `.releaserc.json` makes a breaking change a minor bump.
-4. The same job dispatches `.github/workflows/pypi-publish.yaml` on the new tag, which builds with `uv build` and uploads to PyPI through trusted publishing in the `pypi-release` environment (`https://pypi.org/p/lmodel-gist`). PyPI accepts the first upload only once a pending trusted publisher for `lmodel-gist` naming that workflow and environment is registered there.
+4. Once the `PYPI_RELEASE_ENABLED` repository variable is `true`, the same job dispatches `.github/workflows/pypi-publish.yaml` on the new tag, which builds with `uv build` and uploads to PyPI through trusted publishing in the `pypi-release` environment (`https://pypi.org/p/lmodel-gist`). PyPI accepts the first upload only once a pending trusted publisher for `lmodel-gist` naming that workflow and environment is registered there.
 
-A `v*` tag pushed by a person, other than the baseline, uploads to TestPyPI instead, and a release published by hand in the GitHub UI uploads to PyPI.
+With the variable on, a `v*` tag pushed by a person, other than the baseline, uploads to TestPyPI instead, and a release published by hand in the GitHub UI uploads to PyPI. With it unset, `pypi-publish.yaml` skips every trigger.
 
-No tag exists yet, and nothing is on PyPI or TestPyPI.
+PyPI releases are off for now, and nothing is on PyPI or TestPyPI.
