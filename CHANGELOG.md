@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **`gist_to_linkml.py --rename OLD=NEW` gives a gist class or slot another LinkML name and keeps its gist IRI**, for a schema that imports gist beside another vocabulary with the same names. LOKF's `Person`, `Organization`, `name`, `description` and `license` are the case in point. Default output is unchanged.
+
 ### Changed
 
 - **Release assets are named `gist-linkml`**, the published package name, instead of the repository's name `gist`: the bundle zip is `knowledge-<tag>-gist-linkml.zip` and the Copilot skill `ktl-docent-m365-<tag>-gist-linkml.zip`. `knowledge-release.yaml` is refreshed from the ktl-sidecar template, which reads the name from the `KNOWLEDGE_RELEASE_NAME` repository variable.
