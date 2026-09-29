@@ -13,7 +13,7 @@ references:
   - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T11:22:44Z"
+  at: "2026-09-29T12:29:55Z"
 status: draft
 ---
 
@@ -25,4 +25,4 @@ status: draft
 4. Run `just test`: it re-runs the generators into `tmp/`, regenerates the Python model, runs pytest (256 tests), and converts the test data.
 5. Run `just testdoc` to preview the documentation site, then commit the regenerated `src/gist/schema/`, `src/gist/datamodel/` and `project/` together with the change that caused them.
 
-Step 3 is the only place the mapping check runs, since CI runs only `just test`, so do not skip it.
+CI regenerates `src/gist/schema/` the same way and fails a pull request whose committed schema differs, so skipping step 3 fails there. It cannot compare `project/` or `src/gist/datamodel/`, which embed their generation date, so commit those from step 3 as well.

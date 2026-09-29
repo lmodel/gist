@@ -2,6 +2,7 @@
 
 ## 2026-09-29
 
+* **Release and CI refresh**: `playbooks/release` now follows semantic-release, the baseline-tag guard and the dispatched PyPI upload; `services/verify-mappings` and `playbooks/regenerate-schema` record that CI now fails a schema that differs from its converter. The source map follows, and names the new governance files it leaves out.
 * **Namespace policy**: Added `policies/gist-namespace-policy.md`, recording Semantic Arts' two namespace conditions and the converter, generator flags and tests that hold them.
 * **Namespace refresh**: `gist:` now names Semantic Arts' namespace and this project's additions use `gist_linkml:`, so the claims in `references/gist-ontology`, `datasets/gist-linkml-schema`, `datasets/generated-artefacts` and `services/gist-to-linkml` were corrected; the transform is now deterministic.
 * **Mapping tools and release**: The overlay and verifier match subjects by IRI, and the distribution is `lmodel-gist`, which answers the release playbook's open question. The source map and test counts follow.

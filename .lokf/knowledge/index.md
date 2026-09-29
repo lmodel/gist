@@ -48,7 +48,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 # Playbooks
 
 * [Regenerate the schema and its artefacts](playbooks/regenerate-schema.md) - the `just gen-project` pipeline and checks.
-* [Release the gist Python package](playbooks/release.md) - tag to TestPyPI, release to PyPI.
+* [Release the gist Python package](playbooks/release.md) - releasing merge to tagged release to PyPI, via semantic-release.
 * [Knowledge sources map](playbooks/knowledge-sources.md) - where every concept here comes from and how to re-check it.
 
 # Glossary
