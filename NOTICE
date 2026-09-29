@@ -20,8 +20,8 @@ license (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
 - tests/vendor/semanticarts/ holds ontologyShapes.ttl and
   property_type_construct.rq, copied unmodified from the validation/
   folder of semanticarts/gist, with its LICENSE.txt.
-- src/gist/schema/, src/gist/datamodel/, project/ and the published
-  lmodel-gist package are adapted material. Changes made: the OWL modules
+- src/gist/schema/, src/gist/datamodel/, project/ and the lmodel-gist
+  package are adapted material. Changes made: the OWL modules
   are converted to LinkML by scripts/gist_to_linkml.py, their RDFS
   annotations and subclass assertions are folded into the schema, SSSOM
   mappings to other vocabularies are merged in, and the LinkML toolchain

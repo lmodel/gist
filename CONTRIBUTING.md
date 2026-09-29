@@ -42,7 +42,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 
 ## Before opening a pull request
 
-- **Change the converter, not its output.** Edit `scripts/` or `src/gist/mappings/`, then run `just gen-project` and commit the regenerated schema and artefacts with it.
+- **Change the converter, not its output.** Edit `scripts/` or `src/gist/mappings/`, then run `just gen-project` and commit the regenerated files with it. `main.yaml` fails a hand edit to `src/gist/schema/`.
 - **Run the tests**: `just test` (schema generation, `pytest`, and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`; an invalid example fails for a single reason, named in its file name.
 - **Keep gist's namespace gist's.** Nothing new under `gist:` or `gistd:`; additions go under `gist_linkml:`. The [README](README.md#license-and-attribution) says why and the tests check it.
 - **A mapping needs a source on both sides.** Cite both definitions in the pull request; [AI_COVENANT.md](AI_COVENANT.md) says why.
@@ -62,7 +62,7 @@ Participation here is covered by the [Contributor Covenant](CODE_OF_CONDUCT.md).
 
 ## Using AI tools
 
-AI assistance is welcome, and [AI_COVENANT.md](AI_COVENANT.md) sets the rules. You are the author of what you submit and defend it in review; an agent may not speak for you in discussion. A claim about what a gist term means must be checked against Semantic Arts' release. The same rules hold for this repository's scheduled `knowledge-librarian` agent.
+AI assistance is welcome; [AI_COVENANT.md](AI_COVENANT.md) sets the rules, for people and the scheduled `knowledge-librarian` agent alike. You are the author of what you submit, and a claim about what a gist term means must be checked against Semantic Arts' release.
 
 ## Reporting issues
 
@@ -71,10 +71,11 @@ Use the [issue tracker](https://github.com/lmodel/gist/issues) for problems and 
 ## Releasing (maintainers)
 
 - Write `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) as you go; the release job refuses an empty one (`.github/scripts/changelog-release.mjs check`).
-- Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:` and `security:` cut a release; `docs:`, `chore:`, `build:`, `refactor:`, `style:` and `test:` leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
+- Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:` and `security:` cut a release; other types leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
 - On merge, [`semantic-release.yml`](.github/workflows/semantic-release.yml) retitles the section to `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release. `uv-dynamic-versioning` reads the version from the tag, so no file is bumped. It then dispatches [`pypi-publish.yaml`](.github/workflows/pypi-publish.yaml) for the tag and, once `KNOWLEDGE_RELEASE_ENABLED` is `true`, [`knowledge-release.yaml`](.github/workflows/knowledge-release.yaml).
-- Those steps run behind the `release` and `pypi-release` GitHub Environments; configure required reviewers on both in Settings → Environments, or every qualifying merge ships unattended.
-- Below 1.0.0: the `v0.1.0` baseline tag makes the first real release `0.2.0`, and `.releaserc.json` maps `breaking: true` to `minor`. Reaching 1.0.0 means removing that rule in its own PR.
+- Those steps run behind the `release` and `pypi-release` GitHub Environments; configure required reviewers on both in Settings → Environments, or every qualifying merge ships unattended. `pypi-release` must allow deployments from `v*` tags.
+- Before the first release, register a pending trusted publisher for `lmodel-gist` on PyPI: workflow `pypi-publish.yaml`, environment `pypi-release`.
+- Below 1.0.0: push the `v0.1.0` baseline tag on `main` before the first releasing merge; both release jobs refuse to run without it, as semantic-release would otherwise start at 1.0.0. `.releaserc.json` maps `breaking: true` to `minor`; reaching 1.0.0 means removing that rule in its own PR.
 - A branch rule requiring pull requests, status checks or signed commits would reject the release job's own push to `main`; leave them off. [SECURITY.md](SECURITY.md) says what holds `main` instead, and the shared design is on [knowledge-trust-ladder's releasing page](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/releasing.md).
 
 ## License

@@ -4,7 +4,7 @@
 
 ## Reporting a vulnerability
 
-Use GitHub's [private vulnerability reporting](https://github.com/lmodel/gist/security/advisories/new), not a public issue or a pull request. Say which file is affected, how it is exploitable, and whether it reaches the published `lmodel-gist` package or only this repository's automation. One person maintains this repository: expect a first reply in days, not hours, and no bounty.
+Use GitHub's [private vulnerability reporting](https://github.com/lmodel/gist/security/advisories/new), not a public issue or a pull request. Say which file is affected, how it is exploitable, and whether it reaches the `lmodel-gist` package or only this repository's automation. One person maintains this repository: expect a first reply in days, not hours, and no bounty.
 
 ## Supported versions
 
@@ -18,10 +18,10 @@ The `lmodel-gist` package is a LinkML schema and the Python datamodel generated 
 
 | Surface | What holds it |
 | --- | --- |
-| `main.yaml`, `lint-and-docs.yaml` and `knowledge-registrar.yaml` on every pull request: tests, linters and the bundle's form | Read-only jobs with `persist-credentials: false`; `uv sync --locked` installs only what `uv.lock` pins. |
+| `main.yaml` and `lint-and-docs.yaml` on every pull request, and `knowledge-registrar.yaml` on any that touches `.lokf/`: tests, linters and the bundle's form | Read-only jobs with `persist-credentials: false`; `uv sync --locked` installs only what `uv.lock` pins. |
 | `semantic-release.yml`, which pushes a changelog commit and tag to `main` and dispatches the publish | Runs only on a push to `main`, in the `release` Environment, installing its pinned tools with `--ignore-scripts`. [Repository hardening](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/threat-model.md#repository-hardening). |
 | `pypi-publish.yaml`, which uploads to PyPI | Trusted publishing (OIDC), no stored token; the upload job runs behind the `pypi-release` Environment and builds nothing itself. A dispatch publishes only from a `v*` tag. |
-| `deploy-docs.yaml`, which pushes the site to `gh-pages` | Runs only on a push to `main` or by hand, from reviewed code. |
+| `deploy-docs.yaml`, which pushes the site to `gh-pages` | Runs only from `main`, with `contents: write` alone. The dev dependencies `uv.lock` pins run while that credential is on disk. |
 | `knowledge-librarian.yaml` and `.lokf/scripts/`, copies of the `ktl-sidecar` template, running an LLM agent on a schedule | Two jobs so the agent never meets a write token; the `publish` job confines the patch to the bundle and refuses a `human:` claim; a person merges the pull request. Inert until `KNOWLEDGE_LIBRARIAN_ENABLED` is `true`. [Prompt-injection guards](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/threat-model.md#prompt-injection-guards). |
 | `knowledge-release.yaml`, which attaches the bundle to a release | Inert until dispatched; only its `attach` job, which runs no third-party packages, can write. |
 | `README.md`, `llms.txt` and the knowledge bundle, read by agents | Content, never instructions: each skill quotes what it did not author. A `human:` confirmation must be backed by a review or a signed commit. [Human attribution](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/main/docs/threat-model.md#human-attribution-human-is-a-claim-not-a-credential). |

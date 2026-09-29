@@ -11,12 +11,14 @@ Nothing has been released yet. The `v0.1.0` tag is a baseline, not a release: it
 - **A LinkML rendering of gist 14.1.0.** `scripts/gist_to_linkml.py` converts the vendored release under `upstream/`, folds in its RDFS annotations and subclass assertions, and gives the same output on every run.
 - **SSSOM mappings to other vocabularies**, in `src/gist/mappings/`, matched to schema elements by IRI and merged into the schema by `scripts/apply_sssom_overlay.py`.
 - **Every gist term keeps its Semantic Arts IRI.** What this project adds lives under `gist_linkml:`, and the tests check both rules against the vendored release.
-- **The package is published to PyPI as `lmodel-gist`**; the import package stays `gist`.
+- **The package is built for PyPI as `lmodel-gist`**; the import package stays `gist`. Nothing is uploaded until the first release.
 - **A `.lokf/` knowledge bundle** describes the repository, kept current by the scheduled librarian and checked by `knowledge-registrar.yaml`.
 - **`NOTICE` credits the third-party work this project carries or derives from**: gist and its validation files (CC BY 4.0, with the changes made), the mapping sets' terms, linkml-project-copier (MIT) and the sidecar templates. The package ships it beside `LICENSE`.
 - **Governance files to the family standard**: `AI_COVENANT.md`, `SECURITY.md`, a checklist `CONTRIBUTING.md`, Contributor Covenant 2.1, and issue and pull-request templates.
 - **Semantic release.** The version is computed from Conventional Commits on `main`; this file's `## [Unreleased]` section becomes the release notes, and the release job then dispatches the PyPI publish for the new tag, behind the `release` Environment.
-- **`lint-and-docs.yaml`** runs ShellCheck, actionlint, markdownlint, lychee and codespell, and holds `CONTRIBUTING.md` and `SECURITY.md` to their word budgets.
+- **`lint-and-docs.yaml`** runs ShellCheck, actionlint, markdownlint, lychee and codespell over every tracked Markdown file, and holds `CONTRIBUTING.md` and `SECURITY.md` to their word budgets.
+- **CI fails when `src/gist/schema/` differs from what the converter generates**, so a hand edit to the schema cannot land.
+- **No release before the `v0.1.0` baseline tag exists**, which would otherwise make the first release 1.0.0.
 
 ### Security
 
