@@ -86,6 +86,17 @@ jobs:
             echo "No feat/fix/security or breaking commit here, so this pull request releases nothing."
           fi
 
+      # With no v* tag at all, semantic-release treats the next release as the
+      # first and makes it 1.0.0, which PyPI would then hold for good. The
+      # `v0.1.0` baseline tag is what keeps this repository in 0.x.
+      - name: Refuse to release before the baseline tag exists
+        if: steps.commits.outputs.releases == 'true'
+        run: |
+          if [ -z "$(git tag --list 'v*')" ]; then
+            echo "::error::No v* tag exists, so semantic-release would call this the first release and make it 1.0.0. Push the v0.1.0 baseline tag on main first; see CONTRIBUTING.md, Releasing."
+            exit 1
+          fi
+
       # semantic-release detects a pull_request event itself and exits before
       # running any plugin, including @semantic-release/exec's verifyRelease
       # hook. So the --dry-run below never calls changelog-release.mjs check
@@ -160,7 +171,21 @@ jobs:
             @semantic-release/git@11.0.1 \
             @semantic-release/github@12.0.9
 
+      # The same guard as `plan`'s, for a push that did not come through a
+      # pull request.
+      - name: Refuse to release before the baseline tag exists
+        run: |
+          if [ -z "$(git tag --list 'v*')" ]; then
+            echo "::error::No v* tag exists, so semantic-release would call this the first release and make it 1.0.0. Push the v0.1.0 baseline tag on main first; see CONTRIBUTING.md, Releasing."
+            exit 1
+          fi
+
+      # changelog-release.mjs promote, run as the prepare step, writes
+      # `released=true` and `version` to this step's outputs. It runs only
+      # when semantic-release has a version to release, so the steps below
+      # key off it rather than guessing from the tags on HEAD.
       - name: Release
+        id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: github-actions[bot]
@@ -169,22 +194,15 @@ jobs:
           GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         run: npx --no-install semantic-release
 
-      # semantic-release commits and tags in this checkout, so the new tag
-      # sits on HEAD; a run that released nothing leaves HEAD untagged, and
-      # the steps below stop there.
-      - name: Find the new tag
-        id: tag
-        run: echo "tag=$(git tag --points-at HEAD --list 'v*' | head -n 1)" >> "$GITHUB_OUTPUT"
-
       # The release above is made with GITHUB_TOKEN, and GitHub starts no
       # workflow from an event that token causes, so pypi-publish.yaml's
       # `release` trigger never fires here. A dispatch is the one exception,
       # so this step asks for the upload directly, built from the tag.
       - name: Publish to PyPI
-        if: steps.tag.outputs.tag != ''
+        if: steps.release.outputs.released == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.tag.outputs.tag }}
+          TAG: v${{ steps.release.outputs.version }}
         run: |
           gh workflow run pypi-publish.yaml --ref "$TAG" \
             || { echo "::error::$TAG is released, but the PyPI upload was not requested. Run the Publish Python Package workflow by hand on $TAG."; exit 1; }
@@ -192,10 +210,10 @@ jobs:
       # The same dispatch, once KNOWLEDGE_RELEASE_ENABLED arms that workflow,
       # attaches the knowledge bundle zip to the release.
       - name: Attach the knowledge bundle
-        if: steps.tag.outputs.tag != '' && vars.KNOWLEDGE_RELEASE_ENABLED == 'true'
+        if: steps.release.outputs.released == 'true' && vars.KNOWLEDGE_RELEASE_ENABLED == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.tag.outputs.tag }}
+          TAG: v${{ steps.release.outputs.version }}
         run: |
           gh workflow run knowledge-release.yaml --ref "$TAG" -f tag="$TAG" \
             || { echo "::error::$TAG is released, but the bundle zip was not requested. Run the Knowledge Release workflow by hand with tag=$TAG."; exit 1; }
