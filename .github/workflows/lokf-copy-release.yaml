@@ -1,12 +1,11 @@
 name: LOKF Copy Release
 
 # Attaches `gist-linkml-lokf-<tag>.yaml` to a GitHub release: gist_core.yaml
-# with the classes and slots LOKF's lokf.yaml also defines renamed, so a LOKF
-# domain schema can import gist beside lokf.yaml in either order. The file
-# stands alone; save it as `gist_core.yaml` and import `gist_core`.
-# `just gen-lokf-copy` builds it and fails when a name is still shared with
-# the lokf.yaml the .lokf sidecar locks. It runs no LLM or agent, and it
-# never commits or pushes.
+# adapted by `lokf adapt` so a LOKF domain schema can import it beside
+# lokf.yaml. Save it there as `gist_core_lokf.yaml` and import
+# `gist_core_lokf`. `just gen-lokf-copy` builds it and fails when the copy
+# does not verify against the lokf.yaml the .lokf sidecar locks. It runs no
+# LLM or agent, and it never commits or pushes.
 #
 # Triggers:
 #   workflow_dispatch   semantic-release.yml dispatches it for each tag it
@@ -79,7 +78,7 @@ jobs:
         working-directory: ${{ runner.temp }}/release
         run: |
           asset="gist-linkml-lokf-$TAG.yaml"
-          mv gist_core.yaml "$asset"
+          mv gist_core_lokf.yaml "$asset"
           sha256sum "$asset" > "$asset.sha256"
 
       - name: Upload the file

@@ -41,23 +41,23 @@ verify-mapping-targets:
 verify-generated:
   uv run python scripts/check_generated_current.py
 
-# gist names that LOKF's lokf.yaml also defines. Renamed, the classes and
-# slots keep their gist IRIs.
-lokf_renames := "--rename Person=GistPerson --rename Organization=GistOrganization --rename name=gist_name --rename description=gist_description --rename license=gist_license"
+# The lokf toolkit the .lokf sidecar locks. To try another, override it:
+# just lokf="uv run --project .lokf --with ../lokf lokf" gen-lokf-copy
+lokf := "uv run --project .lokf lokf"
 
-# Writes <out>/gist_core.yaml, one self-contained file with the SSSOM
-# mappings applied, then checks it shares no element name with the lokf.yaml
-# the .lokf sidecar locks. lokf-copy-release.yaml attaches it to each release.
-# Build gist_core.yaml renamed to import beside LOKF's lokf.yaml
+# Writes <out>/gist_core_lokf.yaml: gist_core.yaml through `lokf adapt`, which
+# renames each name lokf.yaml also defines (Person, name, ...) with its gist
+# IRI kept, and re-roots gist's top classes on LOKF's Concept, so a bundle
+# writes `type: Requirement` and a relation names its target by IRI. `Any`,
+# the range of an object property gist leaves open, stays out. adapt verifies
+# the copy against the lokf.yaml the .lokf sidecar locks and fails on a problem.
+# lokf-copy-release.yaml attaches it to each release.
+# Build gist_core.yaml adapted to import beside LOKF's lokf.yaml
 [group('model development')]
 gen-lokf-copy out="dist/lokf":
-  rm -rf tmp/lokf-copy
-  uv run python scripts/gist_to_linkml.py -d tmp/lokf-copy {{lokf_renames}}
-  uv run python scripts/apply_sssom_overlay.py --schema-dir tmp/lokf-copy --mappings-dir src/gist/mappings
   mkdir -p "{{out}}"
-  cp tmp/lokf-copy/gist_core.yaml "{{out}}/gist_core.yaml"
-  uv run python scripts/check_lokf_names.py "{{out}}/gist_core.yaml" \
-    "$(uv run --project .lokf python -c "from importlib.resources import files; print(files('lokf') / 'data' / 'lokf.yaml')")"
+  {{lokf}} adapt src/gist/schema/gist_core.yaml -o "{{out}}/gist_core_lokf.yaml" --prefix gist \
+    $(uv run python -c 'import yaml; c = yaml.safe_load(open("src/gist/schema/gist_core.yaml"))["classes"]; print(" ".join(f"--root {n}" for n, v in c.items() if not v.get("is_a") and not v.get("mixin") and v.get("class_uri") != "linkml:Any"))')
 
 # Needs network.
 # Check upstream/ is Semantic Arts' latest gist release, byte for byte
