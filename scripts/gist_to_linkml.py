@@ -28,6 +28,7 @@ Usage
      DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes)
   - gist:domainIncludes / gist:rangeIncludes     -> slot annotations
   - owl:FunctionalProperty                       -> multivalued: false
+  - Unranged owl:ObjectProperty                  -> range: Any
   - Union datatype ranges                        -> any_of
   - OWL axioms without direct LinkML equivalents  -> notes/comments
 """
@@ -662,6 +663,11 @@ def extract_slots(g: Graph) -> dict[str, dict]:
 
                 if kind == "object":
                     entry.setdefault("multivalued", True)
+                    # gist leaves many object properties unranged. The value is
+                    # still an individual, never a string: Any says so, and a
+                    # JSON-LD context then reads it as an IRI.
+                    if "range" not in entry and "any_of" not in entry:
+                        entry["range"] = "Any"
 
             # --- inverseOf ---
             inv = [
@@ -1234,6 +1240,12 @@ def build_schema(
             existing = cls_entry.get("mixins", [])
             if "GistThing" not in existing:
                 cls_entry["mixins"] = ["GistThing"] + existing
+    # The range of an object property gist leaves unranged; added after the
+    # loop above so that it takes no GistThing mixin
+    classes["Any"] = {
+        "class_uri": "linkml:Any",
+        "description": "Any individual: the range of an object property gist leaves open.",
+    }
 
     schema.update({
         "prefixes": prefixes,

@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **An object property gist leaves unranged now ranges over `Any`, not `string`.** Its value is an individual, so a JSON-LD context reads it as an IRI, and the generated OWL declares it an object property again rather than a datatype property.
+
 ## [0.3.0] - 2026-09-29
 
 ### Added

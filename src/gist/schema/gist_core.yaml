@@ -124,6 +124,7 @@ slots:
     examples:
       - value: |-
           An easement grants a right to cross or otherwise use someone else's land for a specified purpose.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -185,6 +186,7 @@ slots:
     description: The subject helps achieve or fulfill the goals or functions of the object.
     aliases:
       - contributes to
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -252,6 +254,7 @@ slots:
     examples:
       - value: |-
           In the equation 'profit = revenue - expenses', revenue is an addend and expenses is a subtrahend.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -297,6 +300,7 @@ slots:
       - has broader
     examples:
       - value: The aspect distance is broader than the aspect height.
+    range: Any
     multivalued: true
     transitive: true
     in_subset:
@@ -312,6 +316,7 @@ slots:
     comments:
       - |-
         Unlike gist:hasBroader, this property is not transitive. It is safest to use this property when semantic directness is inherent in the relationship. Otherwise, there is a risk of making a hasDirectBroader assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:hasBroader.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -328,6 +333,7 @@ slots:
     examples:
       - value: |-
           Miles per hour has miles as a multiplier and hour as a divisor; speed has distance as a multiplier and duration as a divisor.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -344,6 +350,7 @@ slots:
     examples:
       - value: |-
           An offer is made by a giver; an obligation has a giver who is obligated to another person; a gift is presented by the giver.
+    range: Any
     multivalued: true
     disjoint_with:
       - has_recipient
@@ -358,6 +365,7 @@ slots:
     examples:
       - value: |-
           The sales division of a company has the goal of acquiring new customers and contracts.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -370,6 +378,7 @@ slots:
     comments:
       - |-
         To create a temporal view, define a subclass of gist:TemporalRelation for this property (e.g., Incumbency).
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -399,6 +408,7 @@ slots:
     examples:
       - value: |-
           Miles per hour has miles as a multiplier and hours as a divisor; speed has distance as a multiplier and duration as a divisor.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -412,6 +422,7 @@ slots:
     examples:
       - value: |-
           Refrigerator handles are not refrigerators, but it may be useful to represent their relationship hierarchically for a faceted UI filter.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -430,6 +441,7 @@ slots:
     examples:
       - value: |-
           An event of transferring money has a participating account that receives the money.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -479,6 +491,7 @@ slots:
     examples:
       - value: |-
           An offer is made to a recipient; an obligation has a recipient to whom another person is obligated; a gift is bestowed upon a recipient.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -493,6 +506,7 @@ slots:
     examples:
       - value: |-
           In the equation 'profit = revenue - expenses', revenue is an addend and expenses is a subtrahend.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -503,6 +517,7 @@ slots:
     description: Relates a thing to a unique other thing with a broader meaning.
     aliases:
       - has unique broader
+    range: Any
     multivalued: false
     in_subset:
       - gist_core
@@ -514,6 +529,7 @@ slots:
       Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.
     aliases:
       - has unique navigational parent
+    range: Any
     multivalued: false
     in_subset:
       - gist_core
@@ -552,6 +568,7 @@ slots:
     aliases:
       - is about
     domain: Content
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -561,6 +578,7 @@ slots:
     description: Relates an affected thing to the source of the effect.
     aliases:
       - is affected by
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -619,6 +637,7 @@ slots:
       - |-
         While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified.
     domain: Assignment
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -634,6 +653,7 @@ slots:
     examples:
       - value: |-
           A document is based on a document template; a metric computing the average income of a population is based on the metric for individual income.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -656,6 +676,7 @@ slots:
     description: A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship.
     aliases:
       - is connected to
+    range: Any
     multivalued: true
     symmetric: true
     in_subset:
@@ -672,6 +693,7 @@ slots:
       - Because the part has independent existence, there is no cascading delete.
       - |-
         It is safest to use this property when semantic directness is inherent in the relationship, rather than simply expressing a chosen granularity. For example, a spark plug is a direct part of an engine block; there cannot be any intermediate parts. Otherwise, there is a risk of making an isDirectPartOf assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:isPartOf.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -726,6 +748,7 @@ slots:
     examples:
       - value: |-
           A country geographic region is governed by a country government; the installation and use of software is governed by a license.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -781,6 +804,7 @@ slots:
     comments:
       - Because the part has independent existence, there is no cascading delete.
       - The transitive version of gist:isDirectPartOf.
+    range: Any
     multivalued: true
     transitive: true
     in_subset:
@@ -796,6 +820,7 @@ slots:
       - value: A deliverable is produces by a task.
       - value: A measurement is produced by a sensor.
       - value: A painting is produced by a person.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -823,6 +848,7 @@ slots:
     examples:
       - value: |-
           A document is rendered on a computer screen; a piece of music is rendered through speakers.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -839,6 +865,7 @@ slots:
     examples:
       - value: |-
           Fire insurance is contingent on a particular building burning down; the death benefit payout on a life insurance policy is contingent on the death of the insured person.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -909,6 +936,7 @@ slots:
       Relates something, such as an event, to the geographic location where it did, does, or will happen.
     aliases:
       - occurs in
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -925,6 +953,7 @@ slots:
       - value: |-
           An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.
     domain: Offer
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -943,6 +972,7 @@ slots:
       - value: |-
           A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.
     domain: Offer
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -959,6 +989,7 @@ slots:
       - There is a long list of potential range classes.
     notes:
       - 'OWL domain: (gist:Organization | gist:Person)'
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -973,6 +1004,7 @@ slots:
       - This is the transitive version of gist:precedesDirectly.
       - |-
         Typically this predicate would be used asymmetrically and irreflexively, but the ontology does not formalize this.
+    range: Any
     multivalued: true
     transitive: true
     in_subset:
@@ -992,6 +1024,7 @@ slots:
         It is safest to use this property only when the directness has a semantic correspondence with the world. Only break a direct link by inserting an intermediate item when that change corresponds to a change in the world.
       - |-
         Typically this predicate would be used asymmetrically and irreflexively, but the ontology does not formalize this.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -1041,6 +1074,7 @@ slots:
     aliases:
       - provides order for
     domain: OrderedMember
+    range: Any
     multivalued: false
     in_subset:
       - gist_core
@@ -1051,6 +1085,7 @@ slots:
       Relates something to another resource that it points to, indicates, or references.
     aliases:
       - refers to
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -1064,6 +1099,7 @@ slots:
       - "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\r\n\r\n\t\t1. To need something or to make something necessary.\r\n\t\t2. To order or demand something, or to order someone to do something, especially because of a rule or law.\r\n\t\t3. To make it officially necessary for someone to do something.\r\n\r\n\tImplementations requiring a more specific meaning should define subproperties."
     examples:
       - value: Humans require air; solar power requires sunshine.
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -3504,3 +3540,9 @@ classes:
     slots:
       - name
       - description
+
+  Any:
+    class_uri: linkml:Any
+    description: 'Any individual: the range of an object property gist leaves open.'
+    in_subset:
+      - gist_core

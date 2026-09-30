@@ -386,6 +386,8 @@
 --     * Slot: id
 --     * Slot: name Description: Relates an individual to (one of) its name(s).
 --     * Slot: description Description: A statement about someone or something's attributes or characteristics.
+-- # Class: Any Description: Any individual: the range of an object property gist leaves open.
+--     * Slot: id
 
 CREATE TABLE "Account" (
 	id INTEGER NOT NULL,
@@ -1162,3 +1164,9 @@ CREATE TABLE "GistThing" (
 	PRIMARY KEY (id)
 );
 CREATE INDEX "ix_GistThing_id" ON "GistThing" (id);
+
+CREATE TABLE "Any" (
+	id INTEGER NOT NULL,
+	PRIMARY KEY (id)
+);
+CREATE INDEX "ix_Any_id" ON "Any" (id);

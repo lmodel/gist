@@ -22,6 +22,9 @@
    "Agreement": {
       "@id": "gist:Agreement"
    },
+   "Any": {
+      "@id": "linkml:Any"
+   },
    "Aspect": {
       "@id": "gist:Aspect"
    },

@@ -88,6 +88,18 @@
             "title": "Agreement",
             "type": "object"
         },
+        "Any": {
+            "additionalProperties": true,
+            "description": "Any individual: the range of an object property gist leaves open.",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
         "Aspect": {
             "additionalProperties": false,
             "description": "A measurable characteristic.",

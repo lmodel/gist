@@ -65,6 +65,8 @@ type Agreement
     description: String
   }
 
+scalar Any
+
 type Aspect implements GistThing
   {
     name: String
