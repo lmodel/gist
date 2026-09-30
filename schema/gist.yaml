@@ -582,8 +582,10 @@ slots:
     mappings:
     - gist:allows
     slot_uri: gist:allows
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   comes_from_agent:
     name: comes_from_agent
     definition_uri: https://w3id.org/lmodel/gist/comes_from_agent
@@ -608,8 +610,10 @@ slots:
     - gist:comesFromAgent
     is_a: has_participant
     slot_uri: gist:comesFromAgent
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     any_of:
     - range: Organization
     - range: Person
@@ -670,8 +674,10 @@ slots:
     mappings:
     - gist:contributesTo
     slot_uri: gist:contributesTo
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   goes_to_agent:
     name: goes_to_agent
     definition_uri: https://w3id.org/lmodel/gist/goes_to_agent
@@ -696,8 +702,10 @@ slots:
     - gist:goesToAgent
     is_a: has_participant
     slot_uri: gist:goesToAgent
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     any_of:
     - range: Organization
     - range: Person
@@ -776,8 +784,10 @@ slots:
     mappings:
     - gist:hasAddend
     slot_uri: gist:hasAddend
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_address:
     name: has_address
     definition_uri: https://w3id.org/lmodel/gist/has_address
@@ -846,8 +856,10 @@ slots:
     - gist:hasBroader
     slot_uri: gist:hasBroader
     transitive: true
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_direct_broader:
     name: has_direct_broader
     definition_uri: https://w3id.org/lmodel/gist/has_direct_broader
@@ -869,8 +881,10 @@ slots:
     - gist:hasDirectBroader
     is_a: has_broader
     slot_uri: gist:hasDirectBroader
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_divisor:
     name: has_divisor
     definition_uri: https://w3id.org/lmodel/gist/has_divisor
@@ -891,8 +905,10 @@ slots:
     mappings:
     - gist:hasDivisor
     slot_uri: gist:hasDivisor
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_giver:
     name: has_giver
     definition_uri: https://w3id.org/lmodel/gist/has_giver
@@ -917,8 +933,10 @@ slots:
     slot_uri: gist:hasGiver
     disjoint_with:
     - has_recipient
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_goal:
     name: has_goal
     definition_uri: https://w3id.org/lmodel/gist/has_goal
@@ -934,8 +952,10 @@ slots:
     mappings:
     - gist:hasGoal
     slot_uri: gist:hasGoal
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_incumbent:
     name: has_incumbent
     definition_uri: https://w3id.org/lmodel/gist/has_incumbent
@@ -952,8 +972,10 @@ slots:
     mappings:
     - gist:hasIncumbent
     slot_uri: gist:hasIncumbent
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_magnitude:
     name: has_magnitude
     definition_uri: https://w3id.org/lmodel/gist/has_magnitude
@@ -993,8 +1015,10 @@ slots:
     mappings:
     - gist:hasMultiplier
     slot_uri: gist:hasMultiplier
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_navigational_parent:
     name: has_navigational_parent
     definition_uri: https://w3id.org/lmodel/gist/has_navigational_parent
@@ -1011,8 +1035,10 @@ slots:
     mappings:
     - gist:hasNavigationalParent
     slot_uri: gist:hasNavigationalParent
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_participant:
     name: has_participant
     definition_uri: https://w3id.org/lmodel/gist/has_participant
@@ -1034,8 +1060,10 @@ slots:
     mappings:
     - gist:hasParticipant
     slot_uri: gist:hasParticipant
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_party:
     name: has_party
     definition_uri: https://w3id.org/lmodel/gist/has_party
@@ -1055,8 +1083,10 @@ slots:
     - gist:hasParty
     is_a: has_participant
     slot_uri: gist:hasParty
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
     any_of:
     - range: Organization
     - range: Person
@@ -1103,8 +1133,10 @@ slots:
     - gist:hasRecipient
     is_a: has_participant
     slot_uri: gist:hasRecipient
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_subtrahend:
     name: has_subtrahend
     definition_uri: https://w3id.org/lmodel/gist/has_subtrahend
@@ -1123,8 +1155,10 @@ slots:
     mappings:
     - gist:hasSubtrahend
     slot_uri: gist:hasSubtrahend
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   has_unique_broader:
     name: has_unique_broader
     definition_uri: https://w3id.org/lmodel/gist/has_unique_broader
@@ -1138,8 +1172,10 @@ slots:
     - gist:hasUniqueBroader
     is_a: has_broader
     slot_uri: gist:hasUniqueBroader
-    range: string
+    range: Any
     multivalued: false
+    inlined: true
+    inlined_as_list: true
   has_unique_navigational_parent:
     name: has_unique_navigational_parent
     definition_uri: https://w3id.org/lmodel/gist/has_unique_navigational_parent
@@ -1154,8 +1190,10 @@ slots:
     - gist:hasUniqueNavigationalParent
     is_a: has_navigational_parent
     slot_uri: gist:hasUniqueNavigationalParent
-    range: string
+    range: Any
     multivalued: false
+    inlined: true
+    inlined_as_list: true
   has_unit_group:
     name: has_unit_group
     definition_uri: https://w3id.org/lmodel/gist/has_unit_group
@@ -1212,8 +1250,10 @@ slots:
     domain: Content
     slot_uri: gist:isAbout
     owner: is_about
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_affected_by:
     name: is_affected_by
     definition_uri: https://w3id.org/lmodel/gist/is_affected_by
@@ -1226,8 +1266,10 @@ slots:
     mappings:
     - gist:isAffectedBy
     slot_uri: gist:isAffectedBy
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_allocated_by:
     name: is_allocated_by
     definition_uri: https://w3id.org/lmodel/gist/is_allocated_by
@@ -1314,8 +1356,10 @@ slots:
     domain: Assignment
     slot_uri: gist:isAssignmentTo
     owner: is_assignment_to
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_based_on:
     name: is_based_on
     definition_uri: https://w3id.org/lmodel/gist/is_based_on
@@ -1332,8 +1376,10 @@ slots:
     mappings:
     - gist:isBasedOn
     slot_uri: gist:isBasedOn
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_categorized_by:
     name: is_categorized_by
     definition_uri: https://w3id.org/lmodel/gist/is_categorized_by
@@ -1368,8 +1414,10 @@ slots:
     - gist:isConnectedTo
     slot_uri: gist:isConnectedTo
     symmetric: true
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_direct_part_of:
     name: is_direct_part_of
     definition_uri: https://w3id.org/lmodel/gist/is_direct_part_of
@@ -1393,8 +1441,10 @@ slots:
     - gist:isDirectPartOf
     is_a: is_part_of
     slot_uri: gist:isDirectPartOf
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_expressed_in:
     name: is_expressed_in
     definition_uri: https://w3id.org/lmodel/gist/is_expressed_in
@@ -1479,8 +1529,10 @@ slots:
     mappings:
     - gist:isGovernedBy
     slot_uri: gist:isGovernedBy
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_identified_by:
     name: is_identified_by
     definition_uri: https://w3id.org/lmodel/gist/is_identified_by
@@ -1562,8 +1614,10 @@ slots:
     - gist:isPartOf
     slot_uri: gist:isPartOf
     transitive: true
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_produced_by:
     name: is_produced_by
     definition_uri: https://w3id.org/lmodel/gist/is_produced_by
@@ -1581,8 +1635,10 @@ slots:
     mappings:
     - gist:isProducedBy
     slot_uri: gist:isProducedBy
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_recognized_by:
     name: is_recognized_by
     definition_uri: https://w3id.org/lmodel/gist/is_recognized_by
@@ -1618,8 +1674,10 @@ slots:
     mappings:
     - gist:isRenderedOn
     slot_uri: gist:isRenderedOn
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_triggered_by:
     name: is_triggered_by
     definition_uri: https://w3id.org/lmodel/gist/is_triggered_by
@@ -1640,8 +1698,10 @@ slots:
     mappings:
     - gist:isTriggeredBy
     slot_uri: gist:isTriggeredBy
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   is_under_jurisdiction_of:
     name: is_under_jurisdiction_of
     definition_uri: https://w3id.org/lmodel/gist/is_under_jurisdiction_of
@@ -1756,8 +1816,10 @@ slots:
     mappings:
     - gist:occursIn
     slot_uri: gist:occursIn
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   offers_to_provide:
     name: offers_to_provide
     definition_uri: https://w3id.org/lmodel/gist/offers_to_provide
@@ -1782,8 +1844,10 @@ slots:
     domain: Offer
     slot_uri: gist:offersToProvide
     owner: offers_to_provide
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   offers_to_receive:
     name: offers_to_receive
     definition_uri: https://w3id.org/lmodel/gist/offers_to_receive
@@ -1810,8 +1874,10 @@ slots:
     domain: Offer
     slot_uri: gist:offersToReceive
     owner: offers_to_receive
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   owns:
     name: owns
     definition_uri: https://w3id.org/lmodel/gist/owns
@@ -1829,8 +1895,10 @@ slots:
     mappings:
     - gist:owns
     slot_uri: gist:owns
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   precedes:
     name: precedes
     definition_uri: https://w3id.org/lmodel/gist/precedes
@@ -1850,8 +1918,10 @@ slots:
     - gist:precedes
     slot_uri: gist:precedes
     transitive: true
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   precedes_directly:
     name: precedes_directly
     definition_uri: https://w3id.org/lmodel/gist/precedes_directly
@@ -1874,8 +1944,10 @@ slots:
     - gist:precedesDirectly
     is_a: precedes
     slot_uri: gist:precedesDirectly
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   prevents:
     name: prevents
     definition_uri: https://w3id.org/lmodel/gist/prevents
@@ -1943,8 +2015,10 @@ slots:
     domain: OrderedMember
     slot_uri: gist:providesOrderFor
     owner: provides_order_for
-    range: string
+    range: Any
     multivalued: false
+    inlined: true
+    inlined_as_list: true
   refers_to:
     name: refers_to
     definition_uri: https://w3id.org/lmodel/gist/refers_to
@@ -1958,8 +2032,10 @@ slots:
     mappings:
     - gist:refersTo
     slot_uri: gist:refersTo
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   requires:
     name: requires
     definition_uri: https://w3id.org/lmodel/gist/requires
@@ -1982,8 +2058,10 @@ slots:
     mappings:
     - gist:requires
     slot_uri: gist:requires
-    range: string
+    range: Any
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   actual_end_date:
     name: actual_end_date
     definition_uri: https://w3id.org/lmodel/gist/actual_end_date
@@ -5637,9 +5715,19 @@ classes:
     - name
     - description
     class_uri: gist_linkml:GistThing
+  Any:
+    name: Any
+    definition_uri: https://w3id.org/lmodel/gist/Any
+    description: 'Any individual: the range of an object property gist leaves open.'
+    in_subset:
+    - gist_core
+    from_schema: https://w3id.org/lmodel/gist/core
+    mappings:
+    - linkml:Any
+    class_uri: linkml:Any
 metamodel_version: 1.11.0
 source_file: gist.yaml
-source_file_date: '2026-09-29T23:23:22'
+source_file_date: '2026-09-30T13:59:51'
 source_file_size: 1290
-generation_date: '2026-09-29T23:23:34'
+generation_date: '2026-09-30T14:00:00'
 
