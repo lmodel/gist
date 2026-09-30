@@ -373,6 +373,14 @@ class TestExtractSlots:
         slots = M.extract_slots(g)
         assert slots["has_party"]["range"] == "Actor"
 
+    def test_unranged_object_property_ranges_over_any(self):
+        g = Graph()
+        g.add((GIST.isGovernedBy, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.uniqueText, RDF.type, OWL.DatatypeProperty))
+        slots = M.extract_slots(g)
+        assert slots["is_governed_by"]["range"] == "Any"
+        assert "range" not in slots["unique_text"]
+
     def test_datatype_property_xsd_range(self):
         g = Graph()
         g.add((GIST.uniqueText, RDF.type, OWL.DatatypeProperty))
@@ -1062,6 +1070,12 @@ class TestBuildSchema:
     def test_imports_linkml_types(self):
         s = self._make_schema()
         assert "linkml:types" in s["imports"]
+
+    def test_declares_any_without_the_gist_thing_mixin(self):
+        s = self._make_schema()
+        assert s["classes"]["Any"]["class_uri"] == "linkml:Any"
+        assert "mixins" not in s["classes"]["Any"]
+        assert s["classes"]["Thing"]["mixins"] == ["GistThing"]
 
 
 class TestBuildMediaTypesSchema:

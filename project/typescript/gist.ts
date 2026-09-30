@@ -745,4 +745,11 @@ export interface GistThing {
 }
 
 
+/**
+ * Any individual: the range of an object property gist leaves open.
+ */
+export interface Any {
+}
+
+
 

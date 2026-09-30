@@ -207,4 +207,9 @@ class TestGistIrisInArtifacts:
         assert shapes and all(s.startswith(lmodel_ns) for s in shapes)
         targets = {str(t) for t in shacl.objects(None, SH.targetClass)}
         assert upstream_gist["classes"] <= targets
-        assert all(t in upstream_gist["classes"] or t.startswith(lmodel_ns) for t in targets)
+        # linkml:Any, the range of an unranged object property, is LinkML's own
+        linkml_any = "https://w3id.org/linkml/Any"
+        assert all(
+            t in upstream_gist["classes"] or t.startswith(lmodel_ns) or t == linkml_any
+            for t in targets
+        )

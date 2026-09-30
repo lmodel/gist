@@ -54,6 +54,7 @@
          "@id": "gist:actualStartYear"
       },
       "allows": {
+         "@type": "@id",
          "@id": "gist:allows"
       },
       "at_date_time": {
@@ -80,6 +81,7 @@
          "@id": "gist:containedText"
       },
       "contributes_to": {
+         "@type": "@id",
          "@id": "gist:contributesTo"
       },
       "conversion_factor": {
@@ -171,6 +173,7 @@
          "@id": "gist:hasAccuracy"
       },
       "has_addend": {
+         "@type": "@id",
          "@id": "gist:hasAddend"
       },
       "has_address": {
@@ -186,21 +189,27 @@
          "@id": "gist:hasBiologicalParent"
       },
       "has_broader": {
+         "@type": "@id",
          "@id": "gist:hasBroader"
       },
       "has_direct_broader": {
+         "@type": "@id",
          "@id": "gist:hasDirectBroader"
       },
       "has_divisor": {
+         "@type": "@id",
          "@id": "gist:hasDivisor"
       },
       "has_giver": {
+         "@type": "@id",
          "@id": "gist:hasGiver"
       },
       "has_goal": {
+         "@type": "@id",
          "@id": "gist:hasGoal"
       },
       "has_incumbent": {
+         "@type": "@id",
          "@id": "gist:hasIncumbent"
       },
       "has_magnitude": {
@@ -208,12 +217,15 @@
          "@id": "gist:hasMagnitude"
       },
       "has_multiplier": {
+         "@type": "@id",
          "@id": "gist:hasMultiplier"
       },
       "has_navigational_parent": {
+         "@type": "@id",
          "@id": "gist:hasNavigationalParent"
       },
       "has_participant": {
+         "@type": "@id",
          "@id": "gist:hasParticipant"
       },
       "has_party": {
@@ -225,15 +237,19 @@
          "@id": "gist:hasPhysicalLocation"
       },
       "has_recipient": {
+         "@type": "@id",
          "@id": "gist:hasRecipient"
       },
       "has_subtrahend": {
+         "@type": "@id",
          "@id": "gist:hasSubtrahend"
       },
       "has_unique_broader": {
+         "@type": "@id",
          "@id": "gist:hasUniqueBroader"
       },
       "has_unique_navigational_parent": {
+         "@type": "@id",
          "@id": "gist:hasUniqueNavigationalParent"
       },
       "has_unit_group": {
@@ -248,9 +264,11 @@
          "@id": "gist:idText"
       },
       "is_about": {
+         "@type": "@id",
          "@id": "gist:isAbout"
       },
       "is_affected_by": {
+         "@type": "@id",
          "@id": "gist:isAffectedBy"
       },
       "is_allocated_by": {
@@ -262,9 +280,11 @@
          "@id": "gist:isAssignmentOf"
       },
       "is_assignment_to": {
+         "@type": "@id",
          "@id": "gist:isAssignmentTo"
       },
       "is_based_on": {
+         "@type": "@id",
          "@id": "gist:isBasedOn"
       },
       "is_categorized_by": {
@@ -272,9 +292,11 @@
          "@id": "gist:isCategorizedBy"
       },
       "is_connected_to": {
+         "@type": "@id",
          "@id": "gist:isConnectedTo"
       },
       "is_direct_part_of": {
+         "@type": "@id",
          "@id": "gist:isDirectPartOf"
       },
       "is_expressed_in": {
@@ -290,6 +312,7 @@
          "@id": "gist:isGeoContainedIn"
       },
       "is_governed_by": {
+         "@type": "@id",
          "@id": "gist:isGovernedBy"
       },
       "is_identified_by": {
@@ -305,9 +328,11 @@
          "@id": "gist:isMemberOf"
       },
       "is_part_of": {
+         "@type": "@id",
          "@id": "gist:isPartOf"
       },
       "is_produced_by": {
+         "@type": "@id",
          "@id": "gist:isProducedBy"
       },
       "is_recognized_by": {
@@ -319,12 +344,14 @@
          "@id": "gist:isRecordedAt"
       },
       "is_rendered_on": {
+         "@type": "@id",
          "@id": "gist:isRenderedOn"
       },
       "is_superseded_by": {
          "@id": "gist:isSupersededBy"
       },
       "is_triggered_by": {
+         "@type": "@id",
          "@id": "gist:isTriggeredBy"
       },
       "is_under_jurisdiction_of": {
@@ -361,15 +388,19 @@
          "@id": "gist:numericValue"
       },
       "occurs_in": {
+         "@type": "@id",
          "@id": "gist:occursIn"
       },
       "offers_to_provide": {
+         "@type": "@id",
          "@id": "gist:offersToProvide"
       },
       "offers_to_receive": {
+         "@type": "@id",
          "@id": "gist:offersToReceive"
       },
       "owns": {
+         "@type": "@id",
          "@id": "gist:owns"
       },
       "planned_end_date": {
@@ -405,9 +436,11 @@
          "@id": "gist:plannedStartYear"
       },
       "precedes": {
+         "@type": "@id",
          "@id": "gist:precedes"
       },
       "precedes_directly": {
+         "@type": "@id",
          "@id": "gist:precedesDirectly"
       },
       "prevents": {
@@ -419,15 +452,18 @@
          "@id": "gist:prohibits"
       },
       "provides_order_for": {
+         "@type": "@id",
          "@id": "gist:providesOrderFor"
       },
       "range_includes": {
          "@id": "gist:rangeIncludes"
       },
       "refers_to": {
+         "@type": "@id",
          "@id": "gist:refersTo"
       },
       "requires": {
+         "@type": "@id",
          "@id": "gist:requires"
       },
       "sequence": {
@@ -455,6 +491,9 @@
       },
       "Agreement": {
          "@id": "gist:Agreement"
+      },
+      "Any": {
+         "@id": "linkml:Any"
       },
       "Aspect": {
          "@id": "gist:Aspect"

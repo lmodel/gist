@@ -1,5 +1,5 @@
 # Auto generated from gist.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-29T20:29:10
+# Generation date: 2026-09-30T01:46:34
 # Schema: gist
 #
 # id: https://w3id.org/lmodel/gist
@@ -1533,6 +1533,8 @@ class GistThing(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+Any = Any
+
 # Enumerations
 class AspectInstance(EnumDefinitionImpl):
     """
@@ -1700,10 +1702,10 @@ class slots:
     pass
 
 slots.allows = Slot(uri=GIST.allows, name="allows", curie=GIST.curie('allows'),
-                   model_uri=GIST_LINKML.allows, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.allows, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.comes_from_agent = Slot(uri=GIST.comesFromAgent, name="comes_from_agent", curie=GIST.curie('comesFromAgent'),
-                   model_uri=GIST_LINKML.comes_from_agent, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.comes_from_agent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.comes_from_place = Slot(uri=GIST.comesFromPlace, name="comes_from_place", curie=GIST.curie('comesFromPlace'),
                    model_uri=GIST_LINKML.comes_from_place, domain=None, range=Optional[Union[str, list[str]]])
@@ -1712,10 +1714,10 @@ slots.conforms_to = Slot(uri=GIST.conformsTo, name="conforms_to", curie=GIST.cur
                    model_uri=GIST_LINKML.conforms_to, domain=None, range=Optional[Union[Union[dict, Intention], list[Union[dict, Intention]]]])
 
 slots.contributes_to = Slot(uri=GIST.contributesTo, name="contributes_to", curie=GIST.curie('contributesTo'),
-                   model_uri=GIST_LINKML.contributes_to, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.contributes_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.goes_to_agent = Slot(uri=GIST.goesToAgent, name="goes_to_agent", curie=GIST.curie('goesToAgent'),
-                   model_uri=GIST_LINKML.goes_to_agent, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.goes_to_agent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.goes_to_place = Slot(uri=GIST.goesToPlace, name="goes_to_place", curie=GIST.curie('goesToPlace'),
                    model_uri=GIST_LINKML.goes_to_place, domain=None, range=Optional[Union[str, list[str]]])
@@ -1724,7 +1726,7 @@ slots.has_accuracy = Slot(uri=GIST.hasAccuracy, name="has_accuracy", curie=GIST.
                    model_uri=GIST_LINKML.has_accuracy, domain=Magnitude, range=Optional[Union[dict, "Magnitude"]])
 
 slots.has_addend = Slot(uri=GIST.hasAddend, name="has_addend", curie=GIST.curie('hasAddend'),
-                   model_uri=GIST_LINKML.has_addend, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_addend, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_address = Slot(uri=GIST.hasAddress, name="has_address", curie=GIST.curie('hasAddress'),
                    model_uri=GIST_LINKML.has_address, domain=None, range=Optional[Union[Union[dict, Address], list[Union[dict, Address]]]])
@@ -1736,52 +1738,52 @@ slots.has_biological_parent = Slot(uri=GIST.hasBiologicalParent, name="has_biolo
                    model_uri=GIST_LINKML.has_biological_parent, domain=LivingThing, range=Optional[Union[Union[dict, "LivingThing"], list[Union[dict, "LivingThing"]]]])
 
 slots.has_broader = Slot(uri=GIST.hasBroader, name="has_broader", curie=GIST.curie('hasBroader'),
-                   model_uri=GIST_LINKML.has_broader, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_broader, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_direct_broader = Slot(uri=GIST.hasDirectBroader, name="has_direct_broader", curie=GIST.curie('hasDirectBroader'),
-                   model_uri=GIST_LINKML.has_direct_broader, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_direct_broader, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_divisor = Slot(uri=GIST.hasDivisor, name="has_divisor", curie=GIST.curie('hasDivisor'),
-                   model_uri=GIST_LINKML.has_divisor, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_divisor, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_giver = Slot(uri=GIST.hasGiver, name="has_giver", curie=GIST.curie('hasGiver'),
-                   model_uri=GIST_LINKML.has_giver, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_giver, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_goal = Slot(uri=GIST.hasGoal, name="has_goal", curie=GIST.curie('hasGoal'),
-                   model_uri=GIST_LINKML.has_goal, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_goal, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_incumbent = Slot(uri=GIST.hasIncumbent, name="has_incumbent", curie=GIST.curie('hasIncumbent'),
-                   model_uri=GIST_LINKML.has_incumbent, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_incumbent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_magnitude = Slot(uri=GIST.hasMagnitude, name="has_magnitude", curie=GIST.curie('hasMagnitude'),
                    model_uri=GIST_LINKML.has_magnitude, domain=None, range=Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]])
 
 slots.has_multiplier = Slot(uri=GIST.hasMultiplier, name="has_multiplier", curie=GIST.curie('hasMultiplier'),
-                   model_uri=GIST_LINKML.has_multiplier, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_multiplier, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_navigational_parent = Slot(uri=GIST.hasNavigationalParent, name="has_navigational_parent", curie=GIST.curie('hasNavigationalParent'),
-                   model_uri=GIST_LINKML.has_navigational_parent, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_navigational_parent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_participant = Slot(uri=GIST.hasParticipant, name="has_participant", curie=GIST.curie('hasParticipant'),
-                   model_uri=GIST_LINKML.has_participant, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_participant, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_party = Slot(uri=GIST.hasParty, name="has_party", curie=GIST.curie('hasParty'),
-                   model_uri=GIST_LINKML.has_party, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_party, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_physical_location = Slot(uri=GIST.hasPhysicalLocation, name="has_physical_location", curie=GIST.curie('hasPhysicalLocation'),
                    model_uri=GIST_LINKML.has_physical_location, domain=None, range=Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]])
 
 slots.has_recipient = Slot(uri=GIST.hasRecipient, name="has_recipient", curie=GIST.curie('hasRecipient'),
-                   model_uri=GIST_LINKML.has_recipient, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_recipient, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_subtrahend = Slot(uri=GIST.hasSubtrahend, name="has_subtrahend", curie=GIST.curie('hasSubtrahend'),
-                   model_uri=GIST_LINKML.has_subtrahend, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.has_subtrahend, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_unique_broader = Slot(uri=GIST.hasUniqueBroader, name="has_unique_broader", curie=GIST.curie('hasUniqueBroader'),
-                   model_uri=GIST_LINKML.has_unique_broader, domain=None, range=Optional[str])
+                   model_uri=GIST_LINKML.has_unique_broader, domain=None, range=Optional[Union[dict, Any]])
 
 slots.has_unique_navigational_parent = Slot(uri=GIST.hasUniqueNavigationalParent, name="has_unique_navigational_parent", curie=GIST.curie('hasUniqueNavigationalParent'),
-                   model_uri=GIST_LINKML.has_unique_navigational_parent, domain=None, range=Optional[str])
+                   model_uri=GIST_LINKML.has_unique_navigational_parent, domain=None, range=Optional[Union[dict, Any]])
 
 slots.has_unit_group = Slot(uri=GIST.hasUnitGroup, name="has_unit_group", curie=GIST.curie('hasUnitGroup'),
                    model_uri=GIST_LINKML.has_unit_group, domain=Aspect, range=Optional[Union[Union[dict, "UnitGroup"], list[Union[dict, "UnitGroup"]]]])
@@ -1790,10 +1792,10 @@ slots.has_unit_of_measure = Slot(uri=GIST.hasUnitOfMeasure, name="has_unit_of_me
                    model_uri=GIST_LINKML.has_unit_of_measure, domain=Magnitude, range=Optional[Union[Union[dict, "UnitOfMeasure"], list[Union[dict, "UnitOfMeasure"]]]])
 
 slots.is_about = Slot(uri=GIST.isAbout, name="is_about", curie=GIST.curie('isAbout'),
-                   model_uri=GIST_LINKML.is_about, domain=Content, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_about, domain=Content, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
 
 slots.is_affected_by = Slot(uri=GIST.isAffectedBy, name="is_affected_by", curie=GIST.curie('isAffectedBy'),
-                   model_uri=GIST_LINKML.is_affected_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_affected_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_allocated_by = Slot(uri=GIST.isAllocatedBy, name="is_allocated_by", curie=GIST.curie('isAllocatedBy'),
                    model_uri=GIST_LINKML.is_allocated_by, domain=None, range=Optional[Union[str, list[str]]])
@@ -1802,19 +1804,19 @@ slots.is_assignment_of = Slot(uri=GIST.isAssignmentOf, name="is_assignment_of", 
                    model_uri=GIST_LINKML.is_assignment_of, domain=Assignment, range=Optional[Union[str, list[str]]])
 
 slots.is_assignment_to = Slot(uri=GIST.isAssignmentTo, name="is_assignment_to", curie=GIST.curie('isAssignmentTo'),
-                   model_uri=GIST_LINKML.is_assignment_to, domain=Assignment, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_assignment_to, domain=Assignment, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
 
 slots.is_based_on = Slot(uri=GIST.isBasedOn, name="is_based_on", curie=GIST.curie('isBasedOn'),
-                   model_uri=GIST_LINKML.is_based_on, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_based_on, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_categorized_by = Slot(uri=GIST.isCategorizedBy, name="is_categorized_by", curie=GIST.curie('isCategorizedBy'),
                    model_uri=GIST_LINKML.is_categorized_by, domain=None, range=Optional[Union[Union[dict, Category], list[Union[dict, Category]]]])
 
 slots.is_connected_to = Slot(uri=GIST.isConnectedTo, name="is_connected_to", curie=GIST.curie('isConnectedTo'),
-                   model_uri=GIST_LINKML.is_connected_to, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_connected_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_direct_part_of = Slot(uri=GIST.isDirectPartOf, name="is_direct_part_of", curie=GIST.curie('isDirectPartOf'),
-                   model_uri=GIST_LINKML.is_direct_part_of, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_direct_part_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_expressed_in = Slot(uri=GIST.isExpressedIn, name="is_expressed_in", curie=GIST.curie('isExpressedIn'),
                    model_uri=GIST_LINKML.is_expressed_in, domain=Text, range=Optional[Union[Union[dict, Language], list[Union[dict, Language]]]])
@@ -1826,7 +1828,7 @@ slots.is_geo_contained_in = Slot(uri=GIST.isGeoContainedIn, name="is_geo_contain
                    model_uri=GIST_LINKML.is_geo_contained_in, domain=GeoLocation, range=Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]])
 
 slots.is_governed_by = Slot(uri=GIST.isGovernedBy, name="is_governed_by", curie=GIST.curie('isGovernedBy'),
-                   model_uri=GIST_LINKML.is_governed_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_governed_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_identified_by = Slot(uri=GIST.isIdentifiedBy, name="is_identified_by", curie=GIST.curie('isIdentifiedBy'),
                    model_uri=GIST_LINKML.is_identified_by, domain=None, range=Optional[Union[Union[dict, ID], list[Union[dict, ID]]]])
@@ -1838,19 +1840,19 @@ slots.is_member_of = Slot(uri=GIST.isMemberOf, name="is_member_of", curie=GIST.c
                    model_uri=GIST_LINKML.is_member_of, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.is_part_of = Slot(uri=GIST.isPartOf, name="is_part_of", curie=GIST.curie('isPartOf'),
-                   model_uri=GIST_LINKML.is_part_of, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_part_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_produced_by = Slot(uri=GIST.isProducedBy, name="is_produced_by", curie=GIST.curie('isProducedBy'),
-                   model_uri=GIST_LINKML.is_produced_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_produced_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_recognized_by = Slot(uri=GIST.isRecognizedBy, name="is_recognized_by", curie=GIST.curie('isRecognizedBy'),
                    model_uri=GIST_LINKML.is_recognized_by, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.is_rendered_on = Slot(uri=GIST.isRenderedOn, name="is_rendered_on", curie=GIST.curie('isRenderedOn'),
-                   model_uri=GIST_LINKML.is_rendered_on, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_rendered_on, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_triggered_by = Slot(uri=GIST.isTriggeredBy, name="is_triggered_by", curie=GIST.curie('isTriggeredBy'),
-                   model_uri=GIST_LINKML.is_triggered_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_triggered_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_under_jurisdiction_of = Slot(uri=GIST.isUnderJurisdictionOf, name="is_under_jurisdiction_of", curie=GIST.curie('isUnderJurisdictionOf'),
                    model_uri=GIST_LINKML.is_under_jurisdiction_of, domain=None, range=Optional[Union[Union[dict, GovernmentOrganization], list[Union[dict, GovernmentOrganization]]]])
@@ -1865,22 +1867,22 @@ slots.links_to = Slot(uri=GIST.linksTo, name="links_to", curie=GIST.curie('links
                    model_uri=GIST_LINKML.links_to, domain=NetworkLink, range=Optional[Union[Union[dict, "NetworkNode"], list[Union[dict, "NetworkNode"]]]])
 
 slots.occurs_in = Slot(uri=GIST.occursIn, name="occurs_in", curie=GIST.curie('occursIn'),
-                   model_uri=GIST_LINKML.occurs_in, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.occurs_in, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.offers_to_provide = Slot(uri=GIST.offersToProvide, name="offers_to_provide", curie=GIST.curie('offersToProvide'),
-                   model_uri=GIST_LINKML.offers_to_provide, domain=Offer, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.offers_to_provide, domain=Offer, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
 
 slots.offers_to_receive = Slot(uri=GIST.offersToReceive, name="offers_to_receive", curie=GIST.curie('offersToReceive'),
-                   model_uri=GIST_LINKML.offers_to_receive, domain=Offer, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.offers_to_receive, domain=Offer, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
 
 slots.owns = Slot(uri=GIST.owns, name="owns", curie=GIST.curie('owns'),
-                   model_uri=GIST_LINKML.owns, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.owns, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.precedes = Slot(uri=GIST.precedes, name="precedes", curie=GIST.curie('precedes'),
-                   model_uri=GIST_LINKML.precedes, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.precedes, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.precedes_directly = Slot(uri=GIST.precedesDirectly, name="precedes_directly", curie=GIST.curie('precedesDirectly'),
-                   model_uri=GIST_LINKML.precedes_directly, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.precedes_directly, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.prevents = Slot(uri=GIST.prevents, name="prevents", curie=GIST.curie('prevents'),
                    model_uri=GIST_LINKML.prevents, domain=Intention, range=Optional[Union[Union[dict, Behavior], list[Union[dict, Behavior]]]])
@@ -1889,13 +1891,13 @@ slots.prohibits = Slot(uri=GIST.prohibits, name="prohibits", curie=GIST.curie('p
                    model_uri=GIST_LINKML.prohibits, domain=Intention, range=Optional[Union[Union[dict, Behavior], list[Union[dict, Behavior]]]])
 
 slots.provides_order_for = Slot(uri=GIST.providesOrderFor, name="provides_order_for", curie=GIST.curie('providesOrderFor'),
-                   model_uri=GIST_LINKML.provides_order_for, domain=OrderedMember, range=Optional[str])
+                   model_uri=GIST_LINKML.provides_order_for, domain=OrderedMember, range=Optional[Union[dict, "Any"]])
 
 slots.refers_to = Slot(uri=GIST.refersTo, name="refers_to", curie=GIST.curie('refersTo'),
-                   model_uri=GIST_LINKML.refers_to, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.refers_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.requires = Slot(uri=GIST.requires, name="requires", curie=GIST.curie('requires'),
-                   model_uri=GIST_LINKML.requires, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.requires, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.actual_end_date = Slot(uri=GIST.actualEndDate, name="actual_end_date", curie=GIST.curie('actualEndDate'),
                    model_uri=GIST_LINKML.actual_end_date, domain=None, range=Optional[Union[str, XSDDateTime]])

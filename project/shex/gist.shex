@@ -81,6 +81,12 @@ linkml:Sparqlpath xsd:string
     } OR @<Account> OR @<Contract>
 )
 
+<Any> CLOSED {
+    (  $<Any_tes> rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
 <Aspect> CLOSED {
     (  $<Aspect_tes> (  &<GistThing_tes> ;
           rdf:type [ <GistThing> ] ? ;

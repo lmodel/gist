@@ -564,8 +564,9 @@ gist:actualStartYear a owl:DatatypeProperty ;
     skos:inScheme gist_linkml:core ;
     skos:note "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
 
-gist:allows a owl:DatatypeProperty ;
+gist:allows a owl:ObjectProperty ;
     rdfs:label "allows" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "allows" ;
     skos:definition "Relates a permission to a particular activity or type of activity it allows." ;
     skos:inScheme gist_linkml:core .
@@ -604,8 +605,9 @@ gist:conformsTo a owl:ObjectProperty ;
     skos:inScheme gist_linkml:core ;
     gist_linkml:range_includes "gist:Intention" .
 
-gist:contributesTo a owl:DatatypeProperty ;
+gist:contributesTo a owl:ObjectProperty ;
     rdfs:label "contributes_to" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "contributes to" ;
     skos:definition "The subject helps achieve or fulfill the goals or functions of the object." ;
     skos:inScheme gist_linkml:core .
@@ -784,8 +786,9 @@ gist:goesToPlace a owl:DatatypeProperty ;
     skos:definition "Relates something to its destination place." ;
     skos:inScheme gist_linkml:core .
 
-gist:hasAddend a owl:DatatypeProperty ;
+gist:hasAddend a owl:ObjectProperty ;
     rdfs:label "has_addend" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has addend" ;
     skos:definition "Relates an aspect to another aspect that is an additive component of it." ;
     skos:inScheme gist_linkml:core ;
@@ -813,37 +816,42 @@ gist:hasBiologicalParent a owl:ObjectProperty ;
     skos:definition "Relates a living thing to its biological parent." ;
     skos:inScheme gist_linkml:core .
 
-gist:hasDirectBroader a owl:DatatypeProperty ;
+gist:hasDirectBroader a owl:ObjectProperty ;
     rdfs:label "has_direct_broader" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:hasBroader ;
     skos:altLabel "has direct broader" ;
     skos:definition "Relates a thing to another thing with a broader meaning, when there is no intermediate between them." ;
     skos:inScheme gist_linkml:core ;
     skos:note "Unlike gist:hasBroader, this property is not transitive. It is safest to use this property when semantic directness is inherent in the relationship. Otherwise, there is a risk of making a hasDirectBroader assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:hasBroader." .
 
-gist:hasDivisor a owl:DatatypeProperty ;
+gist:hasDivisor a owl:ObjectProperty ;
     rdfs:label "has_divisor" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has divisor" ;
     skos:definition "Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor." ;
     skos:inScheme gist_linkml:core ;
     skos:note "Provides a supplemental method of decomposing a unit of measure or an aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles." .
 
-gist:hasGiver a owl:DatatypeProperty ;
+gist:hasGiver a owl:ObjectProperty ;
     rdfs:label "has_giver" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:hasParticipant ;
     skos:altLabel "has giver" ;
     skos:definition "Relates something to the participant that provides it." ;
     skos:inScheme gist_linkml:core ;
     skos:note "This property is often used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:comesFromAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift." .
 
-gist:hasGoal a owl:DatatypeProperty ;
+gist:hasGoal a owl:ObjectProperty ;
     rdfs:label "has_goal" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has goal" ;
     skos:definition "Relates something to the end towards which it directs effort." ;
     skos:inScheme gist_linkml:core .
 
-gist:hasIncumbent a owl:DatatypeProperty ;
+gist:hasIncumbent a owl:ObjectProperty ;
     rdfs:label "has_incumbent" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has incumbent" ;
     skos:definition "Relates a position to the thing or person that currently holds that position." ;
     skos:inScheme gist_linkml:core ;
@@ -856,8 +864,9 @@ gist:hasMagnitude a owl:ObjectProperty ;
     skos:definition "Relates a thing to a magnitude." ;
     skos:inScheme gist_linkml:core .
 
-gist:hasMultiplier a owl:DatatypeProperty ;
+gist:hasMultiplier a owl:ObjectProperty ;
     rdfs:label "has_multiplier" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has multiplier" ;
     skos:definition "Relates a unit of measure to another unit of measure that is a factor, or relates an aspect to another aspect that is a factor." ;
     skos:inScheme gist_linkml:core ;
@@ -881,30 +890,34 @@ gist:hasPhysicalLocation a owl:ObjectProperty,
     skos:inScheme gist_linkml:core ;
     skos:note "This property does not distinguish between things whose locations are stable and those whose locations change over time; e.g., a fire hydrant vs. a car." .
 
-gist:hasRecipient a owl:DatatypeProperty ;
+gist:hasRecipient a owl:ObjectProperty ;
     rdfs:label "has_recipient" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:hasParticipant ;
     skos:altLabel "has recipient" ;
     skos:definition "Relates something to the participant that receives or is intended to receive it." ;
     skos:inScheme gist_linkml:core ;
     skos:note "This property is used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:goesToAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift." .
 
-gist:hasSubtrahend a owl:DatatypeProperty ;
+gist:hasSubtrahend a owl:ObjectProperty ;
     rdfs:label "has_subtrahend" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has subtrahend" ;
     skos:definition "Relates an aspect to another aspect that is a subtracted component of it." ;
     skos:inScheme gist_linkml:core ;
     skos:note "Commonly used with financial metrics." .
 
-gist:hasUniqueBroader a owl:DatatypeProperty ;
+gist:hasUniqueBroader a owl:ObjectProperty ;
     rdfs:label "has_unique_broader" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:hasBroader ;
     skos:altLabel "has unique broader" ;
     skos:definition "Relates a thing to a unique other thing with a broader meaning." ;
     skos:inScheme gist_linkml:core .
 
-gist:hasUniqueNavigationalParent a owl:DatatypeProperty ;
+gist:hasUniqueNavigationalParent a owl:ObjectProperty ;
     rdfs:label "has_unique_navigational_parent" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:hasNavigationalParent ;
     skos:altLabel "has unique navigational parent" ;
     skos:definition "Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy." ;
@@ -936,15 +949,17 @@ gist:idText a owl:DatatypeProperty ;
         "Often, there will be just one identifying text string. More would be appropriate if the individual had different identifiers, such as employee number and social security number. A good way to model that would be to have functional subproperties of idText, such as departmentNumber.",
         "This property is an alternative to using the property gist:isIdentifiedBy in conjunction with instances of the class gist:ID." .
 
-gist:isAbout a owl:DatatypeProperty ;
+gist:isAbout a owl:ObjectProperty ;
     rdfs:label "is_about" ;
     rdfs:domain gist:Content ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is about" ;
     skos:definition "Subject matter of a document." ;
     skos:inScheme gist_linkml:core .
 
-gist:isAffectedBy a owl:DatatypeProperty ;
+gist:isAffectedBy a owl:ObjectProperty ;
     rdfs:label "is_affected_by" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is affected by" ;
     skos:definition "Relates an affected thing to the source of the effect." ;
     skos:inScheme gist_linkml:core .
@@ -970,17 +985,19 @@ gist:isAssignmentOf a owl:DatatypeProperty ;
     gist_linkml:domain_includes "gist:Assignment" ;
     gist_linkml:range_includes "gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person" .
 
-gist:isAssignmentTo a owl:DatatypeProperty ;
+gist:isAssignmentTo a owl:ObjectProperty ;
     rdfs:label "is_assignment_to" ;
     rdfs:domain gist:Assignment ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is assignment to" ;
     skos:definition "Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate." ;
     skos:inScheme gist_linkml:core ;
     skos:note "While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified." ;
     gist_linkml:domain_includes "gist:Assignment" .
 
-gist:isBasedOn a owl:DatatypeProperty ;
+gist:isBasedOn a owl:ObjectProperty ;
     rdfs:label "is_based_on" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is based on" ;
     skos:definition "The object is a foundation for, a starting point for, gave rise to, or justifies the subject." ;
     skos:inScheme gist_linkml:core .
@@ -993,15 +1010,17 @@ gist:isCategorizedBy a owl:ObjectProperty ;
     skos:inScheme gist_linkml:core ;
     gist_linkml:range_includes "gist:Category" .
 
-gist:isConnectedTo a owl:DatatypeProperty,
+gist:isConnectedTo a owl:ObjectProperty,
         owl:SymmetricProperty ;
     rdfs:label "is_connected_to" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is connected to" ;
     skos:definition "A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship." ;
     skos:inScheme gist_linkml:core .
 
-gist:isDirectPartOf a owl:DatatypeProperty ;
+gist:isDirectPartOf a owl:ObjectProperty ;
     rdfs:label "is_direct_part_of" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:isPartOf ;
     skos:altLabel "is direct part of" ;
     skos:definition "The relationship between a part and a whole where the part has independent existence and there are no other parts in between." ;
@@ -1038,8 +1057,9 @@ gist:isGeoContainedIn a owl:ObjectProperty,
     skos:definition "Relates one geographic location to another that contains it." ;
     skos:inScheme gist_linkml:core .
 
-gist:isGovernedBy a owl:DatatypeProperty ;
+gist:isGovernedBy a owl:ObjectProperty ;
     rdfs:label "is_governed_by" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is governed by" ;
     skos:definition "Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it." ;
     skos:inScheme gist_linkml:core .
@@ -1060,8 +1080,9 @@ gist:isMadeUpOf a owl:ObjectProperty ;
     skos:definition "Relates something to a substance that it is made up of." ;
     skos:inScheme gist_linkml:core .
 
-gist:isProducedBy a owl:DatatypeProperty ;
+gist:isProducedBy a owl:ObjectProperty ;
     rdfs:label "is_produced_by" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is produced by" ;
     skos:definition "Relates something to the thing that created, composed, or brought it into existence." ;
     skos:inScheme gist_linkml:core .
@@ -1081,8 +1102,9 @@ gist:isRecordedAt a owl:DatatypeProperty ;
     skos:inScheme gist_linkml:core ;
     skos:note "Precision may vary according to context." .
 
-gist:isRenderedOn a owl:DatatypeProperty ;
+gist:isRenderedOn a owl:ObjectProperty ;
     rdfs:label "is_rendered_on" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is rendered on" ;
     skos:definition "Relates content to the media on which it is rendered." ;
     skos:inScheme gist_linkml:core .
@@ -1093,8 +1115,9 @@ gist:isSupersededBy a owl:DatatypeProperty ;
     skos:definition "Relates a deprecated term to a term that replaces it, which is either an exact (in the case of simple renaming) or approximate (in the case of renaming and some semantic change) semantic match." ;
     skos:inScheme gist_linkml:core .
 
-gist:isTriggeredBy a owl:DatatypeProperty ;
+gist:isTriggeredBy a owl:ObjectProperty ;
     rdfs:label "is_triggered_by" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is triggered by" ;
     skos:definition "Relates a contingency, such as an event or obligation, to the event that gives rise to it." ;
     skos:inScheme gist_linkml:core ;
@@ -1162,32 +1185,36 @@ gist:numericValue a owl:DatatypeProperty ;
     skos:editorialNote "OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)" ;
     skos:inScheme gist_linkml:core .
 
-gist:occursIn a owl:DatatypeProperty ;
+gist:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs_in" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "occurs in" ;
     skos:definition "Relates something, such as an event, to the geographic location where it did, does, or will happen." ;
     skos:inScheme gist_linkml:core .
 
-gist:offersToProvide a owl:DatatypeProperty ;
+gist:offersToProvide a owl:ObjectProperty ;
     rdfs:label "offers_to_provide" ;
     rdfs:domain gist:Offer ;
+    rdfs:range linkml:Any ;
     skos:altLabel "offers to provide" ;
     skos:definition "Relates an offer to the thing being made available for exchange." ;
     skos:inScheme gist_linkml:core ;
     skos:note "This will most often be a good or service, but could be an amount of money, e.g., for currency exchange." ;
     gist_linkml:domain_includes "gist:Offer" .
 
-gist:offersToReceive a owl:DatatypeProperty ;
+gist:offersToReceive a owl:ObjectProperty ;
     rdfs:label "offers_to_receive" ;
     rdfs:domain gist:Offer ;
+    rdfs:range linkml:Any ;
     skos:altLabel "offers to receive" ;
     skos:definition "Relates an offer to the thing expected in return for the offered item." ;
     skos:inScheme gist_linkml:core ;
     skos:note "This will most often be an amount of money, but could be anything of value, as in swaps." ;
     gist_linkml:domain_includes "gist:Offer" .
 
-gist:owns a owl:DatatypeProperty ;
+gist:owns a owl:ObjectProperty ;
     rdfs:label "owns" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "owns" ;
     skos:definition "Relates a party to something that it possesses and controls." ;
     skos:editorialNote "OWL domain: (gist:Organization | gist:Person)" ;
@@ -1249,8 +1276,9 @@ gist:plannedStartYear a owl:DatatypeProperty ;
     skos:inScheme gist_linkml:core ;
     skos:note "Used for anything with a planned start date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
 
-gist:precedesDirectly a owl:DatatypeProperty ;
+gist:precedesDirectly a owl:ObjectProperty ;
     rdfs:label "precedes_directly" ;
+    rdfs:range linkml:Any ;
     rdfs:subPropertyOf gist:precedes ;
     skos:altLabel "precedes directly" ;
     skos:definition "A generic ordering relation indicating that the subject comes immediately before the object." ;
@@ -1269,9 +1297,10 @@ gist:prevents a owl:ObjectProperty ;
     skos:exactMatch gist:prohibits ;
     skos:inScheme gist_linkml:core .
 
-gist:providesOrderFor a owl:DatatypeProperty ;
+gist:providesOrderFor a owl:ObjectProperty ;
     rdfs:label "provides_order_for" ;
     rdfs:domain gist:OrderedMember ;
+    rdfs:range linkml:Any ;
     skos:altLabel "provides order for" ;
     skos:definition "Links a member of an ordered collection to the real-world item it represents in that collection." ;
     skos:inScheme gist_linkml:core .
@@ -1285,14 +1314,16 @@ gist:rangeIncludes a owl:DatatypeProperty ;
         "This property is used to guide the ontology user; like all annotation properties, it does not play a role in inference." ;
     skos:relatedMatch skos:scopeNote .
 
-gist:refersTo a owl:DatatypeProperty ;
+gist:refersTo a owl:ObjectProperty ;
     rdfs:label "refers_to" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "refers to" ;
     skos:definition "Relates something to another resource that it points to, indicates, or references." ;
     skos:inScheme gist_linkml:core .
 
-gist:requires a owl:DatatypeProperty ;
+gist:requires a owl:ObjectProperty ;
     rdfs:label "requires" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "requires" ;
     skos:definition "The subject needs the object or makes it necessary, mandatory, or compulsory." ;
     skos:inScheme gist_linkml:core ;
@@ -1536,8 +1567,9 @@ gist:hasAccuracy a owl:ObjectProperty ;
 Note that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance).""" ;
     gist_linkml:domain_includes "gist:Magnitude" .
 
-gist:hasNavigationalParent a owl:DatatypeProperty ;
+gist:hasNavigationalParent a owl:ObjectProperty ;
     rdfs:label "has_navigational_parent" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has navigational parent" ;
     skos:definition "Relates a child category to a parent category in an informal (e.g., faceted) hierarchy." ;
     skos:inScheme gist_linkml:core .
@@ -1550,18 +1582,20 @@ gist:isMemberOf a owl:DatatypeProperty ;
     skos:inScheme gist_linkml:core ;
     gist_linkml:range_includes "gist:Collection, gist:Organization" .
 
-gist:isPartOf a owl:DatatypeProperty,
+gist:isPartOf a owl:ObjectProperty,
         owl:TransitiveProperty ;
     rdfs:label "is_part_of" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "is part of" ;
     skos:definition "The relationship between a part and a whole where the part has independent existence." ;
     skos:inScheme gist_linkml:core ;
     skos:note "Because the part has independent existence, there is no cascading delete.",
         "The transitive version of gist:isDirectPartOf." .
 
-gist:precedes a owl:DatatypeProperty,
+gist:precedes a owl:ObjectProperty,
         owl:TransitiveProperty ;
     rdfs:label "precedes" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "precedes" ;
     skos:definition "A generic ordering relation indicating that the subject comes before the object." ;
     skos:inScheme gist_linkml:core ;
@@ -1768,9 +1802,10 @@ gist:endDateTime a owl:DatatypeProperty ;
     skos:note "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).",
         "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." .
 
-gist:hasBroader a owl:DatatypeProperty,
+gist:hasBroader a owl:ObjectProperty,
         owl:TransitiveProperty ;
     rdfs:label "has_broader" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has broader" ;
     skos:definition "Relates a thing to another thing with a broader meaning." ;
     skos:inScheme gist_linkml:core .
@@ -2133,8 +2168,9 @@ gist:Magnitude a owl:Class ;
     skos:note "An accuracy can be assigned to a magnitude using the property has accuracy." ;
     skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Price> .
 
-gist:hasParticipant a owl:DatatypeProperty ;
+gist:hasParticipant a owl:ObjectProperty ;
     rdfs:label "has_participant" ;
+    rdfs:range linkml:Any ;
     skos:altLabel "has participant" ;
     skos:definition "Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way." ;
     skos:inScheme gist_linkml:core ;
@@ -2267,8 +2303,11 @@ gist:Category a owl:Class ;
 gist_linkml:GistThing a owl:Class ;
     rdfs:label "GistThing" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty gist:name ],
+            owl:minCardinality 0 ;
+            owl:onProperty gist:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty gist:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty gist:name ],
@@ -2279,12 +2318,15 @@ gist_linkml:GistThing a owl:Class ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty gist:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty gist:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty gist:description ] ;
+            owl:maxCardinality 1 ;
+            owl:onProperty gist:name ] ;
     skos:definition "Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world)." ;
+    skos:inScheme gist_linkml:core .
+
+linkml:Any a owl:Class ;
+    rdfs:label "Any" ;
+    skos:definition "Any individual: the range of an object property gist leaves open." ;
+    skos:exactMatch gist_linkml:Any ;
     skos:inScheme gist_linkml:core .
 
 
