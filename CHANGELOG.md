@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-10-15
+
 ### Security
 
 - **The sidecar copies and the skills pin match ktl-sidecar `v0.43.1`.** The pin had stayed at `v0.27.1`; the sync adds the apply and report scripts and the gate's newer conventions checks.
