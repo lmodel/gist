@@ -13,8 +13,8 @@
 # the call, not a rule an agent has to keep (docs/threat-model.md,
 # "Prompt-injection guards").
 #
-# It prints one line - the kind, the date, and how many entries now wait - and
-# never any entry's text, the new one included. A caller that wants to show
+# It prints one line, with the kind, the date and how many entries now wait,
+# and never any entry's text, the new one included. A caller that wants to show
 # the reader what it recorded already has that text; it does not need this
 # file to tell it.
 #
@@ -22,39 +22,54 @@
 # for Windows, like the other scripts here.
 #
 # Usage:
-#   knowledge-feedback.sh [--root <dir>] [--for <login>] <kind> <text>
+#   knowledge-feedback.sh [--root <dir>] [--for <login>] [--concept <path>] <kind> <text>
 #
-#   kind    Miss or Disagreement, in any letter case, and nothing else - the
+#   kind    Miss or Disagreement, in any letter case, and nothing else: the
 #           two shapes ktl-librarian knows how to consume.
 #   text    the entry itself, one argument. Whitespace is collapsed, so a
-#           multi-line string still lands as one line per entry.
+#           multi-line string is still written as one line per entry.
 #   --for   an authenticated login (gh api user --jq .login, or glab), which
 #           records the entry as `- docent, for human:<login>`. Left out, the
-#           entry is `- docent` alone. Never a name typed in conversation and
-#           never git config user.name: the attribution is only worth carrying
-#           if the forge stands behind it.
+#           entry is `- docent` alone. It is never a name typed in
+#           conversation and never git config user.name: the attribution is
+#           only worth carrying if the forge stands behind it.
 #   --root  the repository root (default: the nearest ancestor of the current
 #           directory holding .lokf/, else the current directory).
+#   --concept  with a Disagreement only, the bundle path of the concept the
+#           reader disputes, such as services/orders-api.md. It must name a
+#           concept file under .lokf/knowledge, in the bundle's lowercase
+#           spelling. The entry then reads `- **Disagreement** (on `<path>`) -`,
+#           and knowledge-report.sh labels that concept as disputed until the
+#           librarian handles the entry. The report reads the path and never
+#           the text.
 #
 # The day heading is today in UTC, as the bundle's own timestamps are, so two
 # machines in different zones file one day under one heading.
 #
-# Exit: 0 recorded; 2 the call was wrong and nothing was written; 1 the file
-# could not be written (a read-only .lokf/, most often, or another run holding
-# it), and the caller should tell the reader the gap out loud instead.
+# Exit:
+#   0  recorded;
+#   2  the call was wrong, and nothing was written;
+#   1  the file could not be written (a read-only .lokf/, most often, or
+#      another run holding it), and the caller should tell the reader the gap
+#      out loud instead.
 [ -n "${BASH_VERSION:-}" ] || { echo "run this with bash: bash ${0##*/} [--root <dir>] [--for <login>] <kind> <text>" >&2; exit 2; }
 set -u
+# A-Z, a-z and 0-9 in a case glob mean the ASCII letters and digits, not
+# whatever a locale collates between them, so a login check below cannot be
+# widened by the host's locale. A no-op where the option is unknown (bash 3.2).
+shopt -s globasciiranges 2>/dev/null || :
 
 usage() {
-  echo "usage: ${0##*/} [--root <dir>] [--for <login>] <Miss|Disagreement> <text>" >&2
+  echo "usage: ${0##*/} [--root <dir>] [--for <login>] [--concept <path>] <Miss|Disagreement> <text>" >&2
   exit 2
 }
 
-root=""; asker=""
+root=""; asker=""; concept=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --root) [ $# -ge 2 ] || usage; root="$2"; shift 2 ;;
     --for)  [ $# -ge 2 ] || usage; asker="$2"; shift 2 ;;
+    --concept) [ $# -ge 2 ] || usage; concept="$2"; shift 2 ;;
     -h|--help) usage ;;
     --) shift; break ;;
     -*) echo "unknown option: $1" >&2; usage ;;
@@ -75,14 +90,29 @@ case "$kind" in
 esac
 
 # The attribution is the one field a later reader may take as evidence that a
-# named person asked, so it is held to a login's characters before it is
-# written: the shape both provenance gates accept, so a login they would pass
-# is never refused here and one they would refuse never gets in.
+# named person asked. So it must hold only a login's characters before it is
+# written, the shape both provenance gates accept. A login they would pass is
+# then never refused here, and one they would refuse never gets in.
 if [ -n "$asker" ]; then
   case "$asker" in
     *[!A-Za-z0-9._-]*|[!A-Za-z0-9]*)
       echo "--for takes a forge login (a letter or digit, then letters, digits, '.', '_' or '-'), not '$asker'" >&2; exit 2 ;;
   esac
+fi
+
+# The concept a Disagreement names is the one field a program reads back:
+# knowledge-report.sh labels that concept as disputed while the entry waits.
+# So it holds only the bundle's own path spelling (conventions rule 8), no
+# `..`, and must name a concept file that exists. A Miss names a gap, not a
+# concept, so it takes none.
+if [ -n "$concept" ]; then
+  [ "$kind" = Disagreement ] || { echo "--concept goes with a Disagreement only; a Miss names a gap, not a concept the bundle holds" >&2; exit 2; }
+  case "$concept" in
+    *[!a-z0-9._/-]*|[!a-z0-9]*|*..*|*/|*//*|*/./*)
+      echo "--concept takes a concept's path in the bundle, in lowercase with no '..' or '.' segment, such as services/orders-api.md, not '$concept'" >&2; exit 2 ;;
+  esac
+  case "$concept" in *.md) ;; *) echo "--concept takes the concept's file, ending in .md, not '$concept'" >&2; exit 2 ;; esac
+  case "${concept##*/}" in index.md|log.md) echo "--concept takes a concept, not the bundle's $concept" >&2; exit 2 ;; esac
 fi
 
 # One entry is one line. Collapse every whitespace run, drop control
@@ -103,28 +133,31 @@ root="$(cd "$root" 2>/dev/null && pwd -P)" || { echo "no such directory: $root" 
 # Feedback is a report against a bundle. With no bundle there is nothing for
 # the librarian to fix, and ktl-docent is told to say so instead of writing.
 [ -d "$root/.lokf/knowledge" ] || { echo "no .lokf/knowledge under $root - no bundle to record a gap against; say the gap out loud, and that ktl-sidecar can create one" >&2; exit 2; }
+if [ -n "$concept" ] && [ ! -f "$root/.lokf/knowledge/$concept" ]; then
+  echo "--concept names no concept in this bundle: $concept - record the Disagreement without it" >&2; exit 2
+fi
 
 file="$root/.lokf/feedback.md"
 tmp="$file.$$"
 lock="$file.lock"
 today="$(date -u +%Y-%m-%d)"
-entry="- **$kind** - $text - docent${asker:+, for human:$asker}"
+entry="- **$kind**${concept:+ (on \`$concept\`)} - $text - docent${asker:+, for human:$asker}"
 
 # ---- the file --------------------------------------------------------------
 readonly_bundle() {
   echo "cannot write $file - if .lokf/ is read-only, say the gap out loud to the reader instead" >&2
   exit 1
 }
-# The rewrite below lands a temporary file beside this one, so the directory
+# The rewrite below writes a temporary file beside this one, so the directory
 # has to be writable even when the file itself already is.
 [ -w "$root/.lokf" ] || readonly_bundle
 
-# Two runs at once - parallel agents in one checkout - would each read the
-# file, and the second mv would drop the first entry without a word. A
+# Two runs at once, such as parallel agents in one checkout, would each read
+# the file, and the second mv would drop the first entry without a word. A
 # directory is the one lock every platform here creates atomically. A run
 # killed outright leaves it behind; the message says what to remove. When
-# mkdir fails and no lock is there, nothing can be created here at all - a
-# read-only mount that -w did not see - and that is the other message.
+# mkdir fails and no lock is there, nothing can be created here at all, on a
+# read-only mount that -w did not see, and that is the other message.
 tries=0
 until mkdir "$lock" 2>/dev/null; do
   [ -d "$lock" ] || readonly_bundle
@@ -151,16 +184,16 @@ fi
 [ -w "$file" ] || readonly_bundle
 
 # Newest first, which is why this cannot be a plain append: today goes above
-# every older day and its entry above today's earlier ones. The entry travels
-# in the environment rather than through -v, which would read a backslash in
-# the text as an escape.
+# every older day and its entry above today's earlier ones. The entry is
+# passed in the environment rather than through -v, which would read a
+# backslash in the text as an escape.
 KF_ENTRY="$entry" awk -v hdr="## $today" '
   BEGIN { entry = ENVIRON["KF_ENTRY"]; done = 0; skipblank = 0; last = "" }
   # Headings are days, newest first, and ISO dates order as strings. Today
   # goes under the first heading that is today, or above the first that is
-  # older. A heading after today - another machine on a clock ahead of this
-  # one, or a wrong clock - stays where it is, so the file keeps its order
-  # instead of gaining a second heading for today further down.
+  # older. A heading after today, from another machine on a clock ahead of
+  # this one or from a wrong clock, stays where it is. So the file keeps its
+  # order instead of gaining a second heading for today further down.
   /^## / && done == 0 {
     h = $0; sub(/[ \t\r]+$/, "", h)
     if (h == hdr) { print hdr; print ""; print entry; skipblank = 1; done = 1; next }

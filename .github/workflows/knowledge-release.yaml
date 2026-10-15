@@ -3,7 +3,7 @@ name: Knowledge Release
 # Attaches the LOKF knowledge bundle to a GitHub release as a zip file, so a
 # reader can take the bundle as it stood at that release without cloning the
 # repository, and open it with any operating system's own tools. Beside it,
-# when the host has laid down .lokf/m365/, one Microsoft 365 Copilot skill
+# when the host has installed .lokf/m365/, one Microsoft 365 Copilot skill
 # zip per instructions file there, for a person with nothing installed to
 # upload to Agent Builder. It runs no LLM or agent, and it never commits or pushes.
 #
@@ -13,9 +13,11 @@ name: Knowledge Release
 #                       starting it by hand is the decision to publish.
 #
 #   release published   runs only once the KNOWLEDGE_RELEASE_ENABLED
-#                       repository variable is "true". Unset, every release
+#                       repository variable is "true" (Repository variables,
+#                       not an environment's, which this job's `if:` cannot
+#                       see). Unset, every release
 #                       shows this run as skipped, so the workflow is inert
-#                       until someone arms it.
+#                       until someone turns it on.
 #
 # GitHub starts no workflow for a release created with the default
 # GITHUB_TOKEN. If your release job makes the release that way, the release
@@ -69,7 +71,7 @@ jobs:
       TAG: ${{ inputs.tag || github.event.release.tag_name }}
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
@@ -148,20 +150,23 @@ jobs:
 
       - name: Set up uv
         if: steps.compare.outputs.changed == 'true'
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           python-version: "3.12"
 
+      # --locked, as the registrar's gate installs it: what .lokf/uv.lock
+      # names, each file checked against its recorded hash.
       - name: Install the lokf sidecar
         if: steps.compare.outputs.changed == 'true'
-        run: uv sync
+        run: uv sync --locked
         working-directory: .lokf
 
-      # The registrar's two checks, so a release never carries a bundle its
-      # own gate would fail.
+      # The registrar's two checks, run as its gate runs them, so a release
+      # never carries a bundle that gate would fail. The recipe passes the
+      # domain schema the justfile's `schema` line names.
       - name: Validate the knowledge bundle and its relation targets
         if: steps.compare.outputs.changed == 'true'
-        run: uv run lokf validate --check-refs knowledge
+        run: uvx --from rust-just==1.47.0 just lokf-check-refs
         working-directory: .lokf
 
       - name: Check the conventions lokf validate cannot see
@@ -218,7 +223,7 @@ jobs:
       # Build one Copilot skill per .lokf/m365/*.md with the host's
       # knowledge-m365.sh, dated at the bundle's commit so each zip is
       # reproducible. If the builder is missing or refuses the bundle, the
-      # step posts a notice and the release ships the bundle zip alone.
+      # step posts a notice and the release carries the bundle zip alone.
       - name: Pack the Copilot skills
         if: steps.compare.outputs.changed == 'true'
         env:
@@ -247,7 +252,7 @@ jobs:
 
       - name: Upload the zip
         if: steps.compare.outputs.changed == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: knowledge-release
           path: ${{ runner.temp }}/release/
@@ -267,12 +272,12 @@ jobs:
       TAG: ${{ inputs.tag || github.event.release.tag_name }}
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
       - name: Download the zip
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: knowledge-release
           path: ${{ runner.temp }}/release
