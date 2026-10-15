@@ -106,14 +106,17 @@ jobs:
           config: .markdownlint-cli2.jsonc
       # The remap checks this repository's own links on `main` (the bundle and
       # the issue templates use them) against this checkout, so a pull request
-      # that moves a linked file fails here rather than after merge. The
-      # action evals its args, so the remap is single-quoted to keep its `$1`.
+      # that moves a linked file fails here rather than after merge. A
+      # --remap replaces lychee.toml's remap rather than adding to it, so its
+      # raw.githubusercontent.com remap follows; the first match wins. The
+      # action evals its args, so each remap is single-quoted to keep its `$1`.
       - name: Check links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           args: >-
             --no-progress
             --remap 'https://github.com/lmodel/gist/(?:blob|tree)/main/(.*) file://${{ github.workspace }}/$1'
+            --remap '^https://github\.com/([^/]+/[^/]+)/blob/([^?#]+)([?#].*)?$ https://raw.githubusercontent.com/$1/$2'
             "**/*.md"
           fail: true
       # Not codespell-project/actions-codespell: it hands its path to

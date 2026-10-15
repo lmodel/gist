@@ -2,6 +2,12 @@
 # knowledge bundle, whose links are as much this repository's as the README's.
 hidden = true
 
+# A failed request is retried with a wait that grows each time, so a host
+# that answers a burst with 503 (github.com, below) has time to recover
+# before the link is declared dead.
+max_retries = 3
+retry_wait_time = 5
+
 exclude = [
   # LOKF's published JSON-LD context; upstream's identifier, not this repo's,
   # currently 404s. Drop once the w3id.org redirect is registered.
@@ -34,3 +40,21 @@ exclude_path = [
   "(^|/)docs/templates-linkml/",
   "(^|/)src/semantic-arts/",
 ]
+
+# github.com answers automated clients with 503 or 429 on a file page
+# (/blob/) while it serves the repository pages. raw.githubusercontent.com
+# serves the same file at the same commit, tag or branch, and answers 404
+# once the file is gone, so lychee checks each file link there instead.
+# lint-and-docs.yaml repeats it after its own --remap, which checks this
+# repository's links on main against the checkout: a --remap on the command
+# line replaces this list rather than adding to it.
+remap = [
+  '^https://github\.com/([^/]+/[^/]+)/blob/([^?#]+)([?#].*)?$ https://raw.githubusercontent.com/$1/$2',
+]
+
+# The rest of github.com also answers a burst of requests from one CI runner
+# with 503. Pace the requests to it rather than exclude it, so a moved or
+# deleted page still fails.
+[hosts."github.com"]
+concurrency = 2
+request_interval = "250ms"
