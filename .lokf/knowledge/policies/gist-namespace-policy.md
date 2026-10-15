@@ -3,24 +3,24 @@ type: Policy
 genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/policies/gist-namespace-policy
 title: gist namespace policy
-description: gist's terms keep Semantic Arts' IRIs and this project defines nothing in Semantic Arts' namespace; what the LinkML rendering adds lives under gist_linkml (https://w3id.org/lmodel/gist/).
+description: gist's terms keep Semantic Arts' IRIs and this project defines nothing in Semantic Arts' namespace; what the LinkML rendering adds lives under gist_linkml (`https://w3id.org/lmodel/gist/`).
 resource: https://github.com/lmodel/gist/blob/main/README.md
 source:
-  - https://w3id.org/lmodel/gist/knowledge/org/semantic-arts
+- https://w3id.org/lmodel/gist/knowledge/org/semantic-arts
 about:
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
-  - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
+- https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 references:
-  - https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
-  - https://w3id.org/lmodel/gist/knowledge/services/gist-to-linkml
+- https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
+- https://w3id.org/lmodel/gist/knowledge/services/gist-to-linkml
 sources:
-  - resource: https://github.com/semanticarts/gist/blob/v14.1.0/README.md
-    title: gist README, release 14.1.0 (license and namespace conditions)
-  - resource: https://github.com/lmodel/gist/blob/main/README.md
-    title: This repository's README, License and attribution
+- resource: https://github.com/semanticarts/gist/blob/v14.1.0/README.md
+  title: gist README, release 14.1.0 (license and namespace conditions)
+- resource: https://github.com/lmodel/gist/blob/main/README.md
+  title: This repository's README, License and attribution
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T11:23:18Z"
+  at: "2026-10-15T23:26:35Z"
 status: draft
 ---
 

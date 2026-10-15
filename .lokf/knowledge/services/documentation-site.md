@@ -3,15 +3,15 @@ type: Service
 genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/services/documentation-site
 title: gist documentation site
-description: The MkDocs site at https://lmodel.github.io/gist, generated from the gist schema and deployed to GitHub Pages on every push to main.
+description: The MkDocs site at `https://lmodel.github.io/gist`, generated from the gist schema and deployed to GitHub Pages on every push to main.
 resource: https://github.com/lmodel/gist/blob/main/mkdocs.yml
 endpoint: https://lmodel.github.io/gist
 documentation: https://lmodel.github.io/gist
 dependsOn:
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T10:32:37Z"
+  at: "2026-10-15T23:26:35Z"
 status: draft
 ---
 
