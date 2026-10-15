@@ -1,5 +1,11 @@
 # Change Log
 
+## 2026-10-15
+
+* **Changed**: the schema id in the description is set as code, so the index bullet derived from it is not a bare URL.
+* **Changed**: the namespace in the description is set as code, so the index bullet derived from it is not a bare URL.
+* **Changed**: the site address in the description is set as code, so the index bullet derived from it is not a bare URL.
+
 ## 2026-09-29
 
 * **Upstream and target checks**: Added `services/verify-mapping-targets` and `services/upstream-watch` for the target-term checker and the weekly upstream workflow; the source map now lists their scripts and `check_generated_current.py`.

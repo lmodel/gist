@@ -3,46 +3,46 @@ type: Dataset
 genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 title: gist LinkML schema
-description: LinkML rendering of gist 14.1.0 (schema id https://w3id.org/lmodel/gist), generated from the upstream Turtle modules with the curated SSSOM mappings overlaid.
+description: LinkML rendering of gist 14.1.0 (schema id `https://w3id.org/lmodel/gist`), generated from the upstream Turtle modules with the curated SSSOM mappings overlaid.
 resource: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist.yaml
-version: "14.1.0"
+version: 14.1.0
 license: https://creativecommons.org/licenses/by/4.0/
 distribution:
-  - name: gist.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist.yaml
-    media_type: application/yaml
-    description: Aggregator schema; imports gist_core, gist_media_types and gist_prefix_declarations.
-  - name: gist_core.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_core.yaml
-    media_type: application/yaml
-    description: 97 classes, 120 slots and the AspectInstance enum (8 values).
-  - name: gist_media_types.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_media_types.yaml
-    media_type: application/yaml
-    description: MediaTypeInstance enum (14 IANA media types); imports gist_core.
-  - name: gist_prefix_declarations.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_prefix_declarations.yaml
-    media_type: application/yaml
-    description: PrefixDeclarationInstance enum (7 SHACL prefix declarations).
-  - name: gist_rdfs_annotations.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_rdfs_annotations.yaml
-    media_type: application/yaml
-    description: "Supplementary: 96 class and 120 slot stubs carrying rdfs:label and rdfs:comment."
-  - name: gist_sub_class_assertions.yaml
-    access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_sub_class_assertions.yaml
-    media_type: application/yaml
-    description: "Supplementary: 90 class stubs carrying the is_a hierarchy for OWL RL reasoners."
-  - name: Documentation site
-    access_url: https://lmodel.github.io/gist
-    media_type: text/html
+- name: gist.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist.yaml
+  media_type: application/yaml
+  description: Aggregator schema; imports gist_core, gist_media_types and gist_prefix_declarations.
+- name: gist_core.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_core.yaml
+  media_type: application/yaml
+  description: 97 classes, 120 slots and the AspectInstance enum (8 values).
+- name: gist_media_types.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_media_types.yaml
+  media_type: application/yaml
+  description: MediaTypeInstance enum (14 IANA media types); imports gist_core.
+- name: gist_prefix_declarations.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_prefix_declarations.yaml
+  media_type: application/yaml
+  description: PrefixDeclarationInstance enum (7 SHACL prefix declarations).
+- name: gist_rdfs_annotations.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_rdfs_annotations.yaml
+  media_type: application/yaml
+  description: "Supplementary: 96 class and 120 slot stubs carrying rdfs:label and rdfs:comment."
+- name: gist_sub_class_assertions.yaml
+  access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_sub_class_assertions.yaml
+  media_type: application/yaml
+  description: "Supplementary: 90 class stubs carrying the is_a hierarchy for OWL RL reasoners."
+- name: Documentation site
+  access_url: https://lmodel.github.io/gist
+  media_type: text/html
 derivedFrom:
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-cdm-mappings
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-dpvs-mappings
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-iso22989-mappings
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-cdm-mappings
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-dpvs-mappings
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-iso22989-mappings
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T11:22:44Z"
+  at: "2026-10-15T23:26:35Z"
 status: draft
 ---
 

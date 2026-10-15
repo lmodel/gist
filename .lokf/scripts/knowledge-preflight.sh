@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# What this host can and cannot do for the four LOKF skills: one read-only
+# What this host can and cannot do for the KTL skills: one read-only
 # screen, no toolkit needed. Every skill runs it first and repeats its summary
 # line in the hand-off, so a missing tool disables a step out loud instead of
 # being discovered after a report has already offered that step.
@@ -9,7 +9,7 @@
 # Exit 0 always: the skills read the lines; nothing here is a gate.
 #
 # Bash 3.2 and POSIX tools only, so it runs on macOS's stock bash and on Git
-# for Windows. From PowerShell, run it through Git for Windows' bash - the
+# for Windows. From PowerShell, run it through Git for Windows' bash: the
 # one-liner is in ktl-sidecar/references/portability.md.
 #
 # Usage: knowledge-preflight.sh [repo-root]   (default: the nearest ancestor of
@@ -50,9 +50,9 @@ printf 'Preflight for %s\n' "$root"
 ok host "$host, bash ${BASH_VERSION%%(*}; digest: ${digest:-none (macOS: install coreutils, or use uv run python)}; python: ${py:-none (use uv run python)}"
 
 # ---- bundle ----------------------------------------------------------------
-# The trailing slash on every find: a host may have made .lokf/knowledge a link
-# onto a visible knowledge_bundle/ folder, and find never enters a link it is
-# handed bare - it would count zero concepts and say nothing.
+# Every find takes a trailing slash. A host may have made .lokf/knowledge a
+# link onto a visible knowledge_bundle/ folder, and find never enters a link
+# it is handed bare: it would count zero concepts and say nothing.
 bundle="$root/.lokf/knowledge"
 if [ -d "$bundle" ]; then
   n="$(find "$bundle/" -name '*.md' -not -path '*/.obsidian/*' -not -name index.md -not -name log.md -not -name diataxis.md | wc -l | tr -d ' ')"
@@ -195,14 +195,21 @@ if have uv; then
   fi
   if have just; then ok just "just $(just --version 2>/dev/null | sed 's/^just //')"; else info just "just not installed - uvx --from rust-just just works the same"; fi
 else
-  miss toolkit "uv not installed - lokf validate, convert and query unavailable, and the conventions script skips its parser's half (rules 2, 3, 4, 7, 9, 10); only the manual schema cross-check remains" "lokf validate and six of the eleven conventions (every skill's audit)"
+  miss toolkit "uv not installed - lokf validate, convert and query unavailable, and the conventions script skips its parser's half (rules 2, 3, 4, 7, 9, 10, 12, 13, 14); only the manual schema cross-check remains" "lokf validate and nine of the fourteen conventions (every skill's audit)"
+fi
+
+# The gate, the release and the scheduled librarian install the toolkit with
+# `uv sync --locked`, which fails when git holds no lock to install from.
+if [ "$ingit" = 1 ] && [ "$tracked" = tracked ] && [ -f "$root/.lokf/pyproject.toml" ] && [ -f "$root/.github/workflows/knowledge-registrar.yaml" ] \
+   && [ -z "$(git -C "$root" ls-files .lokf/uv.lock 2>/dev/null | head -n 1)" ]; then
+  warn toolkit ".lokf/uv.lock is not in git - the gate installs the toolkit with uv sync --locked and fails without it; run uv lock in .lokf/ and commit the file"
 fi
 
 # ---- installed skills, and drift between copies -----------------------------
 found=""; templates=""
 for dir in .claude/skills .github/skills .agents/skills skills; do
   here=""
-  for s in ktl-sidecar ktl-librarian ktl-curator ktl-docent; do
+  for s in ktl-sidecar ktl-librarian ktl-curator ktl-docent ktl-prose ktl-website; do
     [ -f "$root/$dir/$s/SKILL.md" ] && here="$here ${s#ktl-}"
   done
   [ -n "$here" ] && found="${found}${found:+; }$dir:$here"
@@ -215,7 +222,7 @@ for dir in skills .claude/skills .github/skills .agents/skills; do
 done
 if [ -n "$found" ]; then
   ok skills "$found"
-  for s in ktl-sidecar ktl-librarian ktl-curator ktl-docent; do
+  for s in ktl-sidecar ktl-librarian ktl-curator ktl-docent ktl-prose ktl-website; do
     first=""
     for dir in .claude/skills .github/skills .agents/skills skills; do
       [ -d "$root/$dir/$s" ] || continue
@@ -226,27 +233,35 @@ if [ -n "$found" ]; then
     done
   done
 else
-  info skills "no LOKF skill installed under .claude/skills, .github/skills, .agents/skills or skills/"
+  info skills "no KTL skill installed under .claude/skills, .github/skills, .agents/skills or skills/"
 fi
 
 # ---- host copies of the sidecar's templates ----------------------------------
 # The conventions script runs its Python half, so a host holding the .sh
-# without the .py has a gate that fails outright, not a stale copy - said
-# whether or not a sidecar is installed to compare against. A bundle with no
-# knowledge-feedback.sh is the same kind of gap rather than drift: ktl-docent
-# then has to open feedback.md to add an entry, which is the one thing that
-# script exists to stop. A host on a sidecar that predates it should hear so
-# before a reader's first recorded gap, not after.
+# without the .py has a gate that fails outright, not a stale copy. This is
+# reported whether or not a sidecar is installed to compare against. A bundle with no
+# knowledge-feedback.sh is the same kind of gap rather than drift. ktl-docent
+# runs its own copy, but an earlier release runs this one, and without it has
+# to open feedback.md to add an entry, which is the one thing that script
+# exists to stop. A host on a sidecar that predates it should hear so before a
+# reader's first recorded gap, not after.
 script_gaps=""
 if [ -f "$root/.lokf/scripts/knowledge-conventions.sh" ] && [ ! -f "$root/.lokf/scripts/knowledge-conventions.py" ]; then
   script_gaps=".lokf/scripts/knowledge-conventions.py missing beside the .sh, which runs it"
 fi
 if [ -d "$bundle" ] && [ ! -f "$root/.lokf/scripts/knowledge-feedback.sh" ]; then
-  script_gaps="${script_gaps}${script_gaps:+, }.lokf/scripts/knowledge-feedback.sh missing, so ktl-docent must edit feedback.md by hand"
+  script_gaps="${script_gaps}${script_gaps:+, }.lokf/scripts/knowledge-feedback.sh missing, so an earlier ktl-docent must edit feedback.md by hand"
 fi
-# A host moves TRUST_LADDER_SKILLS_REF on its own schedule, so a different
-# pin is not drift; every other byte of the librarian workflow still counts.
-unpin() { sed -E 's/(TRUST_LADDER_SKILLS_REF: )v[0-9]+\.[0-9]+\.[0-9]+/\1vX.Y.Z/' "$1"; }
+if [ -d "$bundle" ] && [ ! -f "$root/.lokf/scripts/knowledge-apply.sh" ]; then
+  script_gaps="${script_gaps}${script_gaps:+, }.lokf/scripts/knowledge-apply.sh missing, so ktl-librarian must write the bundle by hand"
+fi
+if [ -d "$bundle" ] && [ ! -f "$root/.lokf/scripts/knowledge-report.sh" ]; then
+  script_gaps="${script_gaps}${script_gaps:+, }.lokf/scripts/knowledge-report.sh missing, so ktl-curator and an earlier ktl-docent must work each trust label out by hand"
+fi
+# A host moves TRUST_LADDER_SKILLS_REF, and the commit beside it, on its own
+# schedule, so a different pin is not drift; every other byte of the
+# librarian workflow still counts.
+unpin() { sed -E -e 's/(TRUST_LADDER_SKILLS_REF: )v[0-9]+\.[0-9]+\.[0-9]+/\1vX.Y.Z/' -e 's/(TRUST_LADDER_SKILLS_SHA: )[0-9a-f]{40}/\1COMMIT/' "$1"; }
 if [ -n "$templates" ] && [ -d "$root/.lokf" ]; then
   drift="$script_gaps"
   for pair in "scripts/knowledge-conventions.sh:.lokf/scripts/knowledge-conventions.sh" \
@@ -255,6 +270,9 @@ if [ -n "$templates" ] && [ -d "$root/.lokf" ]; then
               "scripts/knowledge-preflight.sh:.lokf/scripts/knowledge-preflight.sh" \
               "scripts/knowledge-provenance.sh:.lokf/scripts/knowledge-provenance.sh" \
               "scripts/knowledge-feedback.sh:.lokf/scripts/knowledge-feedback.sh" \
+              "scripts/knowledge-apply.sh:.lokf/scripts/knowledge-apply.sh" \
+              "scripts/knowledge-apply.py:.lokf/scripts/knowledge-apply.py" \
+              "scripts/knowledge-report.sh:.lokf/scripts/knowledge-report.sh" \
               "m365/knowledge-m365.sh:.lokf/m365/knowledge-m365.sh" \
               "m365/ktl-docent-m365.md:.lokf/m365/ktl-docent-m365.md" \
               "gitattributes:.lokf/.gitattributes" \
@@ -278,14 +296,14 @@ fi
 # ---- session ---------------------------------------------------------------
 unattended=""
 for v in CI GITHUB_ACTIONS GITLAB_CI TF_BUILD; do
-  eval "val=\${$v:-}"; [ -n "$val" ] && unattended="${unattended}${unattended:+, }$v"
+  val="${!v:-}"; [ -n "$val" ] && unattended="${unattended}${unattended:+, }$v"
 done
 agent=""
 [ -n "${CLAUDECODE:-}" ] && agent="Claude Code"
 [ -n "${CODESPACES:-}" ] && agent="${agent}${agent:+, }Codespaces"
 [ "${TERM_PROGRAM:-}" = vscode ] && agent="${agent}${agent:+, }VS Code terminal"
 if [ -n "$unattended" ]; then
-  info session "unattended ($unattended set): ktl-curator stops after its report; ktl-librarian edits only under the bundle"
+  info session "unattended ($unattended set): ktl-curator stops after its report; ktl-librarian writes the bundle only through knowledge-apply.sh"
 else
   info session "attended${agent:+ ($agent)}: a person can answer item by item"
 fi
