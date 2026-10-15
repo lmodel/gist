@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **`.lokf/justfile` takes a domain schema as one variable.** It was the copy from before ktl-sidecar `v0.38.0`, which the sidecar sync never carried. The generated schema is unchanged.
+
 ## [0.3.1] - 2026-09-30
 
 ### Fixed
