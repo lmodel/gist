@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.3.5] - 2026-10-16
+
 ### Security
 
 - **The lock takes the patched tornado, urllib3, mistune and jupyter-server.** It closes every open security alert on `uv.lock`, the critical jupyter-server one included. The published package's own dependencies are unchanged.
