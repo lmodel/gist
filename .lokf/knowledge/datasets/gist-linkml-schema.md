@@ -4,7 +4,7 @@ genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 title: gist LinkML schema
 description: LinkML rendering of gist 14.1.0 (schema id `https://w3id.org/lmodel/gist`), generated from the upstream Turtle modules with the curated SSSOM mappings overlaid.
-resource: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist.yaml
+resource: src/gist/schema/gist.yaml
 version: 14.1.0
 license: https://creativecommons.org/licenses/by/4.0/
 distribution:
@@ -15,7 +15,7 @@ distribution:
 - name: gist_core.yaml
   access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_core.yaml
   media_type: application/yaml
-  description: 97 classes, 120 slots and the AspectInstance enum (8 values).
+  description: 98 classes (gist's 96, the GistThing mixin, and Any, the range of the object properties gist leaves unranged), 120 slots and the AspectInstance enum (8 values).
 - name: gist_media_types.yaml
   access_url: https://github.com/lmodel/gist/blob/main/src/gist/schema/gist_media_types.yaml
   media_type: application/yaml
@@ -42,12 +42,12 @@ derivedFrom:
 - https://w3id.org/lmodel/gist/knowledge/datasets/gist-iso22989-mappings
 generated:
   by: process:ktl-librarian
-  at: "2026-10-15T23:26:35Z"
+  at: "2026-10-17T00:13:57Z"
 status: draft
 ---
 
 # gist LinkML schema
 
-`src/gist/schema/` holds six LinkML modules; `gist.yaml` is the entry point that the generators, the tests and the documentation site read. Its id is `https://w3id.org/lmodel/gist`. The prefix `gist:` binds to Semantic Arts' namespace `https://w3id.org/semanticarts/ns/ontology/gist/`, so every `class_uri` and `slot_uri` names gist's own term, and every module's default prefix is `gist_linkml:` (`https://w3id.org/lmodel/gist/`), which holds only what the rendering adds: the `GistThing` mixin, the enums and the subsets ([gist namespace policy](../policies/gist-namespace-policy.md)). The two supplementary modules, `gist_rdfs_annotations.yaml` and `gist_sub_class_assertions.yaml`, are not imported by `gist.yaml`; they exist for annotation enrichment and OWL RL reasoner support.
+`src/gist/schema/` holds six LinkML modules. `gist.yaml` is the entry point that the generators, the tests and the documentation site read. Its id is `https://w3id.org/lmodel/gist`. The prefix `gist:` binds to Semantic Arts' namespace `https://w3id.org/semanticarts/ns/ontology/gist/`, so every `class_uri` and `slot_uri` names gist's own term. Every module's default prefix is `gist_linkml:` (`https://w3id.org/lmodel/gist/`), which holds only what the rendering adds: the `GistThing` mixin, the enums and the subsets ([gist namespace policy](../policies/gist-namespace-policy.md)). The two supplementary modules, `gist_rdfs_annotations.yaml` and `gist_sub_class_assertions.yaml`, are not imported by `gist.yaml`. They exist for annotation enrichment and OWL RL reasoner support.
 
 The modules are generated, not hand-written. The [gist-to-LinkML transform](../services/gist-to-linkml.md) rewrites them from the [upstream Turtle](gist-upstream-turtle.md), and the [SSSOM overlay](../services/apply-sssom-overlay.md) then merges the three curated mapping sets into their `*_mappings` slots. Because `just gen-project` runs both first, an edit made directly in `src/gist/schema/` is lost on the next build, although the copier-template README still says to edit this folder. Change the transform script or a mapping TSV instead ([Regenerate the schema](../playbooks/regenerate-schema.md)).

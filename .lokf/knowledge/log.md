@@ -1,5 +1,21 @@
 # Change Log
 
+## 2026-10-17
+
+* **Changed**: 21 concepts now name this repository's own files and folders by their path from the repository root, in `resource` and in `sources`, instead of by a GitHub URL on `main`. The work list now compares those sources, and the source map says so.
+
+## 2026-10-16
+
+* **Prose**: reworded 20 concept bodies in plain English. No fact, link, number or frontmatter changed.
+* **Added**: the LOKF copy of `gist_core.yaml`, from `.github/workflows/lokf-copy-release.yaml`, the `gen-lokf-copy` recipe and `scripts/check_lokf_names.py`, which arrived on 2026-09-30 with no concept.
+* **Changed**: the transform page now covers the `--rename` option and the `Any` range for unranged object properties, both added to `scripts/gist_to_linkml.py` on 2026-09-30, and the test count, which is now 200.
+* **Changed**: the suite now collects 302 tests, and CI now also builds the LOKF copy, as `.github/workflows/main.yaml` has done since 2026-09-30.
+* **Changed**: the release playbook now says that every release dispatches the LOKF copy workflow, as `semantic-release.yml` and `CONTRIBUTING.md` have said since 2026-09-30.
+* **Changed**: `gist_core.yaml` now holds 98 classes, since the converter added the `Any` class on 2026-09-30.
+* **Changed**: the quoted phrase "FINOS CDM classes" left the CDM mapping set's metadata on 2026-09-29, so the page now quotes the description the file holds.
+* **Changed**: the SSSOM page now carries the qualifier from `tests/test_sssom_files.py` that no release up to sssom-schema 1.1.0a5 lists `LLMBasedMatching`, and notes that the schema's `master` branch now does.
+* **Source map**: added the LOKF copy's workflow, recipe and name check, and `changelog-release.mjs` to the release row; listed the files the map had not accounted for as left out on purpose; and noted that the work list cannot compare this bundle's URL sources.
+
 ## 2026-10-15
 
 * **Changed**: the schema id in the description is set as code, so the index bullet derived from it is not a bare URL.
