@@ -4,31 +4,34 @@ genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
 title: gist 14.1.0 upstream Turtle release
 description: The five gist 14.1.0 Turtle modules from Semantic Arts' web download, vendored as the input to the LinkML transform.
-resource: https://github.com/lmodel/gist/tree/main/upstream/gist14.1.0_webDownload/ontologies/turtle
-version: "14.1.0"
+resource: upstream/gist14.1.0_webDownload/ontologies/turtle
+version: 14.1.0
 license: https://creativecommons.org/licenses/by/4.0/
 distribution:
-  - name: gistCore14.1.0.ttl
-    access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistCore14.1.0.ttl
-    media_type: text/turtle
-  - name: gistMediaTypes14.1.0.ttl
-    access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistMediaTypes14.1.0.ttl
-    media_type: text/turtle
-  - name: gistPrefixDeclarations14.1.0.ttl
-    access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistPrefixDeclarations14.1.0.ttl
-    media_type: text/turtle
-  - name: gistRdfsAnnotations14.1.0.ttl
-    access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistRdfsAnnotations14.1.0.ttl
-    media_type: text/turtle
-  - name: gistSubClassAssertions14.1.0.ttl
-    access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistSubClassAssertions14.1.0.ttl
-    media_type: text/turtle
+- name: gistCore14.1.0.ttl
+  access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistCore14.1.0.ttl
+  media_type: text/turtle
+- name: gistMediaTypes14.1.0.ttl
+  access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistMediaTypes14.1.0.ttl
+  media_type: text/turtle
+- name: gistPrefixDeclarations14.1.0.ttl
+  access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistPrefixDeclarations14.1.0.ttl
+  media_type: text/turtle
+- name: gistRdfsAnnotations14.1.0.ttl
+  access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistRdfsAnnotations14.1.0.ttl
+  media_type: text/turtle
+- name: gistSubClassAssertions14.1.0.ttl
+  access_url: https://github.com/lmodel/gist/blob/main/upstream/gist14.1.0_webDownload/ontologies/turtle/gistSubClassAssertions14.1.0.ttl
+  media_type: text/turtle
 derivedFrom:
-  - https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
+- https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T10:32:37Z"
+  at: "2026-10-17T00:13:57Z"
 status: draft
+verified:
+- by: process:ktl-librarian
+  at: "2026-10-16T23:47:53Z"
 ---
 
 # Upstream Turtle release

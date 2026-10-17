@@ -4,21 +4,24 @@ genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/services/upstream-watch
 title: Upstream watch
 description: Weekly GitHub workflow (upstream-watch.yaml) that checks the vendored gist release is Semantic Arts' latest and intact, and that mapped target terms still exist on each target's default branch, opening an issue on failure.
-resource: https://github.com/lmodel/gist/blob/main/.github/workflows/upstream-watch.yaml
+resource: .github/workflows/upstream-watch.yaml
 tags:
-  - ci
+- ci
 dependsOn:
-  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
-  - https://w3id.org/lmodel/gist/knowledge/services/verify-mapping-targets
+- https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
+- https://w3id.org/lmodel/gist/knowledge/services/verify-mapping-targets
 references:
-  - https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
+- https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
 sources:
-  - resource: https://github.com/lmodel/gist/blob/main/scripts/check_upstream_release.py
-  - resource: https://github.com/lmodel/gist/blob/main/.github/scripts/report-issue.sh
+- resource: scripts/check_upstream_release.py
+- resource: .github/scripts/report-issue.sh
 generated:
   by: process:ktl-librarian
-  at: "2026-09-29T21:02:46Z"
+  at: "2026-10-17T00:13:57Z"
 status: draft
+verified:
+- by: process:ktl-librarian
+  at: "2026-10-16T23:47:53Z"
 ---
 
 # Upstream watch

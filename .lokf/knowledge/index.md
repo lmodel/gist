@@ -26,6 +26,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [gist generated schema artefacts](datasets/generated-artefacts.md) - The OWL, SHACL, ShEx, JSON Schema, JSON-LD, SQL, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
 * [gist example and test data](datasets/test-data.md) - Example instance files that the test suite validates against the gist schema, sorted into valid, invalid and known-problem folders.
 * [Semantic Arts gist SHACL shapes (vendored)](datasets/semantic-arts-shapes.md) - Semantic Arts' gist ontology SHACL shapes and a SPARQL CONSTRUCT query, vendored under tests/vendor/semanticarts for the SHACL test suite.
+* [LOKF copy of gist_core.yaml](datasets/gist-lokf-copy.md) - `gist_core.yaml` with the five names LOKF's lokf.yaml also defines renamed (Person, Organization, name, description, license), built by `just gen-lokf-copy` and attached to every GitHub Release as `gist-linkml-lokf-<tag>.yaml`, so a LOKF domain schema can import gist beside lokf.yaml.
 
 # Services
 
@@ -50,7 +51,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 # Playbooks
 
 * [Regenerate the schema and its artefacts](playbooks/regenerate-schema.md) - How to rebuild the gist LinkML schema, its mappings and every generated artefact from the upstream Turtle release, and check the result.
-* [Release the gist Python package](playbooks/release.md) - How a releasing merge to main becomes a tagged GitHub Release through semantic-release and is uploaded to PyPI as gist-linkml.
+* [Release the gist Python package](playbooks/release.md) - How a releasing merge to main becomes a tagged GitHub Release through semantic-release, with the LOKF copy of gist_core.yaml attached, and is uploaded to PyPI as gist-linkml.
 * [Knowledge sources map](playbooks/knowledge-sources.md) - The librarian's scrape map: every repository location and external URL this bundle derives concepts from, and how to re-verify each on a refresh run.
 
 # Glossary
