@@ -6,7 +6,7 @@ GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema
 
 This repository is an independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology. It is not a Semantic Arts release, and it defines nothing in gist's namespace.
 
-> **Only want to ask?** Install `ktl-docent` into any agent you use, by a route from [the install page](https://w3id.org/ktl/docs/install/), and ask it about this plugin. It answers from the bundle and says how far each answer has been checked.
+> **Only want to ask?** Install `ktl-docent` into any agent you use, by a route from [the install page](https://w3id.org/ktl/docs/install/), and ask it about this repository. It answers from the bundle and says how far each answer has been checked.
 >
 > **Agents:** if `.lokf/knowledge/index.md` exists, read it first. `llms.txt` says how to weigh it.
 
