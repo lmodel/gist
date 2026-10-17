@@ -4,11 +4,11 @@
 
 GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema
 
-An independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology: not a Semantic Arts release, and it defines nothing in gist's namespace.
+This repository is an independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology. It is not a Semantic Arts release, and it defines nothing in gist's namespace.
 
 > **Only want to ask?** Install `ktl-docent` into any agent you use, by a route from [the install page](https://w3id.org/ktl/docs/install/), and ask it about this plugin. It answers from the bundle and says how far each answer has been checked.
 >
-> **Agents:** if `.lokf/knowledge/index.md` exists, read it first; `llms.txt` says how to weigh it.
+> **Agents:** if `.lokf/knowledge/index.md` exists, read it first. `llms.txt` says how to weigh it.
 
 ## Documentation Website
 
@@ -16,37 +16,35 @@ An independent LinkML rendering of [gist](https://github.com/semanticarts/gist),
 
 ## Repository Structure
 
-* [docs/](docs/) - mkdocs-managed documentation
-  * [elements/](docs/elements/) - generated schema documentation
-* [examples/](examples/) - Examples of using the schema
-* [project/](project/) - project files (these files are auto-generated, do not edit)
-* [src/](src/) - source files (edit these)
+* [docs/](docs/): documentation that mkdocs builds
+  * [elements/](docs/elements/): generated schema documentation
+* [examples/](examples/): examples of using the schema
+* [project/](project/): generated project files (do not edit them)
+* [src/](src/): source files (edit these)
   * [gist](src/gist)
-    * [schema/](src/gist/schema) -- LinkML schema
-      (edit this)
-    * [datamodel/](src/gist/datamodel) -- generated
-      Python datamodel
-* [tests/](tests/) - Python tests
-  * [data/](tests/data) - Example data
+    * [schema/](src/gist/schema): the LinkML schema (edit this)
+    * [datamodel/](src/gist/datamodel): the generated Python datamodel
+* [tests/](tests/): Python tests
+  * [data/](tests/data): example data
 
 ## Developer Tools
 
-There are several pre-defined command-recipes available.
-They are written for the command runner [just](https://github.com/casey/just/).
-To list all pre-defined commands, run `just` or `just --list`.
+The project's predefined recipes run with the command runner [just](https://github.com/casey/just/).
+To list them, run `just` or `just --list`.
 
 ## License and attribution
 
 gist is Semantic Arts' upper ontology, published under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This schema is
-derived from the gist 14.1.0 release: the OWL modules are converted to LinkML
-by [scripts/gist_to_linkml.py](scripts/gist_to_linkml.py), their RDFS
-annotations and subclass assertions are folded into the schema, and SSSOM
-mappings to other vocabularies are added from [src/gist/mappings/](src/gist/mappings).
-The release is kept unmodified in [upstream/](upstream/gist14.1.0_webDownload)
-with its [LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code
-in this repository is Apache-2.0 ([LICENSE](LICENSE)); [NOTICE](NOTICE) lists
-every third-party work it carries or derives from, and ships in the package.
+derived from the gist 14.1.0 release.
+[scripts/gist_to_linkml.py](scripts/gist_to_linkml.py) converts its OWL modules
+to LinkML. Their RDFS annotations and subclass assertions are merged into the
+schema, and SSSOM mappings to other vocabularies are added from
+[src/gist/mappings/](src/gist/mappings). The release is kept unmodified in
+[upstream/](upstream/gist14.1.0_webDownload) with its
+[LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code in this
+repository is Apache-2.0 ([LICENSE](LICENSE)). [NOTICE](NOTICE) lists every
+third-party work it carries or derives from, and is included in the package.
 
 Semantic Arts also asks that terms used from gist stay in the gist namespace
 and that nobody else defines terms there. The schema and every generated
@@ -67,9 +65,9 @@ artefact hold to both:
 ## Contributing and security
 
 [CONTRIBUTING.md](CONTRIBUTING.md) is the checklist for a pull request and
-for releasing; [AI_COVENANT.md](AI_COVENANT.md) sets the rules for AI-assisted
-work; [SECURITY.md](SECURITY.md) says how to report a vulnerability. Changes
-are recorded in [CHANGELOG.md](CHANGELOG.md).
+for releasing. [AI_COVENANT.md](AI_COVENANT.md) sets the rules for AI-assisted
+work. [SECURITY.md](SECURITY.md) says how to report a vulnerability.
+[CHANGELOG.md](CHANGELOG.md) records the changes.
 
 ## Credits
 
