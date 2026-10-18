@@ -8,14 +8,14 @@ resource: mkdocs.yml
 endpoint: https://lmodel.github.io/gist
 documentation: https://lmodel.github.io/gist
 dependsOn:
-- https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
+  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
   at: "2026-10-17T00:13:57Z"
 status: draft
 verified:
-- by: process:ktl-librarian
-  at: "2026-10-16T23:47:53Z"
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # Documentation site

@@ -6,18 +6,21 @@ title: Release the gist Python package
 description: How a releasing merge to main becomes a tagged GitHub Release through semantic-release, with the LOKF copy of gist_core.yaml attached, and is uploaded to PyPI as gist-linkml.
 resource: .github/workflows/semantic-release.yml
 sources:
-- resource: .github/workflows/pypi-publish.yaml
-- resource: .releaserc.json
-- resource: CONTRIBUTING.md
-- resource: .github/workflows/lokf-copy-release.yaml
+  - resource: .github/workflows/pypi-publish.yaml
+  - resource: .releaserc.json
+  - resource: CONTRIBUTING.md
+  - resource: .github/workflows/lokf-copy-release.yaml
 references:
-- https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
-- https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
-- https://w3id.org/lmodel/gist/knowledge/datasets/gist-lokf-copy
+  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
+  - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
+  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-lokf-copy
 generated:
   by: process:ktl-librarian
   at: "2026-10-17T00:13:57Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # Release the gist Python package
