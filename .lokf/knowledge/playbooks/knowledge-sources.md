@@ -7,8 +7,11 @@ description: "The librarian's scrape map: every repository location and external
 resource: https://github.com/lmodel/gist
 generated:
   by: process:ktl-librarian
-  at: "2026-10-17T00:13:57Z"
+  at: "2026-10-18T00:19:20Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # Knowledge sources
@@ -44,7 +47,7 @@ These are not knowledge sources, and are left out on purpose:
 - `CODE_OF_CONDUCT.md`, `AI_COVENANT.md`, `SECURITY.md`, `NOTICE`, `LICENSE`, `.github/ISSUE_TEMPLATE/`, `.github/pull_request_template.md` and the rest of `CONTRIBUTING.md` (governance text the README links to);
 - `CHANGELOG.md` (release history);
 - `uv.lock`, `.gitignore`, `.pre-commit-config.yaml`, `.yamllint.yaml`, `.editorconfig`, `.markdownlint-cli2.jsonc`, `lychee.toml` and `.github/workflows/lint-and-docs.yaml` (tooling and its static checks);
-- `src/gist/__init__.py` and `src/gist/_version.py` (package plumbing);
+- `src/gist/__init__.py`, `src/gist/_version.py`, `tests/__init__.py` and `tests/conftest.py` (package and test plumbing);
 - `.github/dependabot.yml`;
 - `llms.txt` (the pointer that sends agents to this bundle);
-- the `.lokf/` sidecar itself, including the `knowledge_bundle` link and `.github/workflows/knowledge-*.yaml`.
+- the `.lokf/` sidecar itself, including the `knowledge_bundle` link, `.github/workflows/knowledge-*.yaml` and `.github/PULL_REQUEST_TEMPLATE/knowledge-sync.md`.

@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-10-18
+
+* **Changed**: the source map leaves out the sync's pull request template with the rest of the sidecar, and the two test plumbing files with the package's, so every tracked file has a place in it.
+
 ## 2026-10-17
 
 * **Changed**: 21 concepts now name this repository's own files and folders by their path from the repository root, in `resource` and in `sources`, instead of by a GitHub URL on `main`. The work list now compares those sources, and the source map says so.

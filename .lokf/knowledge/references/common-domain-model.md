@@ -10,8 +10,11 @@ generated:
   at: "2026-10-17T00:13:57Z"
 status: draft
 sources:
-- resource: src/gist/mappings/gist-cdm.sssom.tsv
-  title: the mapping set's metadata header
+  - resource: src/gist/mappings/gist-cdm.sssom.tsv
+    title: the mapping set's metadata header
+verified:
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # Common Domain Model (lmodel)

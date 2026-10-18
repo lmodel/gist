@@ -8,17 +8,20 @@ resource: https://mapping-commons.github.io/sssom/
 abbreviation: SSSOM
 definition: A tab-separated table format, preceded by a commented YAML metadata block, in which each row maps a subject term to an object term through a mapping predicate and records the justification for the match.
 sources:
-- resource: https://mapping-commons.github.io/sssom/
-- resource: tests/test_sssom_files.py
-  title: the JUSTIFICATIONS set and its note on semapv:LLMBasedMatching
-- resource: https://pypi.org/project/sssom-schema/
-  title: sssom-schema releases, 1.1.0a5 the latest
-- resource: https://github.com/mapping-commons/sssom/blob/master/src/sssom_schema/schema/sssom_schema.yaml
-  title: the SSSOM schema on its master branch, whose mapping_justification pattern lists LLMBasedMatching
+  - resource: https://mapping-commons.github.io/sssom/
+  - resource: tests/test_sssom_files.py
+    title: the JUSTIFICATIONS set and its note on semapv:LLMBasedMatching
+  - resource: https://pypi.org/project/sssom-schema/
+    title: sssom-schema releases, 1.1.0a5 the latest
+  - resource: https://github.com/mapping-commons/sssom/blob/master/src/sssom_schema/schema/sssom_schema.yaml
+    title: the SSSOM schema on its master branch, whose mapping_justification pattern lists LLMBasedMatching
 generated:
   by: process:ktl-librarian
   at: "2026-10-17T00:13:57Z"
 status: draft
+verified:
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # SSSOM

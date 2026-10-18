@@ -6,25 +6,25 @@ title: gist namespace policy
 description: gist's terms keep Semantic Arts' IRIs and this project defines nothing in Semantic Arts' namespace; what the LinkML rendering adds lives under gist_linkml (`https://w3id.org/lmodel/gist/`).
 resource: README.md
 source:
-- https://w3id.org/lmodel/gist/knowledge/org/semantic-arts
+  - https://w3id.org/lmodel/gist/knowledge/org/semantic-arts
 about:
-- https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
-- https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
+  - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
+  - https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 references:
-- https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
-- https://w3id.org/lmodel/gist/knowledge/services/gist-to-linkml
+  - https://w3id.org/lmodel/gist/knowledge/references/gist-ontology
+  - https://w3id.org/lmodel/gist/knowledge/services/gist-to-linkml
 sources:
-- resource: https://github.com/semanticarts/gist/blob/v14.1.0/README.md
-  title: gist README, release 14.1.0 (license and namespace conditions)
-- resource: README.md
-  title: This repository's README, License and attribution
+  - resource: https://github.com/semanticarts/gist/blob/v14.1.0/README.md
+    title: gist README, release 14.1.0 (license and namespace conditions)
+  - resource: README.md
+    title: This repository's README, License and attribution
 generated:
   by: process:ktl-librarian
   at: "2026-10-17T00:13:57Z"
 status: draft
 verified:
-- by: process:ktl-librarian
-  at: "2026-10-16T23:47:53Z"
+  - by: process:ktl-librarian
+    at: "2026-10-18T00:19:20Z"
 ---
 
 # gist namespace policy
