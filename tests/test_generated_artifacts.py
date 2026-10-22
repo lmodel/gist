@@ -162,7 +162,8 @@ class TestGistIrisInArtifacts:
 
     These read the committed files under project/: the OWL there is written by
     the bare gen-owl call in the justfile (flags in config.public.mk), not by
-    gen-project's config.yaml, so only the files themselves are the truth.
+    gen-project's .linkml/generators.yaml, so only the files themselves are
+    the truth.
     """
 
     PROJECT = Path(__file__).parent.parent / "project"
