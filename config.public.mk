@@ -14,7 +14,7 @@ LINKML_SCHEMA_SOURCE_DIR="src/gist/schema"
 ###### linkml generator variables, used by justfile
 
 ## gen-project configuration file
-LINKML_GENERATORS_CONFIG_YAML=config.yaml
+LINKML_GENERATORS_CONFIG_YAML=.linkml/generators.yaml
 
 ## pass args if gendoc ignores config.yaml (i.e. --no-mergeimports)
 LINKML_GENERATORS_DOC_ARGS=
@@ -23,8 +23,9 @@ LINKML_GENERATORS_DOC_ARGS=
 ##   (i.e. --no-type-objects --no-metaclasses --metadata-profile=rdfs)
 # LINKML_GENERATORS_OWL_ARGS="--no-type-objects --no-metaclasses --metadata-profile=rdfs"
 ## This call writes the published project/owl, so it must keep gist's IRIs
-## (see the owl section of config.yaml): declare class_uri/slot_uri, not a
-## default_prefix copy, and keep gist's named individuals individuals.
+## (see the owl section of .linkml/generators.yaml): declare
+## class_uri/slot_uri, not a default_prefix copy, and keep gist's named
+## individuals individuals.
 LINKML_GENERATORS_OWL_ARGS="--no-use-native-uris --default-permissible-value-type owl:NamedIndividual"
 
 ## pass args to pydantic generator which isn't supported by gen-project
