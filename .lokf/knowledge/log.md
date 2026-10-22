@@ -1,5 +1,11 @@
 # Change Log
 
+## 2026-10-22
+
+* **Changed**: gen-project's settings moved from `config.yaml` to `.linkml/generators.yaml`, which `config.public.mk` now names, so the generated artefacts cite the new path.
+* **Changed**: the namespace policy cites `.linkml/generators.yaml`, where gen-project's owl and shacl settings now live.
+* **Changed**: the source map names `.linkml/generators.yaml` where it named `config.yaml`.
+
 ## 2026-10-18
 
 * **Changed**: the source map leaves out the sync's pull request template with the rest of the sidecar, and the two test plumbing files with the package's, so every tracked file has a place in it.

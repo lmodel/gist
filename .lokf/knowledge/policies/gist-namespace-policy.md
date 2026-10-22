@@ -18,9 +18,11 @@ sources:
     title: gist README, release 14.1.0 (license and namespace conditions)
   - resource: README.md
     title: This repository's README, License and attribution
+  - resource: .linkml/generators.yaml
+    title: gen-project's owl and shacl settings
 generated:
   by: process:ktl-librarian
-  at: "2026-10-17T00:13:57Z"
+  at: "2026-10-22T09:11:36Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -40,5 +42,5 @@ Semantic Arts publishes [gist](../references/gist-ontology.md) under CC BY 4.0 a
 Three mechanisms hold it:
 
 1. **Converter.** `scripts/gist_to_linkml.py` binds `gist` to Semantic Arts' namespace, writes `class_uri` and `slot_uri` as `gist:` CURIEs, and sets every module's `default_prefix` to `gist_linkml`, so an element without its own IRI takes lmodel's namespace ([transform](../services/gist-to-linkml.md)).
-2. **Generator flags.** The published OWL comes from a separate `gen-owl` call that takes `LINKML_GENERATORS_OWL_ARGS` from `config.public.mk` (`--no-use-native-uris --default-permissible-value-type owl:NamedIndividual`). `config.yaml` gives `gen-project` the same OWL settings, and gives `gen-shacl` `use_class_uri_names: false` with the suffix `Shape` ([generated artefacts](../datasets/generated-artefacts.md)).
+2. **Generator flags.** The published OWL comes from a separate `gen-owl` call that takes `LINKML_GENERATORS_OWL_ARGS` from `config.public.mk` (`--no-use-native-uris --default-permissible-value-type owl:NamedIndividual`). `.linkml/generators.yaml` gives `gen-project` the same OWL settings, and gives `gen-shacl` `use_class_uri_names: false` with the suffix `Shape` ([generated artefacts](../datasets/generated-artefacts.md)).
 3. **Tests.** `TestGistNamespace` in `tests/test_schema_validation.py` and `TestGistIrisInArtifacts` in `tests/test_generated_artifacts.py` check the schema modules and the committed OWL and SHACL against the vendored release, and run in CI through `just test`.

@@ -7,7 +7,7 @@ description: "The librarian's scrape map: every repository location and external
 resource: https://github.com/lmodel/gist
 generated:
   by: process:ktl-librarian
-  at: "2026-10-18T00:19:20Z"
+  at: "2026-10-22T09:11:36Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -28,13 +28,13 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `src/gist/mappings/*.sssom.tsv` | the three `datasets/gist-*-mappings`, the three object-side `references/`, `glossary/sssom` | re-list the folder; recount rows, predicates and justifications per file; re-read each metadata header |
 | `scripts/gist_to_linkml.py`, `scripts/apply_sssom_overlay.py`, `scripts/verify_mappings.py`, `scripts/verify_mapping_targets.py` | the four `services/` CLIs | re-read each docstring and `argparse` block; run `uv run python scripts/verify_mappings.py` |
 | `project.justfile`, `justfile` | `playbooks/regenerate-schema`, recipe facts in the services | re-read the `gen-linkml`, `apply-sssom-overlay`, `verify-mappings`, `gen-project` and `test` recipe chains |
-| `project/`, `src/gist/datamodel/`, `config.yaml` | `datasets/generated-artefacts` | re-list `project/*/`; re-read `config.yaml` excludes |
+| `project/`, `src/gist/datamodel/`, `.linkml/generators.yaml` | `datasets/generated-artefacts` | re-list `project/*/`; re-read the `excludes` in `.linkml/generators.yaml` |
 | `tests/data/`, `tests/test_*.py` | `datasets/test-data`, test counts in the concepts | re-list `tests/data/`; `uv run pytest --collect-only -q` per file |
 | `tests/vendor/semanticarts/` | `datasets/semantic-arts-shapes` | re-list; compare `LICENSE.txt` with the upstream copy |
 | `mkdocs.yml`, `.github/workflows/deploy-docs.yaml`, `https://lmodel.github.io/gist` | `services/documentation-site` | confirm the trigger and the `gen-doc` plus `gh-deploy` steps; fetch the site and the w3id redirect |
 | `.github/workflows/lokf-copy-release.yaml`, the `gen-lokf-copy` recipe and `lokf_renames` in `project.justfile`, `scripts/check_lokf_names.py` | `datasets/gist-lokf-copy` | re-read the rename list, the name check and both jobs; list the latest release's assets with `gh release view --json assets` |
 | `.github/workflows/semantic-release.yml`, `.releaserc.json`, `.github/scripts/changelog-release.mjs`, `.github/workflows/pypi-publish.yaml`, `pyproject.toml`, `CONTRIBUTING.md` (Releasing), `https://pypi.org/pypi/gist-linkml/json` | `playbooks/release` | re-read the release guards, the dispatches, the triggers, environments and distribution name; check whether the PyPI name is taken or published |
-| `README.md` (License and attribution), `https://github.com/semanticarts/gist/blob/v14.1.0/README.md`, `config.yaml`, `config.public.mk`, `TestGistNamespace` and `TestGistIrisInArtifacts` | `policies/gist-namespace-policy` | re-read Semantic Arts' license paragraph at the release tag in use; grep `LINKML_GENERATORS_OWL_ARGS` and the `owl`/`shacl` generator args; run the two test classes |
+| `README.md` (License and attribution), `https://github.com/semanticarts/gist/blob/v14.1.0/README.md`, `.linkml/generators.yaml`, `config.public.mk`, `TestGistNamespace` and `TestGistIrisInArtifacts` | `policies/gist-namespace-policy` | re-read Semantic Arts' license paragraph at the release tag in use; grep `LINKML_GENERATORS_OWL_ARGS` and the `owl`/`shacl` generator args; run the two test classes |
 | `.github/workflows/main.yaml`, `scripts/check_generated_current.py` | CI facts in `services/verify-mappings`, `services/verify-mapping-targets`, `playbooks/regenerate-schema` and `datasets/gist-lokf-copy` | confirm it still runs the `src/gist/schema/` drift check, `just verify-mapping-targets`, `just verify-generated`, `just gen-lokf-copy`, the lint step and `just test` |
 | `.github/workflows/upstream-watch.yaml`, `scripts/check_upstream_release.py`, `.github/scripts/report-issue.sh` | `services/upstream-watch` | re-read the schedule, both jobs and the issue step |
 | `https://www.semanticarts.com/gist/`, `https://w3id.org/lmodel/{common-domain-model,dpv,iso22989}`, `https://mapping-commons.github.io/sssom/`, `https://pypi.org/project/sssom-schema/` | the `references/` concepts, `glossary/sssom` | external authorities: cite on change |
