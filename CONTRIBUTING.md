@@ -52,7 +52,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 - **Knowledge-bundle changes**: `cd .lokf && just lokf-validate` must pass, and `knowledge-registrar.yaml` runs on any `.lokf/**` change.
 - **`lint-and-docs.yaml` is easy to trip locally**: ShellCheck, actionlint, markdownlint against `.markdownlint-cli2.jsonc`, link-checking against `lychee.toml`, and codespell over every `*.md`.
 - **Actions are pinned to commit SHAs**, the version in a trailing comment, and bumped by Dependabot, never by hand to a tag.
-- **The skills pin moves with the sidecar copies.** When moving `TRUST_LADDER_SKILLS_REF` in [`knowledge-librarian.yaml`](.github/workflows/knowledge-librarian.yaml), copy the other two `knowledge-*.yaml` workflows and `.lokf/scripts/` and `.lokf/m365/` from that release's `skills/ktl-sidecar/templates/` in the same pull request.
+- **The skills pin moves with the sidecar copies.** Each week [`knowledge-sync.yaml`](.github/workflows/knowledge-sync.yaml) opens one pull request that moves `TRUST_LADDER_SKILLS_REF` and `TRUST_LADDER_SKILLS_SHA` to the newest release and copies every template it lists over the copy here; to move sooner, run `.lokf/scripts/knowledge-sync.sh --branch <tag>`. Never move the pin alone: the install step installs nothing when the two disagree.
 - **If your change alters behaviour** (not just wording), add an entry under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md).
 - Keep changes focused, reference the issue they close, and fill in the PR template's checklist.
 
