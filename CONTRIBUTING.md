@@ -33,7 +33,7 @@ just --list
 
 ### Agent skills (optional, only for this repo's `.lokf/` bundle)
 
-The bundle is maintained with [knowledge-trust-ladder](https://github.com/noelmcloughlin/knowledge-trust-ladder), **installed, never committed**; CI installs the librarian skill at run time, pinned to a release. Nothing in the schema depends on it.
+The bundle is maintained with [knowledge-trust-ladder](https://github.com/noelmcloughlin/knowledge-trust-ladder), **installed, never committed**; CI installs the librarian skill pinned to a release. Nothing in the schema depends on it.
 
 ```bash
 npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-librarian --yes   # derive concepts
@@ -43,7 +43,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 ## Before opening a pull request
 
 - **Change the converter, not its output.** Edit `scripts/` or `src/gist/mappings/`, then run `just gen-project` and commit the regenerated files with it. `main.yaml` fails a hand edit to `src/gist/schema/` and stale artefacts.
-- **Run the tests**: `just test` (schema generation, `pytest`, and the examples under `tests/data/`). Example data goes in `tests/data/valid/` and `tests/data/invalid/`; an invalid example fails for a single reason, named in its file name.
+- **Run the tests**: `just test` (schema generation, `pytest`, and the examples under `tests/data/`). An invalid example under `tests/data/invalid/` fails for one reason, named in its file name.
 - **Keep gist's namespace gist's.** Nothing new under `gist:` or `gistd:`; additions go under `gist_linkml:`. The [README](README.md#license-and-attribution) says why and the tests check it.
 - **A mapping needs a source on both sides.** Cite both definitions in the pull request; [AI_COVENANT.md](AI_COVENANT.md) says why.
 - **Follow LinkML conventions**: UpperCamelCase classes and enums, snake_case slots, plural names for multivalued slots, a description on every element. `just lint` runs `linkml-lint`, and CI fails on its errors; the [LinkML docs](https://linkml.io/linkml/) cover the rest.
@@ -52,7 +52,7 @@ npx skills add noelmcloughlin/knowledge-trust-ladder --skill ktl-curator --yes  
 - **Knowledge-bundle changes**: `cd .lokf && just lokf-validate` must pass, and `knowledge-registrar.yaml` runs on any `.lokf/**` change.
 - **`lint-and-docs.yaml` is easy to trip locally**: ShellCheck, actionlint, markdownlint against `.markdownlint-cli2.jsonc`, link-checking against `lychee.toml`, and codespell over every `*.md`.
 - **Actions are pinned to commit SHAs**, the version in a trailing comment, and bumped by Dependabot, never by hand to a tag.
-- **The skills pin moves with the sidecar copies.** When moving `TRUST_LADDER_SKILLS_REF` in [`knowledge-librarian.yaml`](.github/workflows/knowledge-librarian.yaml), copy the other two `knowledge-*.yaml` workflows and `.lokf/scripts/` and `.lokf/m365/` from that release's `skills/ktl-sidecar/templates/` in the same pull request.
+- **The skills pin moves with the sidecar copies.** A weekly [`knowledge-sync.yaml`](.github/workflows/knowledge-sync.yaml) pull request moves `TRUST_LADDER_SKILLS_REF` and `TRUST_LADDER_SKILLS_SHA` to the newest release and refreshes every copy it lists; to move sooner, run `.lokf/scripts/knowledge-sync.sh --branch <tag>`. Never move the pin alone: the install step installs nothing when the two disagree.
 - **If your change alters behaviour** (not just wording), add an entry under `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md).
 - Keep changes focused, reference the issue they close, and fill in the PR template's checklist.
 
@@ -72,7 +72,7 @@ Use the [issue tracker](https://github.com/lmodel/gist/issues) for problems and 
 
 - Write `## [Unreleased]` in [CHANGELOG.md](CHANGELOG.md) as you go; the release job refuses an empty one (`.github/scripts/changelog-release.mjs check`).
 - Type the commit ([Conventional Commits](https://www.conventionalcommits.org/)) for what the change *is*. Only `feat:`, `fix:` and `security:` cut a release; other types leave their entries for the next release that does. A pull request that would release must carry a releasing type in its title too, since a squash merge takes its subject from it.
-- On merge, [`semantic-release.yml`](.github/workflows/semantic-release.yml) retitles the section to `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release. `uv-dynamic-versioning` reads the version from the tag, so no file is bumped. It then dispatches [`pypi-publish.yaml`](.github/workflows/pypi-publish.yaml) and [`knowledge-release.yaml`](.github/workflows/knowledge-release.yaml) for the tag, each once its repository variable, `PYPI_RELEASE_ENABLED` or `KNOWLEDGE_RELEASE_ENABLED`, is `true`, and [`lokf-copy-release.yaml`](.github/workflows/lokf-copy-release.yaml) always.
+- On merge, [`semantic-release.yml`](.github/workflows/semantic-release.yml) retitles the section to `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release. `uv-dynamic-versioning` reads the version from the tag, so no file is bumped. It then dispatches [`pypi-publish.yaml`](.github/workflows/pypi-publish.yaml) and [`knowledge-release.yaml`](.github/workflows/knowledge-release.yaml), each once its repository variable, `PYPI_RELEASE_ENABLED` or `KNOWLEDGE_RELEASE_ENABLED`, is `true`, and [`lokf-copy-release.yaml`](.github/workflows/lokf-copy-release.yaml) always.
 - Those steps run behind the `release` and `pypi-release` GitHub Environments; configure required reviewers on both in Settings → Environments, or every qualifying merge ships unattended. `pypi-release` must allow deployments from `v*` tags.
 - Before the first release, register a pending trusted publisher for `gist-linkml` on PyPI: workflow `pypi-publish.yaml`, environment `pypi-release`.
 - Below 1.0.0: push the `v0.1.0` baseline tag on `main` before the first releasing merge; both release jobs refuse to run without it, as semantic-release would otherwise start at 1.0.0. `.releaserc.json` maps `breaking: true` to `minor`; reaching 1.0.0 means removing that rule in its own PR.
