@@ -60,8 +60,9 @@ from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 # gist terms keep Semantic Arts' IRIs, under the prefix ``gist``: Semantic Arts
 # asks that terms used from gist stay in the gist namespace and that nobody
 # else defines terms there. Only what this project adds (the schema documents,
-# the GistThing mixin, the enums and the subsets) is minted in lmodel's
-# namespace, as ``gist_linkml``, which is every schema's default_prefix.
+# the GistThing mixin, the types for the datatypes linkml:types lacks, the
+# enums and the subsets) is minted in lmodel's namespace, as ``gist_linkml``,
+# which is every schema's default_prefix.
 GIST_SA_NS = "https://w3id.org/semanticarts/ns/ontology/gist/"
 GISTD_NS = "https://w3id.org/semanticarts/ns/data/gist/"
 LMODEL_NS = "https://w3id.org/lmodel/gist/"

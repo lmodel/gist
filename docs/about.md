@@ -18,7 +18,7 @@ else defines terms there. This schema holds to both.
 | --- | --- | --- |
 | `gist` | `https://w3id.org/semanticarts/ns/ontology/gist/` | gist's classes and properties (Semantic Arts) |
 | `gistd` | `https://w3id.org/semanticarts/ns/data/gist/` | gist's named individuals (Semantic Arts) |
-| `gist_linkml` | `https://w3id.org/lmodel/gist/` | what this rendering adds: schema documents, the `GistThing` mixin, enums, subsets, SHACL shapes, LinkML element definitions |
+| `gist_linkml` | `https://w3id.org/lmodel/gist/` | what this rendering adds: schema documents, the `GistThing` mixin, types for the datatypes `linkml:types` lacks, enums, subsets, SHACL shapes, LinkML element definitions |
 
 ## How the classes carry gist's properties
 

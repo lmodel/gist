@@ -56,9 +56,9 @@ artefact hold to both:
   individual keeps its gist IRI.
 * **`gist_linkml:`** (`https://w3id.org/lmodel/gist/`) is this project's
   namespace. It holds only what the LinkML rendering adds: the schema
-  documents, the `GistThing` mixin, the enums, the subsets, the SHACL shapes,
-  and the LinkML element definitions the OWL links to the gist terms they
-  render.
+  documents, the `GistThing` mixin, the types for the datatypes
+  `linkml:types` lacks, the enums, the subsets, the SHACL shapes, and the
+  LinkML element definitions the OWL links to the gist terms they render.
 * Tests in [tests/test_schema_validation.py](tests/test_schema_validation.py)
   and [tests/test_generated_artifacts.py](tests/test_generated_artifacts.py)
   check both rules against the vendored release.
