@@ -23,14 +23,14 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [gist to Common Domain Model mappings](datasets/gist-cdm-mappings.md) - 34 manually curated SSSOM mappings from gist classes to FINOS Common Domain Model classes in the lmodel CDM schema.
 * [gist to DPV mappings](datasets/gist-dpvs-mappings.md) - 11 LLM-matched SSSOM mappings from gist classes to the lmodel DPV schema.
 * [gist to ISO/IEC 22989 mappings](datasets/gist-iso22989-mappings.md) - 9 LLM-matched SSSOM mappings from gist classes to the lmodel ISO/IEC 22989:2022 AI concepts and terminology schema.
-* [gist generated schema artefacts](datasets/generated-artefacts.md) - The OWL, SHACL, ShEx, JSON Schema, JSON-LD, SQL, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
+* [gist generated schema artefacts](datasets/generated-artefacts.md) - The OWL, SHACL, ShEx, JSON Schema, JSON-LD, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
 * [gist example and test data](datasets/test-data.md) - Example instance files that the test suite validates against the gist schema, sorted into valid, invalid and known-problem folders.
 * [Semantic Arts gist SHACL shapes (vendored)](datasets/semantic-arts-shapes.md) - Semantic Arts' gist ontology SHACL shapes and a SPARQL CONSTRUCT query, vendored under tests/vendor/semanticarts for the SHACL test suite.
 * [LOKF copy of gist_core.yaml](datasets/gist-lokf-copy.md) - `gist_core.yaml` with the five names LOKF's lokf.yaml also defines renamed (Person, Organization, name, description, license), built by `just gen-lokf-copy` and attached to every GitHub Release as `gist-linkml-lokf-<tag>.yaml`, so a LOKF domain schema can import gist beside lokf.yaml.
 
 # Services
 
-* [gist-to-LinkML transform](services/gist-to-linkml.md) - Command-line script (scripts/gist_to_linkml.py, run as just gen-linkml) that turns the gist Turtle modules into the gist LinkML schema modules, keeping each term's gist IRI.
+* [gist-to-LinkML transform](services/gist-to-linkml.md) - Command-line script (scripts/gist_to_linkml.py, run as just gen-linkml) that turns the gist Turtle modules into the gist LinkML schema modules, keeping each term's gist IRI and putting each property's slot on the classes its domain allows.
 * [SSSOM overlay](services/apply-sssom-overlay.md) - Command-line script (scripts/apply_sssom_overlay.py, run as just apply-sssom-overlay) that merges the curated SSSOM mappings into the gist LinkML schema.
 * [Mapping verifier](services/verify-mappings.md) - Read-only command-line check (scripts/verify_mappings.py, run as just verify-mappings) that every SSSOM row is present on the gist LinkML schema and nothing extra is.
 * [gist documentation site](services/documentation-site.md) - The Astro Starlight site at `https://lmodel.github.io/gist`, built from the README, `docs/`, the schema's generated pages and this knowledge bundle, and deployed to GitHub Pages by the Knowledge website workflow.

@@ -15,7 +15,7 @@ generated:
 status: draft
 verified:
   - by: process:ktl-librarian
-    at: "2026-10-27T08:54:25Z"
+    at: "2026-10-27T14:09:11Z"
 sources:
   - resource: website/README.md
   - resource: website/site.config.mjs

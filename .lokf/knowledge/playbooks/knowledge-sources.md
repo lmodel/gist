@@ -7,7 +7,7 @@ description: "The librarian's scrape map: every repository location and external
 resource: https://github.com/lmodel/gist
 generated:
   by: process:ktl-librarian
-  at: "2026-10-27T08:54:25Z"
+  at: "2026-10-27T14:09:11Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -24,7 +24,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 |--------|--------|-------------|
 | `pyproject.toml`, `README.md`, `docs/about.md`, `.copier-answers.yml` | bundle metadata, `references/gist-ontology` | diff manifest name, description and authors |
 | `upstream/gist14.1.0_webDownload/` | `datasets/gist-upstream-turtle`, `references/gist-ontology`, `org/semantic-arts` | re-list `ontologies/turtle/`; a new release folder means a new upstream version |
-| `src/gist/schema/*.yaml` | `datasets/gist-linkml-schema` | reload each module and recount classes, slots and enum values; re-read `gist.yaml` imports |
+| `src/gist/schema/*.yaml`, `.linkmllint.yaml`, `docs/about.md` | `datasets/gist-linkml-schema` | reload each module and recount classes, slots, types and enum values; re-read `gist.yaml` imports, the lint rules and the about page's list of where the schema is stricter than gist |
 | `src/gist/mappings/*.sssom.tsv` | the three `datasets/gist-*-mappings`, the three object-side `references/`, `glossary/sssom` | re-list the folder; recount rows, predicates and justifications per file; re-read each metadata header |
 | `scripts/gist_to_linkml.py`, `scripts/apply_sssom_overlay.py`, `scripts/verify_mappings.py`, `scripts/verify_mapping_targets.py` | the four `services/` CLIs | re-read each docstring and `argparse` block; run `uv run python scripts/verify_mappings.py` |
 | `project.justfile`, `justfile` | `playbooks/regenerate-schema`, recipe facts in the services | re-read the `gen-linkml`, `apply-sssom-overlay`, `verify-mappings`, `gen-project` and `test` recipe chains |

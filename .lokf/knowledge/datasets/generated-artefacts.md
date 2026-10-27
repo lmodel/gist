@@ -3,7 +3,7 @@ type: Dataset
 genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/datasets/generated-artefacts
 title: gist generated schema artefacts
-description: The OWL, SHACL, ShEx, JSON Schema, JSON-LD, SQL, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
+description: The OWL, SHACL, ShEx, JSON Schema, JSON-LD, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
 resource: project
 distribution:
   - name: excel
@@ -34,9 +34,6 @@ distribution:
   - name: shex
     access_url: https://github.com/lmodel/gist/blob/main/project/shex/gist.shex
     media_type: text/shex
-  - name: sqlschema
-    access_url: https://github.com/lmodel/gist/blob/main/project/sqlschema/gist.sql
-    media_type: application/sql
   - name: typescript
     access_url: https://github.com/lmodel/gist/blob/main/project/typescript/gist.ts
   - name: python (gist.py)
@@ -49,7 +46,7 @@ derivedFrom:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
-  at: "2026-10-22T09:11:36Z"
+  at: "2026-10-27T14:09:11Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -57,8 +54,22 @@ verified:
 sources:
   - resource: .linkml/generators.yaml
     title: gen-project's settings, named by LINKML_GENERATORS_CONFIG_YAML in config.public.mk
+  - resource: config.public.mk
+    title: LINKML_GENERATORS_OWL_ARGS, the flags of the published OWL
+  - resource: src/gist/datamodel
+    title: the Python datamodel, gist.py and gist_pydantic.py
+  - resource: scripts/check_generated_current.py
+    title: just verify-generated, the check that the committed artefacts are current
+  - resource: tests/test_generated_artifacts.py
+    title: the tests of the committed artefacts
 ---
 
 # Generated artefacts
 
-`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `.linkml/generators.yaml` (every generator except markdown, most with `mergeimports: true`), writes the results under `project/`. It moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. It then rewrites `project/owl/gist.owl.ttl` with a separate `gen-owl` call whose flags come from `LINKML_GENERATORS_OWL_ARGS` in `config.public.mk`, so those flags, not `.linkml/generators.yaml`, shape the published OWL. `gen-project` and the separate `gen-owl` call both keep gist's own IRIs for gist's terms. SHACL shapes are this project's and live in `gist_linkml:` (`gist_linkml:PersonShape` targets `gist:Person`). All of these are committed. None is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). `tests/test_generated_artifacts.py` (18 tests) checks the JSON Schema, OWL and related outputs. Four of them check the committed OWL and SHACL against the [gist namespace policy](../policies/gist-namespace-policy.md).
+`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `.linkml/generators.yaml`, and writes the results under `project/`. The settings leave out two generators. The SQL DDL would hold some 5,400 tables, one for each multivalued slot of each class, because every class carries the 89 slots gist declares without a domain. The recipe runs `gen-java` on its own afterwards, into the git-ignored `project/java/`, so `gen-project` would write it twice. Most generators take `mergeimports: true`, and the JSON Schema takes each element's gist label as its title.
+
+The recipe moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. It then rewrites `project/owl/gist.owl.ttl` with a separate `gen-owl` call whose flags come from `LINKML_GENERATORS_OWL_ARGS` in `config.public.mk`, so those flags, not `.linkml/generators.yaml`, shape the published OWL. Three of them leave out the restrictions that only repeat a property's range or a minimum of none.
+
+`gen-project` and the separate `gen-owl` call both keep gist's own IRIs for gist's terms. SHACL shapes are this project's and live in `gist_linkml:` (`gist_linkml:PersonShape` targets `gist:Person`). Each class's definition repeats every slot it inherits, so the JSON Schema, the Pydantic module and the SHACL shapes are about 5 MB, 7 MB and 2.4 MB.
+
+All of these are committed. None is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). `just verify-generated`, which CI runs, regenerates them and fails when a committed file differs in content. `tests/test_generated_artifacts.py` (22 tests) checks the JSON Schema, OWL and related outputs. Four of them check the committed OWL and SHACL against the [gist namespace policy](../policies/gist-namespace-policy.md), and four more check that the OWL's property types, datatype ranges and deprecations, and the datatypes the SHACL shapes accept, match gist's.
