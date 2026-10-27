@@ -1037,7 +1037,7 @@ slots:
     domain: Intention
     range: Behavior
     multivalued: true
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     deprecated_element_has_exact_replacement: prohibits
     in_subset:
       - gist_core
@@ -2164,7 +2164,7 @@ classes:
       - value: A house, school, store, factory, chicken coop.
       - value: |-
           Negative examples: houseboats (not built on land), caves (not man-made), food trucks and RVs (not permanently situated).
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
 
@@ -2896,7 +2896,7 @@ classes:
         OWL subClassOf restrictions: ∃hasPhysicalLocation.(gist:GeoRegion | gist:GeoVolume)
       - |-
         See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885.
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
 
@@ -2916,7 +2916,7 @@ classes:
       - PhysicalIdentifiableItem
       - PhysicalSubstance
       - UnitOfMeasure
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
 
@@ -3430,7 +3430,7 @@ classes:
           Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.
     disjoint_with:
       - UnitOfMeasure
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
 
@@ -3684,7 +3684,7 @@ classes:
   GistThing:
     mixin: true
     description: |-
-      Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+      Mixin that gives every gist class the name and description slots, which gist declares without a domain.
     in_subset:
       - gist_core
     slots:

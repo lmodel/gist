@@ -2,7 +2,7 @@ id: https://w3id.org/lmodel/gist/rdfs-annotations
 name: gist_rdfs_annotations
 title: gist RDFS Annotations
 description: |-
-  RDFS label and comment annotations for gist classes, properties and named individuals (14.1.0). Documentation-layer schema: rdfs:label  -> aliases; rdfs:comment DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes  -> description/examples/comments/aliases.
+  RDFS label and comment annotations for gist classes, properties and named individuals (14.1.0). Each rdfs:label becomes an alias, and each rdfs:comment becomes a description, example, comment or alias by its DEFINITION:, EXAMPLE:, NOTE: or ALT: prefix.
 license: CC-BY-4.0
 see_also:
   - https://www.semanticarts.com/gist/

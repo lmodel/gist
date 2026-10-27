@@ -97,6 +97,10 @@ _CURIE_PREFIXES: list[tuple[str, str]] = [
 # NOTE: or ALT:
 _PREFIXED_COMMENT_RE = re.compile(r"^([A-Z]+):\s*")
 
+# LinkML's deprecated holds the reason a term is deprecated; gist states
+# only owl:deprecated true, and any guidance stays in the term's notes.
+DEPRECATED_REASON = "gist marks this term owl:deprecated."
+
 # Namespaces rendered as CURIEs inside the OWL axiom notes
 _NOTE_NS: list[tuple[str, str]] = [
     (GIST_SA_NS, "gist"),
@@ -463,7 +467,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
         # --- deprecated ---
         depr = first_literal(g, cls, OWL.deprecated)
         if depr and depr.lower() == "true":
-            entry["deprecated"] = "true"
+            entry["deprecated"] = DEPRECATED_REASON
 
         # --- is_a: first simple named gist: superclass ---
         simple_parents = [
@@ -720,7 +724,7 @@ def extract_slots(g: Graph) -> dict[str, dict]:
             # --- deprecated ---
             depr = first_literal(g, prop, OWL.deprecated)
             if depr and depr.lower() == "true":
-                entry["deprecated"] = "true"
+                entry["deprecated"] = DEPRECATED_REASON
                 superseded = [
                     gist_local(o) for o in named_objects(g, prop, GIST.isSupersededBy)
                     if gist_local(o)
@@ -1241,8 +1245,8 @@ def build_schema(
     classes["GistThing"] = {
         "mixin": True,
         "description": (
-            "Mixin providing universal slots applicable to any GIST entity. "
-            "Covers OWL properties with no rdfs:domain (open-world)."
+            "Mixin that gives every gist class the name and description slots, "
+            "which gist declares without a domain."
         ),
         "slots": ["name", "description"],
         "in_subset": [subset_name],
@@ -1333,10 +1337,7 @@ def build_prefix_declarations_schema(
         "id": f"{LMODEL_BASE}/prefix-declarations",
         "name": "gist_prefix_declarations",
         "title": "gist Prefix Declarations",
-        "description": (
-            f"SHACL prefix declarations from gist {version}. "
-            "Defines namespace-to-prefix bindings used by the gist ontology."
-        ),
+        "description": f"SHACL prefix declarations from gist {version}.",
         "license": "CC-BY-4.0",
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
@@ -1388,9 +1389,9 @@ def build_rdfs_annotations_schema(
         "description": (
             f"RDFS label and comment annotations for gist classes, properties and "
             f"named individuals ({version}). "
-            "Documentation-layer schema: rdfs:label  -> aliases; "
-            "rdfs:comment DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes  -> "
-            "description/examples/comments/aliases."
+            "Each rdfs:label becomes an alias, and each rdfs:comment becomes a "
+            "description, example, comment or alias by its DEFINITION:, "
+            "EXAMPLE:, NOTE: or ALT: prefix."
         ),
         "license": "CC-BY-4.0",
         "see_also": ["https://www.semanticarts.com/gist/"],
@@ -1462,7 +1463,7 @@ def build_gist_schema(version: str = "14.1.0") -> dict:
         "name": "gist",
         "title": "gist (LinkML rendering)",
         "description": (
-            "gist  is a minimalist upper ontology "
+            "gist is a minimalist upper ontology "
             "created by Semantic Arts for enterprise knowledge graph applications. "
             "This LinkML schema (version " + version + ") aggregates the gist modules: "
             "Core (classes and properties), MediaTypes (IANA media type instances), and "
