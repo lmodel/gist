@@ -2,6 +2,7 @@
 
 ## 2026-10-27
 
+* **Prose**: reworded 8 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Changed**: the SQL DDL is gone, as `.linkml/generators.yaml` now leaves it out. The page also names the second `gen-java` run it leaves out, the JSON Schema's titles, the OWL flags that drop vacuous restrictions, the artefacts' sizes and the 22 tests that check them.
 * **Changed**: the page lists the three new valid examples, whose slots come from a domain, and the renamed counter-examples. It also says that `tests/test_data.py` (10 tests) now checks the reason each counter-example fails for.
 * **Changed**: the page gives the transform's new rules: domain slots and the GistThing mixin, titles, datatype types, inherited ranges and `owl:deprecated`. It also names the domains the transform now refuses, its 231 unit tests, and a rename that adds no alias equal to the title.

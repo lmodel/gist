@@ -66,10 +66,17 @@ sources:
 
 # Generated artefacts
 
-`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `.linkml/generators.yaml`, and writes the results under `project/`. The settings leave out two generators. The SQL DDL would hold some 5,400 tables, one for each multivalued slot of each class, because every class carries the 89 slots gist declares without a domain. The recipe runs `gen-java` on its own afterwards, into the git-ignored `project/java/`, so `gen-project` would write it twice. Most generators take `mergeimports: true`, and the JSON Schema takes each element's gist label as its title.
+`just gen-project` runs LinkML's `gen-project` over `src/gist/schema/gist.yaml` with the generator settings in `.linkml/generators.yaml`, and writes the results under `project/`. Most generators take `mergeimports: true`, and the JSON Schema takes each element's gist label as its title. The settings leave out two generators:
 
-The recipe moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. It then rewrites `project/owl/gist.owl.ttl` with a separate `gen-owl` call whose flags come from `LINKML_GENERATORS_OWL_ARGS` in `config.public.mk`, so those flags, not `.linkml/generators.yaml`, shape the published OWL. Three of them leave out the restrictions that only repeat a property's range or a minimum of none.
+- the SQL DDL, which would hold some 5,400 tables, one for each multivalued slot of each class, because every class carries the 89 slots gist declares without a domain;
+- Java, because the recipe runs `gen-java` separately afterwards, into the git-ignored `project/java/`, so `gen-project` would write that folder twice.
 
-`gen-project` and the separate `gen-owl` call both keep gist's own IRIs for gist's terms. SHACL shapes are this project's and live in `gist_linkml:` (`gist_linkml:PersonShape` targets `gist:Person`). Each class's definition repeats every slot it inherits, so the JSON Schema, the Pydantic module and the SHACL shapes are about 5 MB, 7 MB and 2.4 MB.
+The recipe moves the Python dataclasses into `src/gist/datamodel/gist.py` and writes a Pydantic model beside it as `gist_pydantic.py`. It then rewrites `project/owl/gist.owl.ttl` with a separate `gen-owl` call whose flags come from `LINKML_GENERATORS_OWL_ARGS` in `config.public.mk`, so those flags, not `.linkml/generators.yaml`, shape the published OWL. Three of those flags leave out the restrictions that only repeat a property's range or a minimum of none.
 
-All of these are committed. None is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). `just verify-generated`, which CI runs, regenerates them and fails when a committed file differs in content. `tests/test_generated_artifacts.py` (22 tests) checks the JSON Schema, OWL and related outputs. Four of them check the committed OWL and SHACL against the [gist namespace policy](../policies/gist-namespace-policy.md), and four more check that the OWL's property types, datatype ranges and deprecations, and the datatypes the SHACL shapes accept, match gist's.
+`gen-project` and the separate `gen-owl` call both keep gist's own IRIs for gist's terms. The SHACL shapes are this project's, and their IRIs are in `gist_linkml:` (`gist_linkml:PersonShape` targets `gist:Person`).
+
+Each class's definition repeats every slot it inherits, so the JSON Schema, the Pydantic module and the SHACL shapes are about 5 MB, 7 MB and 2.4 MB.
+
+All of these files are committed, and none is edited by hand: regenerate them from the [gist LinkML schema](gist-linkml-schema.md) instead ([Regenerate the schema](../playbooks/regenerate-schema.md)). CI runs `just verify-generated`, which regenerates them and fails when a committed file differs in content.
+
+`tests/test_generated_artifacts.py` (22 tests) checks the JSON Schema, OWL and related outputs. Four of its tests check the committed OWL and SHACL against the [gist namespace policy](../policies/gist-namespace-policy.md). Four more check that the OWL's property types, datatype ranges and deprecations, and the datatypes the SHACL shapes accept, match gist's.

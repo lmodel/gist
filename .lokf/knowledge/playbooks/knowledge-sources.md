@@ -16,7 +16,7 @@ verified:
 
 # Knowledge sources
 
-Bootstrap discovery ran 2026-09-29. Steady-state refresh runs re-verify these sources instead of discovering them again. Update this map whenever the repository's knowledge geography changes.
+Bootstrap discovery ran 2026-09-29. Steady-state refresh runs re-verify these sources instead of discovering them again. Update this map whenever a knowledge source is added to the repository, moved or removed.
 
 Each concept derived from a file or folder of this repository names it by its path from the repository root, in `resource` and in `sources`. `knowledge-report.sh worklist` compares each such path's last commit with the commit that recorded the concept's stamp, and lists the concepts whose source moved. It never fetches a URL, so re-read the external sources this table names on every refresh.
 

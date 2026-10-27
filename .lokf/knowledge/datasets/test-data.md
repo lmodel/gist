@@ -23,8 +23,10 @@ sources:
 
 `tests/data/` holds YAML instances named `<ClassName>-<anything>.yaml`, where the part before the first hyphen must be a class of the [gist LinkML schema](gist-linkml-schema.md). Its subfolders divide the data:
 
-- `valid/` holds data that must validate. Account-basic, Organization-sample, Person-example and System-example give the `name` and `description` that every class carries. GeoPoint-spire, Magnitude-with-unit and UnitOfMeasure-foot also give slots that a property's `rdfs:domain` puts on their class;
+- `valid/` holds data that must validate;
 - `invalid/` holds counter-examples that must fail: Account-name-not-text, Organization-undeclared-slots and Person-slot-outside-domain;
 - `problem/valid/` and `problem/invalid/` are for cases the current schema does not yet handle, and are empty.
 
-`tests/test_data.py` (10 tests) validates each file against its class with closed classes, as `linkml-validate` does. A valid file must give no result. A counter-example must give exactly one, and that result must hold the reason which `REASONS` in the test gives for the file. `just test` also converts the files with `linkml-run-examples` into the git-ignored `examples/output/`.
+In `valid/`, Account-basic, Organization-sample, Person-example and System-example give the `name` and `description` that every class carries. GeoPoint-spire, Magnitude-with-unit and UnitOfMeasure-foot also give slots that their class carries because a property's `rdfs:domain` names it.
+
+`tests/test_data.py` (10 tests) validates each file against its class with closed classes, as `linkml-validate` does. A valid file must give no result. A counter-example must give exactly one result, and its message must contain the reason that `REASONS` in the test gives for that file. `just test` also converts the files with `linkml-run-examples` into the git-ignored `examples/output/`.
