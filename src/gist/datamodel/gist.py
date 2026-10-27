@@ -1,5 +1,4 @@
 # Auto generated from gist.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-30T01:46:34
 # Schema: gist
 #
 # id: https://w3id.org/lmodel/gist
@@ -59,7 +58,7 @@ from rdflib import (
 from linkml_runtime.linkml_model.types import Datetime, Decimal, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Decimal, XSDDateTime
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.12.0"
 version = "14.1.0"
 
 # Namespaces
@@ -1939,7 +1938,7 @@ slots.contained_text = Slot(uri=GIST.containedText, name="contained_text", curie
                    model_uri=GIST_LINKML.contained_text, domain=None, range=Optional[str])
 
 slots.conversion_factor = Slot(uri=GIST.conversionFactor, name="conversion_factor", curie=GIST.curie('conversionFactor'),
-                   model_uri=GIST_LINKML.conversion_factor, domain=UnitOfMeasure, range=Optional[str])
+                   model_uri=GIST_LINKML.conversion_factor, domain=UnitOfMeasure, range=Optional[Union[Decimal, float]])
 
 slots.conversion_offset = Slot(uri=GIST.conversionOffset, name="conversion_offset", curie=GIST.curie('conversionOffset'),
                    model_uri=GIST_LINKML.conversion_offset, domain=UnitOfMeasure, range=Optional[Decimal])
@@ -2011,7 +2010,7 @@ slots.name = Slot(uri=GIST.name, name="name", curie=GIST.curie('name'),
                    model_uri=GIST_LINKML.name, domain=None, range=Optional[str])
 
 slots.numeric_value = Slot(uri=GIST.numericValue, name="numeric_value", curie=GIST.curie('numericValue'),
-                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[str])
+                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[Union[int, Decimal, float]])
 
 slots.planned_end_date = Slot(uri=GIST.plannedEndDate, name="planned_end_date", curie=GIST.curie('plannedEndDate'),
                    model_uri=GIST_LINKML.planned_end_date, domain=None, range=Optional[Union[str, XSDDateTime]])

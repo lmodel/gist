@@ -8,6 +8,8 @@
 
 # Derived schemas, generated from the schema.yaml
 tmp/
+# The Java classes gen-java writes since linkml 1.12, not committed.
+/project/java/
 # project/
 # !project/README.md
 

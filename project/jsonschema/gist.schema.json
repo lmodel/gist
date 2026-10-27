@@ -3,9 +3,16 @@
         "Account": {
             "additionalProperties": false,
             "description": "An agreement having a balance.",
+            "examples": [
+                "A bank account, a credit card account, an accounts receivable account."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -25,9 +32,16 @@
         "Address": {
             "additionalProperties": false,
             "description": "A reference to a place (real or virtual) that can be located by some routing algorithm and where messages or things can be sent or received.",
+            "examples": [
+                "A PO Box, a URL to a PDF file."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -47,9 +61,16 @@
         "AddressUsageType": {
             "additionalProperties": false,
             "description": "A category indicating the context or manner in which an address may be used.",
+            "examples": [
+                "Billing, business, personal, postal, residence."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -69,9 +90,16 @@
         "Agreement": {
             "additionalProperties": false,
             "description": "A mutually understood arrangement in which two or more parties make commitments to one another.",
+            "examples": [
+                "A gym membership is an agreement in which the member commits to paying the gym a certain price and the gym commits to allowing access to their facilities."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -103,9 +131,16 @@
         "Aspect": {
             "additionalProperties": false,
             "description": "A measurable characteristic.",
+            "examples": [
+                "Length, weight, cost, cycle time, defect rate, wheelbase, billing rate."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -140,9 +175,16 @@
         "Assignment": {
             "additionalProperties": false,
             "description": "A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment.",
+            "examples": [
+                "An employee is assigned to a task by a supervisor. A person is assigned to a position."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -162,9 +204,16 @@
         "Behavior": {
             "additionalProperties": false,
             "description": "A category indicating the nature of an activity.",
+            "examples": [
+                "Drilling and cutting are two different kinds of manufacturing event."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -184,9 +233,17 @@
         "Building": {
             "additionalProperties": false,
             "description": "A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working.",
+            "examples": [
+                "A house, school, store, factory, chicken coop.",
+                "Negative examples: houseboats (not built on land), caves (not man-made), food trucks and RVs (not permanently situated)."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -206,9 +263,16 @@
         "BundledCatalogItem": {
             "additionalProperties": false,
             "description": "Any combination of descriptions of things offered together.",
+            "examples": [
+                "A kit containing several parts offered together; a product plus a warranty."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -231,6 +295,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -250,9 +318,16 @@
         "Category": {
             "additionalProperties": false,
             "description": "A concept or label used to categorize other instances without specifying any formal semantics.",
+            "examples": [
+                "Tags used in folksonomies; formal definitions from other systems."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -272,9 +347,16 @@
         "Collection": {
             "additionalProperties": false,
             "description": "A grouping of things.",
+            "examples": [
+                "A jury is a group of people; a financial ledger is a collection of transaction entries; a route is an (ordered) collection of segments."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -294,9 +376,17 @@
         "Commitment": {
             "additionalProperties": false,
             "description": "A promise made by a single party to one or more parties to do or not do something or act in a particular way.",
+            "examples": [
+                "Upon selling a treasury bill, the U.S. government makes a commitment to pay the purchaser a stated amount of money at a stated time.",
+                "When signing an NDA, the signatory commits to keeping specified information confidential."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -319,6 +409,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -338,9 +432,16 @@
         "Composite": {
             "additionalProperties": false,
             "description": "Something which is made up of various parts or elements that are independently identifiable.",
+            "examples": [
+                "A library (collection of books); a network of pipes and valves; a computer network of routers and computers."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -363,6 +464,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -382,9 +487,16 @@
         "Content": {
             "additionalProperties": false,
             "description": "Information available in some medium.",
+            "examples": [
+                "The literary work 'The Adventures of Huckleberry Finn' by Mark Twain, independent of any particular edition."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -404,9 +516,16 @@
         "ContentExpression": {
             "additionalProperties": false,
             "description": "Content reduced to text, audio, etc.",
+            "examples": [
+                "A specific print or audio edition of 'The Adventures of Huckleberry Finn,' such as the one identified by ISBN-13 978-1953649805."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -426,9 +545,16 @@
         "ContingentEvent": {
             "additionalProperties": false,
             "description": "An event with a probability of happening in the future, and usually dependent upon some other event or condition.",
+            "examples": [
+                "A fire insurance payout is contingent on a particular building burning down; selling 20 shares of stock in a given company is contingent on the price dropping below $200/share; the death benefit payout on a life insurance policy is contingent on the death of the insured person."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -451,6 +577,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -473,6 +603,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -495,6 +629,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -517,6 +655,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -539,6 +681,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -561,6 +707,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -580,9 +730,16 @@
         "DegreeOfCommitment": {
             "additionalProperties": false,
             "description": "The difficulty of reversing a commitment.",
+            "examples": [
+                "A car rental typically has a lower degree of commitment than an airfare reservation."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -602,9 +759,16 @@
         "Determination": {
             "additionalProperties": false,
             "description": "An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.",
+            "examples": [
+                "Measuring the sulfur content of crude oil; evaluating a loan application for approval; estimating the price of gas for the next three months; determining whether and by how much an interest rate should change; classifying a purchase into a budget category."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -624,9 +788,16 @@
         "Discipline": {
             "additionalProperties": false,
             "description": "An area of study or practice.",
+            "examples": [
+                "Finance, accounting, project management, acoustics, ballistics."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -646,9 +817,16 @@
         "ElectronicAddress": {
             "additionalProperties": false,
             "description": "An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.",
+            "examples": [
+                "A file system path, website URL, IP address, email address, mobile or landline telephone number."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -668,9 +846,16 @@
         "ElectronicAddressType": {
             "additionalProperties": false,
             "description": "A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent.",
+            "examples": [
+                "A URL, file system path, email address, mobile telephone number."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -690,9 +875,16 @@
         "Equipment": {
             "additionalProperties": false,
             "description": "Human-made, tangible property other than land or buildings used to perform a task or activity.",
+            "examples": [
+                "A machine, a router, a car, a baseball bat."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -715,6 +907,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -734,9 +930,16 @@
         "Event": {
             "additionalProperties": false,
             "description": "Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.",
+            "examples": [
+                "A transaction, conference, baseball game, earthquake."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -756,9 +959,16 @@
         "EventSpecification": {
             "additionalProperties": false,
             "description": "A characterization of an event that might happen.",
+            "examples": [
+                "An insurance company defines the characteristics of a weather event that must be satisfied for it to qualify as a hail storm covered in its homeowner's policy; a bank defines the point at which a borrower defaults on a loan."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -778,9 +988,16 @@
         "FormattedContent": {
             "additionalProperties": false,
             "description": "Content encoded in a specific format, but existing as data independent of any particular physical medium.",
+            "examples": [
+                "A document in PDF format; an image in JPEG format."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -800,9 +1017,16 @@
         "Function": {
             "additionalProperties": false,
             "description": "The activity that a human-made item is intended to perform.",
+            "examples": [
+                "Transmit electricity, provide ballast, control ambient temperature."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -822,9 +1046,16 @@
         "GeneralMediaType": {
             "additionalProperties": false,
             "description": "The real-world media type for content.",
+            "examples": [
+                "Audio, still image, video, textual, physical (e.g., a statue), performance (e.g., a play), oil or pastel for a painting."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -847,6 +1078,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -869,6 +1104,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -888,9 +1127,16 @@
         "GeoRegion": {
             "additionalProperties": false,
             "description": "A bounded region (or set of regions) on the surface of the Earth.",
+            "examples": [
+                "The bounded shape that defines the region occupied by Crater Lake; the bounded area known as the contiguous USA."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -913,6 +1159,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -932,9 +1182,16 @@
         "GeoVolume": {
             "additionalProperties": false,
             "description": "A three-dimensional space on or near the surface of the Earth.",
+            "examples": [
+                "An oil reservoir, the body of a lake, or an airspace."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -957,6 +1214,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -979,6 +1240,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -998,9 +1263,17 @@
         "GovernmentOrganization": {
             "additionalProperties": false,
             "description": "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.",
+            "examples": [
+                "Negative example: A corporation, which is owned and therefore not independent.",
+                "The State of Washington Office of Financial Management; the Food and Drug Administration; the Scottish Parliament."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1023,6 +1296,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1042,9 +1319,16 @@
         "ID": {
             "additionalProperties": false,
             "description": "Content that is used to uniquely identify something or someone.",
+            "examples": [
+                "SSN for a person; serial number for a product; employee ID for a person."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1064,9 +1348,16 @@
         "IntellectualProperty": {
             "additionalProperties": false,
             "description": "An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.",
+            "examples": [
+                "The Old Man and The Sea; the Page Rank algorithm; the brand Coca Cola."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1089,6 +1380,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1108,9 +1403,16 @@
         "IntergovernmentalOrganization": {
             "additionalProperties": false,
             "description": "An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.",
+            "examples": [
+                "The United Nations, the European Union, the Metropolitan Transit Authority."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1130,9 +1432,16 @@
         "KnowledgeConcept": {
             "additionalProperties": false,
             "description": "An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.",
+            "examples": [
+                "Most domains will define a few subclasses, such as gene, protein, chemical, disease, subject matter, industry, method."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1155,6 +1464,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1174,9 +1487,16 @@
         "Language": {
             "additionalProperties": false,
             "description": "A recognized, organized set of symbols and grammar.",
+            "examples": [
+                "Natural languages such as English and Spanish; computer languages such as OWL, Python, and XML."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1196,9 +1516,17 @@
         "LivingThing": {
             "additionalProperties": false,
             "description": "Something that is currently, or at some point in time was, alive.",
+            "examples": [
+                "A cat, a mushroom, a tree.",
+                "Negative examples: fictional life forms such as unicorns or Mickey Mouse."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1218,9 +1546,16 @@
         "Magnitude": {
             "additionalProperties": false,
             "description": "The amount of a measurable characteristic (aspect).",
+            "examples": [
+                "A model of car could have a wheelbase of 113.2 inches. In this example, the aspect is wheelbase, the unit of measure is inch, and the numeric value is 113.2."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1240,9 +1575,16 @@
         "MediaType": {
             "additionalProperties": false,
             "description": "A digitized type that computer applications can recognize.",
+            "examples": [
+                "application/sparql-results+xml"
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1283,9 +1625,16 @@
         "Medium": {
             "additionalProperties": false,
             "description": "A physical material on which a work can be rendered, represented, or implemented.",
+            "examples": [
+                "Paper, clay, a computer monitor."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1305,9 +1654,16 @@
         "Message": {
             "additionalProperties": false,
             "description": "A specific instance of content sent from a sender to at least one other recipient.",
+            "examples": [
+                "An email, voice, or web service message; a phone call."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1327,9 +1683,16 @@
         "Network": {
             "additionalProperties": false,
             "description": "A composite consisting of nodes connected by links.",
+            "examples": [
+                "A physical network could include connected computers or routers, whereas a social network would consist of related person or organization members (or their proxies, such as accounts)."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1349,9 +1712,16 @@
         "NetworkLink": {
             "additionalProperties": false,
             "description": "An abstract representation of the connection between two or more nodes in a network.",
+            "examples": [
+                "A network link may be physical, such as pipes, wired or wireless networks, but may also be a link in a non-physical network, such as organizational structures or social networks."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1371,9 +1741,16 @@
         "NetworkNode": {
             "additionalProperties": false,
             "description": "A node in a network.",
+            "examples": [
+                "A person's account is a node in a social network; a valve is a node in a network of pipes."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1393,9 +1770,16 @@
         "Offer": {
             "additionalProperties": false,
             "description": "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).",
+            "examples": [
+                "An offer to sell a book for a given price; an offer to purchase real estate for a particular price; an offer to swap a sea kayak for a mountain bike; currency exchange. A donation may be modeled as an offer to receive money typically in exchange for $0.00, but sometimes for items of value such as coffee mugs or T-shirts."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1418,6 +1802,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1437,9 +1825,16 @@
         "OrderedMember": {
             "additionalProperties": false,
             "description": "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.",
+            "examples": [
+                "A person may rank 12th in the Boston Marathon but 29th in the New York City Marathon."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1459,9 +1854,16 @@
         "Organization": {
             "additionalProperties": false,
             "description": "A structured entity formed to achieve specific goals, typically involving members with defined roles.",
+            "examples": [
+                "Legal entities like companies; non-legal entities like clubs, committees, or departments."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1481,9 +1883,16 @@
         "Permission": {
             "additionalProperties": false,
             "description": "A description of things one is permitted to do.",
+            "examples": [
+                "Permission could be broad, such as free speech, but more often is very specific, such as the right to enter a particular property."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1503,9 +1912,16 @@
         "Person": {
             "additionalProperties": false,
             "description": "A human being who was or is alive.",
+            "examples": [
+                "Negative example: fictional characters."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1525,9 +1941,16 @@
         "PhysicalActionType": {
             "additionalProperties": false,
             "description": "A category indicating the type of an action based on its effect in the physical world.",
+            "examples": [
+                "Lifting a garage door, turning off a valve, dropping cadmium rods."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1547,9 +1970,16 @@
         "PhysicalAddress": {
             "additionalProperties": false,
             "description": "An address that refers to a locatable place within the physical universe.",
+            "examples": [
+                "1600 Pennsylvania Avenue NW, Washington, DC 20500; PO Box 7704, San Francisco, CA 94120-7704; Room 317 in the Louvre Museum."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1569,9 +1999,16 @@
         "PhysicalAddressType": {
             "additionalProperties": false,
             "description": "A category indicating local customary characterizations of physical addresses.",
+            "examples": [
+                "Street address, PO box, FPO code."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1591,9 +2028,17 @@
         "PhysicalEvent": {
             "additionalProperties": false,
             "description": "An event that can be said to have occurred at some place in space.",
+            "examples": [
+                "A meeting, a car accident.",
+                "Negative examples: Excludes events that have no meaningful location, such as financial events or project milestones."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1613,9 +2058,16 @@
         "PhysicalIdentifiableItem": {
             "additionalProperties": false,
             "description": "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.",
+            "examples": [
+                "A laptop, a physical book, a car, a building, a landmark (such as a tree stump with an etched marking to denote a campsite)."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1635,9 +2087,17 @@
         "PhysicalSubstance": {
             "additionalProperties": false,
             "description": "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.",
+            "examples": [
+                "An amount of water, penicillin, sand, or gold.",
+                "Negative example: the concept of gold."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1671,9 +2131,16 @@
         "ProductCategory": {
             "additionalProperties": false,
             "description": "Any of many ways of categorizing products.",
+            "examples": [
+                "Automobile models, NATO product codes."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1696,6 +2163,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1715,9 +2186,16 @@
         "Project": {
             "additionalProperties": false,
             "description": "A task, usually of longer duration, made up of other tasks.",
+            "examples": [
+                "Designing an insurance product; adding a new feature to a software application; assessing the level of risk for a mortgage application."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1737,9 +2215,16 @@
         "ReferenceValue": {
             "additionalProperties": false,
             "description": "A magnitude that was neither measured nor estimated but set by fiat.",
+            "examples": [
+                "The sales goal for a company."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1759,9 +2244,16 @@
         "RenderedContent": {
             "additionalProperties": false,
             "description": "Content expressed via some physical medium.",
+            "examples": [
+                "Words printed on paper; audio played on speakers; an image displayed on a monitor; an original painting."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1781,9 +2273,16 @@
         "Requirement": {
             "additionalProperties": false,
             "description": "The obligation of a person or organization to behave in a certain way.",
+            "examples": [
+                "In the US, drivers must drive on the right side of the road."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1803,9 +2302,16 @@
         "Restriction": {
             "additionalProperties": false,
             "description": "A description of things one is prevented from doing.",
+            "examples": [
+                "In the US, tax laws restrict the amount of money a person can put in retirement accounts over the course of a year."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1828,6 +2334,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1850,6 +2360,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1869,9 +2383,16 @@
         "SchemaMetaData": {
             "additionalProperties": false,
             "description": "Superclass for all types of metadata.",
+            "examples": [
+                "Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1894,6 +2415,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1913,9 +2438,16 @@
         "Specification": {
             "additionalProperties": false,
             "description": "The set of characteristics and constraints on their values that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.",
+            "examples": [
+                "The specification of the iPhone 14; hypothetical events covered by a homeowner's insurance policy; a drug quality specification - a set of acceptance criteria for quality characteristics that must be controlled to ensure a drug is fit for its intended use."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1938,6 +2470,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1957,9 +2493,16 @@
         "System": {
             "additionalProperties": false,
             "description": "A composite made up of interacting or interdependent components that together operate as a whole.",
+            "examples": [
+                "A manufacturing system, a storm system."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -1982,6 +2525,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2004,6 +2551,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2023,9 +2574,16 @@
         "TaskTemplate": {
             "additionalProperties": false,
             "description": "An outline of a task of a particular type, which is the basis for executing such tasks.",
+            "examples": [
+                "A business process for onboarding new employees."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2045,9 +2603,16 @@
         "Template": {
             "additionalProperties": false,
             "description": "Something used to make objects in its own image.",
+            "examples": [
+                "A die in manufacturing is used to make stamped parts; a form provides a structure and fields to be filled in; a cookie cutter is a template for cookies."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2067,9 +2632,16 @@
         "TemporalRelation": {
             "additionalProperties": false,
             "description": "A relationship existing for a period of time.",
+            "examples": [
+                "The relationship between a person and their employer; the relationship between a person or business and an address."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2089,9 +2661,16 @@
         "Text": {
             "additionalProperties": false,
             "description": "Content expressed as a written sequence of characters.",
+            "examples": [
+                "Negative example: photographs or scans of text are not text. These instead depict a subject, which happens to be text."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2111,9 +2690,16 @@
         "TimeInterval": {
             "additionalProperties": false,
             "description": "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.",
+            "examples": [
+                "7pm to 9pm on Jan 1, 2001; fiscal year 2023 (according to some particular definition of fiscal year); the week starting at midnight of January 12, 2023 and lasting exactly 168 hours."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2136,6 +2722,10 @@
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2155,9 +2745,16 @@
         "UnitGroup": {
             "additionalProperties": false,
             "description": "A collection of units of measure that can all be used to measure the same aspects.",
+            "examples": [
+                "The units of measure bit, byte, kilobit, kilobyte, etc. are all in the same unit group because they can all be used to measure an amount of data."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2177,9 +2774,16 @@
         "UnitOfMeasure": {
             "additionalProperties": false,
             "description": "A standard amount used to measure or specify things.",
+            "examples": [
+                "An acre is a unit for measuring area."
+            ],
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
+                    "examples": [
+                        "'The Empire State Building is a 102-story Art Deco skyscraper in midtown Manhattan in New York City. It was designed by Shreve, Lamb & Harmon and built from 1930 to 1931.'",
+                        "A person does not have a definition, but might be described as being six feet tall with brown hair and blue eyes; an ontology class or taxonomy term has a definition."
+                    ],
                     "type": [
                         "string",
                         "null"
@@ -2200,7 +2804,7 @@
     "$id": "https://w3id.org/lmodel/gist",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "metamodel_version": "1.11.0",
+    "metamodel_version": "1.12.0",
     "title": "gist",
     "type": "object",
     "version": "14.1.0"
