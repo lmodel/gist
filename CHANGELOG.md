@@ -12,7 +12,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Removed
 
-- **`just testdoc`.** It ran `mkdocs serve`, which 0.4.0 removed; `npm run dev` in `website/` previews the site.
+- **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
 
 ## [0.4.0] - 2026-10-27
 
