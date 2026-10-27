@@ -1,5 +1,5 @@
-# Valid Account instance using schema-defined slots
-# Account is_a Agreement which defines name and description properties
+# A valid Account: the name and description that the GistThing
+# mixin gives every gist class.
 
 name: "Primary Checking Account"
 description: "A bank account with transaction history and financial balance tracking"

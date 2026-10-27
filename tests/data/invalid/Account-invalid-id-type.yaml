@@ -1,7 +1,0 @@
-# Invalid Account: has_aspect with invalid enum value
-# INVALID_ASPECT_VALUE is not a valid AspectInstance permissible value
-
-name: "Invalid Account"
-description: "Account with invalid aspect"
-has_aspect:
-  - INVALID_ASPECT_VALUE

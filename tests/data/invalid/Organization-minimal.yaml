@@ -1,5 +1,0 @@
-# Invalid Organization: undefined properties not in schema
-# These are not valid GIST schema properties
-
-not_a_real_field: "This property does not exist in GIST"
-undefined_attribute: 42

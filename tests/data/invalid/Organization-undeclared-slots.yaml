@@ -1,0 +1,4 @@
+# Invalid Organization: neither key is a gist slot, and the classes are closed.
+
+not_a_real_field: "This property does not exist in GIST"
+undefined_attribute: 42

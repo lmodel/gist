@@ -1,5 +1,5 @@
-# Valid Organization instance using schema-defined slots
-# Organization defines name and description properties
+# A valid Organization: the name and description that the GistThing
+# mixin gives every gist class.
 
 name: "Acme Corporation"
 description: "A multinational organization providing technology and services across multiple industries"

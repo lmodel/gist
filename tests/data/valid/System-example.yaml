@@ -1,5 +1,5 @@
-# Valid System instance using schema-defined slots
-# System is_a Composite which defines name and description properties
+# A valid System: the name and description that the GistThing
+# mixin gives every gist class.
 
 name: "Enterprise Data Architecture"
 description: "A composite system integrating multiple databases, APIs, and processing components"

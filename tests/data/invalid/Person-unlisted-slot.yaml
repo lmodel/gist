@@ -1,0 +1,8 @@
+# Invalid Person: has_aspect is a gist slot, but Person does not list it.
+# gist gives has_aspect no domain, and every class lists only name and
+# description, so a closed class rejects it.
+
+name: "Invalid Person"
+description: "A person given an aspect"
+has_aspect:
+  name: "mass"
