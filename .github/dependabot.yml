@@ -18,7 +18,7 @@ updates:
           - "*"
 
   # The package's own tree (pyproject.toml + uv.lock): linkml-runtime at
-  # runtime, the LinkML toolchain and mkdocs for development. main.yaml is
+  # runtime, the LinkML toolchain for development. main.yaml is
   # the gate that has to stay green.
   - package-ecosystem: uv
     directory: "/"
