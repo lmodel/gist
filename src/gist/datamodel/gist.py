@@ -55,7 +55,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Datetime, Decimal, Float, Integer, String
+from linkml_runtime.linkml_model.types import Datetime, Decimal, Double, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Decimal, XSDDateTime
 
 metamodel_version = "1.12.0"
@@ -72,11 +72,124 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MEDIA_APP = CurieNamespace('media_app', 'https://www.iana.org/assignments/media-types/application/')
 MEDIA_IMG = CurieNamespace('media_img', 'https://www.iana.org/assignments/media-types/image/')
 MEDIA_TXT = CurieNamespace('media_txt', 'https://www.iana.org/assignments/media-types/text/')
+OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = GIST_LINKML
 
 
 # Types
+class OwlRational(Decimal):
+    """ A decimal literal typed owl:rational, which gist allows. """
+    type_class_uri = OWL["rational"]
+    type_class_curie = "owl:rational"
+    type_name = "owl_rational"
+    type_model_uri = GIST_LINKML.OwlRational
+
+
+class OwlReal(Decimal):
+    """ A decimal literal typed owl:real, which gist allows. """
+    type_class_uri = OWL["real"]
+    type_class_curie = "owl:real"
+    type_name = "owl_real"
+    type_model_uri = GIST_LINKML.OwlReal
+
+
+class XsdByte(Integer):
+    """ An integer literal typed xsd:byte, which gist allows. """
+    type_class_uri = XSD["byte"]
+    type_class_curie = "xsd:byte"
+    type_name = "xsd_byte"
+    type_model_uri = GIST_LINKML.XsdByte
+
+
+class XsdInt(Integer):
+    """ An integer literal typed xsd:int, which gist allows. """
+    type_class_uri = XSD["int"]
+    type_class_curie = "xsd:int"
+    type_name = "xsd_int"
+    type_model_uri = GIST_LINKML.XsdInt
+
+
+class XsdLong(Integer):
+    """ An integer literal typed xsd:long, which gist allows. """
+    type_class_uri = XSD["long"]
+    type_class_curie = "xsd:long"
+    type_name = "xsd_long"
+    type_model_uri = GIST_LINKML.XsdLong
+
+
+class XsdNegativeInteger(Integer):
+    """ An integer literal typed xsd:negativeInteger, which gist allows. """
+    type_class_uri = XSD["negativeInteger"]
+    type_class_curie = "xsd:negativeInteger"
+    type_name = "xsd_negative_integer"
+    type_model_uri = GIST_LINKML.XsdNegativeInteger
+
+
+class XsdNonNegativeInteger(Integer):
+    """ An integer literal typed xsd:nonNegativeInteger, which gist allows. """
+    type_class_uri = XSD["nonNegativeInteger"]
+    type_class_curie = "xsd:nonNegativeInteger"
+    type_name = "xsd_non_negative_integer"
+    type_model_uri = GIST_LINKML.XsdNonNegativeInteger
+
+
+class XsdNonPositiveInteger(Integer):
+    """ An integer literal typed xsd:nonPositiveInteger, which gist allows. """
+    type_class_uri = XSD["nonPositiveInteger"]
+    type_class_curie = "xsd:nonPositiveInteger"
+    type_name = "xsd_non_positive_integer"
+    type_model_uri = GIST_LINKML.XsdNonPositiveInteger
+
+
+class XsdPositiveInteger(Integer):
+    """ An integer literal typed xsd:positiveInteger, which gist allows. """
+    type_class_uri = XSD["positiveInteger"]
+    type_class_curie = "xsd:positiveInteger"
+    type_name = "xsd_positive_integer"
+    type_model_uri = GIST_LINKML.XsdPositiveInteger
+
+
+class XsdShort(Integer):
+    """ An integer literal typed xsd:short, which gist allows. """
+    type_class_uri = XSD["short"]
+    type_class_curie = "xsd:short"
+    type_name = "xsd_short"
+    type_model_uri = GIST_LINKML.XsdShort
+
+
+class XsdUnsignedByte(Integer):
+    """ An integer literal typed xsd:unsignedByte, which gist allows. """
+    type_class_uri = XSD["unsignedByte"]
+    type_class_curie = "xsd:unsignedByte"
+    type_name = "xsd_unsigned_byte"
+    type_model_uri = GIST_LINKML.XsdUnsignedByte
+
+
+class XsdUnsignedInt(Integer):
+    """ An integer literal typed xsd:unsignedInt, which gist allows. """
+    type_class_uri = XSD["unsignedInt"]
+    type_class_curie = "xsd:unsignedInt"
+    type_name = "xsd_unsigned_int"
+    type_model_uri = GIST_LINKML.XsdUnsignedInt
+
+
+class XsdUnsignedLong(Integer):
+    """ An integer literal typed xsd:unsignedLong, which gist allows. """
+    type_class_uri = XSD["unsignedLong"]
+    type_class_curie = "xsd:unsignedLong"
+    type_name = "xsd_unsigned_long"
+    type_model_uri = GIST_LINKML.XsdUnsignedLong
+
+
+class XsdUnsignedShort(Integer):
+    """ An integer literal typed xsd:unsignedShort, which gist allows. """
+    type_class_uri = XSD["unsignedShort"]
+    type_class_curie = "xsd:unsignedShort"
+    type_name = "xsd_unsigned_short"
+    type_model_uri = GIST_LINKML.XsdUnsignedShort
+
 
 # Class references
 
@@ -164,7 +277,7 @@ class Aspect(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -276,16 +389,16 @@ class Aspect(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -407,7 +520,7 @@ class Category(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -515,16 +628,16 @@ class Category(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -671,7 +784,7 @@ class Component(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -779,16 +892,16 @@ class Component(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -910,7 +1023,7 @@ class Composite(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -1018,16 +1131,16 @@ class Composite(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -1162,7 +1275,7 @@ class Content(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -1270,16 +1383,16 @@ class Content(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -1501,7 +1614,7 @@ class Event(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -1609,16 +1722,16 @@ class Event(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -1802,7 +1915,7 @@ class GeoLocation(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -1914,16 +2027,16 @@ class GeoLocation(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -2145,7 +2258,7 @@ class IntellectualProperty(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -2253,16 +2366,16 @@ class IntellectualProperty(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -2386,7 +2499,7 @@ class Intention(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -2502,16 +2615,16 @@ class Intention(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -2719,7 +2832,7 @@ class Language(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -2827,16 +2940,16 @@ class Language(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -2959,7 +3072,7 @@ class Magnitude(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -3071,16 +3184,16 @@ class Magnitude(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -3335,7 +3448,7 @@ class Organization(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -3443,16 +3556,16 @@ class Organization(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -3674,7 +3787,7 @@ class PhysicalIdentifiableItem(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -3782,16 +3895,16 @@ class PhysicalIdentifiableItem(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -3987,7 +4100,7 @@ class PhysicalSubstance(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -4095,16 +4208,16 @@ class PhysicalSubstance(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -4310,7 +4423,7 @@ class SchemaMetaData(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -4418,16 +4531,16 @@ class SchemaMetaData(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -4698,7 +4811,7 @@ class Template(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -4806,16 +4919,16 @@ class Template(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -4949,7 +5062,7 @@ class TemporalRelation(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -5057,16 +5170,16 @@ class TemporalRelation(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -5213,7 +5326,7 @@ class TimeInterval(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -5321,16 +5434,16 @@ class TimeInterval(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -5548,7 +5661,7 @@ class UnitOfMeasure(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -5709,16 +5822,16 @@ class UnitOfMeasure(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -5841,7 +5954,7 @@ class GistThing(YAMLRoot):
     links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     name: Optional[str] = None
-    numeric_value: Optional[Union[int, Decimal, float]] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
     occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
     offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
@@ -5949,16 +6062,16 @@ class GistThing(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
-        if self.numeric_value is not None and not isinstance(self.numeric_value, (int, Decimal, float)):
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
             value = self.numeric_value
-            for _coerce in (lambda: int(value), lambda: Decimal(value), lambda: float(value)):
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
                 try:
                     self.numeric_value = _coerce()
                     break
                 except (ValueError, TypeError):
                     continue
             else:
-                raise ValueError(f"None of the candidate types Union[int, Decimal, float] could be constructed from {value!r} for slot numeric_value")
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
 
         if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
             self.planned_end_date = XSDDateTime(self.planned_end_date)
@@ -6477,7 +6590,7 @@ slots.name = Slot(uri=GIST.name, name="name", curie=GIST.curie('name'),
                    model_uri=GIST_LINKML.name, domain=None, range=Optional[str])
 
 slots.numeric_value = Slot(uri=GIST.numericValue, name="numeric_value", curie=GIST.curie('numericValue'),
-                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[Union[int, Decimal, float]])
+                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]])
 
 slots.planned_end_date = Slot(uri=GIST.plannedEndDate, name="planned_end_date", curie=GIST.curie('plannedEndDate'),
                    model_uri=GIST_LINKML.planned_end_date, domain=None, range=Optional[Union[str, XSDDateTime]])

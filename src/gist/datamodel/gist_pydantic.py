@@ -332,17 +332,17 @@ class GistThing(ConfiguredBaseModel):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -818,7 +818,24 @@ class GistThing(ConfiguredBaseModel):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -979,10 +996,10 @@ class GistThing(ConfiguredBaseModel):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -1181,17 +1198,17 @@ class Aspect(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -1667,7 +1684,24 @@ class Aspect(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -1828,10 +1862,10 @@ class Aspect(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -2023,17 +2057,17 @@ class Category(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -2509,7 +2543,24 @@ class Category(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -2670,10 +2721,10 @@ class Category(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -2858,17 +2909,17 @@ class AddressUsageType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -3344,7 +3395,24 @@ class AddressUsageType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -3505,10 +3573,10 @@ class AddressUsageType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -3689,17 +3757,17 @@ class Behavior(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -4175,7 +4243,24 @@ class Behavior(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -4336,10 +4421,10 @@ class Behavior(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -4540,17 +4625,17 @@ class Component(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -5026,7 +5111,24 @@ class Component(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -5187,10 +5289,10 @@ class Component(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -5380,17 +5482,17 @@ class Composite(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -5866,7 +5968,24 @@ class Composite(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -6027,10 +6146,10 @@ class Composite(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -6216,17 +6335,17 @@ class Collection(Composite):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -6702,7 +6821,24 @@ class Collection(Composite):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -6863,10 +6999,10 @@ class Collection(Composite):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -7066,17 +7202,17 @@ class Content(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -7552,7 +7688,24 @@ class Content(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -7713,10 +7866,10 @@ class Content(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -7901,17 +8054,17 @@ class Address(Content):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -8387,7 +8540,24 @@ class Address(Content):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -8548,10 +8718,10 @@ class Address(Content):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -8746,17 +8916,17 @@ class ContentExpression(Content):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -9232,7 +9402,24 @@ class ContentExpression(Content):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -9393,10 +9580,10 @@ class ContentExpression(Content):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -9583,17 +9770,17 @@ class ControlledVocabulary(Collection):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -10069,7 +10256,24 @@ class ControlledVocabulary(Collection):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -10230,10 +10434,10 @@ class ControlledVocabulary(Collection):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -10414,17 +10618,17 @@ class DegreeOfCommitment(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -10900,7 +11104,24 @@ class DegreeOfCommitment(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -11061,10 +11282,10 @@ class DegreeOfCommitment(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -11245,17 +11466,17 @@ class Discipline(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -11731,7 +11952,24 @@ class Discipline(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -11892,10 +12130,10 @@ class Discipline(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -12083,17 +12321,17 @@ class ElectronicAddress(Address):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -12569,7 +12807,24 @@ class ElectronicAddress(Address):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -12730,10 +12985,10 @@ class ElectronicAddress(Address):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -12914,17 +13169,17 @@ class ElectronicAddressType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -13400,7 +13655,24 @@ class ElectronicAddressType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -13561,10 +13833,10 @@ class ElectronicAddressType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -13743,17 +14015,17 @@ class EquipmentType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -14229,7 +14501,24 @@ class EquipmentType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -14390,10 +14679,10 @@ class EquipmentType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -14588,17 +14877,17 @@ class Event(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -15074,7 +15363,24 @@ class Event(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -15235,10 +15541,10 @@ class Event(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -15421,17 +15727,17 @@ class ContemporaryEvent(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -15907,7 +16213,24 @@ class ContemporaryEvent(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -16068,10 +16391,10 @@ class ContemporaryEvent(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -16259,17 +16582,17 @@ class ContingentEvent(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -16745,7 +17068,24 @@ class ContingentEvent(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -16906,10 +17246,10 @@ class ContingentEvent(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -17094,17 +17434,17 @@ class Determination(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -17580,7 +17920,24 @@ class Determination(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -17741,10 +18098,10 @@ class Determination(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -17934,17 +18291,17 @@ class FormattedContent(ContentExpression):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -18420,7 +18777,24 @@ class FormattedContent(ContentExpression):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -18581,10 +18955,10 @@ class FormattedContent(ContentExpression):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -18766,17 +19140,17 @@ class GeneralMediaType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -19252,7 +19626,24 @@ class GeneralMediaType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -19413,10 +19804,10 @@ class GeneralMediaType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -19603,17 +19994,17 @@ class GeoLocation(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -20089,7 +20480,24 @@ class GeoLocation(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -20250,10 +20658,10 @@ class GeoLocation(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -20455,17 +20863,17 @@ class GeoPoint(GeoLocation):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -20941,7 +21349,24 @@ class GeoPoint(GeoLocation):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -21102,10 +21527,10 @@ class GeoPoint(GeoLocation):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -21308,17 +21733,17 @@ class GeoRegion(GeoLocation):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -21794,7 +22219,24 @@ class GeoRegion(GeoLocation):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -21955,10 +22397,10 @@ class GeoRegion(GeoLocation):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -22147,17 +22589,17 @@ class GeoVolume(GeoLocation):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -22633,7 +23075,24 @@ class GeoVolume(GeoLocation):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -22794,10 +23253,10 @@ class GeoVolume(GeoLocation):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -22987,17 +23446,17 @@ class GovernedGeoRegion(GeoRegion):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -23473,7 +23932,24 @@ class GovernedGeoRegion(GeoRegion):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -23634,10 +24110,10 @@ class GovernedGeoRegion(GeoRegion):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -23824,17 +24300,17 @@ class CountryGeoRegion(GovernedGeoRegion):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -24310,7 +24786,24 @@ class CountryGeoRegion(GovernedGeoRegion):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -24471,10 +24964,10 @@ class CountryGeoRegion(GovernedGeoRegion):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -24656,17 +25149,17 @@ class HistoricalEvent(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -25142,7 +25635,24 @@ class HistoricalEvent(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -25303,10 +25813,10 @@ class HistoricalEvent(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -25500,17 +26010,17 @@ class ID(Content):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -25986,7 +26496,24 @@ class ID(Content):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -26147,10 +26674,10 @@ class ID(Content):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -26348,17 +26875,17 @@ class IntellectualProperty(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -26834,7 +27361,24 @@ class IntellectualProperty(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -26995,10 +27539,10 @@ class IntellectualProperty(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -27207,17 +27751,17 @@ class Intention(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -27693,7 +28237,24 @@ class Intention(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -27854,10 +28415,10 @@ class Intention(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -28070,17 +28631,17 @@ class Agreement(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -28556,7 +29117,24 @@ class Agreement(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -28717,10 +29295,10 @@ class Agreement(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -28926,17 +29504,17 @@ class Account(Agreement):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -29412,7 +29990,24 @@ class Account(Agreement):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -29573,10 +30168,10 @@ class Account(Agreement):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -29798,17 +30393,17 @@ class Commitment(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -30284,7 +30879,24 @@ class Commitment(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -30445,10 +31057,10 @@ class Commitment(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -30656,17 +31268,17 @@ class ContingentObligation(Commitment):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -31142,7 +31754,24 @@ class ContingentObligation(Commitment):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -31303,10 +31932,10 @@ class ContingentObligation(Commitment):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -31510,17 +32139,17 @@ class Contract(Agreement):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -31996,7 +32625,24 @@ class Contract(Agreement):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -32157,10 +32803,10 @@ class Contract(Agreement):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -32363,17 +33009,17 @@ class Function(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -32849,7 +33495,24 @@ class Function(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -33010,10 +33673,10 @@ class Function(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -33232,17 +33895,17 @@ class KnowledgeConcept(IntellectualProperty):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -33718,7 +34381,24 @@ class KnowledgeConcept(IntellectualProperty):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -33879,10 +34559,10 @@ class KnowledgeConcept(IntellectualProperty):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -34071,17 +34751,17 @@ class Language(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -34557,7 +35237,24 @@ class Language(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -34718,10 +35415,10 @@ class Language(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -34925,17 +35622,17 @@ class Magnitude(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -35411,7 +36108,24 @@ class Magnitude(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -35572,10 +36286,10 @@ class Magnitude(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -35761,17 +36475,17 @@ class MediaType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -36247,7 +36961,24 @@ class MediaType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -36408,10 +37139,10 @@ class MediaType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -36591,17 +37322,17 @@ class Medium(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -37077,7 +37808,24 @@ class Medium(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -37238,10 +37986,10 @@ class Medium(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -37429,17 +38177,17 @@ class Message(ContentExpression):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -37915,7 +38663,24 @@ class Message(ContentExpression):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -38076,10 +38841,10 @@ class Message(ContentExpression):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -38264,17 +39029,17 @@ class Network(Composite):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -38750,7 +39515,24 @@ class Network(Composite):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -38911,10 +39693,10 @@ class Network(Composite):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -39102,17 +39884,17 @@ class NetworkLink(Component):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -39588,7 +40370,24 @@ class NetworkLink(Component):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -39749,10 +40548,10 @@ class NetworkLink(Component):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -39934,17 +40733,17 @@ class NetworkNode(Component):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -40420,7 +41219,24 @@ class NetworkNode(Component):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -40581,10 +41397,10 @@ class NetworkNode(Component):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -40799,17 +41615,17 @@ class Offer(ContingentObligation):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -41285,7 +42101,24 @@ class Offer(ContingentObligation):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -41446,10 +42279,10 @@ class Offer(ContingentObligation):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -41634,17 +42467,17 @@ class OrderedCollection(Collection):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -42120,7 +42953,24 @@ class OrderedCollection(Collection):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -42281,10 +43131,10 @@ class OrderedCollection(Collection):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -42469,17 +43319,17 @@ class GeoRoute(OrderedCollection):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -42955,7 +43805,24 @@ class GeoRoute(OrderedCollection):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -43116,10 +43983,10 @@ class GeoRoute(OrderedCollection):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -43323,17 +44190,17 @@ class OrderedMember(Component):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -43809,7 +44676,24 @@ class OrderedMember(Component):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -43970,10 +44854,10 @@ class OrderedMember(Component):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -44175,17 +45059,17 @@ class Organization(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -44661,7 +45545,24 @@ class Organization(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -44822,10 +45723,10 @@ class Organization(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -45020,17 +45921,17 @@ class GovernmentOrganization(Organization):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -45506,7 +46407,24 @@ class GovernmentOrganization(Organization):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -45667,10 +46585,10 @@ class GovernmentOrganization(Organization):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -45864,17 +46782,17 @@ class CountryGovernment(GovernmentOrganization):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -46350,7 +47268,24 @@ class CountryGovernment(GovernmentOrganization):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -46511,10 +47446,10 @@ class CountryGovernment(GovernmentOrganization):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -46703,17 +47638,17 @@ class IntergovernmentalOrganization(Organization):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -47189,7 +48124,24 @@ class IntergovernmentalOrganization(Organization):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -47350,10 +48302,10 @@ class IntergovernmentalOrganization(Organization):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -47559,17 +48511,17 @@ class Permission(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -48045,7 +48997,24 @@ class Permission(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -48206,10 +49175,10 @@ class Permission(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -48390,17 +49359,17 @@ class PhysicalActionType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -48876,7 +49845,24 @@ class PhysicalActionType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -49037,10 +50023,10 @@ class PhysicalActionType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -49228,17 +50214,17 @@ class PhysicalAddress(Address):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -49714,7 +50700,24 @@ class PhysicalAddress(Address):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -49875,10 +50878,10 @@ class PhysicalAddress(Address):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -50058,17 +51061,17 @@ class PhysicalAddressType(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -50544,7 +51547,24 @@ class PhysicalAddressType(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -50705,10 +51725,10 @@ class PhysicalAddressType(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -50892,17 +51912,17 @@ class PhysicalEvent(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -51378,7 +52398,24 @@ class PhysicalEvent(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -51539,10 +52576,10 @@ class PhysicalEvent(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -51739,17 +52776,17 @@ class PhysicalIdentifiableItem(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -52225,7 +53262,24 @@ class PhysicalIdentifiableItem(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -52386,10 +53440,10 @@ class PhysicalIdentifiableItem(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -52571,17 +53625,17 @@ class Equipment(PhysicalIdentifiableItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -53057,7 +54111,24 @@ class Equipment(PhysicalIdentifiableItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -53218,10 +54289,10 @@ class Equipment(PhysicalIdentifiableItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -53406,17 +54477,17 @@ class Landmark(PhysicalIdentifiableItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -53892,7 +54963,24 @@ class Landmark(PhysicalIdentifiableItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -54053,10 +55141,10 @@ class Landmark(PhysicalIdentifiableItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -54244,17 +55332,17 @@ class Building(Landmark):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -54730,7 +55818,24 @@ class Building(Landmark):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -54891,10 +55996,10 @@ class Building(Landmark):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -55084,17 +56189,17 @@ class LivingThing(PhysicalIdentifiableItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -55570,7 +56675,24 @@ class LivingThing(PhysicalIdentifiableItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -55731,10 +56853,10 @@ class LivingThing(PhysicalIdentifiableItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -55932,17 +57054,17 @@ class Person(LivingThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -56418,7 +57540,24 @@ class Person(LivingThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -56579,10 +57718,10 @@ class Person(LivingThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -56782,17 +57921,17 @@ class PhysicalSubstance(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -57268,7 +58407,24 @@ class PhysicalSubstance(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -57429,10 +58585,10 @@ class PhysicalSubstance(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -57612,17 +58768,17 @@ class ProductCategory(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -58098,7 +59254,24 @@ class ProductCategory(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -58259,10 +59432,10 @@ class ProductCategory(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -58448,17 +59621,17 @@ class ReferenceValue(Magnitude):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -58934,7 +60107,24 @@ class ReferenceValue(Magnitude):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -59095,10 +60285,10 @@ class ReferenceValue(Magnitude):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -59287,17 +60477,17 @@ class RenderedContent(FormattedContent):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -59773,7 +60963,24 @@ class RenderedContent(FormattedContent):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -59934,10 +61141,10 @@ class RenderedContent(FormattedContent):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -60140,17 +61347,17 @@ class Requirement(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -60626,7 +61833,24 @@ class Requirement(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -60787,10 +62011,10 @@ class Requirement(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -60995,17 +62219,17 @@ class Restriction(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -61481,7 +62705,24 @@ class Restriction(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -61642,10 +62883,10 @@ class Restriction(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -61832,17 +63073,17 @@ class ScheduledEvent(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -62318,7 +63559,24 @@ class ScheduledEvent(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -62479,10 +63737,10 @@ class ScheduledEvent(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -62669,17 +63927,17 @@ class ScheduledTask(ScheduledEvent):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -63155,7 +64413,24 @@ class ScheduledTask(ScheduledEvent):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -63316,10 +64591,10 @@ class ScheduledTask(ScheduledEvent):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -63505,17 +64780,17 @@ class SchemaMetaData(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -63991,7 +65266,24 @@ class SchemaMetaData(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -64152,10 +65444,10 @@ class SchemaMetaData(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -64372,17 +65664,17 @@ class Specification(Intention):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -64858,7 +66150,24 @@ class Specification(Intention):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -65019,10 +66328,10 @@ class Specification(Intention):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -65225,17 +66534,17 @@ class CatalogItem(Specification):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -65711,7 +67020,24 @@ class CatalogItem(Specification):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -65872,10 +67198,10 @@ class CatalogItem(Specification):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -66080,17 +67406,17 @@ class BundledCatalogItem(CatalogItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -66566,7 +67892,24 @@ class BundledCatalogItem(CatalogItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -66727,10 +68070,10 @@ class BundledCatalogItem(CatalogItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -66932,17 +68275,17 @@ class ContractTerm(Specification):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -67418,7 +68761,24 @@ class ContractTerm(Specification):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -67579,10 +68939,10 @@ class ContractTerm(Specification):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -67790,17 +69150,17 @@ class EventSpecification(Specification):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -68276,7 +69636,24 @@ class EventSpecification(Specification):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -68437,10 +69814,10 @@ class EventSpecification(Specification):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -68644,17 +70021,17 @@ class ProductSpecification(CatalogItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -69130,7 +70507,24 @@ class ProductSpecification(CatalogItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -69291,10 +70685,10 @@ class ProductSpecification(CatalogItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -69496,17 +70890,17 @@ class ServiceSpecification(CatalogItem):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -69982,7 +71376,24 @@ class ServiceSpecification(CatalogItem):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -70143,10 +71554,10 @@ class ServiceSpecification(CatalogItem):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -70347,17 +71758,17 @@ class SubCountryGovernment(GovernmentOrganization):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -70833,7 +72244,24 @@ class SubCountryGovernment(GovernmentOrganization):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -70994,10 +72422,10 @@ class SubCountryGovernment(GovernmentOrganization):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -71180,17 +72608,17 @@ class System(Composite):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -71666,7 +73094,24 @@ class System(Composite):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -71827,10 +73272,10 @@ class System(Composite):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -72013,17 +73458,17 @@ class Tag(Category):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -72499,7 +73944,24 @@ class Tag(Category):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -72660,10 +74122,10 @@ class Tag(Category):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -72859,17 +74321,17 @@ class Task(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -73345,7 +74807,24 @@ class Task(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -73506,10 +74985,10 @@ class Task(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -73692,17 +75171,17 @@ class Project(Task):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -74178,7 +75657,24 @@ class Project(Task):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -74339,10 +75835,10 @@ class Project(Task):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -74528,17 +76024,17 @@ class Template(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -75014,7 +76510,24 @@ class Template(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -75175,10 +76688,10 @@ class Template(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -75367,17 +76880,17 @@ class TaskTemplate(Template):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -75853,7 +77366,24 @@ class TaskTemplate(Template):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -76014,10 +77544,10 @@ class TaskTemplate(Template):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -76208,17 +77738,17 @@ class TemporalRelation(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -76694,7 +78224,24 @@ class TemporalRelation(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -76855,10 +78402,10 @@ class TemporalRelation(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -77053,17 +78600,17 @@ class Assignment(TemporalRelation):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -77539,7 +79086,24 @@ class Assignment(TemporalRelation):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -77700,10 +79264,10 @@ class Assignment(TemporalRelation):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -77893,17 +79457,17 @@ class Text(ContentExpression):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -78379,7 +79943,24 @@ class Text(ContentExpression):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -78540,10 +80121,10 @@ class Text(ContentExpression):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -78735,17 +80316,17 @@ class TimeInterval(GistThing):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -79221,7 +80802,24 @@ class TimeInterval(GistThing):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -79382,10 +80980,10 @@ class TimeInterval(GistThing):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -79569,17 +81167,17 @@ class Transaction(Event):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -80055,7 +81653,24 @@ class Transaction(Event):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -80216,10 +81831,10 @@ class Transaction(Event):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -80602,17 +82217,17 @@ class UnitGroup(Collection):
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -81088,7 +82703,24 @@ class UnitGroup(Collection):
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -81249,10 +82881,10 @@ class UnitGroup(Collection):
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '
@@ -81307,19 +82939,19 @@ class UnitOfMeasure(GistThing):
          'mixins': ['GistThing'],
          'title': 'Unit of Measure'})
 
-    conversion_factor: Optional[Union[Decimal, float]] = Field(default=None, title="conversion factor", description="""A value that relates a unit of measure to units of the International System of Units.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'decimal'}, {'range': 'float'}],
+    conversion_factor: Optional[Union[Decimal, float]] = Field(default=None, title="conversion factor", description="""A value that relates a unit of measure to units of the International System of Units.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'decimal'}, {'range': 'double'}],
          'comments': ['To convert a numeric value from one unit of measure to another, '
                       'multiply by the conversion factor of the first unit and then '
                       'divide by the conversion factor of the second unit.\n'
                       '\n'
                       'For example, to convert 27 feet to yards:\n'
                       '\n'
-                      'the conversion factor of foot is 0.3048\n'
-                      'the conversion factor of yard is 0.9144\n'
+                      '  the conversion factor of foot is 0.3048\n'
+                      '  the conversion factor of yard is 0.9144\n'
                       '\n'
-                      'so\n'
+                      '  so\n'
                       '\n'
-                      '27 feet = (27 x 0.3048) / 0.9144 = 9 yards'],
+                      '  27 feet = (27 x 0.3048) / 0.9144 = 9 yards'],
          'domain': 'UnitOfMeasure',
          'domain_of': ['UnitOfMeasure'],
          'examples': [{'value': 'In the equation 1 inch = 0.0254 meters, the value '
@@ -81656,17 +83288,17 @@ To convert from Kelvin to Fahrenheit, reverse the steps: first divide by the con
                       '\n'
                       'The conventions for precision that are repeated in each '
                       'property name are as follows:\n'
-                      '- *DateTime is an abstraction over the various precisions of '
+                      '  - *DateTime is an abstraction over the various precisions of '
                       'its subproperties.\n'
-                      '- *Date refers to a calendar date (e.g., birthdays and invoice '
-                      'dates) and is assumed to have precision of one day. Time zone '
-                      'offset is allowed.\n'
-                      '- *Minute refers to clock time; e.g., a meeting will start at '
+                      '  - *Date refers to a calendar date (e.g., birthdays and '
+                      'invoice dates) and is assumed to have precision of one day. '
+                      'Time zone offset is allowed.\n'
+                      '  - *Minute refers to clock time; e.g., a meeting will start at '
                       '9:15 with a timezone offset. Precision is assumed to have '
                       'precision of one minute.\n'
-                      '- *Microsecond refers to system time, and it will be as precise '
-                      'as the system can supply; typically at least milliseconds, '
-                      'sometime microseconds.'],
+                      '  - *Microsecond refers to system time, and it will be as '
+                      'precise as the system can supply; typically at least '
+                      'milliseconds, sometime microseconds.'],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:atDateTime'} })
@@ -82142,7 +83774,24 @@ To convert from Kelvin to Fahrenheit, reverse the steps: first divide by the con
     name: Optional[str] = Field(default=None, title="name", description="""Relates an individual to (one of) its name(s).""", json_schema_extra = { "linkml_meta": {'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'slot_uri': 'gist:name'} })
-    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'integer'}, {'range': 'decimal'}, {'range': 'float'}],
+    numeric_value: Optional[Union[Decimal, float, int]] = Field(default=None, title="numeric value", description="""The actual value of a magnitude.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'xsd_byte'},
+                    {'range': 'decimal'},
+                    {'range': 'double'},
+                    {'range': 'float'},
+                    {'range': 'xsd_int'},
+                    {'range': 'integer'},
+                    {'range': 'xsd_long'},
+                    {'range': 'xsd_negative_integer'},
+                    {'range': 'xsd_non_negative_integer'},
+                    {'range': 'xsd_non_positive_integer'},
+                    {'range': 'xsd_positive_integer'},
+                    {'range': 'xsd_short'},
+                    {'range': 'xsd_unsigned_byte'},
+                    {'range': 'xsd_unsigned_int'},
+                    {'range': 'xsd_unsigned_long'},
+                    {'range': 'xsd_unsigned_short'},
+                    {'range': 'owl_rational'},
+                    {'range': 'owl_real'}],
          'domain_of': ['GistThing'],
          'in_subset': ['gist_core'],
          'notes': ['OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | '
@@ -82303,10 +83952,10 @@ To convert from Kelvin to Fahrenheit, reverse the steps: first divide by the con
     requires: Optional[list[Any]] = Field(default=None, title="requires", description="""The subject needs the object or makes it necessary, mandatory, or compulsory.""", json_schema_extra = { "linkml_meta": {'comments': ['This predicate is defined generally enough to encompass a few '
                       "different meanings of the English word 'requires':\n"
                       '\n'
-                      '1. To need something or to make something necessary.\n'
-                      '2. To order or demand something, or to order someone to do '
+                      '  1. To need something or to make something necessary.\n'
+                      '  2. To order or demand something, or to order someone to do '
                       'something, especially because of a rule or law.\n'
-                      '3. To make it officially necessary for someone to do '
+                      '  3. To make it officially necessary for someone to do '
                       'something.\n'
                       '\n'
                       'Implementations requiring a more specific meaning should define '

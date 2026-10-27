@@ -380,6 +380,188 @@
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
       "@type": "TypeDefinition"
+    },
+    {
+      "name": "owl_rational",
+      "definition_uri": "https://w3id.org/lmodel/gist/OwlRational",
+      "description": "A decimal literal typed owl:rational, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "decimal",
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2002/07/owl#rational",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "owl_real",
+      "definition_uri": "https://w3id.org/lmodel/gist/OwlReal",
+      "description": "A decimal literal typed owl:real, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "decimal",
+      "base": "Decimal",
+      "uri": "http://www.w3.org/2002/07/owl#real",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_byte",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdByte",
+      "description": "An integer literal typed xsd:byte, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#byte",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_int",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdInt",
+      "description": "An integer literal typed xsd:int, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#int",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_long",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdLong",
+      "description": "An integer literal typed xsd:long, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#long",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_negative_integer",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdNegativeInteger",
+      "description": "An integer literal typed xsd:negativeInteger, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#negativeInteger",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_non_negative_integer",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdNonNegativeInteger",
+      "description": "An integer literal typed xsd:nonNegativeInteger, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_non_positive_integer",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdNonPositiveInteger",
+      "description": "An integer literal typed xsd:nonPositiveInteger, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#nonPositiveInteger",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_positive_integer",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdPositiveInteger",
+      "description": "An integer literal typed xsd:positiveInteger, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#positiveInteger",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_short",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdShort",
+      "description": "An integer literal typed xsd:short, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#short",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_unsigned_byte",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdUnsignedByte",
+      "description": "An integer literal typed xsd:unsignedByte, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#unsignedByte",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_unsigned_int",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdUnsignedInt",
+      "description": "An integer literal typed xsd:unsignedInt, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#unsignedInt",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_unsigned_long",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdUnsignedLong",
+      "description": "An integer literal typed xsd:unsignedLong, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#unsignedLong",
+      "@type": "TypeDefinition"
+    },
+    {
+      "name": "xsd_unsigned_short",
+      "definition_uri": "https://w3id.org/lmodel/gist/XsdUnsignedShort",
+      "description": "An integer literal typed xsd:unsignedShort, which gist allows.",
+      "in_subset": [
+        "gist_core"
+      ],
+      "from_schema": "https://w3id.org/lmodel/gist/core",
+      "typeof": "integer",
+      "base": "int",
+      "uri": "http://www.w3.org/2001/XMLSchema#unsignedShort",
+      "@type": "TypeDefinition"
     }
   ],
   "enums": [
@@ -2752,7 +2934,7 @@
       "description": "The subject needs the object or makes it necessary, mandatory, or compulsory.",
       "title": "requires",
       "comments": [
-        "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n1. To need something or to make something necessary.\n2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n3. To make it officially necessary for someone to do something.\n\nImplementations requiring a more specific meaning should define subproperties."
+        "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n  1. To need something or to make something necessary.\n  2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n  3. To make it officially necessary for someone to do something.\n\nImplementations requiring a more specific meaning should define subproperties."
       ],
       "examples": [
         {
@@ -3080,7 +3262,7 @@
       "description": "The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned.",
       "title": "at date time",
       "comments": [
-        "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n- *DateTime is an abstraction over the various precisions of its subproperties.\n- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds."
+        "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n  - *DateTime is an abstraction over the various precisions of its subproperties.\n  - *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n  - *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n  - *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds."
       ],
       "in_subset": [
         "gist_core"
@@ -3172,7 +3354,7 @@
         "OWL range: (xsd:decimal | xsd:double)"
       ],
       "comments": [
-        "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\nFor example, to convert 27 feet to yards:\n\nthe conversion factor of foot is 0.3048\nthe conversion factor of yard is 0.9144\n\nso\n\n27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
+        "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\nFor example, to convert 27 feet to yards:\n\n  the conversion factor of foot is 0.3048\n  the conversion factor of yard is 0.9144\n\n  so\n\n  27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
       ],
       "examples": [
         {
@@ -3203,7 +3385,7 @@
           "@type": "AnonymousSlotExpression"
         },
         {
-          "range": "float",
+          "range": "double",
           "@type": "AnonymousSlotExpression"
         }
       ],
@@ -3820,7 +4002,7 @@
       "domain_of": [
         "GeoPoint"
       ],
-      "range": "float",
+      "range": "double",
       "@type": "SlotDefinition"
     },
     {
@@ -3841,7 +4023,7 @@
       "domain_of": [
         "GeoPoint"
       ],
-      "range": "float",
+      "range": "double",
       "@type": "SlotDefinition"
     },
     {
@@ -3887,7 +4069,7 @@
       "range": "string",
       "any_of": [
         {
-          "range": "integer",
+          "range": "xsd_byte",
           "@type": "AnonymousSlotExpression"
         },
         {
@@ -3895,7 +4077,67 @@
           "@type": "AnonymousSlotExpression"
         },
         {
+          "range": "double",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
           "range": "float",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_int",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_long",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_negative_integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_non_negative_integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_non_positive_integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_positive_integer",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_short",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_unsigned_byte",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_unsigned_int",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_unsigned_long",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "xsd_unsigned_short",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "owl_rational",
+          "@type": "AnonymousSlotExpression"
+        },
+        {
+          "range": "owl_real",
           "@type": "AnonymousSlotExpression"
         }
       ],
@@ -16083,7 +16325,7 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "gist.yaml",
-  "source_file_date": "2026-10-27T12:18:20",
+  "source_file_date": "2026-10-27T13:40:14",
   "source_file_size": 1303,
   "@type": "SchemaDefinition",
   "@context": [

@@ -1,6 +1,7 @@
 # metamodel_version: 1.12.0
 # version: 14.1.0
 BASE <https://w3id.org/lmodel/gist/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
@@ -44,6 +45,34 @@ linkml:Jsonpointer xsd:string
 linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
+
+<OwlRational> owl:rational
+
+<OwlReal> owl:real
+
+<XsdByte> xsd:byte
+
+<XsdInt> xsd:int
+
+<XsdLong> xsd:long
+
+<XsdNegativeInteger> xsd:negativeInteger
+
+<XsdNonNegativeInteger> xsd:nonNegativeInteger
+
+<XsdNonPositiveInteger> xsd:nonPositiveInteger
+
+<XsdPositiveInteger> xsd:positiveInteger
+
+<XsdShort> xsd:short
+
+<XsdUnsignedByte> xsd:unsignedByte
+
+<XsdUnsignedInt> xsd:unsignedInt
+
+<XsdUnsignedLong> xsd:unsignedLong
+
+<XsdUnsignedShort> xsd:unsignedShort
 
 <Account> CLOSED {
     (  $<Account_tes> (  &<Agreement_tes> ;
@@ -1015,8 +1044,8 @@ linkml:Sparqlpath xsd:string
 <GeoPoint> CLOSED {
     (  $<GeoPoint_tes> (  &<GeoLocation_tes> ;
           rdf:type [ gist:GeoLocation ] ? ;
-          gist:latitude @linkml:Float ? ;
-          gist:longitude @linkml:Float ?
+          gist:latitude @linkml:Double ? ;
+          gist:longitude @linkml:Double ?
        ) ;
        rdf:type [ gist:GeoPoint ] ?
     )

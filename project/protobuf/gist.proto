@@ -7124,9 +7124,9 @@ message GeoPoint {
   // The unique string value of some content object, to be used when there is no possibility of having more than one value.
   string unique_text = 90;
   // Degrees above or below the equator.
-  float latitude = 91;
+  double latitude = 91;
   // Degrees from the prime meridian.
-  float longitude = 92;
+  double longitude = 92;
 }
 // A bounded region (or set of regions) on the surface of the Earth.
 message GeoRegion {
