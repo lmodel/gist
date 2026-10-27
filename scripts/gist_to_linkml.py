@@ -359,16 +359,15 @@ def _doc_fields(g: Graph, subj) -> dict[str, Any]:
     RdfsAnnotations module come second: a comment carries a DEFINITION:,
     EXAMPLE:, NOTE: or ALT: prefix, and a value already present from SKOS is
     not repeated. A bare comment is the description when there is none, and
-    a comment with an unknown prefix is kept verbatim as a comment.
-    Returns only the keys that have a value: description, aliases, examples,
-    comments, notes, see_also.
+    a comment with an unknown prefix is kept verbatim as a comment. The
+    skos:prefLabel, or failing it the rdfs:label, is the title; every other
+    label is an alias.
+    Returns only the keys that have a value: description, title, aliases,
+    examples, comments, notes, see_also.
     """
     defn = first_literal(g, subj, SKOS.definition)
-    aliases: list[str] = []
-    pref = first_literal(g, subj, SKOS.prefLabel)
-    if pref:
-        aliases.append(pref)
-    aliases += get_literals(g, subj, SKOS.altLabel)
+    title = first_literal(g, subj, SKOS.prefLabel) or first_literal(g, subj, RDFS.label)
+    aliases: list[str] = get_literals(g, subj, SKOS.altLabel)
     examples = get_literals(g, subj, SKOS.example)
     comments = get_literals(g, subj, SKOS.scopeNote)
     notes = get_literals(g, subj, SKOS.editorialNote)
@@ -400,8 +399,11 @@ def _doc_fields(g: Graph, subj) -> dict[str, Any]:
     out: dict[str, Any] = {}
     if defn:
         out["description"] = defn
+    if title:
+        out["title"] = title
+    aliases = [a for a in _dedupe(aliases) if a != title]
     if aliases:
-        out["aliases"] = _dedupe(aliases)
+        out["aliases"] = aliases
     if examples:
         out["examples"] = [{"value": ex} for ex in _dedupe(examples)]
     if comments:
@@ -860,14 +862,7 @@ def _permissible_values(g: Graph, individuals: list[URIRef]) -> dict[str, dict]:
         seen_keys[val_key] = raw_local
 
         pv_entry: dict = {}
-        doc = _doc_fields(g, ind)
-        title = first_literal(g, ind, SKOS.prefLabel) or first_literal(g, ind, RDFS.label)
-        if title:
-            pv_entry["title"] = title
-            doc["aliases"] = [a for a in doc.get("aliases", []) if a != title]
-            if not doc["aliases"]:
-                del doc["aliases"]
-        _merge_doc(pv_entry, doc)
+        _merge_doc(pv_entry, _doc_fields(g, ind))
 
         ann = {
             camel_to_snake(gist_local(p)): str(o)
@@ -1205,7 +1200,8 @@ def ontology_header(g: Graph, ann: Graph | None = None) -> dict[str, Any]:
     merged = canonical_graph(merged)
 
     header = _doc_fields(merged, subj)
-    header.pop("aliases", None)  # the label; each schema states its own title
+    for key in ("title", "aliases"):  # the labels; each schema states its own title
+        header.pop(key, None)
     lic = first_literal(merged, subj, GIST.license)
     if lic:
         header["license"] = lic
@@ -1432,7 +1428,7 @@ def build_rdfs_annotations_schema(
         "description": (
             f"RDFS label and comment annotations for gist classes, properties and "
             f"named individuals ({version}). "
-            "Each rdfs:label becomes an alias, and each rdfs:comment becomes a "
+            "Each rdfs:label becomes a title, and each rdfs:comment becomes a "
             "description, example, comment or alias by its DEFINITION:, "
             "EXAMPLE:, NOTE: or ALT: prefix."
         ),
@@ -1628,8 +1624,8 @@ def _rename_refs(entry: dict, renames: dict[str, str]) -> None:
 def rename_elements(schema: dict, renames: dict[str, str]) -> dict:
     """Return *schema* with its classes and slots renamed per *renames* and
     every reference to them rewritten. Element order is kept, the old name
-    joins the renamed element's aliases, and a note in the header lists the
-    renames that apply to this file."""
+    joins the renamed element's aliases unless it is already the title, and
+    a note in the header lists the renames that apply to this file."""
     if not renames:
         return schema
     default_prefix = schema.get("default_prefix", "gist_linkml")
@@ -1654,7 +1650,7 @@ def rename_elements(schema: dict, renames: dict[str, str]) -> dict:
             if name in renames:
                 entry.setdefault(uri_key, f"{default_prefix}:{name}")
                 aliases = entry.get("aliases", [])
-                if name not in aliases:
+                if name not in aliases and name != entry.get("title"):
                     entry["aliases"] = aliases + [name]
                 entry = _order_keys(entry, _ELEMENT_KEY_ORDER)
             renamed[renames.get(name, name)] = entry

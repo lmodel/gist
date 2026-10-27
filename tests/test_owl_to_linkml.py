@@ -291,10 +291,18 @@ class TestExtractClasses:
         classes = M.extract_classes(g)
         assert classes["Category"]["description"] == "A category of things."
 
-    def test_aliases_from_pref_label(self):
+    def test_title_from_pref_label(self):
         g = _core_class_graph()
         classes = M.extract_classes(g)
-        assert "Category" in classes["Category"]["aliases"]
+        assert classes["Category"]["title"] == "Category"
+        assert "aliases" not in classes["Category"]
+
+    def test_rdfs_label_other_than_pref_label_is_an_alias(self):
+        g = _core_class_graph()
+        g.add((GIST.Category, RDFS.label, Literal("Kind")))
+        classes = M.extract_classes(g)
+        assert classes["Category"]["title"] == "Category"
+        assert classes["Category"]["aliases"] == ["Kind"]
 
     def test_slots_of_properties_whose_domain_names_the_class(self):
         g = _core_class_graph()
@@ -590,7 +598,8 @@ class TestExtractSlots:
         g.add((GIST.hasParty, RDFS.comment, Literal("NOTE: Not the counterparty.")))
         slots = M.extract_slots(g)
         entry = slots["has_party"]
-        assert entry["aliases"] == ["has party"]
+        assert entry["title"] == "has party"
+        assert "aliases" not in entry
         assert entry["description"] == "Links to a party."
         assert entry["examples"] == [{"value": "A buyer."}]
         assert entry["comments"] == ["Not the counterparty."]
@@ -603,7 +612,8 @@ class TestExtractSlots:
         g.add((GIST.ElectronicAddress, RDFS.label, Literal("Electronic Address")))
         g.add((GIST.ElectronicAddress, RDFS.comment, Literal("ALT: Virtual Address")))
         classes = M.extract_classes(g)
-        assert classes["ElectronicAddress"]["aliases"] == ["Electronic Address", "Virtual Address"]
+        assert classes["ElectronicAddress"]["title"] == "Electronic Address"
+        assert classes["ElectronicAddress"]["aliases"] == ["Virtual Address"]
 
     def test_unknown_comment_prefix_kept_verbatim(self):
         g = Graph()
@@ -819,12 +829,12 @@ class TestExtractEnums:
 
 
 class TestExtractRdfsAnnotations:
-    def test_label_becomes_aliases(self):
+    def test_label_becomes_title(self):
         g = Graph()
         g.add((GIST.Category, RDFS.label, Literal("Category Label")))
         classes, slots = M.extract_rdfs_annotations(g)
         assert "Category" in classes
-        assert "Category Label" in classes["Category"]["aliases"]
+        assert classes["Category"]["title"] == "Category Label"
 
     def test_definition_prefix(self):
         g = Graph()
@@ -1369,6 +1379,13 @@ class TestRenames:
         assert s["classes"]["GistPerson"]["aliases"] == ["Person"]
         assert s["slots"]["gist_name"]["aliases"] == ["name"]
 
+    def test_old_name_that_is_the_title_is_no_alias(self):
+        schema = self._schema()
+        schema["classes"]["Organization"]["title"] = "Organization"
+        s = M.rename_elements(schema, {"Organization": "GistOrganization"})
+        assert s["classes"]["GistOrganization"]["title"] == "Organization"
+        assert "aliases" not in s["classes"]["GistOrganization"]
+
     def test_references_follow(self):
         renames = {"Organization": "GistOrganization", "Person": "GistPerson", "name": "gist_name"}
         s = M.rename_elements(self._schema(), renames)
@@ -1457,6 +1474,7 @@ class TestOntologyHeader:
             "History: gist 14.0.0 released 2025-Oct-31.",
         ]
         assert h["see_also"] == ["https://w3id.org/semanticarts/ontology/gistCore14.1.0"]
+        assert "title" not in h
         assert "aliases" not in h
 
     def test_annotations_module_read_without_duplicating(self):
