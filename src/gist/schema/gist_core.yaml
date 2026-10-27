@@ -50,6 +50,106 @@ subsets:
   gist_core:
     description: Classes and slots from the gist Core ontology module.
 
+types:
+
+  owl_rational:
+    typeof: decimal
+    uri: owl:rational
+    description: A decimal literal typed owl:rational, which gist allows.
+    in_subset:
+      - gist_core
+
+  owl_real:
+    typeof: decimal
+    uri: owl:real
+    description: A decimal literal typed owl:real, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_byte:
+    typeof: integer
+    uri: xsd:byte
+    description: An integer literal typed xsd:byte, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_int:
+    typeof: integer
+    uri: xsd:int
+    description: An integer literal typed xsd:int, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_long:
+    typeof: integer
+    uri: xsd:long
+    description: An integer literal typed xsd:long, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_negative_integer:
+    typeof: integer
+    uri: xsd:negativeInteger
+    description: An integer literal typed xsd:negativeInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_non_negative_integer:
+    typeof: integer
+    uri: xsd:nonNegativeInteger
+    description: An integer literal typed xsd:nonNegativeInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_non_positive_integer:
+    typeof: integer
+    uri: xsd:nonPositiveInteger
+    description: An integer literal typed xsd:nonPositiveInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_positive_integer:
+    typeof: integer
+    uri: xsd:positiveInteger
+    description: An integer literal typed xsd:positiveInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_short:
+    typeof: integer
+    uri: xsd:short
+    description: An integer literal typed xsd:short, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_byte:
+    typeof: integer
+    uri: xsd:unsignedByte
+    description: An integer literal typed xsd:unsignedByte, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_int:
+    typeof: integer
+    uri: xsd:unsignedInt
+    description: An integer literal typed xsd:unsignedInt, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_long:
+    typeof: integer
+    uri: xsd:unsignedLong
+    description: An integer literal typed xsd:unsignedLong, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_short:
+    typeof: integer
+    uri: xsd:unsignedShort
+    description: An integer literal typed xsd:unsignedShort, which gist allows.
+    in_subset:
+      - gist_core
+
 enums:
 
   AspectInstance:
@@ -1266,7 +1366,7 @@ slots:
     multivalued: false
     any_of:
       - range: decimal
-      - range: float
+      - range: double
     in_subset:
       - gist_core
     see_also:
@@ -1641,7 +1741,7 @@ slots:
     description: Degrees above or below the equator.
     title: latitude
     domain: GeoPoint
-    range: float
+    range: double
     in_subset:
       - gist_core
 
@@ -1650,7 +1750,7 @@ slots:
     description: Degrees from the prime meridian.
     title: longitude
     domain: GeoPoint
-    range: float
+    range: double
     in_subset:
       - gist_core
 
@@ -1669,9 +1769,24 @@ slots:
       - |-
         OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)
     any_of:
-      - range: integer
+      - range: xsd_byte
       - range: decimal
+      - range: double
       - range: float
+      - range: xsd_int
+      - range: integer
+      - range: xsd_long
+      - range: xsd_negative_integer
+      - range: xsd_non_negative_integer
+      - range: xsd_non_positive_integer
+      - range: xsd_positive_integer
+      - range: xsd_short
+      - range: xsd_unsigned_byte
+      - range: xsd_unsigned_int
+      - range: xsd_unsigned_long
+      - range: xsd_unsigned_short
+      - range: owl_rational
+      - range: owl_real
     in_subset:
       - gist_core
 

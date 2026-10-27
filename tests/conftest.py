@@ -18,7 +18,8 @@ def upstream_gist():
     """IRIs and classes of the vendored Semantic Arts release, the yardstick for
     "terms used from gist stay in the gist namespace" and "define no terms there"."""
     import rdflib
-    from rdflib.namespace import OWL, RDF
+    import rdflib.collection
+    from rdflib.namespace import OWL, RDF, RDFS
 
     g = rdflib.Graph()
     for ttl in sorted(UPSTREAM_TTL.glob("*.ttl")):
@@ -37,8 +38,19 @@ def upstream_gist():
         str(s) for s, o in g.subject_objects(OWL.deprecated)
         if str(s).startswith(SEMANTIC_ARTS_NS) and str(o).lower() == "true"
     }
+
+    def named_or_union(node) -> set[str]:
+        union = g.value(node, OWL.unionOf) if isinstance(node, rdflib.BNode) else None
+        return {str(m) for m in rdflib.collection.Collection(g, union)} if union else {str(node)}
+
+    # Each datatype property's range datatypes
+    datatype_ranges = {}
+    for p in g.subjects(RDF.type, OWL.DatatypeProperty):
+        if str(p).startswith(SEMANTIC_ARTS_NS) and (p, RDFS.range, None) in g:
+            datatype_ranges[str(p)] = set().union(*(named_or_union(r) for r in g.objects(p, RDFS.range)))
     return {
         "iris": iris, "local_names": local_names, "classes": classes,
         "property_types": property_types, "deprecated": deprecated,
+        "datatype_ranges": datatype_ranges,
         "gist_ns": SEMANTIC_ARTS_NS, "gistd_ns": SEMANTIC_ARTS_DATA_NS, "lmodel_ns": LMODEL_NS,
     }

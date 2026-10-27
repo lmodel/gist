@@ -123,40 +123,81 @@ _NOTE_NS: list[tuple[str, str]] = [
 # ---------------------------------------------------------------------------
 # XSD  -> LinkML type mapping
 # ---------------------------------------------------------------------------
+# The datatypes linkml:types has a type for, each with that datatype as its uri
 XSD_TO_LINKML: dict[str, str] = {
     str(XSD.string): "string",
-    str(XSD.normalizedString): "string",
-    str(XSD.token): "string",
-    str(XSD.language): "string",
     str(XSD.integer): "integer",
-    str(XSD.int): "integer",
-    str(XSD.long): "integer",
-    str(XSD.short): "integer",
-    str(XSD.byte): "integer",
-    str(XSD.nonNegativeInteger): "integer",
-    str(XSD.nonPositiveInteger): "integer",
-    str(XSD.positiveInteger): "integer",
-    str(XSD.negativeInteger): "integer",
-    str(XSD.unsignedLong): "integer",
-    str(XSD.unsignedInt): "integer",
-    str(XSD.unsignedShort): "integer",
-    str(XSD.unsignedByte): "integer",
     str(XSD.float): "float",
-    str(XSD.double): "float",
+    str(XSD.double): "double",
     str(XSD.decimal): "decimal",
     str(XSD.boolean): "boolean",
     str(XSD.dateTime): "datetime",
     str(XSD.date): "date",
     str(XSD.time): "time",
-    str(XSD.gYear): "string",
-    str(XSD.gMonth): "string",
-    str(XSD.gDay): "string",
     str(XSD.anyURI): "uri",
-    str(XSD.base64Binary): "string",
-    str(XSD.hexBinary): "string",
-    str(OWL.real): "decimal",
-    str(OWL.rational): "decimal",
 }
+
+# The datatypes linkml:types has no type for, as (type name, LinkML base type).
+# A SHACL sh:datatype accepts only a literal of that very datatype, so mapping
+# xsd:int to integer would reject the xsd:int literals gist allows (it ranges
+# numericValue over every XSD integer type and OWL's rational and real).
+# gist_core declares a type for each one its slots use, with the datatype as
+# the type's uri.
+DATATYPE_TYPES: dict[str, tuple[str, str]] = {
+    str(XSD.int): ("xsd_int", "integer"),
+    str(XSD.long): ("xsd_long", "integer"),
+    str(XSD.short): ("xsd_short", "integer"),
+    str(XSD.byte): ("xsd_byte", "integer"),
+    str(XSD.nonNegativeInteger): ("xsd_non_negative_integer", "integer"),
+    str(XSD.nonPositiveInteger): ("xsd_non_positive_integer", "integer"),
+    str(XSD.positiveInteger): ("xsd_positive_integer", "integer"),
+    str(XSD.negativeInteger): ("xsd_negative_integer", "integer"),
+    str(XSD.unsignedLong): ("xsd_unsigned_long", "integer"),
+    str(XSD.unsignedInt): ("xsd_unsigned_int", "integer"),
+    str(XSD.unsignedShort): ("xsd_unsigned_short", "integer"),
+    str(XSD.unsignedByte): ("xsd_unsigned_byte", "integer"),
+    str(XSD.normalizedString): ("xsd_normalized_string", "string"),
+    str(XSD.token): ("xsd_token", "string"),
+    str(XSD.language): ("xsd_language", "string"),
+    str(XSD.gYear): ("xsd_g_year", "string"),
+    str(XSD.gMonth): ("xsd_g_month", "string"),
+    str(XSD.gDay): ("xsd_g_day", "string"),
+    str(XSD.base64Binary): ("xsd_base64_binary", "string"),
+    str(XSD.hexBinary): ("xsd_hex_binary", "string"),
+    str(OWL.rational): ("owl_rational", "decimal"),
+    str(OWL.real): ("owl_real", "decimal"),
+}
+
+_DATATYPE_NS = ((str(XSD), "xsd"), (str(OWL), "owl"))
+
+
+def linkml_type(datatype: str) -> str:
+    """The LinkML type whose uri is *datatype*; string when there is none."""
+    if datatype in XSD_TO_LINKML:
+        return XSD_TO_LINKML[datatype]
+    if datatype in DATATYPE_TYPES:
+        return DATATYPE_TYPES[datatype][0]
+    return "string"
+
+
+def datatype_types(slots: dict) -> dict[str, dict]:
+    """The DATATYPE_TYPES entries that *slots* use as a range, as LinkML types."""
+    by_name = {name: (iri, base) for iri, (name, base) in DATATYPE_TYPES.items()}
+    used = set()
+    for entry in slots.values():
+        used.add(entry.get("range"))
+        used.update(e.get("range") for e in entry.get("any_of", []) if isinstance(e, dict))
+    types = {}
+    for name in sorted(used & set(by_name)):
+        iri, base = by_name[name]
+        curie = next(f"{p}:{iri[len(ns):]}" for ns, p in _DATATYPE_NS if iri.startswith(ns))
+        article = "An" if base[0] in "aeiou" else "A"
+        types[name] = {
+            "typeof": base,
+            "uri": curie,
+            "description": f"{article} {base} literal typed {curie}, which gist allows.",
+        }
+    return types
 
 
 # ---------------------------------------------------------------------------
@@ -699,7 +740,7 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                         entry["notes"] = entry.get("notes", []) + [
                             "OWL range restriction: " + owl_expr_str(g, rb)
                         ]
-                dt_types = _dedupe(XSD_TO_LINKML.get(str(u), "string") for u in dt_uris)
+                dt_types = _dedupe(linkml_type(str(u)) for u in dt_uris)
                 if len(dt_types) == 1:
                     entry["range"] = dt_types[0]
                 elif dt_types:
@@ -1051,7 +1092,7 @@ _ELEMENT_KEY_ORDER = [
     # inheritance / type modifiers
     "is_a", "mixins", "abstract", "mixin", "tree_root",
     # identity mappings
-    "class_uri", "slot_uri", "implements",
+    "typeof", "uri", "class_uri", "slot_uri", "implements",
     # documentation
     "description", "title", "aliases", "comments", "examples", "notes",
     # domain / range / cardinality (slots)
@@ -1128,7 +1169,7 @@ _SECTION_KEYS = frozenset([
     "subsets", "types", "enums", "slots", "classes",
 ])
 # Sections whose named entries get blank lines between them
-_ELEMENT_SECTION_KEYS = frozenset(["classes", "slots", "enums", "subsets"])
+_ELEMENT_SECTION_KEYS = frozenset(["classes", "slots", "enums", "subsets", "types"])
 
 
 def _add_blank_lines(text: str) -> str:
@@ -1330,6 +1371,9 @@ def build_schema(
         "slots": _order_elements(slots, subset_name),
         "enums": _tag_enums(enums, subset_name),
     })
+    types = datatype_types(slots)
+    if types:
+        schema["types"] = _order_elements(types, subset_name)
     return _order_keys(schema, _SCHEMA_KEY_ORDER)
 
 

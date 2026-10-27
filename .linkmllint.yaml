@@ -1,0 +1,9 @@
+# linkml-lint's recommended rules, with one switched off.
+extends: recommended
+rules:
+  # gist ranges numericValue over xsd:int among XSD's other integer types, so
+  # gist_core declares a type with that uri. The rule would make it
+  # xsd:integer, and a SHACL sh:datatype check would then reject the xsd:int
+  # literals gist allows.
+  no_xsd_int_type:
+    level: disabled

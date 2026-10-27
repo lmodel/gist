@@ -204,6 +204,41 @@ class TestGistIrisInArtifacts:
                 wrong[iri] = sorted(declared)
         assert wrong == {}
 
+    def test_owl_ranges_each_datatype_property_as_gist_does(self, owl, upstream_gist):
+        import rdflib
+        import rdflib.collection
+        from rdflib.namespace import OWL, RDFS
+
+        def members(node):
+            union = owl.value(node, OWL.unionOf) if isinstance(node, rdflib.BNode) else None
+            return {str(m) for m in rdflib.collection.Collection(owl, union)} if union else {str(node)}
+
+        wrong = {}
+        for prop, gist_range in upstream_gist["datatype_ranges"].items():
+            ours = set().union(*(members(r) for r in owl.objects(rdflib.URIRef(prop), RDFS.range)))
+            if ours != gist_range:
+                wrong[prop] = sorted(ours)
+        assert wrong == {}
+
+    def test_shacl_accepts_every_datatype_gist_allows(self, shacl, upstream_gist):
+        import rdflib
+        import rdflib.collection
+        SH = rdflib.Namespace("http://www.w3.org/ns/shacl#")
+
+        def datatypes(shape):
+            found = {str(d) for d in shacl.objects(shape, SH.datatype)}
+            for alternatives in shacl.objects(shape, SH["or"]):
+                for member in rdflib.collection.Collection(shacl, alternatives):
+                    found |= datatypes(member)
+            return found
+
+        narrower = {}
+        for shape, path in shacl.subject_objects(SH.path):
+            gist_allows = upstream_gist["datatype_ranges"].get(str(path), set())
+            if gist_allows - datatypes(shape):
+                narrower[str(path)] = sorted(gist_allows - datatypes(shape))
+        assert narrower == {}
+
     def test_owl_deprecates_what_gist_deprecates(self, owl, upstream_gist):
         from rdflib.namespace import OWL
         marked = {str(s) for s, o in owl.subject_objects(OWL.deprecated) if o.toPython() is True}

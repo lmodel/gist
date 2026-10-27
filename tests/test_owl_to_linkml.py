@@ -472,7 +472,7 @@ class TestExtractSlots:
         g.add((GIST.numericValue, RDFS.range, bn))
         slots = M.extract_slots(g)
         entry = slots["numeric_value"]
-        assert [a["range"] for a in entry["any_of"]] == ["integer", "decimal"]
+        assert [a["range"] for a in entry["any_of"]] == ["xsd_byte", "xsd_long", "decimal", "owl_real"]
         assert "range" not in entry
         assert entry["notes"] == ["OWL range: (xsd:byte | xsd:long | xsd:decimal | owl:real)"]
 
@@ -480,12 +480,29 @@ class TestExtractSlots:
         g = Graph()
         g.add((GIST.itemCount, RDF.type, OWL.DatatypeProperty))
         bn = BNode()
-        col = rdflib.collection.Collection(g, None, [XSD.int, XSD.integer])
+        col = rdflib.collection.Collection(g, None, [XSD.integer])
         g.add((bn, OWL.unionOf, col.uri))
         g.add((GIST.itemCount, RDFS.range, bn))
         slots = M.extract_slots(g)
         assert slots["item_count"]["range"] == "integer"
         assert "any_of" not in slots["item_count"]
+
+    def test_double_stays_double(self):
+        g = Graph()
+        g.add((GIST.latitude, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.latitude, RDFS.range, XSD.double))
+        assert M.extract_slots(g)["latitude"]["range"] == "double"
+
+    def test_datatype_linkml_types_lacks_keeps_its_uri(self):
+        g = Graph()
+        g.add((GIST.itemCount, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.itemCount, RDFS.range, XSD.int))
+        slots = M.extract_slots(g)
+        assert slots["item_count"]["range"] == "xsd_int"
+        assert M.datatype_types(slots) == {"xsd_int": {
+            "typeof": "integer", "uri": "xsd:int",
+            "description": "An integer literal typed xsd:int, which gist allows.",
+        }}
 
     def test_transitive_property(self):
         g = Graph()
@@ -1185,6 +1202,14 @@ class TestBuildSchema:
         assert s["classes"]["Any"]["class_uri"] == "linkml:Any"
         assert "mixins" not in s["classes"]["Any"]
         assert s["classes"]["Thing"]["mixins"] == ["GistThing"]
+
+    def test_declares_the_datatype_types_its_slots_use(self):
+        slots = {"item_count": {"range": "xsd_long"}, "amount": {"any_of": [{"range": "owl_real"}]}}
+        s = M.build_schema({}, slots, {})
+        assert list(s["types"]) == ["owl_real", "xsd_long"]
+        assert s["types"]["xsd_long"]["uri"] == "xsd:long"
+        assert s["types"]["xsd_long"]["in_subset"] == ["gist_core"]
+        assert "types" not in self._make_schema()
 
     def test_gist_thing_holds_the_thing_slots(self):
         s = self._make_schema(thing_slots=["description", "name"])
