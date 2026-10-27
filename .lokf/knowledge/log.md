@@ -1,5 +1,11 @@
 # Change Log
 
+## 2026-10-27
+
+* **Changed**: the documentation site is now the Astro site in `website/`, which the Knowledge website workflow deploys; #59 removed `mkdocs.yml` and `deploy-docs.yaml`.
+* **Changed**: a breaking change of any type now releases, since #58 named the Conventional Commits preset in `.releaserc.json`.
+* **Changed**: the source map names the website's README, config and workflow for the documentation site, in place of the MkDocs files #59 removed.
+
 ## 2026-10-22
 
 * **Changed**: gen-project's settings moved from `config.yaml` to `.linkml/generators.yaml`, which `config.public.mk` now names, so the generated artefacts cite the new path.

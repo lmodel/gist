@@ -16,11 +16,11 @@ references:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-lokf-copy
 generated:
   by: process:ktl-librarian
-  at: "2026-10-17T00:13:57Z"
+  at: "2026-10-27T08:54:25Z"
 status: draft
 verified:
   - by: process:ktl-librarian
-    at: "2026-10-22T09:11:36Z"
+    at: "2026-10-27T08:54:25Z"
 ---
 
 # Release the gist Python package
@@ -28,7 +28,7 @@ verified:
 The package version comes from the git tag through `uv-dynamic-versioning`. `pyproject.toml` declares `dynamic = ["version"]` and the distribution name `gist-linkml`, because the PyPI name `gist` belongs to an unrelated project (kracekumar/gist). The import package is still `gist`. No file is bumped on release.
 
 1. Once, before the first release, push the `v0.1.0` baseline tag on `main`. Both jobs of `.github/workflows/semantic-release.yml` refuse to release without a `v*` tag, because semantic-release would otherwise make the first release 1.0.0. The baseline is not uploaded anywhere.
-2. Write the change under `## [Unreleased]` in `CHANGELOG.md`, and type the commit and the pull-request title `feat:`, `fix:` or `security:`. Other types release nothing. The `plan` job refuses a releasing pull request whose changelog section is empty or whose title carries no releasing type.
+2. Write the change under `## [Unreleased]` in `CHANGELOG.md`, and type the commit and the pull-request title `feat:`, `fix:` or `security:`, or mark any type breaking with a `!`. A `BREAKING CHANGE` footer marks a commit breaking too. Other types release nothing. The `plan` job refuses a releasing pull request whose changelog section is empty or whose title carries no releasing type.
 3. Merge to `main`. The `release` job, in the `release` Environment, retitles the section `## [X.Y.Z] - YYYY-MM-DD`, commits `CHANGELOG.md`, tags `vX.Y.Z` and publishes the GitHub Release from that text. While below 1.0.0, `.releaserc.json` makes a breaking change a minor bump.
 4. Once the `PYPI_RELEASE_ENABLED` repository variable is `true`, the same job dispatches `.github/workflows/pypi-publish.yaml` on the new tag, which builds with `uv build` and uploads to PyPI through trusted publishing in the `pypi-release` environment (`https://pypi.org/p/gist-linkml`). PyPI accepts the first upload only once a pending trusted publisher for `gist-linkml` naming that workflow and environment is registered there.
 
