@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **A `!` after the type marks a breaking change.** `.releaserc.json` names the Conventional Commits preset, so a `feat!:` commit bumps the minor version instead of releasing nothing.
+
 ## [0.3.15] - 2026-10-27
 
 ### Security
