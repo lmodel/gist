@@ -10,6 +10,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 - **The generated artefacts come from linkml 1.12.1.** The Protobuf file is now valid proto3, the JSON Schema carries each element's examples, the JSON-LD names exact mappings `exact_mappings`, and the Python datamodel types `conversion_factor` and `numeric_value` as numbers. The Java classes that `gen-java` now writes are git-ignored.
 
+### Removed
+
+- **`just testdoc`.** It ran `mkdocs serve`, which 0.4.0 removed; `npm run dev` in `website/` previews the site.
+
 ## [0.4.0] - 2026-10-27
 
 ### Added
