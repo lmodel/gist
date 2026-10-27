@@ -106,11 +106,6 @@ clean: _wsl2_compat_check _clean_project
 [group('model development')]
 site: gen-project gen-doc
 
-# Deploy documentation site to Github Pages
-[group('deployment')]
-deploy: site
-  mkd-gh-deploy
-
 # Run all tests
 [group('model development')]
 test: _test-schema _test-python _test-examples
@@ -128,10 +123,6 @@ lint:
 [group('model development')]
 gen-doc: _gen-yaml && _add-artifacts
   uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
-
-# Build docs and run test server
-[group('model development')]
-testdoc: gen-doc _serve
 
 # Generate the Python data models (dataclasses & pydantic)
 gen-python:
@@ -242,10 +233,6 @@ _gen-yaml:
 
 # Overridable recipe to add project-specific artifacts to the distribution schema path
 _add-artifacts:
-
-# Run documentation server
-_serve:
-  uv run mkdocs serve
 
 # Initialize git repository
 _git-init:
