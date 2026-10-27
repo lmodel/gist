@@ -17,6 +17,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 - **A deprecated term gives a reason.** Its `deprecated` reads "gist marks this term owl:deprecated." in place of `'true'`, as LinkML expects a reason there; gist's removal guidance stays in the term's notes.
 - **An element's gist label is its `title`.** The `skos:prefLabel`, or else the `rdfs:label`, was the first of its aliases; other labels stay aliases, and the JSON Schema and the Pydantic models show the title.
 - **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 4.6 MB, 7 MB and 2 MB.
+- **`just verify-generated` compares the OWL and the SHACL in seconds.** Their blank nodes form trees, so it compares a digest of each tree; rdflib's general isomorphism check took many minutes on the larger shapes.
 
 ### Removed
 
