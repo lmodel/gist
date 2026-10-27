@@ -12,16 +12,16 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 - **gist's long notes keep their paragraphs and lose their Turtle layout.** Windows line ends, tab indents and outer blank lines are gone, so the schema holds them as YAML blocks and the docs render their lists and equations as written.
 - **A deprecated term gives a reason.** Its `deprecated` reads "gist marks this term owl:deprecated." in place of `'true'`, as LinkML expects a reason there; gist's removal guidance stays in the term's notes.
 
+### Removed
+
+- **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
+
 ### Fixed
 
 - **The OWL types each gist property as gist does.** A union of classes left nine object properties on the default string range, so the OWL declared them datatype properties (and gist's four annotation properties too) and the Python datamodel typed six as strings.
 - **`gist:domainIncludes` and `gist:rangeIncludes` stay hints.** They no longer become a slot's `domain` or `range`, which gist's own axioms step outside (a `FormattedContent` is expressed in a `MediaType`, not a `Language`), so eleven slots lose a domain and nine are ranged over `Any`.
 - **A superproperty outside gist is a broad mapping.** `domain_includes` and `range_includes`, subproperties of `skos:scopeNote`, named it as a related mapping by its full IRI.
 - **The data tests check the examples.** `tests/test_data.py` passed whether a file loaded or not; it now validates each example with closed classes, and each counter-example fails for the one reason its file name states.
-
-### Removed
-
-- **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
 
 ## [0.4.0] - 2026-10-27
 
