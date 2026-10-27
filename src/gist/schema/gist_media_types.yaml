@@ -5,8 +5,8 @@ description: |-
   Definitions of IANA Media Types. IANA Media Type named individuals from gist 14.1.0. Imports gist_core for class definitions.
 license: https://creativecommons.org/licenses/by/4.0/
 see_also:
-- https://www.semanticarts.com/gist/
-- https://w3id.org/semanticarts/ontology/gistMediaTypes14.1.0
+  - https://www.semanticarts.com/gist/
+  - https://w3id.org/semanticarts/ontology/gistMediaTypes14.1.0
 source: https://w3id.org/semanticarts/ontology/gistMediaTypes
 version: 14.1.0
 
@@ -30,8 +30,8 @@ default_prefix: gist_linkml
 default_range: string
 
 imports:
-- linkml:types
-- ./gist_core
+  - linkml:types
+  - ./gist_core
 
 subsets:
 
@@ -114,4 +114,4 @@ enums:
           unique_text: text/turtle
         meaning: media_txt:turtle
     in_subset:
-    - gist_media_types
+      - gist_media_types

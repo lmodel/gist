@@ -25,8 +25,9 @@ LINKML_GENERATORS_DOC_ARGS=
 ## This call writes the published project/owl, so it must keep gist's IRIs
 ## (see the owl section of .linkml/generators.yaml): declare
 ## class_uri/slot_uri, not a default_prefix copy, and keep gist's named
-## individuals individuals.
-LINKML_GENERATORS_OWL_ARGS="--no-use-native-uris --default-permissible-value-type owl:NamedIndividual"
+## individuals individuals. The last three flags drop the restrictions that
+## repeat a property's rdfs:range or a minimum of none, as that section says.
+LINKML_GENERATORS_OWL_ARGS="--no-use-native-uris --default-permissible-value-type owl:NamedIndividual --skip-vacuous-local-range-axioms --skip-vacuous-min-zero-cardinality-axioms --consolidate-cardinality-axioms"
 
 ## pass args to pydantic generator which isn't supported by gen-project
 ## https://github.com/linkml/linkml/issues/2537

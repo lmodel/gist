@@ -50,63 +50,163 @@ subsets:
   gist_core:
     description: Classes and slots from the gist Core ontology module.
 
+types:
+
+  owl_rational:
+    typeof: decimal
+    uri: owl:rational
+    description: A decimal literal typed owl:rational, which gist allows.
+    in_subset:
+      - gist_core
+
+  owl_real:
+    typeof: decimal
+    uri: owl:real
+    description: A decimal literal typed owl:real, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_byte:
+    typeof: integer
+    uri: xsd:byte
+    description: An integer literal typed xsd:byte, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_int:
+    typeof: integer
+    uri: xsd:int
+    description: An integer literal typed xsd:int, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_long:
+    typeof: integer
+    uri: xsd:long
+    description: An integer literal typed xsd:long, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_negative_integer:
+    typeof: integer
+    uri: xsd:negativeInteger
+    description: An integer literal typed xsd:negativeInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_non_negative_integer:
+    typeof: integer
+    uri: xsd:nonNegativeInteger
+    description: An integer literal typed xsd:nonNegativeInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_non_positive_integer:
+    typeof: integer
+    uri: xsd:nonPositiveInteger
+    description: An integer literal typed xsd:nonPositiveInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_positive_integer:
+    typeof: integer
+    uri: xsd:positiveInteger
+    description: An integer literal typed xsd:positiveInteger, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_short:
+    typeof: integer
+    uri: xsd:short
+    description: An integer literal typed xsd:short, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_byte:
+    typeof: integer
+    uri: xsd:unsignedByte
+    description: An integer literal typed xsd:unsignedByte, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_int:
+    typeof: integer
+    uri: xsd:unsignedInt
+    description: An integer literal typed xsd:unsignedInt, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_long:
+    typeof: integer
+    uri: xsd:unsignedLong
+    description: An integer literal typed xsd:unsignedLong, which gist allows.
+    in_subset:
+      - gist_core
+
+  xsd_unsigned_short:
+    typeof: integer
+    uri: xsd:unsignedShort
+    description: An integer literal typed xsd:unsignedShort, which gist allows.
+    in_subset:
+      - gist_core
+
 enums:
 
   AspectInstance:
     description: Named instances of gist:Aspect from gist reference data.
     permissible_values:
       ASPECT_ALTITUDE:
-        title: altitude
         description: The aspect altitude.
+        title: altitude
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_altitude
       ASPECT_AREA:
-        title: area
         description: The aspect area.
+        title: area
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_area
       ASPECT_DURATION:
-        title: duration
         description: The aspect duration.
+        title: duration
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_duration
       ASPECT_FINANCIAL_BALANCE:
-        title: balance
         description: The aspect financial balance.
+        title: balance
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_financial_balance
       ASPECT_MASS:
-        title: mass
         description: The aspect mass.
+        title: mass
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_mass
       ASPECT_MONETARY_VALUE:
-        title: monetary value
         description: The aspect monetary value.
+        title: monetary value
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_monetary_value
       ASPECT_PROBABILITY:
-        title: probability
         description: The aspect probability.
+        title: probability
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
         meaning: gistd:_Aspect_probability
       ASPECT_VOLUME:
-        title: volume
         description: The aspect volume.
+        title: volume
         notes:
           - |-
             This instance has been duplicated from reference data so it can be used in property restrictions.
@@ -119,8 +219,7 @@ slots:
   allows:
     slot_uri: gist:allows
     description: Relates a permission to a particular activity or type of activity it allows.
-    aliases:
-      - allows
+    title: allows
     examples:
       - value: |-
           An easement grants a right to cross or otherwise use someone else's land for a specified purpose.
@@ -133,8 +232,7 @@ slots:
     is_a: has_participant
     slot_uri: gist:comesFromAgent
     description: Relates something to the originating agent.
-    aliases:
-      - comes from agent
+    title: comes from agent
     comments:
       - |-
         This is not the inverse of gist:goesToAgent, as both properties have the message or shipment as the subject.
@@ -143,6 +241,7 @@ slots:
     examples:
       - value: |-
           A package is shipped by a person; a purchase order is emailed to a vendor by an organization.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -153,11 +252,11 @@ slots:
   comes_from_place:
     slot_uri: gist:comesFromPlace
     description: Relates something to its place of origin.
-    aliases:
-      - comes from place
+    title: comes from place
     examples:
       - value: |-
           A letter has a return address indicating its origin; a delivery route originates at a distribution center; a trail originates at the trailhead.
+    range: Any
     multivalued: true
     any_of:
       - range: Address
@@ -169,12 +268,11 @@ slots:
     slot_uri: gist:conformsTo
     description: |-
       The subject is consistent with or satisfies the requirements, rules, or expectations established by the object.
-    aliases:
-      - conforms to
+    title: conforms to
     examples:
       - value: |-
           Meet an obligation; adhere to a specification or standard; meet terms and conditions of an offer; comply with a regulation.
-    range: Intention
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -184,8 +282,7 @@ slots:
   contributes_to:
     slot_uri: gist:contributesTo
     description: The subject helps achieve or fulfill the goals or functions of the object.
-    aliases:
-      - contributes to
+    title: contributes to
     range: Any
     multivalued: true
     in_subset:
@@ -195,8 +292,7 @@ slots:
     is_a: has_participant
     slot_uri: gist:goesToAgent
     description: Relates something to the agent that receives it.
-    aliases:
-      - goes to agent
+    title: goes to agent
     comments:
       - |-
         This is not the inverse of gist:comesFromAgent, as both properties have the message or shipment as the subject.
@@ -204,6 +300,7 @@ slots:
         This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the receiving of a gift.
     examples:
       - value: A package is sent to a person; a purchase order email is received by a vendor.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -214,11 +311,11 @@ slots:
   goes_to_place:
     slot_uri: gist:goesToPlace
     description: Relates something to its destination place.
-    aliases:
-      - goes to place
+    title: goes to place
     examples:
       - value: |-
           A letter has an address indicating its destination; a segment of a delivery route terminates at a delivery location; a trail terminates at an intersection with another trail.
+    range: Any
     multivalued: true
     any_of:
       - range: Address
@@ -229,14 +326,15 @@ slots:
   has_accuracy:
     slot_uri: gist:hasAccuracy
     description: Relates a magnitude to another magnitude that describes its accuracy.
-    aliases:
-      - has accuracy
+    title: has accuracy
     comments:
-      - "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\r\n\r\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance)."
+      - |-
+        gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.
+
+        Note that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance).
     examples:
       - value: |-
           Temperature accurate to tenth of a degree C; length accurate to the nearest centimeter.
-    domain: Magnitude
     range: Magnitude
     multivalued: false
     in_subset:
@@ -247,8 +345,7 @@ slots:
   has_addend:
     slot_uri: gist:hasAddend
     description: Relates an aspect to another aspect that is an additive component of it.
-    aliases:
-      - has addend
+    title: has addend
     comments:
       - Commonly used with financial metrics.
     examples:
@@ -262,8 +359,7 @@ slots:
   has_address:
     slot_uri: gist:hasAddress
     description: Relates something to its physical or electronic address.
-    aliases:
-      - has address
+    title: has address
     examples:
       - value: |-
           A brick-and-mortar store has a street address; a person can be contacted electronically via an email address.
@@ -275,8 +371,7 @@ slots:
   has_aspect:
     slot_uri: gist:hasAspect
     description: Relates a magnitude to its aspect (measurable characteristic).
-    aliases:
-      - has aspect
+    title: has aspect
     range: Aspect
     multivalued: false
     in_subset:
@@ -285,8 +380,7 @@ slots:
   has_biological_parent:
     slot_uri: gist:hasBiologicalParent
     description: Relates a living thing to its biological parent.
-    aliases:
-      - has biological parent
+    title: has biological parent
     domain: LivingThing
     range: LivingThing
     multivalued: true
@@ -296,8 +390,7 @@ slots:
   has_broader:
     slot_uri: gist:hasBroader
     description: Relates a thing to another thing with a broader meaning.
-    aliases:
-      - has broader
+    title: has broader
     examples:
       - value: The aspect distance is broader than the aspect height.
     range: Any
@@ -311,8 +404,7 @@ slots:
     slot_uri: gist:hasDirectBroader
     description: |-
       Relates a thing to another thing with a broader meaning, when there is no intermediate between them.
-    aliases:
-      - has direct broader
+    title: has direct broader
     comments:
       - |-
         Unlike gist:hasBroader, this property is not transitive. It is safest to use this property when semantic directness is inherent in the relationship. Otherwise, there is a risk of making a hasDirectBroader assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:hasBroader.
@@ -325,8 +417,7 @@ slots:
     slot_uri: gist:hasDivisor
     description: |-
       Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor.
-    aliases:
-      - has divisor
+    title: has divisor
     comments:
       - |-
         Provides a supplemental method of decomposing a unit of measure or an aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles.
@@ -342,8 +433,7 @@ slots:
     is_a: has_participant
     slot_uri: gist:hasGiver
     description: Relates something to the participant that provides it.
-    aliases:
-      - has giver
+    title: has giver
     comments:
       - |-
         This property is often used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:comesFromAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift.
@@ -360,8 +450,7 @@ slots:
   has_goal:
     slot_uri: gist:hasGoal
     description: Relates something to the end towards which it directs effort.
-    aliases:
-      - has goal
+    title: has goal
     examples:
       - value: |-
           The sales division of a company has the goal of acquiring new customers and contracts.
@@ -373,8 +462,7 @@ slots:
   has_incumbent:
     slot_uri: gist:hasIncumbent
     description: Relates a position to the thing or person that currently holds that position.
-    aliases:
-      - has incumbent
+    title: has incumbent
     comments:
       - |-
         To create a temporal view, define a subclass of gist:TemporalRelation for this property (e.g., Incumbency).
@@ -386,8 +474,7 @@ slots:
   has_magnitude:
     slot_uri: gist:hasMagnitude
     description: Relates a thing to a magnitude.
-    aliases:
-      - has magnitude
+    title: has magnitude
     examples:
       - value: |-
           A car or model of car has magnitudes for length, width, weight, average miles per gallon, etc.
@@ -400,8 +487,7 @@ slots:
     slot_uri: gist:hasMultiplier
     description: |-
       Relates a unit of measure to another unit of measure that is a factor, or relates an aspect to another aspect that is a factor.
-    aliases:
-      - has multiplier
+    title: has multiplier
     comments:
       - |-
         Provides a supplemental method of decomposing a unit of measure or aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles.
@@ -417,8 +503,7 @@ slots:
     slot_uri: gist:hasNavigationalParent
     description: |-
       Relates a child category to a parent category in an informal (e.g., faceted) hierarchy.
-    aliases:
-      - has navigational parent
+    title: has navigational parent
     examples:
       - value: |-
           Refrigerator handles are not refrigerators, but it may be useful to represent their relationship hierarchically for a faceted UI filter.
@@ -431,8 +516,7 @@ slots:
     slot_uri: gist:hasParticipant
     description: |-
       Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way.
-    aliases:
-      - has participant
+    title: has participant
     comments:
       - |-
         The thing with participants will often be an agreement, event or obligation. Participation does not imply agency.
@@ -451,13 +535,13 @@ slots:
     slot_uri: gist:hasParty
     description: |-
       Relates an event, agreement, or obligation to a participating person or organization.
-    aliases:
-      - has party
+    title: has party
     comments:
       - |-
         Subproperties may be defined to describe specific parties, such as hasLender and hasBorrower for a loan.
     examples:
       - value: Loan agreements have lender and borrower parties.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -468,8 +552,7 @@ slots:
   has_physical_location:
     slot_uri: gist:hasPhysicalLocation
     description: Relates something to its physical location.
-    aliases:
-      - has physical location
+    title: has physical location
     comments:
       - |-
         This property does not distinguish between things whose locations are stable and those whose locations change over time; e.g., a fire hydrant vs. a car.
@@ -483,8 +566,7 @@ slots:
     is_a: has_participant
     slot_uri: gist:hasRecipient
     description: Relates something to the participant that receives or is intended to receive it.
-    aliases:
-      - has recipient
+    title: has recipient
     comments:
       - |-
         This property is used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:goesToAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift.
@@ -499,8 +581,7 @@ slots:
   has_subtrahend:
     slot_uri: gist:hasSubtrahend
     description: Relates an aspect to another aspect that is a subtracted component of it.
-    aliases:
-      - has subtrahend
+    title: has subtrahend
     comments:
       - Commonly used with financial metrics.
     examples:
@@ -515,8 +596,7 @@ slots:
     is_a: has_broader
     slot_uri: gist:hasUniqueBroader
     description: Relates a thing to a unique other thing with a broader meaning.
-    aliases:
-      - has unique broader
+    title: has unique broader
     range: Any
     multivalued: false
     in_subset:
@@ -527,8 +607,7 @@ slots:
     slot_uri: gist:hasUniqueNavigationalParent
     description: |-
       Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy.
-    aliases:
-      - has unique navigational parent
+    title: has unique navigational parent
     range: Any
     multivalued: false
     in_subset:
@@ -538,8 +617,7 @@ slots:
     slot_uri: gist:hasUnitGroup
     description: |-
       Relates an aspect to a unit group. The aspect can be measured using any of the members of the unit group.
-    aliases:
-      - has unit group
+    title: has unit group
     examples:
       - value: |-
           The aspect distance can have a unit group that includes the units meter, inch, foot, etc.
@@ -552,8 +630,7 @@ slots:
   has_unit_of_measure:
     slot_uri: gist:hasUnitOfMeasure
     description: Relates a magnitude to its unit of measure.
-    aliases:
-      - has unit of measure
+    title: has unit of measure
     examples:
       - value: The magnitude 87 inches of height has unit of measure inches.
     domain: Magnitude
@@ -565,8 +642,7 @@ slots:
   is_about:
     slot_uri: gist:isAbout
     description: Subject matter of a document.
-    aliases:
-      - is about
+    title: is about
     domain: Content
     range: Any
     multivalued: true
@@ -576,8 +652,7 @@ slots:
   is_affected_by:
     slot_uri: gist:isAffectedBy
     description: Relates an affected thing to the source of the effect.
-    aliases:
-      - is affected by
+    title: is affected by
     range: Any
     multivalued: true
     in_subset:
@@ -586,13 +661,13 @@ slots:
   is_allocated_by:
     slot_uri: gist:isAllocatedBy
     description: Relates something to whomever or whatever assigns or distributes it.
-    aliases:
-      - is allocated by
+    title: is allocated by
     comments:
       - The allocator may be a person, organization, or automated process.
     examples:
       - value: |-
           A U.S. Social Security number is allocated by the U.S. Social Security Administration; the media type https://www.iana.org/assignments/media-types/text/csv is allocated by the Internet Assigned Numbers Authority (IANA).
+    range: Any
     multivalued: true
     any_of:
       - range: IntellectualProperty
@@ -606,21 +681,15 @@ slots:
   is_assignment_of:
     slot_uri: gist:isAssignmentOf
     description: Relates an assignment to the resource it assigns.
-    aliases:
-      - is assignment of
+    title: is assignment of
     comments:
       - People, organizations, monetary amounts, equipment can all be assigned.
       - |-
         While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified.
     examples:
       - value: Assignment of a person to a project.
-    domain: Assignment
+    range: Any
     multivalued: true
-    any_of:
-      - range: Equipment
-      - range: IntellectualProperty
-      - range: Organization
-      - range: Person
     in_subset:
       - gist_core
     annotations:
@@ -631,12 +700,10 @@ slots:
     slot_uri: gist:isAssignmentTo
     description: |-
       Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate.
-    aliases:
-      - is assignment to
+    title: is assignment to
     comments:
       - |-
         While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified.
-    domain: Assignment
     range: Any
     multivalued: true
     in_subset:
@@ -648,8 +715,7 @@ slots:
     slot_uri: gist:isBasedOn
     description: |-
       The object is a foundation for, a starting point for, gave rise to, or justifies the subject.
-    aliases:
-      - is based on
+    title: is based on
     examples:
       - value: |-
           A document is based on a document template; a metric computing the average income of a population is based on the metric for individual income.
@@ -662,9 +728,8 @@ slots:
     slot_uri: gist:isCategorizedBy
     description: |-
       Relates something to a taxonomy term or other less formally defined classification.
-    aliases:
-      - is categorized by
-    range: Category
+    title: is categorized by
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -674,8 +739,7 @@ slots:
   is_connected_to:
     slot_uri: gist:isConnectedTo
     description: A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship.
-    aliases:
-      - is connected to
+    title: is connected to
     range: Any
     multivalued: true
     symmetric: true
@@ -687,8 +751,7 @@ slots:
     slot_uri: gist:isDirectPartOf
     description: |-
       The relationship between a part and a whole where the part has independent existence and there are no other parts in between.
-    aliases:
-      - is direct part of
+    title: is direct part of
     comments:
       - Because the part has independent existence, there is no cascading delete.
       - |-
@@ -701,10 +764,8 @@ slots:
   is_expressed_in:
     slot_uri: gist:isExpressedIn
     description: Relates something to the language it is expressed in.
-    aliases:
-      - is expressed in
-    domain: Text
-    range: Language
+    title: is expressed in
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -716,8 +777,7 @@ slots:
     is_a: is_member_of
     slot_uri: gist:isFirstMemberOf
     description: Relates the first member of an ordered collection to the collection.
-    aliases:
-      - is first member of
+    title: is first member of
     comments:
       - |-
         Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member.
@@ -730,8 +790,7 @@ slots:
   is_geo_contained_in:
     slot_uri: gist:isGeoContainedIn
     description: Relates one geographic location to another that contains it.
-    aliases:
-      - is geographically contained in
+    title: is geographically contained in
     domain: GeoLocation
     range: GeoLocation
     multivalued: true
@@ -743,8 +802,7 @@ slots:
     slot_uri: gist:isGovernedBy
     description: |-
       Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it.
-    aliases:
-      - is governed by
+    title: is governed by
     examples:
       - value: |-
           A country geographic region is governed by a country government; the installation and use of software is governed by a license.
@@ -756,8 +814,7 @@ slots:
   is_identified_by:
     slot_uri: gist:isIdentifiedBy
     description: Relates something to a content object that uniquely identifies it.
-    aliases:
-      - is identified by
+    title: is identified by
     comments:
       - |-
         This is like a URI: a thing can have more than one ID, but each ID can refer to only one thing. Note that it is possible to have two IDs with the same text that refer to different things.
@@ -771,8 +828,7 @@ slots:
   is_made_up_of:
     slot_uri: gist:isMadeUpOf
     description: Relates something to a substance that it is made up of.
-    aliases:
-      - is made up of
+    title: is made up of
     examples:
       - value: A vase is made of clay; water is made up of hydrogen and oxygen.
     range: PhysicalSubstance
@@ -784,12 +840,9 @@ slots:
     slot_uri: gist:isMemberOf
     description: |-
       Relates a member individual to the thing, such as a collection or organization, that it is a member of.
-    aliases:
-      - is member of
+    title: is member of
+    range: Any
     multivalued: true
-    any_of:
-      - range: Collection
-      - range: Organization
     in_subset:
       - gist_core
     annotations:
@@ -799,8 +852,7 @@ slots:
     slot_uri: gist:isPartOf
     description: |-
       The relationship between a part and a whole where the part has independent existence.
-    aliases:
-      - is part of
+    title: is part of
     comments:
       - Because the part has independent existence, there is no cascading delete.
       - The transitive version of gist:isDirectPartOf.
@@ -814,8 +866,7 @@ slots:
     slot_uri: gist:isProducedBy
     description: |-
       Relates something to the thing that created, composed, or brought it into existence.
-    aliases:
-      - is produced by
+    title: is produced by
     examples:
       - value: A deliverable is produces by a task.
       - value: A measurement is produced by a sensor.
@@ -829,10 +880,10 @@ slots:
     slot_uri: gist:isRecognizedBy
     description: |-
       Relates something to a party that formally acknowledges its existence, validity, or legality.
-    aliases:
-      - is recognized by
+    title: is recognized by
     examples:
       - value: The existence of a particular company is recognized by the state.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -843,8 +894,7 @@ slots:
   is_rendered_on:
     slot_uri: gist:isRenderedOn
     description: Relates content to the media on which it is rendered.
-    aliases:
-      - is rendered on
+    title: is rendered on
     examples:
       - value: |-
           A document is rendered on a computer screen; a piece of music is rendered through speakers.
@@ -857,8 +907,7 @@ slots:
     slot_uri: gist:isTriggeredBy
     description: |-
       Relates a contingency, such as an event or obligation, to the event that gives rise to it.
-    aliases:
-      - is triggered by
+    title: is triggered by
     comments:
       - |-
         For obligations, this property describes what must happen to trigger the contingent obligation. Other uses include controls, processes, etc.
@@ -874,9 +923,8 @@ slots:
     slot_uri: gist:isUnderJurisdictionOf
     description: |-
       Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.
-    aliases:
-      - is under jurisdiction of
-    range: GovernmentOrganization
+    title: is under jurisdiction of
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -887,10 +935,8 @@ slots:
     slot_uri: gist:links
     description: |-
       Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.
-    aliases:
-      - links
-    domain: NetworkLink
-    range: NetworkNode
+    title: links
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -903,10 +949,8 @@ slots:
     slot_uri: gist:linksFrom
     description: |-
       Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.
-    aliases:
-      - links from
-    domain: NetworkLink
-    range: NetworkNode
+    title: links from
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -919,10 +963,8 @@ slots:
     slot_uri: gist:linksTo
     description: |-
       Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.
-    aliases:
-      - links to
-    domain: NetworkLink
-    range: NetworkNode
+    title: links to
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -934,8 +976,7 @@ slots:
     slot_uri: gist:occursIn
     description: |-
       Relates something, such as an event, to the geographic location where it did, does, or will happen.
-    aliases:
-      - occurs in
+    title: occurs in
     range: Any
     multivalued: true
     in_subset:
@@ -944,15 +985,13 @@ slots:
   offers_to_provide:
     slot_uri: gist:offersToProvide
     description: Relates an offer to the thing being made available for exchange.
-    aliases:
-      - offers to provide
+    title: offers to provide
     comments:
       - |-
         This will most often be a good or service, but could be an amount of money, e.g., for currency exchange.
     examples:
       - value: |-
           An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.
-    domain: Offer
     range: Any
     multivalued: true
     in_subset:
@@ -963,15 +1002,13 @@ slots:
   offers_to_receive:
     slot_uri: gist:offersToReceive
     description: Relates an offer to the thing expected in return for the offered item.
-    aliases:
-      - offers to receive
+    title: offers to receive
     comments:
       - |-
         This will most often be an amount of money, but could be anything of value, as in swaps.
     examples:
       - value: |-
           A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.
-    domain: Offer
     range: Any
     multivalued: true
     in_subset:
@@ -982,8 +1019,7 @@ slots:
   owns:
     slot_uri: gist:owns
     description: Relates a party to something that it possesses and controls.
-    aliases:
-      - owns
+    title: owns
     comments:
       - The ultimate form of ownership is the right to destroy.
       - There is a long list of potential range classes.
@@ -997,8 +1033,7 @@ slots:
   precedes:
     slot_uri: gist:precedes
     description: A generic ordering relation indicating that the subject comes before the object.
-    aliases:
-      - precedes
+    title: precedes
     comments:
       - The less-than symbol is often used to represent this relation.
       - This is the transitive version of gist:precedesDirectly.
@@ -1015,8 +1050,7 @@ slots:
     slot_uri: gist:precedesDirectly
     description: |-
       A generic ordering relation indicating that the subject comes immediately before the object.
-    aliases:
-      - precedes directly
+    title: precedes directly
     comments:
       - |-
         If two items in an ordered collection share the same position, they both directly precede the following element.
@@ -1032,8 +1066,7 @@ slots:
   prevents:
     slot_uri: gist:prevents
     description: Relates an intention to behavior that it prohibits.
-    aliases:
-      - prevents
+    title: prevents
     examples:
       - value: A city ordinance prohibits jaywalking.
     notes:
@@ -1042,18 +1075,19 @@ slots:
     domain: Intention
     range: Behavior
     multivalued: true
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     deprecated_element_has_exact_replacement: prohibits
     in_subset:
       - gist_core
     exact_mappings:
       - gist:prohibits
+    annotations:
+      owl:deprecated: true
 
   prohibits:
     slot_uri: gist:prohibits
     description: Relates an intention to a behavior that it forbids or seeks to prevent.
-    aliases:
-      - prohibits
+    title: prohibits
     comments:
       - |-
         A behavior can be prohibited without being prevented. For example, a speed limit may prohibit driving faster than a stated speed but does not always succeed in preventing drivers from exceeding that speed.
@@ -1071,8 +1105,7 @@ slots:
     slot_uri: gist:providesOrderFor
     description: |-
       Links a member of an ordered collection to the real-world item it represents in that collection.
-    aliases:
-      - provides order for
+    title: provides order for
     domain: OrderedMember
     range: Any
     multivalued: false
@@ -1083,8 +1116,7 @@ slots:
     slot_uri: gist:refersTo
     description: |-
       Relates something to another resource that it points to, indicates, or references.
-    aliases:
-      - refers to
+    title: refers to
     range: Any
     multivalued: true
     in_subset:
@@ -1093,10 +1125,16 @@ slots:
   requires:
     slot_uri: gist:requires
     description: The subject needs the object or makes it necessary, mandatory, or compulsory.
-    aliases:
-      - requires
+    title: requires
     comments:
-      - "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\r\n\r\n\t\t1. To need something or to make something necessary.\r\n\t\t2. To order or demand something, or to order someone to do something, especially because of a rule or law.\r\n\t\t3. To make it officially necessary for someone to do something.\r\n\r\n\tImplementations requiring a more specific meaning should define subproperties."
+      - |-
+        This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':
+
+          1. To need something or to make something necessary.
+          2. To order or demand something, or to order someone to do something, especially because of a rule or law.
+          3. To make it officially necessary for someone to do something.
+
+        Implementations requiring a more specific meaning should define subproperties.
     examples:
       - value: Humans require air; solar power requires sunshine.
     range: Any
@@ -1108,8 +1146,7 @@ slots:
     is_a: actual_end_date_time
     slot_uri: gist:actualEndDate
     description: The actual date that something ended, with precision of one day.
-    aliases:
-      - actual end date
+    title: actual end date
     comments:
       - |-
         Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.
@@ -1123,8 +1160,7 @@ slots:
     is_a: end_date_time
     slot_uri: gist:actualEndDateTime
     description: The actual date and time that something ended, with no implied precision.
-    aliases:
-      - actual end date time
+    title: actual end date time
     comments:
       - |-
         This is an abstraction over the various precisions of actual end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.
@@ -1137,8 +1173,7 @@ slots:
     slot_uri: gist:actualEndMicrosecond
     description: |-
       The actual time that something ended, expressed as a system time used for timestamps.
-    aliases:
-      - actual end microsecond
+    title: actual end microsecond
     comments:
       - |-
         A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed.
@@ -1152,8 +1187,7 @@ slots:
     is_a: actual_end_date_time
     slot_uri: gist:actualEndMinute
     description: The actual date and time that something ended, with precision of one minute.
-    aliases:
-      - actual end minute
+    title: actual end minute
     comments:
       - |-
         Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.
@@ -1167,8 +1201,7 @@ slots:
     is_a: actual_end_date_time
     slot_uri: gist:actualEndYear
     description: The actual date that something ended, with precision of one year.
-    aliases:
-      - actual end year
+    title: actual end year
     comments:
       - |-
         Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.
@@ -1183,8 +1216,7 @@ slots:
     is_a: actual_start_date_time
     slot_uri: gist:actualStartDate
     description: The actual date that something started, with precision of one day.
-    aliases:
-      - actual start date
+    title: actual start date
     comments:
       - |-
         Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.
@@ -1198,8 +1230,7 @@ slots:
     is_a: start_date_time
     slot_uri: gist:actualStartDateTime
     description: The actual date and time that something started, with no implied precision.
-    aliases:
-      - actual start date time
+    title: actual start date time
     comments:
       - |-
         This is an abstraction over the various precisions of actual start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.
@@ -1212,8 +1243,7 @@ slots:
     slot_uri: gist:actualStartMicrosecond
     description: |-
       The actual time that something started, expressed as a system time used for timestamps.
-    aliases:
-      - actual start microsecond
+    title: actual start microsecond
     comments:
       - |-
         A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed. This property is defined for the cases when you do need to capture the runtime of a system process, and is then used in conjunction with gist:actualEndMicrosecond.
@@ -1227,8 +1257,7 @@ slots:
     is_a: actual_start_date_time
     slot_uri: gist:actualStartMinute
     description: The actual date and time that something started, with precision of one minute.
-    aliases:
-      - actual start minute
+    title: actual start minute
     comments:
       - |-
         Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.
@@ -1242,8 +1271,7 @@ slots:
     is_a: actual_start_date_time
     slot_uri: gist:actualStartYear
     description: The actual date that something started, with precision of one year.
-    aliases:
-      - actual start year
+    title: actual start year
     comments:
       - |-
         Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.
@@ -1258,10 +1286,27 @@ slots:
     slot_uri: gist:atDateTime
     description: |-
       The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned.
-    aliases:
-      - at date time
+    title: at date time
     comments:
-      - "This is the top level property for asserting time, and is not expected to be asserted directly.\r\n\r\nThe subproperties allow the ontologist to do three things:\r\n1) Distinguish start and end times.\r\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\r\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\r\n\r\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\r\n\r\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\r\n\r\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\r\n\r\nThe conventions for precision that are repeated in each property name are as follows:\r\n\t- *DateTime is an abstraction over the various precisions of its subproperties.\r\n\t- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\r\n\t- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\r\n\t- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.\r\n"
+      - |-
+        This is the top level property for asserting time, and is not expected to be asserted directly.
+
+        The subproperties allow the ontologist to do three things:
+        1) Distinguish start and end times.
+        2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).
+        3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.
+
+        All datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.
+
+        Time zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.
+
+        There will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.
+
+        The conventions for precision that are repeated in each property name are as follows:
+          - *DateTime is an abstraction over the various precisions of its subproperties.
+          - *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.
+          - *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.
+          - *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.
     range: datetime
     in_subset:
       - gist_core
@@ -1270,8 +1315,7 @@ slots:
     is_a: start_date_time
     slot_uri: gist:birthDate
     description: The date some living thing was or will be born, with precision of one day.
-    aliases:
-      - birth date
+    title: birth date
     comments:
       - |-
         This is a subproperty of gist:startDateTime rather than gist:actualStartDate because some living things have yet to be born. This property refers to a calendar date and is assumed to precision of one day (time zone offset is allowed). It is recommended to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a birthdate to the minute can define a subproperty.
@@ -1285,8 +1329,7 @@ slots:
     slot_uri: gist:containedText
     description: |-
       Relates an entity containing textual information to the string constituting that textual information.
-    aliases:
-      - contained text
+    title: contained text
     comments:
       - |-
         If there are multiple strings associated with an entity, it is an implementation decision whether to combine them into a single contained text value or to use multiple contained text assertions.
@@ -1301,10 +1344,19 @@ slots:
     slot_uri: gist:conversionFactor
     description: |-
       A value that relates a unit of measure to units of the International System of Units.
-    aliases:
-      - conversion factor
+    title: conversion factor
     comments:
-      - "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\r\n\r\n\tFor example, to convert 27 feet to yards:\r\n\r\n\t\tthe conversion factor of foot is 0.3048\r\n\t\tthe conversion factor of yard is 0.9144\r\n\r\n\t\tso\r\n\r\n\t\t27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
+      - |-
+        To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.
+
+        For example, to convert 27 feet to yards:
+
+          the conversion factor of foot is 0.3048
+          the conversion factor of yard is 0.9144
+
+          so
+
+          27 feet = (27 x 0.3048) / 0.9144 = 9 yards
     examples:
       - value: |-
           In the equation 1 inch = 0.0254 meters, the value 0.0254 is the conversion factor of inch.
@@ -1314,7 +1366,7 @@ slots:
     multivalued: false
     any_of:
       - range: decimal
-      - range: float
+      - range: double
     in_subset:
       - gist_core
     see_also:
@@ -1322,9 +1374,15 @@ slots:
 
   conversion_offset:
     slot_uri: gist:conversionOffset
-    description: "\r\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\r\n\r\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\r\n\r\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\r\n\r\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset."
-    aliases:
-      - conversion offset
+    description: |-
+      A value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.
+
+      y degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin
+
+      To convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.
+
+      To convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.
+    title: conversion offset
     domain: UnitOfMeasure
     range: decimal
     multivalued: false
@@ -1335,8 +1393,7 @@ slots:
     is_a: actual_end_date
     slot_uri: gist:deathDate
     description: The date some living thing died.
-    aliases:
-      - death date
+    title: death date
     comments:
       - |-
         Refers to a calendar date and is assumed to have precision of one day (time zone offset is allowed). Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a death date to the minute can define a subproperty.
@@ -1349,8 +1406,7 @@ slots:
   description:
     slot_uri: gist:description
     description: A statement about someone or something's attributes or characteristics.
-    aliases:
-      - description
+    title: description
     comments:
       - |-
         This property is used to describe instance data which is not part of the ontology. A definition and a description have different semantics. Use skos:definition for a statement of the meaning of a thing and gist:description to describe a thing's attributes, characteristics, or features.
@@ -1367,8 +1423,7 @@ slots:
     slot_uri: gist:encryptedText
     description: |-
       Encoded text produced from readable data by an algorithm so that it can only be understood or restored with a decryption key.
-    aliases:
-      - encrypted text
+    title: encrypted text
     range: string
     in_subset:
       - gist_core
@@ -1377,8 +1432,7 @@ slots:
     is_a: at_date_time
     slot_uri: gist:endDateTime
     description: The date and time that something ends.
-    aliases:
-      - end date time
+    title: end date time
     comments:
       - |-
         This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).
@@ -1391,10 +1445,16 @@ slots:
   exponent_of_ampere:
     slot_uri: gist:exponentOfAmpere
     description: The exponent of ampere in a product of powers of base units.
-    aliases:
-      - exponent of ampere
+    title: exponent of ampere
     examples:
-      - value: "In the equation '1 milliampere = 0.001 x ampere'\r\n\r\n\t\tthe conversionFactor for milliampere is 0.001\r\n\t\tthe exponent of ampere is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere."
+      - value: |-
+          In the equation '1 milliampere = 0.001 x ampere'
+
+          the conversionFactor for milliampere is 0.001
+          the exponent of ampere is 1
+          all other exponents are zero
+
+          Every member of a unit group containing milliampere must be a multiple of ampere.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1404,10 +1464,17 @@ slots:
   exponent_of_bit:
     slot_uri: gist:exponentOfBit
     description: The exponent of bit in a product of powers of base units.
-    aliases:
-      - exponent of bit
+    title: exponent of bit
     examples:
-      - value: "In the equation '1 megabit per second = 1000000 x bit per second'\r\n\r\n\t\tthe conversion factor for megabit per second is 1000000\r\n\t\tthe exponent of bit is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second."
+      - value: |-
+          In the equation '1 megabit per second = 1000000 x bit per second'
+
+          the conversion factor for megabit per second is 1000000
+          the exponent of bit is 1
+          the exponent of second is -1
+          all other exponents are zero
+
+          Every member of a unit group containing megabit per second must be a multiple of bit per second.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1417,10 +1484,16 @@ slots:
   exponent_of_candela:
     slot_uri: gist:exponentOfCandela
     description: The exponent of candela in a product of powers of base units.
-    aliases:
-      - exponent of candela
+    title: exponent of candela
     examples:
-      - value: "In the equation '1 candlepower = 1 x candela'\r\n\r\n\t\tthe conversion factor for candlepower is 1\r\n\t\tthe exponent of candela is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela."
+      - value: |-
+          In the equation '1 candlepower = 1 x candela'
+
+          the conversion factor for candlepower is 1
+          the exponent of candela is 1
+          all other exponents are zero
+
+          Every member of a unit group containing candlepower must be a multiple of candela.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1430,10 +1503,17 @@ slots:
   exponent_of_kelvin:
     slot_uri: gist:exponentOfKelvin
     description: The exponent of Kelvin in a product of powers of base units.
-    aliases:
-      - exponent of Kelvin
+    title: exponent of Kelvin
     examples:
-      - value: "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\r\n\r\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\r\n\t\tthe conversion factor for degree Fahrenheit is 5/9\r\n\t\tthe exponent of Kelvin is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both)."
+      - value: |-
+          In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'
+
+          the conversion offset for degree Fahrenheit is 459.6669607
+          the conversion factor for degree Fahrenheit is 5/9
+          the exponent of Kelvin is 1
+          all other exponents are zero
+
+          Every member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1443,10 +1523,17 @@ slots:
   exponent_of_kilogram:
     slot_uri: gist:exponentOfKilogram
     description: The exponent of kilogram in a product of powers of base units.
-    aliases:
-      - exponent of kilogram
+    title: exponent of kilogram
     examples:
-      - value: "In the equation '1 millimole per gram = 1 x mole per kilogram'\r\n\r\n\t\tthe conversion factor for millimole per gram is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of kilogram is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram."
+      - value: |-
+          In the equation '1 millimole per gram = 1 x mole per kilogram'
+
+          the conversion factor for millimole per gram is 1
+          the exponent of mole is 1
+          the exponent of kilogram is -1
+          all other exponents are zero
+
+          Every member of a unit group containing millimole per gram must be a multiple of mole per kilogram.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1456,10 +1543,17 @@ slots:
   exponent_of_meter:
     slot_uri: gist:exponentOfMeter
     description: The exponent of meter in a product of powers of base units.
-    aliases:
-      - exponent of meter
+    title: exponent of meter
     examples:
-      - value: "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\r\n\r\n\t\tthe conversion factor for microgram per milliliter is 0.001\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is -3\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed."
+      - value: |-
+          In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'
+
+          the conversion factor for microgram per milliliter is 0.001
+          the exponent of kilogram is 1
+          the exponent of meter is -3
+          all other exponents are zero
+
+          Every member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1469,10 +1563,17 @@ slots:
   exponent_of_mole:
     slot_uri: gist:exponentOfMole
     description: The exponent of mole in a product of powers of base units.
-    aliases:
-      - exponent of mole
+    title: exponent of mole
     examples:
-      - value: "In the equation '1 katal = 1 x mole per second'\r\n\r\n\t\tthe conversion factor for katal is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second."
+      - value: |-
+          In the equation '1 katal = 1 x mole per second'
+
+          the conversion factor for katal is 1
+          the exponent of mole is 1
+          the exponent of second is -1
+          all other exponents are zero
+
+          Every member of a unit group containing katal must be a multiple of mole per second.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1482,12 +1583,19 @@ slots:
   exponent_of_number:
     slot_uri: gist:exponentOfNumber
     description: The exponent of number in a product of powers of base units.
-    aliases:
-      - exponent of number
+    title: exponent of number
     comments:
       - Use when the unit of measure involves a count or other number.
     examples:
-      - value: "In the equation '1 beat per minute = 0.016667 x number per second'\r\n\r\n\t\tthe conversion factor for beat per minute is 0.016667\r\n\t\tthe exponent of number is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing beat per minute must be a multiple of number per second."
+      - value: |-
+          In the equation '1 beat per minute = 0.016667 x number per second'
+
+          the conversion factor for beat per minute is 0.016667
+          the exponent of number is 1
+          the exponent of second is -1
+          all other exponents are zero
+
+          Every member of a unit group containing beat per minute must be a multiple of number per second.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1498,10 +1606,12 @@ slots:
     slot_uri: gist:exponentOfOther
     description: |-
       Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples).
-    aliases:
-      - exponent of other
+    title: exponent of other
     comments:
-      - "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\r\n\r\n\t\tOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale."
+      - |-
+        Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).
+
+        Otherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale.
     examples:
       - value: |-
           Decibel, pH, and octave are units of measure that are logarithmic. Their unit groups have exponent of other = 1.
@@ -1514,10 +1624,16 @@ slots:
   exponent_of_radian:
     slot_uri: gist:exponentOfRadian
     description: The exponent of radian in a product of powers of base units.
-    aliases:
-      - exponent of radian
+    title: exponent of radian
     examples:
-      - value: "In the equation '1 revolution = 6.283 x radian'\r\n\r\n\t\tthe conversion factor for revolution is 6.283\r\n\t\tthe exponent of radian is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing revolution must be a multiple of radian."
+      - value: |-
+          In the equation '1 revolution = 6.283 x radian'
+
+          the conversion factor for revolution is 6.283
+          the exponent of radian is 1
+          all other exponents are zero
+
+          Every member of a unit group containing revolution must be a multiple of radian.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1527,10 +1643,18 @@ slots:
   exponent_of_second:
     slot_uri: gist:exponentOfSecond
     description: The exponent of second in a product of powers of base units.
-    aliases:
-      - exponent of second
+    title: exponent of second
     examples:
-      - value: "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\r\n\r\n\t\tthe conversion factor for watt-hour is 3600\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is 2\r\n\t\tthe exponent of second is -2\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared."
+      - value: |-
+          In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'
+
+          the conversion factor for watt-hour is 3600
+          the exponent of kilogram is 1
+          the exponent of meter is 2
+          the exponent of second is -2
+          all other exponents are zero
+
+          Every member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1540,12 +1664,20 @@ slots:
   exponent_of_steradian:
     slot_uri: gist:exponentOfSteradian
     description: The exponent of steradian in a product of powers of base units.
-    aliases:
-      - exponent of steradian
+    title: exponent of steradian
     comments:
       - Steradian is a measure of solid angle.
     examples:
-      - value: "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\r\n\r\n\t\tthe conversion factor for watt per square meter steradian is 1\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of second is -3\r\n\t\tthe exponent of steradian is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian."
+      - value: |-
+          In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'
+
+          the conversion factor for watt per square meter steradian is 1
+          the exponent of kilogram is 1
+          the exponent of second is -3
+          the exponent of steradian is -1
+          all other exponents are zero
+
+          Every member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1555,12 +1687,19 @@ slots:
   exponent_of_us_dollar:
     slot_uri: gist:exponentOfUSDollar
     description: The exponent of US Dollar in a product of powers of base units.
-    aliases:
-      - exponent of US dollar
+    title: exponent of US dollar
     comments:
       - The factors for converting from one currency to another change constantly.
     examples:
-      - value: "In the equation '1 million dollars per week = 1.65344 x dollar per second'\r\n\r\n\t\tthe conversion factor for million dollars per week is 1.65344\r\n\t\tthe exponent of US Dollar is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing million dollars per week must be a multiple of dollar per second."
+      - value: |-
+          In the equation '1 million dollars per week = 1.65344 x dollar per second'
+
+          the conversion factor for million dollars per week is 1.65344
+          the exponent of US Dollar is 1
+          the exponent of second is -1
+          all other exponents are zero
+
+          Every member of a unit group containing million dollars per week must be a multiple of dollar per second.
     notes:
       - 'OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)'
     range: decimal
@@ -1570,8 +1709,7 @@ slots:
   id_text:
     slot_uri: gist:idText
     description: A text string that identifies an individual.
-    aliases:
-      - id text
+    title: id text
     comments:
       - A common use case would be for preexisting internal company identifiers.
       - |-
@@ -1590,8 +1728,7 @@ slots:
     slot_uri: gist:isRecordedAt
     description: |-
       The date that something was posted (which is not necessarily the date it occurred). It must be after the date of occurrence, but could be before or after the planned date.
-    aliases:
-      - is recorded at
+    title: is recorded at
     comments:
       - Precision may vary according to context.
     examples:
@@ -1602,43 +1739,54 @@ slots:
   latitude:
     slot_uri: gist:latitude
     description: Degrees above or below the equator.
-    aliases:
-      - latitude
+    title: latitude
     domain: GeoPoint
-    range: float
+    range: double
     in_subset:
       - gist_core
 
   longitude:
     slot_uri: gist:longitude
     description: Degrees from the prime meridian.
-    aliases:
-      - longitude
+    title: longitude
     domain: GeoPoint
-    range: float
+    range: double
     in_subset:
       - gist_core
 
   name:
     slot_uri: gist:name
     description: Relates an individual to (one of) its name(s).
-    aliases:
-      - name
+    title: name
     in_subset:
       - gist_core
 
   numeric_value:
     slot_uri: gist:numericValue
     description: The actual value of a magnitude.
-    aliases:
-      - numeric value
+    title: numeric value
     notes:
       - |-
         OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)
     any_of:
-      - range: integer
+      - range: xsd_byte
       - range: decimal
+      - range: double
       - range: float
+      - range: xsd_int
+      - range: integer
+      - range: xsd_long
+      - range: xsd_negative_integer
+      - range: xsd_non_negative_integer
+      - range: xsd_non_positive_integer
+      - range: xsd_positive_integer
+      - range: xsd_short
+      - range: xsd_unsigned_byte
+      - range: xsd_unsigned_int
+      - range: xsd_unsigned_long
+      - range: xsd_unsigned_short
+      - range: owl_rational
+      - range: owl_real
     in_subset:
       - gist_core
 
@@ -1646,8 +1794,7 @@ slots:
     is_a: planned_end_date_time
     slot_uri: gist:plannedEndDate
     description: The date that something is or was planned to end, with precision of one day.
-    aliases:
-      - planned end date
+    title: planned end date
     comments:
       - |-
         Used for anything with a planned end date, such as when a lease will expire, when an offer is no longer available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.
@@ -1661,8 +1808,7 @@ slots:
     is_a: end_date_time
     slot_uri: gist:plannedEndDateTime
     description: The date that something is or was planned to end, with no implied precision.
-    aliases:
-      - planned end date time
+    title: planned end date time
     comments:
       - |-
         This is an abstraction over the various precisions of planned end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.
@@ -1677,8 +1823,7 @@ slots:
     slot_uri: gist:plannedEndMinute
     description: |-
       The date and time that something is or was planned to end, with precision of one minute.
-    aliases:
-      - planned end minute
+    title: planned end minute
     comments:
       - |-
         Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual.
@@ -1692,8 +1837,7 @@ slots:
     is_a: planned_end_date_time
     slot_uri: gist:plannedEndYear
     description: The date that something is or was planned to end, with precision of one year.
-    aliases:
-      - planned end year
+    title: planned end year
     comments:
       - |-
         Used for anything with a planned end date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.
@@ -1709,8 +1853,7 @@ slots:
     is_a: planned_start_date_time
     slot_uri: gist:plannedStartDate
     description: The date that something is or was planned to start, with precision of one day.
-    aliases:
-      - planned start date
+    title: planned start date
     comments:
       - |-
         Used for anything with a planned start date, such as when a lease will start, when a configuration becomes available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision.
@@ -1725,8 +1868,7 @@ slots:
     slot_uri: gist:plannedStartDateTime
     description: |-
       The date and time that something is or was planned to start, with no implied precision.
-    aliases:
-      - planned start date time
+    title: planned start date time
     comments:
       - |-
         This is an abstraction over the various precisions of planned start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes.
@@ -1741,8 +1883,7 @@ slots:
     slot_uri: gist:plannedStartMinute
     description: |-
       The date and time that something is or was planned to start, with precision of one minute.
-    aliases:
-      - planned start minute
+    title: planned start minute
     comments:
       - |-
         Used for things like meetings and time card entries, where the hour and minute are important. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.
@@ -1756,8 +1897,7 @@ slots:
     is_a: planned_start_date_time
     slot_uri: gist:plannedStartYear
     description: The date that something is or was planned to start, with precision of one year.
-    aliases:
-      - planned start year
+    title: planned start year
     comments:
       - |-
         Used for anything with a planned start date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included.
@@ -1772,9 +1912,7 @@ slots:
   sequence:
     slot_uri: gist:sequence
     description: A number that specifies the position of an element within a series.
-    aliases:
-      - sequence
-    domain: OrderedMember
+    title: sequence
     range: integer
     in_subset:
       - gist_core
@@ -1785,8 +1923,7 @@ slots:
     is_a: at_date_time
     slot_uri: gist:startDateTime
     description: The date and time that something starts.
-    aliases:
-      - start date time
+    title: start date time
     comments:
       - |-
         This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals).
@@ -1799,11 +1936,9 @@ slots:
   symbol:
     slot_uri: gist:symbol
     description: A symbol for something using only ASCII characters.
-    aliases:
-      - symbol
+    title: symbol
     examples:
       - value: The ASCII symbol for square meter is m^2.
-    domain: UnitOfMeasure
     in_subset:
       - gist_core
     annotations:
@@ -1814,8 +1949,7 @@ slots:
     slot_uri: gist:uniqueText
     description: |-
       The unique string value of some content object, to be used when there is no possibility of having more than one value.
-    aliases:
-      - unique text
+    title: unique text
     comments:
       - |-
         Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID.
@@ -1829,9 +1963,10 @@ slots:
 
   domain_includes:
     slot_uri: gist:domainIncludes
+    implements:
+      - owl:AnnotationProperty
     description: Relates a property to a class that the property is expected to be used on.
-    aliases:
-      - domain includes
+    title: domain includes
     comments:
       - There may be multiple domainIncludes assertions on a single property.
       - |-
@@ -1840,15 +1975,16 @@ slots:
       - value: The domain of the property gist:containedText includes gist:Tag and gist:Text.
     in_subset:
       - gist_core
-    related_mappings:
-      - http://www.w3.org/2004/02/skos/core#scopeNote
+    broad_mappings:
+      - skos:scopeNote
 
   is_superseded_by:
     slot_uri: gist:isSupersededBy
+    implements:
+      - owl:AnnotationProperty
     description: |-
       Relates a deprecated term to a term that replaces it, which is either an exact (in the case of simple renaming) or approximate (in the case of renaming and some semantic change) semantic match.
-    aliases:
-      - is superseded by
+    title: is superseded by
     examples:
       - value: |-
           gist:connectedTo was superseded by gist:isConnectedTo (renaming with no semantic change).
@@ -1857,9 +1993,10 @@ slots:
 
   license:
     slot_uri: gist:license
+    implements:
+      - owl:AnnotationProperty
     description: Relates something to its conditions of use.
-    aliases:
-      - license
+    title: license
     comments:
       - |-
         Could refer to a license object by URI or name or could consist of the license text itself.
@@ -1870,9 +2007,10 @@ slots:
 
   range_includes:
     slot_uri: gist:rangeIncludes
+    implements:
+      - owl:AnnotationProperty
     description: Relates a property to a class that is an expected type of its values.
-    aliases:
-      - range includes
+    title: range includes
     comments:
       - There may be multiple rangeIncludes assertions on a single property.
       - |-
@@ -1881,8 +2019,8 @@ slots:
       - value: The range of the property gist:isCategorizedBy includes gist:Category.
     in_subset:
       - gist_core
-    related_mappings:
-      - http://www.w3.org/2004/02/skos/core#scopeNote
+    broad_mappings:
+      - skos:scopeNote
 
 classes:
 
@@ -1890,15 +2028,14 @@ classes:
     is_a: Agreement
     class_uri: gist:Account
     description: An agreement having a balance.
-    close_mappings:
-      - common_domain_model:Account
-    aliases:
-      - Account
+    title: Account
     examples:
       - value: A bank account, a credit card account, an accounts receivable account.
     notes:
       - |-
         OWL equivalentClass: (gist:Agreement & ∃hasMagnitude.∃hasAspect=_Aspect_financial_balance)
+    close_mappings:
+      - common_domain_model:Account
     in_subset:
       - gist_core
 
@@ -1907,12 +2044,11 @@ classes:
     class_uri: gist:Address
     description: |-
       A reference to a place (real or virtual) that can be located by some routing algorithm and where messages or things can be sent or received.
-    narrow_mappings:
-      - common_domain_model:Address
-    aliases:
-      - Address
+    title: Address
     examples:
       - value: A PO Box, a URL to a PDF file.
+    narrow_mappings:
+      - common_domain_model:Address
     in_subset:
       - gist_core
 
@@ -1920,8 +2056,7 @@ classes:
     is_a: Category
     class_uri: gist:AddressUsageType
     description: A category indicating the context or manner in which an address may be used.
-    aliases:
-      - Address Usage Type
+    title: Address Usage Type
     comments:
       - |-
         If you are using temporal relations involving addresses, this category should be used to qualify the temporal relation rather than the address itself, since the same address may have different uses in different contexts, by different people and organizations, or at different times.
@@ -1935,13 +2070,7 @@ classes:
     class_uri: gist:Agreement
     description: |-
       A mutually understood arrangement in which two or more parties make commitments to one another.
-    close_mappings:
-      - common_domain_model:Agreement
-    narrow_mappings:
-      - common_domain_model:MasterAgreement
-      - dpv:DataProcessingAgreement
-    aliases:
-      - Agreement
+    title: Agreement
     comments:
       - |-
         While an agreement has two or more parties, and contains commitments which bind those parties, it will not always be necessary to instantiate each individual commitment.
@@ -1951,6 +2080,11 @@ classes:
     notes:
       - |-
         OWL equivalentClass: (gist:Intention & ∃hasParty.(gist:Organization | gist:Person) & ≥2^isDirectPartOf.gist:Commitment)
+    close_mappings:
+      - common_domain_model:Agreement
+    narrow_mappings:
+      - common_domain_model:MasterAgreement
+      - dpv:DataProcessingAgreement
     in_subset:
       - gist_core
 
@@ -1959,8 +2093,7 @@ classes:
       - GistThing
     class_uri: gist:Aspect
     description: A measurable characteristic.
-    aliases:
-      - Aspect
+    title: Aspect
     comments:
       - |-
         Depending on implementation, every aspect should be related to a unit group either directly or through a broader aspect. For example, angle of incidence could be related to the broader concept of angle, which in turn is related to a unit group, or it could be related directly to the unit group without the hierarchical relationship.
@@ -1972,19 +2105,15 @@ classes:
       - Event
     in_subset:
       - gist_core
+    slots:
+      - has_unit_group
 
   Assignment:
     is_a: TemporalRelation
     class_uri: gist:Assignment
     description: |-
       A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment.
-    close_mappings:
-      - common_domain_model:NaturalPersonRole
-    related_mappings:
-      - common_domain_model:RelatedParty
-      - common_domain_model:Counterparty
-    aliases:
-      - Assignment
+    title: Assignment
     comments:
       - Based on the Open World Assumption, the assigner may not be asserted or known.
       - |-
@@ -1995,6 +2124,11 @@ classes:
     notes:
       - |-
         OWL equivalentClass: (gist:TemporalRelation & ∃hasGiver.owl:Thing & ∃isAssignmentOf.owl:Thing & ∃isAssignmentTo.owl:Thing)
+    close_mappings:
+      - common_domain_model:NaturalPersonRole
+    related_mappings:
+      - common_domain_model:RelatedParty
+      - common_domain_model:Counterparty
     in_subset:
       - gist_core
 
@@ -2002,8 +2136,7 @@ classes:
     is_a: Category
     class_uri: gist:Behavior
     description: A category indicating the nature of an activity.
-    aliases:
-      - Behavior
+    title: Behavior
     examples:
       - value: Drilling and cutting are two different kinds of manufacturing event.
     in_subset:
@@ -2014,8 +2147,7 @@ classes:
     class_uri: gist:Building
     description: |-
       A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working.
-    aliases:
-      - Building
+    title: Building
     comments:
       - |-
         User discretion can be applied to edge cases: e.g., is a traditional yurt 'relatively permanently situated' although it is portable and has a tent-like construction?
@@ -2023,16 +2155,17 @@ classes:
       - value: A house, school, store, factory, chicken coop.
       - value: |-
           Negative examples: houseboats (not built on land), caves (not man-made), food trucks and RVs (not permanently situated).
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   BundledCatalogItem:
     is_a: CatalogItem
     class_uri: gist:BundledCatalogItem
     description: Any combination of descriptions of things offered together.
-    aliases:
-      - Bundled Catalog Item
+    title: Bundled Catalog Item
     examples:
       - value: A kit containing several parts offered together; a product plus a warranty.
     notes:
@@ -2045,8 +2178,7 @@ classes:
     class_uri: gist:CatalogItem
     description: |-
       A description of a product or service to be delivered, given in a sufficient level of detail that a receiver could determine whether delivery constituted discharge of the obligation to deliver.
-    aliases:
-      - Catalog Item
+    title: Catalog Item
     comments:
       - |-
         In short, an unambiguous characterization of what it is that a potential buyer is paying for.
@@ -2059,8 +2191,7 @@ classes:
     class_uri: gist:Category
     description: |-
       A concept or label used to categorize other instances without specifying any formal semantics.
-    aliases:
-      - Category
+    title: Category
     comments:
       - |-
         Often a type can be modeled either as an owl:Class or as a gist:Category. Use the latter if you don't care much about the formal structure of the different types, or if there is a whole hierarchy of types that are going to be managed by a group separate from the ontology developers. The formal structure may be defined elsewhere and linked to, if necessary.
@@ -2078,8 +2209,7 @@ classes:
     is_a: Composite
     class_uri: gist:Collection
     description: A grouping of things.
-    aliases:
-      - Collection
+    title: Collection
     comments:
       - |-
         Individuals are placed in the collection using the gist:isMemberOf property. Collections typically are created because the members are functionally connected in some way. This definition allows a collection to have zero members.
@@ -2094,8 +2224,7 @@ classes:
     class_uri: gist:Commitment
     description: |-
       A promise made by a single party to one or more parties to do or not do something or act in a particular way.
-    aliases:
-      - Commitment
+    title: Commitment
     comments:
       - |-
         A commitment is unilateral in that it is binding on only one party. This contrasts with gist:Agreement, which consists of commitments that bind two or more parties.
@@ -2120,8 +2249,7 @@ classes:
     class_uri: gist:Component
     description: |-
       Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network.
-    aliases:
-      - Component
+    title: Component
     comments:
       - |-
         A component may be designed or intended as part of a whole without actually being so; e.g., a car steering wheel that is not installed in any car.
@@ -2144,8 +2272,7 @@ classes:
     class_uri: gist:Composite
     description: |-
       Something which is made up of various parts or elements that are independently identifiable.
-    aliases:
-      - Composite
+    title: Composite
     comments:
       - |-
         Some composites, like systems, networks, and ordered collections, have internal organization, while others, such as unordered collections, typically do not.
@@ -2162,8 +2289,7 @@ classes:
     is_a: Event
     class_uri: gist:ContemporaryEvent
     description: An event that has started but has not yet ended.
-    aliases:
-      - Contemporary Event
+    title: Contemporary Event
     comments:
       - When the event actually ends, it will cease being contemporary.
     notes:
@@ -2176,8 +2302,7 @@ classes:
       - GistThing
     class_uri: gist:Content
     description: Information available in some medium.
-    aliases:
-      - Content
+    title: Content
     comments:
       - Categories are not content until they are written down.
       - |-
@@ -2194,13 +2319,14 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - is_about
 
   ContentExpression:
     is_a: Content
     class_uri: gist:ContentExpression
     description: Content reduced to text, audio, etc.
-    aliases:
-      - Content Expression
+    title: Content Expression
     comments:
       - If it contains text (written or spoken), it will be expressed in a language.
       - |-
@@ -2218,8 +2344,7 @@ classes:
     class_uri: gist:ContingentEvent
     description: |-
       An event with a probability of happening in the future, and usually dependent upon some other event or condition.
-    aliases:
-      - Contingent Event
+    title: Contingent Event
     examples:
       - value: |-
           A fire insurance payout is contingent on a particular building burning down; selling 20 shares of stock in a given company is contingent on the price dropping below $200/share; the death benefit payout on a life insurance policy is contingent on the death of the insured person.
@@ -2234,16 +2359,15 @@ classes:
     class_uri: gist:ContingentObligation
     description: |-
       An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm.
-    broad_mappings:
-      - dpv:Obligation
-    aliases:
-      - Contingent Obligation
+    title: Contingent Obligation
     comments:
       - |-
         A contingent obligation might have a getter counterparty (as in the case of insurance); but it might not (as in the case of an offer).
     notes:
       - |-
         OWL equivalentClass: (gist:Commitment & ∃hasGiver.(gist:Organization | gist:Person) & ∃isTriggeredBy.gist:Event)
+    broad_mappings:
+      - dpv:Obligation
     in_subset:
       - gist_core
 
@@ -2251,13 +2375,12 @@ classes:
     is_a: Agreement
     class_uri: gist:Contract
     description: An agreement which can be enforced by law.
-    related_mappings:
-      - dpv:Contract
-    aliases:
-      - Contract
+    title: Contract
     notes:
       - |-
         OWL equivalentClass: (gist:Agreement & ∃isUnderJurisdictionOf.gist:GovernmentOrganization)
+    related_mappings:
+      - dpv:Contract
     in_subset:
       - gist_core
 
@@ -2265,10 +2388,9 @@ classes:
     is_a: Specification
     class_uri: gist:ContractTerm
     description: A specification of some aspect of a contract.
+    title: Contract Term
     narrow_mappings:
       - common_domain_model:CollateralProvisions
-    aliases:
-      - Contract Term
     in_subset:
       - gist_core
 
@@ -2276,8 +2398,7 @@ classes:
     is_a: Collection
     class_uri: gist:ControlledVocabulary
     description: A collection of terms approved and managed by some organization or person.
-    aliases:
-      - Controlled Vocabulary
+    title: Controlled Vocabulary
     comments:
       - |-
         A controlled vocabulary is similar to a skos:ConceptScheme, but it could also be used for things that are not concepts, such as organizations, US presidents, geographic regions, etc. Hierarchical relationships between instances of the controlled vocabulary are possible.
@@ -2291,8 +2412,7 @@ classes:
     is_a: GovernedGeoRegion
     class_uri: gist:CountryGeoRegion
     description: A geographic region governed by exactly one country government.
-    aliases:
-      - Country Geographic Region
+    title: Country Geographic Region
     notes:
       - 'OWL subClassOf restrictions: =1isGovernedBy'
       - |-
@@ -2305,8 +2425,7 @@ classes:
     class_uri: gist:CountryGovernment
     description: |-
       A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country.
-    aliases:
-      - Country Government
+    title: Country Government
     comments:
       - |-
         While a country government may enter into treaties with other country governments, there are no governing relationships among the treaty members.
@@ -2324,8 +2443,7 @@ classes:
     is_a: Category
     class_uri: gist:DegreeOfCommitment
     description: The difficulty of reversing a commitment.
-    aliases:
-      - Degree Of Commitment
+    title: Degree Of Commitment
     examples:
       - value: |-
           A car rental typically has a lower degree of commitment than an airfare reservation.
@@ -2337,13 +2455,12 @@ classes:
     class_uri: gist:Determination
     description: |-
       An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.
-    close_mappings:
-      - iso22989:Decision
-    aliases:
-      - Determination
+    title: Determination
     examples:
       - value: |-
           Measuring the sulfur content of crude oil; evaluating a loan application for approval; estimating the price of gas for the next three months; determining whether and by how much an interest rate should change; classifying a purchase into a budget category.
+    close_mappings:
+      - iso22989:Decision
     in_subset:
       - gist_core
 
@@ -2351,8 +2468,7 @@ classes:
     is_a: Category
     class_uri: gist:Discipline
     description: An area of study or practice.
-    aliases:
-      - Discipline
+    title: Discipline
     examples:
       - value: Finance, accounting, project management, acoustics, ballistics.
     in_subset:
@@ -2363,10 +2479,10 @@ classes:
     class_uri: gist:ElectronicAddress
     description: |-
       An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so.
+    title: Electronic Address
     related_mappings:
       - common_domain_model:ContactInformation
     aliases:
-      - Electronic Address
       - Virtual Address
     examples:
       - value: |-
@@ -2381,8 +2497,7 @@ classes:
     class_uri: gist:ElectronicAddressType
     description: |-
       A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent.
-    aliases:
-      - Electronic Address Type
+    title: Electronic Address Type
     examples:
       - value: A URL, file system path, email address, mobile telephone number.
     in_subset:
@@ -2393,8 +2508,7 @@ classes:
     class_uri: gist:Equipment
     description: |-
       Human-made, tangible property other than land or buildings used to perform a task or activity.
-    aliases:
-      - Equipment
+    title: Equipment
     examples:
       - value: A machine, a router, a car, a baseball bat.
     notes:
@@ -2407,8 +2521,7 @@ classes:
     is_a: Category
     class_uri: gist:EquipmentType
     description: A category of equipment.
-    aliases:
-      - Equipment Type
+    title: Equipment Type
     in_subset:
       - gist_core
 
@@ -2418,13 +2531,7 @@ classes:
     class_uri: gist:Event
     description: |-
       Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces.
-    narrow_mappings:
-      - common_domain_model:BusinessEvent
-      - iso22989:AILifecycleProcess
-      - iso22989:DataProcess
-      - iso22989:Action
-    aliases:
-      - Event
+    title: Event
     comments:
       - |-
         An event does not necessarily have either planned or actual start or end datetimes. For example, a conference can be in the planning phase without any dates selected, but is nevertheless an (unscheduled) event. The subclasses of gist:Event state particular restrictions on planned and actual start and end dates.
@@ -2436,6 +2543,11 @@ classes:
       - Magnitude
       - TimeInterval
       - UnitOfMeasure
+    narrow_mappings:
+      - common_domain_model:BusinessEvent
+      - iso22989:AILifecycleProcess
+      - iso22989:DataProcess
+      - iso22989:Action
     in_subset:
       - gist_core
 
@@ -2443,8 +2555,7 @@ classes:
     is_a: Specification
     class_uri: gist:EventSpecification
     description: A characterization of an event that might happen.
-    aliases:
-      - Event Specification
+    title: Event Specification
     comments:
       - This concept is useful for risk assessment and insurance policies.
     examples:
@@ -2458,8 +2569,7 @@ classes:
     class_uri: gist:FormattedContent
     description: |-
       Content encoded in a specific format, but existing as data independent of any particular physical medium.
-    aliases:
-      - Formatted Content
+    title: Formatted Content
     comments:
       - |-
         Each instance of formatted content is a distinct formatting of some Content. Thus, a PDF-formatted version and an HTML-formatted version of the same content are separate instances of formatted content.
@@ -2474,8 +2584,7 @@ classes:
     is_a: Intention
     class_uri: gist:Function
     description: The activity that a human-made item is intended to perform.
-    aliases:
-      - Function
+    title: Function
     examples:
       - value: Transmit electricity, provide ballast, control ambient temperature.
     in_subset:
@@ -2485,8 +2594,7 @@ classes:
     is_a: Category
     class_uri: gist:GeneralMediaType
     description: The real-world media type for content.
-    aliases:
-      - General Media Type
+    title: General Media Type
     examples:
       - value: |-
           Audio, still image, video, textual, physical (e.g., a statue), performance (e.g., a play), oil or pastel for a painting.
@@ -2498,22 +2606,22 @@ classes:
       - GistThing
     class_uri: gist:GeoLocation
     description: A physical location, with the earth as a frame of reference.
-    narrow_mappings:
-      - dpv:StorageLocation
-    aliases:
-      - Geographic Location
+    title: Geographic Location
     comments:
       - A geographic location may be a point, region, or volume.
+    narrow_mappings:
+      - dpv:StorageLocation
     in_subset:
       - gist_core
+    slots:
+      - is_geo_contained_in
 
   GeoPoint:
     is_a: GeoLocation
     class_uri: gist:GeoPoint
     description: |-
       An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.
-    aliases:
-      - Geographic Point
+    title: Geographic Point
     notes:
       - |-
         OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & ∃latitude.xsd:double & ∃longitude.xsd:double)
@@ -2528,13 +2636,15 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - latitude
+      - longitude
 
   GeoRegion:
     is_a: GeoLocation
     class_uri: gist:GeoRegion
     description: A bounded region (or set of regions) on the surface of the Earth.
-    aliases:
-      - Geographic Region
+    title: Geographic Region
     comments:
       - |-
         A geographic region could be non-contiguous; e.g., the region governed by the US federal government is the contiguous area of the lower 48 states plus Alaska, Hawaii, and overseas territories. Child classes in lower ontologies can make this distinction.
@@ -2562,8 +2672,7 @@ classes:
     class_uri: gist:GeoRoute
     description: |-
       An ordered set of geographic points that defines a path from a starting point to an ending point.
-    aliases:
-      - Geographic Route
+    title: Geographic Route
     comments:
       - |-
         A geographic route could describe a bus route by identifying the points where the bus stops. A geographic route could describe the boundary of a polygonal geographic region (it does not have to be a traveled route).
@@ -2576,8 +2685,7 @@ classes:
     is_a: GeoLocation
     class_uri: gist:GeoVolume
     description: A three-dimensional space on or near the surface of the Earth.
-    aliases:
-      - Geographic Volume
+    title: Geographic Volume
     examples:
       - value: An oil reservoir, the body of a lake, or an airspace.
     notes:
@@ -2590,8 +2698,7 @@ classes:
     is_a: GeoRegion
     class_uri: gist:GovernedGeoRegion
     description: A geographic region governed by at least one government organization.
-    aliases:
-      - Governed Geographic Region
+    title: Governed Geographic Region
     comments:
       - |-
         Geographic regions do not need not be physically contiguous in order to constitute a governed geographic region; e.g., Alaska and Hawaii are part of the region governed by the United States.
@@ -2606,10 +2713,7 @@ classes:
     class_uri: gist:GovernmentOrganization
     description: |-
       An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body.
-    broad_mappings:
-      - common_domain_model:LegalEntity
-    aliases:
-      - Government Organization
+    title: Government Organization
     comments:
       - |-
         Includes administrative, regulatory, and enforcement organizations created or sanctioned by country or sub-country governments.
@@ -2619,6 +2723,8 @@ classes:
           The State of Washington Office of Financial Management; the Food and Drug Administration; the Scottish Parliament.
     disjoint_with:
       - IntergovernmentalOrganization
+    broad_mappings:
+      - common_domain_model:LegalEntity
     in_subset:
       - gist_core
 
@@ -2627,8 +2733,7 @@ classes:
     class_uri: gist:HistoricalEvent
     description: |-
       An event which occurred in time, with an actual end earlier than the present moment.
-    aliases:
-      - Historical Event
+    title: Historical Event
     notes:
       - 'OWL subClassOf restrictions: ∃actualStartDateTime.xsd:dateTime'
       - 'OWL equivalentClass: (gist:Event & ∃actualEndDateTime.xsd:dateTime)'
@@ -2639,15 +2744,7 @@ classes:
     is_a: Content
     class_uri: gist:ID
     description: Content that is used to uniquely identify something or someone.
-    close_mappings:
-      - common_domain_model:Identifier
-      - common_domain_model:AssignedIdentifier
-    narrow_mappings:
-      - common_domain_model:PartyIdentifier
-      - common_domain_model:PersonIdentifier
-      - common_domain_model:EntityIdentifier
-    aliases:
-      - ID
+    title: ID
     comments:
       - Used in conjunction with gist:isIdentifiedBy.
     examples:
@@ -2655,6 +2752,13 @@ classes:
     notes:
       - |-
         OWL equivalentClass: (gist:Content & ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & ∃uniqueText.xsd:string)
+    close_mappings:
+      - common_domain_model:Identifier
+      - common_domain_model:AssignedIdentifier
+    narrow_mappings:
+      - common_domain_model:PartyIdentifier
+      - common_domain_model:PersonIdentifier
+      - common_domain_model:EntityIdentifier
     in_subset:
       - gist_core
 
@@ -2664,10 +2768,7 @@ classes:
     class_uri: gist:IntellectualProperty
     description: |-
       An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill.
-    related_mappings:
-      - dpv:IntellectualPropertyData
-    aliases:
-      - Intellectual Property
+    title: Intellectual Property
     comments:
       - |-
         For literature this could be called the 'Work,' except that 'work' is a highly overloaded term (expenditure of energy, resource consumption, art). Often the first expression precedes our recognition of the IP, but subsequent expressions are known to be derivatives of the IP, even if they are expression-to-expression translations (or copies).
@@ -2681,6 +2782,8 @@ classes:
       - PhysicalIdentifiableItem
       - PhysicalSubstance
       - UnitOfMeasure
+    related_mappings:
+      - dpv:IntellectualPropertyData
     in_subset:
       - gist_core
 
@@ -2689,8 +2792,7 @@ classes:
       - GistThing
     class_uri: gist:Intention
     description: A goal, desire, or aspiration.
-    aliases:
-      - Intention
+    title: Intention
     comments:
       - |-
         The 'teleological' aspect of a system that indicates things are done with a purpose.
@@ -2702,14 +2804,16 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - prevents
+      - prohibits
 
   IntergovernmentalOrganization:
     is_a: Organization
     class_uri: gist:IntergovernmentalOrganization
     description: |-
       An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities.
-    aliases:
-      - Intergovernmental Organization
+    title: Intergovernmental Organization
     examples:
       - value: The United Nations, the European Union, the Metropolitan Transit Authority.
     notes:
@@ -2723,15 +2827,23 @@ classes:
     class_uri: gist:KnowledgeConcept
     description: |-
       An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.
-    related_mappings:
-      - iso22989:KnowledgeGraph
-    aliases:
-      - Knowledge Concept
+    title: Knowledge Concept
     comments:
-      - "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\r\n\r\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\r\n\r\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\r\n\r\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\r\n\r\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances."
+      - |-
+        Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.
+
+        These fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.
+
+        But some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.
+
+        This superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.
+
+        In some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances.
     examples:
       - value: |-
           Most domains will define a few subclasses, such as gene, protein, chemical, disease, subject matter, industry, method.
+    related_mappings:
+      - iso22989:KnowledgeGraph
     in_subset:
       - gist_core
 
@@ -2739,24 +2851,24 @@ classes:
     is_a: PhysicalIdentifiableItem
     class_uri: gist:Landmark
     description: Something permanently attached to the Earth.
-    aliases:
-      - Landmark
+    title: Landmark
     notes:
       - |-
         OWL subClassOf restrictions: ∃hasPhysicalLocation.(gist:GeoRegion | gist:GeoVolume)
       - |-
         See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885.
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   Language:
     mixins:
       - GistThing
     class_uri: gist:Language
     description: A recognized, organized set of symbols and grammar.
-    aliases:
-      - Language
+    title: Language
     examples:
       - value: |-
           Natural languages such as English and Spanish; computer languages such as OWL, Python, and XML.
@@ -2766,16 +2878,17 @@ classes:
       - PhysicalIdentifiableItem
       - PhysicalSubstance
       - UnitOfMeasure
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   LivingThing:
     is_a: PhysicalIdentifiableItem
     class_uri: gist:LivingThing
     description: Something that is currently, or at some point in time was, alive.
-    aliases:
-      - Living Thing
+    title: Living Thing
     comments:
       - |-
         Not all life forms have exactly two parents, so the restriction only specifies a minimum of one.
@@ -2787,21 +2900,15 @@ classes:
         OWL equivalentClass: (gist:PhysicalIdentifiableItem & ∃hasBiologicalParent.gist:LivingThing & =1birthDate)
     in_subset:
       - gist_core
+    slots:
+      - has_biological_parent
 
   Magnitude:
     mixins:
       - GistThing
     class_uri: gist:Magnitude
     description: The amount of a measurable characteristic (aspect).
-    close_mappings:
-      - common_domain_model:Quantity
-      - common_domain_model:Measure
-    narrow_mappings:
-      - common_domain_model:Money
-    related_mappings:
-      - common_domain_model:Price
-    aliases:
-      - Magnitude
+    title: Magnitude
     comments:
       - An accuracy can be assigned to a magnitude using the property has accuracy.
     examples:
@@ -2815,17 +2922,25 @@ classes:
       - PhysicalIdentifiableItem
       - PhysicalSubstance
       - UnitOfMeasure
+    close_mappings:
+      - common_domain_model:Quantity
+      - common_domain_model:Measure
+    narrow_mappings:
+      - common_domain_model:Money
+    related_mappings:
+      - common_domain_model:Price
     in_subset:
       - gist_core
     see_also:
       - gist:hasAccuracy
+    slots:
+      - has_unit_of_measure
 
   MediaType:
     is_a: Category
     class_uri: gist:MediaType
     description: A digitized type that computer applications can recognize.
-    aliases:
-      - Media Type
+    title: Media Type
     comments:
       - |-
         The unique text for an IANA media type is the concatenation of the 'Type name', a slash '/', and the 'Subtype name' as provided on the page displayed when you resolve the URI of the media type.
@@ -2843,8 +2958,7 @@ classes:
     class_uri: gist:Medium
     description: |-
       A physical material on which a work can be rendered, represented, or implemented.
-    aliases:
-      - Medium
+    title: Medium
     examples:
       - value: Paper, clay, a computer monitor.
     in_subset:
@@ -2855,8 +2969,7 @@ classes:
     class_uri: gist:Message
     description: |-
       A specific instance of content sent from a sender to at least one other recipient.
-    aliases:
-      - Message
+    title: Message
     examples:
       - value: An email, voice, or web service message; a phone call.
     notes:
@@ -2869,8 +2982,7 @@ classes:
     is_a: Composite
     class_uri: gist:Network
     description: A composite consisting of nodes connected by links.
-    aliases:
-      - Network
+    title: Network
     examples:
       - value: |-
           A physical network could include connected computers or routers, whereas a social network would consist of related person or organization members (or their proxies, such as accounts).
@@ -2885,8 +2997,7 @@ classes:
     class_uri: gist:NetworkLink
     description: |-
       An abstract representation of the connection between two or more nodes in a network.
-    aliases:
-      - Network Link
+    title: Network Link
     comments:
       - |-
         Each network link is connected to a network node via the property gist:links or one of its subproperties.
@@ -2904,8 +3015,7 @@ classes:
     is_a: Component
     class_uri: gist:NetworkNode
     description: A node in a network.
-    aliases:
-      - Network Node
+    title: Network Node
     examples:
       - value: |-
           A person's account is a node in a social network; a valve is a node in a network of pipes.
@@ -2919,8 +3029,7 @@ classes:
     class_uri: gist:Offer
     description: |-
       A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others).
-    aliases:
-      - Offer
+    title: Offer
     comments:
       - |-
         Dates on an offer represent the time period the offer is valid for, as in '25% off through October 25, 2025.'
@@ -2937,8 +3046,7 @@ classes:
     is_a: Collection
     class_uri: gist:OrderedCollection
     description: A collection whose members are ordered in some way.
-    aliases:
-      - Ordered Collection
+    title: Ordered Collection
     comments:
       - |-
         Includes partially ordered collections as well as collections in which members occupy the same position in a 'tie.' All members of an ordered collection are ordered members.
@@ -2953,8 +3061,7 @@ classes:
     class_uri: gist:OrderedMember
     description: |-
       A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.
-    aliases:
-      - Ordered Member
+    title: Ordered Member
     comments:
       - |-
         An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member.
@@ -2966,6 +3073,9 @@ classes:
         OWL equivalentClass: (gist:Component & (∃precedesDirectly.gist:OrderedMember | ∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & ∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & =1isMemberOf)
     in_subset:
       - gist_core
+    slots:
+      - is_first_member_of
+      - provides_order_for
 
   Organization:
     mixins:
@@ -2973,19 +3083,7 @@ classes:
     class_uri: gist:Organization
     description: |-
       A structured entity formed to achieve specific goals, typically involving members with defined roles.
-    close_mappings:
-      - common_domain_model:LegalEntity
-    broad_mappings:
-      - common_domain_model:Party
-      - dpv:LegalEntity
-    narrow_mappings:
-      - common_domain_model:BusinessUnit
-      - dpv:OrganisationalUnit
-      - iso22989:Organization
-    related_mappings:
-      - dpv:ThirdParty
-    aliases:
-      - Organization
+    title: Organization
     comments:
       - Not all organizations have members, e.g. shell companies.
       - |-
@@ -2998,22 +3096,34 @@ classes:
       - PhysicalSubstance
       - SchemaMetaData
       - UnitOfMeasure
+    close_mappings:
+      - common_domain_model:LegalEntity
+    broad_mappings:
+      - common_domain_model:Party
+      - dpv:LegalEntity
+    narrow_mappings:
+      - common_domain_model:BusinessUnit
+      - dpv:OrganisationalUnit
+      - iso22989:Organization
+    related_mappings:
+      - dpv:ThirdParty
     in_subset:
       - gist_core
+    slots:
+      - owns
 
   Permission:
     is_a: Intention
     class_uri: gist:Permission
     description: A description of things one is permitted to do.
-    exact_mappings:
-      - dpv:Permission
-    aliases:
-      - Permission
+    title: Permission
     examples:
       - value: |-
           Permission could be broad, such as free speech, but more often is very specific, such as the right to enter a particular property.
     notes:
       - 'OWL equivalentClass: (gist:Intention & ∃allows.gist:Behavior)'
+    exact_mappings:
+      - dpv:Permission
     in_subset:
       - gist_core
 
@@ -3021,6 +3131,12 @@ classes:
     is_a: LivingThing
     class_uri: gist:Person
     description: A human being who was or is alive.
+    title: Person
+    examples:
+      - value: 'Negative example: fictional characters.'
+    notes:
+      - 'OWL subClassOf restrictions: ∀hasBiologicalParent.gist:Person'
+      - 'OWL equivalentClass: (gist:LivingThing & ∃hasBiologicalParent.gist:Person)'
     exact_mappings:
       - dpv:NaturalPerson
     close_mappings:
@@ -3032,23 +3148,17 @@ classes:
     related_mappings:
       - iso22989:AIUser
       - iso22989:DataSubject
-    aliases:
-      - Person
-    examples:
-      - value: 'Negative example: fictional characters.'
-    notes:
-      - 'OWL subClassOf restrictions: ∀hasBiologicalParent.gist:Person'
-      - 'OWL equivalentClass: (gist:LivingThing & ∃hasBiologicalParent.gist:Person)'
     in_subset:
       - gist_core
+    slots:
+      - owns
 
   PhysicalActionType:
     is_a: Category
     class_uri: gist:PhysicalActionType
     description: |-
       A category indicating the type of an action based on its effect in the physical world.
-    aliases:
-      - Physical Action Type
+    title: Physical Action Type
     examples:
       - value: Lifting a garage door, turning off a valve, dropping cadmium rods.
     in_subset:
@@ -3058,15 +3168,14 @@ classes:
     is_a: Address
     class_uri: gist:PhysicalAddress
     description: An address that refers to a locatable place within the physical universe.
-    close_mappings:
-      - common_domain_model:Address
-    aliases:
-      - Physical Address
+    title: Physical Address
     examples:
       - value: |-
           1600 Pennsylvania Avenue NW, Washington, DC 20500; PO Box 7704, San Francisco, CA 94120-7704; Room 317 in the Louvre Museum.
     notes:
       - 'OWL equivalentClass: (gist:Address & ∃refersTo.gist:GeoLocation)'
+    close_mappings:
+      - common_domain_model:Address
     in_subset:
       - gist_core
 
@@ -3074,8 +3183,7 @@ classes:
     is_a: Category
     class_uri: gist:PhysicalAddressType
     description: A category indicating local customary characterizations of physical addresses.
-    aliases:
-      - Physical Address Type
+    title: Physical Address Type
     examples:
       - value: Street address, PO box, FPO code.
     in_subset:
@@ -3085,8 +3193,7 @@ classes:
     is_a: Event
     class_uri: gist:PhysicalEvent
     description: An event that can be said to have occurred at some place in space.
-    aliases:
-      - Physical Event
+    title: Physical Event
     examples:
       - value: A meeting, a car accident.
       - value: |-
@@ -3102,8 +3209,7 @@ classes:
     class_uri: gist:PhysicalIdentifiableItem
     description: |-
       A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts.
-    aliases:
-      - Physical Identifiable Item
+    title: Physical Identifiable Item
     comments:
       - |-
         This concept generally corresponds to count nouns in English. By contrast, physical substances, such as an amount of water, flour, or sand, are mass nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a statue is made of bronze. If you divide a physical substance such as an amount of water into parts, you have two amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part is different from the whole.
@@ -3125,8 +3231,7 @@ classes:
     class_uri: gist:PhysicalSubstance
     description: |-
       An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part.
-    aliases:
-      - Physical Substance
+    title: Physical Substance
     comments:
       - |-
         An instance of this class has weight and takes up space. We mean the physical gold in a ring, not the concept of gold that shows up in the periodic table. The latter would be an instance of gist:KnowledgeConcept.
@@ -3147,8 +3252,7 @@ classes:
     is_a: Category
     class_uri: gist:ProductCategory
     description: Any of many ways of categorizing products.
-    aliases:
-      - Product Category
+    title: Product Category
     examples:
       - value: Automobile models, NATO product codes.
     in_subset:
@@ -3159,12 +3263,11 @@ classes:
     class_uri: gist:ProductSpecification
     description: |-
       A description of something that could be physically warehoused or digitally stored and physically or digitally delivered.
-    related_mappings:
-      - common_domain_model:TradableProduct
-    aliases:
-      - Product Specification
+    title: Product Specification
     notes:
       - 'OWL equivalentClass: (gist:CatalogItem & ∃isCategorizedBy.gist:ProductCategory)'
+    related_mappings:
+      - common_domain_model:TradableProduct
     in_subset:
       - gist_core
 
@@ -3172,8 +3275,7 @@ classes:
     is_a: Task
     class_uri: gist:Project
     description: A task, usually of longer duration, made up of other tasks.
-    aliases:
-      - Project
+    title: Project
     examples:
       - value: |-
           Designing an insurance product; adding a new feature to a software application; assessing the level of risk for a mortgage application.
@@ -3186,8 +3288,7 @@ classes:
     is_a: Magnitude
     class_uri: gist:ReferenceValue
     description: A magnitude that was neither measured nor estimated but set by fiat.
-    aliases:
-      - Reference Value
+    title: Reference Value
     examples:
       - value: The sales goal for a company.
     in_subset:
@@ -3197,8 +3298,7 @@ classes:
     is_a: FormattedContent
     class_uri: gist:RenderedContent
     description: Content expressed via some physical medium.
-    aliases:
-      - Rendered Content
+    title: Rendered Content
     comments:
       - |-
         Renderings of the same file on two different monitors are separate instances of rendered content.
@@ -3214,8 +3314,7 @@ classes:
     is_a: Intention
     class_uri: gist:Requirement
     description: The obligation of a person or organization to behave in a certain way.
-    aliases:
-      - Requirement
+    title: Requirement
     examples:
       - value: In the US, drivers must drive on the right side of the road.
     in_subset:
@@ -3225,8 +3324,7 @@ classes:
     is_a: Intention
     class_uri: gist:Restriction
     description: A description of things one is prevented from doing.
-    aliases:
-      - Restriction
+    title: Restriction
     examples:
       - value: |-
           In the US, tax laws restrict the amount of money a person can put in retirement accounts over the course of a year.
@@ -3239,15 +3337,14 @@ classes:
     is_a: Event
     class_uri: gist:ScheduledEvent
     description: An event with a planned start datetime.
-    related_mappings:
-      - common_domain_model:Schedule
-    aliases:
-      - Scheduled Event
+    title: Scheduled Event
     comments:
       - |-
         If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event.
     notes:
       - 'OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.xsd:dateTime)'
+    related_mappings:
+      - common_domain_model:Schedule
     in_subset:
       - gist_core
 
@@ -3255,8 +3352,7 @@ classes:
     is_a: ScheduledEvent
     class_uri: gist:ScheduledTask
     description: A task with a planned start datetime.
-    aliases:
-      - Scheduled Task
+    title: Scheduled Task
     comments:
       - |-
         If work on the task has already started, but has not yet ended, it will have an actual start datetime. If the task is completed, it will also have an actual end datetime. The task always retains its planned start time, and thus continues to be a scheduled task.
@@ -3271,8 +3367,7 @@ classes:
       - GistThing
     class_uri: gist:SchemaMetaData
     description: Superclass for all types of metadata.
-    aliases:
-      - Schema Meta Data
+    title: Schema Meta Data
     comments:
       - The definition of this class needs additional work.
     examples:
@@ -3280,17 +3375,18 @@ classes:
           Relational concepts, such as tables and columns; tool inputs, such as queries and R2RML maps.
     disjoint_with:
       - UnitOfMeasure
-    deprecated: 'true'
+    deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   ServiceSpecification:
     is_a: CatalogItem
     class_uri: gist:ServiceSpecification
     description: |-
       A description of something that can be done for a person or organization (which produces some form of an act).
-    aliases:
-      - Service Specification
+    title: Service Specification
     notes:
       - 'OWL equivalentClass: (gist:CatalogItem & ∃^isBasedOn.gist:Event)'
     in_subset:
@@ -3301,16 +3397,15 @@ classes:
     class_uri: gist:Specification
     description: |-
       The set of characteristics and constraints on their values that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification.
-    related_mappings:
-      - common_domain_model:EligibleCollateralCriteria
-    aliases:
-      - Specification
+    title: Specification
     comments:
       - |-
         Although a characterization of how to do something is often called a specification, the intended meaning here is limited to specifying what something is. The focus is on the what, not the how. Use gist:TaskTemplate for specifying the how, such as a plan or process specification. Use gist:conformsTo to assert that something conforms to a specification. To represent a definition of a particular type of thing that is not sufficiently precise to be a gist:Specification, consider using gist:KnowledgeConcept.
     examples:
       - value: |-
           The specification of the iPhone 14; hypothetical events covered by a homeowner's insurance policy; a drug quality specification - a set of acceptance criteria for quality characteristics that must be controlled to ensure a drug is fit for its intended use.
+    related_mappings:
+      - common_domain_model:EligibleCollateralCriteria
     in_subset:
       - gist_core
 
@@ -3319,8 +3414,7 @@ classes:
     class_uri: gist:SubCountryGovernment
     description: |-
       The government of a governed geographic region other than a country which is under the direct or indirect control of a country government.
-    aliases:
-      - Sub-Country Government
+    title: Sub-Country Government
     comments:
       - |-
         Note that the predicate gist:isGovernedBy is used both for the relationship a governed geographic region has to its government and for the relationship a sub-region government has to the government of the larger region.
@@ -3339,8 +3433,7 @@ classes:
     class_uri: gist:System
     description: |-
       A composite made up of interacting or interdependent components that together operate as a whole.
-    aliases:
-      - System
+    title: System
     comments:
       - May be used to refer to either man-made or natural systems.
     examples:
@@ -3355,8 +3448,7 @@ classes:
     class_uri: gist:Tag
     description: |-
       A term in a folksonomy used to categorize things. Tags can be made up on the fly by users.
-    aliases:
-      - Tag
+    title: Tag
     comments:
       - |-
         Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way.
@@ -3370,11 +3462,7 @@ classes:
     class_uri: gist:Task
     description: |-
       An activity or piece of work that is either proposed, planned, scheduled, underway, or completed.
-    related_mappings:
-      - common_domain_model:Workflow
-      - iso22989:Task
-    aliases:
-      - Task
+    title: Task
     comments:
       - |-
         Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template.
@@ -3383,6 +3471,9 @@ classes:
       - Use the property gist:isBasedOn to link a task back to the task template.
     notes:
       - 'OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)'
+    related_mappings:
+      - common_domain_model:Workflow
+      - iso22989:Task
     in_subset:
       - gist_core
 
@@ -3391,8 +3482,7 @@ classes:
     class_uri: gist:TaskTemplate
     description: |-
       An outline of a task of a particular type, which is the basis for executing such tasks.
-    aliases:
-      - Task Template
+    title: Task Template
     comments:
       - |-
         A task template may define a single activity or a series of activities; the level of granularity can be varied according to use case. For example, in a new employee onboarding process, signing up for benefits might be one activity, or it might be broken down into signing up for health insurance, signing up for dental insurance, etc.
@@ -3409,8 +3499,7 @@ classes:
       - GistThing
     class_uri: gist:Template
     description: Something used to make objects in its own image.
-    aliases:
-      - Template
+    title: Template
     comments:
       - |-
         Use gist:isBasedOn to link the object made from the template back to the template.
@@ -3427,8 +3516,7 @@ classes:
       - GistThing
     class_uri: gist:TemporalRelation
     description: A relationship existing for a period of time.
-    aliases:
-      - Temporal Relation
+    title: Temporal Relation
     comments:
       - |-
         A temporal relation must have a minimum of two participants. For example, both the employer and the employee are participants in a temporal relation representing a period of employment. Note that 'participant' does not imply agency; a non-sentient being can participate in a temporal relation. For example, both a person and a house could be participants in a hypothetical relation 'lives at.'
@@ -3444,8 +3532,7 @@ classes:
     is_a: ContentExpression
     class_uri: gist:Text
     description: Content expressed as a written sequence of characters.
-    aliases:
-      - Text
+    title: Text
     comments:
       - |-
         Text is expressed in a language (human or computer) and may but need not specify an encoding.
@@ -3464,10 +3551,7 @@ classes:
     class_uri: gist:TimeInterval
     description: |-
       A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred.
-    related_mappings:
-      - common_domain_model:Period
-    aliases:
-      - Time Interval
+    title: Time Interval
     comments:
       - |-
         An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown.
@@ -3479,6 +3563,8 @@ classes:
     notes:
       - |-
         OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime
+    related_mappings:
+      - common_domain_model:Period
     in_subset:
       - gist_core
 
@@ -3486,14 +3572,13 @@ classes:
     is_a: Event
     class_uri: gist:Transaction
     description: An exchange or transfer of goods, services, or funds.
-    related_mappings:
-      - common_domain_model:Trade
-      - common_domain_model:TradeState
-    aliases:
-      - Transaction
+    title: Transaction
     comments:
       - |-
         Different sorts of transactions can have different datetime precisions. For example, an electronic transaction would have a gist:actualEndMicrosecond.
+    related_mappings:
+      - common_domain_model:Trade
+      - common_domain_model:TradeState
     in_subset:
       - gist_core
 
@@ -3502,8 +3587,7 @@ classes:
     class_uri: gist:UnitGroup
     description: |-
       A collection of units of measure that can all be used to measure the same aspects.
-    aliases:
-      - Unit Group
+    title: Unit Group
     comments:
       - |-
         Typically there is one unit group per aspect. An example of an aspect with two unit groups is vehicle efficiency, which can be measured by miles per gallon (distance per volume) or by liters per 100 kilometers (volume per distance). These two units of measure need to be in different unit groups because they have different values of exponents. When adding a unit of measure to a unit group, make sure it has the same exponents as the other members of the unit group.
@@ -3516,30 +3600,146 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - exponent_of_ampere
+      - exponent_of_bit
+      - exponent_of_candela
+      - exponent_of_kelvin
+      - exponent_of_kilogram
+      - exponent_of_meter
+      - exponent_of_mole
+      - exponent_of_number
+      - exponent_of_other
+      - exponent_of_radian
+      - exponent_of_second
+      - exponent_of_steradian
+      - exponent_of_us_dollar
 
   UnitOfMeasure:
     mixins:
       - GistThing
     class_uri: gist:UnitOfMeasure
     description: A standard amount used to measure or specify things.
-    close_mappings:
-      - common_domain_model:UnitType
-    aliases:
-      - Unit of Measure
+    title: Unit of Measure
     examples:
       - value: An acre is a unit for measuring area.
+    close_mappings:
+      - common_domain_model:UnitType
     in_subset:
       - gist_core
+    slots:
+      - conversion_factor
+      - conversion_offset
+      - exponent_of_ampere
+      - exponent_of_bit
+      - exponent_of_candela
+      - exponent_of_kelvin
+      - exponent_of_kilogram
+      - exponent_of_meter
+      - exponent_of_mole
+      - exponent_of_number
+      - exponent_of_other
+      - exponent_of_radian
+      - exponent_of_second
+      - exponent_of_steradian
+      - exponent_of_us_dollar
 
   GistThing:
     mixin: true
     description: |-
-      Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+      Mixin that gives every gist class the slots of the properties gist declares without a domain, since OWL lets those describe any individual.
     in_subset:
       - gist_core
     slots:
-      - name
+      - actual_end_date
+      - actual_end_date_time
+      - actual_end_microsecond
+      - actual_end_minute
+      - actual_end_year
+      - actual_start_date
+      - actual_start_date_time
+      - actual_start_microsecond
+      - actual_start_minute
+      - actual_start_year
+      - allows
+      - at_date_time
+      - birth_date
+      - comes_from_agent
+      - comes_from_place
+      - conforms_to
+      - contained_text
+      - contributes_to
+      - death_date
       - description
+      - encrypted_text
+      - end_date_time
+      - goes_to_agent
+      - goes_to_place
+      - has_accuracy
+      - has_addend
+      - has_address
+      - has_aspect
+      - has_broader
+      - has_direct_broader
+      - has_divisor
+      - has_giver
+      - has_goal
+      - has_incumbent
+      - has_magnitude
+      - has_multiplier
+      - has_navigational_parent
+      - has_participant
+      - has_party
+      - has_physical_location
+      - has_recipient
+      - has_subtrahend
+      - has_unique_broader
+      - has_unique_navigational_parent
+      - id_text
+      - is_affected_by
+      - is_allocated_by
+      - is_assignment_of
+      - is_assignment_to
+      - is_based_on
+      - is_categorized_by
+      - is_connected_to
+      - is_direct_part_of
+      - is_expressed_in
+      - is_governed_by
+      - is_identified_by
+      - is_made_up_of
+      - is_member_of
+      - is_part_of
+      - is_produced_by
+      - is_recognized_by
+      - is_recorded_at
+      - is_rendered_on
+      - is_triggered_by
+      - is_under_jurisdiction_of
+      - links
+      - links_from
+      - links_to
+      - name
+      - numeric_value
+      - occurs_in
+      - offers_to_provide
+      - offers_to_receive
+      - planned_end_date
+      - planned_end_date_time
+      - planned_end_minute
+      - planned_end_year
+      - planned_start_date
+      - planned_start_date_time
+      - planned_start_minute
+      - planned_start_year
+      - precedes
+      - precedes_directly
+      - refers_to
+      - requires
+      - sequence
+      - start_date_time
+      - symbol
+      - unique_text
 
   Any:
     class_uri: linkml:Any

@@ -1,0 +1,5 @@
+# Invalid Account: name holds text, and this name is a mapping.
+
+name:
+  text: "Primary Checking Account"
+description: "An account whose name is not text"

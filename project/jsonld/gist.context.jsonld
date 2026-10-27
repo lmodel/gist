@@ -359,7 +359,7 @@
          "@id": "gist:isUnderJurisdictionOf"
       },
       "latitude": {
-         "@type": "xsd:float",
+         "@type": "xsd:double",
          "@id": "gist:latitude"
       },
       "license": {
@@ -378,7 +378,7 @@
          "@id": "gist:linksTo"
       },
       "longitude": {
-         "@type": "xsd:float",
+         "@type": "xsd:double",
          "@id": "gist:longitude"
       },
       "name": {

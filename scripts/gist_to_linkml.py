@@ -26,9 +26,13 @@ Usage
     (definition, prefLabel, altLabel, example, scopeNote, editorialNote,
      historyNote, rdfs:label, rdfs:seeAlso, rdfs:comment with the
      DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes)
-  - gist:domainIncludes / gist:rangeIncludes     -> slot annotations
+  - rdfs:domain of an object/datatype property   -> a slot of each domain class
+  - Such a property without a domain             -> a slot of the GistThing mixin
+  - gist:domainIncludes / gist:rangeIncludes     -> slot annotations only
   - owl:FunctionalProperty                       -> multivalued: false
   - Unranged owl:ObjectProperty                  -> range: Any
+  - Union object ranges                          -> any_of, with range: Any
+  - owl:AnnotationProperty                       -> implements: owl:AnnotationProperty
   - Union datatype ranges                        -> any_of
   - OWL axioms without direct LinkML equivalents  -> notes/comments
 """
@@ -38,6 +42,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import textwrap
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -55,8 +60,9 @@ from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 # gist terms keep Semantic Arts' IRIs, under the prefix ``gist``: Semantic Arts
 # asks that terms used from gist stay in the gist namespace and that nobody
 # else defines terms there. Only what this project adds (the schema documents,
-# the GistThing mixin, the enums and the subsets) is minted in lmodel's
-# namespace, as ``gist_linkml``, which is every schema's default_prefix.
+# the GistThing mixin, the types for the datatypes linkml:types lacks, the
+# enums and the subsets) is minted in lmodel's namespace, as ``gist_linkml``,
+# which is every schema's default_prefix.
 GIST_SA_NS = "https://w3id.org/semanticarts/ns/ontology/gist/"
 GISTD_NS = "https://w3id.org/semanticarts/ns/data/gist/"
 LMODEL_NS = "https://w3id.org/lmodel/gist/"
@@ -95,6 +101,15 @@ _CURIE_PREFIXES: list[tuple[str, str]] = [
 # NOTE: or ALT:
 _PREFIXED_COMMENT_RE = re.compile(r"^([A-Z]+):\s*")
 
+# LinkML's deprecated holds the reason a term is deprecated; gist states
+# only owl:deprecated true, and any guidance stays in the term's notes.
+DEPRECATED_REASON = "gist marks this term owl:deprecated."
+
+# gen-owl writes no triple for deprecated (linkml 1.12.1), but it writes an
+# annotation keyed by a CURIE as that property, so this one puts gist's
+# owl:deprecated true back into the OWL.
+DEPRECATED_ANNOTATION = {"owl:deprecated": True}
+
 # Namespaces rendered as CURIEs inside the OWL axiom notes
 _NOTE_NS: list[tuple[str, str]] = [
     (GIST_SA_NS, "gist"),
@@ -109,40 +124,81 @@ _NOTE_NS: list[tuple[str, str]] = [
 # ---------------------------------------------------------------------------
 # XSD  -> LinkML type mapping
 # ---------------------------------------------------------------------------
+# The datatypes linkml:types has a type for, each with that datatype as its uri
 XSD_TO_LINKML: dict[str, str] = {
     str(XSD.string): "string",
-    str(XSD.normalizedString): "string",
-    str(XSD.token): "string",
-    str(XSD.language): "string",
     str(XSD.integer): "integer",
-    str(XSD.int): "integer",
-    str(XSD.long): "integer",
-    str(XSD.short): "integer",
-    str(XSD.byte): "integer",
-    str(XSD.nonNegativeInteger): "integer",
-    str(XSD.nonPositiveInteger): "integer",
-    str(XSD.positiveInteger): "integer",
-    str(XSD.negativeInteger): "integer",
-    str(XSD.unsignedLong): "integer",
-    str(XSD.unsignedInt): "integer",
-    str(XSD.unsignedShort): "integer",
-    str(XSD.unsignedByte): "integer",
     str(XSD.float): "float",
-    str(XSD.double): "float",
+    str(XSD.double): "double",
     str(XSD.decimal): "decimal",
     str(XSD.boolean): "boolean",
     str(XSD.dateTime): "datetime",
     str(XSD.date): "date",
     str(XSD.time): "time",
-    str(XSD.gYear): "string",
-    str(XSD.gMonth): "string",
-    str(XSD.gDay): "string",
     str(XSD.anyURI): "uri",
-    str(XSD.base64Binary): "string",
-    str(XSD.hexBinary): "string",
-    str(OWL.real): "decimal",
-    str(OWL.rational): "decimal",
 }
+
+# The datatypes linkml:types has no type for, as (type name, LinkML base type).
+# A SHACL sh:datatype accepts only a literal of that very datatype, so mapping
+# xsd:int to integer would reject the xsd:int literals gist allows (it ranges
+# numericValue over every XSD integer type and OWL's rational and real).
+# gist_core declares a type for each one its slots use, with the datatype as
+# the type's uri.
+DATATYPE_TYPES: dict[str, tuple[str, str]] = {
+    str(XSD.int): ("xsd_int", "integer"),
+    str(XSD.long): ("xsd_long", "integer"),
+    str(XSD.short): ("xsd_short", "integer"),
+    str(XSD.byte): ("xsd_byte", "integer"),
+    str(XSD.nonNegativeInteger): ("xsd_non_negative_integer", "integer"),
+    str(XSD.nonPositiveInteger): ("xsd_non_positive_integer", "integer"),
+    str(XSD.positiveInteger): ("xsd_positive_integer", "integer"),
+    str(XSD.negativeInteger): ("xsd_negative_integer", "integer"),
+    str(XSD.unsignedLong): ("xsd_unsigned_long", "integer"),
+    str(XSD.unsignedInt): ("xsd_unsigned_int", "integer"),
+    str(XSD.unsignedShort): ("xsd_unsigned_short", "integer"),
+    str(XSD.unsignedByte): ("xsd_unsigned_byte", "integer"),
+    str(XSD.normalizedString): ("xsd_normalized_string", "string"),
+    str(XSD.token): ("xsd_token", "string"),
+    str(XSD.language): ("xsd_language", "string"),
+    str(XSD.gYear): ("xsd_g_year", "string"),
+    str(XSD.gMonth): ("xsd_g_month", "string"),
+    str(XSD.gDay): ("xsd_g_day", "string"),
+    str(XSD.base64Binary): ("xsd_base64_binary", "string"),
+    str(XSD.hexBinary): ("xsd_hex_binary", "string"),
+    str(OWL.rational): ("owl_rational", "decimal"),
+    str(OWL.real): ("owl_real", "decimal"),
+}
+
+_DATATYPE_NS = ((str(XSD), "xsd"), (str(OWL), "owl"))
+
+
+def linkml_type(datatype: str) -> str:
+    """The LinkML type whose uri is *datatype*; string when there is none."""
+    if datatype in XSD_TO_LINKML:
+        return XSD_TO_LINKML[datatype]
+    if datatype in DATATYPE_TYPES:
+        return DATATYPE_TYPES[datatype][0]
+    return "string"
+
+
+def datatype_types(slots: dict) -> dict[str, dict]:
+    """The DATATYPE_TYPES entries that *slots* use as a range, as LinkML types."""
+    by_name = {name: (iri, base) for iri, (name, base) in DATATYPE_TYPES.items()}
+    used = set()
+    for entry in slots.values():
+        used.add(entry.get("range"))
+        used.update(e.get("range") for e in entry.get("any_of", []) if isinstance(e, dict))
+    types = {}
+    for name in sorted(used & set(by_name)):
+        iri, base = by_name[name]
+        curie = next(f"{p}:{iri[len(ns):]}" for ns, p in _DATATYPE_NS if iri.startswith(ns))
+        article = "An" if base[0] in "aeiou" else "A"
+        types[name] = {
+            "typeof": base,
+            "uri": curie,
+            "description": f"{article} {base} literal typed {curie}, which gist allows.",
+        }
+    return types
 
 
 # ---------------------------------------------------------------------------
@@ -214,8 +270,25 @@ def canonical_graph(g: Graph) -> Graph:
     return out
 
 
+def clean_text(text: str) -> str:
+    """Normalise the layout of a gist literal, keeping its words, line breaks
+    and nesting.
+
+    The Turtle source writes long notes with Windows line ends and indents
+    every line after the first with tabs, and a list or worked example under
+    a line with more tabs than that. Line ends become ``\\n``; the indent the
+    later lines share goes, and each tab of a deeper one becomes two spaces,
+    as YAML holds no tab in a block; lines lose trailing spaces, and the text
+    its outer blank lines.
+    """
+    first, *rest = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    body = textwrap.dedent("\n".join(line.rstrip() for line in rest))
+    body = re.sub(r"(?m)^\t+", lambda m: "  " * len(m.group()), body)
+    return f"{first.strip()}\n{body}".strip()
+
+
 def get_literals(g: Graph, subj, pred) -> list[str]:
-    return [str(o) for o in g.objects(subj, pred) if isinstance(o, Literal)]
+    return [clean_text(str(o)) for o in g.objects(subj, pred) if isinstance(o, Literal)]
 
 
 def first_literal(g: Graph, subj, pred) -> str | None:
@@ -339,16 +412,15 @@ def _doc_fields(g: Graph, subj) -> dict[str, Any]:
     RdfsAnnotations module come second: a comment carries a DEFINITION:,
     EXAMPLE:, NOTE: or ALT: prefix, and a value already present from SKOS is
     not repeated. A bare comment is the description when there is none, and
-    a comment with an unknown prefix is kept verbatim as a comment.
-    Returns only the keys that have a value: description, aliases, examples,
-    comments, notes, see_also.
+    a comment with an unknown prefix is kept verbatim as a comment. The
+    skos:prefLabel, or failing it the rdfs:label, is the title; every other
+    label is an alias.
+    Returns only the keys that have a value: description, title, aliases,
+    examples, comments, notes, see_also.
     """
     defn = first_literal(g, subj, SKOS.definition)
-    aliases: list[str] = []
-    pref = first_literal(g, subj, SKOS.prefLabel)
-    if pref:
-        aliases.append(pref)
-    aliases += get_literals(g, subj, SKOS.altLabel)
+    title = first_literal(g, subj, SKOS.prefLabel) or first_literal(g, subj, RDFS.label)
+    aliases: list[str] = get_literals(g, subj, SKOS.altLabel)
     examples = get_literals(g, subj, SKOS.example)
     comments = get_literals(g, subj, SKOS.scopeNote)
     notes = get_literals(g, subj, SKOS.editorialNote)
@@ -380,8 +452,11 @@ def _doc_fields(g: Graph, subj) -> dict[str, Any]:
     out: dict[str, Any] = {}
     if defn:
         out["description"] = defn
+    if title:
+        out["title"] = title
+    aliases = [a for a in _dedupe(aliases) if a != title]
     if aliases:
-        out["aliases"] = _dedupe(aliases)
+        out["aliases"] = aliases
     if examples:
         out["examples"] = [{"value": ex} for ex in _dedupe(examples)]
     if comments:
@@ -407,6 +482,31 @@ def _merge_doc(entry: dict, doc: dict) -> None:
 # Core extraction functions
 # ---------------------------------------------------------------------------
 
+def _domain_classes(g: Graph, prop) -> list[str]:
+    """The gist classes that the rdfs:domain of *prop* names, alone or in a union.
+
+    Raises ValueError for a domain whose slot no set of classes carries
+    faithfully: two domains, which OWL reads as their intersection, an
+    anonymous class other than a union, or a union member or class that is
+    not a gist class *g* declares. gist 14.1.0 has none of these.
+    """
+    domains = list(g.objects(prop, RDFS.domain))
+    if len(domains) > 1:
+        raise ValueError(f"{term_str(prop)} has {len(domains)} rdfs:domain values, an intersection")
+    found: list[str] = []
+    for d in domains:
+        union = next(g.objects(d, OWL.unionOf), None) if isinstance(d, BNode) else None
+        members = list(rdflib.collection.Collection(g, union)) if union is not None else [d]
+        for m in members:
+            if not (isinstance(m, URIRef) and gist_local(m) and (m, RDF.type, OWL.Class) in g):
+                raise ValueError(
+                    f"{term_str(prop)} has the domain {owl_expr_str(g, d)}, "
+                    "which is not a declared gist class or a union of them"
+                )
+            found.append(gist_local(m))
+    return _dedupe(found)
+
+
 def _ifp_slots_by_domain_class(g: Graph) -> dict[str, list[str]]:
     """Map each gist class to the snake_case slot names of every
     owl:InverseFunctionalProperty whose rdfs:domain (named or unionOf) includes it.
@@ -419,22 +519,78 @@ def _ifp_slots_by_domain_class(g: Graph) -> dict[str, list[str]]:
         prop_local = gist_local(prop)
         if not prop_local:
             continue
-        slot_name = camel_to_snake(prop_local)
-        for d in g.objects(prop, RDFS.domain):
-            if isinstance(d, URIRef) and gist_local(d):
-                by_class[gist_local(d)].append(slot_name)
-            elif isinstance(d, BNode):
-                members = union_members(g, d) or []
-                for m in members:
-                    if gist_local(m):
-                        by_class[gist_local(m)].append(slot_name)
+        for cls in _domain_classes(g, prop):
+            by_class[cls].append(camel_to_snake(prop_local))
     return by_class
+
+
+def _slots_by_domain_class(g: Graph) -> dict[str | None, list[str]]:
+    """Map each gist class to the slots its instances may carry.
+
+    The slot of an object or datatype property goes to each gist class its
+    rdfs:domain names (see ``_domain_classes``), and its subclasses inherit
+    it. A property gist gives no domain may describe any individual, so its
+    slot goes under ``None``, for the GistThing mixin every class takes.
+    Annotation properties describe gist's terms, not the individuals its
+    classes hold, and go nowhere.
+    """
+    by_class: dict[str | None, set[str]] = defaultdict(set)
+    for prop_type in (OWL.ObjectProperty, OWL.DatatypeProperty):
+        for prop in g.subjects(RDF.type, prop_type):
+            if not isinstance(prop, URIRef) or not gist_local(prop):
+                continue
+            for cls in _domain_classes(g, prop) or [None]:
+                by_class[cls].add(camel_to_snake(gist_local(prop)))
+    return {cls: sorted(slots) for cls, slots in by_class.items()}
+
+
+def domainless_slots(g: Graph) -> list[str]:
+    """The slots of the object and datatype properties gist declares without a domain."""
+    return _slots_by_domain_class(g).get(None, [])
+
+
+def _named_superclasses(g: Graph, cls) -> list[str]:
+    """The gist classes *cls* is an rdfs:subClassOf by name, in the graph's order."""
+    return [gist_local(o) for o in g.objects(cls, RDFS.subClassOf) if isinstance(o, URIRef) and gist_local(o)]
+
+
+def _slots_from_other_superclasses(g: Graph, slots_by_class: dict) -> dict[str, list[str]]:
+    """Map each gist class to the domain slots of its OWL superclasses that its
+    is_a chain, which follows only the first named superclass, does not pass.
+
+    A class with two named superclasses inherits through is_a from the first
+    alone, so the slots whose domain is the other one, or above it, go on the
+    class itself. In gist 14.1.0 only ScheduledTask has a second (Task), and
+    no domain names Task or a class above it.
+    """
+    supers = {
+        gist_local(c): _named_superclasses(g, c)
+        for c in g.subjects(RDF.type, OWL.Class) if isinstance(c, URIRef) and gist_local(c)
+    }
+    extra: dict[str, list[str]] = {}
+    for cls in supers:
+        chain, node = set(), cls
+        while node and node not in chain:
+            chain.add(node)
+            node = (supers.get(node) or [None])[0]
+        ancestors, todo = set(), list(supers[cls])
+        while todo:
+            node = todo.pop()
+            if node not in ancestors:
+                ancestors.add(node)
+                todo += supers.get(node, [])
+        slots = {s for a in ancestors - chain for s in slots_by_class.get(a, [])}
+        if slots:
+            extra[cls] = sorted(slots)
+    return extra
 
 
 def extract_classes(g: Graph) -> dict[str, dict]:
     """Extract owl:Class entries defined in the gist: namespace."""
     classes: dict[str, dict] = {}
     ifp_slots_by_class = _ifp_slots_by_domain_class(g)
+    slots_by_class = _slots_by_domain_class(g)
+    other_slots = _slots_from_other_superclasses(g, slots_by_class)
 
     for cls in g.subjects(RDF.type, OWL.Class):
         if not isinstance(cls, URIRef):
@@ -449,7 +605,8 @@ def extract_classes(g: Graph) -> dict[str, dict]:
         # --- deprecated ---
         depr = first_literal(g, cls, OWL.deprecated)
         if depr and depr.lower() == "true":
-            entry["deprecated"] = "true"
+            entry["deprecated"] = DEPRECATED_REASON
+            entry["annotations"] = dict(DEPRECATED_ANNOTATION)
 
         # --- is_a: first simple named gist: superclass ---
         simple_parents = [
@@ -508,6 +665,12 @@ def extract_classes(g: Graph) -> dict[str, dict]:
         if disjoints:
             entry["disjoint_with"] = disjoints  # multivalued in the LinkML metamodel
 
+        # --- the slots of the properties whose rdfs:domain names this class,
+        # or a superclass its is_a chain does not pass ---
+        own_slots = sorted({*slots_by_class.get(cls_local, []), *other_slots.get(cls_local, [])})
+        if own_slots:
+            entry["slots"] = own_slots
+
         # --- InverseFunctionalProperty  -> unique_keys ---
         # An IFP whose rdfs:domain (named or unionOf) includes this class becomes
         # a single-slot unique_keys entry on the class. The slot uniquely
@@ -530,6 +693,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
 def extract_slots(g: Graph) -> dict[str, dict]:
     """Extract all property definitions in the gist: namespace."""
     slots: dict[str, dict] = {}
+    unranged: list[str] = []  # object slots gist gives no range; see the end
 
     prop_types = {
         OWL.ObjectProperty: "object",
@@ -565,13 +729,13 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                         "OWL additional subPropertyOf (gist:): "
                         + ", ".join(camel_to_snake(gist_local(o)) for o in sub_of[1:])
                     ]
-            # Cross-namespace subPropertyOf  -> related_mappings
+            # A superproperty outside gist is a broader term: broad_mappings
             cross_sub = [
                 o for o in g.objects(prop, RDFS.subPropertyOf)
                 if isinstance(o, URIRef) and not gist_local(o)
             ]
             if cross_sub:
-                entry["related_mappings"] = [str(o) for o in cross_sub]
+                entry["broad_mappings"] = [uri_to_curie(o) or str(o) for o in cross_sub]
 
             # --- domain (rdfs:domain  -> LinkML domain) ---
             gist_domains = [
@@ -594,17 +758,18 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 ]
 
             # gist:domainIncludes / gist:rangeIncludes are soft hints (they are
-            # subproperties of skos:scopeNote), kept whole as annotations. A single
-            # hint also fills an absent hard domain or range, as the range case
-            # always did.
+            # subproperties of skos:scopeNote), kept whole as annotations and
+            # never made a domain or range, because gist's own axioms step
+            # outside them: FormattedContent, which need not be Text, is
+            # ∃isExpressedIn.MediaType, though isExpressedIn hints at Text
+            # subjects and Language values; and a NetworkNode isMemberOf a
+            # Network, which is neither a Collection nor an Organization.
             domain_includes = sorted(
                 gist_local(o) for o in g.objects(prop, GIST.domainIncludes)
                 if isinstance(o, URIRef) and gist_local(o)
             )
             if domain_includes:
                 ann["domain_includes"] = ", ".join(f"gist:{d}" for d in domain_includes)
-                if "domain" not in entry and not anon_domains and len(domain_includes) == 1:
-                    entry["domain"] = domain_includes[0]
             range_includes = sorted(
                 gist_local(o) for o in g.objects(prop, GIST.rangeIncludes)
                 if isinstance(o, URIRef) and gist_local(o)
@@ -630,7 +795,7 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                         entry["notes"] = entry.get("notes", []) + [
                             "OWL range restriction: " + owl_expr_str(g, rb)
                         ]
-                dt_types = _dedupe(XSD_TO_LINKML.get(str(u), "string") for u in dt_uris)
+                dt_types = _dedupe(linkml_type(str(u)) for u in dt_uris)
                 if len(dt_types) == 1:
                     entry["range"] = dt_types[0]
                 elif dt_types:
@@ -654,20 +819,18 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                             "OWL range restriction: " + owl_expr_str(g, rb)
                         ]
 
-                # gist:rangeIncludes (soft range hints) — use when no hard rdfs:range
-                if "range" not in entry and "any_of" not in entry:
-                    if len(range_includes) == 1:
-                        entry["range"] = range_includes[0]
-                    elif len(range_includes) > 1:
-                        entry["any_of"] = [{"range": r} for r in range_includes]
-
                 if kind == "object":
                     entry.setdefault("multivalued", True)
-                    # gist leaves many object properties unranged. The value is
-                    # still an individual, never a string: Any says so, and a
-                    # JSON-LD context then reads it as an IRI.
-                    if "range" not in entry and "any_of" not in entry:
-                        entry["range"] = "Any"
+                    if "range" in entry or "any_of" in entry:
+                        # A union range sets only any_of, and LinkML asks for a
+                        # range beside it: Any, as the members share no parent.
+                        entry.setdefault("range", "Any")
+                    else:
+                        unranged.append(sname)
+                elif kind == "annotation":
+                    # gen-owl takes a property's type from its range unless
+                    # implements names one.
+                    entry["implements"] = ["owl:AnnotationProperty"]
 
             # --- inverseOf ---
             inv = [
@@ -707,7 +870,8 @@ def extract_slots(g: Graph) -> dict[str, dict]:
             # --- deprecated ---
             depr = first_literal(g, prop, OWL.deprecated)
             if depr and depr.lower() == "true":
-                entry["deprecated"] = "true"
+                entry["deprecated"] = DEPRECATED_REASON
+                ann.update(DEPRECATED_ANNOTATION)
                 superseded = [
                     gist_local(o) for o in named_objects(g, prop, GIST.isSupersededBy)
                     if gist_local(o)
@@ -730,6 +894,20 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 entry["annotations"] = ann
 
             slots[sname] = entry
+
+    # An object property gist leaves unranged takes the range of its nearest
+    # ranged gist superproperty, as OWL entails, or else Any. Its value is an
+    # individual either way, never the default string, so gen-owl declares an
+    # object property and a JSON-LD context reads the value as an IRI.
+    for sname in unranged:
+        parent, seen = slots[sname].get("is_a"), {sname}
+        while parent in unranged and parent not in seen:
+            seen.add(parent)
+            parent = slots[parent].get("is_a")
+        source = slots.get(parent, {}) if parent not in seen else {}
+        slots[sname]["range"] = source.get("range", "Any")
+        if "any_of" in source:
+            slots[sname]["any_of"] = [dict(e) for e in source["any_of"]]
 
     return slots
 
@@ -801,20 +979,15 @@ def _permissible_values(g: Graph, individuals: list[URIRef]) -> dict[str, dict]:
             raw_local = curie.split(":", 1)[-1] if curie else local_name(ind)
             meaning = curie if curie else str(ind)
 
-        val_key = _enum_val_key(raw_local)
-        if val_key in seen_keys:
-            val_key = val_key + "_2"
+        base_key = val_key = _enum_val_key(raw_local)
+        n = 1
+        while val_key in seen_keys:
+            n += 1
+            val_key = f"{base_key}_{n}"
         seen_keys[val_key] = raw_local
 
         pv_entry: dict = {}
-        doc = _doc_fields(g, ind)
-        title = first_literal(g, ind, SKOS.prefLabel) or first_literal(g, ind, RDFS.label)
-        if title:
-            pv_entry["title"] = title
-            doc["aliases"] = [a for a in doc.get("aliases", []) if a != title]
-            if not doc["aliases"]:
-                del doc["aliases"]
-        _merge_doc(pv_entry, doc)
+        _merge_doc(pv_entry, _doc_fields(g, ind))
 
         ann = {
             camel_to_snake(gist_local(p)): str(o)
@@ -990,7 +1163,7 @@ _ELEMENT_KEY_ORDER = [
     # inheritance / type modifiers
     "is_a", "mixins", "abstract", "mixin", "tree_root",
     # identity mappings
-    "class_uri", "slot_uri",
+    "typeof", "uri", "class_uri", "slot_uri", "implements",
     # documentation
     "description", "title", "aliases", "comments", "examples", "notes",
     # domain / range / cardinality (slots)
@@ -1049,7 +1222,10 @@ def _literal_representer(dumper, data):
 
 def _setup_yaml() -> yaml.Dumper:
     class _Dumper(yaml.Dumper):
-        pass
+        # A list sits indented under its key, as yamllint and the overlay's
+        # ruamel output have it; PyYAML puts the dash at the key's column.
+        def increase_indent(self, flow=False, indentless=False):
+            return super().increase_indent(flow, False)
 
     _Dumper.add_representer(str, _literal_representer)
     _Dumper.add_representer(_LiteralStr, _literal_representer)
@@ -1064,7 +1240,7 @@ _SECTION_KEYS = frozenset([
     "subsets", "types", "enums", "slots", "classes",
 ])
 # Sections whose named entries get blank lines between them
-_ELEMENT_SECTION_KEYS = frozenset(["classes", "slots", "enums", "subsets"])
+_ELEMENT_SECTION_KEYS = frozenset(["classes", "slots", "enums", "subsets", "types"])
 
 
 def _add_blank_lines(text: str) -> str:
@@ -1149,7 +1325,8 @@ def ontology_header(g: Graph, ann: Graph | None = None) -> dict[str, Any]:
     merged = canonical_graph(merged)
 
     header = _doc_fields(merged, subj)
-    header.pop("aliases", None)  # the label; each schema states its own title
+    for key in ("title", "aliases"):  # the labels; each schema states its own title
+        header.pop(key, None)
     lic = first_literal(merged, subj, GIST.license)
     if lic:
         header["license"] = lic
@@ -1199,7 +1376,10 @@ def build_schema(
     schema_name: str = "gist_core",
     source: str | None = None,
     header: dict[str, Any] | None = None,
+    thing_slots: list[str] | None = None,
 ) -> dict:
+    """Assemble gist_core: the classes, slots and enums, the GistThing mixin
+    holding *thing_slots* (see ``domainless_slots``), and the Any class."""
     subset_name = "gist_core"
     prefixes = _base_prefixes()
     prefixes.update({
@@ -1223,17 +1403,18 @@ def build_schema(
     if source:
         schema["source"] = source
 
-    # Inject GistThing mixin for universal slots (name, description have no OWL domain)
+    # Inject GistThing mixin for the slots of properties without an OWL domain
     classes = dict(classes)  # copy to avoid mutating caller's dict
     classes["GistThing"] = {
         "mixin": True,
         "description": (
-            "Mixin providing universal slots applicable to any GIST entity. "
-            "Covers OWL properties with no rdfs:domain (open-world)."
+            "Mixin that gives every gist class the slots of the properties gist "
+            "declares without a domain, since OWL lets those describe any individual."
         ),
-        "slots": ["name", "description"],
         "in_subset": [subset_name],
     }
+    if thing_slots:
+        classes["GistThing"]["slots"] = list(thing_slots)
     # Apply GistThing mixin to all root classes (no is_a  -> no inherited slots)
     for cls_entry in classes.values():
         if not cls_entry.get("is_a") and not cls_entry.get("mixin"):
@@ -1261,6 +1442,9 @@ def build_schema(
         "slots": _order_elements(slots, subset_name),
         "enums": _tag_enums(enums, subset_name),
     })
+    types = datatype_types(slots)
+    if types:
+        schema["types"] = _order_elements(types, subset_name)
     return _order_keys(schema, _SCHEMA_KEY_ORDER)
 
 
@@ -1320,10 +1504,7 @@ def build_prefix_declarations_schema(
         "id": f"{LMODEL_BASE}/prefix-declarations",
         "name": "gist_prefix_declarations",
         "title": "gist Prefix Declarations",
-        "description": (
-            f"SHACL prefix declarations from gist {version}. "
-            "Defines namespace-to-prefix bindings used by the gist ontology."
-        ),
+        "description": f"SHACL prefix declarations from gist {version}.",
         "license": "CC-BY-4.0",
         "see_also": ["https://www.semanticarts.com/gist/"],
         "version": version,
@@ -1375,9 +1556,9 @@ def build_rdfs_annotations_schema(
         "description": (
             f"RDFS label and comment annotations for gist classes, properties and "
             f"named individuals ({version}). "
-            "Documentation-layer schema: rdfs:label  -> aliases; "
-            "rdfs:comment DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes  -> "
-            "description/examples/comments/aliases."
+            "Each rdfs:label becomes a title, and each rdfs:comment becomes a "
+            "description, example, comment or alias by its DEFINITION:, "
+            "EXAMPLE:, NOTE: or ALT: prefix."
         ),
         "license": "CC-BY-4.0",
         "see_also": ["https://www.semanticarts.com/gist/"],
@@ -1449,7 +1630,7 @@ def build_gist_schema(version: str = "14.1.0") -> dict:
         "name": "gist",
         "title": "gist (LinkML rendering)",
         "description": (
-            "gist  is a minimalist upper ontology "
+            "gist is a minimalist upper ontology "
             "created by Semantic Arts for enterprise knowledge graph applications. "
             "This LinkML schema (version " + version + ") aggregates the gist modules: "
             "Core (classes and properties), MediaTypes (IANA media type instances), and "
@@ -1571,8 +1752,8 @@ def _rename_refs(entry: dict, renames: dict[str, str]) -> None:
 def rename_elements(schema: dict, renames: dict[str, str]) -> dict:
     """Return *schema* with its classes and slots renamed per *renames* and
     every reference to them rewritten. Element order is kept, the old name
-    joins the renamed element's aliases, and a note in the header lists the
-    renames that apply to this file."""
+    joins the renamed element's aliases unless it is already the title, and
+    a note in the header lists the renames that apply to this file."""
     if not renames:
         return schema
     default_prefix = schema.get("default_prefix", "gist_linkml")
@@ -1597,7 +1778,7 @@ def rename_elements(schema: dict, renames: dict[str, str]) -> dict:
             if name in renames:
                 entry.setdefault(uri_key, f"{default_prefix}:{name}")
                 aliases = entry.get("aliases", [])
-                if name not in aliases:
+                if name not in aliases and name != entry.get("title"):
                     entry["aliases"] = aliases + [name]
                 entry = _order_keys(entry, _ELEMENT_KEY_ORDER)
             renamed[renames.get(name, name)] = entry
@@ -1742,6 +1923,7 @@ def generate_per_file_schemas(
         schema_name="gist_core",
         source=get_ontology_iri(graphs.get("core", Graph())),
         header=ontology_header(graphs.get("core", Graph()), g_annot),
+        thing_slots=domainless_slots(g_core_enriched),
     )
     # Checked before the first file is written, so a bad rename leaves the
     # output directory as it was

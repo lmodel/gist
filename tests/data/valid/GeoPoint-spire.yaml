@@ -1,0 +1,5 @@
+# A valid GeoPoint: latitude and longitude, whose rdfs:domain is GeoPoint.
+
+name: "The Spire of Dublin"
+latitude: 53.3498
+longitude: -6.2603

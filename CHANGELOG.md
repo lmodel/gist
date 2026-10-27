@@ -6,13 +6,34 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **gist's properties attach to the classes that may carry them.** A property's slot goes to each class its `rdfs:domain` names, and the `GistThing` mixin, which every class takes, holds the 89 that gist declares without a domain, since OWL lets those describe any individual. The JSON Schema, the Python models and the SHACL shapes now accept gist data beyond `name` and `description`, such as a `Magnitude` with a `numeric_value` and a `has_unit_of_measure`; `docs/about.md` says where they stay stricter than gist.
+
 ### Changed
 
 - **The generated artefacts come from linkml 1.12.1.** The Protobuf file is now valid proto3, the JSON Schema carries each element's examples, the JSON-LD names exact mappings `exact_mappings`, and the Python datamodel types `conversion_factor` and `numeric_value` as numbers. The Java classes that `gen-java` now writes are git-ignored.
+- **gist's long notes keep their paragraphs and nesting, and lose their Turtle layout.** Windows line ends, outer blank lines and the tab indent a note's lines share are gone, and a deeper indent becomes two spaces a tab, so the schema holds each note as a YAML block.
+- **A deprecated term gives a reason.** Its `deprecated` reads "gist marks this term owl:deprecated." in place of `'true'`, as LinkML expects a reason there; gist's removal guidance stays in the term's notes.
+- **An element's gist label is its `title`.** The `skos:prefLabel`, or else the `rdfs:label`, was the first of its aliases; other labels stay aliases. The docs pages head each element with it, the JSON Schema and the Pydantic fields carry it, and the OWL writes it as `dcterms:title`, not `skos:altLabel`.
+- **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 5 MB, 7 MB and 2.4 MB.
+- **`just verify-generated` compares the OWL and the SHACL in seconds.** Their blank nodes form trees, so it compares a digest of each tree; rdflib's general isomorphism check took many minutes on the larger shapes. It also puts back the schema, which `gen-project` regenerates.
+- **The OWL leaves out the restrictions that repeat a property's range or a minimum of none.** gen-owl's coming defaults, set now, take its 3,533 triples to 2,617, and GistThing's restrictions from 215 to 45.
 
 ### Removed
 
+- **The SQL DDL.** With the slots above, it would hold some 5,400 tables, one for each multivalued slot of each class, and take `gen-project` over five minutes and 4 GB to write, so `.linkml/generators.yaml` skips `sqltable` and `project/sqlschema/` is gone.
 - **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
+
+### Fixed
+
+- **The OWL types each gist property as gist does.** A union of classes left nine object properties on the default string range, so the OWL declared them datatype properties (and gist's four annotation properties too) and the Python datamodel typed six as strings.
+- **`gist:domainIncludes` and `gist:rangeIncludes` stay hints.** They no longer become a slot's `domain` or `range`, which gist's own axioms step outside (a `FormattedContent` is expressed in a `MediaType`, not a `Language`), so eleven slots lose a domain and nine are ranged over `Any`.
+- **A datatype gist names keeps its own IRI.** `xsd:double` became LinkML's `float`, and XSD's other integer types and OWL's `rational` and `real` became `integer` or `decimal`, so the SHACL shapes rejected a `latitude` or a `numeric_value` gist allows. gist_core declares a type for each datatype linkml:types lacks, and `.linkmllint.yaml` lets its `xsd:int` through.
+- **The converter stops at a domain it cannot carry faithfully**, such as two domains or a class gist does not declare, rather than put the slot on too many classes or too few. A class also takes the domain slots of a second superclass, an unranged object subproperty its parent's range, and enum values whose keys collide stay apart; gist 14.1.0 meets none of these.
+- **The OWL marks the terms gist deprecates `owl:deprecated`.** gen-owl writes no triple for LinkML's `deprecated`, so each of the five also carries an `owl:deprecated: true` annotation, which it does write.
+- **A superproperty outside gist is a broad mapping.** `domain_includes` and `range_includes`, subproperties of `skos:scopeNote`, named it as a related mapping by its full IRI.
+- **The data tests check the examples.** `tests/test_data.py` passed whether a file loaded or not; it now validates each example with closed classes, and checks that each counter-example fails for the one reason its file name states.
 
 ## [0.4.0] - 2026-10-27
 

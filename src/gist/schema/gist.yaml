@@ -2,12 +2,12 @@ id: https://w3id.org/lmodel/gist
 name: gist
 title: gist (LinkML rendering)
 description: |-
-  gist  is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.
+  gist is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.
 license: CC-BY-4.0
 see_also:
-- https://www.semanticarts.com/gist/
-- https://w3id.org/semanticarts/ontology/gistCore
-- https://lmodel.github.io/gist
+  - https://www.semanticarts.com/gist/
+  - https://w3id.org/semanticarts/ontology/gistCore
+  - https://lmodel.github.io/gist
 source: https://w3id.org/semanticarts/ontology/gistCore
 version: 14.1.0
 
@@ -24,7 +24,7 @@ default_prefix: gist_linkml
 default_range: string
 
 imports:
-- linkml:types
-- ./gist_core
-- ./gist_media_types
-- ./gist_prefix_declarations
+  - linkml:types
+  - ./gist_core
+  - ./gist_media_types
+  - ./gist_prefix_declarations

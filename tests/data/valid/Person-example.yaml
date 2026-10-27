@@ -1,5 +1,5 @@
-# Valid Person instance using schema-defined slots
-# Person is_a LivingThing which defines name and description properties
+# A valid Person: the name and description of the GistThing mixin,
+# which gives every gist class the slots gist declares without a domain.
 
 name: "John Doe"
 description: "A person with biographical information"

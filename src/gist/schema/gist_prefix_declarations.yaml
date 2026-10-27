@@ -2,14 +2,14 @@ id: https://w3id.org/lmodel/gist/prefix-declarations
 name: gist_prefix_declarations
 title: gist Prefix Declarations
 description: |-
-  Defines prefix declarations, which pair a prefix with a namespace, used in the gist ontology. SHACL prefix declarations from gist 14.1.0. Defines namespace-to-prefix bindings used by the gist ontology.
+  Defines prefix declarations, which pair a prefix with a namespace, used in the gist ontology. SHACL prefix declarations from gist 14.1.0.
 comments:
-- |-
-  These prefixes are provided to support applications such as visualizers. Note that importing this file breaks OWL 2 DL conformance because SHACL is not an OWL ontology.
+  - |-
+    These prefixes are provided to support applications such as visualizers. Note that importing this file breaks OWL 2 DL conformance because SHACL is not an OWL ontology.
 license: https://creativecommons.org/licenses/by/4.0/
 see_also:
-- https://www.semanticarts.com/gist/
-- https://w3id.org/semanticarts/ontology/gistPrefixDeclarations14.1.0
+  - https://www.semanticarts.com/gist/
+  - https://w3id.org/semanticarts/ontology/gistPrefixDeclarations14.1.0
 source: https://w3id.org/semanticarts/ontology/gistPrefixDeclarations
 version: 14.1.0
 
@@ -31,7 +31,7 @@ default_prefix: gist_linkml
 default_range: string
 
 imports:
-- linkml:types
+  - linkml:types
 
 subsets:
 
@@ -43,7 +43,7 @@ enums:
   PrefixDeclarationInstance:
     description: Named SHACL prefix declarations from the gist ontology.
     in_subset:
-    - gist_prefix_declarations
+      - gist_prefix_declarations
     permissible_values:
       PREFIXDECLARATION_GIST:
         title: gist

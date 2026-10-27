@@ -2,7 +2,7 @@
 # Schema: gist
 #
 # id: https://w3id.org/lmodel/gist
-# description: gist  is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.
+# description: gist is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.
 # license: CC-BY-4.0
 
 import dataclasses
@@ -55,7 +55,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Datetime, Decimal, Float, Integer, String
+from linkml_runtime.linkml_model.types import Datetime, Decimal, Double, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import Decimal, XSDDateTime
 
 metamodel_version = "1.12.0"
@@ -72,11 +72,124 @@ LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 MEDIA_APP = CurieNamespace('media_app', 'https://www.iana.org/assignments/media-types/application/')
 MEDIA_IMG = CurieNamespace('media_img', 'https://www.iana.org/assignments/media-types/image/')
 MEDIA_TXT = CurieNamespace('media_txt', 'https://www.iana.org/assignments/media-types/text/')
+OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = GIST_LINKML
 
 
 # Types
+class OwlRational(Decimal):
+    """ A decimal literal typed owl:rational, which gist allows. """
+    type_class_uri = OWL["rational"]
+    type_class_curie = "owl:rational"
+    type_name = "owl_rational"
+    type_model_uri = GIST_LINKML.OwlRational
+
+
+class OwlReal(Decimal):
+    """ A decimal literal typed owl:real, which gist allows. """
+    type_class_uri = OWL["real"]
+    type_class_curie = "owl:real"
+    type_name = "owl_real"
+    type_model_uri = GIST_LINKML.OwlReal
+
+
+class XsdByte(Integer):
+    """ An integer literal typed xsd:byte, which gist allows. """
+    type_class_uri = XSD["byte"]
+    type_class_curie = "xsd:byte"
+    type_name = "xsd_byte"
+    type_model_uri = GIST_LINKML.XsdByte
+
+
+class XsdInt(Integer):
+    """ An integer literal typed xsd:int, which gist allows. """
+    type_class_uri = XSD["int"]
+    type_class_curie = "xsd:int"
+    type_name = "xsd_int"
+    type_model_uri = GIST_LINKML.XsdInt
+
+
+class XsdLong(Integer):
+    """ An integer literal typed xsd:long, which gist allows. """
+    type_class_uri = XSD["long"]
+    type_class_curie = "xsd:long"
+    type_name = "xsd_long"
+    type_model_uri = GIST_LINKML.XsdLong
+
+
+class XsdNegativeInteger(Integer):
+    """ An integer literal typed xsd:negativeInteger, which gist allows. """
+    type_class_uri = XSD["negativeInteger"]
+    type_class_curie = "xsd:negativeInteger"
+    type_name = "xsd_negative_integer"
+    type_model_uri = GIST_LINKML.XsdNegativeInteger
+
+
+class XsdNonNegativeInteger(Integer):
+    """ An integer literal typed xsd:nonNegativeInteger, which gist allows. """
+    type_class_uri = XSD["nonNegativeInteger"]
+    type_class_curie = "xsd:nonNegativeInteger"
+    type_name = "xsd_non_negative_integer"
+    type_model_uri = GIST_LINKML.XsdNonNegativeInteger
+
+
+class XsdNonPositiveInteger(Integer):
+    """ An integer literal typed xsd:nonPositiveInteger, which gist allows. """
+    type_class_uri = XSD["nonPositiveInteger"]
+    type_class_curie = "xsd:nonPositiveInteger"
+    type_name = "xsd_non_positive_integer"
+    type_model_uri = GIST_LINKML.XsdNonPositiveInteger
+
+
+class XsdPositiveInteger(Integer):
+    """ An integer literal typed xsd:positiveInteger, which gist allows. """
+    type_class_uri = XSD["positiveInteger"]
+    type_class_curie = "xsd:positiveInteger"
+    type_name = "xsd_positive_integer"
+    type_model_uri = GIST_LINKML.XsdPositiveInteger
+
+
+class XsdShort(Integer):
+    """ An integer literal typed xsd:short, which gist allows. """
+    type_class_uri = XSD["short"]
+    type_class_curie = "xsd:short"
+    type_name = "xsd_short"
+    type_model_uri = GIST_LINKML.XsdShort
+
+
+class XsdUnsignedByte(Integer):
+    """ An integer literal typed xsd:unsignedByte, which gist allows. """
+    type_class_uri = XSD["unsignedByte"]
+    type_class_curie = "xsd:unsignedByte"
+    type_name = "xsd_unsigned_byte"
+    type_model_uri = GIST_LINKML.XsdUnsignedByte
+
+
+class XsdUnsignedInt(Integer):
+    """ An integer literal typed xsd:unsignedInt, which gist allows. """
+    type_class_uri = XSD["unsignedInt"]
+    type_class_curie = "xsd:unsignedInt"
+    type_name = "xsd_unsigned_int"
+    type_model_uri = GIST_LINKML.XsdUnsignedInt
+
+
+class XsdUnsignedLong(Integer):
+    """ An integer literal typed xsd:unsignedLong, which gist allows. """
+    type_class_uri = XSD["unsignedLong"]
+    type_class_curie = "xsd:unsignedLong"
+    type_name = "xsd_unsigned_long"
+    type_model_uri = GIST_LINKML.XsdUnsignedLong
+
+
+class XsdUnsignedShort(Integer):
+    """ An integer literal typed xsd:unsignedShort, which gist allows. """
+    type_class_uri = XSD["unsignedShort"]
+    type_class_curie = "xsd:unsignedShort"
+    type_name = "xsd_unsigned_short"
+    type_model_uri = GIST_LINKML.XsdUnsignedShort
+
 
 # Class references
 
@@ -94,15 +207,234 @@ class Aspect(YAMLRoot):
     class_name: ClassVar[str] = "Aspect"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Aspect
 
-    name: Optional[str] = None
+    has_unit_group: Optional[Union[Union[dict, "UnitGroup"], list[Union[dict, "UnitGroup"]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, "Address"], list[Union[dict, "Address"]]]] = empty_list()
+    has_aspect: Optional[Union[dict, "Aspect"]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.has_unit_group, list):
+            self.has_unit_group = [self.has_unit_group] if self.has_unit_group is not None else []
+        self.has_unit_group = [v if isinstance(v, UnitGroup) else UnitGroup(**as_dict(v)) for v in self.has_unit_group]
+
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -119,15 +451,229 @@ class Category(YAMLRoot):
     class_name: ClassVar[str] = "Category"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Category
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, "Address"], list[Union[dict, "Address"]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -169,15 +715,229 @@ class Component(YAMLRoot):
     class_name: ClassVar[str] = "Component"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Component
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, "Address"], list[Union[dict, "Address"]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -194,15 +954,229 @@ class Composite(YAMLRoot):
     class_name: ClassVar[str] = "Composite"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Composite
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, "Address"], list[Union[dict, "Address"]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -231,15 +1205,230 @@ class Content(YAMLRoot):
     class_name: ClassVar[str] = "Content"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Content
 
-    name: Optional[str] = None
+    is_about: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, "Address"], list[Union[dict, "Address"]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -356,15 +1545,229 @@ class Event(YAMLRoot):
     class_name: ClassVar[str] = "Event"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Event
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -442,19 +1845,239 @@ class GeoLocation(YAMLRoot):
     class_name: ClassVar[str] = "GeoLocation"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.GeoLocation
 
-    name: Optional[str] = None
+    is_geo_contained_in: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, "GeoLocation"], list[Union[dict, "GeoLocation"]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, "ID"], list[Union[dict, "ID"]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.is_geo_contained_in, list):
+            self.is_geo_contained_in = [self.is_geo_contained_in] if self.is_geo_contained_in is not None else []
+        self.is_geo_contained_in = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.is_geo_contained_in]
+
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
+
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class GeoPoint(GeoLocation):
     """
     An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is
@@ -467,6 +2090,18 @@ class GeoPoint(GeoLocation):
     class_class_curie: ClassVar[str] = "gist:GeoPoint"
     class_name: ClassVar[str] = "GeoPoint"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.GeoPoint
+
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.latitude is not None and not isinstance(self.latitude, float):
+            self.latitude = float(self.latitude)
+
+        if self.longitude is not None and not isinstance(self.longitude, float):
+            self.longitude = float(self.longitude)
+
+        super().__post_init__(**kwargs)
 
 
 class GeoRegion(GeoLocation):
@@ -554,15 +2189,229 @@ class IntellectualProperty(YAMLRoot):
     class_name: ClassVar[str] = "IntellectualProperty"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.IntellectualProperty
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -579,15 +2428,239 @@ class Intention(YAMLRoot):
     class_name: ClassVar[str] = "Intention"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Intention
 
-    name: Optional[str] = None
+    prevents: Optional[Union[Union[dict, Behavior], list[Union[dict, Behavior]]]] = empty_list()
+    prohibits: Optional[Union[Union[dict, Behavior], list[Union[dict, Behavior]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.prevents, list):
+            self.prevents = [self.prevents] if self.prevents is not None else []
+        self.prevents = [v if isinstance(v, Behavior) else Behavior(**as_dict(v)) for v in self.prevents]
+
+        if not isinstance(self.prohibits, list):
+            self.prohibits = [self.prohibits] if self.prohibits is not None else []
+        self.prohibits = [v if isinstance(v, Behavior) else Behavior(**as_dict(v)) for v in self.prohibits]
+
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -690,15 +2763,229 @@ class Language(YAMLRoot):
     class_name: ClassVar[str] = "Language"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Language
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -715,15 +3002,234 @@ class Magnitude(YAMLRoot):
     class_name: ClassVar[str] = "Magnitude"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Magnitude
 
-    name: Optional[str] = None
+    has_unit_of_measure: Optional[Union[Union[dict, "UnitOfMeasure"], list[Union[dict, "UnitOfMeasure"]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, "Magnitude"]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, "Magnitude"], list[Union[dict, "Magnitude"]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if not isinstance(self.has_unit_of_measure, list):
+            self.has_unit_of_measure = [self.has_unit_of_measure] if self.has_unit_of_measure is not None else []
+        self.has_unit_of_measure = [v if isinstance(v, UnitOfMeasure) else UnitOfMeasure(**as_dict(v)) for v in self.has_unit_of_measure]
+
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -837,6 +3343,7 @@ class GeoRoute(OrderedCollection):
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.GeoRoute
 
 
+@dataclass(repr=False)
 class OrderedMember(Component):
     """
     A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders
@@ -848,6 +3355,15 @@ class OrderedMember(Component):
     class_class_curie: ClassVar[str] = "gist:OrderedMember"
     class_name: ClassVar[str] = "OrderedMember"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.OrderedMember
+
+    is_first_member_of: Optional[Union[dict, OrderedCollection]] = None
+    provides_order_for: Optional[Union[dict, "Any"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.is_first_member_of is not None and not isinstance(self.is_first_member_of, OrderedCollection):
+            self.is_first_member_of = OrderedCollection(**as_dict(self.is_first_member_of))
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -862,15 +3378,230 @@ class Organization(YAMLRoot):
     class_name: ClassVar[str] = "Organization"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Organization
 
-    name: Optional[str] = None
+    owns: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -987,15 +3718,229 @@ class PhysicalIdentifiableItem(YAMLRoot):
     class_name: ClassVar[str] = "PhysicalIdentifiableItem"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.PhysicalIdentifiableItem
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1037,6 +3982,7 @@ class Building(Landmark):
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Building
 
 
+@dataclass(repr=False)
 class LivingThing(PhysicalIdentifiableItem):
     """
     Something that is currently, or at some point in time was, alive.
@@ -1048,7 +3994,17 @@ class LivingThing(PhysicalIdentifiableItem):
     class_name: ClassVar[str] = "LivingThing"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.LivingThing
 
+    has_biological_parent: Optional[Union[Union[dict, "LivingThing"], list[Union[dict, "LivingThing"]]]] = empty_list()
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if not isinstance(self.has_biological_parent, list):
+            self.has_biological_parent = [self.has_biological_parent] if self.has_biological_parent is not None else []
+        self.has_biological_parent = [v if isinstance(v, LivingThing) else LivingThing(**as_dict(v)) for v in self.has_biological_parent]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Person(LivingThing):
     """
     A human being who was or is alive.
@@ -1060,6 +4016,7 @@ class Person(LivingThing):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Person
 
+    owns: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
 
 @dataclass(repr=False)
 class PhysicalSubstance(YAMLRoot):
@@ -1074,15 +4031,229 @@ class PhysicalSubstance(YAMLRoot):
     class_name: ClassVar[str] = "PhysicalSubstance"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.PhysicalSubstance
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, "PhysicalSubstance"], list[Union[dict, "PhysicalSubstance"]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1183,15 +4354,229 @@ class SchemaMetaData(YAMLRoot):
     class_name: ClassVar[str] = "SchemaMetaData"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.SchemaMetaData
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1357,15 +4742,229 @@ class Template(YAMLRoot):
     class_name: ClassVar[str] = "Template"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Template
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1394,15 +4993,229 @@ class TemporalRelation(YAMLRoot):
     class_name: ClassVar[str] = "TemporalRelation"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.TemporalRelation
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1444,15 +5257,229 @@ class TimeInterval(YAMLRoot):
     class_name: ClassVar[str] = "TimeInterval"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.TimeInterval
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1469,6 +5496,7 @@ class Transaction(Event):
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.Transaction
 
 
+@dataclass(repr=False)
 class UnitGroup(Collection):
     """
     A collection of units of measure that can all be used to measure the same aspects.
@@ -1479,6 +5507,62 @@ class UnitGroup(Collection):
     class_class_curie: ClassVar[str] = "gist:UnitGroup"
     class_name: ClassVar[str] = "UnitGroup"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.UnitGroup
+
+    exponent_of_ampere: Optional[Decimal] = None
+    exponent_of_bit: Optional[Decimal] = None
+    exponent_of_candela: Optional[Decimal] = None
+    exponent_of_kelvin: Optional[Decimal] = None
+    exponent_of_kilogram: Optional[Decimal] = None
+    exponent_of_meter: Optional[Decimal] = None
+    exponent_of_mole: Optional[Decimal] = None
+    exponent_of_number: Optional[Decimal] = None
+    exponent_of_other: Optional[Decimal] = None
+    exponent_of_radian: Optional[Decimal] = None
+    exponent_of_second: Optional[Decimal] = None
+    exponent_of_steradian: Optional[Decimal] = None
+    exponent_of_us_dollar: Optional[Decimal] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.exponent_of_ampere is not None and not isinstance(self.exponent_of_ampere, Decimal):
+            self.exponent_of_ampere = Decimal(self.exponent_of_ampere)
+
+        if self.exponent_of_bit is not None and not isinstance(self.exponent_of_bit, Decimal):
+            self.exponent_of_bit = Decimal(self.exponent_of_bit)
+
+        if self.exponent_of_candela is not None and not isinstance(self.exponent_of_candela, Decimal):
+            self.exponent_of_candela = Decimal(self.exponent_of_candela)
+
+        if self.exponent_of_kelvin is not None and not isinstance(self.exponent_of_kelvin, Decimal):
+            self.exponent_of_kelvin = Decimal(self.exponent_of_kelvin)
+
+        if self.exponent_of_kilogram is not None and not isinstance(self.exponent_of_kilogram, Decimal):
+            self.exponent_of_kilogram = Decimal(self.exponent_of_kilogram)
+
+        if self.exponent_of_meter is not None and not isinstance(self.exponent_of_meter, Decimal):
+            self.exponent_of_meter = Decimal(self.exponent_of_meter)
+
+        if self.exponent_of_mole is not None and not isinstance(self.exponent_of_mole, Decimal):
+            self.exponent_of_mole = Decimal(self.exponent_of_mole)
+
+        if self.exponent_of_number is not None and not isinstance(self.exponent_of_number, Decimal):
+            self.exponent_of_number = Decimal(self.exponent_of_number)
+
+        if self.exponent_of_other is not None and not isinstance(self.exponent_of_other, Decimal):
+            self.exponent_of_other = Decimal(self.exponent_of_other)
+
+        if self.exponent_of_radian is not None and not isinstance(self.exponent_of_radian, Decimal):
+            self.exponent_of_radian = Decimal(self.exponent_of_radian)
+
+        if self.exponent_of_second is not None and not isinstance(self.exponent_of_second, Decimal):
+            self.exponent_of_second = Decimal(self.exponent_of_second)
+
+        if self.exponent_of_steradian is not None and not isinstance(self.exponent_of_steradian, Decimal):
+            self.exponent_of_steradian = Decimal(self.exponent_of_steradian)
+
+        if self.exponent_of_us_dollar is not None and not isinstance(self.exponent_of_us_dollar, Decimal):
+            self.exponent_of_us_dollar = Decimal(self.exponent_of_us_dollar)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -1493,15 +5577,297 @@ class UnitOfMeasure(YAMLRoot):
     class_name: ClassVar[str] = "UnitOfMeasure"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.UnitOfMeasure
 
-    name: Optional[str] = None
+    conversion_factor: Optional[Union[Decimal, float]] = None
+    conversion_offset: Optional[Decimal] = None
+    exponent_of_ampere: Optional[Decimal] = None
+    exponent_of_bit: Optional[Decimal] = None
+    exponent_of_candela: Optional[Decimal] = None
+    exponent_of_kelvin: Optional[Decimal] = None
+    exponent_of_kilogram: Optional[Decimal] = None
+    exponent_of_meter: Optional[Decimal] = None
+    exponent_of_mole: Optional[Decimal] = None
+    exponent_of_number: Optional[Decimal] = None
+    exponent_of_other: Optional[Decimal] = None
+    exponent_of_radian: Optional[Decimal] = None
+    exponent_of_second: Optional[Decimal] = None
+    exponent_of_steradian: Optional[Decimal] = None
+    exponent_of_us_dollar: Optional[Decimal] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.conversion_factor is not None and not isinstance(self.conversion_factor, (Decimal, float)):
+            value = self.conversion_factor
+            for _coerce in (lambda: Decimal(value), lambda: float(value)):
+                try:
+                    self.conversion_factor = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[Decimal, float] could be constructed from {value!r} for slot conversion_factor")
+
+        if self.conversion_offset is not None and not isinstance(self.conversion_offset, Decimal):
+            self.conversion_offset = Decimal(self.conversion_offset)
+
+        if self.exponent_of_ampere is not None and not isinstance(self.exponent_of_ampere, Decimal):
+            self.exponent_of_ampere = Decimal(self.exponent_of_ampere)
+
+        if self.exponent_of_bit is not None and not isinstance(self.exponent_of_bit, Decimal):
+            self.exponent_of_bit = Decimal(self.exponent_of_bit)
+
+        if self.exponent_of_candela is not None and not isinstance(self.exponent_of_candela, Decimal):
+            self.exponent_of_candela = Decimal(self.exponent_of_candela)
+
+        if self.exponent_of_kelvin is not None and not isinstance(self.exponent_of_kelvin, Decimal):
+            self.exponent_of_kelvin = Decimal(self.exponent_of_kelvin)
+
+        if self.exponent_of_kilogram is not None and not isinstance(self.exponent_of_kilogram, Decimal):
+            self.exponent_of_kilogram = Decimal(self.exponent_of_kilogram)
+
+        if self.exponent_of_meter is not None and not isinstance(self.exponent_of_meter, Decimal):
+            self.exponent_of_meter = Decimal(self.exponent_of_meter)
+
+        if self.exponent_of_mole is not None and not isinstance(self.exponent_of_mole, Decimal):
+            self.exponent_of_mole = Decimal(self.exponent_of_mole)
+
+        if self.exponent_of_number is not None and not isinstance(self.exponent_of_number, Decimal):
+            self.exponent_of_number = Decimal(self.exponent_of_number)
+
+        if self.exponent_of_other is not None and not isinstance(self.exponent_of_other, Decimal):
+            self.exponent_of_other = Decimal(self.exponent_of_other)
+
+        if self.exponent_of_radian is not None and not isinstance(self.exponent_of_radian, Decimal):
+            self.exponent_of_radian = Decimal(self.exponent_of_radian)
+
+        if self.exponent_of_second is not None and not isinstance(self.exponent_of_second, Decimal):
+            self.exponent_of_second = Decimal(self.exponent_of_second)
+
+        if self.exponent_of_steradian is not None and not isinstance(self.exponent_of_steradian, Decimal):
+            self.exponent_of_steradian = Decimal(self.exponent_of_steradian)
+
+        if self.exponent_of_us_dollar is not None and not isinstance(self.exponent_of_us_dollar, Decimal):
+            self.exponent_of_us_dollar = Decimal(self.exponent_of_us_dollar)
+
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1509,8 +5875,8 @@ class UnitOfMeasure(YAMLRoot):
 @dataclass(repr=False)
 class GistThing(YAMLRoot):
     """
-    Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain
-    (open-world).
+    Mixin that gives every gist class the slots of the properties gist declares without a domain, since OWL lets those
+    describe any individual.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -1519,15 +5885,229 @@ class GistThing(YAMLRoot):
     class_name: ClassVar[str] = "GistThing"
     class_model_uri: ClassVar[URIRef] = GIST_LINKML.GistThing
 
-    name: Optional[str] = None
+    actual_end_date: Optional[Union[str, XSDDateTime]] = None
+    actual_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_end_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_end_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_end_year: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date: Optional[Union[str, XSDDateTime]] = None
+    actual_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    actual_start_microsecond: Optional[Union[str, XSDDateTime]] = None
+    actual_start_minute: Optional[Union[str, XSDDateTime]] = None
+    actual_start_year: Optional[Union[str, XSDDateTime]] = None
+    allows: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    at_date_time: Optional[Union[str, XSDDateTime]] = None
+    birth_date: Optional[Union[str, XSDDateTime]] = None
+    comes_from_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    comes_from_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    contained_text: Optional[str] = None
+    contributes_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    death_date: Optional[Union[str, XSDDateTime]] = None
     description: Optional[str] = None
+    encrypted_text: Optional[str] = None
+    end_date_time: Optional[Union[str, XSDDateTime]] = None
+    goes_to_agent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    goes_to_place: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_accuracy: Optional[Union[dict, Magnitude]] = None
+    has_addend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_address: Optional[Union[Union[dict, Address], list[Union[dict, Address]]]] = empty_list()
+    has_aspect: Optional[Union[dict, Aspect]] = None
+    has_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_direct_broader: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_divisor: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_giver: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_goal: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_incumbent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_magnitude: Optional[Union[Union[dict, Magnitude], list[Union[dict, Magnitude]]]] = empty_list()
+    has_multiplier: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_navigational_parent: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_participant: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_party: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_physical_location: Optional[Union[Union[dict, GeoLocation], list[Union[dict, GeoLocation]]]] = empty_list()
+    has_recipient: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_subtrahend: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    has_unique_broader: Optional[Union[dict, "Any"]] = None
+    has_unique_navigational_parent: Optional[Union[dict, "Any"]] = None
+    id_text: Optional[str] = None
+    is_affected_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_allocated_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_assignment_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_based_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_categorized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_connected_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_direct_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_expressed_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_governed_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_identified_by: Optional[Union[Union[dict, ID], list[Union[dict, ID]]]] = empty_list()
+    is_made_up_of: Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]] = empty_list()
+    is_member_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_part_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_produced_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recognized_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_recorded_at: Optional[Union[str, XSDDateTime]] = None
+    is_rendered_on: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_triggered_by: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    is_under_jurisdiction_of: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_from: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    links_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    name: Optional[str] = None
+    numeric_value: Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]] = None
+    occurs_in: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_provide: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    offers_to_receive: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    planned_end_date: Optional[Union[str, XSDDateTime]] = None
+    planned_end_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_end_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_end_year: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date: Optional[Union[str, XSDDateTime]] = None
+    planned_start_date_time: Optional[Union[str, XSDDateTime]] = None
+    planned_start_minute: Optional[Union[str, XSDDateTime]] = None
+    planned_start_year: Optional[Union[str, XSDDateTime]] = None
+    precedes: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    precedes_directly: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    refers_to: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    requires: Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]] = empty_list()
+    sequence: Optional[int] = None
+    start_date_time: Optional[Union[str, XSDDateTime]] = None
+    symbol: Optional[str] = None
+    unique_text: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self.actual_end_date is not None and not isinstance(self.actual_end_date, XSDDateTime):
+            self.actual_end_date = XSDDateTime(self.actual_end_date)
+
+        if self.actual_end_date_time is not None and not isinstance(self.actual_end_date_time, XSDDateTime):
+            self.actual_end_date_time = XSDDateTime(self.actual_end_date_time)
+
+        if self.actual_end_microsecond is not None and not isinstance(self.actual_end_microsecond, XSDDateTime):
+            self.actual_end_microsecond = XSDDateTime(self.actual_end_microsecond)
+
+        if self.actual_end_minute is not None and not isinstance(self.actual_end_minute, XSDDateTime):
+            self.actual_end_minute = XSDDateTime(self.actual_end_minute)
+
+        if self.actual_end_year is not None and not isinstance(self.actual_end_year, XSDDateTime):
+            self.actual_end_year = XSDDateTime(self.actual_end_year)
+
+        if self.actual_start_date is not None and not isinstance(self.actual_start_date, XSDDateTime):
+            self.actual_start_date = XSDDateTime(self.actual_start_date)
+
+        if self.actual_start_date_time is not None and not isinstance(self.actual_start_date_time, XSDDateTime):
+            self.actual_start_date_time = XSDDateTime(self.actual_start_date_time)
+
+        if self.actual_start_microsecond is not None and not isinstance(self.actual_start_microsecond, XSDDateTime):
+            self.actual_start_microsecond = XSDDateTime(self.actual_start_microsecond)
+
+        if self.actual_start_minute is not None and not isinstance(self.actual_start_minute, XSDDateTime):
+            self.actual_start_minute = XSDDateTime(self.actual_start_minute)
+
+        if self.actual_start_year is not None and not isinstance(self.actual_start_year, XSDDateTime):
+            self.actual_start_year = XSDDateTime(self.actual_start_year)
+
+        if self.at_date_time is not None and not isinstance(self.at_date_time, XSDDateTime):
+            self.at_date_time = XSDDateTime(self.at_date_time)
+
+        if self.birth_date is not None and not isinstance(self.birth_date, XSDDateTime):
+            self.birth_date = XSDDateTime(self.birth_date)
+
+        if self.contained_text is not None and not isinstance(self.contained_text, str):
+            self.contained_text = str(self.contained_text)
+
+        if self.death_date is not None and not isinstance(self.death_date, XSDDateTime):
+            self.death_date = XSDDateTime(self.death_date)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        if self.encrypted_text is not None and not isinstance(self.encrypted_text, str):
+            self.encrypted_text = str(self.encrypted_text)
+
+        if self.end_date_time is not None and not isinstance(self.end_date_time, XSDDateTime):
+            self.end_date_time = XSDDateTime(self.end_date_time)
+
+        if self.has_accuracy is not None and not isinstance(self.has_accuracy, Magnitude):
+            self.has_accuracy = Magnitude(**as_dict(self.has_accuracy))
+
+        if not isinstance(self.has_address, list):
+            self.has_address = [self.has_address] if self.has_address is not None else []
+        self.has_address = [v if isinstance(v, Address) else Address(**as_dict(v)) for v in self.has_address]
+
+        if self.has_aspect is not None and not isinstance(self.has_aspect, Aspect):
+            self.has_aspect = Aspect(**as_dict(self.has_aspect))
+
+        if not isinstance(self.has_magnitude, list):
+            self.has_magnitude = [self.has_magnitude] if self.has_magnitude is not None else []
+        self.has_magnitude = [v if isinstance(v, Magnitude) else Magnitude(**as_dict(v)) for v in self.has_magnitude]
+
+        if not isinstance(self.has_physical_location, list):
+            self.has_physical_location = [self.has_physical_location] if self.has_physical_location is not None else []
+        self.has_physical_location = [v if isinstance(v, GeoLocation) else GeoLocation(**as_dict(v)) for v in self.has_physical_location]
+
+        if self.id_text is not None and not isinstance(self.id_text, str):
+            self.id_text = str(self.id_text)
+
+        if not isinstance(self.is_identified_by, list):
+            self.is_identified_by = [self.is_identified_by] if self.is_identified_by is not None else []
+        self.is_identified_by = [v if isinstance(v, ID) else ID(**as_dict(v)) for v in self.is_identified_by]
+
+        if not isinstance(self.is_made_up_of, list):
+            self.is_made_up_of = [self.is_made_up_of] if self.is_made_up_of is not None else []
+        self.is_made_up_of = [v if isinstance(v, PhysicalSubstance) else PhysicalSubstance(**as_dict(v)) for v in self.is_made_up_of]
+
+        if self.is_recorded_at is not None and not isinstance(self.is_recorded_at, XSDDateTime):
+            self.is_recorded_at = XSDDateTime(self.is_recorded_at)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.numeric_value is not None and not isinstance(self.numeric_value, (XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal)):
+            value = self.numeric_value
+            for _coerce in (lambda: XsdByte(value), lambda: Decimal(value), lambda: float(value), lambda: XsdInt(value), lambda: int(value), lambda: XsdLong(value), lambda: XsdNegativeInteger(value), lambda: XsdNonNegativeInteger(value), lambda: XsdNonPositiveInteger(value), lambda: XsdPositiveInteger(value), lambda: XsdShort(value), lambda: XsdUnsignedByte(value), lambda: XsdUnsignedInt(value), lambda: XsdUnsignedLong(value), lambda: XsdUnsignedShort(value), lambda: OwlRational(value), lambda: OwlReal(value)):
+                try:
+                    self.numeric_value = _coerce()
+                    break
+                except (ValueError, TypeError):
+                    continue
+            else:
+                raise ValueError(f"None of the candidate types Union[XsdByte, Decimal, float, XsdInt, int, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal] could be constructed from {value!r} for slot numeric_value")
+
+        if self.planned_end_date is not None and not isinstance(self.planned_end_date, XSDDateTime):
+            self.planned_end_date = XSDDateTime(self.planned_end_date)
+
+        if self.planned_end_date_time is not None and not isinstance(self.planned_end_date_time, XSDDateTime):
+            self.planned_end_date_time = XSDDateTime(self.planned_end_date_time)
+
+        if self.planned_end_minute is not None and not isinstance(self.planned_end_minute, XSDDateTime):
+            self.planned_end_minute = XSDDateTime(self.planned_end_minute)
+
+        if self.planned_end_year is not None and not isinstance(self.planned_end_year, XSDDateTime):
+            self.planned_end_year = XSDDateTime(self.planned_end_year)
+
+        if self.planned_start_date is not None and not isinstance(self.planned_start_date, XSDDateTime):
+            self.planned_start_date = XSDDateTime(self.planned_start_date)
+
+        if self.planned_start_date_time is not None and not isinstance(self.planned_start_date_time, XSDDateTime):
+            self.planned_start_date_time = XSDDateTime(self.planned_start_date_time)
+
+        if self.planned_start_minute is not None and not isinstance(self.planned_start_minute, XSDDateTime):
+            self.planned_start_minute = XSDDateTime(self.planned_start_minute)
+
+        if self.planned_start_year is not None and not isinstance(self.planned_start_year, XSDDateTime):
+            self.planned_start_year = XSDDateTime(self.planned_start_year)
+
+        if self.sequence is not None and not isinstance(self.sequence, int):
+            self.sequence = int(self.sequence)
+
+        if self.start_date_time is not None and not isinstance(self.start_date_time, XSDDateTime):
+            self.start_date_time = XSDDateTime(self.start_date_time)
+
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if self.unique_text is not None and not isinstance(self.unique_text, str):
+            self.unique_text = str(self.unique_text)
 
         super().__post_init__(**kwargs)
 
@@ -1707,10 +6287,10 @@ slots.comes_from_agent = Slot(uri=GIST.comesFromAgent, name="comes_from_agent", 
                    model_uri=GIST_LINKML.comes_from_agent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.comes_from_place = Slot(uri=GIST.comesFromPlace, name="comes_from_place", curie=GIST.curie('comesFromPlace'),
-                   model_uri=GIST_LINKML.comes_from_place, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.comes_from_place, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.conforms_to = Slot(uri=GIST.conformsTo, name="conforms_to", curie=GIST.curie('conformsTo'),
-                   model_uri=GIST_LINKML.conforms_to, domain=None, range=Optional[Union[Union[dict, Intention], list[Union[dict, Intention]]]])
+                   model_uri=GIST_LINKML.conforms_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.contributes_to = Slot(uri=GIST.contributesTo, name="contributes_to", curie=GIST.curie('contributesTo'),
                    model_uri=GIST_LINKML.contributes_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -1719,10 +6299,10 @@ slots.goes_to_agent = Slot(uri=GIST.goesToAgent, name="goes_to_agent", curie=GIS
                    model_uri=GIST_LINKML.goes_to_agent, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.goes_to_place = Slot(uri=GIST.goesToPlace, name="goes_to_place", curie=GIST.curie('goesToPlace'),
-                   model_uri=GIST_LINKML.goes_to_place, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.goes_to_place, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.has_accuracy = Slot(uri=GIST.hasAccuracy, name="has_accuracy", curie=GIST.curie('hasAccuracy'),
-                   model_uri=GIST_LINKML.has_accuracy, domain=Magnitude, range=Optional[Union[dict, "Magnitude"]])
+                   model_uri=GIST_LINKML.has_accuracy, domain=None, range=Optional[Union[dict, Magnitude]])
 
 slots.has_addend = Slot(uri=GIST.hasAddend, name="has_addend", curie=GIST.curie('hasAddend'),
                    model_uri=GIST_LINKML.has_addend, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -1797,19 +6377,19 @@ slots.is_affected_by = Slot(uri=GIST.isAffectedBy, name="is_affected_by", curie=
                    model_uri=GIST_LINKML.is_affected_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_allocated_by = Slot(uri=GIST.isAllocatedBy, name="is_allocated_by", curie=GIST.curie('isAllocatedBy'),
-                   model_uri=GIST_LINKML.is_allocated_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_allocated_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_assignment_of = Slot(uri=GIST.isAssignmentOf, name="is_assignment_of", curie=GIST.curie('isAssignmentOf'),
-                   model_uri=GIST_LINKML.is_assignment_of, domain=Assignment, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_assignment_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_assignment_to = Slot(uri=GIST.isAssignmentTo, name="is_assignment_to", curie=GIST.curie('isAssignmentTo'),
-                   model_uri=GIST_LINKML.is_assignment_to, domain=Assignment, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
+                   model_uri=GIST_LINKML.is_assignment_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_based_on = Slot(uri=GIST.isBasedOn, name="is_based_on", curie=GIST.curie('isBasedOn'),
                    model_uri=GIST_LINKML.is_based_on, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_categorized_by = Slot(uri=GIST.isCategorizedBy, name="is_categorized_by", curie=GIST.curie('isCategorizedBy'),
-                   model_uri=GIST_LINKML.is_categorized_by, domain=None, range=Optional[Union[Union[dict, Category], list[Union[dict, Category]]]])
+                   model_uri=GIST_LINKML.is_categorized_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_connected_to = Slot(uri=GIST.isConnectedTo, name="is_connected_to", curie=GIST.curie('isConnectedTo'),
                    model_uri=GIST_LINKML.is_connected_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -1818,7 +6398,7 @@ slots.is_direct_part_of = Slot(uri=GIST.isDirectPartOf, name="is_direct_part_of"
                    model_uri=GIST_LINKML.is_direct_part_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_expressed_in = Slot(uri=GIST.isExpressedIn, name="is_expressed_in", curie=GIST.curie('isExpressedIn'),
-                   model_uri=GIST_LINKML.is_expressed_in, domain=Text, range=Optional[Union[Union[dict, Language], list[Union[dict, Language]]]])
+                   model_uri=GIST_LINKML.is_expressed_in, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_first_member_of = Slot(uri=GIST.isFirstMemberOf, name="is_first_member_of", curie=GIST.curie('isFirstMemberOf'),
                    model_uri=GIST_LINKML.is_first_member_of, domain=OrderedMember, range=Optional[Union[dict, OrderedCollection]])
@@ -1836,7 +6416,7 @@ slots.is_made_up_of = Slot(uri=GIST.isMadeUpOf, name="is_made_up_of", curie=GIST
                    model_uri=GIST_LINKML.is_made_up_of, domain=None, range=Optional[Union[Union[dict, PhysicalSubstance], list[Union[dict, PhysicalSubstance]]]])
 
 slots.is_member_of = Slot(uri=GIST.isMemberOf, name="is_member_of", curie=GIST.curie('isMemberOf'),
-                   model_uri=GIST_LINKML.is_member_of, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_member_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_part_of = Slot(uri=GIST.isPartOf, name="is_part_of", curie=GIST.curie('isPartOf'),
                    model_uri=GIST_LINKML.is_part_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -1845,7 +6425,7 @@ slots.is_produced_by = Slot(uri=GIST.isProducedBy, name="is_produced_by", curie=
                    model_uri=GIST_LINKML.is_produced_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_recognized_by = Slot(uri=GIST.isRecognizedBy, name="is_recognized_by", curie=GIST.curie('isRecognizedBy'),
-                   model_uri=GIST_LINKML.is_recognized_by, domain=None, range=Optional[Union[str, list[str]]])
+                   model_uri=GIST_LINKML.is_recognized_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_rendered_on = Slot(uri=GIST.isRenderedOn, name="is_rendered_on", curie=GIST.curie('isRenderedOn'),
                    model_uri=GIST_LINKML.is_rendered_on, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -1854,25 +6434,25 @@ slots.is_triggered_by = Slot(uri=GIST.isTriggeredBy, name="is_triggered_by", cur
                    model_uri=GIST_LINKML.is_triggered_by, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.is_under_jurisdiction_of = Slot(uri=GIST.isUnderJurisdictionOf, name="is_under_jurisdiction_of", curie=GIST.curie('isUnderJurisdictionOf'),
-                   model_uri=GIST_LINKML.is_under_jurisdiction_of, domain=None, range=Optional[Union[Union[dict, GovernmentOrganization], list[Union[dict, GovernmentOrganization]]]])
+                   model_uri=GIST_LINKML.is_under_jurisdiction_of, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.links = Slot(uri=GIST.links, name="links", curie=GIST.curie('links'),
-                   model_uri=GIST_LINKML.links, domain=NetworkLink, range=Optional[Union[Union[dict, "NetworkNode"], list[Union[dict, "NetworkNode"]]]])
+                   model_uri=GIST_LINKML.links, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.links_from = Slot(uri=GIST.linksFrom, name="links_from", curie=GIST.curie('linksFrom'),
-                   model_uri=GIST_LINKML.links_from, domain=NetworkLink, range=Optional[Union[Union[dict, "NetworkNode"], list[Union[dict, "NetworkNode"]]]])
+                   model_uri=GIST_LINKML.links_from, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.links_to = Slot(uri=GIST.linksTo, name="links_to", curie=GIST.curie('linksTo'),
-                   model_uri=GIST_LINKML.links_to, domain=NetworkLink, range=Optional[Union[Union[dict, "NetworkNode"], list[Union[dict, "NetworkNode"]]]])
+                   model_uri=GIST_LINKML.links_to, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.occurs_in = Slot(uri=GIST.occursIn, name="occurs_in", curie=GIST.curie('occursIn'),
                    model_uri=GIST_LINKML.occurs_in, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.offers_to_provide = Slot(uri=GIST.offersToProvide, name="offers_to_provide", curie=GIST.curie('offersToProvide'),
-                   model_uri=GIST_LINKML.offers_to_provide, domain=Offer, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
+                   model_uri=GIST_LINKML.offers_to_provide, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.offers_to_receive = Slot(uri=GIST.offersToReceive, name="offers_to_receive", curie=GIST.curie('offersToReceive'),
-                   model_uri=GIST_LINKML.offers_to_receive, domain=Offer, range=Optional[Union[Union[dict, "Any"], list[Union[dict, "Any"]]]])
+                   model_uri=GIST_LINKML.offers_to_receive, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
 
 slots.owns = Slot(uri=GIST.owns, name="owns", curie=GIST.curie('owns'),
                    model_uri=GIST_LINKML.owns, domain=None, range=Optional[Union[Union[dict, Any], list[Union[dict, Any]]]])
@@ -2010,7 +6590,7 @@ slots.name = Slot(uri=GIST.name, name="name", curie=GIST.curie('name'),
                    model_uri=GIST_LINKML.name, domain=None, range=Optional[str])
 
 slots.numeric_value = Slot(uri=GIST.numericValue, name="numeric_value", curie=GIST.curie('numericValue'),
-                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[Union[int, Decimal, float]])
+                   model_uri=GIST_LINKML.numeric_value, domain=None, range=Optional[Union[int, XsdByte, Decimal, float, XsdInt, XsdLong, XsdNegativeInteger, XsdNonNegativeInteger, XsdNonPositiveInteger, XsdPositiveInteger, XsdShort, XsdUnsignedByte, XsdUnsignedInt, XsdUnsignedLong, XsdUnsignedShort, OwlRational, OwlReal]])
 
 slots.planned_end_date = Slot(uri=GIST.plannedEndDate, name="planned_end_date", curie=GIST.curie('plannedEndDate'),
                    model_uri=GIST_LINKML.planned_end_date, domain=None, range=Optional[Union[str, XSDDateTime]])
@@ -2037,13 +6617,13 @@ slots.planned_start_year = Slot(uri=GIST.plannedStartYear, name="planned_start_y
                    model_uri=GIST_LINKML.planned_start_year, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.sequence = Slot(uri=GIST.sequence, name="sequence", curie=GIST.curie('sequence'),
-                   model_uri=GIST_LINKML.sequence, domain=OrderedMember, range=Optional[int])
+                   model_uri=GIST_LINKML.sequence, domain=None, range=Optional[int])
 
 slots.start_date_time = Slot(uri=GIST.startDateTime, name="start_date_time", curie=GIST.curie('startDateTime'),
                    model_uri=GIST_LINKML.start_date_time, domain=None, range=Optional[Union[str, XSDDateTime]])
 
 slots.symbol = Slot(uri=GIST.symbol, name="symbol", curie=GIST.curie('symbol'),
-                   model_uri=GIST_LINKML.symbol, domain=UnitOfMeasure, range=Optional[str])
+                   model_uri=GIST_LINKML.symbol, domain=None, range=Optional[str])
 
 slots.unique_text = Slot(uri=GIST.uniqueText, name="unique_text", curie=GIST.curie('uniqueText'),
                    model_uri=GIST_LINKML.unique_text, domain=None, range=Optional[str])

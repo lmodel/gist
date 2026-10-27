@@ -1,7 +1,0 @@
-# Invalid Person: has_aspect with invalid enum value
-# MADE_UP_ASPECT is not a valid AspectInstance permissible value
-
-name: "Invalid Person"
-description: "Person with invalid aspect value"
-has_aspect:
-  - MADE_UP_ASPECT
