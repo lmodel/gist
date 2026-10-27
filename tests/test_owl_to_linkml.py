@@ -154,6 +154,24 @@ class TestGetLiterals:
         assert M.get_literals(g, GIST.Thing, SKOS.definition) == []
 
 
+class TestCleanText:
+    def test_windows_line_ends_and_tab_indents_removed(self):
+        raw = "Intro:\r\n\r\n\t\t1. First.\r\n\t\t2. Second.\r\n\r\n\tEnd."
+        assert M.clean_text(raw) == "Intro:\n\n1. First.\n2. Second.\n\nEnd."
+
+    def test_outer_blank_lines_and_trailing_spaces_removed(self):
+        assert M.clean_text("\r\n\t\tA value.  \r\n    ") == "A value."
+
+    def test_plain_text_unchanged(self):
+        assert M.clean_text("A measurable characteristic.") == "A measurable characteristic."
+
+    def test_literals_read_clean(self):
+        g = Graph()
+        s = URIRef("http://example.org/s")
+        g.add((s, SKOS.definition, Literal("\r\n\t\tLine one.\r\n\r\n\t\tLine two.")))
+        assert M.get_literals(g, s, SKOS.definition) == ["Line one.\n\nLine two."]
+
+
 class TestFirstLiteral:
     def test_returns_first(self):
         g = _make_graph_with_literal(GIST.Thing, SKOS.definition, "First")

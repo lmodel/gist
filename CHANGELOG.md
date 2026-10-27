@@ -9,6 +9,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 ### Changed
 
 - **The generated artefacts come from linkml 1.12.1.** The Protobuf file is now valid proto3, the JSON Schema carries each element's examples, the JSON-LD names exact mappings `exact_mappings`, and the Python datamodel types `conversion_factor` and `numeric_value` as numbers. The Java classes that `gen-java` now writes are git-ignored.
+- **gist's long notes keep their paragraphs and lose their Turtle layout.** Windows line ends, tab indents and outer blank lines are gone, so the schema holds them as YAML blocks and the docs render their lists and equations as written.
 
 ### Fixed
 

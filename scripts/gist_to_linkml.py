@@ -216,8 +216,20 @@ def canonical_graph(g: Graph) -> Graph:
     return out
 
 
+def clean_text(text: str) -> str:
+    """Normalise the layout of a gist literal, keeping its words and line breaks.
+
+    The Turtle source writes long notes with Windows line ends and indents
+    their lines with tabs. Line ends become ``\\n``, each line loses its
+    leading tabs and trailing spaces, and the text loses its outer blank
+    lines, so the YAML holds it as a block and the docs render it as written.
+    """
+    lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    return "\n".join(line.lstrip("\t").rstrip() for line in lines).strip()
+
+
 def get_literals(g: Graph, subj, pred) -> list[str]:
-    return [str(o) for o in g.objects(subj, pred) if isinstance(o, Literal)]
+    return [clean_text(str(o)) for o in g.objects(subj, pred) if isinstance(o, Literal)]
 
 
 def first_literal(g: Graph, subj, pred) -> str | None:
