@@ -42,6 +42,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import textwrap
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -228,15 +229,20 @@ def canonical_graph(g: Graph) -> Graph:
 
 
 def clean_text(text: str) -> str:
-    """Normalise the layout of a gist literal, keeping its words and line breaks.
+    """Normalise the layout of a gist literal, keeping its words, line breaks
+    and nesting.
 
     The Turtle source writes long notes with Windows line ends and indents
-    their lines with tabs. Line ends become ``\\n``, each line loses its
-    leading tabs and trailing spaces, and the text loses its outer blank
-    lines, so the YAML holds it as a block and the docs render it as written.
+    every line after the first with tabs, and a list or worked example under
+    a line with more tabs than that. Line ends become ``\\n``; the indent the
+    later lines share goes, and each tab of a deeper one becomes two spaces,
+    as YAML holds no tab in a block; lines lose trailing spaces, and the text
+    its outer blank lines.
     """
-    lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
-    return "\n".join(line.lstrip("\t").rstrip() for line in lines).strip()
+    first, *rest = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    body = textwrap.dedent("\n".join(line.rstrip() for line in rest))
+    body = re.sub(r"(?m)^\t+", lambda m: "  " * len(m.group()), body)
+    return f"{first.strip()}\n{body}".strip()
 
 
 def get_literals(g: Graph, subj, pred) -> list[str]:

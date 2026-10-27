@@ -279,10 +279,10 @@ slots:
         There will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.
 
         The conventions for precision that are repeated in each property name are as follows:
-        - *DateTime is an abstraction over the various precisions of its subproperties.
-        - *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.
-        - *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.
-        - *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.
+          - *DateTime is an abstraction over the various precisions of its subproperties.
+          - *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.
+          - *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.
+          - *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.
     in_subset:
       - gist_rdfs_annotations
 
@@ -365,12 +365,12 @@ slots:
 
         For example, to convert 27 feet to yards:
 
-        the conversion factor of foot is 0.3048
-        the conversion factor of yard is 0.9144
+          the conversion factor of foot is 0.3048
+          the conversion factor of yard is 0.9144
 
-        so
+          so
 
-        27 feet = (27 x 0.3048) / 0.9144 = 9 yards
+          27 feet = (27 x 0.3048) / 0.9144 = 9 yards
     examples:
       - value: |-
           In the equation 1 inch = 0.0254 meters, the value 0.0254 is the conversion factor of inch.
@@ -1504,9 +1504,9 @@ slots:
       - |-
         This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':
 
-        1. To need something or to make something necessary.
-        2. To order or demand something, or to order someone to do something, especially because of a rule or law.
-        3. To make it officially necessary for someone to do something.
+          1. To need something or to make something necessary.
+          2. To order or demand something, or to order someone to do something, especially because of a rule or law.
+          3. To make it officially necessary for someone to do something.
 
         Implementations requiring a more specific meaning should define subproperties.
     examples:

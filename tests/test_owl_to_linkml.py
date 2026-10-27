@@ -156,9 +156,13 @@ class TestGetLiterals:
 
 
 class TestCleanText:
-    def test_windows_line_ends_and_tab_indents_removed(self):
-        raw = "Intro:\r\n\r\n\t\t1. First.\r\n\t\t2. Second.\r\n\r\n\tEnd."
+    def test_windows_line_ends_and_shared_indent_removed(self):
+        raw = "Intro:\r\n\r\n\t\t1. First.\r\n\t\t2. Second.\r\n\r\n\t\tEnd."
         assert M.clean_text(raw) == "Intro:\n\n1. First.\n2. Second.\n\nEnd."
+
+    def test_deeper_indent_kept_as_two_spaces_a_tab(self):
+        raw = "Intro:\r\n\r\n\t\t1. First.\r\n\t\t2. Second.\r\n\r\n\tEnd."
+        assert M.clean_text(raw) == "Intro:\n\n  1. First.\n  2. Second.\n\nEnd."
 
     def test_outer_blank_lines_and_trailing_spaces_removed(self):
         assert M.clean_text("\r\n\t\tA value.  \r\n    ") == "A value."
