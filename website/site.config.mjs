@@ -103,5 +103,15 @@ export const WORKSPACE = "auto";
 // line of that file that is bold throughout, or DESCRIPTION when null); and
 // the buttons, with site-relative links (Browse the bundle, Architecture when
 // the docs have an architecture page, Bundle health and Knowledge graph when
-// null).
-export const HOME = { source: "auto", tagline: null, actions: null };
+// null). Here the buttons are the defaults, with the schema's pages after the
+// bundle.
+export const HOME = {
+  source: "auto",
+  tagline: null,
+  actions: [
+    { text: "Browse the bundle", link: "/knowledge/", icon: "right-arrow" },
+    { text: "Schema", link: "/schema/", variant: "secondary" },
+    { text: "Bundle health", link: "/health/", variant: "secondary" },
+    { text: "Knowledge graph", link: "/graph/", variant: "secondary" },
+  ],
+};

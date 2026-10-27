@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **The documentation site's home page has a Schema button, which opens the schema's pages.**
+
 ## [0.5.0] - 2026-10-27
 
 ### Added
