@@ -1066,7 +1066,10 @@ def _literal_representer(dumper, data):
 
 def _setup_yaml() -> yaml.Dumper:
     class _Dumper(yaml.Dumper):
-        pass
+        # A list sits indented under its key, as yamllint and the overlay's
+        # ruamel output have it; PyYAML puts the dash at the key's column.
+        def increase_indent(self, flow=False, indentless=False):
+            return super().increase_indent(flow, False)
 
     _Dumper.add_representer(str, _literal_representer)
     _Dumper.add_representer(_LiteralStr, _literal_representer)

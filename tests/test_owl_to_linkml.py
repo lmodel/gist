@@ -1065,6 +1065,11 @@ class TestDumpYaml:
         text = M.dump_yaml(schema)
         assert text.index("z_key") < text.index("a_key")
 
+    def test_list_indented_under_its_key(self):
+        text = M.dump_yaml({"imports": ["linkml:types"], "classes": {"A": {"mixins": ["B"]}}})
+        assert "imports:\n  - linkml:types\n" in text
+        assert "    mixins:\n      - B\n" in text
+
 
 # ===========================================================================
 # 10. Schema assembly functions
