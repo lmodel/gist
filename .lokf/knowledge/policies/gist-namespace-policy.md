@@ -26,7 +26,7 @@ generated:
 status: draft
 verified:
   - by: process:ktl-librarian
-    at: "2026-10-18T00:19:20Z"
+    at: "2026-10-27T08:54:25Z"
 ---
 
 # gist namespace policy
