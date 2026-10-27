@@ -15,6 +15,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 - **The OWL types each gist property as gist does.** A union of classes left nine object properties on the default string range, so the OWL declared them datatype properties (and gist's four annotation properties too) and the Python datamodel typed six as strings.
 - **`gist:domainIncludes` and `gist:rangeIncludes` stay hints.** They no longer become a slot's `domain` or `range`, which gist's own axioms step outside (a `FormattedContent` is expressed in a `MediaType`, not a `Language`), so eleven slots lose a domain and nine are ranged over `Any`.
+- **A superproperty outside gist is a broad mapping.** `domain_includes` and `range_includes`, subproperties of `skos:scopeNote`, named it as a related mapping by its full IRI.
 
 ### Removed
 

@@ -550,6 +550,15 @@ class TestExtractSlots:
             "gist:conversionOffset", "https://example.org/units",
         ]
 
+    def test_superproperty_outside_gist_is_a_broad_mapping(self):
+        g = Graph()
+        g.add((GIST.domainIncludes, RDF.type, OWL.AnnotationProperty))
+        g.add((GIST.domainIncludes, RDFS.subPropertyOf, SKOS.scopeNote))
+        entry = M.extract_slots(g)["domain_includes"]
+        assert entry["broad_mappings"] == ["skos:scopeNote"]
+        assert "related_mappings" not in entry
+        assert "is_a" not in entry
+
     def test_slot_reads_rdfs_label_and_prefixed_comments(self):
         g = Graph()
         g.add((GIST.hasParty, RDF.type, OWL.ObjectProperty))

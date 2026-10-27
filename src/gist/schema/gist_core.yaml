@@ -1975,8 +1975,8 @@ slots:
       - value: The domain of the property gist:containedText includes gist:Tag and gist:Text.
     in_subset:
       - gist_core
-    related_mappings:
-      - http://www.w3.org/2004/02/skos/core#scopeNote
+    broad_mappings:
+      - skos:scopeNote
 
   is_superseded_by:
     slot_uri: gist:isSupersededBy
@@ -2022,8 +2022,8 @@ slots:
       - value: The range of the property gist:isCategorizedBy includes gist:Category.
     in_subset:
       - gist_core
-    related_mappings:
-      - http://www.w3.org/2004/02/skos/core#scopeNote
+    broad_mappings:
+      - skos:scopeNote
 
 classes:
 

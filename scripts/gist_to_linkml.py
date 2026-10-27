@@ -579,13 +579,13 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                         "OWL additional subPropertyOf (gist:): "
                         + ", ".join(camel_to_snake(gist_local(o)) for o in sub_of[1:])
                     ]
-            # Cross-namespace subPropertyOf  -> related_mappings
+            # A superproperty outside gist is a broader term: broad_mappings
             cross_sub = [
                 o for o in g.objects(prop, RDFS.subPropertyOf)
                 if isinstance(o, URIRef) and not gist_local(o)
             ]
             if cross_sub:
-                entry["related_mappings"] = [str(o) for o in cross_sub]
+                entry["broad_mappings"] = [uri_to_curie(o) or str(o) for o in cross_sub]
 
             # --- domain (rdfs:domain  -> LinkML domain) ---
             gist_domains = [
