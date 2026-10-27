@@ -43,14 +43,23 @@ def upstream_gist():
         union = g.value(node, OWL.unionOf) if isinstance(node, rdflib.BNode) else None
         return {str(m) for m in rdflib.collection.Collection(g, union)} if union else {str(node)}
 
-    # Each datatype property's range datatypes
-    datatype_ranges = {}
-    for p in g.subjects(RDF.type, OWL.DatatypeProperty):
-        if str(p).startswith(SEMANTIC_ARTS_NS) and (p, RDFS.range, None) in g:
-            datatype_ranges[str(p)] = set().union(*(named_or_union(r) for r in g.objects(p, RDFS.range)))
+    # Each object or datatype property's rdfs:domain classes (empty without
+    # one), each datatype property's range datatypes, and each class's named
+    # superclasses
+    domains, datatype_ranges = {}, {}
+    for kind in (OWL.ObjectProperty, OWL.DatatypeProperty):
+        for p in g.subjects(RDF.type, kind):
+            if str(p).startswith(SEMANTIC_ARTS_NS):
+                domains[str(p)] = set().union(*(named_or_union(d) for d in g.objects(p, RDFS.domain)))
+                if kind == OWL.DatatypeProperty and (p, RDFS.range, None) in g:
+                    datatype_ranges[str(p)] = set().union(*(named_or_union(r) for r in g.objects(p, RDFS.range)))
+    superclasses = {
+        c: {str(o) for o in g.objects(rdflib.URIRef(c), RDFS.subClassOf) if str(o) in classes}
+        for c in classes
+    }
     return {
         "iris": iris, "local_names": local_names, "classes": classes,
         "property_types": property_types, "deprecated": deprecated,
-        "datatype_ranges": datatype_ranges,
+        "domains": domains, "datatype_ranges": datatype_ranges, "superclasses": superclasses,
         "gist_ns": SEMANTIC_ARTS_NS, "gistd_ns": SEMANTIC_ARTS_DATA_NS, "lmodel_ns": LMODEL_NS,
     }

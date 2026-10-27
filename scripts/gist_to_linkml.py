@@ -482,14 +482,28 @@ def _merge_doc(entry: dict, doc: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def _domain_classes(g: Graph, prop) -> list[str]:
-    """The gist classes that the rdfs:domain of *prop* names, alone or in a union."""
+    """The gist classes that the rdfs:domain of *prop* names, alone or in a union.
+
+    Raises ValueError for a domain whose slot no set of classes carries
+    faithfully: two domains, which OWL reads as their intersection, an
+    anonymous class other than a union, or a union member or class that is
+    not a gist class *g* declares. gist 14.1.0 has none of these.
+    """
+    domains = list(g.objects(prop, RDFS.domain))
+    if len(domains) > 1:
+        raise ValueError(f"{term_str(prop)} has {len(domains)} rdfs:domain values, an intersection")
     found: list[str] = []
-    for d in g.objects(prop, RDFS.domain):
-        if isinstance(d, URIRef):
-            found.append(gist_local(d))
-        elif isinstance(d, BNode):
-            found += [gist_local(m) for m in union_members(g, d) or []]
-    return _dedupe(c for c in found if c)
+    for d in domains:
+        union = next(g.objects(d, OWL.unionOf), None) if isinstance(d, BNode) else None
+        members = list(rdflib.collection.Collection(g, union)) if union is not None else [d]
+        for m in members:
+            if not (isinstance(m, URIRef) and gist_local(m) and (m, RDF.type, OWL.Class) in g):
+                raise ValueError(
+                    f"{term_str(prop)} has the domain {owl_expr_str(g, d)}, "
+                    "which is not a declared gist class or a union of them"
+                )
+            found.append(gist_local(m))
+    return _dedupe(found)
 
 
 def _ifp_slots_by_domain_class(g: Graph) -> dict[str, list[str]]:
@@ -513,9 +527,9 @@ def _slots_by_domain_class(g: Graph) -> dict[str | None, list[str]]:
     """Map each gist class to the slots its instances may carry.
 
     The slot of an object or datatype property goes to each gist class its
-    rdfs:domain names, and its subclasses inherit it. A property whose domain
-    names no gist class, because it has none, may describe any individual, so
-    its slot goes under ``None``, for the GistThing mixin every class takes.
+    rdfs:domain names (see ``_domain_classes``), and its subclasses inherit
+    it. A property gist gives no domain may describe any individual, so its
+    slot goes under ``None``, for the GistThing mixin every class takes.
     Annotation properties describe gist's terms, not the individuals its
     classes hold, and go nowhere.
     """
@@ -530,8 +544,44 @@ def _slots_by_domain_class(g: Graph) -> dict[str | None, list[str]]:
 
 
 def domainless_slots(g: Graph) -> list[str]:
-    """The slots of the object and datatype properties whose domain names no gist class."""
+    """The slots of the object and datatype properties gist declares without a domain."""
     return _slots_by_domain_class(g).get(None, [])
+
+
+def _named_superclasses(g: Graph, cls) -> list[str]:
+    """The gist classes *cls* is an rdfs:subClassOf by name, in the graph's order."""
+    return [gist_local(o) for o in g.objects(cls, RDFS.subClassOf) if isinstance(o, URIRef) and gist_local(o)]
+
+
+def _slots_from_other_superclasses(g: Graph, slots_by_class: dict) -> dict[str, list[str]]:
+    """Map each gist class to the domain slots of its OWL superclasses that its
+    is_a chain, which follows only the first named superclass, does not pass.
+
+    A class with two named superclasses inherits through is_a from the first
+    alone, so the slots whose domain is the other one, or above it, go on the
+    class itself. In gist 14.1.0 only ScheduledTask has a second (Task), and
+    no domain names Task or a class above it.
+    """
+    supers = {
+        gist_local(c): _named_superclasses(g, c)
+        for c in g.subjects(RDF.type, OWL.Class) if isinstance(c, URIRef) and gist_local(c)
+    }
+    extra: dict[str, list[str]] = {}
+    for cls in supers:
+        chain, node = set(), cls
+        while node and node not in chain:
+            chain.add(node)
+            node = (supers.get(node) or [None])[0]
+        ancestors, todo = set(), list(supers[cls])
+        while todo:
+            node = todo.pop()
+            if node not in ancestors:
+                ancestors.add(node)
+                todo += supers.get(node, [])
+        slots = {s for a in ancestors - chain for s in slots_by_class.get(a, [])}
+        if slots:
+            extra[cls] = sorted(slots)
+    return extra
 
 
 def extract_classes(g: Graph) -> dict[str, dict]:
@@ -539,6 +589,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
     classes: dict[str, dict] = {}
     ifp_slots_by_class = _ifp_slots_by_domain_class(g)
     slots_by_class = _slots_by_domain_class(g)
+    other_slots = _slots_from_other_superclasses(g, slots_by_class)
 
     for cls in g.subjects(RDF.type, OWL.Class):
         if not isinstance(cls, URIRef):
@@ -613,9 +664,11 @@ def extract_classes(g: Graph) -> dict[str, dict]:
         if disjoints:
             entry["disjoint_with"] = disjoints  # multivalued in the LinkML metamodel
 
-        # --- the slots of the properties whose rdfs:domain names this class ---
-        if slots_by_class.get(cls_local):
-            entry["slots"] = slots_by_class[cls_local]
+        # --- the slots of the properties whose rdfs:domain names this class,
+        # or a superclass its is_a chain does not pass ---
+        own_slots = sorted({*slots_by_class.get(cls_local, []), *other_slots.get(cls_local, [])})
+        if own_slots:
+            entry["slots"] = own_slots
 
         # --- InverseFunctionalProperty  -> unique_keys ---
         # An IFP whose rdfs:domain (named or unionOf) includes this class becomes
@@ -639,6 +692,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
 def extract_slots(g: Graph) -> dict[str, dict]:
     """Extract all property definitions in the gist: namespace."""
     slots: dict[str, dict] = {}
+    unranged: list[str] = []  # object slots gist gives no range; see the end
 
     prop_types = {
         OWL.ObjectProperty: "object",
@@ -766,12 +820,12 @@ def extract_slots(g: Graph) -> dict[str, dict]:
 
                 if kind == "object":
                     entry.setdefault("multivalued", True)
-                    # gist leaves many object properties unranged, and a union
-                    # range sets only any_of. The value is still an individual,
-                    # never the default string: Any says so, as LinkML asks of
-                    # a union range, so gen-owl declares an object property
-                    # and a JSON-LD context reads the value as an IRI.
-                    entry.setdefault("range", "Any")
+                    if "range" in entry or "any_of" in entry:
+                        # A union range sets only any_of, and LinkML asks for a
+                        # range beside it: Any, as the members share no parent.
+                        entry.setdefault("range", "Any")
+                    else:
+                        unranged.append(sname)
                 elif kind == "annotation":
                     # gen-owl takes a property's type from its range unless
                     # implements names one.
@@ -839,6 +893,20 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 entry["annotations"] = ann
 
             slots[sname] = entry
+
+    # An object property gist leaves unranged takes the range of its nearest
+    # ranged gist superproperty, as OWL entails, or else Any. Its value is an
+    # individual either way, never the default string, so gen-owl declares an
+    # object property and a JSON-LD context reads the value as an IRI.
+    for sname in unranged:
+        parent, seen = slots[sname].get("is_a"), {sname}
+        while parent in unranged and parent not in seen:
+            seen.add(parent)
+            parent = slots[parent].get("is_a")
+        source = slots.get(parent, {}) if parent not in seen else {}
+        slots[sname]["range"] = source.get("range", "Any")
+        if "any_of" in source:
+            slots[sname]["any_of"] = [dict(e) for e in source["any_of"]]
 
     return slots
 
@@ -910,9 +978,11 @@ def _permissible_values(g: Graph, individuals: list[URIRef]) -> dict[str, dict]:
             raw_local = curie.split(":", 1)[-1] if curie else local_name(ind)
             meaning = curie if curie else str(ind)
 
-        val_key = _enum_val_key(raw_local)
-        if val_key in seen_keys:
-            val_key = val_key + "_2"
+        base_key = val_key = _enum_val_key(raw_local)
+        n = 1
+        while val_key in seen_keys:
+            n += 1
+            val_key = f"{base_key}_{n}"
         seen_keys[val_key] = raw_local
 
         pv_entry: dict = {}

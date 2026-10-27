@@ -318,10 +318,26 @@ class TestExtractClasses:
         col = rdflib.collection.Collection(g, None, [GIST.Category, GIST.Person])
         g.add((bn, OWL.unionOf, col.uri))
         g.add((GIST.owns, RDFS.domain, bn))
+        g.add((GIST.sequence, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.sequence, RDFS.domain, GIST.Category))
         g.add((GIST.name, RDF.type, OWL.DatatypeProperty))
         classes = M.extract_classes(g)
-        assert classes["Category"]["slots"] == ["has_parent", "owns"]
+        assert classes["Category"]["slots"] == ["has_parent", "owns", "sequence"]
         assert classes["Person"]["slots"] == ["owns"]
+
+    def test_slots_of_a_superclass_off_the_is_a_chain(self):
+        g = Graph()
+        for cls in (GIST.Task, GIST.Event, GIST.ScheduledTask):
+            g.add((cls, RDF.type, OWL.Class))
+        g.add((GIST.ScheduledTask, RDFS.subClassOf, GIST.Event))
+        g.add((GIST.ScheduledTask, RDFS.subClassOf, GIST.Task))
+        for prop, cls in ((GIST.hasGoal, GIST.Task), (GIST.occursIn, GIST.Event)):
+            g.add((prop, RDF.type, OWL.ObjectProperty))
+            g.add((prop, RDFS.domain, cls))
+        classes = M.extract_classes(g)
+        parent = classes["ScheduledTask"]["is_a"]
+        other = {"Task": "has_goal", "Event": "occurs_in"}[({"Task", "Event"} - {parent}).pop()]
+        assert classes["ScheduledTask"]["slots"] == [other]
 
     def test_class_no_domain_names_has_no_slots(self):
         g = _core_class_graph()
@@ -503,6 +519,27 @@ class TestExtractSlots:
             "typeof": "integer", "uri": "xsd:int",
             "description": "An integer literal typed xsd:int, which gist allows.",
         }}
+
+    def test_unranged_object_subproperty_takes_its_parents_range(self):
+        g = Graph()
+        g.add((GIST.isPartOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.isPartOf, RDFS.range, GIST.Category))
+        g.add((GIST.isDirectPartOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.isDirectPartOf, RDFS.subPropertyOf, GIST.isPartOf))
+        g.add((GIST.isNearlyPartOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.isNearlyPartOf, RDFS.subPropertyOf, GIST.isDirectPartOf))
+        slots = M.extract_slots(g)
+        assert slots["is_direct_part_of"]["range"] == "Category"
+        assert slots["is_nearly_part_of"]["range"] == "Category"
+
+    def test_unranged_object_subproperty_of_unranged_parent_ranges_over_any(self):
+        g = Graph()
+        g.add((GIST.isConnectedTo, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.links, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.links, RDFS.subPropertyOf, GIST.isConnectedTo))
+        slots = M.extract_slots(g)
+        assert slots["links"]["range"] == "Any"
+        assert slots["is_connected_to"]["range"] == "Any"
 
     def test_transitive_property(self):
         g = Graph()
@@ -790,6 +827,14 @@ class TestExtractEnums:
         enums = M.extract_enums(g)
         pv = enums["AspectInstance"]["permissible_values"]
         assert "ASPECT_MASS" in pv
+
+    def test_enum_value_keys_that_collide_are_numbered(self):
+        g = Graph()
+        for local in ("_Aspect_mass", "__Aspect_mass", "Aspect_mass"):
+            g.add((GISTD[local], RDF.type, GIST.Aspect))
+        pv = M.extract_enums(g)["AspectInstance"]["permissible_values"]
+        assert sorted(pv) == ["ASPECT_MASS", "ASPECT_MASS_2", "ASPECT_MASS_3"]
+        assert len({v["meaning"] for v in pv.values()}) == 3
 
     def test_enum_meaning_set(self):
         g = Graph()
@@ -1222,6 +1267,7 @@ class TestDomainlessSlots:
         g = Graph()
         g.add((GIST.name, RDF.type, OWL.DatatypeProperty))
         g.add((GIST.isPartOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.GeoPoint, RDF.type, OWL.Class))
         g.add((GIST.latitude, RDF.type, OWL.DatatypeProperty))
         g.add((GIST.latitude, RDFS.domain, GIST.GeoPoint))
         g.add((GIST.license, RDF.type, OWL.AnnotationProperty))
@@ -1232,6 +1278,61 @@ class TestDomainlessSlots:
         g.add((GIST.containedText, RDF.type, OWL.DatatypeProperty))
         g.add((GIST.containedText, GIST.domainIncludes, GIST.Text))
         assert M.domainless_slots(g) == ["contained_text"]
+
+
+class TestDomainsNoClassCarries:
+    """A domain whose slot no set of gist classes carries faithfully stops the
+    converter, rather than putting the slot on too many classes or too few."""
+
+    @staticmethod
+    def _graph(*domains) -> Graph:
+        g = Graph()
+        for cls in (GIST.Category, GIST.Person):
+            g.add((cls, RDF.type, OWL.Class))
+        g.add((GIST.owns, RDF.type, OWL.ObjectProperty))
+        for d in domains:
+            g.add((GIST.owns, RDFS.domain, d))
+        return g
+
+    def _union(self, g: Graph, *members) -> BNode:
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, list(members))
+        g.add((bn, OWL.unionOf, col.uri))
+        return bn
+
+    def test_two_domains(self):
+        with pytest.raises(ValueError, match="2 rdfs:domain values"):
+            M.domainless_slots(self._graph(GIST.Category, GIST.Person))
+
+    def test_an_undeclared_class(self):
+        with pytest.raises(ValueError, match="gist:Place"):
+            M.domainless_slots(self._graph(GIST.Place))
+
+    def test_a_class_outside_gist(self):
+        with pytest.raises(ValueError, match="not a declared gist class"):
+            M.domainless_slots(self._graph(SKOS.Concept))
+
+    def test_a_union_with_an_anonymous_member(self):
+        g = self._graph()
+        restriction = BNode()
+        g.add((restriction, RDF.type, OWL.Restriction))
+        g.add((GIST.owns, RDFS.domain, self._union(g, GIST.Category, restriction)))
+        with pytest.raises(ValueError, match="not a declared gist class"):
+            M.domainless_slots(g)
+
+    def test_an_intersection(self):
+        g = self._graph()
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, [GIST.Category, GIST.Person])
+        g.add((bn, OWL.intersectionOf, col.uri))
+        g.add((GIST.owns, RDFS.domain, bn))
+        with pytest.raises(ValueError, match="not a declared gist class"):
+            M.domainless_slots(g)
+
+    def test_a_union_of_declared_classes_is_carried(self):
+        g = self._graph()
+        g.add((GIST.owns, RDFS.domain, self._union(g, GIST.Category, GIST.Person)))
+        assert M.domainless_slots(g) == []
 
 
 class TestBuildMediaTypesSchema:

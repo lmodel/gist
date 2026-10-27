@@ -279,3 +279,39 @@ class TestGistNamespace:
         assert invented == [], "IRIs in Semantic Arts' namespace that gist does not define"
         cloned = [i for i in iris if i.startswith(lmodel_ns) and i[len(lmodel_ns):] in upstream_gist["local_names"]]
         assert cloned == [], "gist terms re-minted in lmodel's namespace"
+
+
+class TestGistDomains:
+    """Each class carries the slots gist's rdfs:domain axioms let its instances
+    carry, and no others."""
+
+    def test_each_class_carries_exactly_its_domain_slots(self, upstream_gist):
+        from linkml_runtime.utils.schemaview import SchemaView
+
+        import gist_to_linkml as M
+
+        sv = SchemaView(str(SCHEMA_DIR / "gist.yaml"))
+        supers = upstream_gist["superclasses"]
+
+        def self_and_ancestors(cls):
+            seen, todo = set(), [cls]
+            while todo:
+                c = todo.pop()
+                if c not in seen:
+                    seen.add(c)
+                    todo += supers.get(c, [])
+            return seen
+
+        wrong = {}
+        for cls in sorted(upstream_gist["classes"]):
+            lineage = self_and_ancestors(cls)
+            expected = {
+                M.camel_to_snake(prop[len(upstream_gist["gist_ns"]):])
+                for prop, domain in upstream_gist["domains"].items()
+                if not domain or domain & lineage
+            }
+            name = cls[len(upstream_gist["gist_ns"]):]
+            actual = set(sv.class_slots(name))
+            if actual != expected:
+                wrong[name] = {"missing": sorted(expected - actual), "extra": sorted(actual - expected)}
+        assert wrong == {}
