@@ -4202,7 +4202,7 @@
       "aliases": [
         "Account"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Account"
       ],
       "close_mappings": [
@@ -4234,7 +4234,7 @@
       "aliases": [
         "Address"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Address"
       ],
       "narrow_mappings": [
@@ -4269,7 +4269,7 @@
       "aliases": [
         "Address Usage Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:AddressUsageType"
       ],
       "is_a": "Category",
@@ -4304,7 +4304,7 @@
       "aliases": [
         "Agreement"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Agreement"
       ],
       "close_mappings": [
@@ -4344,7 +4344,7 @@
       "aliases": [
         "Aspect"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Aspect"
       ],
       "mixins": [
@@ -4385,7 +4385,7 @@
       "aliases": [
         "Assignment"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Assignment"
       ],
       "close_mappings": [
@@ -4421,7 +4421,7 @@
       "aliases": [
         "Behavior"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Behavior"
       ],
       "is_a": "Category",
@@ -4458,7 +4458,7 @@
       "aliases": [
         "Building"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Building"
       ],
       "is_a": "Landmark",
@@ -4490,7 +4490,7 @@
       "aliases": [
         "Bundled Catalog Item"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:BundledCatalogItem"
       ],
       "is_a": "CatalogItem",
@@ -4516,7 +4516,7 @@
       "aliases": [
         "Catalog Item"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:CatalogItem"
       ],
       "is_a": "Specification",
@@ -4551,7 +4551,7 @@
       "aliases": [
         "Category"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Category"
       ],
       "mixins": [
@@ -4588,7 +4588,7 @@
       "aliases": [
         "Collection"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Collection"
       ],
       "is_a": "Composite",
@@ -4629,7 +4629,7 @@
       "aliases": [
         "Commitment"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Commitment"
       ],
       "is_a": "Intention",
@@ -4659,7 +4659,7 @@
       "aliases": [
         "Component"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Component"
       ],
       "mixins": [
@@ -4698,7 +4698,7 @@
       "aliases": [
         "Composite"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Composite"
       ],
       "mixins": [
@@ -4729,7 +4729,7 @@
       "aliases": [
         "Contemporary Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ContemporaryEvent"
       ],
       "is_a": "Event",
@@ -4762,7 +4762,7 @@
       "aliases": [
         "Content"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Content"
       ],
       "mixins": [
@@ -4808,7 +4808,7 @@
       "aliases": [
         "Content Expression"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ContentExpression"
       ],
       "is_a": "Content",
@@ -4840,7 +4840,7 @@
       "aliases": [
         "Contingent Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ContingentEvent"
       ],
       "is_a": "Event",
@@ -4869,7 +4869,7 @@
       "aliases": [
         "Contingent Obligation"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ContingentObligation"
       ],
       "broad_mappings": [
@@ -4898,7 +4898,7 @@
       "aliases": [
         "Contract"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Contract"
       ],
       "related_mappings": [
@@ -4924,7 +4924,7 @@
       "aliases": [
         "Contract Term"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ContractTerm"
       ],
       "narrow_mappings": [
@@ -4956,7 +4956,7 @@
       "aliases": [
         "Controlled Vocabulary"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ControlledVocabulary"
       ],
       "is_a": "Collection",
@@ -4983,7 +4983,7 @@
       "aliases": [
         "Country Geographic Region"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:CountryGeoRegion"
       ],
       "is_a": "GovernedGeoRegion",
@@ -5013,7 +5013,7 @@
       "aliases": [
         "Country Government"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:CountryGovernment"
       ],
       "is_a": "GovernmentOrganization",
@@ -5045,7 +5045,7 @@
       "aliases": [
         "Degree Of Commitment"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:DegreeOfCommitment"
       ],
       "is_a": "Category",
@@ -5074,7 +5074,7 @@
       "aliases": [
         "Determination"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Determination"
       ],
       "close_mappings": [
@@ -5106,7 +5106,7 @@
       "aliases": [
         "Discipline"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Discipline"
       ],
       "is_a": "Category",
@@ -5136,7 +5136,7 @@
         "Electronic Address",
         "Virtual Address"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ElectronicAddress"
       ],
       "related_mappings": [
@@ -5171,7 +5171,7 @@
       "aliases": [
         "Electronic Address Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ElectronicAddressType"
       ],
       "is_a": "Category",
@@ -5203,7 +5203,7 @@
       "aliases": [
         "Equipment"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Equipment"
       ],
       "is_a": "PhysicalIdentifiableItem",
@@ -5226,7 +5226,7 @@
       "aliases": [
         "Equipment Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:EquipmentType"
       ],
       "is_a": "Category",
@@ -5259,7 +5259,7 @@
       "aliases": [
         "Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Event"
       ],
       "narrow_mappings": [
@@ -5305,7 +5305,7 @@
       "aliases": [
         "Event Specification"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:EventSpecification"
       ],
       "is_a": "Specification",
@@ -5340,7 +5340,7 @@
       "aliases": [
         "Formatted Content"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:FormattedContent"
       ],
       "is_a": "ContentExpression",
@@ -5369,7 +5369,7 @@
       "aliases": [
         "Function"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Function"
       ],
       "is_a": "Intention",
@@ -5398,7 +5398,7 @@
       "aliases": [
         "General Media Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeneralMediaType"
       ],
       "is_a": "Category",
@@ -5424,7 +5424,7 @@
       "aliases": [
         "Geographic Location"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeoLocation"
       ],
       "narrow_mappings": [
@@ -5455,7 +5455,7 @@
       "aliases": [
         "Geographic Point"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeoPoint"
       ],
       "is_a": "GeoLocation",
@@ -5500,7 +5500,7 @@
       "aliases": [
         "Geographic Region"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeoRegion"
       ],
       "is_a": "GeoLocation",
@@ -5540,7 +5540,7 @@
       "aliases": [
         "Geographic Route"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeoRoute"
       ],
       "is_a": "OrderedCollection",
@@ -5572,7 +5572,7 @@
       "aliases": [
         "Geographic Volume"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GeoVolume"
       ],
       "is_a": "GeoLocation",
@@ -5601,7 +5601,7 @@
       "aliases": [
         "Governed Geographic Region"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GovernedGeoRegion"
       ],
       "is_a": "GeoRegion",
@@ -5637,7 +5637,7 @@
       "aliases": [
         "Government Organization"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:GovernmentOrganization"
       ],
       "broad_mappings": [
@@ -5670,7 +5670,7 @@
       "aliases": [
         "Historical Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:HistoricalEvent"
       ],
       "is_a": "Event",
@@ -5705,7 +5705,7 @@
       "aliases": [
         "ID"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ID"
       ],
       "close_mappings": [
@@ -5747,7 +5747,7 @@
       "aliases": [
         "Intellectual Property"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:IntellectualProperty"
       ],
       "related_mappings": [
@@ -5785,7 +5785,7 @@
       "aliases": [
         "Intention"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Intention"
       ],
       "mixins": [
@@ -5826,7 +5826,7 @@
       "aliases": [
         "Intergovernmental Organization"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:IntergovernmentalOrganization"
       ],
       "is_a": "Organization",
@@ -5858,7 +5858,7 @@
       "aliases": [
         "Knowledge Concept"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:KnowledgeConcept"
       ],
       "related_mappings": [
@@ -5889,7 +5889,7 @@
       "aliases": [
         "Landmark"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Landmark"
       ],
       "is_a": "PhysicalIdentifiableItem",
@@ -5919,7 +5919,7 @@
       "aliases": [
         "Language"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Language"
       ],
       "mixins": [
@@ -5967,7 +5967,7 @@
       "aliases": [
         "Living Thing"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:LivingThing"
       ],
       "is_a": "PhysicalIdentifiableItem",
@@ -6005,7 +6005,7 @@
       "aliases": [
         "Magnitude"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Magnitude"
       ],
       "close_mappings": [
@@ -6061,7 +6061,7 @@
       "aliases": [
         "Media Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:MediaType"
       ],
       "is_a": "Category",
@@ -6090,7 +6090,7 @@
       "aliases": [
         "Medium"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Medium"
       ],
       "is_a": "Category",
@@ -6122,7 +6122,7 @@
       "aliases": [
         "Message"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Message"
       ],
       "is_a": "ContentExpression",
@@ -6154,7 +6154,7 @@
       "aliases": [
         "Network"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Network"
       ],
       "is_a": "Composite",
@@ -6190,7 +6190,7 @@
       "aliases": [
         "Network Link"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:NetworkLink"
       ],
       "is_a": "Component",
@@ -6222,7 +6222,7 @@
       "aliases": [
         "Network Node"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:NetworkNode"
       ],
       "is_a": "Component",
@@ -6257,7 +6257,7 @@
       "aliases": [
         "Offer"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Offer"
       ],
       "is_a": "ContingentObligation",
@@ -6286,7 +6286,7 @@
       "aliases": [
         "Ordered Collection"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:OrderedCollection"
       ],
       "is_a": "Collection",
@@ -6321,7 +6321,7 @@
       "aliases": [
         "Ordered Member"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:OrderedMember"
       ],
       "is_a": "Component",
@@ -6354,7 +6354,7 @@
       "aliases": [
         "Organization"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Organization"
       ],
       "close_mappings": [
@@ -6409,10 +6409,8 @@
       "aliases": [
         "Permission"
       ],
-      "mappings": [
-        "gist:Permission"
-      ],
       "exact_mappings": [
+        "gist:Permission",
         "dpv:Permission"
       ],
       "is_a": "Intention",
@@ -6445,10 +6443,8 @@
       "aliases": [
         "Person"
       ],
-      "mappings": [
-        "gist:Person"
-      ],
       "exact_mappings": [
+        "gist:Person",
         "dpv:NaturalPerson"
       ],
       "close_mappings": [
@@ -6490,7 +6486,7 @@
       "aliases": [
         "Physical Action Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalActionType"
       ],
       "is_a": "Category",
@@ -6522,7 +6518,7 @@
       "aliases": [
         "Physical Address"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalAddress"
       ],
       "close_mappings": [
@@ -6554,7 +6550,7 @@
       "aliases": [
         "Physical Address Type"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalAddressType"
       ],
       "is_a": "Category",
@@ -6590,7 +6586,7 @@
       "aliases": [
         "Physical Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalEvent"
       ],
       "is_a": "Event",
@@ -6625,7 +6621,7 @@
       "aliases": [
         "Physical Identifiable Item"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalIdentifiableItem"
       ],
       "mixins": [
@@ -6671,7 +6667,7 @@
       "aliases": [
         "Physical Substance"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:PhysicalSubstance"
       ],
       "mixins": [
@@ -6705,7 +6701,7 @@
       "aliases": [
         "Product Category"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ProductCategory"
       ],
       "is_a": "Category",
@@ -6731,7 +6727,7 @@
       "aliases": [
         "Product Specification"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ProductSpecification"
       ],
       "related_mappings": [
@@ -6766,7 +6762,7 @@
       "aliases": [
         "Project"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Project"
       ],
       "is_a": "Task",
@@ -6795,7 +6791,7 @@
       "aliases": [
         "Reference Value"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ReferenceValue"
       ],
       "is_a": "Magnitude",
@@ -6830,7 +6826,7 @@
       "aliases": [
         "Rendered Content"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:RenderedContent"
       ],
       "is_a": "FormattedContent",
@@ -6859,7 +6855,7 @@
       "aliases": [
         "Requirement"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Requirement"
       ],
       "is_a": "Intention",
@@ -6891,7 +6887,7 @@
       "aliases": [
         "Restriction"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Restriction"
       ],
       "is_a": "Intention",
@@ -6920,7 +6916,7 @@
       "aliases": [
         "Scheduled Event"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ScheduledEvent"
       ],
       "related_mappings": [
@@ -6953,7 +6949,7 @@
       "aliases": [
         "Scheduled Task"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ScheduledTask"
       ],
       "is_a": "ScheduledEvent",
@@ -6986,7 +6982,7 @@
       "aliases": [
         "Schema Meta Data"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:SchemaMetaData"
       ],
       "mixins": [
@@ -7017,7 +7013,7 @@
       "aliases": [
         "Service Specification"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:ServiceSpecification"
       ],
       "is_a": "CatalogItem",
@@ -7049,7 +7045,7 @@
       "aliases": [
         "Specification"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Specification"
       ],
       "related_mappings": [
@@ -7083,7 +7079,7 @@
       "aliases": [
         "Sub-Country Government"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:SubCountryGovernment"
       ],
       "is_a": "GovernmentOrganization",
@@ -7118,7 +7114,7 @@
       "aliases": [
         "System"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:System"
       ],
       "is_a": "Composite",
@@ -7147,7 +7143,7 @@
       "aliases": [
         "Tag"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Tag"
       ],
       "is_a": "Category",
@@ -7178,7 +7174,7 @@
       "aliases": [
         "Task"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Task"
       ],
       "related_mappings": [
@@ -7218,7 +7214,7 @@
       "aliases": [
         "Task Template"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:TaskTemplate"
       ],
       "is_a": "Template",
@@ -7250,7 +7246,7 @@
       "aliases": [
         "Template"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Template"
       ],
       "mixins": [
@@ -7290,7 +7286,7 @@
       "aliases": [
         "Temporal Relation"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:TemporalRelation"
       ],
       "mixins": [
@@ -7327,7 +7323,7 @@
       "aliases": [
         "Text"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Text"
       ],
       "is_a": "ContentExpression",
@@ -7363,7 +7359,7 @@
       "aliases": [
         "Time Interval"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:TimeInterval"
       ],
       "related_mappings": [
@@ -7394,7 +7390,7 @@
       "aliases": [
         "Transaction"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:Transaction"
       ],
       "related_mappings": [
@@ -7433,7 +7429,7 @@
       "aliases": [
         "Unit Group"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:UnitGroup"
       ],
       "is_a": "Collection",
@@ -7465,7 +7461,7 @@
       "aliases": [
         "Unit of Measure"
       ],
-      "mappings": [
+      "exact_mappings": [
         "gist:UnitOfMeasure"
       ],
       "close_mappings": [
@@ -7507,7 +7503,7 @@
         "gist_core"
       ],
       "from_schema": "https://w3id.org/lmodel/gist/core",
-      "mappings": [
+      "exact_mappings": [
         "linkml:Any"
       ],
       "slot_usage": {},
@@ -7515,11 +7511,10 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.11.0",
+  "metamodel_version": "1.12.0",
   "source_file": "gist.yaml",
-  "source_file_date": "2026-09-30T01:46:30",
+  "source_file_date": "2026-10-27T09:05:05",
   "source_file_size": 1290,
-  "generation_date": "2026-09-30T01:46:33",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/gist.context.jsonld",

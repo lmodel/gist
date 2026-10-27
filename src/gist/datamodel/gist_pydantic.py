@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.11.0"
+metamodel_version = "1.12.0"
 version = "14.1.0"
 
 
