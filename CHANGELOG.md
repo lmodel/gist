@@ -10,6 +10,11 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 - **The generated artefacts come from linkml 1.12.1.** The Protobuf file is now valid proto3, the JSON Schema carries each element's examples, the JSON-LD names exact mappings `exact_mappings`, and the Python datamodel types `conversion_factor` and `numeric_value` as numbers. The Java classes that `gen-java` now writes are git-ignored.
 
+### Fixed
+
+- **The OWL types each gist property as gist does.** A union of classes left nine object properties on the default string range, so the OWL declared them datatype properties (and gist's four annotation properties too) and the Python datamodel typed six as strings.
+- **`gist:domainIncludes` and `gist:rangeIncludes` stay hints.** They no longer become a slot's `domain` or `range`, which gist's own axioms step outside (a `FormattedContent` is expressed in a `MediaType`, not a `Language`), so eleven slots lose a domain and nine are ranged over `Any`.
+
 ### Removed
 
 - **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.

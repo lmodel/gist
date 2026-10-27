@@ -486,12 +486,13 @@ class TestExtractSlots:
         assert entry["annotations"]["domain_includes"] == "gist:Tag, gist:Text"
         assert "domain" not in entry  # two hints do not pick one hard domain
 
-    def test_single_domain_includes_fills_absent_domain(self):
+    def test_single_domain_includes_is_not_a_domain(self):
         g = Graph()
         g.add((GIST.sequence, RDF.type, OWL.DatatypeProperty))
         g.add((GIST.sequence, GIST.domainIncludes, GIST.OrderedMember))
         slots = M.extract_slots(g)
-        assert slots["sequence"]["domain"] == "OrderedMember"
+        assert "domain" not in slots["sequence"]
+        assert slots["sequence"]["annotations"]["domain_includes"] == "gist:OrderedMember"
 
     def test_domain_includes_does_not_override_hard_domain(self):
         g = Graph()
@@ -502,7 +503,7 @@ class TestExtractSlots:
         assert slots["has_role"]["domain"] == "Actor"
         assert slots["has_role"]["annotations"]["domain_includes"] == "gist:Person"
 
-    def test_range_includes_kept_as_annotation_and_range(self):
+    def test_range_includes_kept_as_annotation_only(self):
         g = Graph()
         g.add((GIST.isMemberOf, RDF.type, OWL.ObjectProperty))
         g.add((GIST.isMemberOf, GIST.rangeIncludes, GIST.Collection))
@@ -510,7 +511,16 @@ class TestExtractSlots:
         slots = M.extract_slots(g)
         entry = slots["is_member_of"]
         assert entry["annotations"]["range_includes"] == "gist:Collection, gist:Organization"
-        assert [a["range"] for a in entry["any_of"]] == ["Collection", "Organization"]
+        assert "any_of" not in entry
+        assert entry["range"] == "Any"
+
+    def test_single_range_includes_is_not_a_range(self):
+        g = Graph()
+        g.add((GIST.conformsTo, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.conformsTo, GIST.rangeIncludes, GIST.Intention))
+        slots = M.extract_slots(g)
+        assert slots["conforms_to"]["range"] == "Any"
+        assert slots["conforms_to"]["annotations"]["range_includes"] == "gist:Intention"
 
     def test_see_also_on_slot(self):
         g = Graph()
@@ -647,6 +657,35 @@ class TestExtractSlots:
         ranges = {entry["range"] for entry in any_of}
         assert "A" in ranges
         assert "B" in ranges
+
+    def test_union_range_is_also_ranged_over_any(self):
+        # Without a range of its own the slot would take the default string,
+        # and gen-owl would declare it a datatype property.
+        g = Graph()
+        g.add((GIST.hasRelated, RDF.type, OWL.ObjectProperty))
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, [GIST.A, GIST.B])
+        g.add((bn, OWL.unionOf, col.uri))
+        g.add((GIST.hasRelated, RDFS.range, bn))
+        entry = M.extract_slots(g)["has_related"]
+        assert entry["range"] == "Any"
+        assert [a["range"] for a in entry["any_of"]] == ["A", "B"]
+        assert "implements" not in entry
+
+    def test_named_range_is_kept(self):
+        g = Graph()
+        g.add((GIST.hasAspect, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.hasAspect, RDFS.range, GIST.Aspect))
+        entry = M.extract_slots(g)["has_aspect"]
+        assert entry["range"] == "Aspect"
+        assert "implements" not in entry
+
+    def test_annotation_property_names_its_type(self):
+        g = Graph()
+        g.add((GIST.license, RDF.type, OWL.AnnotationProperty))
+        entry = M.extract_slots(g)["license"]
+        assert entry["implements"] == ["owl:AnnotationProperty"]
+        assert "range" not in entry
 
 
 # ===========================================================================

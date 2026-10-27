@@ -33,7 +33,13 @@ def upstream_gist():
         i[len(ns):] for i in iris for ns in (SEMANTIC_ARTS_NS, SEMANTIC_ARTS_DATA_NS) if i.startswith(ns)
     }
     classes = {str(c) for c in g.subjects(RDF.type, OWL.Class) if str(c).startswith(SEMANTIC_ARTS_NS)}
+    property_types: dict[str, set[str]] = {}
+    for kind in (OWL.ObjectProperty, OWL.DatatypeProperty, OWL.AnnotationProperty):
+        for p in g.subjects(RDF.type, kind):
+            if str(p).startswith(SEMANTIC_ARTS_NS):
+                property_types.setdefault(str(p), set()).add(str(kind))
     return {
         "iris": iris, "local_names": local_names, "classes": classes,
+        "property_types": property_types,
         "gist_ns": SEMANTIC_ARTS_NS, "gistd_ns": SEMANTIC_ARTS_DATA_NS, "lmodel_ns": LMODEL_NS,
     }

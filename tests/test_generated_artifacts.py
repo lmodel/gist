@@ -193,6 +193,17 @@ class TestGistIrisInArtifacts:
         assert invented == set(), "OWL defines IRIs in Semantic Arts' namespace that gist does not"
         assert cloned == set(), "OWL re-declares gist terms in lmodel's namespace"
 
+    def test_owl_types_each_gist_property_as_gist_does(self, owl, upstream_gist):
+        import rdflib
+        from rdflib.namespace import OWL, RDF
+        property_types = {str(OWL.ObjectProperty), str(OWL.DatatypeProperty), str(OWL.AnnotationProperty)}
+        wrong = {}
+        for iri, kinds in upstream_gist["property_types"].items():
+            declared = {str(t) for t in owl.objects(rdflib.URIRef(iri), RDF.type)} & property_types
+            if declared != kinds:
+                wrong[iri] = sorted(declared)
+        assert wrong == {}
+
     def test_owl_keeps_gist_individuals_individuals(self, owl, upstream_gist):
         from rdflib.namespace import OWL, RDF
         retyped = [str(s) for s in owl.subjects(RDF.type, OWL.Class)

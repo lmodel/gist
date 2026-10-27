@@ -26,9 +26,11 @@ Usage
     (definition, prefLabel, altLabel, example, scopeNote, editorialNote,
      historyNote, rdfs:label, rdfs:seeAlso, rdfs:comment with the
      DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes)
-  - gist:domainIncludes / gist:rangeIncludes     -> slot annotations
+  - gist:domainIncludes / gist:rangeIncludes     -> slot annotations only
   - owl:FunctionalProperty                       -> multivalued: false
   - Unranged owl:ObjectProperty                  -> range: Any
+  - Union object ranges                          -> any_of, with range: Any
+  - owl:AnnotationProperty                       -> implements: owl:AnnotationProperty
   - Union datatype ranges                        -> any_of
   - OWL axioms without direct LinkML equivalents  -> notes/comments
 """
@@ -594,17 +596,18 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                 ]
 
             # gist:domainIncludes / gist:rangeIncludes are soft hints (they are
-            # subproperties of skos:scopeNote), kept whole as annotations. A single
-            # hint also fills an absent hard domain or range, as the range case
-            # always did.
+            # subproperties of skos:scopeNote), kept whole as annotations and
+            # never made a domain or range, because gist's own axioms step
+            # outside them: FormattedContent, which need not be Text, is
+            # ∃isExpressedIn.MediaType, though isExpressedIn hints at Text
+            # subjects and Language values; and a NetworkNode isMemberOf a
+            # Network, which is neither a Collection nor an Organization.
             domain_includes = sorted(
                 gist_local(o) for o in g.objects(prop, GIST.domainIncludes)
                 if isinstance(o, URIRef) and gist_local(o)
             )
             if domain_includes:
                 ann["domain_includes"] = ", ".join(f"gist:{d}" for d in domain_includes)
-                if "domain" not in entry and not anon_domains and len(domain_includes) == 1:
-                    entry["domain"] = domain_includes[0]
             range_includes = sorted(
                 gist_local(o) for o in g.objects(prop, GIST.rangeIncludes)
                 if isinstance(o, URIRef) and gist_local(o)
@@ -654,20 +657,18 @@ def extract_slots(g: Graph) -> dict[str, dict]:
                             "OWL range restriction: " + owl_expr_str(g, rb)
                         ]
 
-                # gist:rangeIncludes (soft range hints) — use when no hard rdfs:range
-                if "range" not in entry and "any_of" not in entry:
-                    if len(range_includes) == 1:
-                        entry["range"] = range_includes[0]
-                    elif len(range_includes) > 1:
-                        entry["any_of"] = [{"range": r} for r in range_includes]
-
                 if kind == "object":
                     entry.setdefault("multivalued", True)
-                    # gist leaves many object properties unranged. The value is
-                    # still an individual, never a string: Any says so, and a
-                    # JSON-LD context then reads it as an IRI.
-                    if "range" not in entry and "any_of" not in entry:
-                        entry["range"] = "Any"
+                    # gist leaves many object properties unranged, and a union
+                    # range sets only any_of. The value is still an individual,
+                    # never the default string: Any says so, as LinkML asks of
+                    # a union range, so gen-owl declares an object property
+                    # and a JSON-LD context reads the value as an IRI.
+                    entry.setdefault("range", "Any")
+                elif kind == "annotation":
+                    # gen-owl takes a property's type from its range unless
+                    # implements names one.
+                    entry["implements"] = ["owl:AnnotationProperty"]
 
             # --- inverseOf ---
             inv = [
@@ -990,7 +991,7 @@ _ELEMENT_KEY_ORDER = [
     # inheritance / type modifiers
     "is_a", "mixins", "abstract", "mixin", "tree_root",
     # identity mappings
-    "class_uri", "slot_uri",
+    "class_uri", "slot_uri", "implements",
     # documentation
     "description", "title", "aliases", "comments", "examples", "notes",
     # domain / range / cardinality (slots)

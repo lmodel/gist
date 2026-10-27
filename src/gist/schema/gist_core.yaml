@@ -143,6 +143,7 @@ slots:
     examples:
       - value: |-
           A package is shipped by a person; a purchase order is emailed to a vendor by an organization.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -158,6 +159,7 @@ slots:
     examples:
       - value: |-
           A letter has a return address indicating its origin; a delivery route originates at a distribution center; a trail originates at the trailhead.
+    range: Any
     multivalued: true
     any_of:
       - range: Address
@@ -174,7 +176,7 @@ slots:
     examples:
       - value: |-
           Meet an obligation; adhere to a specification or standard; meet terms and conditions of an offer; comply with a regulation.
-    range: Intention
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -204,6 +206,7 @@ slots:
         This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the receiving of a gift.
     examples:
       - value: A package is sent to a person; a purchase order email is received by a vendor.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -219,6 +222,7 @@ slots:
     examples:
       - value: |-
           A letter has an address indicating its destination; a segment of a delivery route terminates at a delivery location; a trail terminates at an intersection with another trail.
+    range: Any
     multivalued: true
     any_of:
       - range: Address
@@ -236,7 +240,6 @@ slots:
     examples:
       - value: |-
           Temperature accurate to tenth of a degree C; length accurate to the nearest centimeter.
-    domain: Magnitude
     range: Magnitude
     multivalued: false
     in_subset:
@@ -458,6 +461,7 @@ slots:
         Subproperties may be defined to describe specific parties, such as hasLender and hasBorrower for a loan.
     examples:
       - value: Loan agreements have lender and borrower parties.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -593,6 +597,7 @@ slots:
     examples:
       - value: |-
           A U.S. Social Security number is allocated by the U.S. Social Security Administration; the media type https://www.iana.org/assignments/media-types/text/csv is allocated by the Internet Assigned Numbers Authority (IANA).
+    range: Any
     multivalued: true
     any_of:
       - range: IntellectualProperty
@@ -614,13 +619,8 @@ slots:
         While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified.
     examples:
       - value: Assignment of a person to a project.
-    domain: Assignment
+    range: Any
     multivalued: true
-    any_of:
-      - range: Equipment
-      - range: IntellectualProperty
-      - range: Organization
-      - range: Person
     in_subset:
       - gist_core
     annotations:
@@ -636,7 +636,6 @@ slots:
     comments:
       - |-
         While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified.
-    domain: Assignment
     range: Any
     multivalued: true
     in_subset:
@@ -664,7 +663,7 @@ slots:
       Relates something to a taxonomy term or other less formally defined classification.
     aliases:
       - is categorized by
-    range: Category
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -703,8 +702,7 @@ slots:
     description: Relates something to the language it is expressed in.
     aliases:
       - is expressed in
-    domain: Text
-    range: Language
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -786,10 +784,8 @@ slots:
       Relates a member individual to the thing, such as a collection or organization, that it is a member of.
     aliases:
       - is member of
+    range: Any
     multivalued: true
-    any_of:
-      - range: Collection
-      - range: Organization
     in_subset:
       - gist_core
     annotations:
@@ -833,6 +829,7 @@ slots:
       - is recognized by
     examples:
       - value: The existence of a particular company is recognized by the state.
+    range: Any
     multivalued: true
     any_of:
       - range: Organization
@@ -876,7 +873,7 @@ slots:
       Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it.
     aliases:
       - is under jurisdiction of
-    range: GovernmentOrganization
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -889,8 +886,7 @@ slots:
       Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known.
     aliases:
       - links
-    domain: NetworkLink
-    range: NetworkNode
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -905,8 +901,7 @@ slots:
       Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection.
     aliases:
       - links from
-    domain: NetworkLink
-    range: NetworkNode
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -921,8 +916,7 @@ slots:
       Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection.
     aliases:
       - links to
-    domain: NetworkLink
-    range: NetworkNode
+    range: Any
     multivalued: true
     in_subset:
       - gist_core
@@ -952,7 +946,6 @@ slots:
     examples:
       - value: |-
           An offer to provide a specific product in exchange for an amount of money or to pay a certain price for a home that is for sale.
-    domain: Offer
     range: Any
     multivalued: true
     in_subset:
@@ -971,7 +964,6 @@ slots:
     examples:
       - value: |-
           A vendor makes an offer to receive a particular amount of money in exchange for the offered product; an offer to receive a home in exchange for an amount of money.
-    domain: Offer
     range: Any
     multivalued: true
     in_subset:
@@ -1774,7 +1766,6 @@ slots:
     description: A number that specifies the position of an element within a series.
     aliases:
       - sequence
-    domain: OrderedMember
     range: integer
     in_subset:
       - gist_core
@@ -1803,7 +1794,6 @@ slots:
       - symbol
     examples:
       - value: The ASCII symbol for square meter is m^2.
-    domain: UnitOfMeasure
     in_subset:
       - gist_core
     annotations:
@@ -1829,6 +1819,8 @@ slots:
 
   domain_includes:
     slot_uri: gist:domainIncludes
+    implements:
+      - owl:AnnotationProperty
     description: Relates a property to a class that the property is expected to be used on.
     aliases:
       - domain includes
@@ -1845,6 +1837,8 @@ slots:
 
   is_superseded_by:
     slot_uri: gist:isSupersededBy
+    implements:
+      - owl:AnnotationProperty
     description: |-
       Relates a deprecated term to a term that replaces it, which is either an exact (in the case of simple renaming) or approximate (in the case of renaming and some semantic change) semantic match.
     aliases:
@@ -1857,6 +1851,8 @@ slots:
 
   license:
     slot_uri: gist:license
+    implements:
+      - owl:AnnotationProperty
     description: Relates something to its conditions of use.
     aliases:
       - license
@@ -1870,6 +1866,8 @@ slots:
 
   range_includes:
     slot_uri: gist:rangeIncludes
+    implements:
+      - owl:AnnotationProperty
     description: Relates a property to a class that is an expected type of its values.
     aliases:
       - range includes
