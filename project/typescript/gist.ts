@@ -94,6 +94,8 @@ export interface Agreement extends Intention {
  * A measurable characteristic.
  */
 export interface Aspect extends GistThing {
+    /** Relates an aspect to a unit group. The aspect can be measured using any of the members of the unit group. */
+    has_unit_group?: UnitGroup[],
 }
 
 
@@ -178,6 +180,8 @@ export interface ContemporaryEvent extends Event {
  * Information available in some medium.
  */
 export interface Content extends GistThing {
+    /** Subject matter of a document. */
+    is_about?: Any[],
 }
 
 
@@ -325,6 +329,8 @@ export interface GeneralMediaType extends Category {
  * A physical location, with the earth as a frame of reference.
  */
 export interface GeoLocation extends GistThing {
+    /** Relates one geographic location to another that contains it. */
+    is_geo_contained_in?: GeoLocation[],
 }
 
 
@@ -332,6 +338,10 @@ export interface GeoLocation extends GistThing {
  * An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude.
  */
 export interface GeoPoint extends GeoLocation {
+    /** Degrees above or below the equator. */
+    latitude?: number,
+    /** Degrees from the prime meridian. */
+    longitude?: number,
 }
 
 
@@ -395,6 +405,10 @@ export interface IntellectualProperty extends GistThing {
  * A goal, desire, or aspiration.
  */
 export interface Intention extends GistThing {
+    /** Relates an intention to behavior that it prohibits. */
+    prevents?: Behavior[],
+    /** Relates an intention to a behavior that it forbids or seeks to prevent. */
+    prohibits?: Behavior[],
 }
 
 
@@ -430,6 +444,8 @@ export interface Language extends GistThing {
  * Something that is currently, or at some point in time was, alive.
  */
 export interface LivingThing extends PhysicalIdentifiableItem {
+    /** Relates a living thing to its biological parent. */
+    has_biological_parent?: LivingThing[],
 }
 
 
@@ -437,6 +453,8 @@ export interface LivingThing extends PhysicalIdentifiableItem {
  * The amount of a measurable characteristic (aspect).
  */
 export interface Magnitude extends GistThing {
+    /** Relates a magnitude to its unit of measure. */
+    has_unit_of_measure?: UnitOfMeasure[],
 }
 
 
@@ -500,6 +518,10 @@ export interface OrderedCollection extends Collection {
  * A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection.
  */
 export interface OrderedMember extends Component {
+    /** Relates the first member of an ordered collection to the collection. */
+    is_first_member_of?: OrderedCollection[],
+    /** Links a member of an ordered collection to the real-world item it represents in that collection. */
+    provides_order_for?: Any,
 }
 
 
@@ -507,6 +529,8 @@ export interface OrderedMember extends Component {
  * A structured entity formed to achieve specific goals, typically involving members with defined roles.
  */
 export interface Organization extends GistThing {
+    /** Relates a party to something that it possesses and controls. */
+    owns?: Any[],
 }
 
 
@@ -521,6 +545,8 @@ export interface Permission extends Intention {
  * A human being who was or is alive.
  */
 export interface Person extends LivingThing {
+    /** Relates a party to something that it possesses and controls. */
+    owns?: Any[],
 }
 
 
@@ -724,6 +750,32 @@ export interface Transaction extends Event {
  * A collection of units of measure that can all be used to measure the same aspects.
  */
 export interface UnitGroup extends Collection {
+    /** The exponent of ampere in a product of powers of base units. */
+    exponent_of_ampere?: string,
+    /** The exponent of bit in a product of powers of base units. */
+    exponent_of_bit?: string,
+    /** The exponent of candela in a product of powers of base units. */
+    exponent_of_candela?: string,
+    /** The exponent of Kelvin in a product of powers of base units. */
+    exponent_of_kelvin?: string,
+    /** The exponent of kilogram in a product of powers of base units. */
+    exponent_of_kilogram?: string,
+    /** The exponent of meter in a product of powers of base units. */
+    exponent_of_meter?: string,
+    /** The exponent of mole in a product of powers of base units. */
+    exponent_of_mole?: string,
+    /** The exponent of number in a product of powers of base units. */
+    exponent_of_number?: string,
+    /** Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples). */
+    exponent_of_other?: string,
+    /** The exponent of radian in a product of powers of base units. */
+    exponent_of_radian?: string,
+    /** The exponent of second in a product of powers of base units. */
+    exponent_of_second?: string,
+    /** The exponent of steradian in a product of powers of base units. */
+    exponent_of_steradian?: string,
+    /** The exponent of US Dollar in a product of powers of base units. */
+    exponent_of_us_dollar?: string,
 }
 
 
@@ -731,17 +783,227 @@ export interface UnitGroup extends Collection {
  * A standard amount used to measure or specify things.
  */
 export interface UnitOfMeasure extends GistThing {
+    /** A value that relates a unit of measure to units of the International System of Units. */
+    conversion_factor?: string,
+    /** A value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.
+
+y degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin
+
+To convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.
+
+To convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset. */
+    conversion_offset?: string,
+    /** The exponent of ampere in a product of powers of base units. */
+    exponent_of_ampere?: string,
+    /** The exponent of bit in a product of powers of base units. */
+    exponent_of_bit?: string,
+    /** The exponent of candela in a product of powers of base units. */
+    exponent_of_candela?: string,
+    /** The exponent of Kelvin in a product of powers of base units. */
+    exponent_of_kelvin?: string,
+    /** The exponent of kilogram in a product of powers of base units. */
+    exponent_of_kilogram?: string,
+    /** The exponent of meter in a product of powers of base units. */
+    exponent_of_meter?: string,
+    /** The exponent of mole in a product of powers of base units. */
+    exponent_of_mole?: string,
+    /** The exponent of number in a product of powers of base units. */
+    exponent_of_number?: string,
+    /** Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples). */
+    exponent_of_other?: string,
+    /** The exponent of radian in a product of powers of base units. */
+    exponent_of_radian?: string,
+    /** The exponent of second in a product of powers of base units. */
+    exponent_of_second?: string,
+    /** The exponent of steradian in a product of powers of base units. */
+    exponent_of_steradian?: string,
+    /** The exponent of US Dollar in a product of powers of base units. */
+    exponent_of_us_dollar?: string,
 }
 
 
 /**
- * Mixin that gives every gist class the name and description slots, which gist declares without a domain.
+ * Mixin that gives every gist class the slots of the properties gist declares without a domain, since OWL lets those describe any individual.
  */
 export interface GistThing {
-    /** Relates an individual to (one of) its name(s). */
-    name?: string,
+    /** The actual date that something ended, with precision of one day. */
+    actual_end_date?: string,
+    /** The actual date and time that something ended, with no implied precision. */
+    actual_end_date_time?: string,
+    /** The actual time that something ended, expressed as a system time used for timestamps. */
+    actual_end_microsecond?: string,
+    /** The actual date and time that something ended, with precision of one minute. */
+    actual_end_minute?: string,
+    /** The actual date that something ended, with precision of one year. */
+    actual_end_year?: string,
+    /** The actual date that something started, with precision of one day. */
+    actual_start_date?: string,
+    /** The actual date and time that something started, with no implied precision. */
+    actual_start_date_time?: string,
+    /** The actual time that something started, expressed as a system time used for timestamps. */
+    actual_start_microsecond?: string,
+    /** The actual date and time that something started, with precision of one minute. */
+    actual_start_minute?: string,
+    /** The actual date that something started, with precision of one year. */
+    actual_start_year?: string,
+    /** Relates a permission to a particular activity or type of activity it allows. */
+    allows?: Any[],
+    /** The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned. */
+    at_date_time?: string,
+    /** The date some living thing was or will be born, with precision of one day. */
+    birth_date?: string,
+    /** Relates something to the originating agent. */
+    comes_from_agent?: Any[],
+    /** Relates something to its place of origin. */
+    comes_from_place?: Any[],
+    /** The subject is consistent with or satisfies the requirements, rules, or expectations established by the object. */
+    conforms_to?: Any[],
+    /** Relates an entity containing textual information to the string constituting that textual information. */
+    contained_text?: string,
+    /** The subject helps achieve or fulfill the goals or functions of the object. */
+    contributes_to?: Any[],
+    /** The date some living thing died. */
+    death_date?: string,
     /** A statement about someone or something's attributes or characteristics. */
     description?: string,
+    /** Encoded text produced from readable data by an algorithm so that it can only be understood or restored with a decryption key. */
+    encrypted_text?: string,
+    /** The date and time that something ends. */
+    end_date_time?: string,
+    /** Relates something to the agent that receives it. */
+    goes_to_agent?: Any[],
+    /** Relates something to its destination place. */
+    goes_to_place?: Any[],
+    /** Relates a magnitude to another magnitude that describes its accuracy. */
+    has_accuracy?: Magnitude,
+    /** Relates an aspect to another aspect that is an additive component of it. */
+    has_addend?: Any[],
+    /** Relates something to its physical or electronic address. */
+    has_address?: Address[],
+    /** Relates a magnitude to its aspect (measurable characteristic). */
+    has_aspect?: Aspect,
+    /** Relates a thing to another thing with a broader meaning. */
+    has_broader?: Any[],
+    /** Relates a thing to another thing with a broader meaning, when there is no intermediate between them. */
+    has_direct_broader?: Any[],
+    /** Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor. */
+    has_divisor?: Any[],
+    /** Relates something to the participant that provides it. */
+    has_giver?: Any[],
+    /** Relates something to the end towards which it directs effort. */
+    has_goal?: Any[],
+    /** Relates a position to the thing or person that currently holds that position. */
+    has_incumbent?: Any[],
+    /** Relates a thing to a magnitude. */
+    has_magnitude?: Magnitude[],
+    /** Relates a unit of measure to another unit of measure that is a factor, or relates an aspect to another aspect that is a factor. */
+    has_multiplier?: Any[],
+    /** Relates a child category to a parent category in an informal (e.g., faceted) hierarchy. */
+    has_navigational_parent?: Any[],
+    /** Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way. */
+    has_participant?: Any[],
+    /** Relates an event, agreement, or obligation to a participating person or organization. */
+    has_party?: Any[],
+    /** Relates something to its physical location. */
+    has_physical_location?: GeoLocation[],
+    /** Relates something to the participant that receives or is intended to receive it. */
+    has_recipient?: Any[],
+    /** Relates an aspect to another aspect that is a subtracted component of it. */
+    has_subtrahend?: Any[],
+    /** Relates a thing to a unique other thing with a broader meaning. */
+    has_unique_broader?: Any[],
+    /** Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy. */
+    has_unique_navigational_parent?: Any[],
+    /** A text string that identifies an individual. */
+    id_text?: string,
+    /** Relates an affected thing to the source of the effect. */
+    is_affected_by?: Any[],
+    /** Relates something to whomever or whatever assigns or distributes it. */
+    is_allocated_by?: Any[],
+    /** Relates an assignment to the resource it assigns. */
+    is_assignment_of?: Any[],
+    /** Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate. */
+    is_assignment_to?: Any[],
+    /** The object is a foundation for, a starting point for, gave rise to, or justifies the subject. */
+    is_based_on?: Any[],
+    /** Relates something to a taxonomy term or other less formally defined classification. */
+    is_categorized_by?: Any[],
+    /** A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship. */
+    is_connected_to?: Any[],
+    /** The relationship between a part and a whole where the part has independent existence and there are no other parts in between. */
+    is_direct_part_of?: Any[],
+    /** Relates something to the language it is expressed in. */
+    is_expressed_in?: Any[],
+    /** Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it. */
+    is_governed_by?: Any[],
+    /** Relates something to a content object that uniquely identifies it. */
+    is_identified_by?: ID[],
+    /** Relates something to a substance that it is made up of. */
+    is_made_up_of?: PhysicalSubstance[],
+    /** Relates a member individual to the thing, such as a collection or organization, that it is a member of. */
+    is_member_of?: Any[],
+    /** The relationship between a part and a whole where the part has independent existence. */
+    is_part_of?: Any[],
+    /** Relates something to the thing that created, composed, or brought it into existence. */
+    is_produced_by?: Any[],
+    /** Relates something to a party that formally acknowledges its existence, validity, or legality. */
+    is_recognized_by?: Any[],
+    /** The date that something was posted (which is not necessarily the date it occurred). It must be after the date of occurrence, but could be before or after the planned date. */
+    is_recorded_at?: string,
+    /** Relates content to the media on which it is rendered. */
+    is_rendered_on?: Any[],
+    /** Relates a contingency, such as an event or obligation, to the event that gives rise to it. */
+    is_triggered_by?: Any[],
+    /** Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it. */
+    is_under_jurisdiction_of?: Any[],
+    /** Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known. */
+    links?: Any[],
+    /** Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection. */
+    links_from?: Any[],
+    /** Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection. */
+    links_to?: Any[],
+    /** Relates an individual to (one of) its name(s). */
+    name?: string,
+    /** The actual value of a magnitude. */
+    numeric_value?: string,
+    /** Relates something, such as an event, to the geographic location where it did, does, or will happen. */
+    occurs_in?: Any[],
+    /** Relates an offer to the thing being made available for exchange. */
+    offers_to_provide?: Any[],
+    /** Relates an offer to the thing expected in return for the offered item. */
+    offers_to_receive?: Any[],
+    /** The date that something is or was planned to end, with precision of one day. */
+    planned_end_date?: string,
+    /** The date that something is or was planned to end, with no implied precision. */
+    planned_end_date_time?: string,
+    /** The date and time that something is or was planned to end, with precision of one minute. */
+    planned_end_minute?: string,
+    /** The date that something is or was planned to end, with precision of one year. */
+    planned_end_year?: string,
+    /** The date that something is or was planned to start, with precision of one day. */
+    planned_start_date?: string,
+    /** The date and time that something is or was planned to start, with no implied precision. */
+    planned_start_date_time?: string,
+    /** The date and time that something is or was planned to start, with precision of one minute. */
+    planned_start_minute?: string,
+    /** The date that something is or was planned to start, with precision of one year. */
+    planned_start_year?: string,
+    /** A generic ordering relation indicating that the subject comes before the object. */
+    precedes?: Any[],
+    /** A generic ordering relation indicating that the subject comes immediately before the object. */
+    precedes_directly?: Any[],
+    /** Relates something to another resource that it points to, indicates, or references. */
+    refers_to?: Any[],
+    /** The subject needs the object or makes it necessary, mandatory, or compulsory. */
+    requires?: Any[],
+    /** A number that specifies the position of an element within a series. */
+    sequence?: number,
+    /** The date and time that something starts. */
+    start_date_time?: string,
+    /** A symbol for something using only ASCII characters. */
+    symbol?: string,
+    /** The unique string value of some content object, to be used when there is no possibility of having more than one value. */
+    unique_text?: string,
 }
 
 

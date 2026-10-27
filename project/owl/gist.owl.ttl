@@ -27,24 +27,24 @@ linkml:Any a owl:Class ;
 	skos:definition "gist is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support." .
 gist_linkml:AspectInstance a owl:Class ;
 	rdfs:label "AspectInstance" ;
-	owl:oneOf _:c14n14 ;
+	owl:oneOf _:c14n109 ;
 	skos:definition "Named instances of gist:Aspect from gist reference data." ;
 	skos:inScheme gist_linkml:core ;
 	linkml:permissible_values gistd:_Aspect_altitude , gistd:_Aspect_area , gistd:_Aspect_duration , gistd:_Aspect_financial_balance , gistd:_Aspect_mass , gistd:_Aspect_monetary_value , gistd:_Aspect_probability , gistd:_Aspect_volume .
 gist_linkml:GistThing a owl:Class ;
 	rdfs:label "GistThing" ;
-	rdfs:subClassOf _:c14n10 , _:c14n11 , _:c14n28 , _:c14n3 , _:c14n40 , _:c14n41 ;
-	skos:definition "Mixin that gives every gist class the name and description slots, which gist declares without a domain." ;
+	rdfs:subClassOf _:c14n0 , _:c14n1 , _:c14n10 , _:c14n101 , _:c14n103 , _:c14n104 , _:c14n105 , _:c14n110 , _:c14n112 , _:c14n113 , _:c14n115 , _:c14n12 , _:c14n121 , _:c14n123 , _:c14n125 , _:c14n126 , _:c14n127 , _:c14n128 , _:c14n129 , _:c14n130 , _:c14n131 , _:c14n132 , _:c14n133 , _:c14n134 , _:c14n136 , _:c14n138 , _:c14n140 , _:c14n144 , _:c14n146 , _:c14n147 , _:c14n149 , _:c14n150 , _:c14n152 , _:c14n153 , _:c14n154 , _:c14n155 , _:c14n158 , _:c14n161 , _:c14n164 , _:c14n165 , _:c14n166 , _:c14n167 , _:c14n168 , _:c14n169 , _:c14n17 , _:c14n170 , _:c14n171 , _:c14n172 , _:c14n173 , _:c14n174 , _:c14n175 , _:c14n176 , _:c14n177 , _:c14n178 , _:c14n179 , _:c14n18 , _:c14n184 , _:c14n185 , _:c14n186 , _:c14n187 , _:c14n188 , _:c14n19 , _:c14n192 , _:c14n193 , _:c14n196 , _:c14n197 , _:c14n198 , _:c14n2 , _:c14n200 , _:c14n202 , _:c14n206 , _:c14n209 , _:c14n212 , _:c14n213 , _:c14n215 , _:c14n216 , _:c14n218 , _:c14n22 , _:c14n221 , _:c14n222 , _:c14n223 , _:c14n228 , _:c14n229 , _:c14n232 , _:c14n233 , _:c14n234 , _:c14n235 , _:c14n239 , _:c14n24 , _:c14n244 , _:c14n245 , _:c14n246 , _:c14n247 , _:c14n25 , _:c14n250 , _:c14n251 , _:c14n253 , _:c14n255 , _:c14n256 , _:c14n257 , _:c14n261 , _:c14n263 , _:c14n264 , _:c14n265 , _:c14n268 , _:c14n269 , _:c14n27 , _:c14n270 , _:c14n271 , _:c14n273 , _:c14n274 , _:c14n275 , _:c14n277 , _:c14n278 , _:c14n28 , _:c14n280 , _:c14n282 , _:c14n283 , _:c14n284 , _:c14n286 , _:c14n287 , _:c14n29 , _:c14n290 , _:c14n292 , _:c14n296 , _:c14n297 , _:c14n299 , _:c14n3 , _:c14n303 , _:c14n305 , _:c14n306 , _:c14n308 , _:c14n31 , _:c14n312 , _:c14n313 , _:c14n315 , _:c14n316 , _:c14n317 , _:c14n318 , _:c14n319 , _:c14n32 , _:c14n320 , _:c14n321 , _:c14n322 , _:c14n324 , _:c14n325 , _:c14n326 , _:c14n327 , _:c14n328 , _:c14n33 , _:c14n331 , _:c14n332 , _:c14n333 , _:c14n334 , _:c14n335 , _:c14n336 , _:c14n337 , _:c14n338 , _:c14n339 , _:c14n34 , _:c14n340 , _:c14n342 , _:c14n344 , _:c14n346 , _:c14n348 , _:c14n349 , _:c14n352 , _:c14n353 , _:c14n355 , _:c14n359 , _:c14n360 , _:c14n364 , _:c14n37 , _:c14n4 , _:c14n41 , _:c14n42 , _:c14n43 , _:c14n45 , _:c14n46 , _:c14n47 , _:c14n49 , _:c14n51 , _:c14n52 , _:c14n53 , _:c14n56 , _:c14n58 , _:c14n60 , _:c14n63 , _:c14n64 , _:c14n68 , _:c14n69 , _:c14n7 , _:c14n70 , _:c14n71 , _:c14n72 , _:c14n73 , _:c14n74 , _:c14n75 , _:c14n76 , _:c14n78 , _:c14n79 , _:c14n81 , _:c14n83 , _:c14n84 , _:c14n85 , _:c14n86 , _:c14n87 , _:c14n88 , _:c14n9 , _:c14n90 , _:c14n92 , _:c14n94 , _:c14n95 , _:c14n97 , _:c14n99 ;
+	skos:definition "Mixin that gives every gist class the slots of the properties gist declares without a domain, since OWL lets those describe any individual." ;
 	skos:inScheme gist_linkml:core .
 gist_linkml:MediaTypeInstance a owl:Class ;
 	rdfs:label "MediaTypeInstance" ;
-	owl:oneOf _:c14n20 ;
+	owl:oneOf _:c14n137 ;
 	skos:definition "Named instances of gist:MediaType from gist reference data." ;
 	skos:inScheme gist_linkml:media-types ;
 	linkml:permissible_values media_app:json , media_app:ld\+json , media_app:n-quads , media_app:n-triples , media_app:rdf\+xml , media_app:sparql-results\+json , media_app:sparql-results\+xml , media_app:trig , media_img:jpg , media_img:png , media_txt:csv , media_txt:html , media_txt:plain , media_txt:turtle .
 gist_linkml:PrefixDeclarationInstance a owl:Class ;
 	rdfs:label "PrefixDeclarationInstance" ;
-	owl:oneOf _:c14n36 ;
+	owl:oneOf _:c14n259 ;
 	skos:definition "Named SHACL prefix declarations from the gist ontology." ;
 	skos:inScheme gist_linkml:prefix-declarations ;
 	linkml:permissible_values gist:_PrefixDeclaration_gist , gist:_PrefixDeclaration_owl , gist:_PrefixDeclaration_rdf , gist:_PrefixDeclaration_rdfs , gist:_PrefixDeclaration_sh , gist:_PrefixDeclaration_skos , gist:_PrefixDeclaration_xsd .
@@ -88,35 +88,35 @@ gistd:_Aspect_volume dcterms:title "volume" ;
 	rdfs:label "ASPECT_VOLUME" ;
 	skos:definition "The aspect volume." ;
 	skos:editorialNote "This instance has been duplicated from reference data so it can be used in property restrictions." .
-gist:Account a owl:Class ;
+gist:Account dcterms:title "Account" ;
+	a owl:Class ;
 	rdfs:label "Account" ;
 	rdfs:subClassOf gist:Agreement ;
-	skos:altLabel "Account" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/Account> ;
 	skos:definition "An agreement having a balance." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Agreement & ∃hasMagnitude.∃hasAspect=_Aspect_financial_balance)" ;
 	skos:exactMatch gist_linkml:Account ;
 	skos:inScheme gist_linkml:core .
-gist:Address a owl:Class ;
+gist:Address dcterms:title "Address" ;
+	a owl:Class ;
 	rdfs:label "Address" ;
 	rdfs:subClassOf gist:Content ;
-	skos:altLabel "Address" ;
 	skos:definition "A reference to a place (real or virtual) that can be located by some routing algorithm and where messages or things can be sent or received." ;
 	skos:exactMatch gist_linkml:Address ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/Address> .
-gist:AddressUsageType a owl:Class ;
+gist:AddressUsageType dcterms:title "Address Usage Type" ;
+	a owl:Class ;
 	rdfs:label "AddressUsageType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Address Usage Type" ;
 	skos:definition "A category indicating the context or manner in which an address may be used." ;
 	skos:exactMatch gist_linkml:AddressUsageType ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If you are using temporal relations involving addresses, this category should be used to qualify the temporal relation rather than the address itself, since the same address may have different uses in different contexts, by different people and organizations, or at different times." .
-gist:Agreement a owl:Class ;
+gist:Agreement dcterms:title "Agreement" ;
+	a owl:Class ;
 	rdfs:label "Agreement" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Agreement" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/Agreement> ;
 	skos:definition "A mutually understood arrangement in which two or more parties make commitments to one another." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & ∃hasParty.(gist:Organization | gist:Person) & ≥2^isDirectPartOf.gist:Commitment)" ;
@@ -124,18 +124,18 @@ gist:Agreement a owl:Class ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/MasterAgreement> , <https://w3id.org/lmodel/dpv/DataProcessingAgreement> ;
 	skos:note "While an agreement has two or more parties, and contains commitments which bind those parties, it will not always be necessary to instantiate each individual commitment." .
-gist:Aspect a owl:Class ;
+gist:Aspect dcterms:title "Aspect" ;
+	a owl:Class ;
 	rdfs:label "Aspect" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Aspect" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n13 , _:c14n59 ;
 	skos:definition "A measurable characteristic." ;
 	skos:exactMatch gist_linkml:Aspect ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Depending on implementation, every aspect should be related to a unit group either directly or through a broader aspect. For example, angle of incidence could be related to the broader concept of angle, which in turn is related to a unit group, or it could be related directly to the unit group without the hierarchical relationship." , "Rule of thumb: use the least specific aspect that serves the intended purpose, increasing specificity only when required (e.g., to distinguish between two magnitudes attached to the same object)." .
-gist:Assignment a owl:Class ;
+gist:Assignment dcterms:title "Assignment" ;
+	a owl:Class ;
 	rdfs:label "Assignment" ;
 	rdfs:subClassOf gist:TemporalRelation ;
-	skos:altLabel "Assignment" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/NaturalPersonRole> ;
 	skos:definition "A temporal relationship between an assignee, the thing assigned, and the resource that made the assignment." ;
 	skos:editorialNote "OWL equivalentClass: (gist:TemporalRelation & ∃hasGiver.owl:Thing & ∃isAssignmentOf.owl:Thing & ∃isAssignmentTo.owl:Thing)" ;
@@ -143,331 +143,333 @@ gist:Assignment a owl:Class ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Based on the Open World Assumption, the assigner may not be asserted or known." , "For some assignments, such as the assignment of a person to a task, it may seem equally correct in ordinary speech to say it is an assignment of a task to a person. Since gist:isAssignmentTo and gist:isAssignmentOf have no formal domains or ranges, the choice of which predicate to use for which is left as an implementation decision. Consistency is a key consideration." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Counterparty> , <https://w3id.org/lmodel/common-domain-model/RelatedParty> .
-gist:Behavior a owl:Class ;
+gist:Behavior dcterms:title "Behavior" ;
+	a owl:Class ;
 	rdfs:label "Behavior" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Behavior" ;
 	skos:definition "A category indicating the nature of an activity." ;
 	skos:exactMatch gist_linkml:Behavior ;
 	skos:inScheme gist_linkml:core .
-gist:Building a owl:Class ;
+gist:Building dcterms:title "Building" ;
+	a owl:Class ;
 	rdfs:label "Building" ;
 	rdfs:subClassOf gist:Landmark ;
-	skos:altLabel "Building" ;
+	owl:deprecated true ;
 	skos:definition "A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working." ;
 	skos:exactMatch gist_linkml:Building ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "User discretion can be applied to edge cases: e.g., is a traditional yurt 'relatively permanently situated' although it is portable and has a tent-like construction?" .
-gist:BundledCatalogItem a owl:Class ;
+gist:BundledCatalogItem dcterms:title "Bundled Catalog Item" ;
+	a owl:Class ;
 	rdfs:label "BundledCatalogItem" ;
 	rdfs:subClassOf gist:CatalogItem ;
-	skos:altLabel "Bundled Catalog Item" ;
 	skos:definition "Any combination of descriptions of things offered together." ;
 	skos:editorialNote "OWL equivalentClass: (gist:CatalogItem & ∃^isDirectPartOf.gist:CatalogItem)" ;
 	skos:exactMatch gist_linkml:BundledCatalogItem ;
 	skos:inScheme gist_linkml:core .
-gist:CatalogItem a owl:Class ;
+gist:CatalogItem dcterms:title "Catalog Item" ;
+	a owl:Class ;
 	rdfs:label "CatalogItem" ;
 	rdfs:subClassOf gist:Specification ;
-	skos:altLabel "Catalog Item" ;
 	skos:definition "A description of a product or service to be delivered, given in a sufficient level of detail that a receiver could determine whether delivery constituted discharge of the obligation to deliver." ;
 	skos:exactMatch gist_linkml:CatalogItem ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "In short, an unambiguous characterization of what it is that a potential buyer is paying for." .
-gist:Category a owl:Class ;
+gist:Category dcterms:title "Category" ;
+	a owl:Class ;
 	rdfs:label "Category" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Category" ;
 	skos:definition "A concept or label used to categorize other instances without specifying any formal semantics." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person)" ;
 	skos:exactMatch gist_linkml:Category ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Often a type can be modeled either as an owl:Class or as a gist:Category. Use the latter if you don't care much about the formal structure of the different types, or if there is a whole hierarchy of types that are going to be managed by a group separate from the ontology developers. The formal structure may be defined elsewhere and linked to, if necessary." .
-gist:Collection a owl:Class ;
+gist:Collection dcterms:title "Collection" ;
+	a owl:Class ;
 	rdfs:label "Collection" ;
 	rdfs:subClassOf gist:Composite ;
-	skos:altLabel "Collection" ;
 	skos:definition "A grouping of things." ;
 	skos:exactMatch gist_linkml:Collection ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Individuals are placed in the collection using the gist:isMemberOf property. Collections typically are created because the members are functionally connected in some way. This definition allows a collection to have zero members." .
-gist:Commitment a owl:Class ;
+gist:Commitment dcterms:title "Commitment" ;
+	a owl:Class ;
 	rdfs:label "Commitment" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Commitment" ;
 	skos:definition "A promise made by a single party to one or more parties to do or not do something or act in a particular way." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & (gist:Requirement | gist:Restriction) & ∃hasGiver.(gist:Organization | gist:Person) & ∃isCategorizedBy.gist:DegreeOfCommitment)" ;
 	skos:exactMatch gist_linkml:Commitment ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A commitment is unilateral in that it is binding on only one party. This contrasts with gist:Agreement, which consists of commitments that bind two or more parties." , "A single commitment may be made to multiple parties at once; it is a single commitment rather than multiple commitments if the same action would fulfill the obligation to all the parties simultaneously. For example, a performer makes a single commitment to hold a performance to all ticket purchasers; by holding the performance, the commitment to all parties is fulfilled in a single action." , "The manner in which a commitment is binding may vary. In a business context, we are typically interested in commitments that are legally binding." .
-gist:Component a owl:Class ;
+gist:Component dcterms:title "Component" ;
+	a owl:Class ;
 	rdfs:label "Component" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Component" ;
 	skos:definition "Something that, while having an independent existence, is inherently part of or designed to be part of a larger entity, such as a system or network." ;
 	skos:exactMatch gist_linkml:Component ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A component may be designed or intended as part of a whole without actually being so; e.g., a car steering wheel that is not installed in any car." , "Many things are in a trivial sense a part of a larger thing, but are not considered components because they are not inherently part of that larger thing. For example, while a book may be part of a library (a collection of books), it is not inherently so, and thus is not a component. A playing card, on the other hand, could be considered a component in (member of) a deck of cards. This may be use case-dependent; e.g., car parts might be modeled as components in an automobile manufacturing context but not in a retail auto parts store." , "Physical substances, such as ingredients in a cake batter, do not meet the independent existence criterion, so are not components." , "This class is not disjoint with gist:Composite, because a component may itself break down into smaller components." , "This is an abstract class that is not directly instantiated. Users will define subclasses that are meaningful to their domain of interest." .
-gist:Composite a owl:Class ;
+gist:Composite dcterms:title "Composite" ;
+	a owl:Class ;
 	rdfs:label "Composite" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Composite" ;
 	skos:definition "Something which is made up of various parts or elements that are independently identifiable." ;
 	skos:exactMatch gist_linkml:Composite ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Some composites, like systems, networks, and ordered collections, have internal organization, while others, such as unordered collections, typically do not." , "This class is not disjoint with gist:Component, because a composite can itself be a component of a larger composite." , "This is an abstract class that will not be directly instantiated." .
-gist:ContemporaryEvent a owl:Class ;
+gist:ContemporaryEvent dcterms:title "Contemporary Event" ;
+	a owl:Class ;
 	rdfs:label "ContemporaryEvent" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Contemporary Event" ;
 	skos:definition "An event that has started but has not yet ended." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & =1actualStartDateTime & ≤0actualEndDateTime)" ;
 	skos:exactMatch gist_linkml:ContemporaryEvent ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "When the event actually ends, it will cease being contemporary." .
-gist:Content a owl:Class ;
+gist:Content dcterms:title "Content" ;
+	a owl:Class ;
 	rdfs:label "Content" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Content" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n279 , _:c14n93 ;
 	skos:definition "Information available in some medium." ;
 	skos:exactMatch gist_linkml:Content ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Categories are not content until they are written down." , "This class includes both abstract content and its expression, but it must have at least one expression in order to be content. For example, the idea a writer has for a book is not content until it is expressed in some form, but a single content object may have multiple expressions - e.g., the particular print and audio editions." .
-gist:ContentExpression a owl:Class ;
+gist:ContentExpression dcterms:title "Content Expression" ;
+	a owl:Class ;
 	rdfs:label "ContentExpression" ;
 	rdfs:subClassOf gist:Content ;
-	skos:altLabel "Content Expression" ;
 	skos:definition "Content reduced to text, audio, etc." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃isCategorizedBy.gist:GeneralMediaType" ;
 	skos:exactMatch gist_linkml:ContentExpression ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If it contains text (written or spoken), it will be expressed in a language." , "While the content expression is less abstract than a 'Work,' it is more abstract than the specific physical items that render the expression. For example, any physical or electronic book with ISBN-13 978-1953649805 is associated with the same content expression." .
-gist:ContingentEvent a owl:Class ;
+gist:ContingentEvent dcterms:title "Contingent Event" ;
+	a owl:Class ;
 	rdfs:label "ContingentEvent" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Contingent Event" ;
 	skos:definition "An event with a probability of happening in the future, and usually dependent upon some other event or condition." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & ∃hasMagnitude.∃hasAspect=_Aspect_probability & ∃isTriggeredBy.gist:Event)" ;
 	skos:exactMatch gist_linkml:ContingentEvent ;
 	skos:inScheme gist_linkml:core .
-gist:ContingentObligation a owl:Class ;
+gist:ContingentObligation dcterms:title "Contingent Obligation" ;
+	a owl:Class ;
 	rdfs:label "ContingentObligation" ;
 	rdfs:subClassOf gist:Commitment ;
-	skos:altLabel "Contingent Obligation" ;
 	skos:broadMatch <https://w3id.org/lmodel/dpv/Obligation> ;
 	skos:definition "An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Commitment & ∃hasGiver.(gist:Organization | gist:Person) & ∃isTriggeredBy.gist:Event)" ;
 	skos:exactMatch gist_linkml:ContingentObligation ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A contingent obligation might have a getter counterparty (as in the case of insurance); but it might not (as in the case of an offer)." .
-gist:Contract a owl:Class ;
+gist:Contract dcterms:title "Contract" ;
+	a owl:Class ;
 	rdfs:label "Contract" ;
 	rdfs:subClassOf gist:Agreement ;
-	skos:altLabel "Contract" ;
 	skos:definition "An agreement which can be enforced by law." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Agreement & ∃isUnderJurisdictionOf.gist:GovernmentOrganization)" ;
 	skos:exactMatch gist_linkml:Contract ;
 	skos:inScheme gist_linkml:core ;
 	skos:relatedMatch <https://w3id.org/lmodel/dpv/Contract> .
-gist:ContractTerm a owl:Class ;
+gist:ContractTerm dcterms:title "Contract Term" ;
+	a owl:Class ;
 	rdfs:label "ContractTerm" ;
 	rdfs:subClassOf gist:Specification ;
-	skos:altLabel "Contract Term" ;
 	skos:definition "A specification of some aspect of a contract." ;
 	skos:exactMatch gist_linkml:ContractTerm ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/CollateralProvisions> .
-gist:ControlledVocabulary a owl:Class ;
+gist:ControlledVocabulary dcterms:title "Controlled Vocabulary" ;
+	a owl:Class ;
 	rdfs:label "ControlledVocabulary" ;
 	rdfs:subClassOf gist:Collection ;
-	skos:altLabel "Controlled Vocabulary" ;
 	skos:definition "A collection of terms approved and managed by some organization or person." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Collection & ∃isGovernedBy.(gist:Organization | gist:Person) & ∃^isMemberOf.gist:Category)" ;
 	skos:exactMatch gist_linkml:ControlledVocabulary ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A controlled vocabulary is similar to a skos:ConceptScheme, but it could also be used for things that are not concepts, such as organizations, US presidents, geographic regions, etc. Hierarchical relationships between instances of the controlled vocabulary are possible." .
-gist:CountryGeoRegion a owl:Class ;
+gist:CountryGeoRegion dcterms:title "Country Geographic Region" ;
+	a owl:Class ;
 	rdfs:label "CountryGeoRegion" ;
 	rdfs:subClassOf gist:GovernedGeoRegion ;
-	skos:altLabel "Country Geographic Region" ;
 	skos:definition "A geographic region governed by exactly one country government." ;
 	skos:editorialNote "OWL equivalentClass: (gist:GovernedGeoRegion & ∃isGovernedBy.gist:CountryGovernment)" , "OWL subClassOf restrictions: =1isGovernedBy" ;
 	skos:exactMatch gist_linkml:CountryGeoRegion ;
 	skos:inScheme gist_linkml:core .
-gist:CountryGovernment a owl:Class ;
+gist:CountryGovernment dcterms:title "Country Government" ;
+	a owl:Class ;
 	rdfs:label "CountryGovernment" ;
 	rdfs:subClassOf gist:GovernmentOrganization ;
-	skos:altLabel "Country Government" ;
 	skos:definition "A government organization which asserts both sovereignty (i.e., it is not governed by some other government organization) and governance over an entity generally recognized as a country." ;
 	skos:editorialNote "OWL equivalentClass: (gist:GovernmentOrganization & ∃^isGovernedBy.gist:CountryGeoRegion)" , "OWL subClassOf restrictions: =1^isGovernedBy.gist:CountryGeoRegion; ≤0isGovernedBy.gist:GovernmentOrganization" ;
 	skos:exactMatch gist_linkml:CountryGovernment ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "While a country government may enter into treaties with other country governments, there are no governing relationships among the treaty members." .
-gist:DegreeOfCommitment a owl:Class ;
+gist:DegreeOfCommitment dcterms:title "Degree Of Commitment" ;
+	a owl:Class ;
 	rdfs:label "DegreeOfCommitment" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Degree Of Commitment" ;
 	skos:definition "The difficulty of reversing a commitment." ;
 	skos:exactMatch gist_linkml:DegreeOfCommitment ;
 	skos:inScheme gist_linkml:core .
-gist:Determination a owl:Class ;
+gist:Determination dcterms:title "Determination" ;
+	a owl:Class ;
 	rdfs:label "Determination" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Determination" ;
 	skos:closeMatch <https://w3id.org/lmodel/iso22989/Decision> ;
 	skos:definition "An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating." ;
 	skos:exactMatch gist_linkml:Determination ;
 	skos:inScheme gist_linkml:core .
-gist:Discipline a owl:Class ;
+gist:Discipline dcterms:title "Discipline" ;
+	a owl:Class ;
 	rdfs:label "Discipline" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Discipline" ;
 	skos:definition "An area of study or practice." ;
 	skos:exactMatch gist_linkml:Discipline ;
 	skos:inScheme gist_linkml:core .
-gist:ElectronicAddress a owl:Class ;
+gist:ElectronicAddress dcterms:title "Electronic Address" ;
+	a owl:Class ;
 	rdfs:label "ElectronicAddress" ;
 	rdfs:subClassOf gist:Address ;
-	skos:altLabel "Electronic Address" , "Virtual Address" ;
+	skos:altLabel "Virtual Address" ;
 	skos:definition "An address referring to a locatable virtual place that does not physically exist but is made by software or electronics to appear to do so." ;
 	skos:exactMatch gist_linkml:ElectronicAddress ;
 	skos:inScheme gist_linkml:core ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/ContactInformation> .
-gist:ElectronicAddressType a owl:Class ;
+gist:ElectronicAddressType dcterms:title "Electronic Address Type" ;
+	a owl:Class ;
 	rdfs:label "ElectronicAddressType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Electronic Address Type" ;
 	skos:definition "A category indicating a kind of electronic address. Such a category is usually based on the technology that enables routing to the address referent." ;
 	skos:exactMatch gist_linkml:ElectronicAddressType ;
 	skos:inScheme gist_linkml:core .
-gist:Equipment a owl:Class ;
+gist:Equipment dcterms:title "Equipment" ;
+	a owl:Class ;
 	rdfs:label "Equipment" ;
 	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
-	skos:altLabel "Equipment" ;
 	skos:definition "Human-made, tangible property other than land or buildings used to perform a task or activity." ;
 	skos:editorialNote "OWL equivalentClass: (gist:PhysicalIdentifiableItem & ∃isCategorizedBy.gist:EquipmentType)" ;
 	skos:exactMatch gist_linkml:Equipment ;
 	skos:inScheme gist_linkml:core .
-gist:EquipmentType a owl:Class ;
+gist:EquipmentType dcterms:title "Equipment Type" ;
+	a owl:Class ;
 	rdfs:label "EquipmentType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Equipment Type" ;
 	skos:definition "A category of equipment." ;
 	skos:exactMatch gist_linkml:EquipmentType ;
 	skos:inScheme gist_linkml:core .
-gist:Event a owl:Class ;
+gist:Event dcterms:title "Event" ;
+	a owl:Class ;
 	rdfs:label "Event" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Event" ;
 	skos:definition "Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces." ;
 	skos:exactMatch gist_linkml:Event ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/BusinessEvent> , <https://w3id.org/lmodel/iso22989/AILifecycleProcess> , <https://w3id.org/lmodel/iso22989/Action> , <https://w3id.org/lmodel/iso22989/DataProcess> ;
 	skos:note "An event does not necessarily have either planned or actual start or end datetimes. For example, a conference can be in the planning phase without any dates selected, but is nevertheless an (unscheduled) event. The subclasses of gist:Event state particular restrictions on planned and actual start and end dates." , "An event occurs during a time interval, which is distinct from the event." .
-gist:EventSpecification a owl:Class ;
+gist:EventSpecification dcterms:title "Event Specification" ;
+	a owl:Class ;
 	rdfs:label "EventSpecification" ;
 	rdfs:subClassOf gist:Specification ;
-	skos:altLabel "Event Specification" ;
 	skos:definition "A characterization of an event that might happen." ;
 	skos:exactMatch gist_linkml:EventSpecification ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This concept is useful for risk assessment and insurance policies." .
-gist:FormattedContent a owl:Class ;
+gist:FormattedContent dcterms:title "Formatted Content" ;
+	a owl:Class ;
 	rdfs:label "FormattedContent" ;
 	rdfs:subClassOf gist:ContentExpression ;
-	skos:altLabel "Formatted Content" ;
 	skos:definition "Content encoded in a specific format, but existing as data independent of any particular physical medium." ;
 	skos:editorialNote "OWL equivalentClass: (gist:ContentExpression & ∃isExpressedIn.gist:MediaType)" ;
 	skos:exactMatch gist_linkml:FormattedContent ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Each instance of formatted content is a distinct formatting of some Content. Thus, a PDF-formatted version and an HTML-formatted version of the same content are separate instances of formatted content." .
-gist:Function a owl:Class ;
+gist:Function dcterms:title "Function" ;
+	a owl:Class ;
 	rdfs:label "Function" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Function" ;
 	skos:definition "The activity that a human-made item is intended to perform." ;
 	skos:exactMatch gist_linkml:Function ;
 	skos:inScheme gist_linkml:core .
-gist:GeneralMediaType a owl:Class ;
+gist:GeneralMediaType dcterms:title "General Media Type" ;
+	a owl:Class ;
 	rdfs:label "GeneralMediaType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "General Media Type" ;
 	skos:definition "The real-world media type for content." ;
 	skos:exactMatch gist_linkml:GeneralMediaType ;
 	skos:inScheme gist_linkml:core .
-gist:GeoLocation a owl:Class ;
+gist:GeoLocation dcterms:title "Geographic Location" ;
+	a owl:Class ;
 	rdfs:label "GeoLocation" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Geographic Location" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n180 , _:c14n226 ;
 	skos:definition "A physical location, with the earth as a frame of reference." ;
 	skos:exactMatch gist_linkml:GeoLocation ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/dpv/StorageLocation> ;
 	skos:note "A geographic location may be a point, region, or volume." .
-gist:GeoPoint a owl:Class ;
+gist:GeoPoint dcterms:title "Geographic Point" ;
+	a owl:Class ;
 	rdfs:label "GeoPoint" ;
-	rdfs:subClassOf gist:GeoLocation ;
-	skos:altLabel "Geographic Point" ;
+	rdfs:subClassOf gist:GeoLocation , _:c14n156 , _:c14n16 , _:c14n182 , _:c14n300 , _:c14n301 , _:c14n39 ;
 	skos:definition "An individual point on or above the Earth's surface, identified by latitude, longitude and altitude. Altitude is the distance measured from sea level. If altitude is missing, the point is assumed to be at the Earth's surface. These points are described using decimal latitude/longitude." ;
 	skos:editorialNote "OWL equivalentClass: (∃hasMagnitude.∃hasAspect=_Aspect_altitude & ∃latitude.xsd:double & ∃longitude.xsd:double)" ;
 	skos:exactMatch gist_linkml:GeoPoint ;
 	skos:inScheme gist_linkml:core .
-gist:GeoRegion a owl:Class ;
+gist:GeoRegion dcterms:title "Geographic Region" ;
+	a owl:Class ;
 	rdfs:label "GeoRegion" ;
 	rdfs:subClassOf gist:GeoLocation ;
-	skos:altLabel "Geographic Region" ;
 	skos:definition "A bounded region (or set of regions) on the surface of the Earth." ;
 	skos:editorialNote "OWL subClassOf restrictions: (gist:GeoLocation & ∃hasMagnitude.∃hasAspect=_Aspect_area)" ;
 	skos:exactMatch gist_linkml:GeoRegion ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A geographic region could be non-contiguous; e.g., the region governed by the US federal government is the contiguous area of the lower 48 states plus Alaska, Hawaii, and overseas territories. Child classes in lower ontologies can make this distinction." .
-gist:GeoRoute a owl:Class ;
+gist:GeoRoute dcterms:title "Geographic Route" ;
+	a owl:Class ;
 	rdfs:label "GeoRoute" ;
 	rdfs:subClassOf gist:OrderedCollection ;
-	skos:altLabel "Geographic Route" ;
 	skos:definition "An ordered set of geographic points that defines a path from a starting point to an ending point." ;
 	skos:editorialNote "OWL equivalentClass: (gist:OrderedCollection & ∃^isMemberOf.gist:GeoPoint)" ;
 	skos:exactMatch gist_linkml:GeoRoute ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A geographic route could describe a bus route by identifying the points where the bus stops. A geographic route could describe the boundary of a polygonal geographic region (it does not have to be a traveled route)." .
-gist:GeoVolume a owl:Class ;
+gist:GeoVolume dcterms:title "Geographic Volume" ;
+	a owl:Class ;
 	rdfs:label "GeoVolume" ;
 	rdfs:subClassOf gist:GeoLocation ;
-	skos:altLabel "Geographic Volume" ;
 	skos:definition "A three-dimensional space on or near the surface of the Earth." ;
 	skos:editorialNote "OWL equivalentClass: (gist:GeoLocation & ∃hasMagnitude.∃hasAspect=_Aspect_volume & ∃^isGeoContainedIn.gist:GeoPoint)" ;
 	skos:exactMatch gist_linkml:GeoVolume ;
 	skos:inScheme gist_linkml:core .
-gist:GovernedGeoRegion a owl:Class ;
+gist:GovernedGeoRegion dcterms:title "Governed Geographic Region" ;
+	a owl:Class ;
 	rdfs:label "GovernedGeoRegion" ;
 	rdfs:subClassOf gist:GeoRegion ;
-	skos:altLabel "Governed Geographic Region" ;
 	skos:definition "A geographic region governed by at least one government organization." ;
 	skos:editorialNote "OWL equivalentClass: (gist:GeoRegion & ∃isGovernedBy.gist:GovernmentOrganization)" ;
 	skos:exactMatch gist_linkml:GovernedGeoRegion ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Geographic regions do not need not be physically contiguous in order to constitute a governed geographic region; e.g., Alaska and Hawaii are part of the region governed by the United States." .
-gist:GovernmentOrganization a owl:Class ;
+gist:GovernmentOrganization dcterms:title "Government Organization" ;
+	a owl:Class ;
 	rdfs:label "GovernmentOrganization" ;
 	rdfs:subClassOf gist:Organization ;
-	skos:altLabel "Government Organization" ;
 	skos:broadMatch <https://w3id.org/lmodel/common-domain-model/LegalEntity> ;
 	skos:definition "An independent organization exercising political and/or regulatory authority over a political unit, people, geographical region, etc., as well as performing certain functions for this unit or body." ;
 	skos:exactMatch gist_linkml:GovernmentOrganization ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Includes administrative, regulatory, and enforcement organizations created or sanctioned by country or sub-country governments." .
-gist:HistoricalEvent a owl:Class ;
+gist:HistoricalEvent dcterms:title "Historical Event" ;
+	a owl:Class ;
 	rdfs:label "HistoricalEvent" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Historical Event" ;
 	skos:definition "An event which occurred in time, with an actual end earlier than the present moment." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & ∃actualEndDateTime.xsd:dateTime)" , "OWL subClassOf restrictions: ∃actualStartDateTime.xsd:dateTime" ;
 	skos:exactMatch gist_linkml:HistoricalEvent ;
 	skos:inScheme gist_linkml:core .
-gist:ID a owl:Class ;
+gist:ID dcterms:title "ID" ;
+	a owl:Class ;
 	rdfs:label "ID" ;
 	rdfs:subClassOf gist:Content ;
-	skos:altLabel "ID" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/AssignedIdentifier> , <https://w3id.org/lmodel/common-domain-model/Identifier> ;
 	skos:definition "Content that is used to uniquely identify something or someone." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Content & ∃isAllocatedBy.(gist:IntellectualProperty | gist:Organization | gist:Person) & ∃uniqueText.xsd:string)" ;
@@ -475,69 +477,71 @@ gist:ID a owl:Class ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/EntityIdentifier> , <https://w3id.org/lmodel/common-domain-model/PartyIdentifier> , <https://w3id.org/lmodel/common-domain-model/PersonIdentifier> ;
 	skos:note "Used in conjunction with gist:isIdentifiedBy." .
-gist:IntellectualProperty a owl:Class ;
+gist:IntellectualProperty dcterms:title "Intellectual Property" ;
+	a owl:Class ;
 	rdfs:label "IntellectualProperty" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Intellectual Property" ;
 	skos:definition "An intangible work, invention, or concept, independent of its being expressed in text, audio, video, image, or live performance. IP can also be tacit knowledge, know-how, or skill." ;
 	skos:exactMatch gist_linkml:IntellectualProperty ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "For literature this could be called the 'Work,' except that 'work' is a highly overloaded term (expenditure of energy, resource consumption, art). Often the first expression precedes our recognition of the IP, but subsequent expressions are known to be derivatives of the IP, even if they are expression-to-expression translations (or copies)." , "This concept includes works that are out of copyright or were never formally registered; the defining feature is not that it is legally protected but that it is an intangible creation of the human mind." ;
 	skos:relatedMatch <https://w3id.org/lmodel/dpv/IntellectualPropertyData> .
-gist:Intention a owl:Class ;
+gist:Intention dcterms:title "Intention" ;
+	a owl:Class ;
 	rdfs:label "Intention" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Intention" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n11 , _:c14n314 , _:c14n350 , _:c14n5 ;
 	skos:definition "A goal, desire, or aspiration." ;
 	skos:exactMatch gist_linkml:Intention ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The 'teleological' aspect of a system that indicates things are done with a purpose." .
-gist:IntergovernmentalOrganization a owl:Class ;
+gist:IntergovernmentalOrganization dcterms:title "Intergovernmental Organization" ;
+	a owl:Class ;
 	rdfs:label "IntergovernmentalOrganization" ;
 	rdfs:subClassOf gist:Organization ;
-	skos:altLabel "Intergovernmental Organization" ;
 	skos:definition "An organization whose members are government organizations. This can comprise regional, municipal, state/province, or national level entities." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Organization & ≥2^isMemberOf.gist:GovernmentOrganization)" ;
 	skos:exactMatch gist_linkml:IntergovernmentalOrganization ;
 	skos:inScheme gist_linkml:core .
-gist:KnowledgeConcept a owl:Class ;
+gist:KnowledgeConcept dcterms:title "Knowledge Concept" ;
+	a owl:Class ;
 	rdfs:label "KnowledgeConcept" ;
 	rdfs:subClassOf gist:IntellectualProperty ;
-	skos:altLabel "Knowledge Concept" ;
 	skos:definition "An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure." ;
 	skos:exactMatch gist_linkml:KnowledgeConcept ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\n\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\n\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\n\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\n\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances." ;
 	skos:relatedMatch <https://w3id.org/lmodel/iso22989/KnowledgeGraph> .
-gist:Landmark a owl:Class ;
+gist:Landmark dcterms:title "Landmark" ;
+	a owl:Class ;
 	rdfs:label "Landmark" ;
 	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
-	skos:altLabel "Landmark" ;
+	owl:deprecated true ;
 	skos:definition "Something permanently attached to the Earth." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃hasPhysicalLocation.(gist:GeoRegion | gist:GeoVolume)" , "See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885." ;
 	skos:exactMatch gist_linkml:Landmark ;
 	skos:inScheme gist_linkml:core .
-gist:Language a owl:Class ;
+gist:Language dcterms:title "Language" ;
+	a owl:Class ;
 	rdfs:label "Language" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Language" ;
+	owl:deprecated true ;
 	skos:definition "A recognized, organized set of symbols and grammar." ;
 	skos:exactMatch gist_linkml:Language ;
 	skos:inScheme gist_linkml:core .
-gist:LivingThing a owl:Class ;
+gist:LivingThing dcterms:title "Living Thing" ;
+	a owl:Class ;
 	rdfs:label "LivingThing" ;
-	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
-	skos:altLabel "Living Thing" ;
+	rdfs:subClassOf gist:PhysicalIdentifiableItem , _:c14n224 , _:c14n225 ;
 	skos:definition "Something that is currently, or at some point in time was, alive." ;
 	skos:editorialNote "OWL equivalentClass: (gist:PhysicalIdentifiableItem & ∃hasBiologicalParent.gist:LivingThing & =1birthDate)" ;
 	skos:exactMatch gist_linkml:LivingThing ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Not all life forms have exactly two parents, so the restriction only specifies a minimum of one." .
-gist:Magnitude a owl:Class ;
+gist:Magnitude dcterms:title "Magnitude" ;
+	a owl:Class ;
 	rdfs:label "Magnitude" ;
 	rdfs:seeAlso gist:hasAccuracy ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Magnitude" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n302 , _:c14n35 ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/Measure> , <https://w3id.org/lmodel/common-domain-model/Quantity> ;
 	skos:definition "The amount of a measurable characteristic (aspect)." ;
 	skos:editorialNote "OWL equivalentClass: (∃hasAspect.gist:Aspect & ∃hasUnitOfMeasure.gist:UnitOfMeasure & ∃numericValue.rdfs:Literal)" ;
@@ -546,87 +550,87 @@ gist:Magnitude a owl:Class ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/Money> ;
 	skos:note "An accuracy can be assigned to a magnitude using the property has accuracy." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Price> .
-gist:MediaType a owl:Class ;
+gist:MediaType dcterms:title "Media Type" ;
+	a owl:Class ;
 	rdfs:label "MediaType" ;
 	rdfs:seeAlso <https://www.iana.org/assignments/media-types/media-types.xhtml> ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Media Type" ;
 	skos:definition "A digitized type that computer applications can recognize." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃uniqueText.xsd:string" ;
 	skos:exactMatch gist_linkml:MediaType ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The unique text for an IANA media type is the concatenation of the 'Type name', a slash '/', and the 'Subtype name' as provided on the page displayed when you resolve the URI of the media type." .
-gist:Medium a owl:Class ;
+gist:Medium dcterms:title "Medium" ;
+	a owl:Class ;
 	rdfs:label "Medium" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Medium" ;
 	skos:definition "A physical material on which a work can be rendered, represented, or implemented." ;
 	skos:exactMatch gist_linkml:Medium ;
 	skos:inScheme gist_linkml:core .
-gist:Message a owl:Class ;
+gist:Message dcterms:title "Message" ;
+	a owl:Class ;
 	rdfs:label "Message" ;
 	rdfs:subClassOf gist:ContentExpression ;
-	skos:altLabel "Message" ;
 	skos:definition "A specific instance of content sent from a sender to at least one other recipient." ;
 	skos:editorialNote "OWL equivalentClass: (gist:ContentExpression & ∃comesFromAgent.(gist:Organization | gist:Person) & ∃goesToAgent.(gist:Organization | gist:Person))" ;
 	skos:exactMatch gist_linkml:Message ;
 	skos:inScheme gist_linkml:core .
-gist:Network a owl:Class ;
+gist:Network dcterms:title "Network" ;
+	a owl:Class ;
 	rdfs:label "Network" ;
 	rdfs:subClassOf gist:Composite ;
-	skos:altLabel "Network" ;
 	skos:definition "A composite consisting of nodes connected by links." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Composite & ∃^isMemberOf.(gist:NetworkLink | gist:NetworkNode))" ;
 	skos:exactMatch gist_linkml:Network ;
 	skos:inScheme gist_linkml:core .
-gist:NetworkLink a owl:Class ;
+gist:NetworkLink dcterms:title "Network Link" ;
+	a owl:Class ;
 	rdfs:label "NetworkLink" ;
 	rdfs:subClassOf gist:Component ;
-	skos:altLabel "Network Link" ;
 	skos:definition "An abstract representation of the connection between two or more nodes in a network." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Component & ∃isMemberOf.gist:Network & ∃links.gist:NetworkNode)" , "OWL subClassOf restrictions: ∀links.gist:NetworkNode; =2links" ;
 	skos:exactMatch gist_linkml:NetworkLink ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Each network link is connected to a network node via the property gist:links or one of its subproperties." .
-gist:NetworkNode a owl:Class ;
+gist:NetworkNode dcterms:title "Network Node" ;
+	a owl:Class ;
 	rdfs:label "NetworkNode" ;
 	rdfs:subClassOf gist:Component ;
-	skos:altLabel "Network Node" ;
 	skos:definition "A node in a network." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃isMemberOf.gist:Network" ;
 	skos:exactMatch gist_linkml:NetworkNode ;
 	skos:inScheme gist_linkml:core .
-gist:Offer a owl:Class ;
+gist:Offer dcterms:title "Offer" ;
+	a owl:Class ;
 	rdfs:label "Offer" ;
 	rdfs:subClassOf gist:ContingentObligation ;
-	skos:altLabel "Offer" ;
 	skos:definition "A contingent commitment to buy, sell, swap or provide one or more described or identified goods or services in exchange for another (or others)." ;
 	skos:editorialNote "OWL equivalentClass: (gist:ContingentObligation & ∃hasGiver.(gist:Organization | gist:Person) & ∃offersToProvide.owl:Thing & ∃offersToReceive.owl:Thing & ∃plannedEndDateTime.xsd:dateTime & ∃plannedStartDateTime.xsd:dateTime)" ;
 	skos:exactMatch gist_linkml:Offer ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Dates on an offer represent the time period the offer is valid for, as in '25% off through October 25, 2025.'" .
-gist:OrderedCollection a owl:Class ;
+gist:OrderedCollection dcterms:title "Ordered Collection" ;
+	a owl:Class ;
 	rdfs:label "OrderedCollection" ;
 	rdfs:subClassOf gist:Collection ;
-	skos:altLabel "Ordered Collection" ;
 	skos:definition "A collection whose members are ordered in some way." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Collection & (∃^isFirstMemberOf.gist:OrderedMember | =0^isMemberOf) & ∀^isMemberOf.gist:OrderedMember)" ;
 	skos:exactMatch gist_linkml:OrderedCollection ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Includes partially ordered collections as well as collections in which members occupy the same position in a 'tie.' All members of an ordered collection are ordered members." .
-gist:OrderedMember a owl:Class ;
+gist:OrderedMember dcterms:title "Ordered Member" ;
+	a owl:Class ;
 	rdfs:label "OrderedMember" ;
-	rdfs:subClassOf gist:Component ;
-	skos:altLabel "Ordered Member" ;
+	rdfs:subClassOf gist:Component , _:c14n159 , _:c14n189 , _:c14n354 , _:c14n361 , _:c14n365 , _:c14n66 ;
 	skos:definition "A member of an ordered collection serving as a proxy for a real world item, which can appear in different orders in different collections. The ordered member appears in exactly one ordered collection." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Component & (∃precedesDirectly.gist:OrderedMember | ∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & ∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & =1isMemberOf)" ;
 	skos:exactMatch gist_linkml:OrderedMember ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "An ordered member points to the real world item via the providesOrderFor property. Ordering information is represented either as a number in a sequence, or by preceding or following another ordered member." .
-gist:Organization a owl:Class ;
+gist:Organization dcterms:title "Organization" ;
+	a owl:Class ;
 	rdfs:label "Organization" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Organization" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n248 , _:c14n267 ;
 	skos:broadMatch <https://w3id.org/lmodel/common-domain-model/Party> , <https://w3id.org/lmodel/dpv/LegalEntity> ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/LegalEntity> ;
 	skos:definition "A structured entity formed to achieve specific goals, typically involving members with defined roles." ;
@@ -635,18 +639,18 @@ gist:Organization a owl:Class ;
 	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/BusinessUnit> , <https://w3id.org/lmodel/dpv/OrganisationalUnit> , <https://w3id.org/lmodel/iso22989/Organization> ;
 	skos:note "Not all organizations have members, e.g. shell companies." , "While typically the members of organizations are people, in some cases they are other organizations; e.g., the members of the United Nations are country governments." ;
 	skos:relatedMatch <https://w3id.org/lmodel/dpv/ThirdParty> .
-gist:Permission a owl:Class ;
+gist:Permission dcterms:title "Permission" ;
+	a owl:Class ;
 	rdfs:label "Permission" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Permission" ;
 	skos:definition "A description of things one is permitted to do." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & ∃allows.gist:Behavior)" ;
 	skos:exactMatch <https://w3id.org/lmodel/dpv/Permission> , gist_linkml:Permission ;
 	skos:inScheme gist_linkml:core .
-gist:Person a owl:Class ;
+gist:Person dcterms:title "Person" ;
+	a owl:Class ;
 	rdfs:label "Person" ;
-	rdfs:subClassOf gist:LivingThing ;
-	skos:altLabel "Person" ;
+	rdfs:subClassOf gist:LivingThing , _:c14n108 , _:c14n241 ;
 	skos:broadMatch <https://w3id.org/lmodel/common-domain-model/Party> ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/NaturalPerson> ;
 	skos:definition "A human being who was or is alive." ;
@@ -655,258 +659,259 @@ gist:Person a owl:Class ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/lmodel/dpv/DataSubject> ;
 	skos:relatedMatch <https://w3id.org/lmodel/iso22989/AIUser> , <https://w3id.org/lmodel/iso22989/DataSubject> .
-gist:PhysicalActionType a owl:Class ;
+gist:PhysicalActionType dcterms:title "Physical Action Type" ;
+	a owl:Class ;
 	rdfs:label "PhysicalActionType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Physical Action Type" ;
 	skos:definition "A category indicating the type of an action based on its effect in the physical world." ;
 	skos:exactMatch gist_linkml:PhysicalActionType ;
 	skos:inScheme gist_linkml:core .
-gist:PhysicalAddress a owl:Class ;
+gist:PhysicalAddress dcterms:title "Physical Address" ;
+	a owl:Class ;
 	rdfs:label "PhysicalAddress" ;
 	rdfs:subClassOf gist:Address ;
-	skos:altLabel "Physical Address" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/Address> ;
 	skos:definition "An address that refers to a locatable place within the physical universe." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Address & ∃refersTo.gist:GeoLocation)" ;
 	skos:exactMatch gist_linkml:PhysicalAddress ;
 	skos:inScheme gist_linkml:core .
-gist:PhysicalAddressType a owl:Class ;
+gist:PhysicalAddressType dcterms:title "Physical Address Type" ;
+	a owl:Class ;
 	rdfs:label "PhysicalAddressType" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Physical Address Type" ;
 	skos:definition "A category indicating local customary characterizations of physical addresses." ;
 	skos:exactMatch gist_linkml:PhysicalAddressType ;
 	skos:inScheme gist_linkml:core .
-gist:PhysicalEvent a owl:Class ;
+gist:PhysicalEvent dcterms:title "Physical Event" ;
+	a owl:Class ;
 	rdfs:label "PhysicalEvent" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Physical Event" ;
 	skos:definition "An event that can be said to have occurred at some place in space." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & ∃occursIn.gist:GeoLocation)" ;
 	skos:exactMatch gist_linkml:PhysicalEvent ;
 	skos:inScheme gist_linkml:core .
-gist:PhysicalIdentifiableItem a owl:Class ;
+gist:PhysicalIdentifiableItem dcterms:title "Physical Identifiable Item" ;
+	a owl:Class ;
 	rdfs:label "PhysicalIdentifiableItem" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Physical Identifiable Item" ;
 	skos:definition "A discrete physical object which, if subdivided, will result in parts that are distinguishable in nature from the whole and in general also from the other parts." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃isMadeUpOf.gist:PhysicalSubstance; ∃hasMagnitude.∃hasAspect=_Aspect_mass; ∃hasMagnitude.∃hasAspect=_Aspect_volume" ;
 	skos:exactMatch gist_linkml:PhysicalIdentifiableItem ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This concept generally corresponds to count nouns in English. By contrast, physical substances, such as an amount of water, flour, or sand, are mass nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a statue is made of bronze. If you divide a physical substance such as an amount of water into parts, you have two amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part is different from the whole." .
-gist:PhysicalSubstance a owl:Class ;
+gist:PhysicalSubstance dcterms:title "Physical Substance" ;
+	a owl:Class ;
 	rdfs:label "PhysicalSubstance" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Physical Substance" ;
 	skos:definition "An undifferentiated amount of physical material which, when subdivided, results in each part being indistinguishable in nature from the whole and from every other part." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃hasMagnitude.∃hasAspect=_Aspect_volume; ∃hasMagnitude.∃hasAspect=_Aspect_mass" ;
 	skos:exactMatch gist_linkml:PhysicalSubstance ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "An instance of this class has weight and takes up space. We mean the physical gold in a ring, not the concept of gold that shows up in the periodic table. The latter would be an instance of gist:KnowledgeConcept." , "This concept generally corresponds to mass nouns in English. By contrast, instances of gist:PhysicalIdentifiableItem, such as a computer, book, or car, are count nouns. Physical identifiable items are made up of physical substances; e.g., a cake is made up of butter, flour, and sugar; a ring is made of gold. If you divide a physical substance such as an amount of water into parts, you have different amounts of water otherwise indistinguishable from one another; if you divide a physical identifiable item such as a computer into parts, each part will be distinguishable from the original whole." .
-gist:ProductCategory a owl:Class ;
+gist:ProductCategory dcterms:title "Product Category" ;
+	a owl:Class ;
 	rdfs:label "ProductCategory" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Product Category" ;
 	skos:definition "Any of many ways of categorizing products." ;
 	skos:exactMatch gist_linkml:ProductCategory ;
 	skos:inScheme gist_linkml:core .
-gist:ProductSpecification a owl:Class ;
+gist:ProductSpecification dcterms:title "Product Specification" ;
+	a owl:Class ;
 	rdfs:label "ProductSpecification" ;
 	rdfs:subClassOf gist:CatalogItem ;
-	skos:altLabel "Product Specification" ;
 	skos:definition "A description of something that could be physically warehoused or digitally stored and physically or digitally delivered." ;
 	skos:editorialNote "OWL equivalentClass: (gist:CatalogItem & ∃isCategorizedBy.gist:ProductCategory)" ;
 	skos:exactMatch gist_linkml:ProductSpecification ;
 	skos:inScheme gist_linkml:core ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/TradableProduct> .
-gist:Project a owl:Class ;
+gist:Project dcterms:title "Project" ;
+	a owl:Class ;
 	rdfs:label "Project" ;
 	rdfs:subClassOf gist:Task ;
-	skos:altLabel "Project" ;
 	skos:definition "A task, usually of longer duration, made up of other tasks." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Task & ∃^isPartOf.gist:Task)" ;
 	skos:exactMatch gist_linkml:Project ;
 	skos:inScheme gist_linkml:core .
-gist:ReferenceValue a owl:Class ;
+gist:ReferenceValue dcterms:title "Reference Value" ;
+	a owl:Class ;
 	rdfs:label "ReferenceValue" ;
 	rdfs:subClassOf gist:Magnitude ;
-	skos:altLabel "Reference Value" ;
 	skos:definition "A magnitude that was neither measured nor estimated but set by fiat." ;
 	skos:exactMatch gist_linkml:ReferenceValue ;
 	skos:inScheme gist_linkml:core .
-gist:RenderedContent a owl:Class ;
+gist:RenderedContent dcterms:title "Rendered Content" ;
+	a owl:Class ;
 	rdfs:label "RenderedContent" ;
 	rdfs:subClassOf gist:FormattedContent ;
-	skos:altLabel "Rendered Content" ;
 	skos:definition "Content expressed via some physical medium." ;
 	skos:editorialNote "OWL equivalentClass: (gist:FormattedContent & ∃isRenderedOn.gist:Medium)" ;
 	skos:exactMatch gist_linkml:RenderedContent ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Renderings of the same file on two different monitors are separate instances of rendered content." .
-gist:Requirement a owl:Class ;
+gist:Requirement dcterms:title "Requirement" ;
+	a owl:Class ;
 	rdfs:label "Requirement" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Requirement" ;
 	skos:definition "The obligation of a person or organization to behave in a certain way." ;
 	skos:exactMatch gist_linkml:Requirement ;
 	skos:inScheme gist_linkml:core .
-gist:Restriction a owl:Class ;
+gist:Restriction dcterms:title "Restriction" ;
+	a owl:Class ;
 	rdfs:label "Restriction" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Restriction" ;
 	skos:definition "A description of things one is prevented from doing." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & ∃prevents.gist:Behavior)" ;
 	skos:exactMatch gist_linkml:Restriction ;
 	skos:inScheme gist_linkml:core .
-gist:ScheduledEvent a owl:Class ;
+gist:ScheduledEvent dcterms:title "Scheduled Event" ;
+	a owl:Class ;
 	rdfs:label "ScheduledEvent" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Scheduled Event" ;
 	skos:definition "An event with a planned start datetime." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & ∃plannedStartDateTime.xsd:dateTime)" ;
 	skos:exactMatch gist_linkml:ScheduledEvent ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If the event already started, but has not yet ended, it is a contemporary event with an actual start datetime. If the event is over, it is a historical event having an actual end datetime. The event always retains its planned start datetime, and thus continues to be a scheduled event." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Schedule> .
-gist:ScheduledTask a owl:Class ;
+gist:ScheduledTask dcterms:title "Scheduled Task" ;
+	a owl:Class ;
 	rdfs:label "ScheduledTask" ;
 	rdfs:subClassOf gist:ScheduledEvent ;
-	skos:altLabel "Scheduled Task" ;
 	skos:definition "A task with a planned start datetime." ;
 	skos:editorialNote "Additional named superclasses (modelled as OWL multiple inheritance): Task" , "OWL equivalentClass: (gist:ScheduledEvent & gist:Task)" ;
 	skos:exactMatch gist_linkml:ScheduledTask ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If work on the task has already started, but has not yet ended, it will have an actual start datetime. If the task is completed, it will also have an actual end datetime. The task always retains its planned start time, and thus continues to be a scheduled task." .
-gist:SchemaMetaData a owl:Class ;
+gist:SchemaMetaData dcterms:title "Schema Meta Data" ;
+	a owl:Class ;
 	rdfs:label "SchemaMetaData" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Schema Meta Data" ;
+	owl:deprecated true ;
 	skos:definition "Superclass for all types of metadata." ;
 	skos:exactMatch gist_linkml:SchemaMetaData ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The definition of this class needs additional work." .
-gist:ServiceSpecification a owl:Class ;
+gist:ServiceSpecification dcterms:title "Service Specification" ;
+	a owl:Class ;
 	rdfs:label "ServiceSpecification" ;
 	rdfs:subClassOf gist:CatalogItem ;
-	skos:altLabel "Service Specification" ;
 	skos:definition "A description of something that can be done for a person or organization (which produces some form of an act)." ;
 	skos:editorialNote "OWL equivalentClass: (gist:CatalogItem & ∃^isBasedOn.gist:Event)" ;
 	skos:exactMatch gist_linkml:ServiceSpecification ;
 	skos:inScheme gist_linkml:core .
-gist:Specification a owl:Class ;
+gist:Specification dcterms:title "Specification" ;
+	a owl:Class ;
 	rdfs:label "Specification" ;
 	rdfs:subClassOf gist:Intention ;
-	skos:altLabel "Specification" ;
 	skos:definition "The set of characteristics and constraints on their values that specify what it means to be a particular type of thing, such as a material, product, service or event. A specification is sufficiently precise to allow evaluating conformance to the specification." ;
 	skos:exactMatch gist_linkml:Specification ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Although a characterization of how to do something is often called a specification, the intended meaning here is limited to specifying what something is. The focus is on the what, not the how. Use gist:TaskTemplate for specifying the how, such as a plan or process specification. Use gist:conformsTo to assert that something conforms to a specification. To represent a definition of a particular type of thing that is not sufficiently precise to be a gist:Specification, consider using gist:KnowledgeConcept." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/EligibleCollateralCriteria> .
-gist:SubCountryGovernment a owl:Class ;
+gist:SubCountryGovernment dcterms:title "Sub-Country Government" ;
+	a owl:Class ;
 	rdfs:label "SubCountryGovernment" ;
 	rdfs:subClassOf gist:GovernmentOrganization ;
-	skos:altLabel "Sub-Country Government" ;
 	skos:definition "The government of a governed geographic region other than a country which is under the direct or indirect control of a country government." ;
 	skos:editorialNote "OWL equivalentClass: (gist:GovernmentOrganization & ∃isGovernedBy.gist:CountryGovernment & ∃^isGovernedBy.gist:GeoRegion)" ;
 	skos:exactMatch gist_linkml:SubCountryGovernment ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Note that the predicate gist:isGovernedBy is used both for the relationship a governed geographic region has to its government and for the relationship a sub-region government has to the government of the larger region." , "There are many types of sub-regions of a country and the governments thereof (as well as different terms, like 'province' and 'state,' which refer to essentially the same type of thing). We should not automatically assume 'state,' 'county,' and 'city.' Subclasses or categories can be defined if greater specificity is needed." , "This class applies only to organizations governing geographic regions. Regulatory and bureaucratic organizations are members of the more generic gist:GovernmentOrganization class." .
-gist:System a owl:Class ;
+gist:System dcterms:title "System" ;
+	a owl:Class ;
 	rdfs:label "System" ;
 	rdfs:subClassOf gist:Composite ;
-	skos:altLabel "System" ;
 	skos:definition "A composite made up of interacting or interdependent components that together operate as a whole." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Composite & ∃^isDirectPartOf.gist:Component)" ;
 	skos:exactMatch gist_linkml:System ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "May be used to refer to either man-made or natural systems." .
-gist:Tag a owl:Class ;
+gist:Tag dcterms:title "Tag" ;
+	a owl:Class ;
 	rdfs:label "Tag" ;
 	rdfs:subClassOf gist:Category ;
-	skos:altLabel "Tag" ;
 	skos:definition "A term in a folksonomy used to categorize things. Tags can be made up on the fly by users." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃containedText.xsd:string" ;
 	skos:exactMatch gist_linkml:Tag ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Whether to use gist:containedText or gist:uniqueText on tags is an implementation decision. Since the latter is a subproperty of the former, the restriction remains valid either way." .
-gist:Task a owl:Class ;
+gist:Task dcterms:title "Task" ;
+	a owl:Class ;
 	rdfs:label "Task" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Task" ;
 	skos:definition "An activity or piece of work that is either proposed, planned, scheduled, underway, or completed." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)" ;
 	skos:exactMatch gist_linkml:Task ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template." , "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task." , "Use the property gist:isBasedOn to link a task back to the task template." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Workflow> , <https://w3id.org/lmodel/iso22989/Task> .
-gist:TaskTemplate a owl:Class ;
+gist:TaskTemplate dcterms:title "Task Template" ;
+	a owl:Class ;
 	rdfs:label "TaskTemplate" ;
 	rdfs:subClassOf gist:Template ;
-	skos:altLabel "Task Template" ;
 	skos:definition "An outline of a task of a particular type, which is the basis for executing such tasks." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Template & ∃hasGoal.gist:Intention)" ;
 	skos:exactMatch gist_linkml:TaskTemplate ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A task template may define a single activity or a series of activities; the level of granularity can be varied according to use case. For example, in a new employee onboarding process, signing up for benefits might be one activity, or it might be broken down into signing up for health insurance, signing up for dental insurance, etc." , "Use the property isBasedOn to link the Task back to the TaskTemplate." .
-gist:Template a owl:Class ;
+gist:Template dcterms:title "Template" ;
+	a owl:Class ;
 	rdfs:label "Template" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Template" ;
 	skos:definition "Something used to make objects in its own image." ;
 	skos:exactMatch gist_linkml:Template ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Use gist:isBasedOn to link the object made from the template back to the template." .
-gist:TemporalRelation a owl:Class ;
+gist:TemporalRelation dcterms:title "Temporal Relation" ;
+	a owl:Class ;
 	rdfs:label "TemporalRelation" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Temporal Relation" ;
 	skos:definition "A relationship existing for a period of time." ;
 	skos:editorialNote "OWL subClassOf restrictions: =1startDateTime; ≥2hasParticipant" ;
 	skos:exactMatch gist_linkml:TemporalRelation ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A temporal relation must have a minimum of two participants. For example, both the employer and the employee are participants in a temporal relation representing a period of employment. Note that 'participant' does not imply agency; a non-sentient being can participate in a temporal relation. For example, both a person and a house could be participants in a hypothetical relation 'lives at.'" .
-gist:Text a owl:Class ;
+gist:Text dcterms:title "Text" ;
+	a owl:Class ;
 	rdfs:label "Text" ;
 	rdfs:subClassOf gist:ContentExpression ;
-	skos:altLabel "Text" ;
 	skos:definition "Content expressed as a written sequence of characters." ;
 	skos:editorialNote "OWL equivalentClass: (gist:ContentExpression & ∃isExpressedIn.gist:Language & ∃containedText.xsd:string)" ;
 	skos:exactMatch gist_linkml:Text ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Text is expressed in a language (human or computer) and may but need not specify an encoding." .
-gist:TimeInterval a owl:Class ;
+gist:TimeInterval dcterms:title "Time Interval" ;
+	a owl:Class ;
 	rdfs:label "TimeInterval" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Time Interval" ;
 	skos:definition "A span of time with a known start time, end time, and duration. As long as two of the three are known, the third can be inferred." ;
 	skos:editorialNote "OWL subClassOf restrictions: =1startDateTime; =1hasMagnitude.∃hasAspect=_Aspect_duration; =1endDateTime" ;
 	skos:exactMatch gist_linkml:TimeInterval ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "An ongoing state of affairs with an unknown end time in the future cannot be a time interval; e.g. the lifespan of a living person cannot be a time interval, as the end time is unknown." , "This is distinct from a duration, which describes how long a time interval lasts (e.g., one hour; 3 days; 22 minutes)." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Period> .
-gist:Transaction a owl:Class ;
+gist:Transaction dcterms:title "Transaction" ;
+	a owl:Class ;
 	rdfs:label "Transaction" ;
 	rdfs:subClassOf gist:Event ;
-	skos:altLabel "Transaction" ;
 	skos:definition "An exchange or transfer of goods, services, or funds." ;
 	skos:exactMatch gist_linkml:Transaction ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Different sorts of transactions can have different datetime precisions. For example, an electronic transaction would have a gist:actualEndMicrosecond." ;
 	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Trade> , <https://w3id.org/lmodel/common-domain-model/TradeState> .
-gist:UnitGroup a owl:Class ;
+gist:UnitGroup dcterms:title "Unit Group" ;
+	a owl:Class ;
 	rdfs:label "UnitGroup" ;
-	rdfs:subClassOf gist:Collection ;
-	skos:altLabel "Unit Group" ;
+	rdfs:subClassOf gist:Collection , _:c14n100 , _:c14n102 , _:c14n107 , _:c14n116 , _:c14n118 , _:c14n14 , _:c14n141 , _:c14n143 , _:c14n157 , _:c14n201 , _:c14n203 , _:c14n204 , _:c14n207 , _:c14n220 , _:c14n227 , _:c14n23 , _:c14n230 , _:c14n231 , _:c14n243 , _:c14n249 , _:c14n252 , _:c14n281 , _:c14n285 , _:c14n288 , _:c14n289 , _:c14n291 , _:c14n307 , _:c14n343 , _:c14n356 , _:c14n363 , _:c14n38 , _:c14n40 , _:c14n48 , _:c14n57 , _:c14n6 , _:c14n61 , _:c14n8 , _:c14n80 , _:c14n96 ;
 	skos:definition "A collection of units of measure that can all be used to measure the same aspects." ;
 	skos:editorialNote "OWL subClassOf restrictions: ∃^isMemberOf.gist:UnitOfMeasure" ;
 	skos:exactMatch gist_linkml:UnitGroup ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Typically there is one unit group per aspect. An example of an aspect with two unit groups is vehicle efficiency, which can be measured by miles per gallon (distance per volume) or by liters per 100 kilometers (volume per distance). These two units of measure need to be in different unit groups because they have different values of exponents. When adding a unit of measure to a unit group, make sure it has the same exponents as the other members of the unit group." .
-gist:UnitOfMeasure a owl:Class ;
+gist:UnitOfMeasure dcterms:title "Unit of Measure" ;
+	a owl:Class ;
 	rdfs:label "UnitOfMeasure" ;
-	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:altLabel "Unit of Measure" ;
+	rdfs:subClassOf gist_linkml:GistThing , _:c14n114 , _:c14n122 , _:c14n135 , _:c14n145 , _:c14n148 , _:c14n15 , _:c14n160 , _:c14n163 , _:c14n181 , _:c14n190 , _:c14n191 , _:c14n194 , _:c14n195 , _:c14n205 , _:c14n208 , _:c14n21 , _:c14n214 , _:c14n217 , _:c14n219 , _:c14n236 , _:c14n237 , _:c14n238 , _:c14n262 , _:c14n272 , _:c14n276 , _:c14n293 , _:c14n295 , _:c14n298 , _:c14n304 , _:c14n309 , _:c14n310 , _:c14n329 , _:c14n330 , _:c14n345 , _:c14n357 , _:c14n358 , _:c14n36 , _:c14n362 , _:c14n44 , _:c14n55 , _:c14n65 , _:c14n77 , _:c14n82 , _:c14n89 , _:c14n91 ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/UnitType> ;
 	skos:definition "A standard amount used to measure or specify things." ;
 	skos:exactMatch gist_linkml:UnitOfMeasure ;
@@ -939,873 +944,874 @@ gist:_PrefixDeclaration_xsd dcterms:title "xsd" ;
 	a owl:NamedIndividual , gist_linkml:PrefixDeclarationInstance ;
 	rdfs:label "PREFIXDECLARATION_XSD" ;
 	skos:definition "Prefix 'xsd' for namespace <http://www.w3.org/2001/XMLSchema#>." .
-gist:actualEndDate a owl:DatatypeProperty ;
+gist:actualEndDate dcterms:title "actual end date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_end_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualEndDateTime ;
-	skos:altLabel "actual end date" ;
 	skos:definition "The actual date that something ended, with precision of one day." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision." .
-gist:actualEndDateTime a owl:DatatypeProperty ;
+gist:actualEndDateTime dcterms:title "actual end date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_end_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:endDateTime ;
-	skos:altLabel "actual end date time" ;
 	skos:definition "The actual date and time that something ended, with no implied precision." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is an abstraction over the various precisions of actual end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." .
-gist:actualEndMicrosecond a owl:DatatypeProperty ;
+gist:actualEndMicrosecond dcterms:title "actual end microsecond" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_end_microsecond" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualEndDateTime ;
-	skos:altLabel "actual end microsecond" ;
 	skos:definition "The actual time that something ended, expressed as a system time used for timestamps." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed." .
-gist:actualEndMinute a owl:DatatypeProperty ;
+gist:actualEndMinute dcterms:title "actual end minute" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_end_minute" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualEndDateTime ;
-	skos:altLabel "actual end minute" ;
 	skos:definition "The actual date and time that something ended, with precision of one minute." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision." .
-gist:actualEndYear a owl:DatatypeProperty ;
+gist:actualEndYear dcterms:title "actual end year" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_end_year" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualEndDateTime ;
-	skos:altLabel "actual end year" ;
 	skos:definition "The actual date that something ended, with precision of one year." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
-gist:actualStartDate a owl:DatatypeProperty ;
+gist:actualStartDate dcterms:title "actual start date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_start_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualStartDateTime ;
-	skos:altLabel "actual start date" ;
 	skos:definition "The actual date that something started, with precision of one day." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things where the precision of a date is sufficient, such as most projects, tasks, and the like. Recommended usage is to zero out the hours through microseconds to avoid spurious precision." .
-gist:actualStartDateTime a owl:DatatypeProperty ;
+gist:actualStartDateTime dcterms:title "actual start date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_start_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:startDateTime ;
-	skos:altLabel "actual start date time" ;
 	skos:definition "The actual date and time that something started, with no implied precision." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is an abstraction over the various precisions of actual start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." .
-gist:actualStartMicrosecond a owl:DatatypeProperty ;
+gist:actualStartMicrosecond dcterms:title "actual start microsecond" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_start_microsecond" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualStartDateTime ;
-	skos:altLabel "actual start microsecond" ;
 	skos:definition "The actual time that something started, expressed as a system time used for timestamps." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A system time will be as precise as the system can supply, typically at least milliseconds, sometimes microseconds. The convention for timestamps, such as recording a transaction, is to specify just the end point; the start time is rarely needed. This property is defined for the cases when you do need to capture the runtime of a system process, and is then used in conjunction with gist:actualEndMicrosecond." .
-gist:actualStartMinute a owl:DatatypeProperty ;
+gist:actualStartMinute dcterms:title "actual start minute" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_start_minute" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualStartDateTime ;
-	skos:altLabel "actual start minute" ;
 	skos:definition "The actual date and time that something started, with precision of one minute." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision." .
-gist:actualStartYear a owl:DatatypeProperty ;
+gist:actualStartYear dcterms:title "actual start year" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "actual_start_year" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualStartDateTime ;
-	skos:altLabel "actual start year" ;
 	skos:definition "The actual date that something started, with precision of one year." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things where the precision of a year is sufficient. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
-gist:allows a owl:ObjectProperty ;
+gist:allows dcterms:title "allows" ;
+	a owl:ObjectProperty ;
 	rdfs:label "allows" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "allows" ;
 	skos:definition "Relates a permission to a particular activity or type of activity it allows." ;
 	skos:inScheme gist_linkml:core .
-gist:atDateTime a owl:DatatypeProperty ;
+gist:atDateTime dcterms:title "at date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "at_date_time" ;
 	rdfs:range xsd:dateTime ;
-	skos:altLabel "at date time" ;
 	skos:definition "The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n- *DateTime is an abstraction over the various precisions of its subproperties.\n- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds." .
-gist:birthDate a owl:DatatypeProperty ;
+gist:birthDate dcterms:title "birth date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "birth_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:startDateTime ;
-	skos:altLabel "birth date" ;
 	skos:definition "The date some living thing was or will be born, with precision of one day." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is a subproperty of gist:startDateTime rather than gist:actualStartDate because some living things have yet to be born. This property refers to a calendar date and is assumed to precision of one day (time zone offset is allowed). It is recommended to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a birthdate to the minute can define a subproperty." .
-gist:comesFromAgent a owl:ObjectProperty ;
+gist:comesFromAgent dcterms:title "comes from agent" ;
+	a owl:ObjectProperty ;
 	rdfs:label "comes_from_agent" ;
-	rdfs:range _:c14n34 ;
+	rdfs:range _:c14n254 ;
 	rdfs:subPropertyOf gist:hasParticipant ;
-	skos:altLabel "comes from agent" ;
 	skos:definition "Relates something to the originating agent." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is not the inverse of gist:goesToAgent, as both properties have the message or shipment as the subject." , "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasGiver is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the giving of a gift." .
-gist:comesFromPlace a owl:ObjectProperty ;
+gist:comesFromPlace dcterms:title "comes from place" ;
+	a owl:ObjectProperty ;
 	rdfs:label "comes_from_place" ;
-	rdfs:range _:c14n25 ;
-	skos:altLabel "comes from place" ;
+	rdfs:range _:c14n151 ;
 	skos:definition "Relates something to its place of origin." ;
 	skos:inScheme gist_linkml:core .
-gist:conformsTo a owl:ObjectProperty ;
+gist:conformsTo dcterms:title "conforms to" ;
+	a owl:ObjectProperty ;
 	rdfs:label "conforms_to" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "conforms to" ;
 	skos:definition "The subject is consistent with or satisfies the requirements, rules, or expectations established by the object." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:range_includes "gist:Intention" .
-gist:containedText a owl:DatatypeProperty ;
+gist:containedText dcterms:title "contained text" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "contained_text" ;
-	skos:altLabel "contained text" ;
 	skos:definition "Relates an entity containing textual information to the string constituting that textual information." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If there are multiple strings associated with an entity, it is an implementation decision whether to combine them into a single contained text value or to use multiple contained text assertions." ;
 	gist_linkml:domain_includes "gist:Content, gist:ContentExpression, gist:Tag, gist:Text" .
-gist:contributesTo a owl:ObjectProperty ;
+gist:contributesTo dcterms:title "contributes to" ;
+	a owl:ObjectProperty ;
 	rdfs:label "contributes_to" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "contributes to" ;
 	skos:definition "The subject helps achieve or fulfill the goals or functions of the object." ;
 	skos:inScheme gist_linkml:core .
-gist:conversionFactor a owl:DatatypeProperty ;
+gist:conversionFactor dcterms:title "conversion factor" ;
+	a owl:DatatypeProperty ;
 	rdfs:domain gist:UnitOfMeasure ;
 	rdfs:label "conversion_factor" ;
-	rdfs:range _:c14n19 ;
+	rdfs:range _:c14n124 ;
 	rdfs:seeAlso gist:conversionOffset ;
-	skos:altLabel "conversion factor" ;
 	skos:definition "A value that relates a unit of measure to units of the International System of Units." ;
 	skos:editorialNote "OWL range: (xsd:decimal | xsd:double)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\nFor example, to convert 27 feet to yards:\n\nthe conversion factor of foot is 0.3048\nthe conversion factor of yard is 0.9144\n\nso\n\n27 feet = (27 x 0.3048) / 0.9144 = 9 yards" .
-gist:conversionOffset a owl:DatatypeProperty ;
+gist:conversionOffset dcterms:title "conversion offset" ;
+	a owl:DatatypeProperty ;
 	rdfs:domain gist:UnitOfMeasure ;
 	rdfs:label "conversion_offset" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "conversion offset" ;
 	skos:definition "A value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\n\ny degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\n\nTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\n\nTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset." ;
 	skos:inScheme gist_linkml:core .
-gist:deathDate a owl:DatatypeProperty ;
+gist:deathDate dcterms:title "death date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "death_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:actualEndDate ;
-	skos:altLabel "death date" ;
 	skos:definition "The date some living thing died." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Refers to a calendar date and is assumed to have precision of one day (time zone offset is allowed). Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Implementations requiring a death date to the minute can define a subproperty." .
-gist:description a owl:DatatypeProperty ;
+gist:description dcterms:title "description" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "description" ;
-	skos:altLabel "description" ;
 	skos:definition "A statement about someone or something's attributes or characteristics." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property is used to describe instance data which is not part of the ontology. A definition and a description have different semantics. Use skos:definition for a statement of the meaning of a thing and gist:description to describe a thing's attributes, characteristics, or features." .
-gist:domainIncludes a owl:AnnotationProperty ;
+gist:domainIncludes dcterms:title "domain includes" ;
+	a owl:AnnotationProperty ;
 	rdfs:label "domain_includes" ;
-	skos:altLabel "domain includes" ;
 	skos:broadMatch skos:scopeNote ;
 	skos:definition "Relates a property to a class that the property is expected to be used on." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "There may be multiple domainIncludes assertions on a single property." , "This property is used to guide the ontology user; like all annotation properties, it does not play a role in inference." .
-gist:encryptedText a owl:DatatypeProperty ;
+gist:encryptedText dcterms:title "encrypted text" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "encrypted_text" ;
 	rdfs:range xsd:string ;
 	rdfs:subPropertyOf gist:containedText ;
-	skos:altLabel "encrypted text" ;
 	skos:definition "Encoded text produced from readable data by an algorithm so that it can only be understood or restored with a decryption key." ;
 	skos:inScheme gist_linkml:core .
-gist:endDateTime a owl:DatatypeProperty ;
+gist:endDateTime dcterms:title "end date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "end_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:atDateTime ;
-	skos:altLabel "end date time" ;
 	skos:definition "The date and time that something ends." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals)." , "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." .
-gist:exponentOfAmpere a owl:DatatypeProperty ;
+gist:exponentOfAmpere dcterms:title "exponent of ampere" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_ampere" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of ampere" ;
 	skos:definition "The exponent of ampere in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfBit a owl:DatatypeProperty ;
+gist:exponentOfBit dcterms:title "exponent of bit" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_bit" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of bit" ;
 	skos:definition "The exponent of bit in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfCandela a owl:DatatypeProperty ;
+gist:exponentOfCandela dcterms:title "exponent of candela" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_candela" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of candela" ;
 	skos:definition "The exponent of candela in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfKelvin a owl:DatatypeProperty ;
+gist:exponentOfKelvin dcterms:title "exponent of Kelvin" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_kelvin" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of Kelvin" ;
 	skos:definition "The exponent of Kelvin in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfKilogram a owl:DatatypeProperty ;
+gist:exponentOfKilogram dcterms:title "exponent of kilogram" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_kilogram" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of kilogram" ;
 	skos:definition "The exponent of kilogram in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfMeter a owl:DatatypeProperty ;
+gist:exponentOfMeter dcterms:title "exponent of meter" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_meter" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of meter" ;
 	skos:definition "The exponent of meter in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfMole a owl:DatatypeProperty ;
+gist:exponentOfMole dcterms:title "exponent of mole" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_mole" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of mole" ;
 	skos:definition "The exponent of mole in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfNumber a owl:DatatypeProperty ;
+gist:exponentOfNumber dcterms:title "exponent of number" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_number" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of number" ;
 	skos:definition "The exponent of number in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Use when the unit of measure involves a count or other number." .
-gist:exponentOfOther a owl:DatatypeProperty ;
+gist:exponentOfOther dcterms:title "exponent of other" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_other" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of other" ;
 	skos:definition "Indicates whether a unit of measure can be expressed in terms of the standard exponents (as shown in the examples)." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\n\nOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale." .
-gist:exponentOfRadian a owl:DatatypeProperty ;
+gist:exponentOfRadian dcterms:title "exponent of radian" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_radian" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of radian" ;
 	skos:definition "The exponent of radian in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfSecond a owl:DatatypeProperty ;
+gist:exponentOfSecond dcterms:title "exponent of second" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_second" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of second" ;
 	skos:definition "The exponent of second in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core .
-gist:exponentOfSteradian a owl:DatatypeProperty ;
+gist:exponentOfSteradian dcterms:title "exponent of steradian" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_steradian" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of steradian" ;
 	skos:definition "The exponent of steradian in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Steradian is a measure of solid angle." .
-gist:exponentOfUSDollar a owl:DatatypeProperty ;
+gist:exponentOfUSDollar dcterms:title "exponent of US dollar" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "exponent_of_us_dollar" ;
 	rdfs:range xsd:decimal ;
-	skos:altLabel "exponent of US dollar" ;
 	skos:definition "The exponent of US Dollar in a product of powers of base units." ;
 	skos:editorialNote "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The factors for converting from one currency to another change constantly." .
-gist:goesToAgent a owl:ObjectProperty ;
+gist:goesToAgent dcterms:title "goes to agent" ;
+	a owl:ObjectProperty ;
 	rdfs:label "goes_to_agent" ;
-	rdfs:range _:c14n30 ;
+	rdfs:range _:c14n210 ;
 	rdfs:subPropertyOf gist:hasParticipant ;
-	skos:altLabel "goes to agent" ;
 	skos:definition "Relates something to the agent that receives it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is not the inverse of gist:comesFromAgent, as both properties have the message or shipment as the subject." , "This property is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another, whereas gist:hasRecipient is typically used in more abstract contexts such as agreements, obligations, contracts, etc. However, there are contexts in which either may be appropriate, such as the receiving of a gift." .
-gist:goesToPlace a owl:ObjectProperty ;
+gist:goesToPlace dcterms:title "goes to place" ;
+	a owl:ObjectProperty ;
 	rdfs:label "goes_to_place" ;
-	rdfs:range _:c14n12 ;
-	skos:altLabel "goes to place" ;
+	rdfs:range _:c14n98 ;
 	skos:definition "Relates something to its destination place." ;
 	skos:inScheme gist_linkml:core .
-gist:hasAccuracy a owl:ObjectProperty ;
+gist:hasAccuracy dcterms:title "has accuracy" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_accuracy" ;
 	rdfs:range gist:Magnitude ;
-	skos:altLabel "has accuracy" ;
 	skos:definition "Relates a magnitude to another magnitude that describes its accuracy." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\n\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance)." ;
 	gist_linkml:domain_includes "gist:Magnitude" .
-gist:hasAddend a owl:ObjectProperty ;
+gist:hasAddend dcterms:title "has addend" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_addend" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has addend" ;
 	skos:definition "Relates an aspect to another aspect that is an additive component of it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Commonly used with financial metrics." .
-gist:hasAddress a owl:ObjectProperty ;
+gist:hasAddress dcterms:title "has address" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_address" ;
 	rdfs:range gist:Address ;
-	skos:altLabel "has address" ;
 	skos:definition "Relates something to its physical or electronic address." ;
 	skos:inScheme gist_linkml:core .
-gist:hasAspect a owl:ObjectProperty ;
+gist:hasAspect dcterms:title "has aspect" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_aspect" ;
 	rdfs:range gist:Aspect ;
-	skos:altLabel "has aspect" ;
 	skos:definition "Relates a magnitude to its aspect (measurable characteristic)." ;
 	skos:inScheme gist_linkml:core .
-gist:hasBiologicalParent a owl:ObjectProperty ;
+gist:hasBiologicalParent dcterms:title "has biological parent" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:LivingThing ;
 	rdfs:label "has_biological_parent" ;
 	rdfs:range gist:LivingThing ;
-	skos:altLabel "has biological parent" ;
 	skos:definition "Relates a living thing to its biological parent." ;
 	skos:inScheme gist_linkml:core .
-gist:hasBroader a owl:ObjectProperty , owl:TransitiveProperty ;
+gist:hasBroader dcterms:title "has broader" ;
+	a owl:ObjectProperty , owl:TransitiveProperty ;
 	rdfs:label "has_broader" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has broader" ;
 	skos:definition "Relates a thing to another thing with a broader meaning." ;
 	skos:inScheme gist_linkml:core .
-gist:hasDirectBroader a owl:ObjectProperty ;
+gist:hasDirectBroader dcterms:title "has direct broader" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_direct_broader" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:hasBroader ;
-	skos:altLabel "has direct broader" ;
 	skos:definition "Relates a thing to another thing with a broader meaning, when there is no intermediate between them." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Unlike gist:hasBroader, this property is not transitive. It is safest to use this property when semantic directness is inherent in the relationship. Otherwise, there is a risk of making a hasDirectBroader assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:hasBroader." .
-gist:hasDivisor a owl:ObjectProperty ;
+gist:hasDivisor dcterms:title "has divisor" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_divisor" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has divisor" ;
 	skos:definition "Relates a unit of measure to another unit of measure that is a divisor, or relates an aspect to another aspect that is a divisor." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Provides a supplemental method of decomposing a unit of measure or an aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles." .
-gist:hasGiver a owl:ObjectProperty ;
+gist:hasGiver dcterms:title "has giver" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_giver" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:hasParticipant ;
-	skos:altLabel "has giver" ;
 	skos:definition "Relates something to the participant that provides it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property is often used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:comesFromAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift." .
-gist:hasGoal a owl:ObjectProperty ;
+gist:hasGoal dcterms:title "has goal" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_goal" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has goal" ;
 	skos:definition "Relates something to the end towards which it directs effort." ;
 	skos:inScheme gist_linkml:core .
-gist:hasIncumbent a owl:ObjectProperty ;
+gist:hasIncumbent dcterms:title "has incumbent" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_incumbent" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has incumbent" ;
 	skos:definition "Relates a position to the thing or person that currently holds that position." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "To create a temporal view, define a subclass of gist:TemporalRelation for this property (e.g., Incumbency)." .
-gist:hasMagnitude a owl:ObjectProperty ;
+gist:hasMagnitude dcterms:title "has magnitude" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_magnitude" ;
 	rdfs:range gist:Magnitude ;
-	skos:altLabel "has magnitude" ;
 	skos:definition "Relates a thing to a magnitude." ;
 	skos:inScheme gist_linkml:core .
-gist:hasMultiplier a owl:ObjectProperty ;
+gist:hasMultiplier dcterms:title "has multiplier" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_multiplier" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has multiplier" ;
 	skos:definition "Relates a unit of measure to another unit of measure that is a factor, or relates an aspect to another aspect that is a factor." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Provides a supplemental method of decomposing a unit of measure or aspect into component factors. Enables dimensional analysis such as miles per hour x hours = miles." .
-gist:hasNavigationalParent a owl:ObjectProperty ;
+gist:hasNavigationalParent dcterms:title "has navigational parent" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_navigational_parent" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has navigational parent" ;
 	skos:definition "Relates a child category to a parent category in an informal (e.g., faceted) hierarchy." ;
 	skos:inScheme gist_linkml:core .
-gist:hasParticipant a owl:ObjectProperty ;
+gist:hasParticipant dcterms:title "has participant" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_participant" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has participant" ;
 	skos:definition "Relates something (e.g. an agreement) to things that play a role, or take part or are otherwise involved in some way." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The thing with participants will often be an agreement, event or obligation. Participation does not imply agency." , "This will most often be used as an abstract property. Use subproperties that indicate the nature of the participation (e.g. hasBorrower, hasVenue)." .
-gist:hasParty a owl:ObjectProperty ;
+gist:hasParty dcterms:title "has party" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_party" ;
-	rdfs:range _:c14n48 ;
+	rdfs:range _:c14n366 ;
 	rdfs:subPropertyOf gist:hasParticipant ;
-	skos:altLabel "has party" ;
 	skos:definition "Relates an event, agreement, or obligation to a participating person or organization." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Subproperties may be defined to describe specific parties, such as hasLender and hasBorrower for a loan." .
-gist:hasPhysicalLocation a owl:ObjectProperty , owl:TransitiveProperty ;
+gist:hasPhysicalLocation dcterms:title "has physical location" ;
+	a owl:ObjectProperty , owl:TransitiveProperty ;
 	rdfs:label "has_physical_location" ;
 	rdfs:range gist:GeoLocation ;
-	skos:altLabel "has physical location" ;
 	skos:definition "Relates something to its physical location." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property does not distinguish between things whose locations are stable and those whose locations change over time; e.g., a fire hydrant vs. a car." .
-gist:hasRecipient a owl:ObjectProperty ;
+gist:hasRecipient dcterms:title "has recipient" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_recipient" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:hasParticipant ;
-	skos:altLabel "has recipient" ;
 	skos:definition "Relates something to the participant that receives or is intended to receive it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property is used in abstract contexts such as agreements, obligations, contracts, etc., whereas gist:goesToAgent is intended to describe the physical or electronic transfer of something, such as a package or email, from one agent to another. However, there are contexts in which either may be appropriate, such as the giving of a gift." .
-gist:hasSubtrahend a owl:ObjectProperty ;
+gist:hasSubtrahend dcterms:title "has subtrahend" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_subtrahend" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "has subtrahend" ;
 	skos:definition "Relates an aspect to another aspect that is a subtracted component of it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Commonly used with financial metrics." .
-gist:hasUniqueBroader a owl:ObjectProperty ;
+gist:hasUniqueBroader dcterms:title "has unique broader" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_unique_broader" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:hasBroader ;
-	skos:altLabel "has unique broader" ;
 	skos:definition "Relates a thing to a unique other thing with a broader meaning." ;
 	skos:inScheme gist_linkml:core .
-gist:hasUniqueNavigationalParent a owl:ObjectProperty ;
+gist:hasUniqueNavigationalParent dcterms:title "has unique navigational parent" ;
+	a owl:ObjectProperty ;
 	rdfs:label "has_unique_navigational_parent" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:hasNavigationalParent ;
-	skos:altLabel "has unique navigational parent" ;
 	skos:definition "Relates a subject category to a unique parent category in an informal (e.g., faceted) hierarchy." ;
 	skos:inScheme gist_linkml:core .
-gist:hasUnitGroup a owl:ObjectProperty ;
+gist:hasUnitGroup dcterms:title "has unit group" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:Aspect ;
 	rdfs:label "has_unit_group" ;
 	rdfs:range gist:UnitGroup ;
-	skos:altLabel "has unit group" ;
 	skos:definition "Relates an aspect to a unit group. The aspect can be measured using any of the members of the unit group." ;
 	skos:inScheme gist_linkml:core .
-gist:hasUnitOfMeasure a owl:ObjectProperty ;
+gist:hasUnitOfMeasure dcterms:title "has unit of measure" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:Magnitude ;
 	rdfs:label "has_unit_of_measure" ;
 	rdfs:range gist:UnitOfMeasure ;
-	skos:altLabel "has unit of measure" ;
 	skos:definition "Relates a magnitude to its unit of measure." ;
 	skos:inScheme gist_linkml:core .
-gist:idText a owl:DatatypeProperty ;
+gist:idText dcterms:title "id text" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "id_text" ;
 	rdfs:range xsd:string ;
-	skos:altLabel "id text" ;
 	skos:definition "A text string that identifies an individual." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A common use case would be for preexisting internal company identifiers." , "Often, there will be just one identifying text string. More would be appropriate if the individual had different identifiers, such as employee number and social security number. A good way to model that would be to have functional subproperties of idText, such as departmentNumber." , "This property is an alternative to using the property gist:isIdentifiedBy in conjunction with instances of the class gist:ID." .
-gist:isAbout a owl:ObjectProperty ;
+gist:isAbout dcterms:title "is about" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:Content ;
 	rdfs:label "is_about" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is about" ;
 	skos:definition "Subject matter of a document." ;
 	skos:inScheme gist_linkml:core .
-gist:isAffectedBy a owl:ObjectProperty ;
+gist:isAffectedBy dcterms:title "is affected by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_affected_by" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is affected by" ;
 	skos:definition "Relates an affected thing to the source of the effect." ;
 	skos:inScheme gist_linkml:core .
-gist:isAllocatedBy a owl:ObjectProperty ;
+gist:isAllocatedBy dcterms:title "is allocated by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_allocated_by" ;
-	rdfs:range _:c14n18 ;
-	skos:altLabel "is allocated by" ;
+	rdfs:range _:c14n120 ;
 	skos:definition "Relates something to whomever or whatever assigns or distributes it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The allocator may be a person, organization, or automated process." ;
 	gist_linkml:domain_includes "gist:Category, gist:ID" .
-gist:isAssignmentOf a owl:ObjectProperty ;
+gist:isAssignmentOf dcterms:title "is assignment of" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_assignment_of" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is assignment of" ;
 	skos:definition "Relates an assignment to the resource it assigns." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "People, organizations, monetary amounts, equipment can all be assigned." , "While typically this predicate will be used with assignment subjects, there may be other use cases, and therefore a domain is not specified." ;
 	gist_linkml:domain_includes "gist:Assignment" ;
 	gist_linkml:range_includes "gist:Equipment, gist:IntellectualProperty, gist:Organization, gist:Person" .
-gist:isAssignmentTo a owl:ObjectProperty ;
+gist:isAssignmentTo dcterms:title "is assignment to" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_assignment_to" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is assignment to" ;
 	skos:definition "Relates something (typically an assignment) to the thing the resource is assigned to, such as a project, position, organization, pay rate, or billing rate." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "While typically this predicate will be used with gist:Assignment subjects, there may be other use cases, and therefore a domain is not specified." ;
 	gist_linkml:domain_includes "gist:Assignment" .
-gist:isBasedOn a owl:ObjectProperty ;
+gist:isBasedOn dcterms:title "is based on" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_based_on" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is based on" ;
 	skos:definition "The object is a foundation for, a starting point for, gave rise to, or justifies the subject." ;
 	skos:inScheme gist_linkml:core .
-gist:isCategorizedBy a owl:ObjectProperty ;
+gist:isCategorizedBy dcterms:title "is categorized by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_categorized_by" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is categorized by" ;
 	skos:definition "Relates something to a taxonomy term or other less formally defined classification." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:range_includes "gist:Category" .
-gist:isConnectedTo a owl:ObjectProperty , owl:SymmetricProperty ;
+gist:isConnectedTo dcterms:title "is connected to" ;
+	a owl:ObjectProperty , owl:SymmetricProperty ;
 	rdfs:label "is_connected_to" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is connected to" ;
 	skos:definition "A non-owning, non-causal, non-subordinate (i.e., peer-to-peer) relationship." ;
 	skos:inScheme gist_linkml:core .
-gist:isDirectPartOf a owl:ObjectProperty ;
+gist:isDirectPartOf dcterms:title "is direct part of" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_direct_part_of" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:isPartOf ;
-	skos:altLabel "is direct part of" ;
 	skos:definition "The relationship between a part and a whole where the part has independent existence and there are no other parts in between." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Because the part has independent existence, there is no cascading delete." , "It is safest to use this property when semantic directness is inherent in the relationship, rather than simply expressing a chosen granularity. For example, a spark plug is a direct part of an engine block; there cannot be any intermediate parts. Otherwise, there is a risk of making an isDirectPartOf assertion and then later inserting an intermediate part; this will result in making an asserted triple false even though there was no change in the world. When in doubt, use the transitive version gist:isPartOf." .
-gist:isExpressedIn a owl:ObjectProperty ;
+gist:isExpressedIn dcterms:title "is expressed in" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_expressed_in" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is expressed in" ;
 	skos:definition "Relates something to the language it is expressed in." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:Text" ;
 	gist_linkml:range_includes "gist:Language" .
-gist:isFirstMemberOf a owl:ObjectProperty ;
+gist:isFirstMemberOf dcterms:title "is first member of" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:OrderedMember ;
 	rdfs:label "is_first_member_of" ;
 	rdfs:range gist:OrderedCollection ;
 	rdfs:subPropertyOf gist:isMemberOf ;
-	skos:altLabel "is first member of" ;
 	skos:definition "Relates the first member of an ordered collection to the collection." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Given the Open World Assumption, the absence of a predecessor does not entail that an ordered member is the first member of an ordered collection. This property is used to explicitly indicate the first member. Since ordered collections need not be strictly ordered, there can be more than one first member." .
-gist:isGeoContainedIn a owl:ObjectProperty , owl:TransitiveProperty ;
+gist:isGeoContainedIn dcterms:title "is geographically contained in" ;
+	a owl:ObjectProperty , owl:TransitiveProperty ;
 	rdfs:domain gist:GeoLocation ;
 	rdfs:label "is_geo_contained_in" ;
 	rdfs:range gist:GeoLocation ;
-	skos:altLabel "is geographically contained in" ;
 	skos:definition "Relates one geographic location to another that contains it." ;
 	skos:inScheme gist_linkml:core .
-gist:isGovernedBy a owl:ObjectProperty ;
+gist:isGovernedBy dcterms:title "is governed by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_governed_by" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is governed by" ;
 	skos:definition "Relates an entity to another entity that controls, directs, determines or has a guiding influence or authority over it." ;
 	skos:inScheme gist_linkml:core .
-gist:isIdentifiedBy a owl:ObjectProperty ;
+gist:isIdentifiedBy dcterms:title "is identified by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_identified_by" ;
 	rdfs:range gist:ID ;
-	skos:altLabel "is identified by" ;
 	skos:definition "Relates something to a content object that uniquely identifies it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is like a URI: a thing can have more than one ID, but each ID can refer to only one thing. Note that it is possible to have two IDs with the same text that refer to different things." ;
 	gist_linkml:owl_inverse_functional true .
-gist:isMadeUpOf a owl:ObjectProperty ;
+gist:isMadeUpOf dcterms:title "is made up of" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_made_up_of" ;
 	rdfs:range gist:PhysicalSubstance ;
-	skos:altLabel "is made up of" ;
 	skos:definition "Relates something to a substance that it is made up of." ;
 	skos:inScheme gist_linkml:core .
-gist:isMemberOf a owl:ObjectProperty ;
+gist:isMemberOf dcterms:title "is member of" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_member_of" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is member of" ;
 	skos:definition "Relates a member individual to the thing, such as a collection or organization, that it is a member of." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:range_includes "gist:Collection, gist:Organization" .
-gist:isPartOf a owl:ObjectProperty , owl:TransitiveProperty ;
+gist:isPartOf dcterms:title "is part of" ;
+	a owl:ObjectProperty , owl:TransitiveProperty ;
 	rdfs:label "is_part_of" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is part of" ;
 	skos:definition "The relationship between a part and a whole where the part has independent existence." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Because the part has independent existence, there is no cascading delete." , "The transitive version of gist:isDirectPartOf." .
-gist:isProducedBy a owl:ObjectProperty ;
+gist:isProducedBy dcterms:title "is produced by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_produced_by" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is produced by" ;
 	skos:definition "Relates something to the thing that created, composed, or brought it into existence." ;
 	skos:inScheme gist_linkml:core .
-gist:isRecognizedBy a owl:ObjectProperty ;
+gist:isRecognizedBy dcterms:title "is recognized by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_recognized_by" ;
-	rdfs:range _:c14n27 ;
-	skos:altLabel "is recognized by" ;
+	rdfs:range _:c14n183 ;
 	skos:definition "Relates something to a party that formally acknowledges its existence, validity, or legality." ;
 	skos:inScheme gist_linkml:core .
-gist:isRecordedAt a owl:DatatypeProperty ;
+gist:isRecordedAt dcterms:title "is recorded at" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "is_recorded_at" ;
 	rdfs:subPropertyOf gist:atDateTime ;
-	skos:altLabel "is recorded at" ;
 	skos:definition "The date that something was posted (which is not necessarily the date it occurred). It must be after the date of occurrence, but could be before or after the planned date." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Precision may vary according to context." .
-gist:isRenderedOn a owl:ObjectProperty ;
+gist:isRenderedOn dcterms:title "is rendered on" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_rendered_on" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is rendered on" ;
 	skos:definition "Relates content to the media on which it is rendered." ;
 	skos:inScheme gist_linkml:core .
-gist:isSupersededBy a owl:AnnotationProperty ;
+gist:isSupersededBy dcterms:title "is superseded by" ;
+	a owl:AnnotationProperty ;
 	rdfs:label "is_superseded_by" ;
-	skos:altLabel "is superseded by" ;
 	skos:definition "Relates a deprecated term to a term that replaces it, which is either an exact (in the case of simple renaming) or approximate (in the case of renaming and some semantic change) semantic match." ;
 	skos:inScheme gist_linkml:core .
-gist:isTriggeredBy a owl:ObjectProperty ;
+gist:isTriggeredBy dcterms:title "is triggered by" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_triggered_by" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is triggered by" ;
 	skos:definition "Relates a contingency, such as an event or obligation, to the event that gives rise to it." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "For obligations, this property describes what must happen to trigger the contingent obligation. Other uses include controls, processes, etc." .
-gist:isUnderJurisdictionOf a owl:ObjectProperty ;
+gist:isUnderJurisdictionOf dcterms:title "is under jurisdiction of" ;
+	a owl:ObjectProperty ;
 	rdfs:label "is_under_jurisdiction_of" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "is under jurisdiction of" ;
 	skos:definition "Relates a law, contract, etc., to the system of law or government which has the power, right, or authority to interpret and apply it." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:range_includes "gist:GovernmentOrganization" .
-gist:latitude a owl:DatatypeProperty ;
+gist:latitude dcterms:title "latitude" ;
+	a owl:DatatypeProperty ;
 	rdfs:domain gist:GeoPoint ;
 	rdfs:label "latitude" ;
 	rdfs:range xsd:float ;
-	skos:altLabel "latitude" ;
 	skos:definition "Degrees above or below the equator." ;
 	skos:inScheme gist_linkml:core .
-gist:license a owl:AnnotationProperty ;
+gist:license dcterms:title "license" ;
+	a owl:AnnotationProperty ;
 	rdfs:label "license" ;
-	skos:altLabel "license" ;
 	skos:definition "Relates something to its conditions of use." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Could refer to a license object by URI or name or could consist of the license text itself." .
-gist:links a owl:ObjectProperty ;
+gist:links dcterms:title "links" ;
+	a owl:ObjectProperty ;
 	rdfs:label "links" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "links" ;
 	skos:definition "Relates a network link to a network node that it connects to another node. Used when the connection is undirected or the direction is not known." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:NetworkLink" ;
 	gist_linkml:range_includes "gist:NetworkNode" .
-gist:linksFrom a owl:ObjectProperty ;
+gist:linksFrom dcterms:title "links from" ;
+	a owl:ObjectProperty ;
 	rdfs:label "links_from" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:links ;
-	skos:altLabel "links from" ;
 	skos:definition "Relates a network link to its origin network node. Unlike the superproperty, this represents a directed connection." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:NetworkLink" ;
 	gist_linkml:range_includes "gist:NetworkNode" .
-gist:linksTo a owl:ObjectProperty ;
+gist:linksTo dcterms:title "links to" ;
+	a owl:ObjectProperty ;
 	rdfs:label "links_to" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:links ;
-	skos:altLabel "links to" ;
 	skos:definition "Relates a network link to its destination network node. Unlike the superproperty, this represents a directed connection." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:NetworkLink" ;
 	gist_linkml:range_includes "gist:NetworkNode" .
-gist:longitude a owl:DatatypeProperty ;
+gist:longitude dcterms:title "longitude" ;
+	a owl:DatatypeProperty ;
 	rdfs:domain gist:GeoPoint ;
 	rdfs:label "longitude" ;
 	rdfs:range xsd:float ;
-	skos:altLabel "longitude" ;
 	skos:definition "Degrees from the prime meridian." ;
 	skos:inScheme gist_linkml:core .
-gist:name a owl:DatatypeProperty ;
+gist:name dcterms:title "name" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "name" ;
-	skos:altLabel "name" ;
 	skos:definition "Relates an individual to (one of) its name(s)." ;
 	skos:inScheme gist_linkml:core .
-gist:numericValue a owl:DatatypeProperty ;
+gist:numericValue dcterms:title "numeric value" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "numeric_value" ;
-	rdfs:range _:c14n35 ;
-	skos:altLabel "numeric value" ;
+	rdfs:range _:c14n258 ;
 	skos:definition "The actual value of a magnitude." ;
 	skos:editorialNote "OWL range: (xsd:byte | xsd:decimal | xsd:double | xsd:float | xsd:int | xsd:integer | xsd:long | xsd:negativeInteger | xsd:nonNegativeInteger | xsd:nonPositiveInteger | xsd:positiveInteger | xsd:short | xsd:unsignedByte | xsd:unsignedInt | xsd:unsignedLong | xsd:unsignedShort | owl:rational | owl:real)" ;
 	skos:inScheme gist_linkml:core .
-gist:occursIn a owl:ObjectProperty ;
+gist:occursIn dcterms:title "occurs in" ;
+	a owl:ObjectProperty ;
 	rdfs:label "occurs_in" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "occurs in" ;
 	skos:definition "Relates something, such as an event, to the geographic location where it did, does, or will happen." ;
 	skos:inScheme gist_linkml:core .
-gist:offersToProvide a owl:ObjectProperty ;
+gist:offersToProvide dcterms:title "offers to provide" ;
+	a owl:ObjectProperty ;
 	rdfs:label "offers_to_provide" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "offers to provide" ;
 	skos:definition "Relates an offer to the thing being made available for exchange." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This will most often be a good or service, but could be an amount of money, e.g., for currency exchange." ;
 	gist_linkml:domain_includes "gist:Offer" .
-gist:offersToReceive a owl:ObjectProperty ;
+gist:offersToReceive dcterms:title "offers to receive" ;
+	a owl:ObjectProperty ;
 	rdfs:label "offers_to_receive" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "offers to receive" ;
 	skos:definition "Relates an offer to the thing expected in return for the offered item." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This will most often be an amount of money, but could be anything of value, as in swaps." ;
 	gist_linkml:domain_includes "gist:Offer" .
-gist:owns a owl:ObjectProperty ;
+gist:owns dcterms:title "owns" ;
+	a owl:ObjectProperty ;
 	rdfs:label "owns" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "owns" ;
 	skos:definition "Relates a party to something that it possesses and controls." ;
 	skos:editorialNote "OWL domain: (gist:Organization | gist:Person)" ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The ultimate form of ownership is the right to destroy." , "There is a long list of potential range classes." .
-gist:plannedEndDate a owl:DatatypeProperty ;
+gist:plannedEndDate dcterms:title "planned end date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_end_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedEndDateTime ;
-	skos:altLabel "planned end date" ;
 	skos:definition "The date that something is or was planned to end, with precision of one day." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for anything with a planned end date, such as when a lease will expire, when an offer is no longer available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision." .
-gist:plannedEndDateTime a owl:DatatypeProperty ;
+gist:plannedEndDateTime dcterms:title "planned end date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_end_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:endDateTime ;
-	skos:altLabel "planned end date time" ;
 	skos:definition "The date that something is or was planned to end, with no implied precision." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is an abstraction over the various precisions of planned end time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." , "This property, unlike gist:actualEndDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual." .
-gist:plannedEndMinute a owl:DatatypeProperty ;
+gist:plannedEndMinute dcterms:title "planned end minute" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_end_minute" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedEndDateTime ;
-	skos:altLabel "planned end minute" ;
 	skos:definition "The date and time that something is or was planned to end, with precision of one minute." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things like meetings and time card entries, where the hour and minute are important. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision.Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual." .
-gist:plannedEndYear a owl:DatatypeProperty ;
+gist:plannedEndYear dcterms:title "planned end year" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_end_year" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedEndDateTime ;
-	skos:altLabel "planned end year" ;
 	skos:definition "The date that something is or was planned to end, with precision of one year." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for anything with a planned end date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
-gist:plannedStartDate a owl:DatatypeProperty ;
+gist:plannedStartDate dcterms:title "planned start date" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_start_date" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedStartDateTime ;
-	skos:altLabel "planned start date" ;
 	skos:definition "The date that something is or was planned to start, with precision of one day." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for anything with a planned start date, such as when a lease will start, when a configuration becomes available, etc. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision." .
-gist:plannedStartDateTime a owl:DatatypeProperty ;
+gist:plannedStartDateTime dcterms:title "planned start date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_start_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:startDateTime ;
-	skos:altLabel "planned start date time" ;
 	skos:definition "The date and time that something is or was planned to start, with no implied precision." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This is an abstraction over the various precisions of planned start time, and is not expected to be asserted directly. Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." , "This property, unlike gist:actualStartDateTime, does not have a subproperty for microsecond precision, because planned times typically are not expressed at that level of granularity. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual." .
-gist:plannedStartMinute a owl:DatatypeProperty ;
+gist:plannedStartMinute dcterms:title "planned start minute" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_start_minute" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedStartDateTime ;
-	skos:altLabel "planned start minute" ;
 	skos:definition "The date and time that something is or was planned to start, with precision of one minute." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for things like meetings and time card entries, where the hour and minute are important. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the seconds and microseconds to avoid spurious precision." .
-gist:plannedStartYear a owl:DatatypeProperty ;
+gist:plannedStartYear dcterms:title "planned start year" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "planned_start_year" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:plannedStartDateTime ;
-	skos:altLabel "planned start year" ;
 	skos:definition "The date that something is or was planned to start, with precision of one year." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Used for anything with a planned start date where precision of one year is sufficient. Typically a planned date is in the future when first captured, but when tasks run late, we leave the plan where it was and compare it to the actual. Recommended usage is to zero out the hours through microseconds to avoid spurious precision. Note that it is not valid to zero out months and days, so arbitrary values must be included." .
-gist:precedes a owl:ObjectProperty , owl:TransitiveProperty ;
+gist:precedes dcterms:title "precedes" ;
+	a owl:ObjectProperty , owl:TransitiveProperty ;
 	rdfs:label "precedes" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "precedes" ;
 	skos:definition "A generic ordering relation indicating that the subject comes before the object." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "The less-than symbol is often used to represent this relation." , "This is the transitive version of gist:precedesDirectly." , "Typically this predicate would be used asymmetrically and irreflexively, but the ontology does not formalize this." .
-gist:precedesDirectly a owl:ObjectProperty ;
+gist:precedesDirectly dcterms:title "precedes directly" ;
+	a owl:ObjectProperty ;
 	rdfs:label "precedes_directly" ;
 	rdfs:range linkml:Any ;
 	rdfs:subPropertyOf gist:precedes ;
-	skos:altLabel "precedes directly" ;
 	skos:definition "A generic ordering relation indicating that the subject comes immediately before the object." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "If two items in an ordered collection share the same position, they both directly precede the following element." , "It is safest to use this property only when the directness has a semantic correspondence with the world. Only break a direct link by inserting an intermediate item when that change corresponds to a change in the world." , "Typically this predicate would be used asymmetrically and irreflexively, but the ontology does not formalize this." .
-gist:prevents a owl:ObjectProperty ;
+gist:prevents dcterms:title "prevents" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:Intention ;
 	rdfs:label "prevents" ;
 	rdfs:range gist:Behavior ;
-	skos:altLabel "prevents" ;
+	owl:deprecated true ;
 	skos:definition "Relates an intention to behavior that it prohibits." ;
 	skos:editorialNote "See guidance on removing this term in the next major release at https://github.com/semanticarts/gist/issues/1380#issuecomment-3617257248" ;
 	skos:exactMatch gist:prohibits ;
 	skos:inScheme gist_linkml:core .
-gist:prohibits a owl:ObjectProperty ;
+gist:prohibits dcterms:title "prohibits" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:Intention ;
 	rdfs:label "prohibits" ;
 	rdfs:range gist:Behavior ;
-	skos:altLabel "prohibits" ;
 	skos:definition "Relates an intention to a behavior that it forbids or seeks to prevent." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "A behavior can be prohibited without being prevented. For example, a speed limit may prohibit driving faster than a stated speed but does not always succeed in preventing drivers from exceeding that speed." .
-gist:providesOrderFor a owl:ObjectProperty ;
+gist:providesOrderFor dcterms:title "provides order for" ;
+	a owl:ObjectProperty ;
 	rdfs:domain gist:OrderedMember ;
 	rdfs:label "provides_order_for" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "provides order for" ;
 	skos:definition "Links a member of an ordered collection to the real-world item it represents in that collection." ;
 	skos:inScheme gist_linkml:core .
-gist:rangeIncludes a owl:AnnotationProperty ;
+gist:rangeIncludes dcterms:title "range includes" ;
+	a owl:AnnotationProperty ;
 	rdfs:label "range_includes" ;
-	skos:altLabel "range includes" ;
 	skos:broadMatch skos:scopeNote ;
 	skos:definition "Relates a property to a class that is an expected type of its values." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "There may be multiple rangeIncludes assertions on a single property." , "This property is used to guide the ontology user; like all annotation properties, it does not play a role in inference." .
-gist:refersTo a owl:ObjectProperty ;
+gist:refersTo dcterms:title "refers to" ;
+	a owl:ObjectProperty ;
 	rdfs:label "refers_to" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "refers to" ;
 	skos:definition "Relates something to another resource that it points to, indicates, or references." ;
 	skos:inScheme gist_linkml:core .
-gist:requires a owl:ObjectProperty ;
+gist:requires dcterms:title "requires" ;
+	a owl:ObjectProperty ;
 	rdfs:label "requires" ;
 	rdfs:range linkml:Any ;
-	skos:altLabel "requires" ;
 	skos:definition "The subject needs the object or makes it necessary, mandatory, or compulsory." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n1. To need something or to make something necessary.\n2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n3. To make it officially necessary for someone to do something.\n\nImplementations requiring a more specific meaning should define subproperties." .
-gist:sequence a owl:DatatypeProperty ;
+gist:sequence dcterms:title "sequence" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "sequence" ;
 	rdfs:range xsd:integer ;
-	skos:altLabel "sequence" ;
 	skos:definition "A number that specifies the position of an element within a series." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:OrderedMember" .
-gist:startDateTime a owl:DatatypeProperty ;
+gist:startDateTime dcterms:title "start date time" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "start_date_time" ;
 	rdfs:range xsd:dateTime ;
 	rdfs:subPropertyOf gist:atDateTime ;
-	skos:altLabel "start date time" ;
 	skos:definition "The date and time that something starts." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "This property is neutral along two dimensions: precision (e.g., day, second, millisecond) and actual vs. planned. As such, it will generally not be asserted directly except in special cases (e.g., for time intervals)." , "Values of predicates with different precisions can be compared since they are all formally xsd:datetimes." .
-gist:symbol a owl:DatatypeProperty ;
+gist:symbol dcterms:title "symbol" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "symbol" ;
-	skos:altLabel "symbol" ;
 	skos:definition "A symbol for something using only ASCII characters." ;
 	skos:inScheme gist_linkml:core ;
 	gist_linkml:domain_includes "gist:UnitOfMeasure" .
-gist:uniqueText a owl:DatatypeProperty ;
+gist:uniqueText dcterms:title "unique text" ;
+	a owl:DatatypeProperty ;
 	rdfs:label "unique_text" ;
 	rdfs:subPropertyOf gist:containedText ;
-	skos:altLabel "unique text" ;
 	skos:definition "The unique string value of some content object, to be used when there is no possibility of having more than one value." ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Note that the uniqueness only goes in one direction: a product catalog number might also be an employee ID." ;
@@ -1866,166 +1872,1221 @@ media_txt:turtle dcterms:title "Turtle" ;
 	a owl:NamedIndividual , gist_linkml:MediaTypeInstance ;
 	rdfs:label "TURTLE" ;
 	gist_linkml:unique_text "text/turtle" .
-_:c14n0 rdf:first gist:Organization ;
-	rdf:rest _:c14n69 .
-_:c14n1 rdf:first media_txt:csv ;
-	rdf:rest _:c14n24 .
+_:c14n0 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasUniqueNavigationalParent .
+_:c14n1 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:precedesDirectly .
 _:c14n10 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty gist:name .
+	owl:onProperty gist:uniqueText .
+_:c14n100 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n101 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:atDateTime .
+_:c14n102 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n103 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedStartDateTime .
+_:c14n104 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedEndDateTime .
+_:c14n105 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualStartMicrosecond .
+_:c14n106 rdf:first gist:_PrefixDeclaration_sh ;
+	rdf:rest _:c14n117 .
+_:c14n107 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n108 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:owns .
+_:c14n109 rdf:first gistd:_Aspect_altitude ;
+	rdf:rest _:c14n323 .
 _:c14n11 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty gist:name .
-_:c14n12 owl:intersectionOf _:c14n52 .
-_:c14n13 rdf:first gist:_PrefixDeclaration_sh ;
-	rdf:rest _:c14n16 .
-_:c14n14 rdf:first gistd:_Aspect_altitude ;
-	rdf:rest _:c14n44 .
-_:c14n15 rdf:first gistd:_Aspect_probability ;
-	rdf:rest _:c14n32 .
-_:c14n16 rdf:first gist:_PrefixDeclaration_skos ;
-	rdf:rest _:c14n29 .
-_:c14n17 rdf:first media_img:jpg ;
-	rdf:rest _:c14n9 .
-_:c14n18 owl:intersectionOf _:c14n81 .
-_:c14n19 a rdfs:Datatype ;
-	owl:unionOf _:c14n23 .
-_:c14n2 rdf:first media_app:n-triples ;
-	rdf:rest _:c14n37 .
-_:c14n20 rdf:first media_app:json ;
-	rdf:rest _:c14n47 .
-_:c14n21 rdf:first xsd:integer ;
-	rdf:rest _:c14n38 .
-_:c14n22 rdf:first gistd:_Aspect_monetary_value ;
-	rdf:rest _:c14n15 .
-_:c14n23 rdf:first xsd:decimal ;
-	rdf:rest _:c14n83 .
-_:c14n24 rdf:first media_txt:html ;
-	rdf:rest _:c14n33 .
-_:c14n25 owl:intersectionOf _:c14n57 .
-_:c14n26 rdf:first media_txt:turtle ;
+	owl:onProperty gist:prevents .
+_:c14n110 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedStartYear .
+_:c14n111 rdf:first gistd:_Aspect_probability ;
+	rdf:rest _:c14n240 .
+_:c14n112 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedStartYear .
+_:c14n113 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasSubtrahend .
+_:c14n114 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n115 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:goesToPlace .
+_:c14n116 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n117 rdf:first gist:_PrefixDeclaration_skos ;
+	rdf:rest _:c14n199 .
+_:c14n118 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n119 rdf:first media_img:jpg ;
+	rdf:rest _:c14n67 .
+_:c14n12 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:uniqueText .
+_:c14n120 owl:intersectionOf _:c14n400 .
+_:c14n121 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:birthDate .
+_:c14n122 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n123 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualStartYear .
+_:c14n124 a rdfs:Datatype ;
+	owl:unionOf _:c14n456 .
+_:c14n125 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:refersTo .
+_:c14n126 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:isRecordedAt .
+_:c14n127 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasAccuracy .
+_:c14n128 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:offersToProvide .
+_:c14n129 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasIncumbent .
+_:c14n13 a owl:Restriction ;
+	owl:allValuesFrom gist:UnitGroup ;
+	owl:onProperty gist:hasUnitGroup .
+_:c14n130 a owl:Restriction ;
+	owl:allValuesFrom gist:ID ;
+	owl:onProperty gist:isIdentifiedBy .
+_:c14n131 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:encryptedText .
+_:c14n132 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasDirectBroader .
+_:c14n133 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasGoal .
+_:c14n134 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:hasAccuracy .
+_:c14n135 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n136 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isMemberOf .
+_:c14n137 rdf:first media_app:json ;
+	rdf:rest _:c14n351 .
+_:c14n138 a owl:Restriction ;
+	owl:allValuesFrom gist:PhysicalSubstance ;
+	owl:onProperty gist:isMadeUpOf .
+_:c14n139 rdf:first gistd:_Aspect_monetary_value ;
+	rdf:rest _:c14n111 .
+_:c14n14 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n140 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualStartMinute .
+_:c14n141 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n142 rdf:first media_txt:html ;
+	rdf:rest _:c14n242 .
+_:c14n143 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n144 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:precedesDirectly .
+_:c14n145 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n146 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:requires .
+_:c14n147 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualStartDateTime .
+_:c14n148 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n149 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasNavigationalParent .
+_:c14n15 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n150 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasAspect .
+_:c14n151 owl:intersectionOf _:c14n375 .
+_:c14n152 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isBasedOn .
+_:c14n153 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasNavigationalParent .
+_:c14n154 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:atDateTime .
+_:c14n155 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasUniqueBroader .
+_:c14n156 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:latitude .
+_:c14n157 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n158 a owl:Restriction ;
+	owl:allValuesFrom _:c14n394 ;
+	owl:onProperty gist:isAllocatedBy .
+_:c14n159 a owl:Restriction ;
+	owl:allValuesFrom gist:OrderedCollection ;
+	owl:onProperty gist:isFirstMemberOf .
+_:c14n16 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:latitude .
+_:c14n160 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n161 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:containedText .
+_:c14n162 rdf:first media_txt:turtle ;
 	rdf:rest rdf:nil .
-_:c14n27 owl:intersectionOf _:c14n78 .
-_:c14n28 a owl:Restriction ;
+_:c14n163 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n164 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasUniqueNavigationalParent .
+_:c14n165 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isConnectedTo .
+_:c14n166 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedStartYear .
+_:c14n167 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasPhysicalLocation .
+_:c14n168 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isMemberOf .
+_:c14n169 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasAddend .
+_:c14n17 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:deathDate .
+_:c14n170 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedEndMinute .
+_:c14n171 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedStartDate .
+_:c14n172 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:offersToReceive .
+_:c14n173 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:precedes .
+_:c14n174 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isAssignmentTo .
+_:c14n175 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:symbol .
+_:c14n176 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:symbol .
+_:c14n177 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedStartDate .
+_:c14n178 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isPartOf .
+_:c14n179 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:contributesTo .
+_:c14n18 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualEndDateTime .
+_:c14n180 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isGeoContainedIn .
+_:c14n181 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n182 a owl:Restriction ;
+	owl:allValuesFrom xsd:float ;
+	owl:onProperty gist:longitude .
+_:c14n183 owl:intersectionOf _:c14n422 .
+_:c14n184 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasGiver .
+_:c14n185 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty gist:description .
-_:c14n29 rdf:first gist:_PrefixDeclaration_xsd ;
-	rdf:rest rdf:nil .
-_:c14n3 a owl:Restriction ;
+_:c14n186 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty gist:description .
-_:c14n30 owl:intersectionOf _:c14n67 .
-_:c14n31 rdf:first gist:_PrefixDeclaration_owl ;
-	rdf:rest _:c14n8 .
-_:c14n32 rdf:first gistd:_Aspect_volume ;
+	owl:onProperty gist:isAssignmentOf .
+_:c14n187 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedStartMinute .
+_:c14n188 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualEndMicrosecond .
+_:c14n189 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:isFirstMemberOf .
+_:c14n19 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedStartDateTime .
+_:c14n190 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n191 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n192 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:encryptedText .
+_:c14n193 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasSubtrahend .
+_:c14n194 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n195 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n196 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isGovernedBy .
+_:c14n197 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedStartDate .
+_:c14n198 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isDirectPartOf .
+_:c14n199 rdf:first gist:_PrefixDeclaration_xsd ;
 	rdf:rest rdf:nil .
-_:c14n33 rdf:first media_txt:plain ;
-	rdf:rest _:c14n26 .
-_:c14n34 owl:intersectionOf _:c14n73 .
-_:c14n35 a rdfs:Datatype ;
-	owl:unionOf _:c14n21 .
-_:c14n36 rdf:first gist:_PrefixDeclaration_gist ;
-	rdf:rest _:c14n31 .
-_:c14n37 rdf:first media_app:rdf\+xml ;
-	rdf:rest _:c14n7 .
-_:c14n38 rdf:first xsd:decimal ;
-	rdf:rest _:c14n84 .
-_:c14n39 rdf:first media_app:sparql-results\+xml ;
-	rdf:rest _:c14n4 .
-_:c14n4 rdf:first media_app:trig ;
-	rdf:rest _:c14n17 .
-_:c14n40 a owl:Restriction ;
+_:c14n2 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:refersTo .
+_:c14n20 rdf:first media_txt:csv ;
+	rdf:rest _:c14n142 .
+_:c14n200 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualEndDate .
+_:c14n201 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n202 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:comesFromPlace .
+_:c14n203 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n204 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n205 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n206 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:symbol .
+_:c14n207 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n208 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n209 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasBroader .
+_:c14n21 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n210 owl:intersectionOf _:c14n433 .
+_:c14n211 rdf:first gist:_PrefixDeclaration_owl ;
+	rdf:rest _:c14n62 .
+_:c14n212 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isDirectPartOf .
+_:c14n213 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isAssignmentOf .
+_:c14n214 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n215 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualEndYear .
+_:c14n216 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualEndMicrosecond .
+_:c14n217 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n218 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualStartDate .
+_:c14n219 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:conversionOffset .
+_:c14n22 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedEndDateTime .
+_:c14n220 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n221 a owl:Restriction ;
+	owl:allValuesFrom _:c14n449 ;
+	owl:onProperty gist:numericValue .
+_:c14n222 a owl:Restriction ;
+	owl:allValuesFrom gist:Magnitude ;
+	owl:onProperty gist:hasAccuracy .
+_:c14n223 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isRenderedOn .
+_:c14n224 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasBiologicalParent .
+_:c14n225 a owl:Restriction ;
+	owl:allValuesFrom gist:LivingThing ;
+	owl:onProperty gist:hasBiologicalParent .
+_:c14n226 a owl:Restriction ;
+	owl:allValuesFrom gist:GeoLocation ;
+	owl:onProperty gist:isGeoContainedIn .
+_:c14n227 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n228 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualStartDate .
+_:c14n229 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasMagnitude .
+_:c14n23 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n230 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n231 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n232 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:offersToReceive .
+_:c14n233 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isCategorizedBy .
+_:c14n234 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isAffectedBy .
+_:c14n235 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:precedes .
+_:c14n236 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n237 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfNumber .
+_:c14n238 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n239 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualEndDateTime .
+_:c14n24 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:numericValue .
+_:c14n240 rdf:first gistd:_Aspect_volume ;
+	rdf:rest rdf:nil .
+_:c14n241 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:owns .
+_:c14n242 rdf:first media_txt:plain ;
+	rdf:rest _:c14n162 .
+_:c14n243 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n244 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualStartYear .
+_:c14n245 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isMadeUpOf .
+_:c14n246 a owl:Restriction ;
+	owl:allValuesFrom _:c14n406 ;
+	owl:onProperty gist:comesFromAgent .
+_:c14n247 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:hasUniqueNavigationalParent .
+_:c14n248 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:owns .
+_:c14n249 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n25 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:uniqueText .
+_:c14n250 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasAddend .
+_:c14n251 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualEndMinute .
+_:c14n252 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n253 a owl:Restriction ;
+	owl:allValuesFrom _:c14n439 ;
+	owl:onProperty gist:goesToAgent .
+_:c14n254 owl:intersectionOf _:c14n411 .
+_:c14n255 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualStartMinute .
+_:c14n256 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:comesFromAgent .
+_:c14n257 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:birthDate .
+_:c14n258 a rdfs:Datatype ;
+	owl:unionOf _:c14n450 .
+_:c14n259 rdf:first gist:_PrefixDeclaration_gist ;
+	rdf:rest _:c14n211 .
+_:c14n26 rdf:first media_app:n-triples ;
+	rdf:rest _:c14n260 .
+_:c14n260 rdf:first media_app:rdf\+xml ;
+	rdf:rest _:c14n54 .
+_:c14n261 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:occursIn .
+_:c14n262 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n263 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualStartMicrosecond .
+_:c14n264 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isRecordedAt .
+_:c14n265 a owl:Restriction ;
+	owl:allValuesFrom _:c14n387 ;
+	owl:onProperty gist:comesFromPlace .
+_:c14n266 rdf:first media_app:sparql-results\+xml ;
+	rdf:rest _:c14n30 .
+_:c14n267 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:owns .
+_:c14n268 a owl:Restriction ;
+	owl:allValuesFrom gist:Address ;
+	owl:onProperty gist:hasAddress .
+_:c14n269 a owl:Restriction ;
+	owl:allValuesFrom _:c14n428 ;
+	owl:onProperty gist:hasParty .
+_:c14n27 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasParticipant .
+_:c14n270 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty gist:name .
-_:c14n41 a owl:Restriction ;
+_:c14n271 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasAddress .
+_:c14n272 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:conversionFactor .
+_:c14n273 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty gist:description .
-_:c14n42 rdf:first gistd:_Aspect_financial_balance ;
-	rdf:rest _:c14n45 .
-_:c14n43 rdf:first gist:_PrefixDeclaration_rdfs ;
-	rdf:rest _:c14n13 .
-_:c14n44 rdf:first gistd:_Aspect_area ;
-	rdf:rest _:c14n46 .
-_:c14n45 rdf:first gistd:_Aspect_mass ;
-	rdf:rest _:c14n22 .
-_:c14n46 rdf:first gistd:_Aspect_duration ;
-	rdf:rest _:c14n42 .
-_:c14n47 rdf:first media_app:ld\+json ;
-	rdf:rest _:c14n6 .
-_:c14n48 owl:intersectionOf _:c14n62 .
-_:c14n49 rdf:first gist:GeoLocation ;
+_:c14n274 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isIdentifiedBy .
+_:c14n275 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:endDateTime .
+_:c14n276 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n277 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:idText .
+_:c14n278 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isConnectedTo .
+_:c14n279 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isAbout .
+_:c14n28 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:isRecordedAt .
+_:c14n280 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:offersToProvide .
+_:c14n281 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n282 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedStartMinute .
+_:c14n283 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:startDateTime .
+_:c14n284 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualStartMicrosecond .
+_:c14n285 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfSecond .
+_:c14n286 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isProducedBy .
+_:c14n287 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasIncumbent .
+_:c14n288 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n289 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n29 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:description .
+_:c14n290 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isAssignmentTo .
+_:c14n291 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n292 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:numericValue .
+_:c14n293 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:conversionOffset .
+_:c14n294 rdf:first gistd:_Aspect_financial_balance ;
+	rdf:rest _:c14n341 .
+_:c14n295 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n296 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedStartMinute .
+_:c14n297 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasRecipient .
+_:c14n298 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n299 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isUnderJurisdictionOf .
+_:c14n3 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedEndDateTime .
+_:c14n30 rdf:first media_app:trig ;
+	rdf:rest _:c14n119 .
+_:c14n300 a owl:Restriction ;
+	owl:allValuesFrom xsd:float ;
+	owl:onProperty gist:latitude .
+_:c14n301 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:longitude .
+_:c14n302 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasUnitOfMeasure .
+_:c14n303 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isAllocatedBy .
+_:c14n304 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n305 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isExpressedIn .
+_:c14n306 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedEndYear .
+_:c14n307 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n308 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:sequence .
+_:c14n309 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n31 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasDivisor .
+_:c14n310 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n311 rdf:first gist:_PrefixDeclaration_rdfs ;
+	rdf:rest _:c14n106 .
+_:c14n312 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:containedText .
+_:c14n313 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedEndDate .
+_:c14n314 a owl:Restriction ;
+	owl:allValuesFrom gist:Behavior ;
+	owl:onProperty gist:prevents .
+_:c14n315 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasParticipant .
+_:c14n316 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasDivisor .
+_:c14n317 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isBasedOn .
+_:c14n318 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:atDateTime .
+_:c14n319 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedEndYear .
+_:c14n32 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualStartDateTime .
+_:c14n320 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:encryptedText .
+_:c14n321 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isAffectedBy .
+_:c14n322 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:startDateTime .
+_:c14n323 rdf:first gistd:_Aspect_area ;
+	rdf:rest _:c14n347 .
+_:c14n324 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualEndMicrosecond .
+_:c14n325 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasGiver .
+_:c14n326 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:deathDate .
+_:c14n327 a owl:Restriction ;
+	owl:allValuesFrom gist:GeoLocation ;
+	owl:onProperty gist:hasPhysicalLocation .
+_:c14n328 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:links .
+_:c14n329 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n33 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:allows .
+_:c14n330 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n331 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasGoal .
+_:c14n332 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:hasAspect .
+_:c14n333 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:linksFrom .
+_:c14n334 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasUniqueBroader .
+_:c14n335 a owl:Restriction ;
+	owl:allValuesFrom gist:Aspect ;
+	owl:onProperty gist:hasAspect .
+_:c14n336 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:linksTo .
+_:c14n337 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:endDateTime .
+_:c14n338 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualEndMinute .
+_:c14n339 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isExpressedIn .
+_:c14n34 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualEndMinute .
+_:c14n340 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasRecipient .
+_:c14n341 rdf:first gistd:_Aspect_mass ;
+	rdf:rest _:c14n139 .
+_:c14n342 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isUnderJurisdictionOf .
+_:c14n343 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n344 a owl:Restriction ;
+	owl:allValuesFrom _:c14n417 ;
+	owl:onProperty gist:isRecognizedBy .
+_:c14n345 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n346 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:idText .
+_:c14n347 rdf:first gistd:_Aspect_duration ;
+	rdf:rest _:c14n294 .
+_:c14n348 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualStartDate .
+_:c14n349 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualEndDate .
+_:c14n35 a owl:Restriction ;
+	owl:allValuesFrom gist:UnitOfMeasure ;
+	owl:onProperty gist:hasUnitOfMeasure .
+_:c14n350 a owl:Restriction ;
+	owl:allValuesFrom gist:Behavior ;
+	owl:onProperty gist:prohibits .
+_:c14n351 rdf:first media_app:ld\+json ;
+	rdf:rest _:c14n50 .
+_:c14n352 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasDirectBroader .
+_:c14n353 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualEndDate .
+_:c14n354 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:providesOrderFor .
+_:c14n355 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:hasUniqueBroader .
+_:c14n356 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n357 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n358 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfAmpere .
+_:c14n359 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isRecognizedBy .
+_:c14n36 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:conversionFactor .
+_:c14n360 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:sequence .
+_:c14n361 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:providesOrderFor .
+_:c14n362 a owl:Restriction ;
+	owl:allValuesFrom _:c14n455 ;
+	owl:onProperty gist:conversionFactor .
+_:c14n363 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n364 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isTriggeredBy .
+_:c14n365 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:providesOrderFor .
+_:c14n366 owl:intersectionOf _:c14n444 .
+_:c14n367 rdf:first gist:GeoLocation ;
 	rdf:rest rdf:nil .
-_:c14n5 rdf:first gist:IntellectualProperty ;
-	rdf:rest _:c14n0 .
-_:c14n50 rdf:first gist:Address ;
-	rdf:rest _:c14n49 .
-_:c14n51 owl:unionOf _:c14n50 .
-_:c14n52 rdf:first _:c14n51 ;
-	rdf:rest _:c14n53 .
-_:c14n53 rdf:first linkml:Any ;
+_:c14n368 rdf:first gist:Address ;
+	rdf:rest _:c14n367 .
+_:c14n369 owl:unionOf _:c14n368 .
+_:c14n37 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isPartOf .
+_:c14n370 rdf:first _:c14n369 ;
+	rdf:rest _:c14n371 .
+_:c14n371 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n54 rdf:first gist:GeoLocation ;
+_:c14n372 rdf:first gist:GeoLocation ;
 	rdf:rest rdf:nil .
-_:c14n55 rdf:first gist:Address ;
-	rdf:rest _:c14n54 .
-_:c14n56 owl:unionOf _:c14n55 .
-_:c14n57 rdf:first _:c14n56 ;
-	rdf:rest _:c14n58 .
-_:c14n58 rdf:first linkml:Any ;
+_:c14n373 rdf:first gist:Address ;
+	rdf:rest _:c14n372 .
+_:c14n374 owl:unionOf _:c14n373 .
+_:c14n375 rdf:first _:c14n374 ;
+	rdf:rest _:c14n376 .
+_:c14n376 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n59 rdf:first gist:Person ;
+_:c14n377 rdf:first gist:GeoLocation ;
 	rdf:rest rdf:nil .
-_:c14n6 rdf:first media_app:n-quads ;
-	rdf:rest _:c14n2 .
-_:c14n60 rdf:first gist:Organization ;
-	rdf:rest _:c14n59 .
-_:c14n61 owl:unionOf _:c14n60 .
-_:c14n62 rdf:first _:c14n61 ;
-	rdf:rest _:c14n63 .
-_:c14n63 rdf:first linkml:Any ;
+_:c14n378 rdf:first gist:Address ;
+	rdf:rest _:c14n377 .
+_:c14n379 owl:unionOf _:c14n378 .
+_:c14n38 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfSteradian .
+_:c14n380 rdf:first _:c14n379 ;
+	rdf:rest _:c14n382 .
+_:c14n381 owl:intersectionOf _:c14n380 .
+_:c14n382 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n64 rdf:first gist:Person ;
+_:c14n383 rdf:first gist:GeoLocation ;
 	rdf:rest rdf:nil .
-_:c14n65 rdf:first gist:Organization ;
-	rdf:rest _:c14n64 .
-_:c14n66 owl:unionOf _:c14n65 .
-_:c14n67 rdf:first _:c14n66 ;
-	rdf:rest _:c14n68 .
-_:c14n68 rdf:first linkml:Any ;
+_:c14n384 rdf:first gist:Address ;
+	rdf:rest _:c14n383 .
+_:c14n385 owl:unionOf _:c14n384 .
+_:c14n386 rdf:first _:c14n385 ;
+	rdf:rest _:c14n388 .
+_:c14n387 owl:intersectionOf _:c14n386 .
+_:c14n388 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n69 rdf:first gist:Person ;
+_:c14n389 rdf:first gist:Organization ;
+	rdf:rest _:c14n390 .
+_:c14n39 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:longitude .
+_:c14n390 rdf:first gist:Person ;
 	rdf:rest rdf:nil .
-_:c14n7 rdf:first media_app:sparql-results\+json ;
-	rdf:rest _:c14n39 .
-_:c14n70 rdf:first gist:Person ;
+_:c14n391 rdf:first gist:IntellectualProperty ;
+	rdf:rest _:c14n389 .
+_:c14n392 owl:unionOf _:c14n391 .
+_:c14n393 rdf:first _:c14n392 ;
+	rdf:rest _:c14n395 .
+_:c14n394 owl:intersectionOf _:c14n393 .
+_:c14n395 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n71 rdf:first gist:Organization ;
-	rdf:rest _:c14n70 .
-_:c14n72 owl:unionOf _:c14n71 .
-_:c14n73 rdf:first _:c14n72 ;
-	rdf:rest _:c14n74 .
-_:c14n74 rdf:first linkml:Any ;
+_:c14n396 rdf:first gist:Organization ;
+	rdf:rest _:c14n397 .
+_:c14n397 rdf:first gist:Person ;
 	rdf:rest rdf:nil .
-_:c14n75 rdf:first gist:Person ;
+_:c14n398 rdf:first gist:IntellectualProperty ;
+	rdf:rest _:c14n396 .
+_:c14n399 owl:unionOf _:c14n398 .
+_:c14n4 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:allows .
+_:c14n40 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n400 rdf:first _:c14n399 ;
+	rdf:rest _:c14n401 .
+_:c14n401 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n76 rdf:first gist:Organization ;
-	rdf:rest _:c14n75 .
-_:c14n77 owl:unionOf _:c14n76 .
-_:c14n78 rdf:first _:c14n77 ;
-	rdf:rest _:c14n79 .
-_:c14n79 rdf:first linkml:Any ;
+_:c14n402 rdf:first gist:Person ;
 	rdf:rest rdf:nil .
-_:c14n8 rdf:first gist:_PrefixDeclaration_rdf ;
-	rdf:rest _:c14n43 .
-_:c14n80 rdf:first linkml:Any ;
+_:c14n403 rdf:first gist:Organization ;
+	rdf:rest _:c14n402 .
+_:c14n404 owl:unionOf _:c14n403 .
+_:c14n405 rdf:first _:c14n404 ;
+	rdf:rest _:c14n407 .
+_:c14n406 owl:intersectionOf _:c14n405 .
+_:c14n407 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n81 rdf:first _:c14n82 ;
-	rdf:rest _:c14n80 .
-_:c14n82 owl:unionOf _:c14n5 .
-_:c14n83 rdf:first xsd:float ;
+_:c14n408 rdf:first gist:Person ;
 	rdf:rest rdf:nil .
-_:c14n84 rdf:first xsd:float ;
+_:c14n409 rdf:first gist:Organization ;
+	rdf:rest _:c14n408 .
+_:c14n41 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:startDateTime .
+_:c14n410 owl:unionOf _:c14n409 .
+_:c14n411 rdf:first _:c14n410 ;
+	rdf:rest _:c14n412 .
+_:c14n412 rdf:first linkml:Any ;
 	rdf:rest rdf:nil .
-_:c14n9 rdf:first media_img:png ;
-	rdf:rest _:c14n1 .
+_:c14n413 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n414 rdf:first gist:Organization ;
+	rdf:rest _:c14n413 .
+_:c14n415 owl:unionOf _:c14n414 .
+_:c14n416 rdf:first _:c14n415 ;
+	rdf:rest _:c14n418 .
+_:c14n417 owl:intersectionOf _:c14n416 .
+_:c14n418 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n419 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n42 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:deathDate .
+_:c14n420 rdf:first gist:Organization ;
+	rdf:rest _:c14n419 .
+_:c14n421 owl:unionOf _:c14n420 .
+_:c14n422 rdf:first _:c14n421 ;
+	rdf:rest _:c14n423 .
+_:c14n423 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n424 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n425 rdf:first gist:Organization ;
+	rdf:rest _:c14n424 .
+_:c14n426 owl:unionOf _:c14n425 .
+_:c14n427 rdf:first _:c14n426 ;
+	rdf:rest _:c14n429 .
+_:c14n428 owl:intersectionOf _:c14n427 .
+_:c14n429 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n43 a owl:Restriction ;
+	owl:allValuesFrom _:c14n381 ;
+	owl:onProperty gist:goesToPlace .
+_:c14n430 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n431 rdf:first gist:Organization ;
+	rdf:rest _:c14n430 .
+_:c14n432 owl:unionOf _:c14n431 .
+_:c14n433 rdf:first _:c14n432 ;
+	rdf:rest _:c14n434 .
+_:c14n434 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n435 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n436 rdf:first gist:Organization ;
+	rdf:rest _:c14n435 .
+_:c14n437 owl:unionOf _:c14n436 .
+_:c14n438 rdf:first _:c14n437 ;
+	rdf:rest _:c14n440 .
+_:c14n439 owl:intersectionOf _:c14n438 .
+_:c14n44 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfUSDollar .
+_:c14n440 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n441 rdf:first gist:Person ;
+	rdf:rest rdf:nil .
+_:c14n442 rdf:first gist:Organization ;
+	rdf:rest _:c14n441 .
+_:c14n443 owl:unionOf _:c14n442 .
+_:c14n444 rdf:first _:c14n443 ;
+	rdf:rest _:c14n445 .
+_:c14n445 rdf:first linkml:Any ;
+	rdf:rest rdf:nil .
+_:c14n446 rdf:first xsd:integer ;
+	rdf:rest _:c14n447 .
+_:c14n447 rdf:first xsd:decimal ;
+	rdf:rest _:c14n448 .
+_:c14n448 rdf:first xsd:float ;
+	rdf:rest rdf:nil .
+_:c14n449 a rdfs:Datatype ;
+	owl:unionOf _:c14n446 .
+_:c14n45 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:linksTo .
+_:c14n450 rdf:first xsd:integer ;
+	rdf:rest _:c14n451 .
+_:c14n451 rdf:first xsd:decimal ;
+	rdf:rest _:c14n452 .
+_:c14n452 rdf:first xsd:float ;
+	rdf:rest rdf:nil .
+_:c14n453 rdf:first xsd:decimal ;
+	rdf:rest _:c14n454 .
+_:c14n454 rdf:first xsd:float ;
+	rdf:rest rdf:nil .
+_:c14n455 a rdfs:Datatype ;
+	owl:unionOf _:c14n453 .
+_:c14n456 rdf:first xsd:decimal ;
+	rdf:rest _:c14n457 .
+_:c14n457 rdf:first xsd:float ;
+	rdf:rest rdf:nil .
+_:c14n46 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:conformsTo .
+_:c14n47 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:linksFrom .
+_:c14n48 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n49 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:conformsTo .
+_:c14n5 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:prohibits .
+_:c14n50 rdf:first media_app:n-quads ;
+	rdf:rest _:c14n26 .
+_:c14n51 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:idText .
+_:c14n52 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasMultiplier .
+_:c14n53 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:endDateTime .
+_:c14n54 rdf:first media_app:sparql-results\+json ;
+	rdf:rest _:c14n266 .
+_:c14n55 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:conversionOffset .
+_:c14n56 a owl:Restriction ;
+	owl:allValuesFrom xsd:integer ;
+	owl:onProperty gist:sequence .
+_:c14n57 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfKelvin .
+_:c14n58 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:contributesTo .
+_:c14n59 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasUnitGroup .
+_:c14n6 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n60 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedEndDate .
+_:c14n61 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfRadian .
+_:c14n62 rdf:first gist:_PrefixDeclaration_rdf ;
+	rdf:rest _:c14n311 .
+_:c14n63 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isProducedBy .
+_:c14n64 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedEndMinute .
+_:c14n65 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfKilogram .
+_:c14n66 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isFirstMemberOf .
+_:c14n67 rdf:first media_img:png ;
+	rdf:rest _:c14n20 .
+_:c14n68 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasBroader .
+_:c14n69 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isGovernedBy .
+_:c14n7 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:plannedEndYear .
+_:c14n70 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualStartDateTime .
+_:c14n71 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedStartDateTime .
+_:c14n72 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:hasMultiplier .
+_:c14n73 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:birthDate .
+_:c14n74 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:hasParty .
+_:c14n75 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualEndYear .
+_:c14n76 a owl:Restriction ;
+	owl:allValuesFrom gist:Magnitude ;
+	owl:onProperty gist:hasMagnitude .
+_:c14n77 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfCandela .
+_:c14n78 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:actualEndDateTime .
+_:c14n79 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualEndYear .
+_:c14n8 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n80 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfOther .
+_:c14n81 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:name .
+_:c14n82 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n83 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:goesToAgent .
+_:c14n84 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isRenderedOn .
+_:c14n85 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:plannedEndMinute .
+_:c14n86 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:occursIn .
+_:c14n87 a owl:Restriction ;
+	owl:allValuesFrom xsd:dateTime ;
+	owl:onProperty gist:actualStartMinute .
+_:c14n88 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:actualStartYear .
+_:c14n89 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfMeter .
+_:c14n9 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty gist:plannedEndDate .
+_:c14n90 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:requires .
+_:c14n91 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:exponentOfBit .
+_:c14n92 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:name .
+_:c14n93 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isAbout .
+_:c14n94 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:isTriggeredBy .
+_:c14n95 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty gist:containedText .
+_:c14n96 a owl:Restriction ;
+	owl:allValuesFrom xsd:decimal ;
+	owl:onProperty gist:exponentOfMole .
+_:c14n97 a owl:Restriction ;
+	owl:allValuesFrom linkml:Any ;
+	owl:onProperty gist:isCategorizedBy .
+_:c14n98 owl:intersectionOf _:c14n370 .
+_:c14n99 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty gist:links .
 
