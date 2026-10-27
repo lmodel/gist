@@ -204,6 +204,11 @@ class TestGistIrisInArtifacts:
                 wrong[iri] = sorted(declared)
         assert wrong == {}
 
+    def test_owl_deprecates_what_gist_deprecates(self, owl, upstream_gist):
+        from rdflib.namespace import OWL
+        marked = {str(s) for s, o in owl.subject_objects(OWL.deprecated) if o.toPython() is True}
+        assert upstream_gist["deprecated"] and marked == upstream_gist["deprecated"]
+
     def test_owl_keeps_gist_individuals_individuals(self, owl, upstream_gist):
         from rdflib.namespace import OWL, RDF
         retyped = [str(s) for s in owl.subjects(RDF.type, OWL.Class)

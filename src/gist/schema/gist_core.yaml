@@ -981,6 +981,8 @@ slots:
       - gist_core
     exact_mappings:
       - gist:prohibits
+    annotations:
+      owl:deprecated: true
 
   prohibits:
     slot_uri: gist:prohibits
@@ -2041,6 +2043,8 @@ classes:
     deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   BundledCatalogItem:
     is_a: CatalogItem
@@ -2741,6 +2745,8 @@ classes:
     deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   Language:
     mixins:
@@ -2760,6 +2766,8 @@ classes:
     deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   LivingThing:
     is_a: PhysicalIdentifiableItem
@@ -3255,6 +3263,8 @@ classes:
     deprecated: gist marks this term owl:deprecated.
     in_subset:
       - gist_core
+    annotations:
+      owl:deprecated: true
 
   ServiceSpecification:
     is_a: CatalogItem

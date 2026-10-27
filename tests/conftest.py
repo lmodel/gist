@@ -33,8 +33,12 @@ def upstream_gist():
         for p in g.subjects(RDF.type, kind):
             if str(p).startswith(SEMANTIC_ARTS_NS):
                 property_types.setdefault(str(p), set()).add(str(kind))
+    deprecated = {
+        str(s) for s, o in g.subject_objects(OWL.deprecated)
+        if str(s).startswith(SEMANTIC_ARTS_NS) and str(o).lower() == "true"
+    }
     return {
         "iris": iris, "local_names": local_names, "classes": classes,
-        "property_types": property_types,
+        "property_types": property_types, "deprecated": deprecated,
         "gist_ns": SEMANTIC_ARTS_NS, "gistd_ns": SEMANTIC_ARTS_DATA_NS, "lmodel_ns": LMODEL_NS,
     }

@@ -103,6 +103,11 @@ _PREFIXED_COMMENT_RE = re.compile(r"^([A-Z]+):\s*")
 # only owl:deprecated true, and any guidance stays in the term's notes.
 DEPRECATED_REASON = "gist marks this term owl:deprecated."
 
+# gen-owl writes no triple for deprecated (linkml 1.12.1), but it writes an
+# annotation keyed by a CURIE as that property, so this one puts gist's
+# owl:deprecated true back into the OWL.
+DEPRECATED_ANNOTATION = {"owl:deprecated": True}
+
 # Namespaces rendered as CURIEs inside the OWL axiom notes
 _NOTE_NS: list[tuple[str, str]] = [
     (GIST_SA_NS, "gist"),
@@ -502,6 +507,7 @@ def extract_classes(g: Graph) -> dict[str, dict]:
         depr = first_literal(g, cls, OWL.deprecated)
         if depr and depr.lower() == "true":
             entry["deprecated"] = DEPRECATED_REASON
+            entry["annotations"] = dict(DEPRECATED_ANNOTATION)
 
         # --- is_a: first simple named gist: superclass ---
         simple_parents = [
@@ -763,6 +769,7 @@ def extract_slots(g: Graph) -> dict[str, dict]:
             depr = first_literal(g, prop, OWL.deprecated)
             if depr and depr.lower() == "true":
                 entry["deprecated"] = DEPRECATED_REASON
+                ann.update(DEPRECATED_ANNOTATION)
                 superseded = [
                     gist_local(o) for o in named_objects(g, prop, GIST.isSupersededBy)
                     if gist_local(o)

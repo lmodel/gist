@@ -355,6 +355,7 @@ class TestExtractClasses:
         g.add((GIST.OldClass, OWL.deprecated, Literal("true")))
         classes = M.extract_classes(g)
         assert classes["OldClass"]["deprecated"] == M.DEPRECATED_REASON
+        assert classes["OldClass"]["annotations"] == {"owl:deprecated": True}
 
     def test_examples_from_skos(self):
         g = _core_class_graph()
@@ -688,6 +689,7 @@ class TestExtractSlots:
         g.add((GIST.oldProp, OWL.deprecated, Literal("true")))
         slots = M.extract_slots(g)
         assert slots["old_prop"]["deprecated"] == M.DEPRECATED_REASON
+        assert slots["old_prop"]["annotations"] == {"owl:deprecated": True}
 
     def test_deprecated_with_superseded_by(self):
         g = Graph()
