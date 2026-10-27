@@ -28,6 +28,9 @@ generator_args:
   # and slot under default_prefix, i.e. a parallel copy of gist in lmodel's
   # namespace, asserts linkml:ClassDefinition on gist's classes, and retypes
   # gist's named individuals as classes.
+  # The last three are gen-owl's coming defaults: no restriction that says
+  # only what a property's rdfs:range or a minimum of none already says, and
+  # one owl:cardinality where the minimum and maximum agree.
   owl:
     mergeimports: true
     metaclasses: false
@@ -36,6 +39,9 @@ generator_args:
     mixins_as_expressions: true
     use_native_uris: false
     default_permissible_value_type: owl:NamedIndividual
+    skip_vacuous_local_range_axioms: true
+    skip_vacuous_min_zero_cardinality_axioms: true
+    consolidate_cardinality_axioms: true
   markdown:
     mergeimports: true
     directory: "docs/elements"

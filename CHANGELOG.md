@@ -18,6 +18,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 - **An element's gist label is its `title`.** The `skos:prefLabel`, or else the `rdfs:label`, was the first of its aliases; other labels stay aliases, and the JSON Schema and the Pydantic models show the title.
 - **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 4.6 MB, 7 MB and 2 MB.
 - **`just verify-generated` compares the OWL and the SHACL in seconds.** Their blank nodes form trees, so it compares a digest of each tree; rdflib's general isomorphism check took many minutes on the larger shapes. It also puts back the schema, which `gen-project` regenerates.
+- **The OWL leaves out the restrictions that repeat a property's range or a minimum of none.** gen-owl's coming defaults, set now, take its 3,533 triples to 2,617, and GistThing's restrictions from 215 to 45.
 
 ### Removed
 
