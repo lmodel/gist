@@ -32,7 +32,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 - **The converter stops at a domain it cannot carry faithfully**, such as two domains or a class gist does not declare, rather than put the slot on too many classes or too few. A class also takes the domain slots of a second superclass, an unranged object subproperty its parent's range, and enum values whose keys collide stay apart; gist 14.1.0 meets none of these.
 - **The OWL marks the terms gist deprecates `owl:deprecated`.** gen-owl writes no triple for LinkML's `deprecated`, so each of the five also carries an `owl:deprecated: true` annotation, which it does write.
 - **A superproperty outside gist is a broad mapping.** `domain_includes` and `range_includes`, subproperties of `skos:scopeNote`, named it as a related mapping by its full IRI.
-- **The data tests check the examples.** `tests/test_data.py` passed whether a file loaded or not; it now validates each example with closed classes, and each counter-example fails for the one reason its file name states.
+- **The data tests check the examples.** `tests/test_data.py` passed whether a file loaded or not; it now validates each example with closed classes, and checks that each counter-example fails for the one reason its file name states.
 
 ## [0.4.0] - 2026-10-27
 

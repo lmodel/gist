@@ -1,0 +1,6 @@
+# A valid UnitOfMeasure: conversion_factor and exponent_of_meter, whose
+# rdfs:domain is UnitOfMeasure (and UnitGroup, for the exponent).
+
+name: "foot"
+conversion_factor: 0.3048
+exponent_of_meter: 1
