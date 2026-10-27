@@ -26,6 +26,8 @@ Usage
     (definition, prefLabel, altLabel, example, scopeNote, editorialNote,
      historyNote, rdfs:label, rdfs:seeAlso, rdfs:comment with the
      DEFINITION:/EXAMPLE:/NOTE:/ALT: prefixes)
+  - rdfs:domain of an object/datatype property   -> a slot of each domain class
+  - Such a property without a domain             -> a slot of the GistThing mixin
   - gist:domainIncludes / gist:rangeIncludes     -> slot annotations only
   - owl:FunctionalProperty                       -> multivalued: false
   - Unranged owl:ObjectProperty                  -> range: Any
@@ -425,6 +427,17 @@ def _merge_doc(entry: dict, doc: dict) -> None:
 # Core extraction functions
 # ---------------------------------------------------------------------------
 
+def _domain_classes(g: Graph, prop) -> list[str]:
+    """The gist classes that the rdfs:domain of *prop* names, alone or in a union."""
+    found: list[str] = []
+    for d in g.objects(prop, RDFS.domain):
+        if isinstance(d, URIRef):
+            found.append(gist_local(d))
+        elif isinstance(d, BNode):
+            found += [gist_local(m) for m in union_members(g, d) or []]
+    return _dedupe(c for c in found if c)
+
+
 def _ifp_slots_by_domain_class(g: Graph) -> dict[str, list[str]]:
     """Map each gist class to the snake_case slot names of every
     owl:InverseFunctionalProperty whose rdfs:domain (named or unionOf) includes it.
@@ -437,22 +450,41 @@ def _ifp_slots_by_domain_class(g: Graph) -> dict[str, list[str]]:
         prop_local = gist_local(prop)
         if not prop_local:
             continue
-        slot_name = camel_to_snake(prop_local)
-        for d in g.objects(prop, RDFS.domain):
-            if isinstance(d, URIRef) and gist_local(d):
-                by_class[gist_local(d)].append(slot_name)
-            elif isinstance(d, BNode):
-                members = union_members(g, d) or []
-                for m in members:
-                    if gist_local(m):
-                        by_class[gist_local(m)].append(slot_name)
+        for cls in _domain_classes(g, prop):
+            by_class[cls].append(camel_to_snake(prop_local))
     return by_class
+
+
+def _slots_by_domain_class(g: Graph) -> dict[str | None, list[str]]:
+    """Map each gist class to the slots its instances may carry.
+
+    The slot of an object or datatype property goes to each gist class its
+    rdfs:domain names, and its subclasses inherit it. A property whose domain
+    names no gist class, because it has none, may describe any individual, so
+    its slot goes under ``None``, for the GistThing mixin every class takes.
+    Annotation properties describe gist's terms, not the individuals its
+    classes hold, and go nowhere.
+    """
+    by_class: dict[str | None, set[str]] = defaultdict(set)
+    for prop_type in (OWL.ObjectProperty, OWL.DatatypeProperty):
+        for prop in g.subjects(RDF.type, prop_type):
+            if not isinstance(prop, URIRef) or not gist_local(prop):
+                continue
+            for cls in _domain_classes(g, prop) or [None]:
+                by_class[cls].add(camel_to_snake(gist_local(prop)))
+    return {cls: sorted(slots) for cls, slots in by_class.items()}
+
+
+def domainless_slots(g: Graph) -> list[str]:
+    """The slots of the object and datatype properties whose domain names no gist class."""
+    return _slots_by_domain_class(g).get(None, [])
 
 
 def extract_classes(g: Graph) -> dict[str, dict]:
     """Extract owl:Class entries defined in the gist: namespace."""
     classes: dict[str, dict] = {}
     ifp_slots_by_class = _ifp_slots_by_domain_class(g)
+    slots_by_class = _slots_by_domain_class(g)
 
     for cls in g.subjects(RDF.type, OWL.Class):
         if not isinstance(cls, URIRef):
@@ -525,6 +557,10 @@ def extract_classes(g: Graph) -> dict[str, dict]:
                      if gist_local(o)]
         if disjoints:
             entry["disjoint_with"] = disjoints  # multivalued in the LinkML metamodel
+
+        # --- the slots of the properties whose rdfs:domain names this class ---
+        if slots_by_class.get(cls_local):
+            entry["slots"] = slots_by_class[cls_local]
 
         # --- InverseFunctionalProperty  -> unique_keys ---
         # An IFP whose rdfs:domain (named or unionOf) includes this class becomes
@@ -1219,7 +1255,10 @@ def build_schema(
     schema_name: str = "gist_core",
     source: str | None = None,
     header: dict[str, Any] | None = None,
+    thing_slots: list[str] | None = None,
 ) -> dict:
+    """Assemble gist_core: the classes, slots and enums, the GistThing mixin
+    holding *thing_slots* (see ``domainless_slots``), and the Any class."""
     subset_name = "gist_core"
     prefixes = _base_prefixes()
     prefixes.update({
@@ -1243,17 +1282,18 @@ def build_schema(
     if source:
         schema["source"] = source
 
-    # Inject GistThing mixin for universal slots (name, description have no OWL domain)
+    # Inject GistThing mixin for the slots of properties without an OWL domain
     classes = dict(classes)  # copy to avoid mutating caller's dict
     classes["GistThing"] = {
         "mixin": True,
         "description": (
-            "Mixin that gives every gist class the name and description slots, "
-            "which gist declares without a domain."
+            "Mixin that gives every gist class the slots of the properties gist "
+            "declares without a domain, since OWL lets those describe any individual."
         ),
-        "slots": ["name", "description"],
         "in_subset": [subset_name],
     }
+    if thing_slots:
+        classes["GistThing"]["slots"] = list(thing_slots)
     # Apply GistThing mixin to all root classes (no is_a  -> no inherited slots)
     for cls_entry in classes.values():
         if not cls_entry.get("is_a") and not cls_entry.get("mixin"):
@@ -1759,6 +1799,7 @@ def generate_per_file_schemas(
         schema_name="gist_core",
         source=get_ontology_iri(graphs.get("core", Graph())),
         header=ontology_header(graphs.get("core", Graph()), g_annot),
+        thing_slots=domainless_slots(g_core_enriched),
     )
     # Checked before the first file is written, so a bad rename leaves the
     # output directory as it was

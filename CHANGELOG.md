@@ -6,14 +6,20 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **gist's properties attach to the classes that may carry them.** A property's slot goes to each class its `rdfs:domain` names, and the `GistThing` mixin, which every class takes, holds the 89 that gist declares without a domain, since OWL lets those describe any individual. The JSON Schema, the Python models and the SHACL shapes now accept gist data beyond `name` and `description`, such as a `Magnitude` with a `numeric_value` and a `has_unit_of_measure`.
+
 ### Changed
 
 - **The generated artefacts come from linkml 1.12.1.** The Protobuf file is now valid proto3, the JSON Schema carries each element's examples, the JSON-LD names exact mappings `exact_mappings`, and the Python datamodel types `conversion_factor` and `numeric_value` as numbers. The Java classes that `gen-java` now writes are git-ignored.
 - **gist's long notes keep their paragraphs and lose their Turtle layout.** Windows line ends, tab indents and outer blank lines are gone, so the schema holds them as YAML blocks and the docs render their lists and equations as written.
 - **A deprecated term gives a reason.** Its `deprecated` reads "gist marks this term owl:deprecated." in place of `'true'`, as LinkML expects a reason there; gist's removal guidance stays in the term's notes.
+- **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 4.6 MB, 7 MB and 2 MB.
 
 ### Removed
 
+- **The SQL DDL.** With the slots above, it would hold some 5,400 tables, one for each multivalued slot of each class, and take `gen-project` over five minutes and 4 GB to write, so `.linkml/generators.yaml` skips `sqlddl` and `project/sqlschema/` is gone.
 - **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
 
 ### Fixed

@@ -1,5 +1,5 @@
-# A valid System: the name and description that the GistThing
-# mixin gives every gist class.
+# A valid System: the name and description of the GistThing mixin,
+# which gives every gist class the slots gist declares without a domain.
 
 name: "Enterprise Data Architecture"
 description: "A composite system integrating multiple databases, APIs, and processing components"

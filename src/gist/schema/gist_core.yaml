@@ -2113,6 +2113,8 @@ classes:
       - Event
     in_subset:
       - gist_core
+    slots:
+      - has_unit_group
 
   Assignment:
     is_a: TemporalRelation
@@ -2335,6 +2337,8 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - is_about
 
   ContentExpression:
     is_a: Content
@@ -2647,6 +2651,8 @@ classes:
       - A geographic location may be a point, region, or volume.
     in_subset:
       - gist_core
+    slots:
+      - is_geo_contained_in
 
   GeoPoint:
     is_a: GeoLocation
@@ -2669,6 +2675,9 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - latitude
+      - longitude
 
   GeoRegion:
     is_a: GeoLocation
@@ -2843,6 +2852,9 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - prevents
+      - prohibits
 
   IntergovernmentalOrganization:
     is_a: Organization
@@ -2937,6 +2949,8 @@ classes:
         OWL equivalentClass: (gist:PhysicalIdentifiableItem & ∃hasBiologicalParent.gist:LivingThing & =1birthDate)
     in_subset:
       - gist_core
+    slots:
+      - has_biological_parent
 
   Magnitude:
     mixins:
@@ -2969,6 +2983,8 @@ classes:
       - gist_core
     see_also:
       - gist:hasAccuracy
+    slots:
+      - has_unit_of_measure
 
   MediaType:
     is_a: Category
@@ -3116,6 +3132,9 @@ classes:
         OWL equivalentClass: (gist:Component & (∃precedesDirectly.gist:OrderedMember | ∃^precedesDirectly.gist:OrderedMember | ∃sequence.xsd:integer) & ∃providesOrderFor.owl:Thing & ∀isMemberOf.gist:OrderedCollection & =1isMemberOf)
     in_subset:
       - gist_core
+    slots:
+      - is_first_member_of
+      - provides_order_for
 
   Organization:
     mixins:
@@ -3150,6 +3169,8 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - owns
 
   Permission:
     is_a: Intention
@@ -3191,6 +3212,8 @@ classes:
       - 'OWL equivalentClass: (gist:LivingThing & ∃hasBiologicalParent.gist:Person)'
     in_subset:
       - gist_core
+    slots:
+      - owns
 
   PhysicalActionType:
     is_a: Category
@@ -3666,6 +3689,20 @@ classes:
       - UnitOfMeasure
     in_subset:
       - gist_core
+    slots:
+      - exponent_of_ampere
+      - exponent_of_bit
+      - exponent_of_candela
+      - exponent_of_kelvin
+      - exponent_of_kilogram
+      - exponent_of_meter
+      - exponent_of_mole
+      - exponent_of_number
+      - exponent_of_other
+      - exponent_of_radian
+      - exponent_of_second
+      - exponent_of_steradian
+      - exponent_of_us_dollar
 
   UnitOfMeasure:
     mixins:
@@ -3680,16 +3717,119 @@ classes:
       - value: An acre is a unit for measuring area.
     in_subset:
       - gist_core
+    slots:
+      - conversion_factor
+      - conversion_offset
+      - exponent_of_ampere
+      - exponent_of_bit
+      - exponent_of_candela
+      - exponent_of_kelvin
+      - exponent_of_kilogram
+      - exponent_of_meter
+      - exponent_of_mole
+      - exponent_of_number
+      - exponent_of_other
+      - exponent_of_radian
+      - exponent_of_second
+      - exponent_of_steradian
+      - exponent_of_us_dollar
 
   GistThing:
     mixin: true
     description: |-
-      Mixin that gives every gist class the name and description slots, which gist declares without a domain.
+      Mixin that gives every gist class the slots of the properties gist declares without a domain, since OWL lets those describe any individual.
     in_subset:
       - gist_core
     slots:
-      - name
+      - actual_end_date
+      - actual_end_date_time
+      - actual_end_microsecond
+      - actual_end_minute
+      - actual_end_year
+      - actual_start_date
+      - actual_start_date_time
+      - actual_start_microsecond
+      - actual_start_minute
+      - actual_start_year
+      - allows
+      - at_date_time
+      - birth_date
+      - comes_from_agent
+      - comes_from_place
+      - conforms_to
+      - contained_text
+      - contributes_to
+      - death_date
       - description
+      - encrypted_text
+      - end_date_time
+      - goes_to_agent
+      - goes_to_place
+      - has_accuracy
+      - has_addend
+      - has_address
+      - has_aspect
+      - has_broader
+      - has_direct_broader
+      - has_divisor
+      - has_giver
+      - has_goal
+      - has_incumbent
+      - has_magnitude
+      - has_multiplier
+      - has_navigational_parent
+      - has_participant
+      - has_party
+      - has_physical_location
+      - has_recipient
+      - has_subtrahend
+      - has_unique_broader
+      - has_unique_navigational_parent
+      - id_text
+      - is_affected_by
+      - is_allocated_by
+      - is_assignment_of
+      - is_assignment_to
+      - is_based_on
+      - is_categorized_by
+      - is_connected_to
+      - is_direct_part_of
+      - is_expressed_in
+      - is_governed_by
+      - is_identified_by
+      - is_made_up_of
+      - is_member_of
+      - is_part_of
+      - is_produced_by
+      - is_recognized_by
+      - is_recorded_at
+      - is_rendered_on
+      - is_triggered_by
+      - is_under_jurisdiction_of
+      - links
+      - links_from
+      - links_to
+      - name
+      - numeric_value
+      - occurs_in
+      - offers_to_provide
+      - offers_to_receive
+      - planned_end_date
+      - planned_end_date_time
+      - planned_end_minute
+      - planned_end_year
+      - planned_start_date
+      - planned_start_date_time
+      - planned_start_minute
+      - planned_start_year
+      - precedes
+      - precedes_directly
+      - refers_to
+      - requires
+      - sequence
+      - start_date_time
+      - symbol
+      - unique_text
 
   Any:
     class_uri: linkml:Any

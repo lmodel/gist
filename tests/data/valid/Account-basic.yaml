@@ -1,5 +1,5 @@
-# A valid Account: the name and description that the GistThing
-# mixin gives every gist class.
+# A valid Account: the name and description of the GistThing mixin,
+# which gives every gist class the slots gist declares without a domain.
 
 name: "Primary Checking Account"
 description: "A bank account with transaction history and financial balance tracking"

@@ -1,0 +1,7 @@
+# A valid Magnitude: numeric_value comes from the GistThing mixin, as gist
+# gives it no domain, and has_unit_of_measure from Magnitude, its domain.
+
+name: "Height of the mast"
+numeric_value: 42.5
+has_unit_of_measure:
+  - name: "meter"

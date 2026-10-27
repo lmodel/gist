@@ -4,8 +4,14 @@
 # directory: "tmp"
 
 # By default all generators are run. Specify here the ones to skip.
+# sqltable, the SQL DDL: the GistThing mixin gives every class gist's 89
+# domain-less slots, so the DDL would hold some 5,400 tables, one for each
+# multivalued slot of each class, and take over five minutes and 4 GB to
+# write. gen-project ignores a name it does not know: markdown, as gen-doc
+# writes the docs apart, and the sqlddl under generator_args below.
 excludes:
   - markdown
+  - sqltable
 
 # Alternatively only specify the generators to run
 # (comment out the above "excludes" section)

@@ -20,8 +20,18 @@ else defines terms there. This schema holds to both.
 | `gistd` | `https://w3id.org/semanticarts/ns/data/gist/` | gist's named individuals (Semantic Arts) |
 | `gist_linkml` | `https://w3id.org/lmodel/gist/` | what this rendering adds: schema documents, the `GistThing` mixin, enums, subsets, SHACL shapes, LinkML element definitions |
 
+## How the classes carry gist's properties
+
+A property's slot belongs to each class its `rdfs:domain` names, and to that
+class's subclasses. gist declares most of its properties without a domain, so
+OWL lets them describe any individual; their 89 slots sit on the `GistThing`
+mixin, which every class takes. gist's `domainIncludes` and `rangeIncludes`
+hints stay annotations on each slot and never limit where it is used, since
+gist's own axioms use properties outside them.
+
 For reasoning over gist itself, use Semantic Arts' own OWL release. The OWL
-generated here is a projection of the LinkML schema.
+generated here is a projection of the LinkML schema, and adds restrictions
+gist does not make, such as at most one value for each single-valued slot.
 
 # References
 

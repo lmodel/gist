@@ -1,0 +1,6 @@
+# Invalid Person: latitude is a gist slot, but its rdfs:domain is GeoPoint,
+# so only a GeoPoint lists it, and a closed class rejects it.
+
+name: "Invalid Person"
+description: "A person given a latitude"
+latitude: 53.35

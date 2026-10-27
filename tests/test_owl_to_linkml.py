@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 import rdflib
+import yaml
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 
@@ -294,6 +295,27 @@ class TestExtractClasses:
         g = _core_class_graph()
         classes = M.extract_classes(g)
         assert "Category" in classes["Category"]["aliases"]
+
+    def test_slots_of_properties_whose_domain_names_the_class(self):
+        g = _core_class_graph()
+        g.add((GIST.Person, RDF.type, OWL.Class))
+        g.add((GIST.hasParent, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.hasParent, RDFS.domain, GIST.Category))
+        g.add((GIST.owns, RDF.type, OWL.ObjectProperty))
+        bn = BNode()
+        col = rdflib.collection.Collection(g, None, [GIST.Category, GIST.Person])
+        g.add((bn, OWL.unionOf, col.uri))
+        g.add((GIST.owns, RDFS.domain, bn))
+        g.add((GIST.name, RDF.type, OWL.DatatypeProperty))
+        classes = M.extract_classes(g)
+        assert classes["Category"]["slots"] == ["has_parent", "owns"]
+        assert classes["Person"]["slots"] == ["owns"]
+
+    def test_class_no_domain_names_has_no_slots(self):
+        g = _core_class_graph()
+        g.add((GIST.name, RDF.type, OWL.DatatypeProperty))
+        classes = M.extract_classes(g)
+        assert "slots" not in classes["Category"]
 
     def test_class_uri_set(self):
         g = _core_class_graph()
@@ -1148,6 +1170,28 @@ class TestBuildSchema:
         assert "mixins" not in s["classes"]["Any"]
         assert s["classes"]["Thing"]["mixins"] == ["GistThing"]
 
+    def test_gist_thing_holds_the_thing_slots(self):
+        s = self._make_schema(thing_slots=["description", "name"])
+        assert s["classes"]["GistThing"]["slots"] == ["description", "name"]
+        assert "slots" not in self._make_schema()["classes"]["GistThing"]
+
+
+class TestDomainlessSlots:
+    def test_object_and_datatype_properties_without_a_domain(self):
+        g = Graph()
+        g.add((GIST.name, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.isPartOf, RDF.type, OWL.ObjectProperty))
+        g.add((GIST.latitude, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.latitude, RDFS.domain, GIST.GeoPoint))
+        g.add((GIST.license, RDF.type, OWL.AnnotationProperty))
+        assert M.domainless_slots(g) == ["is_part_of", "name"]
+
+    def test_a_domain_hint_is_no_domain(self):
+        g = Graph()
+        g.add((GIST.containedText, RDF.type, OWL.DatatypeProperty))
+        g.add((GIST.containedText, GIST.domainIncludes, GIST.Text))
+        assert M.domainless_slots(g) == ["contained_text"]
+
 
 class TestBuildMediaTypesSchema:
     def _make_schema(self, **kw):
@@ -1560,3 +1604,5 @@ class TestIntegrationMinimalGraph:
         out = tmp_path / "out"
         assert (out / "gist_core.yaml").exists()
         assert (out / "gist.yaml").exists()
+        core = yaml.safe_load((out / "gist_core.yaml").read_text())
+        assert core["classes"]["GistThing"]["slots"] == ["has_label", "is_part_of"]
