@@ -23,11 +23,6 @@ dependencies = [
 [dependency-groups]
 dev = [
     "linkml>=1.9.3",
-    "mkdocs-material>=8.2.8",
-    "mkdocs-mermaid2-plugin>=1.1.1",
-    "mkdocs-pymdownx-material-extras>=2.5.6",
-    "jupyter>=1.0.0",
-    "mknotebooks>= 0.8.0",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -63,6 +58,7 @@ skip = [
   "LICENSE",
   "pyproject.toml",
   "uv.lock",
+  "website/package-lock.json",
   "project/*",
   "src/gist/datamodel/gist_pydantic.py",
   "src/gist/datamodel/gist.py",

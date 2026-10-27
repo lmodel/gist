@@ -6,6 +6,14 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **A website for the schema and the knowledge bundle.** `website/` is an Astro Starlight site built from the README, `docs/`, the changelog, the schema's `gen-doc` pages and the bundle, and `knowledge-website.yaml` builds it on every pull request. It deploys to Pages once `KNOWLEDGE_WEBSITE_ENABLED` is `true`.
+
+### Removed
+
+- **The mkdocs site.** `mkdocs.yml`, `deploy-docs.yaml` and the five dev dependencies only mkdocs used are gone, and the website redirects the old `/elements/<Term>/` and `/about/` addresses to their new pages.
+
 ## [0.3.16] - 2026-10-27
 
 ### Fixed
