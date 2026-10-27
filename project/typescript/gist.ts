@@ -735,7 +735,7 @@ export interface UnitOfMeasure extends GistThing {
 
 
 /**
- * Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+ * Mixin that gives every gist class the name and description slots, which gist declares without a domain.
  */
 export interface GistThing {
     /** Relates an individual to (one of) its name(s). */

@@ -1,6 +1,6 @@
 {
   "name": "gist",
-  "description": "gist  is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.",
+  "description": "gist is a minimalist upper ontology created by Semantic Arts for enterprise knowledge graph applications. This LinkML schema (version 14.1.0) aggregates the gist modules: Core (classes and properties), MediaTypes (IANA media type instances), and PrefixDeclarations (SHACL namespace bindings). Supplementary schemas gist_rdfs_annotations and gist_sub_class_assertions are available for annotation enrichment and OWL RL reasoner support.",
   "title": "gist (LinkML rendering)",
   "source": "https://w3id.org/semanticarts/ontology/gistCore",
   "see_also": [
@@ -776,8 +776,10 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/comesFromPlace",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "any_of": [
         {
           "range": "Address",
@@ -818,7 +820,7 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/conformsTo",
-      "range": "Intention",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -908,8 +910,10 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/goesToPlace",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "any_of": [
         {
           "range": "Address",
@@ -934,7 +938,7 @@
       ],
       "description": "Relates a magnitude to another magnitude that describes its accuracy.",
       "comments": [
-        "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\r\n\r\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance)."
+        "gist uses the ISO-5725 definition of accuracy, which is a combination of trueness (a measure of systemic error) and precision (a measure of random error). The accuracy of a measurement method describes how close its measurements are to actual values. Similarly, the accuracy of an individual measurement is its likely closeness to the actual value. When we say a temperature measurement is accurate to within a tenth of a degree, it means with a certain probability such as 95%.\n\nNote that the unit of measure of the accuracy has to be compatible with the unit of measure of the original magnitude (e.g. something measured in meters could have an accuracy in terms of millimeters or any other unit that measures distance)."
       ],
       "examples": [
         {
@@ -952,9 +956,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy"
       ],
-      "domain": "Magnitude",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/hasAccuracy",
-      "owner": "has_accuracy",
       "range": "Magnitude",
       "inlined": true,
       "inlined_as_list": true,
@@ -1645,8 +1647,10 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAllocatedBy",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "any_of": [
         {
           "range": "IntellectualProperty",
@@ -1699,29 +1703,11 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf"
       ],
-      "domain": "Assignment",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentOf",
-      "owner": "is_assignment_of",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
-      "any_of": [
-        {
-          "range": "Equipment",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "IntellectualProperty",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "Organization",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "Person",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1748,9 +1734,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo"
       ],
-      "domain": "Assignment",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isAssignmentTo",
-      "owner": "is_assignment_to",
       "range": "Any",
       "multivalued": true,
       "inlined": true,
@@ -1806,7 +1790,7 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isCategorizedBy",
-      "range": "Category",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -1886,10 +1870,8 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn"
       ],
-      "domain": "Text",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isExpressedIn",
-      "owner": "is_expressed_in",
-      "range": "Language",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -2052,18 +2034,10 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isMemberOf",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
-      "any_of": [
-        {
-          "range": "Collection",
-          "@type": "AnonymousSlotExpression"
-        },
-        {
-          "range": "Organization",
-          "@type": "AnonymousSlotExpression"
-        }
-      ],
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2148,8 +2122,10 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isRecognizedBy",
-      "range": "string",
+      "range": "Any",
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "any_of": [
         {
           "range": "Organization",
@@ -2241,7 +2217,7 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/isUnderJurisdictionOf",
-      "range": "GovernmentOrganization",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -2273,10 +2249,8 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/links"
       ],
-      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/links",
-      "owner": "links",
-      "range": "NetworkNode",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -2309,10 +2283,8 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom"
       ],
       "is_a": "links",
-      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksFrom",
-      "owner": "links_from",
-      "range": "NetworkNode",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -2345,10 +2317,8 @@
         "https://w3id.org/semanticarts/ns/ontology/gist/linksTo"
       ],
       "is_a": "links",
-      "domain": "NetworkLink",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/linksTo",
-      "owner": "links_to",
-      "range": "NetworkNode",
+      "range": "Any",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -2405,9 +2375,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide"
       ],
-      "domain": "Offer",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToProvide",
-      "owner": "offers_to_provide",
       "range": "Any",
       "multivalued": true,
       "inlined": true,
@@ -2444,9 +2412,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive"
       ],
-      "domain": "Offer",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/offersToReceive",
-      "owner": "offers_to_receive",
       "range": "Any",
       "multivalued": true,
       "inlined": true,
@@ -2539,7 +2505,7 @@
       "name": "prevents",
       "definition_uri": "https://w3id.org/lmodel/gist/prevents",
       "description": "Relates an intention to behavior that it prohibits.",
-      "deprecated": "true",
+      "deprecated": "gist marks this term owl:deprecated.",
       "notes": [
         "See guidance on removing this term in the next major release at https://github.com/semanticarts/gist/issues/1380#issuecomment-3617257248"
       ],
@@ -2656,7 +2622,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/requires",
       "description": "The subject needs the object or makes it necessary, mandatory, or compulsory.",
       "comments": [
-        "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\r\n\r\n\t\t1. To need something or to make something necessary.\r\n\t\t2. To order or demand something, or to order someone to do something, especially because of a rule or law.\r\n\t\t3. To make it officially necessary for someone to do something.\r\n\r\n\tImplementations requiring a more specific meaning should define subproperties."
+        "This predicate is defined generally enough to encompass a few different meanings of the English word 'requires':\n\n1. To need something or to make something necessary.\n2. To order or demand something, or to order someone to do something, especially because of a rule or law.\n3. To make it officially necessary for someone to do something.\n\nImplementations requiring a more specific meaning should define subproperties."
       ],
       "examples": [
         {
@@ -2962,7 +2928,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/at_date_time",
       "description": "The date and time at which something did or will occur, with variants for precision, start and end, and actual vs. planned.",
       "comments": [
-        "This is the top level property for asserting time, and is not expected to be asserted directly.\r\n\r\nThe subproperties allow the ontologist to do three things:\r\n1) Distinguish start and end times.\r\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\r\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\r\n\r\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\r\n\r\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\r\n\r\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\r\n\r\nThe conventions for precision that are repeated in each property name are as follows:\r\n\t- *DateTime is an abstraction over the various precisions of its subproperties.\r\n\t- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\r\n\t- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\r\n\t- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds.\r\n"
+        "This is the top level property for asserting time, and is not expected to be asserted directly.\n\nThe subproperties allow the ontologist to do three things:\n1) Distinguish start and end times.\n2) Indicate whether a time is planned or actual. This is useful for everything from project management to calendar appointments and the like. It is also useful for date effectivities; i.e., something valid up to a planned date).\n3) Distinguish varying levels of precision; sort of a simple version of the Allen functions.\n\nAll datetimes are of the same format: '2021-06-01T08:03:27.12324-6:00'^^xsd:dateTime. This is compatible with and a subset of ISO 8601.\n\nTime zone offset, such as -6:00 (of which there are a few dozen) is recognized in the date itself, as shown. The actual time zone standard (of which there are 131) may optionally be attached to the event or other object itself.\n\nThere will be many historical dates that do not have a time zone offset (e.g., Lincoln's birthday, as well as about 75% of all legacy systems), and in that case the offset can be omitted.\n\nThe conventions for precision that are repeated in each property name are as follows:\n- *DateTime is an abstraction over the various precisions of its subproperties.\n- *Date refers to a calendar date (e.g., birthdays and invoice dates) and is assumed to have precision of one day. Time zone offset is allowed.\n- *Minute refers to clock time; e.g., a meeting will start at 9:15 with a timezone offset. Precision is assumed to have precision of one minute.\n- *Microsecond refers to system time, and it will be as precise as the system can supply; typically at least milliseconds, sometime microseconds."
       ],
       "in_subset": [
         "gist_core"
@@ -3048,7 +3014,7 @@
         "OWL range: (xsd:decimal | xsd:double)"
       ],
       "comments": [
-        "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\r\n\r\n\tFor example, to convert 27 feet to yards:\r\n\r\n\t\tthe conversion factor of foot is 0.3048\r\n\t\tthe conversion factor of yard is 0.9144\r\n\r\n\t\tso\r\n\r\n\t\t27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
+        "To convert a numeric value from one unit of measure to another, multiply by the conversion factor of the first unit and then divide by the conversion factor of the second unit.\n\nFor example, to convert 27 feet to yards:\n\nthe conversion factor of foot is 0.3048\nthe conversion factor of yard is 0.9144\n\nso\n\n27 feet = (27 x 0.3048) / 0.9144 = 9 yards"
       ],
       "examples": [
         {
@@ -3088,7 +3054,7 @@
     {
       "name": "conversion_offset",
       "definition_uri": "https://w3id.org/lmodel/gist/conversion_offset",
-      "description": "\r\n\t\tA value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\r\n\r\n\t\ty degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\r\n\r\n\t\tTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\r\n\r\n\t\tTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.",
+      "description": "A value used along with a conversion factor to relate a unit to its corresponding unit in the International System of Units. In the equation below, the conversion offset is 459.669607 and the conversion factor is 5/9.\n\ny degrees Fahrenheit = (y + 459.669607) x 5/9 degrees Kelvin\n\nTo convert from Fahrenheit to Kelvin, first add the offset and then multiply by the conversion factor.\n\nTo convert from Kelvin to Fahrenheit, reverse the steps: first divide by the conversion factor and then subtract the offset.",
       "in_subset": [
         "gist_core"
       ],
@@ -3219,7 +3185,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 milliampere = 0.001 x ampere'\r\n\r\n\t\tthe conversionFactor for milliampere is 0.001\r\n\t\tthe exponent of ampere is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing milliampere must be a multiple of ampere.",
+          "value": "In the equation '1 milliampere = 0.001 x ampere'\n\nthe conversionFactor for milliampere is 0.001\nthe exponent of ampere is 1\nall other exponents are zero\n\nEvery member of a unit group containing milliampere must be a multiple of ampere.",
           "@type": "Example"
         }
       ],
@@ -3246,7 +3212,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 megabit per second = 1000000 x bit per second'\r\n\r\n\t\tthe conversion factor for megabit per second is 1000000\r\n\t\tthe exponent of bit is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing megabit per second must be a multiple of bit per second.",
+          "value": "In the equation '1 megabit per second = 1000000 x bit per second'\n\nthe conversion factor for megabit per second is 1000000\nthe exponent of bit is 1\nthe exponent of second is -1\nall other exponents are zero\n\nEvery member of a unit group containing megabit per second must be a multiple of bit per second.",
           "@type": "Example"
         }
       ],
@@ -3273,7 +3239,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 candlepower = 1 x candela'\r\n\r\n\t\tthe conversion factor for candlepower is 1\r\n\t\tthe exponent of candela is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing candlepower must be a multiple of candela.",
+          "value": "In the equation '1 candlepower = 1 x candela'\n\nthe conversion factor for candlepower is 1\nthe exponent of candela is 1\nall other exponents are zero\n\nEvery member of a unit group containing candlepower must be a multiple of candela.",
           "@type": "Example"
         }
       ],
@@ -3300,7 +3266,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\r\n\r\n\t\tthe conversion offset for degree Fahrenheit is 459.6669607\r\n\t\tthe conversion factor for degree Fahrenheit is 5/9\r\n\t\tthe exponent of Kelvin is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).",
+          "value": "In the equation 'y degrees Fahrenheit = (y + 459.6669607) x 5/9 degrees Kelvin'\n\nthe conversion offset for degree Fahrenheit is 459.6669607\nthe conversion factor for degree Fahrenheit is 5/9\nthe exponent of Kelvin is 1\nall other exponents are zero\n\nEvery member of a unit group containing degree Fahrenheit will have a similar equation, with different offset or conversion factor (or both).",
           "@type": "Example"
         }
       ],
@@ -3327,7 +3293,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 millimole per gram = 1 x mole per kilogram'\r\n\r\n\t\tthe conversion factor for millimole per gram is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of kilogram is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram.",
+          "value": "In the equation '1 millimole per gram = 1 x mole per kilogram'\n\nthe conversion factor for millimole per gram is 1\nthe exponent of mole is 1\nthe exponent of kilogram is -1\nall other exponents are zero\n\nEvery member of a unit group containing millimole per gram must be a multiple of mole per kilogram.",
           "@type": "Example"
         }
       ],
@@ -3354,7 +3320,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\r\n\r\n\t\tthe conversion factor for microgram per milliliter is 0.001\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is -3\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.",
+          "value": "In the equation '1 microgram per milliliter = 0.001 x kilogram per meterCubed'\n\nthe conversion factor for microgram per milliliter is 0.001\nthe exponent of kilogram is 1\nthe exponent of meter is -3\nall other exponents are zero\n\nEvery member of a unit group containing microgram per milliliter must be a multiple of kilogram per meterCubed.",
           "@type": "Example"
         }
       ],
@@ -3381,7 +3347,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 katal = 1 x mole per second'\r\n\r\n\t\tthe conversion factor for katal is 1\r\n\t\tthe exponent of mole is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing katal must be a multiple of mole per second.",
+          "value": "In the equation '1 katal = 1 x mole per second'\n\nthe conversion factor for katal is 1\nthe exponent of mole is 1\nthe exponent of second is -1\nall other exponents are zero\n\nEvery member of a unit group containing katal must be a multiple of mole per second.",
           "@type": "Example"
         }
       ],
@@ -3411,7 +3377,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 beat per minute = 0.016667 x number per second'\r\n\r\n\t\tthe conversion factor for beat per minute is 0.016667\r\n\t\tthe exponent of number is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing beat per minute must be a multiple of number per second.",
+          "value": "In the equation '1 beat per minute = 0.016667 x number per second'\n\nthe conversion factor for beat per minute is 0.016667\nthe exponent of number is 1\nthe exponent of second is -1\nall other exponents are zero\n\nEvery member of a unit group containing beat per minute must be a multiple of number per second.",
           "@type": "Example"
         }
       ],
@@ -3437,7 +3403,7 @@
         "OWL domain: (gist:UnitGroup | gist:UnitOfMeasure)"
       ],
       "comments": [
-        "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\r\n\r\n\t\tOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale."
+        "Set the value to 0 if the units of measure in the unit group can be expressed using the standard set of exponents (as in the examples).\n\nOtherwise set the value to 1, which typically means the units of measure in the group use a logarithmic scale."
       ],
       "examples": [
         {
@@ -3468,7 +3434,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 revolution = 6.283 x radian'\r\n\r\n\t\tthe conversion factor for revolution is 6.283\r\n\t\tthe exponent of radian is 1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing revolution must be a multiple of radian.",
+          "value": "In the equation '1 revolution = 6.283 x radian'\n\nthe conversion factor for revolution is 6.283\nthe exponent of radian is 1\nall other exponents are zero\n\nEvery member of a unit group containing revolution must be a multiple of radian.",
           "@type": "Example"
         }
       ],
@@ -3495,7 +3461,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\r\n\r\n\t\tthe conversion factor for watt-hour is 3600\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of meter is 2\r\n\t\tthe exponent of second is -2\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.",
+          "value": "In the equation '1 watt-hour = 3600 x kilogram meterSquared per secondSquared'\n\nthe conversion factor for watt-hour is 3600\nthe exponent of kilogram is 1\nthe exponent of meter is 2\nthe exponent of second is -2\nall other exponents are zero\n\nEvery member of a unit group containing watt-hour must be a multiple of kilogram meterSquared per secondSquared.",
           "@type": "Example"
         }
       ],
@@ -3525,7 +3491,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\r\n\r\n\t\tthe conversion factor for watt per square meter steradian is 1\r\n\t\tthe exponent of kilogram is 1\r\n\t\tthe exponent of second is -3\r\n\t\tthe exponent of steradian is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian.",
+          "value": "In the equation '1 watt per square meter steradian = 1 x kilogram per secondCubed steradian'\n\nthe conversion factor for watt per square meter steradian is 1\nthe exponent of kilogram is 1\nthe exponent of second is -3\nthe exponent of steradian is -1\nall other exponents are zero\n\nEvery member of a unit group containing watt per square meter steradian must a multiple of kilogram per secondCubed steradian.",
           "@type": "Example"
         }
       ],
@@ -3555,7 +3521,7 @@
       ],
       "examples": [
         {
-          "value": "In the equation '1 million dollars per week = 1.65344 x dollar per second'\r\n\r\n\t\tthe conversion factor for million dollars per week is 1.65344\r\n\t\tthe exponent of US Dollar is 1\r\n\t\tthe exponent of second is -1\r\n\t\tall other exponents are zero\r\n\r\n\t\tEvery member of a unit group containing million dollars per week must be a multiple of dollar per second.",
+          "value": "In the equation '1 million dollars per week = 1.65344 x dollar per second'\n\nthe conversion factor for million dollars per week is 1.65344\nthe exponent of US Dollar is 1\nthe exponent of second is -1\nall other exponents are zero\n\nEvery member of a unit group containing million dollars per week must be a multiple of dollar per second.",
           "@type": "Example"
         }
       ],
@@ -3970,9 +3936,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/sequence"
       ],
-      "domain": "OrderedMember",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/sequence",
-      "owner": "sequence",
       "range": "integer",
       "@type": "SlotDefinition"
     },
@@ -4026,9 +3990,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/symbol"
       ],
-      "domain": "UnitOfMeasure",
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/symbol",
-      "owner": "symbol",
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -4070,6 +4032,9 @@
     {
       "name": "domain_includes",
       "definition_uri": "https://w3id.org/lmodel/gist/domain_includes",
+      "implements": [
+        "owl:AnnotationProperty"
+      ],
       "description": "Relates a property to a class that the property is expected to be used on.",
       "comments": [
         "There may be multiple domainIncludes assertions on a single property.",
@@ -4091,7 +4056,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/domainIncludes"
       ],
-      "related_mappings": [
+      "broad_mappings": [
         "http://www.w3.org/2004/02/skos/core#scopeNote"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/domainIncludes",
@@ -4101,6 +4066,9 @@
     {
       "name": "is_superseded_by",
       "definition_uri": "https://w3id.org/lmodel/gist/is_superseded_by",
+      "implements": [
+        "owl:AnnotationProperty"
+      ],
       "description": "Relates a deprecated term to a term that replaces it, which is either an exact (in the case of simple renaming) or approximate (in the case of renaming and some semantic change) semantic match.",
       "examples": [
         {
@@ -4125,6 +4093,9 @@
     {
       "name": "license",
       "definition_uri": "https://w3id.org/lmodel/gist/license",
+      "implements": [
+        "owl:AnnotationProperty"
+      ],
       "description": "Relates something to its conditions of use.",
       "comments": [
         "Could refer to a license object by URI or name or could consist of the license text itself."
@@ -4152,6 +4123,9 @@
     {
       "name": "range_includes",
       "definition_uri": "https://w3id.org/lmodel/gist/range_includes",
+      "implements": [
+        "owl:AnnotationProperty"
+      ],
       "description": "Relates a property to a class that is an expected type of its values.",
       "comments": [
         "There may be multiple rangeIncludes assertions on a single property.",
@@ -4173,7 +4147,7 @@
       "mappings": [
         "https://w3id.org/semanticarts/ns/ontology/gist/rangeIncludes"
       ],
-      "related_mappings": [
+      "broad_mappings": [
         "http://www.w3.org/2004/02/skos/core#scopeNote"
       ],
       "slot_uri": "https://w3id.org/semanticarts/ns/ontology/gist/rangeIncludes",
@@ -4437,7 +4411,7 @@
       "name": "Building",
       "definition_uri": "https://w3id.org/lmodel/gist/Building",
       "description": "A relatively permanent man-made structure situated on a plot of land, having a roof and walls, commonly used for dwelling, entertaining, or working.",
-      "deprecated": "true",
+      "deprecated": "gist marks this term owl:deprecated.",
       "comments": [
         "User discretion can be applied to edge cases: e.g., is a traditional yurt 'relatively permanently situated' although it is portable and has a tent-like construction?"
       ],
@@ -5843,7 +5817,7 @@
       "definition_uri": "https://w3id.org/lmodel/gist/KnowledgeConcept",
       "description": "An abstract concept that arises from the distillation of experience. It is similar to a category but, rather than being a simple tag, it has rich structure.",
       "comments": [
-        "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\r\n\r\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\r\n\r\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\r\n\r\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\r\n\r\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances."
+        "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\n\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\n\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\n\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\n\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances."
       ],
       "examples": [
         {
@@ -5877,7 +5851,7 @@
       "name": "Landmark",
       "definition_uri": "https://w3id.org/lmodel/gist/Landmark",
       "description": "Something permanently attached to the Earth.",
-      "deprecated": "true",
+      "deprecated": "gist marks this term owl:deprecated.",
       "notes": [
         "OWL subClassOf restrictions: \u2203hasPhysicalLocation.(gist:GeoRegion | gist:GeoVolume)",
         "See guidance on removing the term in the next major release at https://github.com/semanticarts/gist/issues/947#issuecomment-1679566885."
@@ -5905,7 +5879,7 @@
       "name": "Language",
       "definition_uri": "https://w3id.org/lmodel/gist/Language",
       "description": "A recognized, organized set of symbols and grammar.",
-      "deprecated": "true",
+      "deprecated": "gist marks this term owl:deprecated.",
       "examples": [
         {
           "value": "Natural languages such as English and Spanish; computer languages such as OWL, Python, and XML.",
@@ -6965,7 +6939,7 @@
       "name": "SchemaMetaData",
       "definition_uri": "https://w3id.org/lmodel/gist/SchemaMetaData",
       "description": "Superclass for all types of metadata.",
-      "deprecated": "true",
+      "deprecated": "gist marks this term owl:deprecated.",
       "comments": [
         "The definition of this class needs additional work."
       ],
@@ -7481,7 +7455,7 @@
     {
       "name": "GistThing",
       "definition_uri": "https://w3id.org/lmodel/gist/GistThing",
-      "description": "Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).",
+      "description": "Mixin that gives every gist class the name and description slots, which gist declares without a domain.",
       "in_subset": [
         "gist_core"
       ],
@@ -7513,8 +7487,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "gist.yaml",
-  "source_file_date": "2026-10-27T09:05:05",
-  "source_file_size": 1290,
+  "source_file_date": "2026-10-27T11:26:21",
+  "source_file_size": 1289,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/gist.context.jsonld",

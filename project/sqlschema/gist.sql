@@ -382,7 +382,7 @@
 --     * Slot: id
 --     * Slot: name Description: Relates an individual to (one of) its name(s).
 --     * Slot: description Description: A statement about someone or something's attributes or characteristics.
--- # Class: GistThing Description: Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+-- # Class: GistThing Description: Mixin that gives every gist class the name and description slots, which gist declares without a domain.
 --     * Slot: id
 --     * Slot: name Description: Relates an individual to (one of) its name(s).
 --     * Slot: description Description: A statement about someone or something's attributes or characteristics.

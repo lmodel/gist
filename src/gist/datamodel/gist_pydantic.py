@@ -68,7 +68,7 @@ class LinkMLMeta(RootModel):
 
 linkml_meta = LinkMLMeta({'default_prefix': 'gist_linkml',
      'default_range': 'string',
-     'description': 'gist  is a minimalist upper ontology created by Semantic Arts '
+     'description': 'gist is a minimalist upper ontology created by Semantic Arts '
                     'for enterprise knowledge graph applications. This LinkML '
                     'schema (version 14.1.0) aggregates the gist modules: Core '
                     '(classes and properties), MediaTypes (IANA media type '
@@ -199,7 +199,7 @@ class PrefixDeclarationInstance(str, Enum):
 
 class GistThing(ConfiguredBaseModel):
     """
-    Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+    Mixin that gives every gist class the name and description slots, which gist declares without a domain.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
@@ -1760,13 +1760,13 @@ class KnowledgeConcept(IntellectualProperty):
                       'in the knowledge graph. We may have knowledge that Judge Jones '
                       'is more lenient on repeat offenders in the morning; we may know '
                       'that the earliest killing frost in Fort Collins is the last '
-                      'week of September.\r\n'
-                      '\r\n'
+                      'week of September.\n'
+                      '\n'
                       'These fit the broader definition of knowledge, the distillation '
                       'of experience. But they do not require any new instances. Judge '
                       'Jones and Fort Collins already exist and have a place in our '
-                      'knowledge graph.\r\n'
-                      '\r\n'
+                      'knowledge graph.\n'
+                      '\n'
                       'But some knowledge requires that we synthesize new instances in '
                       'order to have a place to consolidate the knowledge. A disease '
                       "isn't a tangible thing, like a person or a building. A disease "
@@ -1777,15 +1777,15 @@ class KnowledgeConcept(IntellectualProperty):
                       'single disease, but now we have dozens of fine-grained '
                       'distinctions; e.g., non-lymphoma small cell fusiform is '
                       'different from alveolar adenocarcinoma because we now know the '
-                      'prognosis and treatment are different.\r\n'
-                      '\r\n'
+                      'prognosis and treatment are different.\n'
+                      '\n'
                       'This superclass is meant as a place for subclasses that will '
                       'have the instances that represent the foci of the knowledge we '
                       'have acquired. Note the distinction between a particular '
                       'portion of, say, gold, which instantiates '
                       'gist:PhysicalSubstance, and the concept of gold, which '
-                      'instantiates gist:KnowledgeConcept.\r\n'
-                      '\r\n'
+                      'instantiates gist:KnowledgeConcept.\n'
+                      '\n'
                       'In some ontologies what we are calling knowledge concepts are '
                       'defined as classes; e.g., non-lymphoma small cell fusiform and '
                       'alveolar adenocarcinoma would be two classes rather than two '
@@ -1828,7 +1828,7 @@ class Language(GistThing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Language'],
          'class_uri': 'gist:Language',
-         'deprecated': 'true',
+         'deprecated': 'gist marks this term owl:deprecated.',
          'disjoint_with': ['Magnitude',
                            'Organization',
                            'PhysicalIdentifiableItem',
@@ -2739,7 +2739,7 @@ class Landmark(PhysicalIdentifiableItem):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Landmark'],
          'class_uri': 'gist:Landmark',
-         'deprecated': 'true',
+         'deprecated': 'gist marks this term owl:deprecated.',
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL subClassOf restrictions: ∃hasPhysicalLocation.(gist:GeoRegion '
@@ -2779,7 +2779,7 @@ class Building(Landmark):
          'comments': ['User discretion can be applied to edge cases: e.g., is a '
                       "traditional yurt 'relatively permanently situated' although it "
                       'is portable and has a tent-like construction?'],
-         'deprecated': 'true',
+         'deprecated': 'gist marks this term owl:deprecated.',
          'examples': [{'value': 'A house, school, store, factory, chicken coop.'},
                       {'value': 'Negative examples: houseboats (not built on land), '
                                 'caves (not man-made), food trucks and RVs (not '
@@ -3204,7 +3204,7 @@ class SchemaMetaData(GistThing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Schema Meta Data'],
          'class_uri': 'gist:SchemaMetaData',
          'comments': ['The definition of this class needs additional work.'],
-         'deprecated': 'true',
+         'deprecated': 'gist marks this term owl:deprecated.',
          'disjoint_with': ['UnitOfMeasure'],
          'examples': [{'value': 'Relational concepts, such as tables and columns; tool '
                                 'inputs, such as queries and R2RML maps.'}],

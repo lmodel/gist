@@ -299,7 +299,7 @@ message GeoVolume {
   // A statement about someone or something's attributes or characteristics.
   string description = 2;
 }
-// Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).
+// Mixin that gives every gist class the name and description slots, which gist declares without a domain.
 message GistThing {
   // Relates an individual to (one of) its name(s).
   string name = 1;

@@ -1210,7 +1210,7 @@
         },
         "GistThing": {
             "additionalProperties": false,
-            "description": "Mixin providing universal slots applicable to any GIST entity. Covers OWL properties with no rdfs:domain (open-world).",
+            "description": "Mixin that gives every gist class the name and description slots, which gist declares without a domain.",
             "properties": {
                 "description": {
                     "description": "A statement about someone or something's attributes or characteristics.",
