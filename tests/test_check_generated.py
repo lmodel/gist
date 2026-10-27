@@ -24,7 +24,7 @@ class TestTreeSignature:
     def test_a_literal_deep_in_a_tree_differs(self):
         assert not C.same_graph(_shape("x", "y"), _shape("x", "z"))
 
-    def test_two_equal_trees_are_counted_twice(self):
+    def test_equal_sibling_trees_compare_by_content(self):
         assert not C.same_graph(_shape("x", "x"), _shape("x", "y"))
         assert C.same_graph(_shape("x", "x"), _shape("x", "x", labels=("q", "r")))
 

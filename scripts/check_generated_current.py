@@ -10,14 +10,14 @@ not, so they cannot be compared that way:
   each run.
 
 This script snapshots every git-tracked file under ``project/`` and
-``src/gist/datamodel/``, runs ``just gen-project``, and compares each file
-with its regenerated self: Turtle as RDF graphs (isomorphism, see
+``src/gist/datamodel/``, and the schema, which ``just gen-project``
+regenerates too, runs ``just gen-project``, and compares each artefact with
+its regenerated self: Turtle as RDF graphs (isomorphism, see
 ``tree_signature``), JSON with the date keys removed, other text with the
-date lines removed. The Excel
-workbook is binary and is skipped. A difference means someone changed the
-schema, the mappings or the converter without regenerating and committing
-the artefacts. The snapshot is put back afterwards, so the check leaves the
-working tree as it found it.
+date lines removed. The Excel workbook is binary and is skipped. A
+difference means someone changed the schema, the mappings or the converter
+without regenerating and committing the artefacts. The snapshot is put back
+afterwards, so the check leaves the working tree as it found it.
 
 Usage::
 
@@ -40,14 +40,17 @@ from rdflib.compare import isomorphic
 
 ROOT = Path(__file__).resolve().parent.parent
 GENERATED = ("project", "src/gist/datamodel")
+# gen-project regenerates the schema as well, through verify-mappings; it is
+# put back with the artefacts, though main.yaml compares it on its own.
+RESTORED = (*GENERATED, "src/gist/schema")
 SKIPPED_SUFFIXES = {".xlsx"}
 DATE_KEYS = {"generation_date", "source_file_date"}
 DATE_LINE = re.compile(r"^# Generation date: ")
 
 
-def tracked_files() -> list[str]:
+def tracked_files(paths=GENERATED) -> list[str]:
     out = subprocess.run(
-        ["git", "-C", str(ROOT), "ls-files", "--", *GENERATED],
+        ["git", "-C", str(ROOT), "ls-files", "--", *paths],
         check=True, capture_output=True, text=True,
     ).stdout
     return out.splitlines()
@@ -137,8 +140,8 @@ def same(before: Path, after: Path) -> bool:
 
 
 def main() -> int:
-    tracked = tracked_files()
-    files = [p for p in tracked if Path(p).suffix not in SKIPPED_SUFFIXES]
+    tracked = tracked_files(RESTORED)
+    files = [p for p in tracked_files() if Path(p).suffix not in SKIPPED_SUFFIXES]
     with tempfile.TemporaryDirectory() as tmp:
         snapshot = Path(tmp)
         for rel in tracked:
