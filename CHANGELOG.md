@@ -8,7 +8,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Added
 
-- **gist's properties attach to the classes that may carry them.** A property's slot goes to each class its `rdfs:domain` names, and the `GistThing` mixin, which every class takes, holds the 89 that gist declares without a domain, since OWL lets those describe any individual. The JSON Schema, the Python models and the SHACL shapes now accept gist data beyond `name` and `description`, such as a `Magnitude` with a `numeric_value` and a `has_unit_of_measure`.
+- **gist's properties attach to the classes that may carry them.** A property's slot goes to each class its `rdfs:domain` names, and the `GistThing` mixin, which every class takes, holds the 89 that gist declares without a domain, since OWL lets those describe any individual. The JSON Schema, the Python models and the SHACL shapes now accept gist data beyond `name` and `description`, such as a `Magnitude` with a `numeric_value` and a `has_unit_of_measure`; `docs/about.md` says where they stay stricter than gist.
 
 ### Changed
 
@@ -16,13 +16,13 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 - **gist's long notes keep their paragraphs and nesting, and lose their Turtle layout.** Windows line ends, outer blank lines and the tab indent a note's lines share are gone, and a deeper indent becomes two spaces a tab, so the schema holds each note as a YAML block.
 - **A deprecated term gives a reason.** Its `deprecated` reads "gist marks this term owl:deprecated." in place of `'true'`, as LinkML expects a reason there; gist's removal guidance stays in the term's notes.
 - **An element's gist label is its `title`.** The `skos:prefLabel`, or else the `rdfs:label`, was the first of its aliases; other labels stay aliases. The docs pages head each element with it, the JSON Schema and the Pydantic fields carry it, and the OWL writes it as `dcterms:title`, not `skos:altLabel`.
-- **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 4.6 MB, 7 MB and 2 MB.
+- **The JSON Schema, the Pydantic module and the SHACL shapes are larger.** They repeat each inherited slot in every class, so with the slots above they grow to about 5 MB, 7 MB and 2.4 MB.
 - **`just verify-generated` compares the OWL and the SHACL in seconds.** Their blank nodes form trees, so it compares a digest of each tree; rdflib's general isomorphism check took many minutes on the larger shapes. It also puts back the schema, which `gen-project` regenerates.
 - **The OWL leaves out the restrictions that repeat a property's range or a minimum of none.** gen-owl's coming defaults, set now, take its 3,533 triples to 2,617, and GistThing's restrictions from 215 to 45.
 
 ### Removed
 
-- **The SQL DDL.** With the slots above, it would hold some 5,400 tables, one for each multivalued slot of each class, and take `gen-project` over five minutes and 4 GB to write, so `.linkml/generators.yaml` skips `sqlddl` and `project/sqlschema/` is gone.
+- **The SQL DDL.** With the slots above, it would hold some 5,400 tables, one for each multivalued slot of each class, and take `gen-project` over five minutes and 4 GB to write, so `.linkml/generators.yaml` skips `sqltable` and `project/sqlschema/` is gone.
 - **`just testdoc` and `just deploy`.** `testdoc` ran `mkdocs serve`, which 0.4.0 removed, and `deploy` called `mkd-gh-deploy`, which nothing defines. `npm run dev` in `website/` previews the site, and `knowledge-website.yaml` deploys it.
 
 ### Fixed
