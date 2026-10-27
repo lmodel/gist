@@ -4,14 +4,18 @@
 # directory: "tmp"
 
 # By default all generators are run. Specify here the ones to skip.
-# sqltable, the SQL DDL: the GistThing mixin gives every class gist's 89
-# domain-less slots, so the DDL would hold some 5,400 tables, one for each
-# multivalued slot of each class, and take over five minutes and 4 GB to
-# write. gen-project ignores a name it does not know: markdown, as gen-doc
-# writes the docs apart, and the sqlddl under generator_args below.
+# - sqltable, the SQL DDL: the GistThing mixin gives every class gist's 89
+#   domain-less slots, so the DDL would hold some 5,400 tables, one for each
+#   multivalued slot of each class, and take over five minutes and 4 GB to
+#   write.
+# - java: the justfile's gen-project recipe runs gen-java after gen-project,
+#   so it would write project/java/ twice.
+# gen-project ignores a name it does not know, such as markdown: gen-doc
+# writes the docs apart.
 excludes:
   - markdown
   - sqltable
+  - java
 
 # Alternatively only specify the generators to run
 # (comment out the above "excludes" section)
@@ -47,15 +51,13 @@ generator_args:
     directory: "docs/elements"
   graphql:
     mergeimports: true
-  # gen-java is not yet supported by gen-project.
-  #   https://github.com/linkml/linkml/issues/2537
-  # java:
-  #   mergeimports: true
-  #   metadata: true
   jsonld:
     mergeimports: true
+  # Each definition and property takes gist's label as its title, not its
+  # LinkML name.
   jsonschema:
     mergeimports: true
+    title_from: title
   jsonldcontext:
     mergeimports: true
   # gen-pydantic is not yet supported by gen-project.
@@ -76,8 +78,6 @@ generator_args:
     use_class_uri_names: false
     suffix: Shape
   shex:
-    mergeimports: true
-  sqlddl:
     mergeimports: true
   typescript:
     mergeimports: true
