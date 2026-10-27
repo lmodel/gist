@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-27
+
 ### Added
 
 - **gist's properties attach to the classes that may carry them.** A property's slot goes to each class its `rdfs:domain` names, and the `GistThing` mixin, which every class takes, holds the 89 that gist declares without a domain, since OWL lets those describe any individual. The JSON Schema, the Python models and the SHACL shapes now accept gist data beyond `name` and `description`, such as a `Magnitude` with a `numeric_value` and a `has_unit_of_measure`; `docs/about.md` says where they stay stricter than gist.
