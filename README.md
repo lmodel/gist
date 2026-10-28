@@ -33,6 +33,18 @@ This repository is an independent LinkML rendering of [gist](https://github.com/
 The project's predefined recipes run with the command runner [just](https://github.com/casey/just/).
 To list them, run `just` or `just --list`.
 
+## Knowledge Trust Ladder (KTL)
+
+`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle, which validates against LOKF's own schema.
+
+Each release also attaches `gist-linkml-lokf-<tag>.yaml`, for a bundle whose domain schema imports gist. It is `gist_core.yaml` as `lokf adapt` rewrites it, and `just gen-lokf-copy` builds the same file. Save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`. In the copy, these classes are re-rooted on LOKF's `Concept`, so a concept may name any gist class but `GistThing` and `Any` as its `type`:
+
+```text
+Aspect, Category, Component, Composite, Content, Event, GeoLocation, IntellectualProperty, Intention, Language, Magnitude, GistOrganization, PhysicalIdentifiableItem, PhysicalSubstance, SchemaMetaData, Template, TemporalRelation, TimeInterval, UnitOfMeasure
+```
+
+`Person`, `Organization`, `name`, `description` and `license` are `GistPerson`, `GistOrganization`, `gist_name`, `gist_description` and `gist_license` in the copy, because `lokf.yaml` defines those names; each keeps its gist IRI. A slot ranged over a gist class takes the IRI of the concept it names.
+
 ## License and attribution
 
 gist is Semantic Arts' upper ontology, published under
