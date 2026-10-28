@@ -11,7 +11,7 @@ dependsOn:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-upstream-turtle
 generated:
   by: process:ktl-librarian
-  at: "2026-10-27T14:09:11Z"
+  at: "2026-10-28T18:37:55Z"
 status: draft
 ---
 
@@ -47,4 +47,4 @@ gist 14.1.0 has none of these.
 
 The transform keeps each term's gist IRI: `class_uri` and `slot_uri` are `gist:` CURIEs in Semantic Arts' namespace. Only what it adds gets an IRI in lmodel's `gist_linkml:` namespace: the `GistThing` mixin, the types for the datatypes `linkml:types` lacks, the enums and the subsets ([gist namespace policy](../policies/gist-namespace-policy.md)). Its output is deterministic: it relabels blank nodes canonically and reads the graph in sorted order, so a rerun reproduces the committed schema byte for byte. `tests/test_owl_to_linkml.py` holds 231 unit tests for it.
 
-`--rename OLD=NEW`, which can be repeated, gives a gist class or slot another LinkML name. The element keeps its IRI, and takes its old name as an alias unless that is already its title. Every reference to the element is rewritten. A schema that imports gist beside another vocabulary defining the same name needs this option, because LinkML keeps only the last import's definition of a name. `just gen-lokf-copy` uses it to build the [LOKF copy](../datasets/gist-lokf-copy.md).
+`--rename OLD=NEW`, which can be repeated, gives a gist class or slot another LinkML name. The element keeps its IRI, and takes its old name as an alias unless that is already its title. Every reference to the element is rewritten. A schema that imports gist beside another vocabulary defining the same name needs this option, because LinkML keeps only the last import's definition of a name.

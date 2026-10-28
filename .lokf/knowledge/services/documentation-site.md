@@ -11,7 +11,7 @@ dependsOn:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
-  at: "2026-10-27T08:54:25Z"
+  at: "2026-10-28T18:37:55Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -29,7 +29,7 @@ The site is the Astro Starlight project in `website/`. `.github/workflows/knowle
 
 ## What each page comes from
 
-- The README becomes the home page, and each page under `docs/` a page under `docs/`. `website/site.config.mjs` leaves out `docs/templates-linkml/`.
+- The README becomes the home page, and each page under `docs/` a page under `docs/`. `website/site.config.mjs` leaves out `docs/templates-linkml/`, and gives the home page four buttons, to the bundle, the schema's pages, the bundle's health page and the knowledge graph.
 - `CHANGELOG.md` becomes a page per release under `changelog/`.
 - The schema's pages become a page each under `schema/`. `just gen-doc` writes them into the git-ignored `docs/elements/`, and the build runs it when that folder is missing.
 - Each concept in `.lokf/knowledge/` becomes a page under `knowledge/`, with its trust label, its sources and its typed relations both ways. The four files `lokf export` writes are served under `knowledge/` too.

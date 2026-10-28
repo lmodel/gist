@@ -26,7 +26,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [gist generated schema artefacts](datasets/generated-artefacts.md) - The OWL, SHACL, ShEx, JSON Schema, JSON-LD, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
 * [gist example and test data](datasets/test-data.md) - Example instance files that the test suite validates against the gist schema, sorted into valid, invalid and known-problem folders.
 * [Semantic Arts gist SHACL shapes (vendored)](datasets/semantic-arts-shapes.md) - Semantic Arts' gist ontology SHACL shapes and a SPARQL CONSTRUCT query, vendored under tests/vendor/semanticarts for the SHACL test suite.
-* [LOKF copy of gist_core.yaml](datasets/gist-lokf-copy.md) - `gist_core.yaml` with the five names LOKF's lokf.yaml also defines renamed (Person, Organization, name, description, license), built by `just gen-lokf-copy` and attached to every GitHub Release as `gist-linkml-lokf-<tag>.yaml`, so a LOKF domain schema can import gist beside lokf.yaml.
+* [LOKF copy of gist_core.yaml](datasets/gist-lokf-copy.md) - The copy of `gist_core.yaml` that `lokf adapt` writes for a LOKF domain schema to import as `gist_core_lokf`, with gist's top classes re-rooted on `Concept` and the five names lokf.yaml also defines renamed. `just gen-lokf-copy` builds it, and every GitHub Release attaches it as `gist-linkml-lokf-<tag>.yaml`.
 
 # Services
 

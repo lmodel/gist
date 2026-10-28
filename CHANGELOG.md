@@ -10,6 +10,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 - **The documentation site's home page has a Schema button, which opens the schema's pages.**
 
+### Changed
+
+- **The knowledge bundle needs lokf 0.9.0, and the release's LOKF copy comes from its `lokf adapt`, with gist's top classes re-rooted on LOKF's `Concept`.** A bundle writes `type: Requirement` directly, and a slot ranged over a gist class takes a concept IRI that `lokf validate --check-refs` checks; the copy now imports `lokf`, so save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`.
+
 ## [0.5.0] - 2026-10-27
 
 ### Added

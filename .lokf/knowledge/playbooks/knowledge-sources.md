@@ -7,7 +7,7 @@ description: "The librarian's scrape map: every repository location and external
 resource: https://github.com/lmodel/gist
 generated:
   by: process:ktl-librarian
-  at: "2026-10-27T14:09:11Z"
+  at: "2026-10-28T18:37:55Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -32,7 +32,7 @@ Each concept derived from a file or folder of this repository names it by its pa
 | `tests/data/`, `tests/test_*.py` | `datasets/test-data`, test counts in the concepts | re-list `tests/data/`; `uv run pytest --collect-only -q` per file |
 | `tests/vendor/semanticarts/` | `datasets/semantic-arts-shapes` | re-list; compare `LICENSE.txt` with the upstream copy |
 | `website/README.md`, `website/site.config.mjs`, `.github/workflows/knowledge-website.yaml`, `https://lmodel.github.io/gist` | `services/documentation-site` | re-read the README's page list, the config's `DOCS` and `REDIRECTS`, and the workflow's triggers and `deploy` condition; fetch the site and the w3id redirect |
-| `.github/workflows/lokf-copy-release.yaml`, the `gen-lokf-copy` recipe and `lokf_renames` in `project.justfile`, `scripts/check_lokf_names.py` | `datasets/gist-lokf-copy` | re-read the rename list, the name check and both jobs; list the latest release's assets with `gh release view --json assets` |
+| `.github/workflows/lokf-copy-release.yaml`, the `lokf` variable and `gen-lokf-copy` recipe in `project.justfile`, the lokf floor in `.lokf/pyproject.toml`, `https://lokf.nolan-nichols.com/toolkit/adapt/` | `datasets/gist-lokf-copy` | re-read the recipe's `lokf adapt` flags, its rule for the top classes, the floor and both jobs; run `just gen-lokf-copy` and read adapt's report; list the latest release's assets with `gh release view --json assets` |
 | `.github/workflows/semantic-release.yml`, `.releaserc.json`, `.github/scripts/changelog-release.mjs`, `.github/workflows/pypi-publish.yaml`, `pyproject.toml`, `CONTRIBUTING.md` (Releasing), `https://pypi.org/pypi/gist-linkml/json` | `playbooks/release` | re-read the release guards, the dispatches, the triggers, environments and distribution name; check whether the PyPI name is taken or published |
 | `README.md` (License and attribution), `https://github.com/semanticarts/gist/blob/v14.1.0/README.md`, `.linkml/generators.yaml`, `config.public.mk`, `TestGistNamespace` and `TestGistIrisInArtifacts` | `policies/gist-namespace-policy` | re-read Semantic Arts' license paragraph at the release tag in use; grep `LINKML_GENERATORS_OWL_ARGS` and the `owl`/`shacl` generator args; run the two test classes |
 | `.github/workflows/main.yaml`, `scripts/check_generated_current.py` | CI facts in `services/verify-mappings`, `services/verify-mapping-targets`, `playbooks/regenerate-schema` and `datasets/gist-lokf-copy` | confirm it still runs the `src/gist/schema/` drift check, `just verify-mapping-targets`, `just verify-generated`, `just gen-lokf-copy`, the lint step and `just test` |
