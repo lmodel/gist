@@ -14,7 +14,8 @@ references:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-lokf-copy
 generated:
   by: process:ktl-librarian
-  at: "2026-10-27T14:09:11Z"
+  at: "2026-10-28T18:37:55Z"
+  revision: e3c4f91199a3a8f385f1928ea4bd148daae0d98d
 status: draft
 sources:
   - resource: tests
@@ -31,4 +32,4 @@ sources:
 4. Run `just test`: it re-runs the generators into `tmp/`, regenerates the Python model, runs pytest (342 tests), and converts the test data.
 5. Commit the regenerated `src/gist/schema/`, `src/gist/datamodel/` and `project/` together with the change that caused them.
 
-CI regenerates `src/gist/schema/` the same way and fails a pull request whose committed schema differs, so a pull request that skips step 3 fails there. It also fails when `project/` or `src/gist/datamodel/` is out of date: `just verify-generated` compares them by content, since they embed their generation date, and their Turtle is written in a new triple order on each run. CI also runs `just gen-lokf-copy`, which fails when the [LOKF copy](../datasets/gist-lokf-copy.md) shares an element name with LOKF's `lokf.yaml`.
+CI regenerates `src/gist/schema/` the same way and fails a pull request whose committed schema differs, so a pull request that skips step 3 fails there. It also fails when `project/` or `src/gist/datamodel/` is out of date: `just verify-generated` compares them by content, since they embed their generation date, and their Turtle is written in a new triple order on each run. CI also runs `just gen-lokf-copy`, which fails when `lokf adapt` cannot verify the [LOKF copy](../datasets/gist-lokf-copy.md) beside LOKF's `lokf.yaml`.

@@ -1,5 +1,13 @@
 # Change Log
 
+## 2026-10-28
+
+* **Changed**: the LOKF copy now comes from `lokf adapt` in lokf 0.9.0, which re-roots gist's top classes on `Concept` and imports `lokf`, so a host saves it as `gist_core_lokf.yaml`. `scripts/check_lokf_names.py` and the converter's renames no longer build it.
+* **Changed**: the regenerate playbook says CI's `just gen-lokf-copy` now fails when `lokf adapt` cannot verify the copy.
+* **Changed**: the transform page no longer says `just gen-lokf-copy` uses `--rename`, since `lokf adapt` now does the renames.
+* **Changed**: the site's home page has a Schema button beside the bundle, health and graph buttons, as #66 set in `website/site.config.mjs`.
+* **Changed**: the source map names the `lokf adapt` recipe, the lokf floor and adapt's documentation for the LOKF copy, in place of the rename list and `scripts/check_lokf_names.py`.
+
 ## 2026-10-27
 
 * **Prose**: reworded 8 concept bodies in plain English. No fact, link, number or frontmatter changed.
