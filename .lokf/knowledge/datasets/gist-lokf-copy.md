@@ -26,7 +26,7 @@ references:
 generated:
   by: process:ktl-librarian
   at: "2026-10-28T18:37:55Z"
-  revision: e3c4f91199a3a8f385f1928ea4bd148daae0d98d
+  revision: 0d7b36b8f1f0e4d13061f8cf001ab864bbdea4e5
 status: draft
 ---
 

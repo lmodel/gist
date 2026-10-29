@@ -205,8 +205,8 @@ jobs:
         if: github.repository != 'noelmcloughlin/knowledge-trust-ladder'
         env:
           TRUST_LADDER_SKILLS_REPO: https://github.com/noelmcloughlin/knowledge-trust-ladder
-          TRUST_LADDER_SKILLS_REF: v0.56.2 # the one pin; point your docs here instead of repeating it
-          TRUST_LADDER_SKILLS_SHA: 332b2b3207f430a3286b38aec3cd2bc8f77b911f # the commit that tag names
+          TRUST_LADDER_SKILLS_REF: v0.59.0 # the one pin; point your docs here instead of repeating it
+          TRUST_LADDER_SKILLS_SHA: 2b9d7e05f0bc020127b3cbd2ee54dc27774b8286 # the commit that tag names
         run: |
           set -euo pipefail
           tmp="$(mktemp -d)"
@@ -538,15 +538,16 @@ jobs:
             // it, and is shown as nothing more. The pen cleaned it there; it
             // is cleaned again here, since that job could be blinded: ten
             // lines of 300 characters at most, with no backtick and no
-            // character a reader cannot see. Unicode's own categories say
-            // which those are, as they do in the pen: a control, a format
-            // character such as a zero-width space, a bidirectional control
-            // or a tag character, and a line or paragraph separator. It goes
+            // character a reader cannot see. Unicode says which those are,
+            // as it does in the pen: a control, a format character such as
+            // a zero-width space, a bidirectional control or a tag character,
+            // another character it calls default ignorable, such as a
+            // variation selector, and a line or paragraph separator. It goes
             // in a code block, where no link, image, mention or HTML renders.
             let handoff = [];
             try {
               handoff = fs.readFileSync(HANDOFF_FILE, 'utf8').split('\n')
-                .map((l) => l.replace(/[\p{Cc}\p{Cf}\p{Zl}\p{Zp}]/gu, '').replace(/`/g, "'").trim().slice(0, 300))
+                .map((l) => l.replace(/[\p{Cc}\p{Cf}\p{Default_Ignorable_Code_Point}\p{Zl}\p{Zp}]/gu, '').replace(/`/g, "'").trim().slice(0, 300))
                 .filter((l) => l !== '')
                 .slice(0, 10);
             } catch (e) {
