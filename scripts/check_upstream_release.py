@@ -12,7 +12,8 @@ downloads the web-download zip of the vendored version, and compares every
 vendored file with its copy in the zip, byte for byte. It prints a Markdown
 report and exits 1 when a newer release exists or a file differs.
 
-Set ``GITHUB_TOKEN`` to raise the API rate limit. Usage::
+Set ``GITHUB_TOKEN`` to raise the API rate limit. The script sends it to the
+GitHub API only, and not on to a host the API redirects to. Usage::
 
     python scripts/check_upstream_release.py [--report FILE]
 """
@@ -37,7 +38,8 @@ def _get(url: str, accept: str = "application/vnd.github+json") -> bytes:
     req = urllib.request.Request(url, headers={"Accept": accept, "User-Agent": "lmodel-gist-upstream-check"})
     token = os.environ.get("GITHUB_TOKEN")
     if token and url.startswith("https://api.github.com/"):
-        req.add_header("Authorization", f"Bearer {token}")
+        # urllib copies ordinary headers onto a redirect, whatever its host.
+        req.add_unredirected_header("Authorization", f"Bearer {token}")
     with urllib.request.urlopen(req, timeout=60) as resp:
         return resp.read()
 
