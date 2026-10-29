@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-10-29
+
 ### Security
 
 - **The upstream check sends `GITHUB_TOKEN` to the GitHub API only, and no longer copies it onto a redirect to another host.**
