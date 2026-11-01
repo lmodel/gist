@@ -2,7 +2,7 @@
 
 # gist
 
-GIST (Semantic Arts, Upper Enterprise Ontology) - LinkML Schema
+GIST, the Semantic Arts Upper Enterprise Ontology (LinkML)
 
 This repository is an independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology. It is not a Semantic Arts release, and it defines nothing in gist's namespace.
 
@@ -37,43 +37,23 @@ To list them, run `just` or `just --list`.
 
 `.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle, which validates against LOKF's own schema.
 
-Each release also attaches `schema-<tag>-gist.yaml`, for a bundle whose domain schema imports gist. It is `gist_core.yaml` as `lokf adapt` rewrites it, and `just gen-lokf-copy` builds the same file. Save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`. In the copy, these classes are re-rooted on LOKF's `Concept`, so a concept may name any gist class but `GistThing` and `Any` as its `type`:
+Each release also attaches `schema-<tag>-gist.yaml`, the copy of `gist_core.yaml` that `lokf adapt` writes and `just gen-lokf-copy` builds, for a bundle whose domain schema imports gist. Save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`. The copy roots these classes on LOKF's `Concept`, so a concept may name any gist class but `GistThing` and `Any` as its `type`:
 
 ```text
 Aspect, Category, Component, Composite, Content, Event, GeoLocation, IntellectualProperty, Intention, Language, Magnitude, GistOrganization, PhysicalIdentifiableItem, PhysicalSubstance, SchemaMetaData, Template, TemporalRelation, TimeInterval, UnitOfMeasure
 ```
 
-`Person`, `Organization`, `name`, `description` and `license` are `GistPerson`, `GistOrganization`, `gist_name`, `gist_description` and `gist_license` in the copy, because `lokf.yaml` defines those names; each keeps its gist IRI. A slot ranged over a gist class takes the IRI of the concept it names.
+`lokf.yaml` defines `Person`, `Organization`, `name`, `description` and `license`, so the copy renames them `GistPerson`, `GistOrganization`, `gist_name`, `gist_description` and `gist_license`, and each keeps its gist IRI. A slot ranged over a gist class takes the IRI of the concept it names.
 
 ## License and attribution
 
-gist is Semantic Arts' upper ontology, published under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This schema is
-derived from the gist 14.1.0 release.
-[scripts/gist_to_linkml.py](scripts/gist_to_linkml.py) converts its OWL modules
-to LinkML. Their RDFS annotations and subclass assertions are merged into the
-schema, and SSSOM mappings to other vocabularies are added from
-[src/gist/mappings/](src/gist/mappings). The release is kept unmodified in
-[upstream/](upstream/gist14.1.0_webDownload) with its
-[LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code in this
-repository is Apache-2.0 ([LICENSE](LICENSE)). [NOTICE](NOTICE) lists every
-third-party work it carries or derives from, and is included in the package.
+gist is Semantic Arts' upper ontology, published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [scripts/gist_to_linkml.py](scripts/gist_to_linkml.py) converts the OWL modules of the gist 14.1.0 release to LinkML, and SSSOM mappings to other vocabularies come from [src/gist/mappings/](src/gist/mappings). The release is kept unmodified in [upstream/](upstream/gist14.1.0_webDownload) with its [LICENSE.txt](upstream/gist14.1.0_webDownload/LICENSE.txt). The code is under the Apache License 2.0 ([LICENSE](LICENSE)), and [NOTICE](NOTICE) lists every third-party work it carries or derives from.
 
-Semantic Arts also asks that terms used from gist stay in the gist namespace
-and that nobody else defines terms there. The schema and every generated
-artefact hold to both:
+Semantic Arts asks that terms used from gist stay in the gist namespace and that nobody else defines terms there. The schema and every generated artefact hold to both:
 
-* **`gist:`** (`https://w3id.org/semanticarts/ns/ontology/gist/`) and
-  **`gistd:`** are Semantic Arts' namespaces. Every gist class, property and
-  individual keeps its gist IRI.
-* **`gist_linkml:`** (`https://w3id.org/lmodel/gist/`) is this project's
-  namespace. It holds only what the LinkML rendering adds: the schema
-  documents, the `GistThing` mixin, the types for the datatypes
-  `linkml:types` lacks, the enums, the subsets, the SHACL shapes, and the
-  LinkML element definitions the OWL links to the gist terms they render.
-* Tests in [tests/test_schema_validation.py](tests/test_schema_validation.py)
-  and [tests/test_generated_artifacts.py](tests/test_generated_artifacts.py)
-  check both rules against the vendored release.
+* **`gist:`** (`https://w3id.org/semanticarts/ns/ontology/gist/`) and **`gistd:`** are Semantic Arts' namespaces. Every gist class, property and individual keeps its gist IRI.
+* **`gist_linkml:`** (`https://w3id.org/lmodel/gist/`) is this project's namespace. It holds only what the LinkML rendering adds, such as the `GistThing` mixin, the enums, the subsets and the SHACL shapes.
+* [tests/test_schema_validation.py](tests/test_schema_validation.py) and [tests/test_generated_artifacts.py](tests/test_generated_artifacts.py) check both rules against the vendored release.
 
 ## Contributing and security
 
