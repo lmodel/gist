@@ -3,10 +3,10 @@ type: Dataset
 id: https://w3id.org/lmodel/gist/knowledge/datasets/gist-lokf-copy
 genre: reference
 title: LOKF copy of gist_core.yaml
-description: The copy of `gist_core.yaml` that `lokf adapt` writes for a LOKF domain schema to import as `gist_core_lokf`, with gist's top classes re-rooted on `Concept` and the five names lokf.yaml also defines renamed. `just gen-lokf-copy` builds it, and every GitHub Release attaches it as `gist-linkml-lokf-<tag>.yaml`.
+description: The copy of `gist_core.yaml` that `lokf adapt` writes for a LOKF domain schema to import as `gist_core_lokf`, with gist's top classes re-rooted on `Concept` and the five names lokf.yaml also defines renamed. `just gen-lokf-copy` builds it, and every GitHub Release attaches it as `schema-<tag>-gist.yaml`.
 resource: .github/workflows/lokf-copy-release.yaml
 distribution:
-  - name: gist-linkml-lokf-<tag>.yaml
+  - name: schema-<tag>-gist.yaml
     access_url: https://github.com/lmodel/gist/releases
     media_type: application/yaml
     description: Release asset with a .sha256 checksum beside it; save it beside lokf.yaml as gist_core_lokf.yaml and import gist_core_lokf.
@@ -44,4 +44,4 @@ Save the copy beside `lokf.yaml` as `gist_core_lokf.yaml`, and import `gist_core
 
 `just gen-lokf-copy [out]` builds the copy into `out`, which defaults to `dist/lokf`. The recipe runs `lokf adapt` on `src/gist/schema/gist_core.yaml` with `--prefix gist`, and passes one `--root` for each top class, which it reads from the schema. gist declares no identifier slot, so adapt cannot find the top classes by itself. adapt checks the copy against the `lokf.yaml` that the `.lokf` sidecar locks, and writes nothing when the check fails. CI runs the same recipe in the Python 3.14 job of `.github/workflows/main.yaml`. So if a lokf upgrade breaks the copy, its pull request fails, rather than a release that is already tagged.
 
-`.github/workflows/lokf-copy-release.yaml` attaches the copy to a GitHub Release as `gist-linkml-lokf-<tag>.yaml`, with a `.sha256` checksum beside it. semantic-release dispatches it for every tag it releases ([release playbook](../playbooks/release.md)), and it also runs when a person publishes a release by hand. A person can run it for an existing tag to repair that tag's asset. Its `build` job has a read-only token. Only the `attach` job can write: it checks the file against its checksum before it uploads it, and in a public repository it also attests the file's build provenance.
+`.github/workflows/lokf-copy-release.yaml` attaches the copy to a GitHub Release as `schema-<tag>-gist.yaml`, with a `.sha256` checksum beside it. semantic-release dispatches it for every tag it releases ([release playbook](../playbooks/release.md)), and it also runs when a person publishes a release by hand. A person can run it for an existing tag to repair that tag's asset. Its `build` job has a read-only token. Only the `attach` job can write: it checks the file against its checksum before it uploads it, and in a public repository it also attests the file's build provenance.

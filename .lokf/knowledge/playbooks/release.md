@@ -36,4 +36,4 @@ With the variable on, a `v*` tag that a person pushes uploads to TestPyPI instea
 
 PyPI releases are off for now, and nothing is on PyPI or TestPyPI.
 
-Every release also gets the [LOKF copy](../datasets/gist-lokf-copy.md) of `gist_core.yaml`, whatever `PYPI_RELEASE_ENABLED` says. The `release` job dispatches `.github/workflows/lokf-copy-release.yaml` on the new tag, and that workflow attaches the copy to the GitHub Release as `gist-linkml-lokf-<tag>.yaml`, with a `.sha256` checksum.
+Every release also gets the [LOKF copy](../datasets/gist-lokf-copy.md) of `gist_core.yaml`, whatever `PYPI_RELEASE_ENABLED` says. The `release` job dispatches `.github/workflows/lokf-copy-release.yaml` on the new tag, and that workflow attaches the copy to the GitHub Release as `schema-<tag>-gist.yaml`, with a `.sha256` checksum.
