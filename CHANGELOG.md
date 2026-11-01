@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Changed
+
+- **The release asset is `schema-<tag>-gist.yaml`, the name every other lmodel release uses.** It was `gist-linkml-lokf-<tag>.yaml`; the file is unchanged.
+
 ## [0.6.2] - 2026-10-29
 
 ### Security

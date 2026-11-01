@@ -1,6 +1,6 @@
 name: LOKF Copy Release
 
-# Attaches `gist-linkml-lokf-<tag>.yaml` to a GitHub release: gist_core.yaml
+# Attaches `schema-<tag>-gist.yaml` to a GitHub release: gist_core.yaml
 # adapted by `lokf adapt` so a LOKF domain schema can import it beside
 # lokf.yaml. Save it there as `gist_core_lokf.yaml` and import
 # `gist_core_lokf`. `just gen-lokf-copy` builds it and fails when the copy
@@ -77,7 +77,7 @@ jobs:
       - name: Name it for the release
         working-directory: ${{ runner.temp }}/release
         run: |
-          asset="gist-linkml-lokf-$TAG.yaml"
+          asset="schema-$TAG-gist.yaml"
           mv gist_core_lokf.yaml "$asset"
           sha256sum "$asset" > "$asset.sha256"
 

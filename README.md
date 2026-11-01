@@ -37,7 +37,7 @@ To list them, run `just` or `just --list`.
 
 `.lokf/` holds this project's [KTL](https://w3id.org/ktl/) knowledge bundle, which validates against LOKF's own schema.
 
-Each release also attaches `gist-linkml-lokf-<tag>.yaml`, for a bundle whose domain schema imports gist. It is `gist_core.yaml` as `lokf adapt` rewrites it, and `just gen-lokf-copy` builds the same file. Save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`. In the copy, these classes are re-rooted on LOKF's `Concept`, so a concept may name any gist class but `GistThing` and `Any` as its `type`:
+Each release also attaches `schema-<tag>-gist.yaml`, for a bundle whose domain schema imports gist. It is `gist_core.yaml` as `lokf adapt` rewrites it, and `just gen-lokf-copy` builds the same file. Save it beside `lokf.yaml` as `gist_core_lokf.yaml` and import `gist_core_lokf`. In the copy, these classes are re-rooted on LOKF's `Concept`, so a concept may name any gist class but `GistThing` and `Any` as its `type`:
 
 ```text
 Aspect, Category, Component, Composite, Content, Event, GeoLocation, IntellectualProperty, Intention, Language, Magnitude, GistOrganization, PhysicalIdentifiableItem, PhysicalSubstance, SchemaMetaData, Template, TemporalRelation, TimeInterval, UnitOfMeasure
