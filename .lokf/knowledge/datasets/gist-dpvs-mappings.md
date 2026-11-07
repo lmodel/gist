@@ -3,7 +3,7 @@ type: Dataset
 genre: reference
 id: https://w3id.org/lmodel/gist/knowledge/datasets/gist-dpvs-mappings
 title: gist to DPV mappings
-description: 11 LLM-matched SSSOM mappings from gist classes to the lmodel DPV schema.
+description: 11 LLM-matched SSSOM mappings from gist classes to terms of DPV 2.3.
 resource: src/gist/mappings/gist-dpv.sssom.tsv
 license: https://creativecommons.org/licenses/by/4.0/
 fields:
@@ -32,7 +32,7 @@ references:
 - https://w3id.org/lmodel/gist/knowledge/glossary/sssom
 generated:
   by: process:ktl-librarian
-  at: "2026-10-17T00:13:57Z"
+  at: "2026-11-07T15:54:12Z"
 status: draft
 verified:
 - by: process:ktl-librarian
@@ -41,4 +41,4 @@ verified:
 
 # gist to DPV mappings
 
-`src/gist/mappings/gist-dpv.sssom.tsv` maps gist classes such as Agreement, Contract, Organization, Person and GeoLocation to terms of the [DPV schema](../references/dpvs.md). It declares the mapping set `https://w3id.org/lmodel/gist/mappings/gist-dpv`, version 1.1, dated 2026-09-29 and licensed CC BY 4.0. It holds 11 rows: 4 `skos:narrowMatch`, 3 `skos:relatedMatch`, 2 `skos:broadMatch` and 2 `skos:exactMatch`. Every row is justified `semapv:LLMBasedMatching`, so a reviewer should treat each row as a machine suggestion until a person has checked it. The [SSSOM overlay](../services/apply-sssom-overlay.md) merges them into the [gist LinkML schema](gist-linkml-schema.md).
+`src/gist/mappings/gist-dpv.sssom.tsv` maps gist classes such as Agreement, Contract, Organization, Person and GeoLocation to terms of [DPV 2.3](../references/dpvs.md), under DPV's own namespace `https://w3id.org/dpv#`. It declares the mapping set `https://w3id.org/lmodel/gist/mappings/gist-dpv`, version 1.2, dated 2026-09-29 and licensed CC BY 4.0. It holds 11 rows: 4 `skos:narrowMatch`, 3 `skos:relatedMatch`, 2 `skos:broadMatch` and 2 `skos:exactMatch`. Every row is justified `semapv:LLMBasedMatching`, so a reviewer should treat each row as a machine suggestion until a person has checked it. The [SSSOM overlay](../services/apply-sssom-overlay.md) merges them into the [gist LinkML schema](gist-linkml-schema.md).

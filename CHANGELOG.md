@@ -6,6 +6,10 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Fixed
+
+- **The `dpv:` prefix names DPV 2.3's own namespace, `https://w3id.org/dpv#`.** It named `https://w3id.org/lmodel/dpv/`, where lmodel/dpv now holds DPV's terms as records, so the eleven mapped terms resolved to nothing. `just verify-mapping-targets` checks those rows against DPV's Turtle file as lmodel/dpv pins it.
+
 ## [0.7.1] - 2026-11-02
 
 ### Security

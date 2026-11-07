@@ -21,7 +21,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [gist 14.1.0 upstream Turtle release](datasets/gist-upstream-turtle.md) - The five gist 14.1.0 Turtle modules from Semantic Arts' web download, vendored as the input to the LinkML transform.
 * [gist LinkML schema](datasets/gist-linkml-schema.md) - LinkML rendering of gist 14.1.0 (schema id `https://w3id.org/lmodel/gist`), generated from the upstream Turtle modules with the curated SSSOM mappings overlaid.
 * [gist to Common Domain Model mappings](datasets/gist-cdm-mappings.md) - 34 manually curated SSSOM mappings from gist classes to FINOS Common Domain Model classes in the lmodel CDM schema.
-* [gist to DPV mappings](datasets/gist-dpvs-mappings.md) - 11 LLM-matched SSSOM mappings from gist classes to the lmodel DPV schema.
+* [gist to DPV mappings](datasets/gist-dpvs-mappings.md) - 11 LLM-matched SSSOM mappings from gist classes to terms of DPV 2.3.
 * [gist to ISO/IEC 22989 mappings](datasets/gist-iso22989-mappings.md) - 9 LLM-matched SSSOM mappings from gist classes to the lmodel ISO/IEC 22989:2022 AI concepts and terminology schema.
 * [gist generated schema artefacts](datasets/generated-artefacts.md) - The OWL, SHACL, ShEx, JSON Schema, JSON-LD, GraphQL, Protobuf, TypeScript, Excel and Python renderings that LinkML generators produce from the gist schema.
 * [gist example and test data](datasets/test-data.md) - Example instance files that the test suite validates against the gist schema, sorted into valid, invalid and known-problem folders.
@@ -35,13 +35,13 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [Mapping verifier](services/verify-mappings.md) - Read-only command-line check (scripts/verify_mappings.py, run as just verify-mappings) that every SSSOM row is present on the gist LinkML schema and nothing extra is.
 * [gist documentation site](services/documentation-site.md) - The Astro Starlight site at `https://lmodel.github.io/gist`, built from the README, `docs/`, the schema's generated pages and this knowledge bundle, and deployed to GitHub Pages by the Knowledge website workflow.
 * [Upstream watch](services/upstream-watch.md) - Weekly GitHub workflow (upstream-watch.yaml) that checks the vendored gist release is Semantic Arts' latest and intact, and that mapped target terms still exist on each target's default branch, opening an issue on failure.
-* [Mapping target checker](services/verify-mapping-targets.md) - Network command-line check (scripts/verify_mapping_targets.py, run as just verify-mapping-targets) that every SSSOM object term exists in the lmodel target schema it names, at a pinned commit.
+* [Mapping target checker](services/verify-mapping-targets.md) - Network command-line check (scripts/verify_mapping_targets.py, run as just verify-mapping-targets) that every SSSOM object term exists in the target it names, an lmodel schema or DPV's Turtle file, at a pinned commit.
 
 # References
 
 * [gist upper ontology (Semantic Arts)](references/gist-ontology.md) - Semantic Arts' minimalist upper ontology for enterprise knowledge graphs; release 14.1.0 is the upstream authority this repository transforms into LinkML.
 * [Common Domain Model LinkML schema (lmodel)](references/common-domain-model.md) - The lmodel LinkML rendering of the FINOS Common Domain Model, the object side of the gist-to-CDM mapping set.
-* [DPV LinkML schema (lmodel)](references/dpvs.md) - The lmodel LinkML rendering of the Data Privacy Vocabulary (DPV), the object side of the gist-to-DPV mapping set.
+* [Data Privacy Vocabulary (DPV)](references/dpvs.md) - The Data Privacy Vocabulary (DPV) 2.3 of the W3C Data Privacy Vocabularies and Controls Community Group, the object side of the gist-to-DPV mapping set.
 * [ISO/IEC 22989:2022 LinkML schema (lmodel)](references/iso22989.md) - The lmodel LinkML schema for ISO/IEC 22989:2022 (Artificial intelligence concepts and terminology), the object side of the gist-to-ISO/IEC 22989 mapping set.
 
 # Policies
