@@ -60918,7 +60918,7 @@
       ],
       "from_schema": "https://w3id.org/lmodel/gist",
       "close_mappings": [
-        "iso22989:Decision"
+        "iso22989:AicDecision"
       ],
       "is_a": "Event",
       "attributes": {
@@ -74006,9 +74006,9 @@
       "from_schema": "https://w3id.org/lmodel/gist",
       "narrow_mappings": [
         "common_domain_model:BusinessEvent",
-        "iso22989:AILifecycleProcess",
-        "iso22989:DataProcess",
-        "iso22989:Action"
+        "iso22989:AicLifecycleProcess",
+        "iso22989:AicDataProcess",
+        "iso22989:AicAction"
       ],
       "mixins": [
         "GistThing"
@@ -111515,7 +111515,7 @@
       ],
       "from_schema": "https://w3id.org/lmodel/gist",
       "related_mappings": [
-        "iso22989:KnowledgeGraph"
+        "iso22989:AicKnowledge"
       ],
       "is_a": "IntellectualProperty",
       "attributes": {
@@ -142253,12 +142253,12 @@
         "common_domain_model:LegalEntity"
       ],
       "related_mappings": [
-        "dpv:ThirdParty"
+        "dpv:ThirdParty",
+        "iso22989:AicStakeholder"
       ],
       "narrow_mappings": [
         "common_domain_model:BusinessUnit",
-        "dpv:OrganisationalUnit",
-        "iso22989:Organization"
+        "dpv:OrganisationalUnit"
       ],
       "broad_mappings": [
         "common_domain_model:Party",
@@ -146732,8 +146732,7 @@
         "common_domain_model:NaturalPerson"
       ],
       "related_mappings": [
-        "iso22989:AIUser",
-        "iso22989:DataSubject"
+        "iso22989:AicStakeholder"
       ],
       "narrow_mappings": [
         "dpv:DataSubject"
@@ -195149,7 +195148,7 @@
       "from_schema": "https://w3id.org/lmodel/gist",
       "related_mappings": [
         "common_domain_model:Workflow",
-        "iso22989:Task"
+        "iso22989:AicTask"
       ],
       "is_a": "Event",
       "attributes": {

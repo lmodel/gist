@@ -343,7 +343,7 @@ gist:Determination dcterms:title "Determination" ;
 	a owl:Class ;
 	rdfs:label "Determination" ;
 	rdfs:subClassOf gist:Event ;
-	skos:closeMatch <https://w3id.org/lmodel/iso22989/Decision> ;
+	skos:closeMatch <https://w3id.org/lmodel/iso22989/AicDecision> ;
 	skos:definition "An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating." ;
 	skos:exactMatch gist_linkml:Determination ;
 	skos:inScheme gist_linkml:core .
@@ -392,7 +392,7 @@ gist:Event dcterms:title "Event" ;
 	skos:definition "Something that occurs over a period of time, often characterized as an activity being carried out by some person, organization, or software application or brought about by natural forces." ;
 	skos:exactMatch gist_linkml:Event ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/BusinessEvent> , <https://w3id.org/lmodel/iso22989/AILifecycleProcess> , <https://w3id.org/lmodel/iso22989/Action> , <https://w3id.org/lmodel/iso22989/DataProcess> ;
+	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/BusinessEvent> , <https://w3id.org/lmodel/iso22989/AicAction> , <https://w3id.org/lmodel/iso22989/AicDataProcess> , <https://w3id.org/lmodel/iso22989/AicLifecycleProcess> ;
 	skos:note "An event does not necessarily have either planned or actual start or end datetimes. For example, a conference can be in the planning phase without any dates selected, but is nevertheless an (unscheduled) event. The subclasses of gist:Event state particular restrictions on planned and actual start and end dates." , "An event occurs during a time interval, which is distinct from the event." .
 gist:EventSpecification dcterms:title "Event Specification" ;
 	a owl:Class ;
@@ -538,7 +538,7 @@ gist:KnowledgeConcept dcterms:title "Knowledge Concept" ;
 	skos:exactMatch gist_linkml:KnowledgeConcept ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Some knowledge is about specific instances that already exist in the knowledge graph. We may have knowledge that Judge Jones is more lenient on repeat offenders in the morning; we may know that the earliest killing frost in Fort Collins is the last week of September.\n\nThese fit the broader definition of knowledge, the distillation of experience. But they do not require any new instances. Judge Jones and Fort Collins already exist and have a place in our knowledge graph.\n\nBut some knowledge requires that we synthesize new instances in order to have a place to consolidate the knowledge. A disease isn't a tangible thing, like a person or a building. A disease is a prediction that a person's health will decline in a predictable way (without treatment and with treatment). The number of diseases continues to grow as we collectively learn more and more granular distinctions. Lung cancer used to be a single disease, but now we have dozens of fine-grained distinctions; e.g., non-lymphoma small cell fusiform is different from alveolar adenocarcinoma because we now know the prognosis and treatment are different.\n\nThis superclass is meant as a place for subclasses that will have the instances that represent the foci of the knowledge we have acquired. Note the distinction between a particular portion of, say, gold, which instantiates gist:PhysicalSubstance, and the concept of gold, which instantiates gist:KnowledgeConcept.\n\nIn some ontologies what we are calling knowledge concepts are defined as classes; e.g., non-lymphoma small cell fusiform and alveolar adenocarcinoma would be two classes rather than two instances. But using a class makes it harder to connect the concept to other instances in a knowledge graph, and furthermore such classes would lack instances." ;
-	skos:relatedMatch <https://w3id.org/lmodel/iso22989/KnowledgeGraph> .
+	skos:relatedMatch <https://w3id.org/lmodel/iso22989/AicKnowledge> .
 gist:Landmark dcterms:title "Landmark" ;
 	a owl:Class ;
 	rdfs:label "Landmark" ;
@@ -664,9 +664,9 @@ gist:Organization dcterms:title "Organization" ;
 	skos:definition "A structured entity formed to achieve specific goals, typically involving members with defined roles." ;
 	skos:exactMatch gist_linkml:Organization ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/dpv#OrganisationalUnit> , <https://w3id.org/lmodel/common-domain-model/BusinessUnit> , <https://w3id.org/lmodel/iso22989/Organization> ;
+	skos:narrowMatch <https://w3id.org/dpv#OrganisationalUnit> , <https://w3id.org/lmodel/common-domain-model/BusinessUnit> ;
 	skos:note "Not all organizations have members, e.g. shell companies." , "While typically the members of organizations are people, in some cases they are other organizations; e.g., the members of the United Nations are country governments." ;
-	skos:relatedMatch <https://w3id.org/dpv#ThirdParty> .
+	skos:relatedMatch <https://w3id.org/dpv#ThirdParty> , <https://w3id.org/lmodel/iso22989/AicStakeholder> .
 gist:Permission dcterms:title "Permission" ;
 	a owl:Class ;
 	rdfs:label "Permission" ;
@@ -686,7 +686,7 @@ gist:Person dcterms:title "Person" ;
 	skos:exactMatch <https://w3id.org/dpv#NaturalPerson> , gist_linkml:Person ;
 	skos:inScheme gist_linkml:core ;
 	skos:narrowMatch <https://w3id.org/dpv#DataSubject> ;
-	skos:relatedMatch <https://w3id.org/lmodel/iso22989/AIUser> , <https://w3id.org/lmodel/iso22989/DataSubject> .
+	skos:relatedMatch <https://w3id.org/lmodel/iso22989/AicStakeholder> .
 gist:PhysicalActionType dcterms:title "Physical Action Type" ;
 	a owl:Class ;
 	rdfs:label "PhysicalActionType" ;
@@ -872,7 +872,7 @@ gist:Task dcterms:title "Task" ;
 	skos:exactMatch gist_linkml:Task ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "Something that could potentially be executed, which is merely described but not proposed in any specific way, such as a business process for onboarding a new employee, or the steps in a recipe for making polyethylene from ethylene, is not a task but rather a task template." , "This term is broader than the English word 'task,' which implies assignment, responsibility, or duty. In ordinary English going to a concert has a goal but is (generally) done for pleasure rather than out of obligation, and would not be considered a task, while according to the gist definition it is a task. The expansion of meaning is deliberate, so that anything that has a goal and can be specified by a task template is a task." , "Use the property gist:isBasedOn to link a task back to the task template." ;
-	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Workflow> , <https://w3id.org/lmodel/iso22989/Task> .
+	skos:relatedMatch <https://w3id.org/lmodel/common-domain-model/Workflow> , <https://w3id.org/lmodel/iso22989/AicTask> .
 gist:TaskTemplate dcterms:title "Task Template" ;
 	a owl:Class ;
 	rdfs:label "TaskTemplate" ;
