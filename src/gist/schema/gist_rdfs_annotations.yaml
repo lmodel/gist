@@ -1897,7 +1897,7 @@ classes:
       - value: |-
           Measuring the sulfur content of crude oil; evaluating a loan application for approval; estimating the price of gas for the next three months; determining whether and by how much an interest rate should change; classifying a purchase into a budget category.
     close_mappings:
-      - iso22989:Decision
+      - iso22989:AicDecision
     in_subset:
       - gist_rdfs_annotations
 
@@ -1965,9 +1965,9 @@ classes:
       - value: A transaction, conference, baseball game, earthquake.
     narrow_mappings:
       - common_domain_model:BusinessEvent
-      - iso22989:AILifecycleProcess
-      - iso22989:DataProcess
-      - iso22989:Action
+      - iso22989:AicLifecycleProcess
+      - iso22989:AicDataProcess
+      - iso22989:AicAction
     in_subset:
       - gist_rdfs_annotations
 
@@ -2177,7 +2177,7 @@ classes:
       - value: |-
           Most domains will define a few subclasses, such as gene, protein, chemical, disease, subject matter, industry, method.
     related_mappings:
-      - iso22989:KnowledgeGraph
+      - iso22989:AicKnowledge
     in_subset:
       - gist_rdfs_annotations
 
@@ -2354,9 +2354,9 @@ classes:
     narrow_mappings:
       - common_domain_model:BusinessUnit
       - dpv:OrganisationalUnit
-      - iso22989:Organization
     related_mappings:
       - dpv:ThirdParty
+      - iso22989:AicStakeholder
     in_subset:
       - gist_rdfs_annotations
 
@@ -2387,8 +2387,7 @@ classes:
     narrow_mappings:
       - dpv:DataSubject
     related_mappings:
-      - iso22989:AIUser
-      - iso22989:DataSubject
+      - iso22989:AicStakeholder
     in_subset:
       - gist_rdfs_annotations
 
@@ -2643,7 +2642,7 @@ classes:
       - Use the property gist:isBasedOn to link a task back to the task template.
     related_mappings:
       - common_domain_model:Workflow
-      - iso22989:Task
+      - iso22989:AicTask
     in_subset:
       - gist_rdfs_annotations
 

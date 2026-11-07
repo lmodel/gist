@@ -1,13 +1,13 @@
 # mapping_set_id: https://w3id.org/lmodel/gist/mappings/gist-iso22989
-# mapping_set_version: "0.2.0"
+# mapping_set_version: "0.3.0"
 # mapping_set_title: gist to ISO/IEC 22989:2022 mappings
 # mapping_set_description: Schema-level mappings from the gist minimal upper ontology (Semantic Arts) to the ISO/IEC 22989:2022 (Artificial intelligence concepts and terminology) LinkML schema. They relate gist's Organization, Person, Event, Task and related foundational classes to ISO/IEC 22989 terms, to support integration with gist-based knowledge graphs.
 # license: https://creativecommons.org/licenses/by/4.0/
 # subject_source: semanticarts:gistCore
 # subject_source_version: "14.1.0"
 # object_source: lmodel:iso22989
-# object_source_version: "0.1.0"
-# mapping_date: 2026-09-29
+# object_source_version: "2022"
+# mapping_date: 2026-11-07
 # curie_map:
 #   gist: https://w3id.org/semanticarts/ns/ontology/gist/
 #   iso22989: https://w3id.org/lmodel/iso22989/
@@ -16,12 +16,11 @@
 #   semapv: https://w3id.org/semapv/vocab/
 #   skos: http://www.w3.org/2004/02/skos/core#
 subject_id	subject_label	subject_type	predicate_id	predicate_label	object_id	object_label	object_type	mapping_justification	comment
-gist:Organization	Organization	owl class	skos:narrowMatch	narrow match	iso22989:Organization	Organization	owl class	semapv:LLMBasedMatching	The ISO/IEC 22989 schema limits Organization to one that establishes and operates an AI management system.
-gist:Person	Person	owl class	skos:relatedMatch	related match	iso22989:AIUser	AIUser	owl class	semapv:LLMBasedMatching	AIUser is a stakeholder role, which an organization can also fill.
-gist:Person	Person	owl class	skos:relatedMatch	related match	iso22989:DataSubject	DataSubject	owl class	semapv:LLMBasedMatching	DataSubject is a stakeholder role held by a person or a group whose personal data an AI system processes.
-gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:AILifecycleProcess	AILifecycleProcess	owl class	semapv:LLMBasedMatching	AI lifecycle processes are happenings situated in time and are subtypes of gist event.
-gist:Task	Task	owl class	skos:relatedMatch	related match	iso22989:Task	Task	owl class	semapv:LLMBasedMatching	The ISO/IEC 22989 Task is a kind of AI task, such as classification, rather than a piece of work.
-gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:DataProcess	DataProcess	owl class	semapv:LLMBasedMatching	Data processes are events transforming or moving data.
-gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:Action	Action	owl class	semapv:LLMBasedMatching	An ISO/IEC 22989 action is carried out as a result of an AI-system decision, a narrower kind of event.
-gist:Determination	Determination	owl class	skos:closeMatch	close match	iso22989:Decision	Decision	owl class	semapv:LLMBasedMatching	A decision is a determination among alternatives.
-gist:KnowledgeConcept	Knowledge Concept	owl class	skos:relatedMatch	related match	iso22989:KnowledgeGraph	KnowledgeGraph	owl class	semapv:LLMBasedMatching	A knowledge graph is composed of knowledge concepts and their relations.
+gist:Organization	Organization	owl class	skos:relatedMatch	related match	iso22989:AicStakeholder	AicStakeholder	owl class	semapv:LLMBasedMatching	An AicStakeholder record names the organization that holds a stakeholder role, such as AI provider, customer or partner. The schema has no organization class of its own.
+gist:Person	Person	owl class	skos:relatedMatch	related match	iso22989:AicStakeholder	AicStakeholder	owl class	semapv:LLMBasedMatching	A person can hold a stakeholder role. AI user and data subject are sub-roles of an AicStakeholder, not classes.
+gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:AicLifecycleProcess	AicLifecycleProcess	owl class	semapv:LLMBasedMatching	AI lifecycle processes are happenings situated in time and are subtypes of gist event.
+gist:Task	Task	owl class	skos:relatedMatch	related match	iso22989:AicTask	AicTask	owl class	semapv:LLMBasedMatching	The ISO/IEC 22989 Task is a kind of AI task, such as classification, rather than a piece of work.
+gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:AicDataProcess	AicDataProcess	owl class	semapv:LLMBasedMatching	Data processes are events transforming or moving data.
+gist:Event	Event	owl class	skos:narrowMatch	narrow match	iso22989:AicAction	AicAction	owl class	semapv:LLMBasedMatching	An ISO/IEC 22989 action is carried out as a result of an AI-system decision, a narrower kind of event.
+gist:Determination	Determination	owl class	skos:closeMatch	close match	iso22989:AicDecision	AicDecision	owl class	semapv:LLMBasedMatching	A decision is a determination among alternatives.
+gist:KnowledgeConcept	Knowledge Concept	owl class	skos:relatedMatch	related match	iso22989:AicKnowledge	AicKnowledge	owl class	semapv:LLMBasedMatching	An AicKnowledge record holds knowledge of a declarative or procedural kind and how it is represented. The schema has no knowledge graph class.
