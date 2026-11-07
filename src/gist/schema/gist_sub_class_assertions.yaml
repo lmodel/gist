@@ -27,7 +27,7 @@ prefixes:
   owl: http://www.w3.org/2002/07/owl#
 
   common_domain_model: https://w3id.org/lmodel/common-domain-model/
-  dpv: https://w3id.org/lmodel/dpv/
+  dpv: https://w3id.org/dpv#
   iso22989: https://w3id.org/lmodel/iso22989/
 default_prefix: gist_linkml
 default_range: string
