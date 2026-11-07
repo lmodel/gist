@@ -56,8 +56,8 @@ TARGETS: dict[str, dict[str, str]] = {
     "common_domain_model": {
         "namespace": "https://w3id.org/lmodel/common-domain-model/",
         "repo": "https://github.com/lmodel/common-domain-model.git",
-        "commit": "d01a4734ab79b0be04117765e1a36b6154fa31f8",
-        "schema_dir": "src/common_domain_model/schema",
+        "commit": "4eaa9079c875233490ccee0d8f67a730ea2a8047",
+        "schema_dir": ".linkml/src/common_domain_model/schema",
     },
     "dpv": {
         "namespace": "https://w3id.org/dpv#",
@@ -68,7 +68,7 @@ TARGETS: dict[str, dict[str, str]] = {
     "iso22989": {
         "namespace": "https://w3id.org/lmodel/iso22989/",
         "repo": "https://github.com/lmodel/iso22989.git",
-        "commit": "ad82ffafa38c4dd10ba76fa1d03775c797784a4c",
+        "commit": "ffc0ae707bcd8529e72441cb32ccbc06192cb909",
         "schema_dir": "src/iso22989/schema",
     },
 }
