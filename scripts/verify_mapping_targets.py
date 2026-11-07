@@ -3,13 +3,14 @@
 
 ``verify_mappings.py`` only checks that each mapping reached the gist schema;
 it cannot see a target that was misspelt, renamed or given the wrong
-namespace. This script fetches each target LinkML schema at the commit
-pinned in ``TARGETS`` (a sparse fetch of its schema folder only), collects
-the IRI and labels of every class, slot, enum and type, and then checks each
-row of every ``*.sssom.tsv``:
+namespace. This script fetches each target at the commit pinned in
+``TARGETS`` (a sparse fetch of its schema folder, or of the one Turtle file
+it names), collects the IRI and labels of every class, slot, enum and type,
+or of every term the Turtle file labels, and then checks each row of every
+``*.sssom.tsv``:
 
 - the object prefix is a pinned target, bound to the namespace that target's
-  schemas declare;
+  schemas or Turtle file declare;
 - the object IRI is an element of that target;
 - the ``object_label``, when given, is the element's name, title or an alias;
 - the ``object_source_version``, when both it and the target's schemas
@@ -45,6 +46,12 @@ DEFAULT_MAPPINGS_DIR = Path(__file__).resolve().parent.parent / "src" / "gist" /
 
 # Object prefix -> the lmodel schema it names. ``namespace`` must equal both
 # the TSV curie_map entry and the prefix the target's own schemas declare.
+# A target with ``turtle`` in place of ``schema_dir`` is checked against that
+# Turtle file instead. DPV is such a target: lmodel/dpv holds DPV's terms as
+# records rather than LinkML classes, so gist maps to DPV's own IRIs, and the
+# file is DPV's core vocabulary as lmodel/dpv vendors it, matched there to
+# DPV's release by git object hash. The glob keeps ``--latest`` working when
+# lmodel/dpv moves to a new DPV version folder.
 TARGETS: dict[str, dict[str, str]] = {
     "common_domain_model": {
         "namespace": "https://w3id.org/lmodel/common-domain-model/",
@@ -53,10 +60,10 @@ TARGETS: dict[str, dict[str, str]] = {
         "schema_dir": "src/common_domain_model/schema",
     },
     "dpv": {
-        "namespace": "https://w3id.org/lmodel/dpv/",
+        "namespace": "https://w3id.org/dpv#",
         "repo": "https://github.com/lmodel/dpv.git",
-        "commit": "4ad685aa6ded9cec6f41c205021046f868c7a27c",
-        "schema_dir": "src/dpv/schema",
+        "commit": "fbf4b5a07ba5c22ee96bebe39739a310ef68f84e",
+        "turtle": "upstream/*/dpv/dpv.ttl",
     },
     "iso22989": {
         "namespace": "https://w3id.org/lmodel/iso22989/",
@@ -84,24 +91,34 @@ def read_sssom(path: Path) -> tuple[dict, list[dict[str, str]]]:
 
 
 def fetch(target: dict[str, str], dest: Path, ref: str) -> tuple[Path, str]:
-    """Sparse-fetch the target's schema folder at ``ref`` (a commit, or HEAD
-    for the default branch) into ``dest``. Returns the folder and the commit."""
+    """Sparse-fetch the target's schema folder, or its Turtle file, at ``ref``
+    (a commit, or HEAD for the default branch) into ``dest``. Returns the
+    folder or the file, and the commit."""
     def git(*args: str) -> str:
         return subprocess.run(
             ["git", "-C", str(dest), *args], check=True, capture_output=True, text=True,
         ).stdout.strip()
 
+    def found() -> Path:
+        if "turtle" not in target:
+            return dest / target["schema_dir"]
+        matches = sorted(dest.glob(target["turtle"]))
+        if len(matches) != 1:
+            raise SystemExit(f"{target['repo']} at {ref}: {len(matches)} files match {target['turtle']}")
+        return matches[0]
+
     if ref != "HEAD" and (dest / ".git").exists() and git("rev-parse", "HEAD") == ref:
-        return dest / target["schema_dir"], ref
+        return found(), ref
     dest.mkdir(parents=True, exist_ok=True)
     git("init", "-q")
     if "origin" in git("remote").split():
         git("remote", "remove", "origin")
     git("remote", "add", "origin", target["repo"])
-    git("sparse-checkout", "set", "--no-cone", f"/{target['schema_dir']}/**")
+    pattern = target["turtle"] if "turtle" in target else f"{target['schema_dir']}/**"
+    git("sparse-checkout", "set", "--no-cone", f"/{pattern}")
     git("fetch", "-q", "--depth", "1", "--filter=blob:none", "origin", ref)
     git("checkout", "-q", "FETCH_HEAD")
-    return dest / target["schema_dir"], git("rev-parse", "HEAD")
+    return found(), git("rev-parse", "HEAD")
 
 
 def load_terms(schema_dir: Path, prefix: str) -> tuple[dict[str, set[str]], set[str], set[str]]:
@@ -135,6 +152,24 @@ def load_terms(schema_dir: Path, prefix: str) -> tuple[dict[str, set[str]], set[
     return terms, bound, versions
 
 
+def load_turtle_terms(path: Path, prefix: str) -> tuple[dict[str, set[str]], set[str], set[str]]:
+    """IRI -> labels for every term the Turtle file gives a ``skos:prefLabel``
+    or ``rdfs:label``, the namespace the file binds to ``prefix``, and the
+    ``owl:versionInfo`` values it declares."""
+    import rdflib
+    from rdflib.namespace import OWL, RDFS, SKOS
+
+    g = rdflib.Graph()
+    g.parse(path, format="turtle")
+    terms: dict[str, set[str]] = {}
+    for prop in (SKOS.prefLabel, RDFS.label):
+        for s, o in g.subject_objects(prop):
+            terms.setdefault(str(s), set()).add(str(o))
+    bound = {str(ns) for p, ns in g.namespace_manager.namespaces() if p == prefix}
+    versions = {str(o) for o in g.objects(None, OWL.versionInfo)}
+    return terms, bound, versions
+
+
 def check(mappings_dir: Path, cache_dir: Path, latest: bool = False) -> tuple[list[str], list[str]]:
     """Return the problems, and notes on pins that are behind (``latest`` only)."""
     problems: list[str] = []
@@ -146,10 +181,13 @@ def check(mappings_dir: Path, cache_dir: Path, latest: bool = False) -> tuple[li
         schema_dir, commit = fetch(target, cache_dir / ("latest" if latest else "pinned") / prefix, ref)
         if latest and commit != target["commit"]:
             notes.append(f"{prefix}: pinned {target['commit'][:7]}, default branch now {commit[:7]}")
-        terms, bound, versions = load_terms(schema_dir, prefix)
+        if "turtle" in target:
+            terms, bound, versions = load_turtle_terms(schema_dir, prefix)
+        else:
+            terms, bound, versions = load_terms(schema_dir, prefix)
         if bound != {target["namespace"]}:
             problems.append(
-                f"{prefix}: pinned namespace {target['namespace']} but its schemas bind {sorted(bound)}"
+                f"{prefix}: pinned namespace {target['namespace']} but the target binds {sorted(bound)}"
             )
         loaded[prefix] = terms
         declared_versions[prefix] = versions
@@ -189,7 +227,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--mappings-dir", type=Path, default=DEFAULT_MAPPINGS_DIR)
     parser.add_argument("--cache-dir", type=Path, default=None,
-                        help="Keep the fetched target schemas here (default: a temporary directory)")
+                        help="Keep the fetched targets here (default: a temporary directory)")
     parser.add_argument("--latest", action="store_true",
                         help="Check against each target's default branch, not its pinned commit")
     parser.add_argument("--report", type=Path, help="Also write a Markdown report to this file")
@@ -209,7 +247,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"::warning::pin behind: {n}" if os.environ.get("GITHUB_ACTIONS") else f"NOTE: {n}")
     n_rows = sum(len(read_sssom(t)[1]) for t in args.mappings_dir.glob("*.sssom.tsv"))
     against = f"the default branches of {len(TARGETS)}" if args.latest else f"{len(TARGETS)} pinned"
-    summary = (f"Checked {n_rows} mappings against {against} target schemas: "
+    summary = (f"Checked {n_rows} mappings against {against} targets: "
                f"{len(problems)} problem(s)")
     print(summary)
     if args.report:
