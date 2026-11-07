@@ -14745,9 +14745,9 @@ class Event(GistThing):
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
          'narrow_mappings': ['common_domain_model:BusinessEvent',
-                             'iso22989:AILifecycleProcess',
-                             'iso22989:DataProcess',
-                             'iso22989:Action'],
+                             'iso22989:AicLifecycleProcess',
+                             'iso22989:AicDataProcess',
+                             'iso22989:AicAction'],
          'title': 'Event'})
 
     actual_end_date: Optional[datetime ] = Field(default=None, title="actual end date", description="""The actual date that something ended, with precision of one day.""", json_schema_extra = { "linkml_meta": {'comments': ['Used for things where the precision of a date is sufficient, '
@@ -17297,7 +17297,7 @@ class Determination(Event):
     An event whose purpose is to establish a specific result, value, or outcome, usually by research, measuring, evaluating, or calculating.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'gist:Determination',
-         'close_mappings': ['iso22989:Decision'],
+         'close_mappings': ['iso22989:AicDecision'],
          'examples': [{'value': 'Measuring the sulfur content of crude oil; evaluating '
                                 'a loan application for approval; estimating the price '
                                 'of gas for the next three months; determining whether '
@@ -33765,7 +33765,7 @@ class KnowledgeConcept(IntellectualProperty):
                                 'industry, method.'}],
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
-         'related_mappings': ['iso22989:KnowledgeGraph'],
+         'related_mappings': ['iso22989:AicKnowledge'],
          'title': 'Knowledge Concept'})
 
     actual_end_date: Optional[datetime ] = Field(default=None, title="actual end date", description="""The actual date that something ended, with precision of one day.""", json_schema_extra = { "linkml_meta": {'comments': ['Used for things where the precision of a date is sufficient, '
@@ -44921,9 +44921,8 @@ class Organization(GistThing):
          'in_subset': ['gist_core'],
          'mixins': ['GistThing'],
          'narrow_mappings': ['common_domain_model:BusinessUnit',
-                             'dpv:OrganisationalUnit',
-                             'iso22989:Organization'],
-         'related_mappings': ['dpv:ThirdParty'],
+                             'dpv:OrganisationalUnit'],
+         'related_mappings': ['dpv:ThirdParty', 'iso22989:AicStakeholder'],
          'title': 'Organization'})
 
     owns: Optional[list[Any]] = Field(default=None, title="owns", description="""Relates a party to something that it possesses and controls.""", json_schema_extra = { "linkml_meta": {'comments': ['The ultimate form of ownership is the right to destroy.',
@@ -56914,7 +56913,7 @@ class Person(LivingThing):
          'notes': ['OWL subClassOf restrictions: ∀hasBiologicalParent.gist:Person',
                    'OWL equivalentClass: (gist:LivingThing & '
                    '∃hasBiologicalParent.gist:Person)'],
-         'related_mappings': ['iso22989:AIUser', 'iso22989:DataSubject'],
+         'related_mappings': ['iso22989:AicStakeholder'],
          'title': 'Person'})
 
     owns: Optional[list[Any]] = Field(default=None, title="owns", description="""Relates a party to something that it possesses and controls.""", json_schema_extra = { "linkml_meta": {'comments': ['The ultimate form of ownership is the right to destroy.',
@@ -74191,7 +74190,7 @@ class Task(Event):
          'from_schema': 'https://w3id.org/lmodel/gist/core',
          'in_subset': ['gist_core'],
          'notes': ['OWL equivalentClass: (gist:Event & ∃hasGoal.gist:Intention)'],
-         'related_mappings': ['common_domain_model:Workflow', 'iso22989:Task'],
+         'related_mappings': ['common_domain_model:Workflow', 'iso22989:AicTask'],
          'title': 'Task'})
 
     actual_end_date: Optional[datetime ] = Field(default=None, title="actual end date", description="""The actual date that something ended, with precision of one day.""", json_schema_extra = { "linkml_meta": {'comments': ['Used for things where the precision of a date is sufficient, '
