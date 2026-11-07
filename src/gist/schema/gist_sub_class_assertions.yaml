@@ -192,7 +192,7 @@ classes:
     is_a: Event
     class_uri: gist:Determination
     close_mappings:
-      - iso22989:Decision
+      - iso22989:AicDecision
     in_subset:
       - gist_sub_class_assertions
 
@@ -319,7 +319,7 @@ classes:
     is_a: IntellectualProperty
     class_uri: gist:KnowledgeConcept
     related_mappings:
-      - iso22989:KnowledgeGraph
+      - iso22989:AicKnowledge
     in_subset:
       - gist_sub_class_assertions
 
@@ -409,8 +409,7 @@ classes:
     narrow_mappings:
       - dpv:DataSubject
     related_mappings:
-      - iso22989:AIUser
-      - iso22989:DataSubject
+      - iso22989:AicStakeholder
     in_subset:
       - gist_sub_class_assertions
 
@@ -537,7 +536,7 @@ classes:
     class_uri: gist:Task
     related_mappings:
       - common_domain_model:Workflow
-      - iso22989:Task
+      - iso22989:AicTask
     in_subset:
       - gist_sub_class_assertions
 
@@ -592,9 +591,9 @@ classes:
     class_uri: gist:Event
     narrow_mappings:
       - common_domain_model:BusinessEvent
-      - iso22989:AILifecycleProcess
-      - iso22989:DataProcess
-      - iso22989:Action
+      - iso22989:AicLifecycleProcess
+      - iso22989:AicDataProcess
+      - iso22989:AicAction
     in_subset:
       - gist_sub_class_assertions
 
@@ -639,9 +638,9 @@ classes:
     narrow_mappings:
       - common_domain_model:BusinessUnit
       - dpv:OrganisationalUnit
-      - iso22989:Organization
     related_mappings:
       - dpv:ThirdParty
+      - iso22989:AicStakeholder
     in_subset:
       - gist_sub_class_assertions
 
