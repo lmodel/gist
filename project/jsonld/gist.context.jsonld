@@ -2,7 +2,7 @@
    "@context": {
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "common_domain_model": "https://w3id.org/lmodel/common-domain-model/",
-      "dpv": "https://w3id.org/lmodel/dpv/",
+      "dpv": "https://w3id.org/dpv#",
       "gist": "https://w3id.org/semanticarts/ns/ontology/gist/",
       "gist_linkml": "https://w3id.org/lmodel/gist/",
       "gistd": "https://w3id.org/semanticarts/ns/data/gist/",
