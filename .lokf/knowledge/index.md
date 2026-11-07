@@ -35,7 +35,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for gist. Every Markdown
 * [Mapping verifier](services/verify-mappings.md) - Read-only command-line check (scripts/verify_mappings.py, run as just verify-mappings) that every SSSOM row is present on the gist LinkML schema and nothing extra is.
 * [gist documentation site](services/documentation-site.md) - The Astro Starlight site at `https://lmodel.github.io/gist`, built from the README, `docs/`, the schema's generated pages and this knowledge bundle, and deployed to GitHub Pages by the Knowledge website workflow.
 * [Upstream watch](services/upstream-watch.md) - Weekly GitHub workflow (upstream-watch.yaml) that checks the vendored gist release is Semantic Arts' latest and intact, and that mapped target terms still exist on each target's default branch, opening an issue on failure.
-* [Mapping target checker](services/verify-mapping-targets.md) - Network command-line check (scripts/verify_mapping_targets.py, run as just verify-mapping-targets) that every SSSOM object term exists in the lmodel target schema it names, at a pinned commit.
+* [Mapping target checker](services/verify-mapping-targets.md) - Network command-line check (scripts/verify_mapping_targets.py, run as just verify-mapping-targets) that every SSSOM object term exists in the target it names, an lmodel schema or DPV's Turtle file, at a pinned commit.
 
 # References
 
