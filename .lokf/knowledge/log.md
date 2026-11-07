@@ -1,5 +1,9 @@
 # Change Log
 
+## 2026-11-07
+
+* **Changed**: the gist to ISO/IEC 22989 mappings name lmodel/iso22989 v0.1.0's classes, 8 rows in place of 9.
+
 ## 2026-10-28
 
 * **Changed**: the LOKF copy now comes from `lokf adapt` in lokf 0.9.0, which re-roots gist's top classes on `Concept` and imports `lokf`, so a host saves it as `gist_core_lokf.yaml`. `scripts/check_lokf_names.py` and the converter's renames no longer build it.
