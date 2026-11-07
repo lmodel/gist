@@ -150,7 +150,7 @@ gist:Agreement dcterms:title "Agreement" ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & ∃hasParty.(gist:Organization | gist:Person) & ≥2^isDirectPartOf.gist:Commitment)" ;
 	skos:exactMatch gist_linkml:Agreement ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/MasterAgreement> , <https://w3id.org/lmodel/dpv/DataProcessingAgreement> ;
+	skos:narrowMatch <https://w3id.org/dpv#DataProcessingAgreement> , <https://w3id.org/lmodel/common-domain-model/MasterAgreement> ;
 	skos:note "While an agreement has two or more parties, and contains commitments which bind those parties, it will not always be necessary to instantiate each individual commitment." .
 gist:Aspect dcterms:title "Aspect" ;
 	a owl:Class ;
@@ -283,7 +283,7 @@ gist:ContingentObligation dcterms:title "Contingent Obligation" ;
 	a owl:Class ;
 	rdfs:label "ContingentObligation" ;
 	rdfs:subClassOf gist:Commitment ;
-	skos:broadMatch <https://w3id.org/lmodel/dpv/Obligation> ;
+	skos:broadMatch <https://w3id.org/dpv#Obligation> ;
 	skos:definition "An obligation that is not yet firm. There is some contingent event whose occurrence will cause the obligation to become firm." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Commitment & ∃hasGiver.(gist:Organization | gist:Person) & ∃isTriggeredBy.gist:Event)" ;
 	skos:exactMatch gist_linkml:ContingentObligation ;
@@ -297,7 +297,7 @@ gist:Contract dcterms:title "Contract" ;
 	skos:editorialNote "OWL equivalentClass: (gist:Agreement & ∃isUnderJurisdictionOf.gist:GovernmentOrganization)" ;
 	skos:exactMatch gist_linkml:Contract ;
 	skos:inScheme gist_linkml:core ;
-	skos:relatedMatch <https://w3id.org/lmodel/dpv/Contract> .
+	skos:relatedMatch <https://w3id.org/dpv#Contract> .
 gist:ContractTerm dcterms:title "Contract Term" ;
 	a owl:Class ;
 	rdfs:label "ContractTerm" ;
@@ -432,7 +432,7 @@ gist:GeoLocation dcterms:title "Geographic Location" ;
 	skos:definition "A physical location, with the earth as a frame of reference." ;
 	skos:exactMatch gist_linkml:GeoLocation ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/lmodel/dpv/StorageLocation> ;
+	skos:narrowMatch <https://w3id.org/dpv#StorageLocation> ;
 	skos:note "A geographic location may be a point, region, or volume." .
 gist:GeoPoint dcterms:title "Geographic Point" ;
 	a owl:Class ;
@@ -513,7 +513,7 @@ gist:IntellectualProperty dcterms:title "Intellectual Property" ;
 	skos:exactMatch gist_linkml:IntellectualProperty ;
 	skos:inScheme gist_linkml:core ;
 	skos:note "For literature this could be called the 'Work,' except that 'work' is a highly overloaded term (expenditure of energy, resource consumption, art). Often the first expression precedes our recognition of the IP, but subsequent expressions are known to be derivatives of the IP, even if they are expression-to-expression translations (or copies)." , "This concept includes works that are out of copyright or were never formally registered; the defining feature is not that it is legally protected but that it is an intangible creation of the human mind." ;
-	skos:relatedMatch <https://w3id.org/lmodel/dpv/IntellectualPropertyData> .
+	skos:relatedMatch <https://w3id.org/dpv#IntellectualPropertyData> .
 gist:Intention dcterms:title "Intention" ;
 	a owl:Class ;
 	rdfs:label "Intention" ;
@@ -659,21 +659,21 @@ gist:Organization dcterms:title "Organization" ;
 	a owl:Class ;
 	rdfs:label "Organization" ;
 	rdfs:subClassOf gist_linkml:GistThing ;
-	skos:broadMatch <https://w3id.org/lmodel/common-domain-model/Party> , <https://w3id.org/lmodel/dpv/LegalEntity> ;
+	skos:broadMatch <https://w3id.org/dpv#LegalEntity> , <https://w3id.org/lmodel/common-domain-model/Party> ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/LegalEntity> ;
 	skos:definition "A structured entity formed to achieve specific goals, typically involving members with defined roles." ;
 	skos:exactMatch gist_linkml:Organization ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/lmodel/common-domain-model/BusinessUnit> , <https://w3id.org/lmodel/dpv/OrganisationalUnit> , <https://w3id.org/lmodel/iso22989/Organization> ;
+	skos:narrowMatch <https://w3id.org/dpv#OrganisationalUnit> , <https://w3id.org/lmodel/common-domain-model/BusinessUnit> , <https://w3id.org/lmodel/iso22989/Organization> ;
 	skos:note "Not all organizations have members, e.g. shell companies." , "While typically the members of organizations are people, in some cases they are other organizations; e.g., the members of the United Nations are country governments." ;
-	skos:relatedMatch <https://w3id.org/lmodel/dpv/ThirdParty> .
+	skos:relatedMatch <https://w3id.org/dpv#ThirdParty> .
 gist:Permission dcterms:title "Permission" ;
 	a owl:Class ;
 	rdfs:label "Permission" ;
 	rdfs:subClassOf gist:Intention ;
 	skos:definition "A description of things one is permitted to do." ;
 	skos:editorialNote "OWL equivalentClass: (gist:Intention & ∃allows.gist:Behavior)" ;
-	skos:exactMatch <https://w3id.org/lmodel/dpv/Permission> , gist_linkml:Permission ;
+	skos:exactMatch <https://w3id.org/dpv#Permission> , gist_linkml:Permission ;
 	skos:inScheme gist_linkml:core .
 gist:Person dcterms:title "Person" ;
 	a owl:Class ;
@@ -683,9 +683,9 @@ gist:Person dcterms:title "Person" ;
 	skos:closeMatch <https://w3id.org/lmodel/common-domain-model/NaturalPerson> ;
 	skos:definition "A human being who was or is alive." ;
 	skos:editorialNote "OWL equivalentClass: (gist:LivingThing & ∃hasBiologicalParent.gist:Person)" , "OWL subClassOf restrictions: ∀hasBiologicalParent.gist:Person" ;
-	skos:exactMatch <https://w3id.org/lmodel/dpv/NaturalPerson> , gist_linkml:Person ;
+	skos:exactMatch <https://w3id.org/dpv#NaturalPerson> , gist_linkml:Person ;
 	skos:inScheme gist_linkml:core ;
-	skos:narrowMatch <https://w3id.org/lmodel/dpv/DataSubject> ;
+	skos:narrowMatch <https://w3id.org/dpv#DataSubject> ;
 	skos:relatedMatch <https://w3id.org/lmodel/iso22989/AIUser> , <https://w3id.org/lmodel/iso22989/DataSubject> .
 gist:PhysicalActionType dcterms:title "Physical Action Type" ;
 	a owl:Class ;

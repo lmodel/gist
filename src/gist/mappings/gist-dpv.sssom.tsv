@@ -1,20 +1,20 @@
 # mapping_set_id: https://w3id.org/lmodel/gist/mappings/gist-dpv
-# mapping_set_version: "1.1"
+# mapping_set_version: "1.2"
 # mapping_set_title: gist to DPV mappings
-# mapping_set_description: Alignments from the gist upper ontology (Semantic Arts) to the Data Privacy Vocabulary (DPV) as rendered in LinkML by lmodel/dpv, grounding DPV entities, agreements, contracts, rules, intellectual property and locations in gist.
+# mapping_set_description: Alignments from the gist upper ontology (Semantic Arts) to the Data Privacy Vocabulary (DPV) 2.3 of the W3C Data Privacy Vocabularies and Controls Community Group, grounding DPV entities, agreements, contracts, rules, intellectual property and locations in gist.
 # license: https://creativecommons.org/licenses/by/4.0/
 # subject_source: semanticarts:gistCore
 # subject_source_version: "14.1.0"
-# object_source: lmodel:dpv
+# object_source: w3id:dpv
 # object_source_version: "2.3"
 # mapping_date: 2026-09-29
 # curie_map:
-#   dpv: https://w3id.org/lmodel/dpv/
+#   dpv: https://w3id.org/dpv#
 #   gist: https://w3id.org/semanticarts/ns/ontology/gist/
-#   lmodel: https://w3id.org/lmodel/
 #   semanticarts: https://w3id.org/semanticarts/ontology/
 #   semapv: https://w3id.org/semapv/vocab/
 #   skos: http://www.w3.org/2004/02/skos/core#
+#   w3id: https://w3id.org/
 subject_id	subject_label	predicate_id	object_id	object_label	mapping_justification	comment
 gist:Agreement	Agreement	skos:narrowMatch	dpv:DataProcessingAgreement	Data Processing Agreement	semapv:LLMBasedMatching	A data processing agreement is one kind of agreement
 gist:Person	Person	skos:narrowMatch	dpv:DataSubject	Data Subject	semapv:LLMBasedMatching	A data subject is a person whose personal data is processed

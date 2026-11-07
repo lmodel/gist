@@ -63,7 +63,7 @@ version = "14.1.0"
 
 # Namespaces
 COMMON_DOMAIN_MODEL = CurieNamespace('common_domain_model', 'https://w3id.org/lmodel/common-domain-model/')
-DPV = CurieNamespace('dpv', 'https://w3id.org/lmodel/dpv/')
+DPV = CurieNamespace('dpv', 'https://w3id.org/dpv#')
 GIST = CurieNamespace('gist', 'https://w3id.org/semanticarts/ns/ontology/gist/')
 GIST_LINKML = CurieNamespace('gist_linkml', 'https://w3id.org/lmodel/gist/')
 GISTD = CurieNamespace('gistd', 'https://w3id.org/semanticarts/ns/data/gist/')
