@@ -37,6 +37,7 @@ on:
       - "CHANGELOG.md"
       - "llms.txt"
       - ".linkml/**"
+      - "**/src/*/schema/**"
       - "**/[Jj]ustfile"
       - "**/.justfile"
       - "**/pyproject.toml"
@@ -53,6 +54,7 @@ on:
       - "CHANGELOG.md"
       - "llms.txt"
       - ".linkml/**"
+      - "**/src/*/schema/**"
       - "**/[Jj]ustfile"
       - "**/.justfile"
       - "**/pyproject.toml"
@@ -76,11 +78,12 @@ jobs:
     # A push builds on the default branch only. A pull request or a dispatch always builds.
     if: github.event_name != 'push' || github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
         with:
           egress-policy: audit
 
@@ -92,7 +95,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           enable-cache: true
           cache-dependency-glob: .lokf/uv.lock
@@ -153,6 +156,7 @@ jobs:
     if: vars.KNOWLEDGE_WEBSITE_ENABLED == 'true' && (github.event_name == 'schedule' || (github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)))
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       pages: write
       id-token: write
@@ -161,7 +165,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
         with:
           egress-policy: audit
 
