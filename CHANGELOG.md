@@ -15,6 +15,7 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 ### Changed
 
 - **The knowledge website is built with Hugo from the ktl-website templates**, set by `website/site.toml`, in place of the Astro site.
+- **The release job installs semantic-release with `npm ci` from `.github/release/package-lock.json`**, which pins every package it pulls in by hash.
 
 ### Security
 
