@@ -2,6 +2,11 @@
 
 # gist
 
+[![Build and test](https://github.com/lmodel/gist/actions/workflows/main.yaml/badge.svg)](https://github.com/lmodel/gist/actions/workflows/main.yaml)
+[![Licence](https://img.shields.io/github/license/lmodel/gist?label=licence)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lmodel/gist/badge)](https://scorecard.dev/viewer/?uri=github.com/lmodel/gist)
+[![KTL scorecard](https://img.shields.io/endpoint?url=https://lmodel.github.io/gist/badge.json)](https://lmodel.github.io/gist/health/)
+
 GIST, the Semantic Arts Upper Enterprise Ontology (LinkML)
 
 This repository is an independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology. It is not a Semantic Arts release, and it defines nothing in gist's namespace.
