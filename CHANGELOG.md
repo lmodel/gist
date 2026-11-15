@@ -6,6 +6,8 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+## [0.8.2] - 2026-11-15
+
 ### Fixed
 
 - **The ISO/IEC 22989 mappings name the classes of lmodel/iso22989 v0.1.0**, such as `AicTask` and `AicDecision`, and the set states the schema's version, 2022. The release has no organization, AI user, data subject or knowledge graph class, so those rows now relate to `AicStakeholder` and `AicKnowledge`, and the set holds 8 rows in place of 9.
