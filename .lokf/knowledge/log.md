@@ -4,6 +4,7 @@
 
 * **Changed**: The documentation site and the sources map describe the Hugo build that replaced the Astro one.
 * **Changed**: The concepts that cite the knowledge website describe the Hugo site that replaced the Astro one, set by `website/site.toml`.
+* **Changed**: The gist to ISO/IEC 22989 mappings name lmodel/iso22989 v0.1.0's classes, 8 rows in place of 9.
 
 ## 2026-10-28
 
