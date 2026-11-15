@@ -1,5 +1,10 @@
 # Change Log
 
+## 2026-11-15
+
+* **Changed**: The documentation site and the sources map describe the Hugo build that replaced the Astro one.
+* **Changed**: The concepts that cite the knowledge website describe the Hugo site that replaced the Astro one, set by `website/site.toml`.
+
 ## 2026-10-28
 
 * **Changed**: the LOKF copy now comes from `lokf adapt` in lokf 0.9.0, which re-roots gist's top classes on `Concept` and imports `lokf`, so a host saves it as `gist_core_lokf.yaml`. `scripts/check_lokf_names.py` and the converter's renames no longer build it.

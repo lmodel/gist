@@ -20,7 +20,7 @@ A LinkML schema generated from Semantic Arts' gist 14.1.0 release, with SSSOM ma
 
 ## Development setup
 
-Python 3.10+, [uv](https://docs.astral.sh/uv/) and [just](https://github.com/casey/just) are required.
+Python 3.11+, [uv](https://docs.astral.sh/uv/) and [just](https://github.com/casey/just) are required.
 
 ```bash
 git clone https://github.com/lmodel/gist.git

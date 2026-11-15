@@ -2,6 +2,11 @@
 
 # gist
 
+[![Build and test](https://github.com/lmodel/gist/actions/workflows/main.yaml/badge.svg)](https://github.com/lmodel/gist/actions/workflows/main.yaml)
+[![Licence](https://img.shields.io/github/license/lmodel/gist?label=licence)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lmodel/gist/badge)](https://scorecard.dev/viewer/?uri=github.com/lmodel/gist)
+[![KTL scorecard](https://img.shields.io/endpoint?url=https://lmodel.github.io/gist/badge.json)](https://lmodel.github.io/gist/health/)
+
 GIST, the Semantic Arts Upper Enterprise Ontology (LinkML)
 
 This repository is an independent LinkML rendering of [gist](https://github.com/semanticarts/gist), Semantic Arts' upper enterprise ontology. It is not a Semantic Arts release, and it defines nothing in gist's namespace.
@@ -17,7 +22,7 @@ This repository is an independent LinkML rendering of [gist](https://github.com/
 ## Repository Structure
 
 * [docs/](docs/): the documentation pages the website shows
-  * [elements/](docs/elements/): generated schema documentation
+  * `docs/elements/`: generated schema documentation
 * [examples/](examples/): examples of using the schema
 * [project/](project/): generated project files (do not edit them)
 * [src/](src/): source files (edit these)
@@ -26,7 +31,7 @@ This repository is an independent LinkML rendering of [gist](https://github.com/
     * [datamodel/](src/gist/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests
   * [data/](tests/data): example data
-* [website/](website/): the documentation website, an Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
+* [website/](website/): the documentation website, a Hugo site built from the README, `docs/`, the schema's pages and the knowledge bundle
 
 ## Developer Tools
 

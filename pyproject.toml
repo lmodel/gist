@@ -12,7 +12,7 @@ authors = [
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dynamic = ["version"]
 
 dependencies = [
@@ -50,7 +50,7 @@ exclude = [
     "src/gist/_version.py",
 ]
 # Set oldest supported Python version
-target-version = "py310"
+target-version = "py311"
 
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
@@ -58,7 +58,7 @@ skip = [
   "LICENSE",
   "pyproject.toml",
   "uv.lock",
-  "website/package-lock.json",
+  "website/uv.lock",
   "project/*",
   "src/gist/datamodel/gist_pydantic.py",
   "src/gist/datamodel/gist.py",

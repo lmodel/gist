@@ -6,6 +6,22 @@ The `v0.1.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ## [Unreleased]
 
+### Added
+
+- **`scorecard.yml` publishes this repository's OpenSSF Scorecard.**
+- **The README shows the CI, licence, OpenSSF Scorecard and KTL scorecard badges.**
+- **`codeql.yml` scans the Python, the JavaScript and the workflows with CodeQL.**
+
+### Changed
+
+- **The knowledge website is built with Hugo from the ktl-website templates**, set by `website/site.toml`, in place of the Astro site.
+- **The release job installs semantic-release with `npm ci` from `.github/release/package-lock.json`**, which pins every package it pulls in by hash.
+- **The project requires Python 3.11 or later**, since Python 3.10's support ended in October 2026.
+
+### Security
+
+- **The sidecar copies are at Knowledge Trust Ladder [v0.66.0](https://github.com/noelmcloughlin/knowledge-trust-ladder/blob/v0.66.0/CHANGELOG.md), and `.lokf/pyproject.toml` pins `ktl==0.66.0`**, which the librarian installs its skill from.
+
 ## [0.8.0] - 2026-11-07
 
 ### Added
