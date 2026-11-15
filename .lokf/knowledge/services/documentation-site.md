@@ -11,7 +11,7 @@ dependsOn:
   - https://w3id.org/lmodel/gist/knowledge/datasets/gist-linkml-schema
 generated:
   by: process:ktl-librarian
-  at: "2026-11-15T02:57:18Z"
+  at: "2026-11-15T03:04:36Z"
 status: draft
 verified:
   - by: process:ktl-librarian
@@ -20,8 +20,12 @@ sources:
   - resource: website/README.md
   - resource: website/site.toml
     title: the site's address, title and redirects
+  - resource: website/hugo.toml
+    title: docsExclude
+  - resource: website/scripts/prepare.sh
+  - resource: website/content/_content.gotmpl
+    title: the redirects
   - resource: .github/workflows/knowledge-website.yaml
-  - resource: justfile
 ---
 
 # Documentation site
@@ -30,16 +34,16 @@ The site is the Hugo project in `website/`. `.github/workflows/knowledge-website
 
 ## What each page comes from
 
-- The README becomes the home page, and each page under `docs/` a page under `docs/`. `website/site.toml` leaves out `docs/templates-linkml/`, and gives the home page four buttons, to the bundle, the schema's pages, the bundle's health page and the knowledge graph.
+- The README becomes the home page, and each page under `docs/` a page under `docs/`. `website/hugo.toml` leaves out `docs/templates-linkml/` and `docs/elements/`. The home page has the five buttons every site has: the schema, the bundle, the architecture page, the glossary and the quick start. A button whose page is not there is greyed.
 - `CHANGELOG.md` becomes a page per release under `changelog/`.
-- The schema's pages become a page each under `schema/`. `just gen-doc` writes them into the git-ignored `docs/elements/`, and the build runs it when that folder is missing.
+- The schema's pages become a page each under `schema/`. `website/scripts/prepare.sh` runs LinkML's `gen-doc` on `src/gist/schema/gist.yaml` and writes the pages into `website/generated/`, which is never committed.
 - Each concept in `.lokf/knowledge/` becomes a page under `knowledge/`, with its trust label, its sources and its typed relations both ways. The four files `lokf export` writes are served under `knowledge/` too.
 
-`website/site.toml` keeps the old site's addresses working: `/elements/` and every page under it lead to the same page under `/schema/`, and `/about` leads to `/docs/about/`.
+Old addresses keep working. `/elements/` and each `/elements/<name>/`, the addresses mkdocs gave the schema's pages, lead to the schema's overview and to each element's page, with no setting. `website/site.toml` sends `/about/` to the page built from `docs/about.md`, and each `/schema/<name>/` address to that element's page.
 
 ## Preview it
 
-With Node.js 22.12 or later and uv, run `npm ci --ignore-scripts` in `website/`, then `npm run dev` to serve the site at `http://localhost:4321/gist/`, or `npm run build` to write `dist/` and check every link between its pages.
+With bash, git and uv, run `scripts/build.sh` in `website/` to write `dist/` with its search index and check every link between its pages, or `scripts/build.sh serve` to serve the site at `http://localhost:1313/gist/`, rebuilt as you edit. Hugo and Pagefind come from PyPI, at the versions `website/pyproject.toml` names and the hashes `website/uv.lock` holds.
 
 ## Identifiers
 
