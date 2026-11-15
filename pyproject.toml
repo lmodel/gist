@@ -58,7 +58,7 @@ skip = [
   "LICENSE",
   "pyproject.toml",
   "uv.lock",
-  "website/package-lock.json",
+  "website/uv.lock",
   "project/*",
   "src/gist/datamodel/gist_pydantic.py",
   "src/gist/datamodel/gist.py",

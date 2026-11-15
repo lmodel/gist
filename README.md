@@ -17,7 +17,7 @@ This repository is an independent LinkML rendering of [gist](https://github.com/
 ## Repository Structure
 
 * [docs/](docs/): the documentation pages the website shows
-  * [elements/](docs/elements/): generated schema documentation
+  * `docs/elements/`: generated schema documentation
 * [examples/](examples/): examples of using the schema
 * [project/](project/): generated project files (do not edit them)
 * [src/](src/): source files (edit these)
@@ -26,7 +26,7 @@ This repository is an independent LinkML rendering of [gist](https://github.com/
     * [datamodel/](src/gist/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests
   * [data/](tests/data): example data
-* [website/](website/): the documentation website, an Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle
+* [website/](website/): the documentation website, a Hugo site built from the README, `docs/`, the schema's pages and the knowledge bundle
 
 ## Developer Tools
 
